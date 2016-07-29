@@ -99,8 +99,31 @@ UPDATE ligne set naissance = naissance + 1000 WHERE naissance < 1000; >>> 14 row
 
 </pre>
 
+Récupération des pays
 
 
+La FFA utilise les <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_pays_du_CIO">codes pays du CIO</a>
+
+
+Donc on importe les 208 pays dans notre table "pays".
+
+On génère la chaîne qui va nous servir à itérer dans le code Java (inutile ici de faire une requêete puisque les codes pays ne changent pas)
+
+SELECT  GROUP_CONCAT( code SEPARATOR '","' ) FROM pays;
+
+Y'a plus qu'à itérer sur le tableau obtenu 
+
+<pre>
+String tabCodes[] = { "AFG", "ALA", "ALB", "DZA", "ASM", "AND", // etc...
+// itération
+executeUpdate("UPDATE ligne SET idPays = (SELECT id FROM pays WHERE code = '" + code + "') WHERE prenom LIKE '%(" + code + ")%'");
+
+</pre>
+
+Vérification 
+<pre>
+SELECT * FROM ligne where prenom like '%(%' and idPays is null;
+</pre>
 
 <pre>
 

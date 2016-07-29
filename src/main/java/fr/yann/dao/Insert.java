@@ -11,10 +11,10 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 
 public class Insert {
 
-	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
+	private static final String	DRIVER_NAME	= "com.mysql.jdbc.Driver";
 	private static final String	URL			= "jdbc:mysql://localhost:3306/athle";
-	private static final String	USER			= "root";
-	private static final String	PASSWORD		= "";
+	private static final String	USER		= "root";
+	private static final String	PASSWORD	= "";
 
 	public static void main(String path) {
 
