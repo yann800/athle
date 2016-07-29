@@ -1,0 +1,25 @@
+<script type="text/javascript" src="jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
+       <div id="chart_div" style="width: 900px; height: 500px;"></div>
+   
+   
+<script type="text/javascript">
+   google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'ABDELKADER', 'ANDRIEU', 'LACHEREST', 'DIANI'],
+          ['2010', 712,			 622, 984, 806],
+          ['2011', 721, 		608, 709, 111],
+          ['2012', 911, 		850, 530, 72],
+          ['2013', 806, 		830, 480, 69],
+          ['2014', 1547, 		870, 490, 68]
+        ]);
+
+        var options = {
+          title: 'Comparatif rangs'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+   </script>

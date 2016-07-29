@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<!-- <link href="css/bootstrap-theme.css" media="screen, projection" rel="stylesheet" type="text/css" /> -->
+<link href="css/dataTables.bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+
+	<div class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+<div id="menu"></div>
+
+
+
+			<br /> <br />
+
+
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">Données importées</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>11 années</th>
+										<th>6 épreuves</th>
+										<th>non pris en compte</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2006 - 2016</td>
+										<td>800 M top 1000<br /> 1500 M top 1000<br /> 1500 F top 1000<br /> 3000 M top 1000<br /> 3000 F top 1000<br /> 10km H top 1600<br /> 10km F top 1600<br />
+										</td>
+										<td>6.748 perf de non licenciées</td>
+										<td>((4 x 55) + (2 x 85)) x 200 = 78.000<br/>
+										- 6.748<br/>
+										= 71.252</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">Vérifications</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+			
+<pre>
+SELECT annee, idEpreuve, max(rang) FROM ligne group by annee, idEpreuve;
+SELECT count(*) FROM ligne;
+
+
+DELETE FROM ligne WHERE naissance < 300 >>> 3 rows deleteds
+
+UPDATE ligne set naissance = naissance + 1000 WHERE naissance < 1000; >>> 14 rows updated 
+
+
+
+</pre>
+
+
+
+
+<pre>
+
+
+SELECT annee,max(yann), max(seb)
+FROM
+(
+	SELECT annee, 
+		CASE nom
+			WHEN 'ABDELKADER' THEN rang
+			WHEN 'LACHEREST'  THEN 0  
+		END as yann,
+		
+		CASE nom
+			WHEN 'ABDELKADER' THEN 0
+			WHEN 'LACHEREST'  THEN rang
+		END as seb
+	
+	FROM ligne l
+	WHERE l.nom IN ('ABDELKADER', 'LACHEREST') AND annee > 2009
+
+) tmp
+GROUP by annee
+
+>>>>
+
+2010    744    882
+2011    911    933
+2012    984    1090
+2013	806    703
+2014	1547   0
+2015	1343   1297
+2016	1528   683
+
+
+</pre>
+			<br />
+		</div>
+</div></div>
+	</div>
+
+</body>
+</html>
