@@ -30,6 +30,38 @@
 
 
 			<div id="menu"></div>
+			
+			
+       <div id="chart_div" style="width: 900px; height: 500px;"></div>
+   
+<script type="text/javascript" src="charts/google/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
+   
+<script type="text/javascript">
+   google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', '800', '1500', '3000', '10 km'],
+          ['2010', 712,			 622, 0, 0],
+          ['2011', 721, 		608, 0, 0],
+          ['2012', 911, 		760, 530, 700],
+          ['2013', 830, 		775, 730, 710],
+          ['2014', 788, 		760, 700, 725]
+        ]);
+
+        var options = {
+          title: 'Meilleures perfs à la table de cotations par année'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+   </script>
+   
+   
+   <br/><br/>
+   		
+			
 
 <pre>
 SELECT annee,max(e_800), max(e_1500), max(e_3000)
@@ -55,15 +87,13 @@ FROM
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.idEpreuve IN (800, 1500, 3000) AND annee > 2005
+	WHERE l.nom = '[NOM]' AND prenom = '[PREONOM]' AND l.idEpreuve IN (800, 1500, 3000) AND annee > 2005
 
 ) tmp
 GROUP by annee
 </pre>
 
-Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction d'<a href="">inversion de matrice </a>
-
->>>>
+Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 
 <pre>
 2010    744    882
