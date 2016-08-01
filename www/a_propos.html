@@ -34,10 +34,15 @@
 
 			<nav id="menu"></nav>
 
+
 			<br /> <br /> Site et programmes développés par Yann Abd-el-Kader.
 			Pour toute question, bug, suggestion : <img alt="image anti-robot" src="img/adresse_mail.png"> <br />
-			<h2>Librairies, langages</h2>
+			
+			
+			<h2>Librairies, langages / Outils de développement</h2>
+<section class="row">
 
+<div class="col-sm-4">
 			<ul>
 				<li>SQL</li>
 				<li>Java 8</li>
@@ -45,8 +50,8 @@
 				<li>JQuery 1.12.3</li>
 				<li>Bootstrap 3.3.5</li>
 			</ul>
-
-			<h2>Outils de développement</h2>
+</div>
+<div class="col-sm-4">
 
 			<ul>
 				<li>Eclipse Mars 2</li>
@@ -54,15 +59,12 @@
 				<li>Git</li>
 				<li>MySQL 5.7</li>
 				<li>Squirel 3.5.3</li>
-				<li>Notepad++</li>
 				<li>Firefox 42</li>
 			</ul>
+</div>
 
+</section>
 
-			<h2>Remerciements</h2>
-
-			CailleRotie pour l'aide SQL et en particulier les subtilités du GROUP
-			BY.
 
 
 			<h2 id="db_content">Contenu de la base</h2>
@@ -83,7 +85,7 @@
 								<thead>
 									<tr>
 										<th>11 années</th>
-										<th>6 épreuves</th>
+										<th>4 épreuves</th>
 										<th>2 sexes</th>
 										<th>Non pris en compte</th>
 										<th>Total</th>
@@ -120,13 +122,13 @@
 										<td>6.748 perf<br /> non licenciés<br />3 dates
 											naissances<br /> erronées
 										</td>
-										<td>11<br />x ((3 x 1000) + (2 x 1600))<br />x 2<br />=
-											136.400<br /> - 6.748<br />- 3<br /> = <b>129.649</b></td>
+										<td>11<br />x ((3 x 1000) + 1600)<br />x 2<br />=
+											101.200<br /> - 6.748<br />- 3<br /> = <b>94.452</b></td>
 									</tr>
 								</tbody>
 							</table>
 
-Quelques curiosiétés font planter le programme d'import... p.ex. chrono 800 avec vent : 2.22.53 (+1.9) dans le bilan féminin 2016.
+Le programme d'import signale quelques curiosités amusantes de la base de la fédé. P.ex. on trouve dans le bilan 800 féminin 2016 un chrono avec vent : 2.22.53 (+1.9)... 
 
 						</div>
 					</div>
@@ -163,20 +165,42 @@ Quelques curiosiétés font planter le programme d'import... p.ex. chrono 800 av
 				
 				<br/>
 		
-		l'accès Web aux appareils mobiles (smartphones et tablettes) contribue à l'augmentation de l'exposition aux ondes électromagnétiques (OEM)
-		sur lesquelles reposent la téléphonie-internet (3G, 4G) et le Wi-fi.
-		Les effets nocifs de ces technologies sont suffisament graves, en particulier pour les personnes souffrant d'hyper électro-sensibilité 
-		 renoncer à son site web mobile. Rendez-vous sur le site Web classique (accessible depuis des ordinateurs connectés à Internet par cable).
 				
-				<h4>TODO</h4>
+				<h2>Evolutions prévues</h2>
 
 				<ul>
 					<li>passage en modèle relationnel (éviter de répéter nom-prénom à chaque perf, entre autre)</li>
+					<li>conversions des dates pour faciliter les requêtes</li>
 					<li>réponse à toutes les requêtes de <a href="index.html">la page d'accueil</a></li>
 					<li>importation archives résultats FFA 1999 - 2004</li>
 					<li>importation résultats IAAF</li>
 					<li>remplacement serveur PHP par serveur Java</li>
 				</ul>
+
+
+
+			<h2>Pourquoi il est souhaitable d'éviter les technologies sans fil (Wifi, 3G/4G)</h2>
+
+		Au début d'Internet, la connexion se faisait câble.
+		Aujourd'hui se généralise les connexions sans fil (Wifi, 3G/4G passant par les antennes relais de téléphonie).
+		Ces technologies sont très pratiques, mais elles impliquent l'augmentation constante de la population aux ondes électromagnétiques.
+		<br/>		
+		Or les effets nocifs de ces technologies sont graves, en particulier pour les personnes souffrant d'hyper électro-sensibilité. La France est très en
+		retard sur la reconnaissance de ce problème (par rapport à la Suède, p.ex.) ; on peut même obligé de parler de scandale sanitaire.  
+		
+		Moralité : merci autant que possible d'accéder à Internet et de surfer sur Web via des ordi utilisant des connexions filaires (câble éthernet,
+		en vente partout pour une dizaine d'euros).
+		
+		Plus d'info sur le site de <a href="http://priartem.fr">Priartem</a> et p.ex. dans
+		<a href="http://laurence-abeille.fr/des-medecins-et-parlementaires-appellent-le-ministere-de-la-sante-a-reconnaitre-les-personnes-sensibles-aux-ondes-electromagnetiques">les actes du colloque qui s'est tenu le 16/02/2016
+		à l'Assemblée Nationale</a> 
+		
+		
+			<h2>Remerciements</h2>
+
+			CailleRotie pour l'aide SQL et en particulier les subtilités du GROUP
+			BY.
+
 
 				<footer>
 					<br />
