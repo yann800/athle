@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<link href="css/bootstrap.min.css" media="screen, projection"
+	rel="stylesheet" type="text/css" />
+<!-- <link href="css/bootstrap-theme.css" media="screen, projection" rel="stylesheet" type="text/css" /> -->
+<link href="css/dataTables.bootstrap.min.css" media="screen, projection"
+	rel="stylesheet" type="text/css" />
+
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+
+	<div class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<div id="menu"></div>
+
+
+			<h2>Evolution des meilleures perfs pour un athlète</h2>
+
+			<form action="fiche_athlete.html">
+			
+			<fieldset>
+			<legend>Recherche d'athlète par nom / prénom</legend>
+
+			
+				<label>nom</label><input id="nom" type="text" /><br/> <label>prénom</label><input
+					id="prenom" type="text" />
+
+			<input type="submit" class="button" value="OK">
+			
+			</fieldset>
+
+			</form>
+
+<br/><br/>
+			<form action="compare_athletes.html">
+			
+			<h2>Comparaison entre athlètes selon leurs meilleurs perfs à la table de cotation</h2>
+			
+			<input type="submit" class="button" value="OK">
+			</form>
+
+		</div>
+	</div>
+
+
+
+	<script src="js/menu.js" type="text/javascript"></script>
+	<script>
+		document.getElementById("recherche").setAttribute("class", "active");
+	</script>
+</body>
+</html>

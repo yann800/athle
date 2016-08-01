@@ -3,10 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-
-<link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" media="screen, projection"
+	rel="stylesheet" type="text/css" />
 <!-- <link href="css/bootstrap-theme.css" media="screen, projection" rel="stylesheet" type="text/css" /> -->
-<link href="css/dataTables.bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen, projection"
+	rel="stylesheet" type="text/css" />
 
 
 <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
@@ -20,12 +21,7 @@
 </head>
 
 
-
-
 <body>
-
-
-
 
 
 	<div class="content">
@@ -38,28 +34,159 @@
 
 			<div id="menu"></div>
 
+			<br /> <br /> Site et programmes développés par Yann Abd-el-Kader.
+			Pour toute question, bug, suggestion : base_athle at
+			free.fr <br />
+			<h2>Librairies, langages</h2>
 
-			<br /> <br />
-<h2>Outils utilsés</h2>
+			<ul>
+				<li>SQL</li>
+				<li>Java 8</li>
+				<li>PHP <i>(Spring MVC pour une version future)</i></li>
+				<li>JQuery 1.12.3</li>
+				<li>Bootstrap 3.3.5</li>
+			</ul>
 
-<ul>
-<li>Java 1.8.0.20</li>
-<li>Eclipse Mars 2</li>
-<li>Squirel 3.5.3</li>
-<li>JQuery 1.12.3</li>
-<li>Bootstrap 3.3.5</li>
-</ul>
+			<h2>Outils de développement</h2>
+
+			<ul>
+				<li>Eclipse Mars 2</li>
+				<li>Maven 3</li>
+				<li>Git</li>
+				<li>MySQL 5.7</li>
+				<li>Squirel 3.5.3</li>
+				<li>Notepad++</li>
+				<li>Firefox 42</li>
+			</ul>
 
 
-			<pre>
-</pre>
+			<h2>Remerciements</h2>
+
+			CailleRotie pour l'aide SQL et en particulier les subtilités du GROUP
+			BY.
+
+
+			<h2 id="db_content">Contenu de la base</h2>
 
 
 
+			<div class="panel-group" id="accordion" role="tablist"
+				aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">Nombre de performances</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>11 années</th>
+										<th>6 épreuves</th>
+										<th>2 sexes</th>
+										<th>Non pris en compte</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>2006 - 2016</td>
+										<td>
+
+											<table>
+												<tr>
+													<td>800</td>
+													<td>top 1000</td>
+												</tr>
+												<tr>
+													<td>1500</td>
+													<td>top 1000</td>
+												</tr>
+												<tr>
+													<td>3000</td>
+													<td>top 1000</td>
+												</tr>
+												<tr>
+													<td>10 km&#160;</td>
+													<td>top 1600</td>
+												</tr>
+
+											</table>
+
+
+										</td>
+										<td>M / F</td>
+										<td>6.748 perf<br /> non licenciés<br />3 dates
+											naissances<br /> erronées
+										</td>
+										<td>11<br />x ((3 x 1000) + (2 x 1600))<br />x 2<br />=
+											136.400<br /> - 6.748<br />- 3<br /> = <b>129.649</b></td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">Pays</h4>
+					</div>
+
+					<div id="collapseOne" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							Importation des 208 <a
+								href="https://fr.wikipedia.org/wiki/Liste_des_codes_pays_du_CIO">codes
+								pays du CIO</a> utilisés par la FFA.
+						</div>
+					</div>
+
+				</div>
+				
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">Table de cotation</h4>
+					</div>
+
+					<div id="collapseOne" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+						Script de génération de table pour permettre la conversion des perfs directement en base (UPDATE de la colonne "points").
+						</div>
+					</div>
+				</div>
+				
+				<br/>
+				
+				<h4>TODO</h4>
+
+				<ul>
+					<li>passage en modèle relationnel (éviter de répéter nom-prénom à chaque perf, entre autre)</li>
+					<li>réponse à toutes les requêtes de <a href="index.html">la page d'accueil</a></li>
+					<li>importation archives résultats FFA 1999 - 2004</li>
+					<li>importation résultats IAAF</li>
+					<li>remplacement serveur PHP par serveur Java</li>
+				</ul>
+
+				<div align="center">
+					<br />
+					<br />
+					<br />
+					<br />
+					<i>Dernière MAJ : 03/08/2016</i>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<script src="js/menu.js" type="text/javascript"></script>
-	<script>document.getElementById("a_propos").setAttribute("class", "active");</script>
+			<script src="js/menu.js" type="text/javascript"></script>
+			<script>
+				document.getElementById("a_propos").setAttribute("class",
+						"active");
+			</script>
 </body>
 </html>
