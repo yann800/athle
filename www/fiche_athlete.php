@@ -23,19 +23,35 @@
 
 <?php
 
-echo 'Bonjour ' . $_GET["nom"] . '!';
 
-$param_nom = $_GET['nom'];
-$param_prenom = $_GET['prenom'];
-
-
-
-if (preg_match("[A-Z]", $param_nom)) {
-    echo "Caratère interdit";
-	
-} else {
-    echo "OK Bonne chaine";
+$param_nom = '';
+if (isset($_GET["nom"]))
+{
+    $param_nom = $_GET["nom"];
 }
+else {
+	echo "param nom manquant";
+	exit;
+}
+$param_prenom = '';
+if (isset($_GET["prenom"]))
+{
+    $param_prenom = $_GET["prenom"];
+}
+else {
+	echo "param prenom manquant";
+	exit;
+}
+
+
+// $param_nom = '77';
+
+// if (preg_match("#[a\-ZA\-Z]#", $param_nom)) {
+    //echo "Caratère interdit";
+//exit;
+//} else {
+//    echo "OK Bonne chaine";
+//}
 
 	$servername = "localhost";
 	$username = "root";
