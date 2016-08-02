@@ -5,8 +5,8 @@
 
 
 <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-<!-- <link href="css/bootstrap-theme.css" media="screen" rel="stylesheet" type="text/css" /> -->
 <link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
 
 
 <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
@@ -14,13 +14,14 @@
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
+<title>International</title>
 
 </head>
 
 <body>
 
 
-	<div class="content">
+	<article class="content">
 
 		<div class="col-sm-2"></div>
 
@@ -28,18 +29,19 @@
 		<div class="col-sm-8">
 
 
-			<div id="menu"></div>
+			<nav id="menu"></nav>
 
 			<h1>International</h1>
 
-			<br /> &laquo; Les prolétaires n'ont pas de patrie &raquo;, mais les athlètes ont une nationnalité.
-			<br/><br/>
+			<p>
+			
+			<q>Les prolétaires n'ont pas de patrie</q>, mais les athlètes ont une nationnalité.
+			
+			</p>
 
-			<pre>
-SELECT p.nom, count(*) FROM ligne l
+			<pre><code>SELECT p.nom, count(*) FROM ligne l
 INNER JOIN Pays p ON p.id = l.idPays
-GROUP BY p.nom
-</pre>
+GROUP BY p.nom</code></pre>
 
 <br/>
 
@@ -371,7 +373,7 @@ GROUP BY p.nom
 			</table>
 
 		</div>
-	</div>
+	</article>
 
 	<script src="js/menu.js" type="text/javascript"></script>
 	

@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 	<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-	<!-- <link href="css/bootstrap-theme.css" media="screen" rel="stylesheet" type="text/css" /> -->
 	<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
 	
 	<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
 	<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -18,52 +18,45 @@
 
 <body>
 
-	<div class="content">
+	<article class="content">
 
 		<div class="col-sm-2"></div>
 
 		<div class="col-sm-8">
 
-			<div id="menu"></div>
-
-			<br /> <br />
+			<nav id="menu"></nav>
 
 			<h2>SQL et athlétisme, quelques exercices</h2>
 			
-			
-			Ce site propose de répondre à des requêtes avancées sur une base de données de résultats d'athlétisme (pour 
-			l'instant sur les bilans 2006-2016 de quelques épreuves, cf. <a href="a_propos.html#db_content">contenu de la base</a> ).
-
-
-			<br /> <br />
-			
+			<p>
+			Ce site propose quelques requêtes avancées sur une base de données de résultats d'athlétisme (pour 
+			l'instant sur les bilans 2006-2016 de quelques épreuves, cf. <a href="a_propos.html#db_content">contenu de la base</a>).
 			Par exemple :
-			<br /> <br />
+			</p>
 
-
-			<ul>
-				<li >pour chaque épreuve : 
+			<ul class="ul_space">
+				<li>pour chaque épreuve : 
 				
-					<ul style="padding-top: 10px">
-					<li style="padding-bottom: 10px">records d'un club par catégorie d'âge (p.ex. 35-40)  <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
-					<li style="padding-bottom: 10px">âge moyen des records personnels ? [TODO]</li>
-					<li style="padding-bottom: 10px">quels athlètes figurent 10 ans d'affilée dans le TOP 10 (ou TOP x) ? <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
-					<li style="padding-bottom: 10px">distribution des dates des records personnels et moyenne du nombre d'épreuves avant et après auxquelles ont participés les athlètes dans la même saison (autrement dit, à combien de courses faut-il participé avant d'avoir statistiquement le plus de chance de battre son record ? et quelles sont ces épreuves (p.ex. 800 pour un RP sur 1500 ?) [TODO]</li>
+					<ul class="ul_space">
+					<li>records d'un club par catégorie d'âge (p.ex. 35-40)  <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
+					<li>âge moyen des records personnels ? [TODO]</li>
+					<li>quels athlètes figurent 10 ans d'affilée dans le TOP 10 (ou TOP x) ? <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
+					<li>distribution des dates des records personnels et moyenne du nombre d'épreuves avant et après auxquelles ont participés les athlètes dans la même saison (autrement dit, à combien de courses faut-il participé avant d'avoir statistiquement le plus de chance de battre son record ? et quelles sont ces épreuves (p.ex. 800 pour un RP sur 1500 ?) [TODO]</li>
 					</ul>
 				
-				<li style="padding-bottom: 10px">pour chaque club d'une région (p.ex. Ile de France), quelle est la meilleure perf réalisée depuis 2006 ? <span class="glyphicon glyphicon-ok" style="color:green"></span>
+				<li>pour chaque club d'une région (p.ex. Ile de France), quelle est la meilleure perf réalisée depuis 2006 ? <span class="glyphicon glyphicon-ok" style="color:green"></span>
 
 
-				<li style="padding-bottom: 10px">etc...</li>
+				<li>combien de temps reste-t-on en moyenne dans un club ? Qui des femmes ou des hommes sont les plus fidèles ?</li>
 			</ul>
 			
-
-			<br/>
+			<p>
 			Vous avez une suggestion de requête ? Soumettez-la à <img alt="image anti-robot" src="img/adresse_mail.png">  
+			</p>
 			
 
 		</div>
-	</div>
+	</article>
 	<script src="js/menu.js" type="text/javascript"></script>
 	<script>document.getElementById("index").setAttribute("class", "active");</script>
 </body>
