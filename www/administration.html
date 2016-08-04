@@ -4,8 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet"
+type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen"
+rel="stylesheet" type="text/css" />
 
 
 <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
@@ -21,60 +23,60 @@
 
 
 
-	<article class="content">
+<article class="content">
 
-		<div class="col-sm-2"></div>
+<div class="col-sm-2"></div>
 
 
-		<div class="col-sm-8">
-		
-					<nav id="menu"></nav>
+<div class="col-sm-8">
+
+<nav id="menu"></nav>
 <h1>Administration</h1>
-		
+
 
 <section>
 
-<h2>Update des colonnes pré-calculées</h2>
-
-<h3>Table Club</h3>
-
-<pre><code>UPDATE club c SET ligue = (select l.ligue from ligne l WHERE l.club = c.nom limit 1);
-		
+<h2>Clean</h2>
+<pre><code>UPDATE ligne SET prenom = SUBSTRING_INDEX(prenom, '(', 1);
+ 
+UPDATE ligne SET club = SUBSTRING_INDEX(club, '*', 1);
+ 
 UPDATE ligne SET club = LTRIM(club);
  
-			
-SELECT AVG rangs FROM club WHERE nom = ''
-GROUP BY nom
+/* suppression des '.' terminaux des chronos 10km (exemple : 31.58.) */
+SELECT SUBSTRING_INDEX(perf,'.', 2) from ligne where perf like '%.';
+
+UPDATE ligne SET perf = SUBSTRING_INDEX(perf,'.', 2) where perf like '%.';
+
+UPDATE ligne l SET naissance = naissance + 1900 WHERE naissance &gt; 30 and naissance &lt;= 99
+
+UPDATE ligne l SET naissance = naissance + 2000 WHERE naissance &lt; 31 and naissance &lt;= 99
+
+UPDATE  ligne SET perf = CONCAT('0', perf) where idEpreuve = 3000 and (perf like '7%' OR  perf like '8%' OR perf like '9%')");
+</code>
+</pre>
+
+
+<h2>Colonnes pré-calculées</h2>
+
+
+<pre>
+<code>UPDATE club c SET ligue = (select l.ligue from ligne l WHERE l.club = c.nom limit 1);
+
+UPDATE club c SET c.points = (
+SELECT AVG(l.points) FROM ligne l WHERE l.club = c.nom);
  
-			</code>
-			</pre>
+</code>
+</pre>
 
-		
-		
+
+
 </section>
-		
-		<h2>Vérification d'intégrité</h2>
 
-<h3>Contraintes</h3>
+<h2>Calcult des points table de cotation</h2>
 
-			<pre><code>ALTER TABLE ligne ADD CONSTRAINT UNIQUE (nom, prenom, perf, date);
-			</code>
-			</pre>
-			
-			<pre><code>SELECT AVG points FROM club WHERE nom = ''
-			GROUP BY nom
-			 
-			</code>
-			</pre>
 
-		
-		<h2>Clean</h2>
-		<pre><code>UPDATE ligne SET prenom = SUBSTRING_INDEX(prenom, '(', 1);
-			 
-			</code>
-			</pre>
-
-			<pre><code>UPDATE cotation SET sexe = 1
+<pre><code>UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 800
    and perf like '2%' and points &gt; 770; 
    
@@ -100,19 +102,21 @@ GROUP BY nom
 
 
 
-		</code>
-			</pre>
+</code>
+</pre>
 
 <div class="alert alert-danger" role="alert">
-  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  <span class="sr-only">Error:</span>
-select * from ligne where sexe = 1 and perf like '10%'; IL MANQUE LES COTATIONS
+<span class="glyphicon glyphicon-exclamation-sign"
+aria-hidden="true"></span> <span class="sr-only">Error:</span>
+select * from ligne where sexe = 1 and perf like '10%'; IL MANQUE
+LES COTATIONS
 </div>
 
 
 <h2>UPDATE cotation.sexe / idEpreuve</h2>
 
-<pre><code>UPDATE cotation SET sexe = 1
+<pre>
+<code>UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 3000
  and perf like '10%';
  
@@ -122,86 +126,90 @@ select * from ligne where sexe = 1 and perf like '10%'; IL MANQUE LES COTATIONS
  
  UPDATE cotation SET sexe = 0 where perf like '9%' and idEpreuve = 3000 and points &lt; 920;
  
-	UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
+UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
 
 
 
-		</code>
-			</pre>
+</code>
+</pre>
 
 <h2>UPDATE points</h2>
 
-			<pre><code>
+<pre>
+<code>
 
-	UPDATE ligne l SET l.points = (SELECT c.points FROM Cotation c WHERE c.idEpreuve = l.idEpreuve AND c.sexe = l.sexe AND l.perf = c.perf);
+/* cas général (10km) */
+UPDATE ligne l
+SET l.points =
+	(SELECT c.points FROM cotation c
+		WHERE c.idEpreuve = l.idEpreuve
+		AND c.sexe = l.sexe AND l.perf = c.perf)
+WHERE l.idEpreuve = 10;
 
-	/* chrono manuel : on est obligé de traiter à part */
-	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 800
-					AND c.sexe = l.sexe AND c.perf = l.perf)
+/* chrono manuel : on est obligé de traiter à part */
+UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 800
+AND c.sexe = l.sexe AND c.perf = l.perf)
      WHERE idEpreuve = 800 AND length(l.perf) = 7;
 
-	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 800
-					AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
+UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 800
+AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
      WHERE idEpreuve = 800 AND length(l.perf) = 6;
      
      
-     	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 1500
-					AND c.sexe = l.sexe AND c.perf = l.perf)
+     UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 1500
+AND c.sexe = l.sexe AND c.perf = l.perf)
      WHERE idEpreuve = 1500 AND length(l.perf) = 7;
 
-	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 1500
-					AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
+UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 1500
+AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
      WHERE idEpreuve = 1500 AND length(l.perf) = 6;
      
      
      
      
-     	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 3000
-					AND c.sexe = l.sexe AND c.perf = l.perf)
+     UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 3000
+AND c.sexe = l.sexe AND c.perf = l.perf)
      WHERE idEpreuve = 3000 AND length(l.perf) = 7;
 
-	UPDATE ligne l
-	SET l.points = (SELECT c.points FROM cotation c
-					WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 3000
-					AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
+UPDATE ligne l
+SET l.points = (SELECT c.points FROM cotation c
+WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 3000
+AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
      WHERE idEpreuve = 3000 AND length(l.perf) = 6;
      
      
 
-	UPDATE ligne l SET naissance = naissance + 1900 WHERE naissance &gt; 30 and naissance &lt;= 99
-
-	UPDATE ligne l SET naissance = naissance + 2000 WHERE naissance &lt; 31 and naissance &lt;= 99
-
-	UPDATE  ligne SET perf = CONCAT('0', perf) where idEpreuve = 3000 and (perf like '7%' OR  perf like '8%' OR perf like '9%')");
-	</code>
-			</pre>
-			
-			
+</code>
+</pre>
 
 
 
 
-/* suppression des '.' terminaux des chronos 10km (exemple : 31.58.) */
-select SUBSTRING_INDEX(perf,'.', 2) from ligne where perf like '%.'
 
-UPDATE ligne SET perf = SUBSTRING_INDEX(perf,'.', 2) where perf like '%.'
-			
+<h2>Contraintes d'intégrité</h2>
 
 
-		</div>
-	</article>
+<pre>
+<code>ALTER TABLE ligne ADD CONSTRAINT UNIQUE (nom, prenom, perf, date);</code>
+</pre>
 
 
-	<script src="js/menu.js" type="text/javascript"></script>
+
+
+</div>
+</article>
+
+
+<script src="js/menu.js" type="text/javascript"></script>
 </body>
 </html>

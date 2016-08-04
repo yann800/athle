@@ -198,7 +198,7 @@ FROM
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.nom = '[NOM]' AND prenom = '[PREONOM]' AND l.idEpreuve IN (800, 1500, 3000) AND annee &gt; 2005
+	WHERE l.nom = '[NOM]' AND prenom = '[PRENOM]' AND l.idEpreuve IN (800, 1500, 3000) AND annee &gt; 2005
 
 ) tmp
 GROUP by annee
@@ -208,19 +208,20 @@ GROUP by annee
 Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
 
-<pre><samp>
-2010    744    882
-2011    911    933
-2012    984    1090
-2013	806    703
-2014	1547   0
-2015	1343   1297
-2016	1528   683
-</samp>
-</pre>
 		</div>
 	</article>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
+select idEpreuve, perf, datePerf, ville from ligne where prenom = '". $param_nom ."' and nom ='". $param_nom ."';
 
 
 	<script src="js/menu.js" type="text/javascript"></script>
