@@ -34,8 +34,9 @@
 			Note : l'âge est obtenu par la soustraction (anne performance - annee naissance).
 			Comme le mois de naissance n'est pas pris en compte, cette formule n'est pas toujours satisfaisante. En effet pour des perf réalisées p.ex. en juin 2010 :
 			<ul>
-			<li>pour un athlète né en février 1970, c'est bon, l'âge est bien 2010 - 1970 = 40
-			<li>pour un athlète né en octobre 1970, en revanche l'âge au moment de la perf est en fait 39.
+			<li>pour un athlète né en février 1970, c'est bon, l'âge est bien 2010 - 1970 = 40</li>
+			<li>pour un athlète né en octobre 1970, en revanche l'âge au moment de la perf est en fait 39.</li>
+			</ul>
 			</div>
 
 			<h2>Records 35-39 féminin</h2>
@@ -57,11 +58,11 @@
 
 			<pre>
 SELECT l.idEpreuve, l.nom, l.prenom, l.perf, l.ville, l.annee, (l.annee - l.naissance) as age from ligne l WHERE 
-l.club like 'us creteil' and (l.annee - l.naissance) > 34 and (l.annee - l.naissance) < 40 and l.sexe = 1
+l.club like 'us creteil' and (l.annee - l.naissance) &gt; 34 and (l.annee - l.naissance) &lt; 40 and l.sexe = 1
 AND perf  IN 
 	(SELECT min(perf) 
 	FROM ligne l2
-	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) > 34 and (l2.annee - l2.naissance) < 40 and l2.sexe = 1
+	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) &gt; 34 and (l2.annee - l2.naissance) &lt; 40 and l2.sexe = 1
 	GROUP BY l2.idEpreuve
 	)
 </pre>
@@ -88,11 +89,11 @@ AND perf  IN
 
 			<pre>
 SELECT l.idEpreuve, l.nom, l.prenom, l.perf, l.ville, l.annee, (l.annee - l.naissance) as age from ligne l WHERE 
-l.club like 'us creteil' and (l.annee - l.naissance) > 39 and l.sexe = 1
+l.club like 'us creteil' and (l.annee - l.naissance) &gt; 39 and l.sexe = 1
 AND perf  IN 
 	(SELECT min(perf) 
 	FROM ligne l2
-	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) > 39 and l2.sexe = 1
+	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) &gt; 39 and l2.sexe = 1
 	GROUP BY l2.idEpreuve
 	)
 </pre>
@@ -116,11 +117,11 @@ AND perf  IN
 
 			<pre>
 SELECT l.idEpreuve, l.nom, l.prenom, l.perf, l.ville, l.annee, (l.annee - l.naissance) as age from ligne l WHERE 
-l.club like 'us creteil' and (l.annee - l.naissance) > 34 and (l.annee - l.naissance) < 40 and l.sexe = 0
+l.club like 'us creteil' and (l.annee - l.naissance) &gt; 34 and (l.annee - l.naissance) &lt; 40 and l.sexe = 0
 AND perf  IN 
 	(SELECT min(perf) 
 	FROM ligne l2
-	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) > 34 and (l2.annee - l2.naissance) < 40 and l2.sexe = 0
+	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) &gt; 34 and (l2.annee - l2.naissance) &lt; 40 and l2.sexe = 0
 	GROUP BY l2.idEpreuve
 	)
 </pre>
@@ -145,11 +146,11 @@ AND perf  IN
 
 
 			<pre><code>SELECT l.idEpreuve, l.nom, l.prenom, l.perf, l.ville, l.annee, (l.annee - l.naissance) as age from ligne l WHERE 
-l.club like 'us creteil' and (l.annee - l.naissance) > 39 and l.sexe = 0
+l.club like 'us creteil' and (l.annee - l.naissance) &gt; 39 and l.sexe = 0
 AND perf  IN 
 	(SELECT min(perf) 
 	FROM ligne l2
-	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) > 39 and l2.sexe = 0
+	WHERE l2.club like 'us creteil' and (l2.annee - l2.naissance) &gt; 39 and l2.sexe = 0
 	GROUP BY l2.idEpreuve
 	)</code>
 </pre>
@@ -160,5 +161,6 @@ AND perf  IN
 
 	<script src="js/menu.js" type="text/javascript"></script>
 	<script>document.getElementById('comboClub').selected = 'us creteil';</script> 
+	<script>document.getElementById("statistiques").setAttribute("class", "active");</script>
 </body>
 </html>

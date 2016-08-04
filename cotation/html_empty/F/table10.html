@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script language="JavaScript1.1">
+<script>
 
         function doerror() {return true;};
         // To avoid multiple calls with frames, only the top-most frameset calls the popup :
@@ -52,8 +52,7 @@ function update_all()
 
 function calcul_points(perf) {
 	var choix = 53 // 10000m document.formulaire.epreuve.selectedIndex;
-	if ((choix < 72) || (choix > 97)) 
-	{
+
 		perf_en_seconde = new Number(0);
 		perf_string = new String(perf);
 		if (perf_string == "")
@@ -76,7 +75,7 @@ function calcul_points(perf) {
 			last_pointeur = pointeur;
 			perf_en_seconde *= 60;
 		}
-		if ((choix < 53) || ((choix > 55) && (choix < 112)))
+		if ((choix < 54) || ((choix > 55) && (choix < 112)))
 		{
 			if (perf_en_seconde > 3600)
 			{
@@ -116,8 +115,7 @@ function calcul_points(perf) {
 			return formule_points(perf_en_seconde);
 		}
 		if (compte_point > 3) { return 0 }
-	}
-	return formule_points(perf);
+
 }
 
 function formule_points(perf) {
@@ -258,9 +256,11 @@ function init(){
 	var i = 0;
 // alert(i);
 
-	while ( i < 12000){
+	while ( i < 6000){
+		
+		// alert(formule_points('33'));
+		// alert(form[i+1].value + ' : ' + calcul_points('33.00'));
 
-alert(form[i+1].value + ' : ' + calcul_points(form[i].value));
 		form[i+1].value = calcul_points(form[i].value);
 
 		i = i + 2;

@@ -38,13 +38,14 @@
 
 <h3>Table Club</h3>
 
-			<pre><code>
-			UPDATE club SET rang = () WHERE nom = '';
+<pre><code>UPDATE club c SET ligue = (select l.ligue from ligne l WHERE l.club = c.nom limit 1);
+		
+UPDATE ligne SET club = LTRIM(club);
+ 
 			
-			
-			SELECT AVG rangs FROM club WHERE nom = ''
-			GROUP BY nom
-			 
+SELECT AVG rangs FROM club WHERE nom = ''
+GROUP BY nom
+ 
 			</code>
 			</pre>
 
@@ -73,47 +74,64 @@
 			</code>
 			</pre>
 
-			<pre><code>update cotation set sexe = 1
+			<pre><code>UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 800
    and perf like '2%' and points &gt; 770; 
    
    
-   update cotation set sexe = 0
+   UPDATE cotation SET sexe = 0
  where sexe is null AND idEpreuve = 800;
  
  
  /* 1500 masculin */
- update cotation set sexe = 0  where sexe is null AND idEpreuve = 1500  and perf like '3%'
+ UPDATE cotation SET sexe = 0  where sexe is null AND idEpreuve = 1500  and perf like '3%'
   
- update cotation set sexe = 0
+ UPDATE cotation SET sexe = 0
  where sexe is null AND idEpreuve = 1500
  and perf like '4%' and points &lt; 774; 
  
- update cotation set sexe = 0
+ UPDATE cotation SET sexe = 0
  where sexe is null AND idEpreuve = 1500
  and perf like '4.0%' and points &lt; 1000; 
  
  /* 1500 féminin */
- update cotation set sexe = 1
+ UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 1500
 
 
-select * from ligne where sexe = 1 and perf like '5%'; IL MANQUE LES COTATION 5%
+
+		</code>
+			</pre>
+
+<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+select * from ligne where sexe = 1 and perf like '10%'; IL MANQUE LES COTATIONS
+</div>
 
 
+<h2>UPDATE cotation.sexe / idEpreuve</h2>
 
-
-update cotation set sexe = 1
+<pre><code>UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 3000
  and perf like '10%';
  
- update cotation set sexe = 1
+ UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 3000
  and perf like '9%' and points &gt; 730;
  
- update cotation set sexe = 0 where perf like '9%' and idEpreuve = 3000 and points &lt; 920;
+ UPDATE cotation SET sexe = 0 where perf like '9%' and idEpreuve = 3000 and points &lt; 920;
  
 	UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
+
+
+
+		</code>
+			</pre>
+
+<h2>UPDATE points</h2>
+
+			<pre><code>
 
 	UPDATE ligne l SET l.points = (SELECT c.points FROM Cotation c WHERE c.idEpreuve = l.idEpreuve AND c.sexe = l.sexe AND l.perf = c.perf);
 
@@ -170,18 +188,13 @@ update cotation set sexe = 1
 			
 			
 
-			
-			update club c set ligue = (select l.ligue from ligne l WHERE l.club = c.nom limit 1);
-
-			
-			 UPDATE ligne SET club = LTRIM(club);
 
 
 
 /* suppression des '.' terminaux des chronos 10km (exemple : 31.58.) */
 select SUBSTRING_INDEX(perf,'.', 2) from ligne where perf like '%.'
 
-update ligne set perf = SUBSTRING_INDEX(perf,'.', 2) where perf like '%.'
+UPDATE ligne SET perf = SUBSTRING_INDEX(perf,'.', 2) where perf like '%.'
 			
 
 
