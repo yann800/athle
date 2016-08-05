@@ -55,7 +55,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-11">
-      <button type="submit" class="btn btn-primary" disabled="disabled">Rechercher</button>
+      <button type="submit" class="btn btn-primary">Rechercher</button>
       &#160;<a href="fiche_athlete.html">Exemple</a>
     </div>
   </div>
@@ -90,7 +90,7 @@
 		<script>
 		$('.alphaonly').bind('keyup blur',function(){ 
 		    var node = $(this);
-		    node.val(node.val().replace(/[^a-z ]/g,'') ); }
+		    node.val(node.val().replace(/[^A-Za-z ]/g,'') ); }
 		);
 	</script>
 );

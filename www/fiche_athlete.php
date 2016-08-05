@@ -19,31 +19,6 @@
 
 <body>
 
-
-	<article class="content">
-
-		<div class="col-sm-2"></div>
-
-
-		<div class="col-sm-8">
-
-
-			<nav id="menu"></nav>
-			
-			<div class="alert alert-info info">
-			Pour voir les points, survolez les courbes du diagramme.
-			</div>
-			
-       <div id="chart_div" style="width: 900px; height: 500px;"></div>
-   
-<script type="text/javascript" src="charts/google/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
-   
-<script type="text/javascript">
-   google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-		  
-
 <?php
 
 
@@ -66,7 +41,34 @@ else {
 	exit;
 }
 
+?>
+	<article class="content">
 
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<nav id="menu"></nav>
+			
+			<div class="alert alert-info info">
+			Pour voir les points, survolez les courbes du diagramme.
+			</div>
+			
+       <div id="chart_div" style="width: 900px; height: 500px;"></div>
+   
+<script type="text/javascript" src="charts/google/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
+   
+<script type="text/javascript">
+   google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+		  ['Année', '800', '1500', '3000'],
+
+
+
+<?php
 // $param_nom = '77';
 
 // if (preg_match("#[a\-ZA\-Z]#", $param_nom)) {
@@ -92,7 +94,7 @@ else {
 	$sql = "INSERT INTO log (str, page, date) VALUES ('". $param_nom ." ". $param_prenom ."', 'fiche_athlete', NOW())";
 
 	if ($conn->query($sql) === TRUE) {
-		echo "Record updated successfully";
+		// echo "Record updated successfully";
 	} else {
 		echo "Error DB. ";
 		exit;
@@ -136,9 +138,9 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
     
-        echo "['" . $row["annee"]. "'," . $row["e_800"]. "," . $row["e_1500"]. "," . " $row["e_3000"]. "]";
+        echo "['" . $row["annee"]. "'," . $row["e_800"]. "," . $row["e_1500"]. "," .  $row["e_3000"]. "]";
 
-		if ($row["e_3000"] > 0 and $row["annee"] === 2016){
+		if ($row["e_3000"] > 0 and $row["annee"] == 2016){
 			// derniere ligne donc rien
 		}
 		else {
@@ -226,7 +228,7 @@ select idEpreuve, perf, datePerf, ville from ligne where prenom = '". $param_nom
 
 	<script src="js/menu.js" type="text/javascript"></script>
 	<script>
-		document.getElementById("recherche").setAttribute("class", "active");
+		document.getElementById("athletes").setAttribute("class", "active");
 	</script>
 </body>
 </html>
