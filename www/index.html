@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 
 	<meta name="author" content="Yann Abd-el-Kader"> 
-	<meta name="description" content="requÃªtes SQL avancÃ©es sur base athlÃ©tisme"> 
-	<meta name="keyword" content="SQL athlÃ©tisme requÃªtes avancÃ©es"> 
+	<meta name="description" content="requêtes SQL avancées sur base athlétisme"> 
+	<meta name="keyword" content="SQL athlétisme requêtes avancées"> 
 
 	<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 	<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
 	<script src="js/dataTables.bootstrap.min.js"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 
-	<title>SQl et athlÃ©tisme</title>
+	<title>SQl et athlétisme</title>
 
 </head>
 
@@ -30,32 +30,39 @@
 
 			<nav id="menu"></nav>
 
-			<h2>SQL et athlÃ©tisme, recherches avancÃ©es</h2>
+			<h2>SQL et athlétisme, recherches avancées</h2>
 			
 			<p>
-			Ce site propose quelques requÃªtes avancÃ©es sur une base de donnÃ©es de rÃ©sultats d'athlÃ©tisme (pour 
-			l'instant sur les bilans 2006-2016 de quelques Ã©preuves, cf. <a href="a_propos.html#db_content">contenu de la base</a>).
+			Ce site propose quelques requêtes avancées sur une base de données de résultats d'athlétisme (pour 
+			l'instant sur les bilans 2006-2016 de quelques épreuves, cf. <a href="a_propos.html#db_content">contenu de la base</a>).
 			Par exemple :
 			</p>
 
-			<ul class="ul_space">
-				<li>pour chaque Ã©preuve : 
+			<ul>
+				<li>pour chaque épreuve : 
 				
-					<ul class="ul_space">
-					<li>records d'un club par catÃ©gorie d'Ã¢ge (p.ex. 35-40)  <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
-					<li>Ã¢ge moyen des records personnels ? [TODO]</li>
-					<li>quels athlÃ¨tes figurent 10 ans d'affilÃ©e dans le TOP 10 (ou TOP x) ? <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
-					<li>distribution des dates des records personnels et moyenne du nombre d'Ã©preuves avant et aprÃ¨s auxquelles ont participÃ©s les athlÃ¨tes dans la mÃªme saison (autrement dit, Ã  combien de courses faut-il participÃ© avant d'avoir statistiquement le plus de chance de battre son record ? et quelles sont ces Ã©preuves (p.ex. 800 pour un RP sur 1500 ?) [TODO]</li>
+					<ul>
+					<li>records d'un club par catégorie d'âge (p.ex. 35-40)  <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
+					<li>âge moyen des records personnels ? [TODO]</li>
+					<li>quels athlètes figurent 10 ans d'affilée dans le TOP 10 (ou TOP x) ? <span class="glyphicon glyphicon-ok" style="color:green"></span></li>
+					<li>distribution des dates des records personnels et moyenne du nombre d'épreuves avant et après auxquelles ont participés les athlètes dans la même saison (autrement dit, à combien de courses faut-il participé avant d'avoir statistiquement le plus de chance de battre son record ? et quelles sont ces épreuves (p.ex. 800 pour un RP sur 1500 ?) [TODO]</li>
 					</ul>
 				
-				<li>pour chaque club d'une rÃ©gion (p.ex. Ile de France), quelle est la meilleure perf rÃ©alisÃ©e depuis 2006 ? <span class="glyphicon glyphicon-ok" style="color:green"></span>
+				<li>pour chaque club d'une région (p.ex. Ile de France), quelle est la meilleure perf réalisée depuis 2006 ? <span class="glyphicon glyphicon-ok" style="color:green"></span>
 
 
-				<li>combien de temps reste-t-on en moyenne dans un club ? Qui des femmes ou des hommes sont les plus fidÃ¨les ?</li>
+				<li>combien de temps reste-t-on en moyenne dans un club ? Qui des femmes ou des hommes sont les plus fidèles ?</li>
+				
+				<li>classement des athlètes :
+				
+				<ul>
+				<li>par plus grand écart de max(perf) à la table de points d'une saison sur l'autre, sur 1 ou n années</li>
+				<li>ou au contraire par plus petit écart (athlètes les plus réguliers)</li>
+				</ul>
 			</ul>
 			
 			<p>
-			Vous avez une suggestion de requÃªte ? Soumettez-la Ã  <img alt="image anti-robot" src="img/adresse_mail.png">  
+			Vous avez une suggestion de requête ? Soumettez-la à <img alt="image anti-robot" src="img/adresse_mail.png">  
 			</p>
 			
 

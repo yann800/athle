@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 
 <link href="css/bootstrap.min.css" media="screen" rel="stylesheet"
@@ -57,7 +57,7 @@ UPDATE  ligne SET perf = CONCAT('0', perf) where idEpreuve = 3000 and (perf like
 </pre>
 
 
-<h2>Colonnes prÃ©-calculÃ©es</h2>
+<h2>Colonnes pré-calculées</h2>
 
 
 <pre>
@@ -96,7 +96,7 @@ SELECT AVG(l.points) FROM ligne l WHERE l.club = c.nom);
  where sexe is null AND idEpreuve = 1500
  and perf like '4.0%' and points &lt; 1000; 
  
- /* 1500 fÃ©minin */
+ /* 1500 féminin */
  UPDATE cotation SET sexe = 1
  where sexe is null AND idEpreuve = 1500
 
@@ -138,7 +138,7 @@ UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
 <pre>
 <code>
 
-/* cas gÃ©nÃ©ral (10km) */
+/* cas général (10km) */
 UPDATE ligne l
 SET l.points =
 	(SELECT c.points FROM cotation c
@@ -146,7 +146,7 @@ SET l.points =
 		AND c.sexe = l.sexe AND l.perf = c.perf)
 WHERE l.idEpreuve = 10;
 
-/* chrono manuel : on est obligÃ© de traiter Ã  part */
+/* chrono manuel : on est obligé de traiter à part */
 UPDATE ligne l
 SET l.points = (SELECT c.points FROM cotation c
 WHERE c.idEpreuve = l.idEpreuve AND c.idEpreuve = 800
@@ -196,7 +196,7 @@ AND c.sexe = l.sexe AND c.perf = concat(l.perf, '0'))
 
 
 
-<h2>Contraintes d'intÃ©gritÃ©</h2>
+<h2>Contraintes d'intégrité</h2>
 
 
 <pre>

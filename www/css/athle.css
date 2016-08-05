@@ -17,12 +17,10 @@ p {
 	padding-bottom: 20px;
 }
 
-.ul_space {
-	padding-top: 5px;
-}
 
-.ul_space li{
-	padding-bottom: 20px;
+li{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .info {
