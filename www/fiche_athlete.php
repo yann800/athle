@@ -3,12 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="css/bootstrap.min.css" media="screen, projection"
-	rel="stylesheet" type="text/css" />
-<!-- <link href="css/bootstrap-theme.css" media="screen, projection" rel="stylesheet" type="text/css" /> -->
-<link href="css/dataTables.bootstrap.min.css" media="screen, projection"
-	rel="stylesheet" type="text/css" />
-
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
 
 <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -52,8 +49,10 @@ else {
 
 			<nav id="menu"></nav>
 			
+			<br/>
+			
 			<div class="alert alert-info info">
-			Pour voir les points, survolez les courbes du diagramme.
+			Pour voir le détail des performance, survolez les courbes du diagramme et reportez-vous au tableau.
 			</div>
 			
        <div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -153,7 +152,7 @@ if ($result->num_rows > 0) {
 }
 	
 
-$conn->close();
+
 
 
 
@@ -170,11 +169,23 @@ $conn->close();
         chart.draw(data, options);
       }
    </script>
-   
-   
-   <br/><br/>
-   		
-			
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne" 
+           href="#collapseOne">
+          Voir le SQL
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body"><p>
+Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
+</p>
+            
+</div>
 
 <pre>
 SELECT annee,max(e_800), max(e_1500), max(e_3000)
@@ -210,23 +221,58 @@ GROUP by annee
 Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
 
+        </div>
+    </div>
+</div>
+
+
+							<table class="table table-striped table-bordered table-hover table-condensed" id="example">
+								<thead>
+									<tr>
+										<th>Année</th>
+										<th>Epreuve</th>
+										<th>Perf</th>
+										<th>Ville</th>
+										<th>Date</th>
+									</tr>
+								</thead>
+								<tbody>
+
+<?php
+
+
+$sql = "SELECT annee, idEpreuve, perf, ville, datePerf FROM ligne WHERE prenom = '". $param_prenom ."' AND nom ='". $param_nom ."' ORDER BY annee, datePerf";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+    
+        echo "<tr><td>" . $row["annee"]. "</td><td>" . $row["idEpreuve"]. "</td><td>" . $row["perf"]. "</td><td>" . $row["ville"]. "</td><td>" .  $row["datePerf"]. "</td></tr>";
+
+	}
+}
+$conn->close();
+?>
+								</tbody>
+							</table>
+							
 		</div>
 	</article>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-select idEpreuve, perf, datePerf, ville from ligne where prenom = '". $param_nom ."' and nom ='". $param_nom ."';
-
 
 	<script src="js/menu.js" type="text/javascript"></script>
+	
+		<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+
+		$('.dropdown-toggle').dropdown();
+
+	</script>
+
+	
 	<script>
 		document.getElementById("athletes").setAttribute("class", "active");
 	</script>
