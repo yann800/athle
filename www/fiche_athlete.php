@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -20,21 +20,21 @@
 
 
 $param_nom = '';
-if (isset($_GET["nom"]))
+if (isset($_POST['nom']))
 {
-    $param_nom = $_GET["nom"];
+    $param_nom = $_POST['nom'];
 }
 else {
-	echo "param nom manquant";
+	echo "param [nom] manquant";
 	exit;
 }
 $param_prenom = '';
-if (isset($_GET["prenom"]))
+if (isset($_POST['prenom']))
 {
-    $param_prenom = $_GET["prenom"];
+    $param_prenom = $_POST['prenom'];
 }
 else {
-	echo "param prenom manquant";
+	echo "param [prenom] manquant";
 	exit;
 }
 
@@ -52,7 +52,7 @@ else {
 			<br/>
 			
 			<div class="alert alert-info info">
-			Pour voir le d√©tail des performance, survolez les courbes du diagramme et reportez-vous au tableau.
+			Pour voir le dÈtail des performance, survolez les courbes du diagramme et reportez-vous au tableau.
 			</div>
 			
        <div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -63,7 +63,7 @@ else {
    google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-		  ['Ann√©e', '800', '1500', '3000'],
+		  ['AnnÈe', '800', '1500', '3000'],
 
 
 
@@ -161,7 +161,7 @@ if ($result->num_rows > 0) {
         ]);
 
         var options = {
-          title: 'Meilleures perfs √† la table de cotations par ann√©e'
+          title: 'Meilleures perfs √† la table de cotations par annÈe'
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -182,7 +182,7 @@ if ($result->num_rows > 0) {
         </div>
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body"><p>
-Note : on n'aurait pu faire plus simple si MySql avait impl√©ment√© la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
+Note : on n'aurait pu faire plus simple si MySql avait implÈmentÈ la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
             
 </div>
@@ -218,7 +218,7 @@ GROUP by annee
 </pre>
 
 <p>
-Note : on n'aurait pu faire plus simple si MySql avait impl√©ment√© la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
+Note : on n'aurait pu faire plus simple si MySql avait implÈmentÈ la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
 
         </div>
@@ -229,7 +229,7 @@ Note : on n'aurait pu faire plus simple si MySql avait impl√©ment√© la fonction 
 							<table class="table table-striped table-bordered table-hover table-condensed" id="example">
 								<thead>
 									<tr>
-										<th>Ann√©e</th>
+										<th>AnnÈe</th>
 										<th>Epreuve</th>
 										<th>Perf</th>
 										<th>Ville</th>
