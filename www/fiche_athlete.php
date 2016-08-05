@@ -71,7 +71,7 @@ else {
 // $param_nom = '77';
 
 // if (preg_match("#[a\-ZA\-Z]#", $param_nom)) {
-    //echo "CaratÃ¨re interdit";
+    //echo "Caratère interdit";
 //exit;
 //} else {
 //    echo "OK Bonne chaine";
@@ -161,7 +161,7 @@ if ($result->num_rows > 0) {
         ]);
 
         var options = {
-          title: 'Meilleures perfs Ã  la table de cotations par année'
+          title: 'Meilleures perfs à la table de cotations par année'
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -217,9 +217,6 @@ FROM
 GROUP by annee
 </pre>
 
-<p>
-Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
-</p>
 
         </div>
     </div>
@@ -232,6 +229,7 @@ Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PI
 										<th>Année</th>
 										<th>Epreuve</th>
 										<th>Perf</th>
+										<th>Points</th>
 										<th>Ville</th>
 										<th>Date</th>
 									</tr>
@@ -241,7 +239,7 @@ Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PI
 <?php
 
 
-$sql = "SELECT annee, idEpreuve, perf, ville, datePerf FROM ligne WHERE prenom = '". $param_prenom ."' AND nom ='". $param_nom ."' ORDER BY annee, datePerf";
+$sql = "SELECT annee, idEpreuve, perf, points, ville, datePerf FROM ligne WHERE prenom = '". $param_prenom ."' AND nom ='". $param_nom ."' ORDER BY annee, datePerf";
 
 $result = $conn->query($sql);
 
@@ -249,7 +247,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
     
-        echo "<tr><td>" . $row["annee"]. "</td><td>" . $row["idEpreuve"]. "</td><td>" . $row["perf"]. "</td><td>" . $row["ville"]. "</td><td>" .  $row["datePerf"]. "</td></tr>";
+        echo "<tr><td>" . $row["annee"]. "</td><td>" . $row["idEpreuve"]. "</td><td>" . $row["perf"]. "</td><td>" . $row["points"]. "</td><td>" . $row["ville"]. "</td><td>" .  $row["datePerf"]. "</td></tr>";
 
 	}
 }
