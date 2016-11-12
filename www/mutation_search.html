@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<script>
+// https://www.raymondcamden.com/2012/06/14/example-of-a-dynamic-html5-datalist-control
+$(document).ready(function() {
+	$("#search").on("input", function(e) {
+		var val = $(this).val();
+		if(val === "") return;
+		
+		console.log(val);
+
+		$.get("getClub.php", {q:val}, function(clubs) {
+			var dataList = $("#searchresults");
+			dataList.empty();
+			if(clubs.length) {
+				for(var i=0, len=clubs.length; i<len; i++) {
+					
+					console.log(clubs[i][0]);
+
+					var opt = $("<option></option>").attr("value", clubs[i][0]);
+					dataList.append(opt);
+				}
+			}
+		},"json");
+	});
+})
+</script>
+
+<title>Sélection de deux clubs</title>
+
+</head>
+<body>
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<nav id="menu"></nav>
+<br/><br/><br/><br/>
+<br/>
+<a href="mutation_graph.html">Exemple (avec ACP Joinville et US Créteil))</a>
+<br/><br/>
+<br/><br/><br/><br/>
+
+			<h2>Sélection de deux clubs</h2>
+			
+			<br/>
+
+			
+<form class="form-horizontal" action="mutation_graph.php" method="post">
+
+<div class="row">
+	<div class="col-sm-7">
+		<div class="form-group">
+			<label for="club1" class="col-sm-3 control-label">Club n°1</label>
+			 
+			 <div class="col-sm-5">
+			 
+			<input name="club1" type="search" list="club1s" 
+			placeholder="club1" required="required"/>
+			
+			
+			<datalist id="club1s"> 
+    				
+<option value="ACP Joinville">ACP Joinville</option>
+<option value="US Créteil">US Créteil</option>
+<option value="Montreuil AC">Montreuil AC</option>
+<option value="Saint Malo">Saint Malo</option> 
+			</datalist>			 
+			 
+			 </div>
+			 
+			 <br/><br/><br/>
+	
+			 
+			 <label for="club2" class="col-sm-3 control-label">Club n°2</label>
+			 <div class="col-sm-5">
+
+ 	<input type="text" name="search" id="search" placeholder="club2" list="searchresults" autocomplete="off">
+	<datalist id="searchresults"></datalist>
+
+			 </div>
+			 
+			 
+		</div>
+	</div>
+		
+		
+		<br/><br/><br/><br/><br/><br/>
+		
+		<div class="form-group">
+			<div class="col-sm-offset-1 col-sm-11">
+				<input type="submit" class="btn btn-primary" value="Rechercher" disabled="disabled"/>
+			</div>
+		</div>
+
+	</div>
+
+
+
+<pre>Ici utilisation :
+
+- dataList de HTML5
+
+- de la méthode $.get(url, data, function(), dataType) de jQuery.
+cf. <a href="https://api.jquery.com/jquery.get/">https://api.jquery.com/jquery.get/</a></pre>
+		
+			
+Pour tester, le validateur <a href="http://jsonlint.com/">http://jsonlint.com/</a> valide
+le JSon retourné par l'invocation p.ex. de <a href="http://base.athle.free.fr/getClub?q=malo">http://base.athle.free.fr/getClub?q=malo</a> :
+
+{
+	"clubs": [{
+		"c": "As j. cartier st malo"
+	}, {
+		"c": "Cjf saint-malo"
+	}, {
+		"c": "Saint malo ac"
+	}, {
+		"c": "Saint malo sports loisirs"
+	}]
+}
+
+			
+			
+			
+			</form>
+			
+
+
+</div>
+</article>
+
+	<script src="js/menu.js" type="text/javascript"></script>
+	
+		<script type="text/javascript" class="init">
+		$('.dropdown-toggle').dropdown();
+		
+
+	</script>
+	<script>document.getElementById("clubs").setAttribute("class", "active");</script>
+
+
+
+</body>
+</html>

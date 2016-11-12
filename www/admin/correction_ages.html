@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<link href="../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="../css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="../css/athle.css" rel="stylesheet" type="text/css" />
+
+
+<script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<h2>Indentification du problème d'année de naissance</h2>
+
+Dans la base de données base.athle se trouvent 648 performances avec une année erronée de la naissance de l'athlète (sinon c'est des records  des monde vétérans de plus de 55 ans).<br/><br/>
+
+			<pre><code>SELECT count(*) FROM  ligne WHERE  naissance &lt; 1950;</code></pre>
+			
+			Voici quelques-unes de ces lignes :   
+			<br/><br/>
+			<pre>
+id	rang	perf	nom	prenom		sexe	naissance	club				ligue	idPays	ville	datePerf	idEpreuve	annee	points
+1792	806	2.00.60	BLOND	Alexandre	0	1949		Asc saint-barthelemy		P-L	65	Tours	07/07/07	800		2007	754
+14796	943	4.15.86	H	Pierre		0	1934		Montpellier agglo athleti	LAN	65	Rennes	16/09/09	1500		2009	678
+19634	821	4.12.34	HEILLY	Thibault	0	1944		Carquefou ac			P-L	65	Niort	18/05/14	1500		2014	715</pre>
+
+<br/>
+
+Manifestement le département 49 (Maine-et-Loire) a été pris pour la naissance qui aurait été 88 (donc 1988).
+
+<br/><br/>
+
+Au passage on constate que la deuxième ligne contient une erreur sur le nom en plus que sur l'annéee de naissance. Le problème
+vient que l'apostrophe de <span style="font-family: courier">GUIVARC'H</span> a été mal gérée par le programe d'importation. Correction
+sera apportée lors de la réinitialisation de la base !
+
+			<h2>Analyse</h2>
+			
+			Pour commencer, vérifier le HTML de la  
+			<a href="http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilans&frmmode=1&frmespace=0&frmannee=2007&frmathlerama=&frmfcompetition=&frmfepreuve=&frmepreuve=208&frmplaces=&frmnationalite=&frmamini=&frmamaxi=&frmsexe=M&frmcategorie=&frmligue=&frmdepartement=&frmclub=&frmvent=&frmposition=4">page concernée de http://bases.athle.com</a>.
+			<br/><br/> 
+
+
+			<pre>
+&lt;tr&gt;&lt;td class="datas1"&gt;806&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;&lt;b&gt;2'00''60&lt;/b&gt;&lt;span style="font-weight:bold;padding-left:3px" title="Record personnel tous temps"&gt; (RP)&lt;/span&gt;&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;E&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;&lt;a href="javascript:bddThrowAthlete('bilans', 1063965, 0)" title="cliquez pour le détail"&gt;BLOND Alexandre &lt;/a&gt;&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;Asc saint-barthelemy&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;&lt;a href="/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2007&amp;frmepreuve=208&amp;frmsexe=M&amp;frmligue=P-L"&gt;P-L&lt;/a&gt;&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;&lt;a href="/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2007&amp;frmepreuve=208&amp;frmsexe=M&amp;frmdepartement=049"&gt;049&lt;/a&gt;&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;JUM&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;&lt;a href="/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2007&amp;frmepreuve=208&amp;frmsexe=M&amp;frmamini=1989&amp;frmamaxi=1989"&gt;89&lt;/a&gt;&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;07/07/07&lt;/td&gt;
+&lt;td class="separator3"&gt;&lt;/td&gt;
+&lt;td class="datas1"&gt;Tours&lt;/td&gt;
+&lt;/tr&gt;</pre>
+
+Prenons cette ligne qui pose problème et regardons comment elle est traitée par le programme manifestement non génrique...
+L'importation a été réalisée par  <span style="font-family: courier">fr.yann.lauch.BuildDatabase.importEpreuve(EpreuveEnum, SexeEnum, int)</span>.
+<br/><br/>
+Le scripts d'INSERT SQL a été généré, puis il a été exécuté.
+<span style="font-family: courier">
+				Parser.main(path + ".html", idEpreuve, sexe);
+				Insert.main(path + ".sql");
+</span>. Le point ici est au sein du parser la méthode  <span style="font-family: courier">fr.yann.parser.Parser.lireFichier(String, StringBuffer, int, int)</span>
+
+Effectivement une modification de l'expression régulière doit être apportée pour traiter les lignes particulières... 
+
+<br/><br/>
+
+		</div>
+	</article>
+
+	<footer class="col-md-offset-3 col-md-6">
+		<hr />
+		<p>
+			<i>Dernière MAJ <time pubdate="pubdate">27/10/2016</time>
+
+			</i>
+		</p>
+	</footer>
+	<script src="js/menu.js" type="text/javascript"></script>
+	<script>
+		document.getElementById("a_propos").setAttribute("class", "active");
+	</script>
+</body>
+</html>
