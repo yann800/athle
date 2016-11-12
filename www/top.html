@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- <link href="css/bootstrap-theme.css" media="screen" rel="stylesheet" type="text/css" /> -->
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+<title>Moyenne d'âge</title>
+
+</head>
+
+
+<body>
+
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+			<nav id="menu"></nav>
+			
+<h1>Statistiques</h1>
+
+	
+	
+	
+			<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" >
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Athlètes dans le top 10 de toutes les années de la période [2010-2016]</a></h4>
+						
+          
+					</div>
+					<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+
+<table class="table table-striped table-bordered" id="moyenne1">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Epreuves</th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td><a href="#" data-toggle="popover" title="Détails" data-content="1 4	4	4	1	2">CARVALHO</a></td><td>Florian</td><td>1500	1500	1500	1500	1500	10	1500</td></tr>
+<tr><td><a href="#" data-toggle="popover" title="Détails" data-content="chronos et rangs">DUARTE</a></td><td>Sophie</td><td>10	10	10	3000	3000	10	10</td></tr>
+<tr><td><a href="#" data-toggle="popover" title="Détails" data-content="chronos et rangs">MOH</a></td><td>Clarisse</td><td>800	800	800	800	800	800	800</td></tr>
+
+</tbody>
+</table>
+			
+<pre><code>SELECT l10.idEpreuve,  l11.idEpreuve, l12.idEpreuve, l13.idEpreuve, l14.idEpreuve, l15.idEpreuve, l16.idEpreuve, l16.nom, l16.prenom
+FROM ligne l10, ligne l11, ligne l12, ligne l13, ligne l14, ligne l15, ligne l16 
+WHERE l10.annee = 2010  AND l11.annee = 2011  AND l12.annee = 2012  AND l13.annee = 2013  AND l14.annee = 2014  AND l15.annee = 2015 AND l16.annee = 2016
+  AND l10.rang &lt; 11  AND l11.rang &lt; 11  AND l12.rang &lt; 11  AND l13.rang &lt; 11  AND l14.rang &lt; 11  AND l15.rang &lt; 11 AND l16.rang &lt; 11
+  AND l10.nom = l16.nom AND l11.nom = l16.nom AND l12.nom = l16.nom AND l13.nom = l16.nom AND l14.nom = l16.nom AND l15.nom = l16.nom
+  GROUP BY l16.nom;
+</code></pre>
+
+
+		</div>
+</div></div>
+	</div> <!-- end panel group -->
+	
+	
+	
+	
+	
+	
+	
+	
+			<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true" >
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title"><a data-toggle="collapse" href="#collapse2">Athlètes dans le top 100 de toutes les années de la période [2010-2016]</a></h4>
+						
+          
+					</div>
+					<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+
+<table class="table table-striped table-bordered" id="moyenne1">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Epreuves</th>
+</tr>
+</thead>
+<tbody>
+
+
+
+<tr><td>BLAMEBLE</td><td>Lisa</td></tr>
+<tr><td>BOSSE</td><td>Pierre-ambroise</td></tr>
+<tr><td>CANTERO</td><td>Bryan</td></tr>
+<tr><td>CARVALHO</td><td>Florian</td></tr>
+<tr><td>DAUNAY</td><td>Christelle</td></tr>
+<tr><td>DUARTE</td><td>Sophie</td></tr>
+<tr><td>DURAND</td><td>Yohan</td></tr>
+<tr><td>LAMOTE</td><td>Renelle</td></tr>
+<tr><td>LEROY</td><td>Brice</td></tr>
+<tr><td>MOH</td><td>Clarisse</td></tr>
+<tr><td><a href="#" data-toggle="popover" title="Détails" data-content="chronos et rangs">SELMOUNI</a></td><td>Sofiane</td></tr>
+
+</tbody>
+</table>
+			
+<!-- 
+<pre><code>SELECT l10.idEpreuve,  l11.idEpreuve, l12.idEpreuve, l13.idEpreuve, l14.idEpreuve, l15.idEpreuve, l16.idEpreuve, l16.nom, l16.prenom
+FROM ligne l10, ligne l11, ligne l12, ligne l13, ligne l14, ligne l15, ligne l16 
+WHERE l10.annee = 2010  AND l11.annee = 2011  AND l12.annee = 2012  AND l13.annee = 2013  AND l14.annee = 2014  AND l15.annee = 2015 AND l16.annee = 2016
+  AND l10.rang &lt; 101  AND l11.rang &lt; 101  AND l12.rang &lt; 101  AND l13.rang &lt; 101  AND l14.rang &lt; 11  AND l15.rang &lt; 11 AND l16.rang &lt; 11
+  AND l10.nom = l16.nom AND l11.nom = l16.nom AND l12.nom = l16.nom AND l13.nom = l16.nom AND l14.nom = l16.nom AND l15.nom = l16.nom
+  GROUP BY l16.nom;
+</code></pre>
+ -->
+
+
+		</div>
+</div></div>
+	</div> <!-- end panel group -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<div class="panel-group" role="tablist" aria-multiselectable="true" >
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title"><a data-toggle="collapse" href="#collapse3">Test</a></h4>
+			
+       
+		</div>
+		<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+
+  <a href="#" data-toggle="popover" title="Détails" data-content="Il ne fait pas encore de 1/2 fond">Usain Bolt</a>
+	
+	
+	
+
+		</div>
+</div></div>
+	</div> <!-- end panel group -->
+	
+	
+	
+	
+	</div> <!-- end col-8 -->
+	
+	</article>
+	<script src="js/menu.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
+	
+	
+	<script type="text/javascript">
+	document.getElementById("statistiques").setAttribute("class", "dropdown active");
+	</script>
+</body>
+</html>

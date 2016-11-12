@@ -3,10 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link href="css/bootstrap.min.css" media="screen"
-	rel="stylesheet" type="text/css" />
-<link href="css/dataTables.bootstrap.min.css" media="screen"
-	rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="css/athle.css" rel="stylesheet" type="text/css" />
 
 
@@ -35,36 +33,41 @@
 			<nav id="menu"></nav>
 
 
-			<br /> <br /> Site et programmes développés par Yann Abd-el-Kader.
-			Pour toute question, bug, suggestion : <img alt="image anti-robot" src="img/adresse_mail.png"> <br />
-			
-			
+			<br /> Site et programmes développés par Yann Abd-el-Kader. Pour toute question, bug,
+			suggestion : <img alt="image anti-robot" src="img/adresse_mail.png"> <br />
+			<br />
+			Quelques descriptions sur le développement : <a href="documentation/index.html">pages de documentation</a>
+
 			<h2>Librairies, langages / Outils de développement</h2>
-<section class="row">
+			<i>Environnement sur machine locale - il y a des différences PHP et MySQL sur les serveurs
+				free)</i>
+			<section class="row">
 
-<div class="col-sm-6">
-			<ul>
-				<li>SQL</li>
-				<li>Java 8</li>
-				<li>PHP 5/x sur Apache<i>(Spring MVC pour une version future)</i></li>
-				<li>Javascript</li>
-				<li>JQuery 1.12.3</li>
-				<li>Bootstrap 3.3.5</li>
-			</ul>
-</div>
-<div class="col-sm-3">
+				<div class="col-sm-6">
 
-			<ul>
-				<li>Eclipse Mars 2</li>
-				<li>Maven 3</li>
-				<li>Git</li>
-				<li>MySQL 5.7</li>
-				<li>Squirel 3.5.3</li>
-				<li>Firefox 42</li>
-			</ul>
-</div>
 
-</section>
+					<ul>
+						<li>SQL</li>
+						<li>Java 8</li>
+						<li>PHP (5.3.9 pour free) sur Apache<i>(Spring MVC pour une version future)</i></li>
+						<li>Javascript</li>
+						<li>JQuery 1.12.3</li>
+						<li>Bootstrap 3.3.5</li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+
+					<ul>
+						<li>Eclipse Mars 2</li>
+						<li>Maven 3</li>
+						<li>Git</li>
+						<li>MySQL 5.7</li>
+						<li>Squirel 3.5.3</li>
+						<li>Firefox 42</li>
+					</ul>
+				</div>
+
+			</section>
 
 
 
@@ -72,14 +75,13 @@
 
 
 
-			<div class="panel-group" id="accordion" role="tablist"
-				aria-multiselectable="true">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title">Nombre de performances</h4>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in"
-						role="tabpanel" aria-labelledby="headingOne">
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+						aria-labelledby="headingOne">
 						<div class="panel-body">
 
 							<table class="table">
@@ -120,17 +122,18 @@
 
 										</td>
 										<td>M / F</td>
-										<td>6.748 perfs non licenciés<br /><br />3 perfs dates
-											naissances<br /> erronées
+										<td>6.748 perfs non licenciés<br />
+										<br />3 perfs dates naissances<br /> erronées
 										</td>
-										<td>11<br />x ((3 x 1000) + 1600)<br />x 2<br />=
-											101.200<br /> - 6.748<br />- 3<br /> = <b>94.452</b></td>
+										<td>11<br />x ((3 x 1000) + 1600)<br />x 2<br />= 101.200<br /> - 6.748<br />- 3<br />
+											= <b>94.452</b></td>
 									</tr>
 								</tbody>
 							</table>
 
-Le programme d'import signale quelques curiosités amusantes de la base de la fédé. P.ex. on trouve dans le bilan 800 féminin 2016 un chrono avec vent : 2.22.53 (+1.9)... 
-, des caractà¨res 'espace' en début de nom de club, etc.
+							Le programme d'import signale quelques curiosités amusantes de la base de la fédé. P.ex. on
+							trouve dans le bilan 800 féminin 2016 un chrono avec vent : 2.22.53 (+1.9)... , des
+							caractères 'espace' en début de nom de club, etc.
 						</div>
 					</div>
 				</div>
@@ -140,40 +143,39 @@ Le programme d'import signale quelques curiosités amusantes de la base de la féd
 						<h4 class="panel-title">Pays</h4>
 					</div>
 
-					<div id="collapseOne" class="panel-collapse collapse in"
-						role="tabpanel" aria-labelledby="headingOne">
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+						aria-labelledby="headingOne">
 						<div class="panel-body">
-							Importation des 208 <a
-								href="https://fr.wikipedia.org/wiki/Liste_des_codes_pays_du_CIO">codes
+							Importation des 208 <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_pays_du_CIO">codes
 								pays du CIO</a> utilisés par la FFA.
 						</div>
 					</div>
 
 				</div>
-				
+
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title">Table de cotation</h4>
 					</div>
 
-					<div id="collapseOne" class="panel-collapse collapse in"
-						role="tabpanel" aria-labelledby="headingOne">
-						<div class="panel-body">
-						Script de génération de table pour permettre la conversion des perfs directement en base (UPDATE de la colonne "points").
-						</div>
+					<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+						aria-labelledby="headingOne">
+						<div class="panel-body">Script de génération de table pour permettre la conversion des
+							perfs directement en base (UPDATE de la colonne "points").</div>
 					</div>
 				</div>
-				
-				<br/>
-		
-				
+
+				<br />
+
+
 				<h2>Evolutions prévues</h2>
 
 				<ul>
-					<li>passage en modà¨le relationnel (éviter de répéter nom-prénom à  chaque perf, entre autre)</li>
+					<li>passage en modèle relationnel (éviter de répéter nom-prénom à  chaque perf, entre
+						autre)</li>
 					<li>création de tables pour les résultats pré-calculés</li>
-					<li>conversions des dates pour faciliter les calculs fin et opérations avant/aprà¨s</li>
-					<li>réponse à  toutes les requàªtes de <a href="index.html">la page d'accueil</a></li>
+					<li>conversions des dates pour faciliter les calculs fin et opérations avant/après</li>
+					<li>réponse à  toutes les requêtes de <a href="index.html">la page d'accueil</a></li>
 					<li>importation archives résultats FFA 1999 - 2004</li>
 					<li>importation résultats IAAF</li>
 					<li>remplacement serveur PHP par serveur Java</li>
@@ -181,45 +183,42 @@ Le programme d'import signale quelques curiosités amusantes de la base de la féd
 
 
 
-			<h2>Pourquoi vous ne devriez pas visiter ce site via un technologie sans fil (Wifi, 3G/4G)</h2>
+				<h2>Pourquoi vous ne devriez pas visiter ce site via un technologie sans fil (Wifi, 3G/4G)</h2>
 
-		Au début d'Internet, la connexion se faisait cà¢ble.
-		Aujourd'hui se généralise les connexions sans fil (Wifi, 3G/4G passant par les antennes relais de téléphonie).
-		Ces technologies sont trà¨s pratiques, mais elles impliquent l'augmentation constante de la population aux ondes électromagnétiques.
-		<br/>		
-		Or les effets nocifs de ces technologies sont graves, en particulier pour les personnes souffrant d'hyper électro-sensibilité. La France est trà¨s en
-		retard sur la reconnaissance de ce problà¨me (par rapport à  la Suà¨de, p.ex.) ; on peut màªme obligé de parler de scandale sanitaire.  
-		
-		Moralité : merci autant que possible d'accéder à  Internet et de surfer sur Web via des ordi utilisant des connexions filaires (cà¢ble éthernet,
-		en vente partout pour une dizaine d'euros).
-		
-		Plus d'info sur le site de <a href="http://priartem.fr">Priartem</a> et p.ex. dans
-		<a href="http://laurence-abeille.fr/des-medecins-et-parlementaires-appellent-le-ministere-de-la-sante-a-reconnaitre-les-personnes-sensibles-aux-ondes-electromagnetiques">les actes du colloque qui s'est tenu le 16/02/2016
-		à  l'Assemblée Nationale</a> 
-		
-		
-			<h2>Remerciements</h2>
+				Au début d'Internet, la connexion se faisait par câble. Aujourd'hui se généralisent les
+				connexions sans fil (Wifi, 3G/4G passant par les antennes relais de téléphonie). Ces
+				technologies sont très pratiques, mais elles impliquent l'augmentation constante de l'exposition
+				aux ondes électromagnétiques de la population. <br /> Or les effets nocifs de ces technologies
+				sont graves, en particulier pour les personnes souffrant d'hyper électro-sensibilité. La France
+				est très en retard sur la reconnaissance de ce problème (par rapport à  la Suède, p.ex.) ; on
+				peut même obligé de parler de scandale sanitaire. Moralité : merci autant que possible d'accéder
+				à  Internet et de surfer sur Web via des ordi utilisant des connexions filaires (câble éthernet,
+				en vente partout pour une dizaine d'euros). Plus d'info sur le site de <a
+					href="http://priartem.fr">Priartem</a> et p.ex. dans <a
+					href="http://laurence-abeille.fr/des-medecins-et-parlementaires-appellent-le-ministere-de-la-sante-a-reconnaitre-les-personnes-sensibles-aux-ondes-electromagnetiques">les
+					actes du colloque qui s'est tenu le 11/02/2016 à  l'Assemblée Nationale</a>.
 
-			CailleRotie pour l'aide SQL et en particulier les subtilités du GROUP
-			BY.
+
+				<h2>Remerciements</h2>
+
+				CailleRotie pour l'aide SQL et en particulier les subtilités du GROUP BY.
 
 
 			</div>
 		</div>
 	</article>
-	
-				<footer class="col-md-offset-3 col-md-6">
-				<hr/>
-				<p>
-					<i>Dernière MAJ <time pubdate="pubdate">05/08/2016</time>
-					
-					 </i>
-				</p>
-				</footer>
-			<script src="js/menu.js" type="text/javascript"></script>
-			<script>
-				document.getElementById("a_propos").setAttribute("class",
-						"active");
-			</script>
+
+	<footer class="col-md-offset-3 col-md-6">
+		<hr />
+		<p>
+			<i>Dernière MAJ <time pubdate="pubdate">28/10/2016</time>
+
+			</i>
+		</p>
+	</footer>
+	<script src="js/menu.js" type="text/javascript"></script>
+	<script>
+		document.getElementById("a_propos").setAttribute("class", "active");
+	</script>
 </body>
 </html>

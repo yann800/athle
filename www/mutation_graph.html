@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+    <script type="text/javascript" src="js/vis.js"></script>
+    <link href="css/vis.css" rel="stylesheet" type="text/css" />
+
+
+
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- <link href="css/bootstrap-theme.css" media="screen" rel="stylesheet" type="text/css" /> -->
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #mynetwork {
+            width: 800px;
+            height: 500px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<nav id="menu"></nav>
+			
+			<br/><br/>
+			
+<div id="mynetwork"></div>
+
+<br/>
+<br/>
+
+<pre id="eventSpan"></pre>
+
+<br/>
+
+
+	<div class="alert alert-info col-sm-12" role="info">
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		
+		La liste des athlètes des clubs respectifs est obenu avec l'utisation d'UNION.
+		<br/><br/>
+		Pour la liste des athlètes ayant appartenu aux deux clubs - intêret de permettre de faire apparaître
+		les mutations dans le graphes - c'est l'INNER JOIN qui correspond au besoin (cf. 		
+<a href="http://sql.sh/cours/jointures">http://sql.sh/cours/jointures</a>).
+	</div>
+
+<pre>
+<code>-- liste des athlètes de deux clubs
+SELECT DISTINCT l.nom
+FROM ligne l
+WHERE l.club = 'Ac paris-joinville'
+UNION
+SELECT DISTINCT l.nom
+FROM ligne l
+WHERE l.club = 'Us creteil';
+&gt;&gt;&gt;153 lignes en résultat
+
+-- liste des athlètes ayant appartenu aux deux clubs
+SELECT DISTINCT l1.nom
+FROM ligne l1
+INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2.club = 'Us creteil';
+
+
+</code></pre>
+
+
+<pre>
+<code>Avant le codage en full JS, génération automatique par LibreOffice Calc sur export CSV de phpMyAdmin e: écrire les lignes 1 et 2
+ avec les deux clubs, puis deux formules appliquées sur toutes les lignes :
+= "{id:" &amp; LIGNE() &amp; ",label:'" &amp; C3 &amp; "'},"
+= "{from:" &amp; LIGNE() &amp; ",to:'" &amp; A3 &amp; "'},"
+</code></pre>
+</div>
+</article>
+
+	<script src="js/menu.js" type="text/javascript"></script>
+	
+		<script type="text/javascript" class="init">
+		$('.dropdown-toggle').dropdown();
+		
+
+	</script>
+	<script>document.getElementById("clubs").setAttribute("class", "active");</script>
+
+<script type="text/javascript">
+    // create an array with nodes
+    var nodes = new vis.DataSet([
+{id: 1, label: 'ACP Joinville', color: '#cc0099'},
+{id: 2, label: 'US Créteil', color: '#cc0099'},
+
+{id:3,label:'FLANDRIN THONIEL'},{id:4,label:'CISSAKO'},{id:5,label:'CESSIRON'},{id:6,label:'HESRY'},{id:7,label:'HOLCMAN'},
+{id:8,label:'VIEL'},{id:9,label:'JEM'},{id:10,label:'GUGLIELMINOTTI'},{id:11,label:'FERNANDES'},{id:12,label:'BROCHOT'},
+{id:13,label:'BAUNAY'},{id:14,label:'PIEL'},{id:15,label:'MANIC'},{id:16,label:'MEYER'},{id:17,label:'DUPOUX'},{id:18,label:'LHOMER'},
+{id:19,label:'SAILLY'},{id:20,label:'CRANE'},{id:21,label:'COLLIARD'},{id:22,label:'TSHIKAYA'},{id:23,label:'CLAUDE'},
+{id:24,label:'JAKOMULSKI'},
+{id:25,label:'ES SAKI'},{id:26,label:'MENARA'},{id:27,label:'KIMUANA'},{id:28,label:'DE VENDEGIES'},
+{id:29,label:'GUTTIN'},{id:30,label:'ANDRIEU'},{id:31,label:'RENAULT'},{id:32,label:'BOCCARA'},
+{id:33,label:'DUARTE'},{id:34,label:'JACQUES'},{id:35,label:'MARIE'},{id:36,label:'BOSMORIN'},{id:37,label:'POCREAUX'},{id:38,label:'DIANI'},
+{id:39,label:'BARITAUX'},{id:40,label:'THIERY'},{id:41,label:'BENICHOU'},{id:42,label:'PLUTON'},{id:43,label:'DIAROUMA'},{id:44,label:'FAYE'},
+{id:45,label:'RAMIN'},{id:46,label:'TAFLER'},{id:47,label:'ECZET'},{id:48,label:'DALIL'},{id:49,label:'SOFFIATI'},{id:50,label:'ABDELKADER'},
+{id:51,label:'MARCK'},{id:52,label:'EL KADAOUI'},{id:53,label:'BARAMI'},{id:54,label:'BARHOUMI'},{id:55,label:'HOUDAYER'},
+{id:56,label:'BALAGE',title:'Juliette'},
+{id:57,label:'BRAULT'},{id:58,label:'KERROUT'},{id:59,label:'PHILIPOT'},{id:60,label:'NOEL'},{id:61,label:'LAURENT BABIN'},
+{id:62,label:'FILEUX'},
+{id:63,label:'BELHIMER'},{id:64,label:'COL'},{id:65,label:'BAK'},{id:66,label:'BOULABI'},{id:67,label:'LAMBOLEY'},{id:68,label:'LOUP'},
+{id:69,label:'KHALLOUKI'},
+{id:70,label:'LEDELAS'},{id:71,label:'GURACHI'},{id:72,label:'LE GUILLOU'},{id:73,label:'DANGLADES'},{id:74,label:'ANIESA'},
+{id:75,label:'ROUSSEAU'},
+{id:76,label:'BRIENT SENEJOUX'},{id:77,label:'BOLLEE'},{id:78,label:'ROOS WEIL'},{id:79,label:'GOURDON'},{id:80,label:'JOUISSE'},
+{id:81,label:'SUTEAU'},
+{id:82,label:'WOLFF'},{id:83,label:'BRAHIC'},{id:84,label:'SECHAUD'},{id:85,label:'FOUGHALI'},{id:86,label:'BACON'},
+{id:87,label:'GAGNEUX'},{id:88,label:'LEWIS'},{id:89,label:'TAMISIER'},{id:90,label:'WENDEL'},{id:91,label:'EL MAHMOUDI'},
+{id:92,label:'PEREZ'},{id:93,label:'BELOT'},{id:94,label:'DIAGANA'},{id:95,label:'DAKHLI'},{id:96,label:'DINAR'},
+{id:97,label:'QUADIEU'},{id:98,label:'JUIN'},{id:100,label:'PROST'},{id:101,label:'LAURENT'},
+{id:102,label:'LIA'},{id:103,label:'TRAORE'},{id:104,label:'LOUVIERS'},{id:105,label:'LIBALI'},
+{id:106,label:'TRICOT'},{id:107,label:'LANDMANN'},{id:108,label:'RAHAL'},{id:109,label:'ZLIGUI'},{id:110,label:'DELVER'},
+{id:111,label:'DOUKKANA'},{id:112,label:'GILBERT'},{id:113,label:'GUEHO'},{id:114,label:'RAHOUA'},{id:115,label:'DOMENECH VINDEX'},
+{id:116,label:'JARRY'},{id:117,label:'VINDEX'},{id:118,label:'LOUATI'},{id:119,label:'RAKOTO HARISOA'},{id:120,label:'FETTAH'},
+{id:121,label:'CHARLES'},{id:122,label:'EL HANNOUNI'},{id:123,label:'ROUVIDANT'},{id:124,label:'TOSSOU'},{id:125,label:'MORENO'},
+{id:126,label:'FARSI'},{id:127,label:'MALEK'},{id:128,label:'LARS'},{id:129,label:'ROGER'},{id:130,label:'DELBART'},{id:131,label:'ROLLAND'},
+{id:132,label:'LOUISY'},{id:133,label:'LECOURT'},{id:134,label:'HUBERSON'},
+{id:135,label:'AVIT'},{id:136,label:'BOUHAZA'},{id:137,label:'WOLF'},{id:138,label:'SIX'},{id:139,label:'CONDORE'},{id:140,label:'CHAUVIN'},
+{id:141,label:'BLONDIN'},{id:142,label:'SLIMANI'},{id:143,label:'PINSART'},{id:144,label:'TETARD'},{id:145,label:'PRIOR'},
+{id:146,label:'HAMEL'},{id:147,label:'SAID'},{id:148,label:'BOUSSAID'},{id:149,label:'LELONG'},{id:150,label:'ZEROUKI'},
+{id:151,label:'EUSTACHE'},{id:152,label:'MELLOUKI'},{id:153,label:'NEMETH'},{id:154,label:'KONATE'},{id:155,label:'CROQUISON'},
+{id:156,label:'MILLOT'}
+        
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+{from:3,to:1},{from:4,to:1},{from:5,to:1},{from:6,to:1},{from:7,to:1},{from:8,to:1},{from:9,to:1},{from:10,to:1},{from:11,to:1},
+{from:12,to:1},{from:13,to:1},{from:14,to:1},{from:15,to:1},{from:16,to:1},{from:17,to:1},{from:18,to:1},{from:19,to:1},{from:20,to:1},
+{from:21,to:1},{from:22,to:1},{from:23,to:1},{from:24,to:1},{from:25,to:1},{from:26,to:1},{from:27,to:1},{from:28,to:1},{from:29,to:1},
+{from:30,to:1},{from:31,to:1},{from:32,to:1},{from:33,to:1},{from:34,to:1},{from:35,to:1},{from:36,to:1},{from:37,to:1},{from:38,to:1},
+{from:39,to:1},{from:40,to:1},{from:41,to:1},{from:42,to:1},{from:43,to:1},{from:44,to:1},{from:45,to:1},{from:46,to:1},{from:47,to:1},
+{from:48,to:1},{from:49,to:1},{from:50,to:1},{from:51,to:1},{from:52,to:1},{from:53,to:1},{from:54,to:1},{from:55,to:1},{from:56,to:1},
+{from:57,to:1},{from:58,to:1},{from:59,to:1},{from:60,to:1},{from:61,to:1},{from:62,to:1},{from:63,to:1},{from:64,to:1},{from:65,to:1},
+{from:66,to:1},{from:67,to:1},{from:68,to:1},{from:69,to:1},{from:70,to:1},{from:71,to:1},{from:72,to:1},{from:73,to:1},{from:74,to:1},
+{from:75,to:1},{from:76,to:1},{from:77,to:1},{from:78,to:1},{from:79,to:1},{from:80,to:1},{from:81,to:1},{from:82,to:1},{from:83,to:1},
+{from:84,to:1},{from:85,to:1},{from:86,to:1},{from:87,to:1},{from:88,to:1},{from:89,to:1},{from:90,to:1},
+
+{from:91,to:2},{from:92,to:2},{from:93,to:2},{from:94,to:2},{from:95,to:2},{from:96,to:2},{from:96,to:1},
+{from:97,to:2},{from:98,to:2},{from:56,to:2},{from:100,to:2},{from:101,to:2},{from:102,to:2},{from:103,to:2},{from:104,to:2},{from:105,to:2},
+{from:106,to:2},{from:107,to:2},{from:108,to:2},{from:109,to:2},{from:110,to:2},{from:111,to:2},{from:112,to:2},{from:113,to:2},
+{from:114,to:2},{from:115,to:2},
+{from:116,to:2},{from:117,to:2},{from:118,to:2},{from:119,to:2},{from:120,to:2},{from:121,to:2},{from:122,to:2},{from:123,to:2},
+{from:124,to:2},{from:125,to:2},{from:126,to:2},{from:127,to:2},{from:128,to:2},{from:129,to:2},{from:130,to:2},{from:131,to:2},
+{from:132,to:2},{from:133,to:2},{from:134,to:2},{from:135,to:2},{from:136,to:2},{from:137,to:2},{from:138,to:2},{from:139,to:2},
+{from:140,to:2},{from:141,to:2},{from:142,to:2},{from:143,to:2},{from:144,to:2},{from:145,to:2},{from:146,to:2},{from:147,to:2},
+{from:148,to:2},{from:149,to:2},{from:150,to:2},{from:151,to:2},{from:152,to:2},{from:153,to:2},{from:154,to:2},{from:155,to:2},
+{from:156,to:2}
+     ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges    };
+    var options = {
+    	    interaction: {hover: true}
+    	  }
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+    
+    network.on("click", function (params) {
+        // params.event = "[original event]";
+        var nodeId = parseInt(params.nodes);
+        document.getElementById('eventSpan').innerHTML = '<b>Noeud cliqué</b> id, nom : ' + nodeId + ' ' + nodes.get(nodeId).label;
+    });
+</script>
+
+
+
+
+</body>
+</html>

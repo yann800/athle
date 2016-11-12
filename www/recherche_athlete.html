@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 
 <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -13,8 +13,59 @@
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
+<script>
+function getPrenom(nom){
+	
+    if (nom.length < 3) { 
+        return '';
+    }
+    
+    var prenom;
+   	var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        	prenom = this.responseText;
+        	// return prenom;
+        }
+    };
+    xmlhttp.open("GET", "getPrenom.php?q=" + nom, true);
+    xmlhttp.send();
+    
+    return prenom;
 
-<title>SQl et athlétisme - Recherche</title>
+    
+}
+
+function showHint(str) {
+    if (str.length < 3) { 
+        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("txtHintPrenom").innerHTML = "";
+        return;
+    } else {
+    	var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "getNom.php?q=" + str, true);
+        xmlhttp.send();
+
+        // var nom = $('#txtHint').val();
+        var nom = document.getElementById("txtHint").innerHTML;
+		// plusieurs noms
+        if (nom.indexOf(",") > -1){
+        	// document.getElementById("txtHintPrenom").innerHTML = getPrenom(nom);
+        }
+        // si un seul nom est possible, positionnement prÃ©nom
+        else {
+        	document.getElementById("txtHintPrenom").innerHTML = getPrenom(nom);
+        }
+    }
+    
+}
+</script>
+<title>SQL et athlÃ©tisme - Recherche</title>
 
 </head>
 
@@ -33,111 +84,118 @@
 			<nav id="menu"></nav>
 
 
-			<h2>Fiche athlète</h2>
+			<h2>Fiche athlÃ¨te</h2>
 
 
 
 			<br />
-			<form class="form-horizontal" action="fiche_athlete.php" method="post">
+<form class="form-horizontal" action="fiche_athlete.php" method="post">
 
-				<div class="row">
-					<div class="col-sm-8">
-						<div class="form-group">
-							<label for="nom" class="col-sm-2 control-label">Nom</label>
-							<div class="col-sm-10">
-								<input type="search" class="alphaonly form-control" name="nom" placeholder="nom" size="45" maxlength="45" required="required">
-							</div>
-							<br/><br/><br/>
+<div class="row">
+	<div class="col-sm-7">
+		<div class="form-group">
+			<label for="nom" class="col-sm-2 control-label">Nom</label>
+			<div class="col-sm-5">
+				<input type="search" class="alphaonly form-control" name="nom" placeholder="nom"
+				 onkeyup="showHint(this.value)"								
+			 size="20" maxlength="20" required="required">
+			</div>
+			<div class="col-sm-5"><span id="txtHint"></span></div>
+			<br/><br/><br/>
 
-							<label for="prenom" class="col-sm-2 control-label">Prénom</label>
-							<div class="col-sm-10">
-								<input type="search" class="form-control" name="prenom" placeholder="prénom" size="45" maxlength="45" required="required">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" class="btn btn-primary" value="Rechercher" />
-							</div>
-						</div>
+			<label for="prenom" class="col-sm-2 control-label">PrÃ©nom</label>
+			<div class="col-sm-5">
+				<input type="search" class="alphaonly form-control" name="prenom"
+				 placeholder="prÃ©nom" size="20" maxlength="20" required="required">
+			</div>
+			<div class="col-sm-5"><span id="txtHintPrenom"></span></div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="submit" class="btn btn-primary" value="Rechercher" />
+			</div>
+		</div>
 
-					</div>
+	</div>
 
-					<div class="col-sm-4">
-						<div class="alert alert-info col-sm-12" role="info">
-							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La recherche est insensible aux accents et majuscules/minuscules. Les
-							caratères '-' sont remplacés par des blancs.
-						</div>
-					</div>
+	<div class="col-sm-5">
+		<div class="alert alert-info col-sm-12" role="info">
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La recherche est insensible aux accents et majuscules/minuscules. Les
+			caratÃ¨res '-' sont remplacÃ©s par des blancs. <b>Certains noms sont orthographiÃ©s par la FFA parfois avec espace, parfois sans (ex : 'FLANDRIN THONIEL' avec espace mais  'ABDELKADER' sans). Vous devez prendre cela en compte si vous recherchez des athlÃ¨tes pour lesquels la question se pose, et Ã§a marchera bien !</b>
+		</div>
+	</div>
 
 
-				</div>
+</div>
 
-			</form>
+</form>
 
 
 
 			<br /> <br />
 			<br />
-			<form action="compare_athletes.html">
+			<form action="comparaison_rang.php" method="post">
 
-				<h2>Comparaison entre athlètes</h2>
+				<h2>Comparaison entre athlÃ¨tes</h2>
 
-				(selon leurs meilleurs perfs à la table de cotation) <br />
+				(sur la base des meilleures performances Ã  la table de cotation hongroise) <br />
 				<br />
 				
-					<div class="col-sm-8">
-						<div class="form-group">
-							<label for="nom1" class="col-sm-2 control-label">Nom</label>
-							<div class="col-sm-10">
-								<input type="search" class="alphaonly form-control" name="nom1" placeholder="nom" size="45" maxlength="45" required="required">
-							</div>
-<br/><br/>
+<div class="col-sm-8">
+	<div class="form-group">
+		<label for="nom1" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-10">
+			<input type="search" class="alphaonly form-control" name="nom1" placeholder="nom" size="45" maxlength="45" required="required">
+		</div>
+		<br/><br/>
 
-							<label for="prenom1" class="col-sm-2 control-label">Prénom</label>
-							<div class="col-sm-10">
-								<input type="search" class="form-control" name="prenom1" placeholder="prénom" size="45" maxlength="45" required="required">
-							</div>
-
-<br/><br/><br/><br/>
-
-							<label for="nom2" class="col-sm-2 control-label">Nom</label>
-							<div class="col-sm-10">
-								<input type="search" class="alphaonly form-control" name="nom2" placeholder="nom" size="45" maxlength="45" required="required">
-							</div>
-							<br/><br/>
-
-							<label for="prenom2" class="col-sm-2 control-label">Prénom</label>
-							<div class="col-sm-10">
-								<input type="search" class="form-control" name="prenom2" placeholder="prénom" size="45" maxlength="45" required="required">
-							</div>
+		<label for="prenom1" class="col-sm-2 control-label">PrÃ©nom</label>
+		<div class="col-sm-10">
+			<input type="search" class="form-control" name="prenom1" placeholder="prÃ©nom" size="45" maxlength="45" required="required">
+		</div>
 
 <br/><br/><br/><br/>
 
-							<label for="nom3" class="col-sm-2 control-label">Nom</label>
-							<div class="col-sm-10">
-								<input type="search" class="alphaonly form-control" name="nom3" placeholder="nom" size="45" maxlength="45" required="required">
-							</div>
-							<br/><br/>
+		<label for="nom2" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-10">
+			<input type="search" class="alphaonly form-control" name="nom2" placeholder="nom" size="45" maxlength="45" required="required">
+		</div>
+		<br/><br/>
+	
+		<label for="prenom2" class="col-sm-2 control-label">PrÃ©nom</label>
+		<div class="col-sm-10">
+			<input type="search" class="form-control" name="prenom2" placeholder="prÃ©nom" size="45" maxlength="45" required="required">
+		</div>
 
-							<label for="prenom3" class="col-sm-2 control-label">Prénom</label>
-							<div class="col-sm-10">
-								<input type="search" class="form-control" name="prenom3" placeholder="prénom" size="45" maxlength="45" required="required">
-							</div>
+<br/><br/><br/><br/>
+
+<!-- 
+	<label for="nom3" class="col-sm-2 control-label">Nom</label>
+	<div class="col-sm-10">
+		<input type="search" class="alphaonly form-control" name="nom3" placeholder="nom" size="45" maxlength="45">
+	</div>
+	<br/><br/>
+
+	<label for="prenom3" class="col-sm-2 control-label">PrÃ©nom</label>
+	<div class="col-sm-10">
+		<input type="search" class="form-control" name="prenom3" placeholder="prÃ©nom" size="45" maxlength="45">
+	</div>
+ -->
 
 
-						</div>
+		</div>
+	</div>
 
-
-					</div>
-
-				<button type="submit" class="btn btn-primary" disabled="disabled">Comparer</button>
-				&#160;<a href="compare_athletes.html">Exemple</a>
+				<button type="submit" class="btn btn-primary">Comparer</button>
 			</form>
 
 		</div>
 	</article>
 
-
+<!-- document.getElementById('contents'); //returns a HTML DOM Object
+var contents = $('#contents');  //returns a jQuery Object
+var contents = $('#contents')[0]; //returns a HTML DOM Object
+ -->
 
 	<script src="js/menu.js" type="text/javascript"></script>
 	<script type="text/javascript">
