@@ -93,9 +93,9 @@ public class Parser {
 					m.group(6), // ligue
 					Integer.parseInt(m.group(7)), // anneeNaissance
 					m.group(8), // datePerf
-					m.group(9).replace("'", " "),
+					m.group(9).replace("'", " "),  // ville
 					idEpreuve,
-					sexe); // ville
+					sexe);
 
 
 			sb.append(lb);
