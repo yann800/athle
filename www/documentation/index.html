@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Documentation de la création de base.athle</title>
+  <meta charset="UTF-8">
+  
+  
+  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .slider {
+        width: 90%;
+        margin: 100px auto;
+    }
+
+.div_slide {
+	width: 750px;
+}
+    .slick-slide {
+      margin: 0px 0px;
+    }
+
+    .slick-slide img {
+      width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+        color: black;
+    }
+  </style>
+  	<link href="../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<!-- 
+	<link href="../css/athle.css" media="screen" rel="stylesheet" type="text/css" />
+ -->  
+
+  <!-- <script src="../js/jquery-2.2.0.min.js" type="text/javascript"></script> -->
+    <script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
+  	<script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+  
+  
+  <script src="./slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
+  
+  
+</head>
+<body>
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+		<div class="col-sm-8">
+
+			<nav id="menu">
+
+<ul class="nav nav-pills">
+	<li id="index"><a href="../index.html">Accueil</a></li><li id="athletes"><a href="../recherche_athlete.html">Athl&egrave;tes</a></li><li id="clubs"><a href="../recherche_club.html">Clubs</a></li><li id="statistiques" role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Statistiques - records<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li><a href="../statistiques.html">Statistiques</a></li>
+		<li><a href="../bilans.html">Bilans par âge</a></li>
+		<li><a href="../recherche_stade.html">Records des stades</a></li>
+	</ul>
+	<li id="international" role="presentation"><a href="../international.html">International</a></li>
+	<li id="a_propos" role="presentation"><a href="../a_propos.html">A propos</a></li>
+</ul>
+			
+			</nav>
+ <script type="text/javascript"> 
+function changeLargeur(choix){
+	
+	  var largeur = $( '#diapo' ).css( "width" );
+	  $( "#result" ).html( "ancienne largeur <b>" + largeur + "</b>" );
+
+	  if (choix == 'plus'){
+	  
+	  	largeur = (parseInt(largeur.substring(0, largeur.length - 2)) + 10) + 'px';
+	  
+	  }
+	  else {
+			largeur = (parseInt(largeur.substring(0, largeur.length - 2)) - 10) + 'px';
+	  }
+	  $( "#after" ).html( "nouvelle largeur : <b>" + largeur + "</b>" );
+	  
+	  $( "#diapo").css({'width' : '' + largeur});
+}
+</script>
+<br/>
+ <button class="btn btn-outline-primary btn-sm" onclick="javascript:changeLargeur('moins');">moins</button>
+ <span id="result">&nbsp;</span> <span id="after">&nbsp;</span>
+ <button class="btn btn-outline-primary btn-sm" onclick="javascript:changeLargeur('plus');">plus</button>
+
+
+  <section class="variable slider" id="diapo" style="margin-top: 50px">
+
+<div class="div_slide"><h4>0. Préalable (sous réserve d'avoir bien compris)</h4>
+
+<pre>
+
+- Saisie de résultat de compétition via le logiciel LOGICA (version 3.34.0
+ à partir de mai 2016). cf. <a href="http://www.athle.fr/asp.net/main.html/html.aspx?htmlid=3128">http://www.athle.fr/asp.net/main.html/html.aspx?htmlid=3128</a>
+
+
+- Envoi sans doute via <a href="https://si-ffa.fr">https://si-ffa.fr</a>
+<br/>
+- La base de athle.fr remplie, les pages HTML correspondantes peuvent être accessibles
+ via <a href="http://www.athle.fr">http://www.athle.fr</a> (plus exactement <a href="http://bases.athle.com/asp.net">http://bases.athle.com/asp.net</a>)
+
+</pre>
+
+</div>
+
+<div class="div_slide"><h4>1. Récupération de pages HTML de athle.fr et enregistrement fichiers</h4>
+
+A présent, concernant la partie de base.athle.free.fr
+
+<pre>
+<code>
+
+public class BuildDatabase {
+
+
+	importEpreuve(EpreuveEnum.COURSE_800, SexeEnum.FEMININ, NOMBRE_PAGE_55);
+	importEpreuve(EpreuveEnum.COURSE_800, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
+
+	importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.FEMININ, NOMBRE_PAGE_55);
+	importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
+
+	importEpreuve(EpreuveEnum.COURSE_3000, SexeEnum.FEMININ, NOMBRE_PAGE_55);
+	importEpreuve(EpreuveEnum.COURSE_3000, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
+
+	importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.FEMININ, NOMBRE_PAGE_85);
+	importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.MASCULIN, NOMBRE_PAGE_85);
+
+	}
+</code>
+</pre>
+
+</div>
+
+<div class="div_slide"><h4>2. Parse des fichiers et génération du script SQL</h4>
+
+<br/>
+
+<pre>
+<code>// Sur chaque fichier HTML (annee, idEpreuve, sexe), itération sur chaque ligne :
+String pattern = "..."; // l'expr régulière
+Pattern r = Pattern.compile(pattern);
+Matcher m = r.matcher(line);
+if (m.find()) {
+	LigneBilan lb = new LigneBilan(
+		Integer.parseInt(m.group(1)), // rang
+			m.group(2).replace("''", ".").replace("'", "."), // perf
+			m.group(3).replace("'", " "), // nom
+			m.group(4).replace("'", " "), // prenom
+			m.group(5).replace("'", " "), // club
+			m.group(6), // ligue
+			Integer.parseInt(m.group(7)), // anneeNaissance
+			m.group(8), // datePerf
+			m.group(9).replace("'", " "),  // ville
+			idEpreuve,
+			sexe);
+	sb.append(lb);
+}</code></pre></div>
+
+<div class="div_slide"><h4>3. Remplissage de la base locale ou celle distante créée sur base.athle.free</h4>
+
+Les premières lignes sont celles du bilan 800 masculin de 2006 :
+
+<br/>
+
+<pre>
+<code>
+INSERT INTO `ligne` (`id`, `rang`, `perf`, `nom`, `prenom`, `sexe`, `naissance`, `club`, `ligue`, `idPays`, `ville`, `datePerf`, `idEpreuve`, `annee`, `points`) VALUES
+(1, 1, '1.44.04', 'BAALA', 'Mehdi', 0, 1978, 'Asptt strasbourg', 'ALS', 65, 'Zurich (SUI)', '18/08/06', 800, 2006, 1200),
+(2, 2, '1.44.74', 'LACASSE', 'Florent', 0, 1981, 'Asptt aix en provence', 'PRO', 65, 'Lausanne (SUI)', '11/07/06', 800, 2006, 1179),
+(3, 3, '1.46.74', 'MARTIAK', 'Antoine', 0, 1983, 'Esc tergnier', 'PIC', 65, 'Ostrava (CZE)', '30/05/06', 800, 2006, 1120),
+(4, 4, '1.46.74', 'LOMBA', 'Jimmy', 0, 1978, 'Asptt lille metropole', 'NPC', 65, 'Liège (BEL)', '19/07/06', 800, 2006, 1120),
+(5, 5, '1.47.11', 'YOUSFI', 'Driss', 0, 1983, 'As fleury les aubrais sar', 'CEN', 65, 'Oordegem (BEL)', '01/07/06', 800, 2006, 1110),
+(6, 6, '1.47.53', 'PLANQUE', 'Thomas', 0, 1979, 'Rc arras', 'NPC', 65, 'Oordegem (BEL)', '01/07/06', 800, 2006, 1098),
+(7, 7, '1.47.53', 'BARRE', 'Julien', 0, 1984, 'Dijon uc', 'BOU', 65, 'Tomblaine', '05/07/06', 800, 2006, 1098),
+
+etc...
+</code></pre>
+
+</div>
+
+<div class="div_slide"><h4>4. Pages dynamiques de base.athle.free générées en PHP</h4>
+
+<pre>
+// Create connection http://php.net/manual/fr/function.mysql-connect.php
+
+$link  =  mysql_connect($servername, $username, $password)
+
+...
+
+$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+
+while($row = mysql_fetch_assoc($req)){
+
+        echo '... recup des resultats';
+        
+
+}
+...
+</pre>
+</div>
+    
+  </section>
+
+</div>
+</article>
+
+<footer class="col-md-offset-3 col-md-6">
+		
+
+
+		<p>
+
+
+
+<!-- 			<i>
+Bibliothèque utilisée : <a href="http://kenwheeler.github.io/slick">Slick</a>
+			</i>
+ -->		</p>
+	</footer>
+
+
+	<script>document.getElementById("index").setAttribute("class", "active");</script>
+</body>
+
+  <script type="text/javascript">
+    $(document).on('ready', function() {
+      $(".variable").slick({
+        dots: true,
+        infinite: true,
+        variableWidth: true
+      });
+    });
+  </script>
+</html>
