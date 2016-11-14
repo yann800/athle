@@ -43,11 +43,46 @@
 <br/>
 <br/>
 
-<pre id="eventSpan"></pre>
 
+
+<input class="btn btn-default" type="button" onclick="addNode(554, 'CA Montreuil')" value="Ajouter le club CA Montreuil" >
+
+<input class="btn btn-default" type="button" onclick="javascript:alert('dév. en cours...')" value="Ajouter tous les athlètes du CA Montreuil" >
+
+<input class="btn btn-default" type="button" onclick="removeAthleteNonClub(1)" value="Supprimer les athlètes non-ACP Joinville" >
+
+<br/><br/>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div id="eventSpan" class="panel-heading">Information sur l'athlète sélectioné (cliquez sur un noeud)</div>
+	<!--   <div class="panel-body"> -->
+	<!--     <p>...</p> -->
+	<!--   </div> -->
+  
+	<table id="tableAthleteSelected" class="table table-striped table-bordered table-hover" >
+	<thead>
+		<tr><th>Club</th><th>Action</th></tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+</div>
+	
 <br/>
 
 
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" >
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Information sur le SQL exécuté</a></h4>
+			
+       
+		</div>
+		<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+			
+<br/>
 	<div class="alert alert-info col-sm-12" role="info">
 		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 		
@@ -75,8 +110,15 @@ FROM ligne l1
 INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2.club = 'Us creteil';
 
 
-</code></pre>
+-- liste des athlètes appartenant aux deux clubs (avec nouvelle table créée nécessairement pour rapidité)
+SELECT DISTINCT p.id, p.nom FROM personne p 
+ JOIN licence l1 ON l1.idPersonne = p.id AND l1.idClub = 91  
+ JOIN licence l2 ON l2.idPersonne = p.id AND l2.idClub = 1583
 
+-- sélection des athlètes appartenant à au moins un des deux clubqs
+
+ </code>
+</pre>
 
 <pre>
 <code>Avant le codage en full JS, génération automatique par LibreOffice Calc sur export CSV de phpMyAdmin e: écrire les lignes 1 et 2
@@ -84,6 +126,13 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
 = "{id:" &amp; LIGNE() &amp; ",label:'" &amp; C3 &amp; "'},"
 = "{from:" &amp; LIGNE() &amp; ",to:'" &amp; A3 &amp; "'},"
 </code></pre>
+
+
+
+		</div>
+</div></div>
+	</div> <!-- end panel group -->
+
 </div>
 </article>
 
@@ -96,9 +145,22 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
 	</script>
 	<script>document.getElementById("clubs").setAttribute("class", "active");</script>
 
+
+
+
+
+
 <script type="text/javascript">
-    // create an array with nodes
-    var nodes = new vis.DataSet([
+    var nodeIds, shadowState, nodesArray, nodes, edgesArray, edges, network;
+
+    function startNetwork() {
+        // this list is kept to remove a random node.. we do not add node 1 here because it's used for changes
+        shadowState = false;
+
+
+        // create an array with nodes
+        nodesArray = [
+
 {id: 1, label: 'ACP Joinville', color: '#cc0099'},
 {id: 2, label: 'US Créteil', color: '#cc0099'},
 
@@ -113,7 +175,7 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
 {id:39,label:'BARITAUX'},{id:40,label:'THIERY'},{id:41,label:'BENICHOU'},{id:42,label:'PLUTON'},{id:43,label:'DIAROUMA'},{id:44,label:'FAYE'},
 {id:45,label:'RAMIN'},{id:46,label:'TAFLER'},{id:47,label:'ECZET'},{id:48,label:'DALIL'},{id:49,label:'SOFFIATI'},{id:50,label:'ABDELKADER'},
 {id:51,label:'MARCK'},{id:52,label:'EL KADAOUI'},{id:53,label:'BARAMI'},{id:54,label:'BARHOUMI'},{id:55,label:'HOUDAYER'},
-{id:56,label:'BALAGE',title:'Juliette'},
+{id:967,label:'BALAGE',title:'Juliette'},
 {id:57,label:'BRAULT'},{id:58,label:'KERROUT'},{id:59,label:'PHILIPOT'},{id:60,label:'NOEL'},{id:61,label:'LAURENT BABIN'},
 {id:62,label:'FILEUX'},
 {id:63,label:'BELHIMER'},{id:64,label:'COL'},{id:65,label:'BAK'},{id:66,label:'BOULABI'},{id:67,label:'LAMBOLEY'},{id:68,label:'LOUP'},
@@ -138,25 +200,32 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
 {id:146,label:'HAMEL'},{id:147,label:'SAID'},{id:148,label:'BOUSSAID'},{id:149,label:'LELONG'},{id:150,label:'ZEROUKI'},
 {id:151,label:'EUSTACHE'},{id:152,label:'MELLOUKI'},{id:153,label:'NEMETH'},{id:154,label:'KONATE'},{id:155,label:'CROQUISON'},
 {id:156,label:'MILLOT'}
-        
-    ]);
 
-    // create an array with edges
-    var edges = new vis.DataSet([
+];
+        nodes = new vis.DataSet(nodesArray);
+
+        // create an array with edges
+        edgesArray = [
+
 {from:3,to:1},{from:4,to:1},{from:5,to:1},{from:6,to:1},{from:7,to:1},{from:8,to:1},{from:9,to:1},{from:10,to:1},{from:11,to:1},
 {from:12,to:1},{from:13,to:1},{from:14,to:1},{from:15,to:1},{from:16,to:1},{from:17,to:1},{from:18,to:1},{from:19,to:1},{from:20,to:1},
 {from:21,to:1},{from:22,to:1},{from:23,to:1},{from:24,to:1},{from:25,to:1},{from:26,to:1},{from:27,to:1},{from:28,to:1},{from:29,to:1},
 {from:30,to:1},{from:31,to:1},{from:32,to:1},{from:33,to:1},{from:34,to:1},{from:35,to:1},{from:36,to:1},{from:37,to:1},{from:38,to:1},
 {from:39,to:1},{from:40,to:1},{from:41,to:1},{from:42,to:1},{from:43,to:1},{from:44,to:1},{from:45,to:1},{from:46,to:1},{from:47,to:1},
-{from:48,to:1},{from:49,to:1},{from:50,to:1},{from:51,to:1},{from:52,to:1},{from:53,to:1},{from:54,to:1},{from:55,to:1},{from:56,to:1},
+{from:48,to:1},{from:49,to:1},{from:50,to:1},{from:51,to:1},{from:52,to:1},{from:53,to:1},{from:54,to:1},{from:55,to:1},
 {from:57,to:1},{from:58,to:1},{from:59,to:1},{from:60,to:1},{from:61,to:1},{from:62,to:1},{from:63,to:1},{from:64,to:1},{from:65,to:1},
 {from:66,to:1},{from:67,to:1},{from:68,to:1},{from:69,to:1},{from:70,to:1},{from:71,to:1},{from:72,to:1},{from:73,to:1},{from:74,to:1},
 {from:75,to:1},{from:76,to:1},{from:77,to:1},{from:78,to:1},{from:79,to:1},{from:80,to:1},{from:81,to:1},{from:82,to:1},{from:83,to:1},
 {from:84,to:1},{from:85,to:1},{from:86,to:1},{from:87,to:1},{from:88,to:1},{from:89,to:1},{from:90,to:1},
 
-{from:91,to:2},{from:92,to:2},{from:93,to:2},{from:94,to:2},{from:95,to:2},{from:96,to:2},{from:96,to:1},
-{from:97,to:2},{from:98,to:2},{from:56,to:2},{from:100,to:2},{from:101,to:2},{from:102,to:2},{from:103,to:2},{from:104,to:2},{from:105,to:2},
-{from:106,to:2},{from:107,to:2},{from:108,to:2},{from:109,to:2},{from:110,to:2},{from:111,to:2},{from:112,to:2},{from:113,to:2},
+{from:967,to:1},{from:967,to:2},
+{from:96,to:1},{from:96,to:2},
+{from:112,to:1},{from:112,to:2},
+
+{from:91,to:2},{from:92,to:2},{from:93,to:2},{from:94,to:2},{from:95,to:2},
+
+{from:97,to:2},{from:98,to:2},{from:100,to:2},{from:101,to:2},{from:102,to:2},{from:103,to:2},{from:104,to:2},{from:105,to:2},
+{from:106,to:2},{from:107,to:2},{from:108,to:2},{from:109,to:2},{from:110,to:2},{from:111,to:2},{from:113,to:2},
 {from:114,to:2},{from:115,to:2},
 {from:116,to:2},{from:117,to:2},{from:118,to:2},{from:119,to:2},{from:120,to:2},{from:121,to:2},{from:122,to:2},{from:123,to:2},
 {from:124,to:2},{from:125,to:2},{from:126,to:2},{from:127,to:2},{from:128,to:2},{from:129,to:2},{from:130,to:2},{from:131,to:2},
@@ -164,8 +233,12 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
 {from:140,to:2},{from:141,to:2},{from:142,to:2},{from:143,to:2},{from:144,to:2},{from:145,to:2},{from:146,to:2},{from:147,to:2},
 {from:148,to:2},{from:149,to:2},{from:150,to:2},{from:151,to:2},{from:152,to:2},{from:153,to:2},{from:154,to:2},{from:155,to:2},
 {from:156,to:2}
-     ]);
+     ];
+     edges = new vis.DataSet(edgesArray);
 
+    
+    
+    
     // create a network
     var container = document.getElementById('mynetwork');
 
@@ -173,18 +246,123 @@ INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2
     var data = {
         nodes: nodes,
         edges: edges    };
-    var options = {
-    	    interaction: {hover: true}
-    	  }
+    var options = {interaction:{hover:true}};
 
     // initialize your network!
-    var network = new vis.Network(container, data, options);
+    network = new vis.Network(container, data, options);
     
     network.on("click", function (params) {
         // params.event = "[original event]";
         var nodeId = parseInt(params.nodes);
-        document.getElementById('eventSpan').innerHTML = '<b>Noeud cliqué</b> id, nom : ' + nodeId + ' ' + nodes.get(nodeId).label;
+        document.getElementById('eventSpan').innerHTML = '<b>Informations de ' + nodes.get(nodeId).label + ' ('+ nodeId + ')' + '</b>';
+        clickAthlete(nodeId);
+    
     });
+
+    }
+    
+    
+    //http://visjs.org/examples/network/data/dynamicData.html
+    function addNode(idClub, nomClub) {
+        nodes.add({id:idClub, label:nomClub, color: '#cc0099'});
+        
+        addEdge(idClub, 47);
+        addEdge(idClub, 50);
+        addEdge(idClub, 52);
+        
+        addEdge(idClub, 105);
+        addEdge(idClub, 107);
+        addEdge(idClub, 127);
+        
+    }
+
+    function removeAthleteNonClub(idClub) {
+        try {
+        	
+        	var listeIdAthleteToRemove = [];
+        	for (var i = 92; i <= 170; i++) {
+        		listeIdAthleteToRemove.push(i);
+        	}
+			// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach
+        	listeIdAthleteToRemove.forEach(function (idToRemove){
+        		nodes.remove({id: idToRemove});
+        	});
+        	
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
+
+    function addEdge(idClub, idPersonne) {
+        try {
+            edges.add({
+                from: idPersonne,
+                to: idClub
+            });
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+    
+    
+    function changeOptions() {
+        shadowState = !shadowState;
+        network.setOptions({nodes:{shadow:shadowState},edges:{shadow:shadowState}});
+    }
+
+    function resetAllNodes() {
+        nodes.clear();
+        edges.clear();
+        nodes.add(nodesArray);
+        edges.add(edgesArray);
+    }
+
+    function resetAllNodesStabilize() {
+        resetAllNodes();
+        network.stabilize();
+    }
+
+    function setTheData() {
+        nodes = new vis.DataSet(nodesArray);
+        edges = new vis.DataSet(edgesArray);
+        network.setData({nodes:nodes, edges:edges})
+    }
+
+    function resetAll() {
+        if (network !== null) {
+            network.destroy();
+            network = null;
+        }
+        startNetwork();
+    }
+    function clickAthlete(str) {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+                 var reponseGetLicence = this.responseText;
+                 // document.getElementById("clubsAthleteSelected").innerHTML = reponseGetLicence;
+
+                 
+                 $("#tableAthleteSelected tbody").children().remove();
+                 
+	             var jsonData = JSON.parse(reponseGetLicence);
+	             for (var i = 0; i < jsonData.clubs.length; i++) {
+	            	var obj = jsonData.clubs[i];
+	
+	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td><button class="btn btn-primary" onclick="javascript:alert(' + obj.id + ')">Ajouter le noeud dans le diagramme</td></tr>');
+	             }
+
+                 
+             }
+         };
+         xmlhttp.open("GET", "getLicenceByPersonne.php?q=" + str, true);
+         xmlhttp.send();
+     } 
+    startNetwork();
 </script>
 
 

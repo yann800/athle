@@ -17,26 +17,47 @@
 <script>
 // https://www.raymondcamden.com/2012/06/14/example-of-a-dynamic-html5-datalist-control
 $(document).ready(function() {
-	$("#search").on("input", function(e) {
+	$("#searchClub1").on("input", function(e) {
 		var val = $(this).val();
-		if(val === "") return;
+		if(val === ""){
+			return;
+		}
 		
-		console.log(val);
+		$.get("getClub.php", {q:val}, function(listeClubs) {
 
-		$.get("getClub.php", {q:val}, function(clubs) {
-			var dataList = $("#searchresults");
+			var dataList = $("#listeClub1");
 			dataList.empty();
-			if(clubs.length) {
-				for(var i=0, len=clubs.length; i<len; i++) {
-					
-					console.log(clubs[i][0]);
-
-					var opt = $("<option></option>").attr("value", clubs[i][0]);
-					dataList.append(opt);
-				}
+			
+			for (var i = 0; i < listeClubs.clubs.length; i++) {
+			    var obj = listeClubs.clubs[i];
+			    console.log(obj.c);
+				var opt = $("<option></option>").attr("value", obj.c);
+				dataList.append(opt);
 			}
 		},"json");
 	});
+
+
+	$("#searchClub2").on("input", function(e) {
+		var val = $(this).val();
+		if(val === ""){
+			return;
+		}
+
+		$.get("getClub.php", {q:val}, function(listeClubs) {
+
+			var dataList = $("#listeClub2");
+			dataList.empty();
+			
+			for (var i = 0; i < listeClubs.clubs.length; i++) {
+			    var obj = listeClubs.clubs[i];
+			    console.log(obj.c);
+				var opt = $("<option></option>").attr("value", obj.c);
+				dataList.append(opt);
+			}
+		},"json");
+	});
+
 })
 </script>
 
@@ -54,12 +75,10 @@ $(document).ready(function() {
 
 
 			<nav id="menu"></nav>
-<br/><br/><br/><br/>
+<br/>
 <br/>
 <a href="mutation_graph.html">Exemple (avec ACP Joinville et US Créteil))</a>
 <br/><br/>
-<br/><br/><br/><br/>
-
 			<h2>Sélection de deux clubs</h2>
 			
 			<br/>
@@ -74,17 +93,11 @@ $(document).ready(function() {
 			 
 			 <div class="col-sm-5">
 			 
-			<input name="club1" type="search" list="club1s" 
-			placeholder="club1" required="required"/>
+ 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom" list="listeClub1"
+ 	 autocomplete="off" required="required" style="width: 250px;"/>
+	<datalist id="listeClub1"></datalist>	
 			
-			
-			<datalist id="club1s"> 
-    				
-<option value="ACP Joinville">ACP Joinville</option>
-<option value="US Créteil">US Créteil</option>
-<option value="Montreuil AC">Montreuil AC</option>
-<option value="Saint Malo">Saint Malo</option> 
-			</datalist>			 
+			<datalist id="club1s"></datalist>			 
 			 
 			 </div>
 			 
@@ -94,8 +107,9 @@ $(document).ready(function() {
 			 <label for="club2" class="col-sm-3 control-label">Club n°2</label>
 			 <div class="col-sm-5">
 
- 	<input type="text" name="search" id="search" placeholder="club2" list="searchresults" autocomplete="off">
-	<datalist id="searchresults"></datalist>
+ 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom" list="listeClub2"
+ 	 autocomplete="off" required="required" style="width: 250px;"/>
+	<datalist id="listeClub2"></datalist>
 
 			 </div>
 			 
@@ -108,25 +122,26 @@ $(document).ready(function() {
 		
 		<div class="form-group">
 			<div class="col-sm-offset-1 col-sm-11">
-				<input type="submit" class="btn btn-primary" value="Rechercher" disabled="disabled"/>
+				<input type="submit" class="btn btn-primary" value="Rechercher" />
 			</div>
 		</div>
 
 	</div>
 
-
+<br/><br/><br/>
 
 <pre>Ici utilisation :
 
 - dataList de HTML5
 
 - de la méthode $.get(url, data, function(), dataType) de jQuery.
-cf. <a href="https://api.jquery.com/jquery.get/">https://api.jquery.com/jquery.get/</a></pre>
+cf. <a href="https://api.jquery.com/jquery.get/">https://api.jquery.com/jquery.get/</a>
 		
+<br/><br/>
 			
 Pour tester, le validateur <a href="http://jsonlint.com/">http://jsonlint.com/</a> valide
 le JSon retourné par l'invocation p.ex. de <a href="http://base.athle.free.fr/getClub?q=malo">http://base.athle.free.fr/getClub?q=malo</a> :
-
+<br/><br/>
 {
 	"clubs": [{
 		"c": "As j. cartier st malo"
@@ -138,6 +153,17 @@ le JSon retourné par l'invocation p.ex. de <a href="http://base.athle.free.fr/g
 		"c": "Saint malo sports loisirs"
 	}]
 }
+
+var jsonData = JSON.parse(le_json);
+for (var i = 0; i &lt; jsonData.clubs.length; i++) {
+    var obj = jsonData.clubs[i];
+    console.log(obj.c);
+}
+// idem mais avec syntaxe alernative
+jsonData.clubs.forEach(function (obj){
+	console.log(obj.c);
+});
+</pre>
 
 			
 			

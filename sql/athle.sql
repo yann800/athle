@@ -6,6 +6,14 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES latin1 */;
 
+CREATE TABLE IF NOT EXISTS licence (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idPersonne` int(11) NOT NULL,
+  `idClub` int(11) NOT NULL,
+  `annee` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE IF NOT EXISTS `club` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
