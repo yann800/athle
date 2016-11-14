@@ -87,10 +87,10 @@ else {
 <?php
 		  
 
-     $servername = "localhost";
-     $username = "root";
-     $password = "xxxx_bad_mdp";
-     $dbname = "base_athle";
+     include 'constantes.php';
+     
+     
+     
 
       echo "['Ann�e', '" . strtoupper($param_nom1) . "','" . strtoupper($param_nom2) . "'],";
      

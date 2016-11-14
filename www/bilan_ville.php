@@ -84,10 +84,7 @@ else {
 //    echo "OK Bonne chaine";
 //}
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "xxxx_bad_mdp";
-	$dbname = "base_athle";
+	include 'constantes.php';
 
 	// Create connection http://php.net/manual/fr/function.mysql-connect.php
 	

@@ -63,7 +63,7 @@ else {
    google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-		  ['Annï¿½e', '800', '1500', '3000'],
+		  ['Année', '800', '1500', '3000'],
 
 
 
@@ -77,10 +77,7 @@ else {
 //    echo "OK Bonne chaine";
 //}
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "xxxx_bad_mdp";
-	$dbname = "base_athle";
+	include 'constantes.php';
 
 	// Create connection http://php.net/manual/fr/function.mysql-connect.php
 	
@@ -152,7 +149,7 @@ while($row = mysql_fetch_assoc($req)){
         ]);
 
         var options = {
-          title: 'Meilleures performances ï¿½ la table de cotations par annï¿½e'
+          title: 'Meilleures performances à la table de cotations par année'
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -163,7 +160,7 @@ while($row = mysql_fetch_assoc($req)){
    
 <?php  
 if ( $nb == 0 ) {   
-    echo '<div class="alert alert-danger danger"><b>Pas de performances trouvï¿½es pour l\'athlï¿½te [' . $param_nom . ' ' . $param_prenom . '], ou ses nom-prï¿½nom ne sont pas orthographiï¿½s comme dans la base (vï¿½rifiez dans le tableau des athlï¿½tes du club si vous le connaissez)</b></div>';
+    echo '<div class="alert alert-danger danger"><b>Pas de performances trouvées pour l\'athlète [' . $param_nom . ' ' . $param_prenom . '], ou ses nom-prénom ne sont pas orthographiés comme dans la base (vérifiez dans le tableau des athlètes du club si vous le connaissez)</b></div>';
 	echo '<script>document.getElementById("chart_div").setAttribute("style", "visibility:hidden");</script>';
 }
 
@@ -180,7 +177,7 @@ if ( $nb == 0 ) {
         </div>
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body"><p>
-Note : on n'aurait pu faire plus simple si MySql avait implï¿½mentï¿½ la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
+Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
             
 		</div>
@@ -224,7 +221,7 @@ GROUP by annee
 <table class="table table-striped table-bordered table-hover table-condensed" id="example">
 	<thead>
 		<tr>
-			<th>Annï¿½e</th>
+			<th>Année</th>
 			<th>Epreuve</th>
 			<th>Perf</th>
 			<th>Points</th>

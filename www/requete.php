@@ -71,8 +71,8 @@
 			</thead>
 			<tbody>
 <?php
-$servername = "localhost";
-$username = "root";
+include 'constantes.php';
+
 $password = "";
 $dbname = "athle";
 
