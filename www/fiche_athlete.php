@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
 <link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -52,7 +52,7 @@ else {
 			<br/>
 			
 			<div class="alert alert-info info">
-			Pour voir le détail des performance, survolez les courbes du diagramme et reportez-vous au tableau.
+			Pour voir le d&eacute;tail des performance, survolez les courbes du diagramme et reportez-vous au tableau.
 			</div>
 			
        <div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -63,7 +63,7 @@ else {
    google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-		  ['Année', '800', '1500', '3000'],
+		  ['Annï¿½e', '800', '1500', '3000'],
 
 
 
@@ -71,7 +71,7 @@ else {
 // $param_nom = '77';
 
 // if (preg_match("#[a\-ZA\-Z]#", $param_nom)) {
-    //echo "Caratère interdit";
+    //echo "Caratere interdit";
 //exit;
 //} else {
 //    echo "OK Bonne chaine";
@@ -79,30 +79,18 @@ else {
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
-	$dbname = "athle";
+	$password = "xxxx_bad_mdp";
+	$dbname = "base_athle";
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
-
-
-	$sql = "INSERT INTO log (str, page, date) VALUES ('". $param_nom ." ". $param_prenom ."', 'fiche_athlete', NOW())";
-
-	if ($conn->query($sql) === TRUE) {
-		// echo "Record updated successfully";
-	} else {
-		echo "Error DB. ";
-		exit;
-	}
+	// Create connection http://php.net/manual/fr/function.mysql-connect.php
+	
+	$link  =  mysql_connect($servername, $username, $password)
+	or die( "Impossible de se connecter : "  .  mysql_error ());
+	
+	mysql_select_db($dbname);
 	
 	
-	$sql = "
-
-SELECT annee as annee, max(e_800) as e_800, max(e_1500) as e_1500, max(e_3000) as e_3000
+	$sql = "SELECT annee as annee, max(e_800) as e_800, max(e_1500) as e_1500, max(e_3000) as e_3000
 FROM
 (
 	SELECT annee, 
@@ -131,12 +119,20 @@ FROM
 GROUP by annee";
 
 
-$result = $conn->query($sql);
+// $result = mysql_query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    
+$req = mysql_query($sql) or die("['Erreur SQL !','" .$sql. "','" . mysql_error() . "]");
+
+
+$nb = mysql_num_rows($req);
+
+if ( $nb == 0 ) {
+	echo "['0',  0, 0, 0]";
+
+} else {
+// on fait une boucle qui va faire un tour pour chaque enregistrement
+while($row = mysql_fetch_assoc($req)){
+
         echo "['" . $row["annee"]. "'," . $row["e_800"]. "," . $row["e_1500"]. "," .  $row["e_3000"]. "]";
 
 		if ($row["e_3000"] > 0 and $row["annee"] == 2016){
@@ -146,13 +142,8 @@ if ($result->num_rows > 0) {
 			echo ",";
 		}
 
-    }
-} else {
-    echo "0 results";
 }
-	
-
-
+}
 
 
 
@@ -161,7 +152,7 @@ if ($result->num_rows > 0) {
         ]);
 
         var options = {
-          title: 'Meilleures perfs à la table de cotations par année'
+          title: 'Meilleures performances ï¿½ la table de cotations par annï¿½e'
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -169,23 +160,30 @@ if ($result->num_rows > 0) {
         chart.draw(data, options);
       }
    </script>
+   
+<?php  
+if ( $nb == 0 ) {   
+    echo '<div class="alert alert-danger danger"><b>Pas de performances trouvï¿½es pour l\'athlï¿½te [' . $param_nom . ' ' . $param_prenom . '], ou ses nom-prï¿½nom ne sont pas orthographiï¿½s comme dans la base (vï¿½rifiez dans le tableau des athlï¿½tes du club si vous le connaissez)</b></div>';
+	echo '<script>document.getElementById("chart_div").setAttribute("style", "visibility:hidden");</script>';
+}
+
+?>
+   
 <div class="panel-group" id="accordion">
     <div class="panel panel-default" id="panel1">
         <div class="panel-heading">
              <h4 class="panel-title">
         <a data-toggle="collapse" data-target="#collapseOne" 
-           href="#collapseOne">
-          Voir le SQL
-        </a>
+           href="#collapseOne">Voir le SQL</a>
       </h4>
 
         </div>
         <div id="collapseOne" class="panel-collapse collapse">
             <div class="panel-body"><p>
-Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
+Note : on n'aurait pu faire plus simple si MySql avait implï¿½mentï¿½ la fonction PIVOT/UNPIVOT (<a href="http://stackoverflow.com/questions/3392956/sql-how-to-transpose">inversion row/col</a>)
 </p>
             
-</div>
+		</div>
 
 <pre>
 SELECT annee,max(e_800), max(e_1500), max(e_3000)
@@ -223,35 +221,37 @@ GROUP by annee
 </div>
 
 
-							<table class="table table-striped table-bordered table-hover table-condensed" id="example">
-								<thead>
-									<tr>
-										<th>Année</th>
-										<th>Epreuve</th>
-										<th>Perf</th>
-										<th>Points</th>
-										<th>Ville</th>
-										<th>Date</th>
-									</tr>
-								</thead>
-								<tbody>
+<table class="table table-striped table-bordered table-hover table-condensed" id="example">
+	<thead>
+		<tr>
+			<th>Annï¿½e</th>
+			<th>Epreuve</th>
+			<th>Perf</th>
+			<th>Points</th>
+			<th>Ville</th>
+			<th>Date</th>
+			<th>Club</th>
+		</tr>
+	</thead>
+	<tbody>
 
 <?php
 
 
-$sql = "SELECT annee, idEpreuve, perf, points, ville, datePerf FROM ligne WHERE prenom = '". $param_prenom ."' AND nom ='". $param_nom ."' ORDER BY annee, datePerf";
+$sql = "SELECT annee, idEpreuve, perf, points, ville, datePerf, club FROM ligne WHERE prenom = '". $param_prenom ."' AND nom ='". $param_nom ."' ORDER BY annee, datePerf";
 
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+	while($row = mysql_fetch_assoc($req)){
+
     
-        echo "<tr><td>" . $row["annee"]. "</td><td>" . $row["idEpreuve"]. "</td><td>" . $row["perf"]. "</td><td>" . $row["points"]. "</td><td>" . $row["ville"]. "</td><td>" .  $row["datePerf"]. "</td></tr>";
+        echo "<tr><td>" . $row["annee"]. "</td><td>" . $row["idEpreuve"]. "</td><td>" . $row["perf"]. "</td><td>" . $row["points"]. "</td><td>" . $row["ville"]. "</td><td>" .  $row["datePerf"]. "</td><td>" .  $row["club"]. "</td></tr>";
 
 	}
-}
-$conn->close();
+
+mysql_close();
 ?>
 								</tbody>
 							</table>
