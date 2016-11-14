@@ -20,19 +20,14 @@ function getPrenom(nom){
         return '';
     }
     
-    var prenom;
    	var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        	prenom = this.responseText;
-        	// return prenom;
+        	document.getElementById("txtHintPrenom").innerHTML = this.responseText;
         }
     };
     xmlhttp.open("GET", "getPrenom.php?q=" + nom, true);
     xmlhttp.send();
-    
-    return prenom;
-
     
 }
 
@@ -45,22 +40,24 @@ function showHint(str) {
     	var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+                var nom = this.responseText;
+                document.getElementById("txtHint").innerHTML = nom;
+                
+        		// si plusieurs noms
+                if (nom.indexOf(",") > -1){
+                	// getPrenom(listeNom);
+                }
+                // si un seul nom est possible, positionnement prénom
+                else {
+                	getPrenom(nom);
+                }
+                
+                
             }
         };
         xmlhttp.open("GET", "getNom.php?q=" + str, true);
         xmlhttp.send();
 
-        // var nom = $('#txtHint').val();
-        var nom = document.getElementById("txtHint").innerHTML;
-		// plusieurs noms
-        if (nom.indexOf(",") > -1){
-        	// document.getElementById("txtHintPrenom").innerHTML = getPrenom(nom);
-        }
-        // si un seul nom est possible, positionnement prénom
-        else {
-        	document.getElementById("txtHintPrenom").innerHTML = getPrenom(nom);
-        }
     }
     
 }
@@ -120,8 +117,9 @@ function showHint(str) {
 
 	<div class="col-sm-5">
 		<div class="alert alert-info col-sm-12" role="info">
-			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La recherche est insensible aux accents et majuscules/minuscules. Les
-			caratères '-' sont remplacés par des blancs. <b>Certains noms sont orthographiés par la FFA parfois avec espace, parfois sans (ex : 'FLANDRIN THONIEL' avec espace mais  'ABDELKADER' sans). Vous devez prendre cela en compte si vous recherchez des athlètes pour lesquels la question se pose, et ça marchera bien !</b>
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> La recherche est insensible aux accents et majuscules/minuscules.
+			Les caratères '-' sont remplacés par des blancs. <b>Certains noms sont orthographiés par la FFA parfois avec espace, parfois sans
+			(ex : 'FLANDRIN THONIEL' avec espace mais  'ABDELKADER' sans).</b>
 		</div>
 	</div>
 
