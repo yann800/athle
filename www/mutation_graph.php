@@ -86,7 +86,7 @@ else {
 		  
 			<table id="tableAthleteSelected" class="table table-striped table-bordered table-hover" >
 			<thead>
-				<tr><th>Club</th><th>Action</th></tr>
+				<tr><th>Club</th><th>Athlètes<th>Action</th></tr>
 			</thead>
 			<tbody>
 			</tbody>
@@ -368,7 +368,7 @@ while($row = mysql_fetch_assoc($req)){
 
     function addAthletes(idClub) {
 
-    	var idDejaPresent = -1; // vérificartion todo
+    	var idDejaPresent = -1; // vérification todo
     	if (idClub === idDejaPresent) { 
             return '';
         }
@@ -476,7 +476,7 @@ while($row = mysql_fetch_assoc($req)){
 	             for (var i = 0; i < jsonData.clubs.length; i++) {
 	            	var obj = jsonData.clubs[i];
 	
-	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a + '</td><td><button class="btn btn-primary" onclick="addClub(' + obj.id + ',\'' + obj.c + '\')">Ajouter le club</td></tr>');
+	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + obj.c_id + ',\'' + obj.c + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 
                  
@@ -501,7 +501,7 @@ while($row = mysql_fetch_assoc($req)){
 	             for (var i = 0; i < jsonData.clubs.length; i++) {
 	            	var obj = jsonData.clubs[i];
 	
-	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td><button class="btn btn-primary" onclick="addClub(' + obj.id + ',\'' + obj.c + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
+	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + obj.c_id + ',\'' + obj.c + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 
                  

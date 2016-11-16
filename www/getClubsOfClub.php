@@ -33,7 +33,7 @@ or die( "Impossible de se connecter : "  .  mysql_error ());
 mysql_select_db($dbname);
 
 
-$sql = "SELECT DISTINCT l.idClub, c.nom, l.idPersonne, a.nom FROM  personne a, licence l
+$sql = "SELECT DISTINCT l.idClub AS c_id, c.nom AS c_nom, l.idPersonne, a.nom AS a_nom FROM  personne a, licence l
 		
 		JOIN club c ON c.id = l.idClub AND c.id != ". $q ."
 		
@@ -54,18 +54,39 @@ while ($data = mysql_fetch_assoc($result)) {
 mysql_close();
 
 
-$current = -1;
+
+class C_A {
+	var $club;
+	var $idC;
+	var $a;
+}
+
+
+$obj = new C_A();
+$data_array_avec_nom_ath = array();
+$current_c_id = -1;
+$i = -1;
 
 foreach ($data_array as $row) {
 
-	if ($row["id"] != $current){
-		
-		$data_array_avec_nom_ath.push($row["nom"]);
-		
-		
+	if ($row["c_id"] === $current_c_id){
+
+		// $obj = end($data_array_avec_nom_ath);
+		// $obj->idC = $row["c_id"];
+		$obj->a = $obj->a . ', '. $row["a_nom"];
+
+		$data_array_avec_nom_ath[i] = $obj;
 	}
 	else {
-			
+		$i = $i + 1;
+
+		$obj = new C_A();
+		$obj->club = $row["c_nom"];
+		$obj->a = $row["a_nom"];
+		$obj->idC = $row["c_id"];
+
+		$current_c_id = $row["c_id"];
+		array_push($data_array_avec_nom_ath, $obj);
 	}
 }
 
@@ -73,18 +94,19 @@ foreach ($data_array as $row) {
 $hint = '{ "clubs": [';
 
 
-foreach ($data_array_avec_nom_ath as $row) {
-		
-		if ($hint === "") {
-			$hint .= '{"c":"' . $row["nom"] . '", "a":"' . $row[a] . '"}';
-		} else {
-			$hint .= ',{"c":"' . $row["nom"] . '", "a":"' . $row[a] . '"}';
-		}
-		
+foreach ($data_array_avec_nom_ath as $obj) {
+
+	if ($hint === '{ "clubs": [') {
+		$hint .= '{"c":"' . $obj->club . '", "c_id": ' . $obj->idC . ', "a":"' . $obj->a . '"}';
+	} else {
+		$hint .= ',{"c":"' . $obj->club . '", "c_id": ' . $obj->idC . ', "a":"' . $obj->a . '"}';
 	}
-	$hint .= ']}';
+
+}
+$hint .= ']}';
+
 
 
 // Output "no suggestion" if no hint was found or output correct values 
 echo $hint === "" ? "aucun nom trouvé" : $hint;
-?>é__
+?>
