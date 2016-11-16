@@ -41,7 +41,17 @@
 
 			<pre><code>SELECT p.nom, count(*) FROM ligne l
 INNER JOIN Pays p ON p.id = l.idPays
-GROUP BY p.nom</code></pre>
+GROUP BY p.nom;
+
+
+SELECT DISTINCT l1.nom
+FROM ligne l1
+INNER JOIN ligne l2 ON l1.nom = l2.nom
+AND l1.idPays != l2.idPays
+ORDER BY l1.nom
+;</code></pre>
+
+
 
 <br/>
 

@@ -77,7 +77,25 @@ $(document).ready(function() {
 			<nav id="menu"></nav>
 <br/>
 <br/>
-<a href="mutation_graph.html">Exemple (avec ACP Joinville et US Créteil))</a>
+
+<!-- <a id="test" >Exemple (avec AC Paris-Joinville et US Créteil))</a> -->
+
+
+<!-- <a href="mutation_graph.html" >direct</a> -->
+<script >
+ 
+    $('#test').click(function() {
+    	$('#searchClub1').val( 'Ac paris-joinville' );
+    	
+    	$("#searchClub1 option[value='Ac paris-joinville']").attr('selected', 'selected');
+    	
+    	$('#searchClub2').val( 'Us creteil' );
+    	
+    	$("#searchClub2 option[value='Us creteil']").attr('selected', 'selected');
+    });
+     
+    </script>
+
 <br/><br/>
 			<h2>Sélection de deux clubs</h2>
 			
@@ -97,7 +115,6 @@ $(document).ready(function() {
  	 autocomplete="off" required="required" style="width: 250px;"/>
 	<datalist id="listeClub1"></datalist>	
 			
-			<datalist id="club1s"></datalist>			 
 			 
 			 </div>
 			 

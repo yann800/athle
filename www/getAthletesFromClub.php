@@ -19,18 +19,8 @@ if ($q == "") {
 	exit;
 }
 
-if (strlen($q) < 3) {
-	echo 'param q de longueur inférieure à 3';
-	exit;
-}
-
 
 include 'constantes.php';
-
-
-
-
-// Create connection http://php.net/manual/fr/function.mysql-connect.php
 
 $link  =  mysql_connect($servername, $username, $password)
 or die( "Impossible de se connecter : "  .  mysql_error ());
@@ -38,7 +28,7 @@ or die( "Impossible de se connecter : "  .  mysql_error ());
 mysql_select_db($dbname);
 
 
-$sql = "SELECT DISTINCT nom FROM ligne WHERE nom LIKE '". $q ."%' LIMIT 200;";
+$sql = "SELECT DISTINCT p.id, p.nom FROM personne p INNER JOIN licence l ON l.idPersonne = p.id WHERE l.idClub = ". $q .";";
 
 
 $req = mysql_query($sql) or die("['Erreur SQL !','" .$sql. "','" . mysql_error() . "]");
@@ -53,13 +43,15 @@ if ( $nb == 0 ) {
 	while($row = mysql_fetch_assoc($req)){
 		
 		if ($hint === "") {
-			$hint = $row["nom"];
+			$hint = '{ "athletes": [{"id":' . $row["id"] . ',"a":"' . $row["nom"] . '"}';
 		} else {
-			$hint .= ', ' . $row["nom"];
+			$hint .= ',{"id":' . $row["id"] . ', "a":"' . $row["nom"] . '"}';
 		}
+		
 	}
+	$hint .= ']}';
 }
 
 // Output "no suggestion" if no hint was found or output correct values 
-echo $hint === "" ? "aucun nom trouvé" : $hint;
+echo $hint === "" ? "aucun club trouvé" : $hint;
 ?>
