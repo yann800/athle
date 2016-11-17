@@ -189,13 +189,17 @@ SELECT DISTINCT l1.nom
 FROM ligne l1
 INNER JOIN ligne l2 ON l1.nom = l2.nom AND l1.club = 'Ac paris-joinville' AND l2.club = 'Us creteil';
 
-
--- liste des athlètes appartenant aux deux clubs (avec nouvelle table créée nécessairement pour rapidité)
-SELECT DISTINCT p.id, p.nom FROM personne p 
- JOIN licence l1 ON l1.idPersonne = p.id AND l1.idClub = 91  
- JOIN licence l2 ON l2.idPersonne = p.id AND l2.idClub = 1583
-
--- sélection des athlètes appartenant à au moins un des deux clubqs
+-- en MySQL pas de INTERSECT http://sql.sh/cours/intersect donc solution alternative
+-- (ici pas possible d'utiliser deux JOIN à la fois)
+SELECT DISTINCT p.id, p.nom
+FROM personne p, licence l1
+WHERE l1.idPersonne = p.id
+AND l1.idClub =91
+AND p.id
+IN (
+  SELECT DISTINCT p2.id FROM personne p2
+  INNER JOIN licence l2 ON l2.idPersonne = p2.id
+  WHERE l2.idClub =1583
 
  </code>
 </pre>
@@ -339,13 +343,14 @@ while($row = mysql_fetch_assoc($req)){
        }
        
     //http://visjs.org/examples/network/data/dynamicData.html
-    function addClub(idClub, nomClub) {
+    function addClub(idClub1, idClub2, nomClub) {
             
-        $( "#actionSpan" ).append('<input class="btn btn-default" type="button" onclick="addAthletes(' + idClub + ')" value="Ajouter tous les athlètes de ' + nomClub + '" />');
+        $( "#actionSpan" ).append('<input class="btn btn-default" type="button" onclick="addAthletes(' + idClub2 + ')" value="Ajouter tous les athlètes de ' + nomClub + '" />');
 
-        nodes.add({id:idClub, label:nomClub, color: '#cc0099'});
+        // 1. ajout du nouveau club
+        nodes.add({id:idClub2, label:nomClub, color: '#cc0099'});
         
-		// edges.add seulement athlètes déjà présents
+        // 2. ajout des athlètes des deux clubs avec leur edge
        	var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -355,15 +360,20 @@ while($row = mysql_fetch_assoc($req)){
 	            var jsonData = JSON.parse(reponseGetAthletes);
 	            for (var i = 0; i < jsonData.athletes.length; i++) {
 	            	var a = jsonData.athletes[i];
-	            	if (nodes.get(a.id) != null){
-	            		addEdge(a.id, idClub);
-	            	}
-	            }
 
+	            	if (nodes.get(a.id) == null){
+	            		nodes.add({id:a.id, label:a.a});
+	            	}
+            		addEdge(a.id, idClub2);
+	            }
             }
         };
-        xmlhttp.open("GET", "getAthletesFromClub.php?q=" + idClub, true);
-        xmlhttp.send();		
+        xmlhttp.open("GET", "getAthletesFromDeuxClub.php?c1=" + idClub1 + "&c2=" + idClub2, true);
+        xmlhttp.send();	        
+        
+        
+	
+
     }
 
     function addAthletes(idClub) {
@@ -463,7 +473,7 @@ while($row = mysql_fetch_assoc($req)){
         startNetwork();
     }
 
-    function clickClub(str) {
+    function clickClub(idClub1) {
     	
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -476,17 +486,19 @@ while($row = mysql_fetch_assoc($req)){
 	             for (var i = 0; i < jsonData.clubs.length; i++) {
 	            	var obj = jsonData.clubs[i];
 	
-	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + obj.c_id + ',\'' + obj.c + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
+	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a 
+	+ '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + idClub1 + ',' + obj.c_id + ',\'' + obj.c
+	+ '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 
                  
              }
          };
-         xmlhttp.open("GET", "getClubsOfClub.php?q=" + str, true);
+         xmlhttp.open("GET", "getClubsOfClub.php?q=" + idClub1, true);
          xmlhttp.send();
     }
     
-    function clickAthlete(str) {
+    function clickAthlete(idClub1) {
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -501,18 +513,19 @@ while($row = mysql_fetch_assoc($req)){
 	             for (var i = 0; i < jsonData.clubs.length; i++) {
 	            	var obj = jsonData.clubs[i];
 	
-	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c + '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + obj.c_id + ',\'' + obj.c + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
+	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c
+	+ '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + idClub1 + ',' +  obj.c_id + ',\'' + obj.c
+	 + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 
                  
              }
          };
-         xmlhttp.open("GET", "getLicenceByPersonne.php?q=" + str, true);
+         xmlhttp.open("GET", "getLicenceByPersonne.php?q=" + idClub1, true);
          xmlhttp.send();
      } 
     startNetwork();
 </script>
-
 
 
 
