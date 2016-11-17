@@ -69,6 +69,7 @@ $i = -1;
 
 foreach ($data_array as $row) {
 
+	// TODO faire test si c_id déjà ajouté - faire test dans test.php
 	if ($row["c_id"] === $current_c_id){
 
 		// $obj = end($data_array_avec_nom_ath);

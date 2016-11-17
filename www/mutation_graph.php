@@ -349,6 +349,7 @@ while($row = mysql_fetch_assoc($req)){
 
         // 1. ajout du nouveau club
         nodes.add({id:idClub2, label:nomClub, color: '#cc0099'});
+        listeIdClub.push(idClub2);
         
         // 2. ajout des athlètes des deux clubs avec leur edge
        	var xmlhttp = new XMLHttpRequest();
@@ -366,6 +367,7 @@ while($row = mysql_fetch_assoc($req)){
 	            	}
             		addEdge(a.id, idClub2);
 	            }
+	            
             }
         };
         xmlhttp.open("GET", "getAthletesFromDeuxClub.php?c1=" + idClub1 + "&c2=" + idClub2, true);
