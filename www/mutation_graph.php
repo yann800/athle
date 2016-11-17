@@ -328,7 +328,8 @@ while($row = mysql_fetch_assoc($req)){
        network.on("click", function (params) {
            // params.event = "[original event]";
            var nodeId = parseInt(params.nodes);
-           document.getElementById('infoSpan').innerHTML = '<b>Informations de ' + nodes.get(nodeId).label + ' ('+ nodeId + ')' + '</b>';
+           console.log(nodeId);
+           document.getElementById('infoSpan').innerHTML = '<b>Informations de ' + nodes.get(nodeId).label + ')' + '</b>';
 
            // $.inArray(91, [91,1583]) return 0. Si non trouvé, -1
            if($.inArray(nodeId, listeIdClub) > -1){
@@ -516,7 +517,7 @@ while($row = mysql_fetch_assoc($req)){
 	            	var obj = jsonData.clubs[i];
 	
 	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c
-	+ '</td><td>' + obj.a + '</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + idClub1 + ',' +  obj.c_id + ',\'' + obj.c
+	+ '</td><td>visible après ajout et sélection</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + idClub1 + ',' +  obj.id + ',\'' + obj.c
 	 + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 

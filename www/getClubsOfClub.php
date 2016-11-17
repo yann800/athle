@@ -13,7 +13,7 @@ else {
 
 $hint = "";
 
-// lookup all hints from array if $q is different from "" 
+// lookup all hints from array if $q is different from ""
 if ($q == "") {
 	echo 'param q vide';
 	exit;
@@ -34,12 +34,12 @@ mysql_select_db($dbname);
 
 
 $sql = "SELECT DISTINCT l.idClub AS c_id, c.nom AS c_nom, l.idPersonne, a.nom AS a_nom FROM  personne a, licence l
-		
+
 		JOIN club c ON c.id = l.idClub AND c.id != ". $q ."
-		
+
 		WHERE l.idPersonne IN (
 			SELECT DISTINCT l2.idPersonne FROM licence l2 WHERE l2.idClub = ". $q .")
-		AND l.idPersonne = a.id			
+		AND l.idPersonne = a.id
 		ORDER BY l.idClub;";
 
 
@@ -65,21 +65,19 @@ class C_A {
 $obj = new C_A();
 $data_array_avec_nom_ath = array();
 $current_c_id = -1;
-$i = -1;
 
 foreach ($data_array as $row) {
 
-	// TODO faire test si c_id déjà ajouté - faire test dans test.php
 	if ($row["c_id"] === $current_c_id){
 
-		// $obj = end($data_array_avec_nom_ath);
-		// $obj->idC = $row["c_id"];
 		$obj->a = $obj->a . ', '. $row["a_nom"];
 
-		$data_array_avec_nom_ath[i] = $obj;
 	}
 	else {
-		$i = $i + 1;
+
+		if ($current_c_id != -1){
+			array_push($data_array_avec_nom_ath, $obj);
+		}
 
 		$obj = new C_A();
 		$obj->club = $row["c_nom"];
@@ -87,10 +85,9 @@ foreach ($data_array as $row) {
 		$obj->idC = $row["c_id"];
 
 		$current_c_id = $row["c_id"];
-		array_push($data_array_avec_nom_ath, $obj);
 	}
 }
-
+array_push($data_array_avec_nom_ath, $obj);
 
 $hint = '{ "clubs": [';
 
@@ -108,6 +105,6 @@ $hint .= ']}';
 
 
 
-// Output "no suggestion" if no hint was found or output correct values 
+// Output "no suggestion" if no hint was found or output correct values
 echo $hint === "" ? "aucun nom trouvé" : $hint;
 ?>

@@ -95,8 +95,19 @@ $(document).ready(function() {
     });
      
     </script>
-
-<br/><br/>
+<div class="alert alert-warning" role="alert">
+<span class="glyphicon glyphicon-exclamation-sign"
+aria-hidden="true"></span> <span class="sr-only">Error:</span>
+Malheureusement dans la base de la fédération certains clubs sont écrits de façon
+variable. Par exemple :
+<ul>
+<li>Athle nord 77 et Athle nord 77 val d europ</li>
+<li>Ca montreuil et Ca montreuil 93</li>
+<li>Stade lamentin et Stade lamentin (gua)</li>
+</ul>
+Cette particularité est à prendre en compte lors de la recherche, il faut alors explorer les clubs selon
+les noms possibles (homogéinisation tâche future).</div>
+<br/>
 			<h2>Sélection de deux clubs</h2>
 			
 			<br/>
@@ -145,7 +156,23 @@ $(document).ready(function() {
 
 	</div>
 
+			</form>
+
+
 <br/><br/><br/>
+
+
+
+			<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true" >
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Info javascript</a></h4>
+						
+          
+					</div>
+					<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+			
 
 <pre>Ici utilisation :
 
@@ -154,11 +181,10 @@ $(document).ready(function() {
 - de la méthode $.get(url, data, function(), dataType) de jQuery.
 cf. <a href="https://api.jquery.com/jquery.get/">https://api.jquery.com/jquery.get/</a>
 		
-<br/><br/>
 			
 Pour tester, le validateur <a href="http://jsonlint.com/">http://jsonlint.com/</a> valide
 le JSon retourné par l'invocation p.ex. de <a href="http://base.athle.free.fr/getClub?q=malo">http://base.athle.free.fr/getClub?q=malo</a> :
-<br/><br/>
+<br/>
 {
 	"clubs": [{
 		"c": "As j. cartier st malo"
@@ -182,10 +208,12 @@ jsonData.clubs.forEach(function (obj){
 });
 </pre>
 
+				</div>
+</div></div>
+	</div> <!-- end panel group -->
 			
 			
 			
-			</form>
 			
 
 
