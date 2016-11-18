@@ -22,6 +22,10 @@
             height: 500px;
             border: 1px solid lightgray;
         }
+        
+        input[type='button'] {
+			margin: 10px;
+        }
     </style>
 </head>
 <body>
@@ -97,7 +101,7 @@ else {
 	
 			<div class="panel panel-default">
 		  <!-- Default panel contents -->
-		  <div class="panel-heading">Actions</div>
+		  <div class="panel-heading"><b>Ajout de tous les athlètes d'un club</b></div>
 	<div id="actionSpan">
 
 <?php
@@ -134,12 +138,12 @@ else {
    while($row = mysql_fetch_assoc($req)){
    	$idClub2 = $row["id"];
    }
-echo '<input class="btn btn-default" type="button" onclick="addAthletes(' . $idClub1 . ')" value="Ajouter tous les athlètes de ' . $param_club1 . '" />';
-echo '<input class="btn btn-default" type="button" onclick="addAthletes(' . $idClub2 . ')" value="Ajouter tous les athlètes de ' . $param_club2 . '" />';
+echo '<input class="btn btn-primary" type="button" onclick="addAthletes(' . $idClub1 . ')" value="' . $param_club1 . '" />';
+echo '<input class="btn btn-primary" type="button" onclick="addAthletes(' . $idClub2 . ')" value="' . $param_club2 . '" />';
 
 ?>
 <!-- 
-<input class="btn btn-default" type="button" onclick="removeAthleteNonClub(1)" value="Supprimer les athlètes non-ACP Joinville" />
+<input class="btn btn-primary" type="button" onclick="removeAthleteNonClub(1)" value="Supprimer les athlètes non-ACP Joinville" />
  -->
 
 	</div>
@@ -346,7 +350,7 @@ while($row = mysql_fetch_assoc($req)){
     //http://visjs.org/examples/network/data/dynamicData.html
     function addClub(idClub1, idClub2, nomClub) {
             
-        $( "#actionSpan" ).append('<input class="btn btn-default" type="button" onclick="addAthletes(' + idClub2 + ')" value="Ajouter tous les athlètes de ' + nomClub + '" />');
+        $( "#actionSpan" ).append('<input class="btn btn-primary" type="button" onclick="addAthletes(' + idClub2 + ')" value="' + nomClub + '" />');
 
         // 1. ajout du nouveau club
         nodes.add({id:idClub2, label:nomClub, color: '#cc0099'});
@@ -379,6 +383,39 @@ while($row = mysql_fetch_assoc($req)){
 
     }
 
+    function addClubFromAthlete(idAthlete, idClub, nomClub) {
+        
+        $( "#actionSpan" ).append('<input class="btn btn-primary" type="button" onclick="addAthletes(' + idClub + ')" value="' + nomClub + '" />');
+
+        // 1. ajout du nouveau club
+        nodes.add({id:idClub, label:nomClub, color: '#cc0099'});
+        listeIdClub.push(idClub);
+        
+        // 2. connection des athlètes présents au club
+       	var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+            	var reponseGetAthletes = this.responseText;
+                
+	            var jsonData = JSON.parse(reponseGetAthletes);
+	            for (var i = 0; i < jsonData.athletes.length; i++) {
+	            	var a = jsonData.athletes[i];
+
+	            	if (nodes.get(a.id) != null){
+            		addEdge(a.id, idClub);
+	            	}
+	            }
+	            
+            }
+        };
+        xmlhttp.open("GET", "getAthletesFromClub.php?q=" + idClub, true);
+        xmlhttp.send();	        
+        
+        
+	
+
+    }
     function addAthletes(idClub) {
 
     	var idDejaPresent = -1; // vérification todo
@@ -501,7 +538,7 @@ while($row = mysql_fetch_assoc($req)){
          xmlhttp.send();
     }
     
-    function clickAthlete(idClub1) {
+    function clickAthlete(idAthlete) {
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -517,14 +554,14 @@ while($row = mysql_fetch_assoc($req)){
 	            	var obj = jsonData.clubs[i];
 	
 	            	$("#tableAthleteSelected tbody").append('<tr><td>' + obj.c
-	+ '</td><td>visible après ajout et sélection</td><td><button class="btn btn-primary btn-xs" onclick="addClub(' + idClub1 + ',' +  obj.id + ',\'' + obj.c
+	+ '</td><td>visible après ajout et sélection</td><td><button class="btn btn-primary btn-xs" onclick="addClubFromAthlete(' + idAthlete + ',' +  obj.id + ',\'' + obj.c
 	 + '\')"><span class="glyphicon glyphicon-plus"/></td></tr>');
 	             }
 
                  
              }
          };
-         xmlhttp.open("GET", "getLicenceByPersonne.php?q=" + idClub1, true);
+         xmlhttp.open("GET", "getLicenceByPersonne.php?q=" + idAthlete, true);
          xmlhttp.send();
      } 
     startNetwork();
