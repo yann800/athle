@@ -2,6 +2,7 @@ package fr.yann.parser;
 
 public class LigneBilan {
 
+	private static final String SEPARATOR_TD = "</td><td>";
 	private int		rang;
 	private String	perf;
 	private String	nom;
@@ -60,6 +61,14 @@ public class LigneBilan {
 				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve + ");";
 
 		return str;
+	}
+	
+	public String toStringHtmlTrOfTable() {
+		return "<tr><td>" + rang + SEPARATOR_TD + perf 
+				+ SEPARATOR_TD + nom + SEPARATOR_TD + prenom
+				+ SEPARATOR_TD + club + SEPARATOR_TD + anneeNaissance
+				+ SEPARATOR_TD + datePerf + SEPARATOR_TD + ville
+				+ "</td></tr>";
 	}
 
 }
