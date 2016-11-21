@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+<style type="text/css">
+#menuFixed {
+	margin-top: 40px;
+}
+#menuContainer{
+	margin-left: 0px;
+}
+</style>
+
+<title>Record des vétérans (toutes années)</title>
+
+</head>
+
+<body>
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+
+		<div class="col-sm-8">
+
+
+			<nav id="menu"></nav>
+			
+<nav id="menuFixed" class="navbar-fixed-top">
+  <div class="container" id="menuContainer">
+<ul class="nav nav-pills">
+	<li id="navM40_800" role="presentation"><a href="#M40_800">800</a></li>
+	<li id="navM40_1500" role="presentation"><a href="#M40_1500">1500</a></li>
+	<li id="navM40_3000" role="presentation"><a href="#M40_3000">3000</a></li>
+</ul>.
+  </div>
+</nav>
+
+<h1>Record des vétérans (toutes années)</h1>
+
+
+
+source : <a href="http://veterans.athle.com/asp.net/espaces.html/html.aspx?id=6363">http://veterans.athle.com/asp.net/espaces.html/html.aspx?id=6363</a>
+<br/><br/>
+	
+	
+<div class="panel-group" role="tablist" aria-multiselectable="true" >
+	<div class="panel panel-default">
+		<div  role="tab" id="headingOne">
+			<a data-toggle="collapse" href="#collapse3">Code d'extraction des records en texte simple</a>
+			
+       
+		</div>
+		<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+
+<pre><code class="language-java">// Au sein d'une iteration ligne par ligne de fichier contient les records en texte brut. 
+// TODO add gestion parenthèses et tirêts
+String motAccent = "[A-Za-z\\u00C0\\u00C1\\u00C2\\u00C3\\u00C4...]+";
+String rang = "(\\d+)\\s";
+String perf = "(\\d{1,2}'\\d\\d\"\\d{1,2})\\s";
+String nom = "([A-Z]+)\\s";
+String prenom = "(" + motAccent + ")\\s";
+String club = "([a-zA-Z\\s\\.]+[a-zA-Z])\\s";
+String annee = "(\\d{2})\\s";
+String strDate = "(\\d{2}/\\d{2}/\\d{4})\\s";
+String ville = "(" + motAccent + ")";		
+
+String pattern = rang + perf + nom + prenom + club + annee + strDate + ville;
+
+Pattern r = Pattern.compile(pattern);
+Matcher m = r.matcher(line);
+
+if (m.find()) {
+
+	Ligne l = new Ligne(
+			Integer.parseInt(m.group(1)), // rang
+			m.group(2).replace("\"", ".").replace("'", "."), // perf
+			m.group(3).replace("'", " "), // nom
+			m.group(4).replace("'", " "), // prenom
+			m.group(5).replace("'", " "), // club
+			"", // ligue
+			Integer.parseInt(m.group(6)), // anneeNaissance
+			m.group(7), // datePerf
+			m.group(8).replace("'", " "),  // ville
+			idEpreuve,
+			sexe);
+
+	sb.append(l.toStringHtmlTrOfTable() + "\n");
+	}
+}
+</code></pre>
+	
+	
+	
+
+		</div>
+</div></div>
+	</div> <!-- end panel group -->
+	
+<br/>
+<!-- 
+http://veterans.athle.com/upload/ssites/000119/Jean_Claude_DEREMY_documents/800m.pdf
+http://veterans.athle.com/upload/ssites/000119/Jean_Claude_DEREMY_documents/1500m.pdf
+http://veterans.athle.com/upload/ssites/000119/Jean_Claude_DEREMY_documents/3000m.pdf -->
+
+<h2 id="M40_800">Records M40 800</h2>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>Rang</th><th>Perf</th><th>Nom</th><th>Prénom</th><th>Club</th><th>Naissance</th><th>Date</th><th>Ville</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+<tr><td>1</td><td>1'52"77</td><td>NIANG</td><td>Babacar</td><td>Es nanterre</td><td>58</td><td>29/06/1999</td><td>Limoges</td></tr>
+<tr><td>2</td><td>1'53"89</td><td>ANICET</td><td>Bruno</td><td>Athlé 632</td><td>76</td><td>19/06/2016</td><td>Compiègne</td></tr>
+<tr><td>3</td><td>1.54.54</td><td>GOMEZ</td><td>Joel</td><td>PLM Conflans</td><td>72</td><td>08/06/2013</td><td>Créteil</td></tr>
+<tr><td>4</td><td>1.54.90</td><td>GONZALES</td><td>Alexandre</td><td>Blagnac SC</td><td>51</td><td>18/06/1991</td><td>Toulouse</td></tr>
+<tr><td>5</td><td>1.55.55</td><td>WASFI</td><td>Ahmed</td><td>Martigues sports athle</td><td>63</td><td>05/02/2006</td><td>Bordeaux</td></tr>
+<tr><td>6</td><td>1.55.97</td><td>RAMDANI</td><td>Mohamed</td><td>Csjb angers</td><td>61</td><td>09/06/2001</td><td>Remiremont</td></tr>
+<tr><td>7</td><td>1'56"4</td><td>DELAUNAY</td><td>H.</td><td>A.Aix en Provence</td><td>RF</td><td>31/05/1981</td><td>Marseille</td></tr>
+<tr><td>8</td><td>1'56"48</td><td>JEANNOT</td><td>Jean-etienne</td><td>Mairie s. (ft-de-france)</td><td>62</td><td>10/06/2006</td><td>Le Lamentin</td></tr>
+<tr><td>9</td><td>1.56.66</td><td>RIOU</td><td>Hervé</td><td>CA Valence</td><td>49</td><td>17/06/1990</td><td>Aix</td></tr>
+<tr><td>11</td><td>1.56.92</td><td>PARKOO</td><td>Samy</td><td>US Ivry</td><td>61</td><td>06/07/2001</td><td>Brisbane</td></tr>
+<tr><td>12</td><td>1.56.98</td><td>MORENO</td><td>Frederic</td><td>Us creteil</td><td>68</td><td>04/07/2009</td><td>Bondoufle</td></tr>
+<tr><td>13</td><td>1.57.0</td><td>NOYER</td><td>Jean</td><td>US Pulversheim</td><td>50</td><td>10/07/1991</td><td>Vesoul</td></tr>
+<tr><td>14</td><td>1.57.03</td><td>NEY</td><td>Patrick</td><td>Ill bruch lingolsheim</td><td>60</td><td>16/06/2001</td><td>Méru</td></tr>
+<tr><td>17</td><td>1.57.31</td><td>CHEVAUX</td><td>Christophe</td><td>Sa Autun</td><td>75</td><td>09/07/2015</td><td>Dijon</td></tr>
+<tr><td>18</td><td>1.57.40</td><td>ADLI</td><td>Kais</td><td>AS Monaco</td><td>75</td><td>25/05/2016</td><td>Antibes</td></tr>
+<tr><td>19</td><td>1.57.48</td><td>CROCHEMORE</td><td>Arnaud</td><td>ASPTT Rouen</td><td>61</td><td>27/05/2001</td><td>Val</td></tr>
+<tr><td>22</td><td>1.58.02</td><td>KASMI</td><td>Khlifa</td><td>Es falaisienne</td><td>64</td><td>11/06/2006</td><td>Remiremont</td></tr>
+<tr><td>23</td><td>1.58.05</td><td>DE</td><td>PESSEMIER</td><td>Alain ES Viry NSE</td><td>57</td><td>09/05/1999</td><td>Franconville</td></tr>
+<tr><td>24</td><td>1.58.17</td><td>MAIRE</td><td>Laurent</td><td>Entente Sud Lyonnais</td><td>75</td><td>22/05/2016</td><td>Sotteville</td></tr>
+<tr><td>26</td><td>1.58.23</td><td>MARC</td><td>Sébastien</td><td>EA Grenoble</td><td>75</td><td>24/05/2015</td><td>Valence</td></tr>
+<tr><td>27</td><td>1.58.37</td><td>MONNERY</td><td>Patrick</td><td>EAR Montceau les Mines</td><td>58</td><td>16/06/2001</td><td>Meru</td></tr>
+<tr><td>28</td><td>1.58.51</td><td>DUPUY</td><td>David</td><td>Ca de la possession</td><td>70</td><td>04/06/2011</td><td>Saint</td></tr>
+<tr><td>29</td><td>1.58.67</td><td>PAILLOT</td><td>Emmanuel</td><td>Dole AC</td><td>72</td><td>24/06/2016</td><td>Ambilly</td></tr>
+
+
+</tbody>
+</table>
+
+
+<h2 id="M40_1500">Records M40 1500</h2>
+
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>Rang</th>
+			<th>Perf</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Club</th>
+			<th>Naissance</th>
+			<th>Date</th>
+			<th>Ville</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+
+<tr><td>1</td><td>3.51.26</td><td>GONZALEZ</td><td>Alexandre</td><td>Blagnac sc</td><td>51</td><td>11/06/1994</td><td>Toulouse</td></tr>
+<tr><td>2</td><td>3.52.0</td><td>BERNARD</td><td>Michel</td><td>AS Anzin</td><td>31</td><td>20/06/1972</td><td>inconnu</td></tr>
+<tr><td>4</td><td>3.58.33</td><td>RAMDANI</td><td>Mohamed</td><td>Csjb angers</td><td>61</td><td>06/06/2003</td><td>Carquefou</td></tr>
+<tr><td>5</td><td>3.58.48</td><td>KECHAOUI</td><td>Mustapha</td><td>Racing CF</td><td>62</td><td>22/06/2003</td><td>Nemours</td></tr>
+<tr><td>6</td><td>3.59.09</td><td>YAHIAOUI</td><td>Farid</td><td>CASG Paris</td><td>60</td><td>13/06/2001</td><td>Saint</td></tr>
+<tr><td>7</td><td>3.59.28</td><td>ZOUHAL</td><td>Hassane</td><td>Stade rennais athletisme</td><td>68</td><td>24/01/2009</td><td>Mondeville</td></tr>
+<tr><td>8</td><td>3.59.33</td><td>WASFI</td><td>Ahmed</td><td>Martigues sports athle</td><td>63</td><td>07/05/2006</td><td>Martigues</td></tr>
+<tr><td>9</td><td>3.59.57</td><td>MANZANARES</td><td>Fabien</td><td>Montpellier athletisme</td><td>64</td><td>30/06/2007</td><td>Arles</td></tr>
+<tr><td>10</td><td>3.59.71</td><td>BARKAOUI</td><td>Moussa</td><td>FAC Andrezieux</td><td>71</td><td>18/05/2014</td><td>Moirans</td></tr>
+<tr><td>14</td><td>4.00.39</td><td>DUPUY</td><td>David</td><td>Ca de la possession</td><td>70</td><td>05/06/2011</td><td>Saint</td></tr>
+<tr><td>15</td><td>4.00.6</td><td>CARABY</td><td>Bernard</td><td>AS Cherbourg</td><td>40</td><td>31/05/1981</td><td>Angers</td></tr>
+<tr><td>18</td><td>4.00.66</td><td>DUHAMEL</td><td>Christophe</td><td>CU Pau</td><td>72</td><td>16/06/2013</td><td>Bruges</td></tr>
+<tr><td>22</td><td>4.01.34</td><td>CROCHEMORE</td><td>Arnaud</td><td>ASPTT Rouen</td><td>61</td><td>02/06/2002</td><td>Elancourt</td></tr>
+<tr><td>23</td><td>4.01.49</td><td>GIBIER</td><td>Julien</td><td>ATHLE CHARTRES LUCE ASPTT MAINVILLIERS</td><td>74</td><td>10/05/2015</td><td>Vineuil</td></tr>
+<tr><td>24</td><td>4.01.8</td><td>CHOUKRANE</td><td>Christian</td><td>GA Haut saonois</td><td>55</td><td>24/07/1996</td><td>Héricourt</td></tr>
+<tr><td>25</td><td>4.01.92</td><td>DEPESSEMIER</td><td>Alain</td><td>ES Viry NSE</td><td>57</td><td>10/05/1998</td><td>Franconville</td></tr>
+<tr><td>26</td><td>4.01.92</td><td>ADLI</td><td>Kais</td><td>As monaco</td><td>75</td><td>02/04/2016</td><td>Ancone</td></tr>
+<tr><td>27</td><td>4.02.07</td><td>LUCAS</td><td>Joel</td><td>Stade rennais athletisme</td><td>52</td><td>15/05/1993</td><td>Rennes</td></tr>
+<tr><td>29</td><td>4.02.51</td><td>BOURDET</td><td>Patrick</td><td>AS Tourlaville</td><td>60</td><td>02/06/2002</td><td>Elancourt</td></tr>
+<tr><td>31</td><td>4.02.55</td><td>GILBERT</td><td>Frédéric</td><td>AO Charenton</td><td>72</td><td>01/05/2012</td><td>Antony</td></tr>
+<tr><td>32</td><td>4.02.88</td><td>CHRETIEN</td><td>Florent</td><td>A trois Tours</td><td>69</td><td>12/06/2010</td><td>Blois</td></tr>
+
+</tbody>
+</table>
+
+<h2 id="M40_3000">Records M40 3000</h2>
+
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>Rang</th>
+			<th>Perf</th>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Club</th>
+			<th>Naissance</th>
+			<th>Date</th>
+			<th>Ville</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+<tr><td>1</td><td>8.15.20</td><td>BEHAR</td><td>Abdallah</td><td>Olympique de marseille at</td><td>63</td><td>07/05/2006</td><td>Martigues</td></tr>
+<tr><td>2</td><td>8.18.46</td><td>LEVISSE</td><td>Pierre</td><td>SPO rouen</td><td>52</td><td>07/06/1993</td><td>Saint</td></tr>
+<tr><td>4</td><td>8.20.8</td><td>RAULT</td><td>Lucien</td><td>JS Plouguenast</td><td>36</td><td>04/06/1980</td><td>Lorient</td></tr>
+<tr><td>5</td><td>8.21.83</td><td>BELGHAZI</td><td>Ali</td><td>Neuilly Plaisance</td><td>62</td><td>25/05/2003</td><td>Montgeron</td></tr>
+<tr><td>6</td><td>8.22.0</td><td>MIMOUN</td><td>Alain</td><td>Racing club de France</td><td>21</td><td>06/06/1962</td><td>Saint</td></tr>
+<tr><td>7</td><td>8.24.03</td><td>GONZALES</td><td>Alexandre</td><td>Blagnac SC</td><td>51</td><td>03/07/1993</td><td>Tarbes</td></tr>
+<tr><td>9</td><td>8.29.94</td><td>GUEZENNEC</td><td>Yvon</td><td>ASPTT Lannion</td><td>54</td><td>01/05/1995</td><td>Saint</td></tr>
+<tr><td>10</td><td>8'28"88</td><td>EL HIMER</td><td>Driss</td><td>Strasbourg Agglomération</td><td>74</td><td>22/05/2016</td><td>Compiègne</td></tr>
+<tr><td>11</td><td>8'30"4</td><td>CHAUVELIER</td><td>Dominique</td><td>ESSA 72</td><td>56</td><td>14/09/1996</td><td>Tours</td></tr>
+<tr><td>12</td><td>8.30.81</td><td>LINGARD</td><td>Patrick</td><td>Bsma bruges st medard a</td><td>64</td><td>08/05/2004</td><td>Bordeaux</td></tr>
+<tr><td>13</td><td>8.31.5</td><td>CARABY</td><td>Bernard</td><td>AS Cherbourg</td><td>40</td><td>04/04/1982</td><td>Cherbourg</td></tr>
+<tr><td>14</td><td>8.32.33</td><td>GILBERT</td><td>Frédéric</td><td>US Creteil</td><td>72</td><td>02/07/2014</td><td>Saint</td></tr>
+<tr><td>15</td><td>8.33.45</td><td>DUBUS</td><td>Eric</td><td>Stade bordelais</td><td>66</td><td>17/06/2006</td><td>Bordeaux</td></tr>
+<tr><td>16</td><td>8.33.62</td><td>YAHIAOUI</td><td>Farid</td><td>CASG Paris</td><td>60</td><td>20/06/2001</td><td>Saint</td></tr>
+<tr><td>17</td><td>8.33.82</td><td>MONTCHAUX</td><td>Eric</td><td>Stade Sotteville</td><td>60</td><td>06/05/2001</td><td>Saint</td></tr>
+<tr><td>18</td><td>8.33.9</td><td>MAROQUIN</td><td>Bernard</td><td>CS Mainvillers</td><td>39</td><td>28/08/1980</td><td>Saint</td></tr>
+<tr><td>20</td><td>8.34.94</td><td>LAHLALI</td><td>Djamel</td><td>Stade de vanves</td><td>63</td><td>19/07/2006</td><td>St</td></tr>
+<tr><td>21</td><td>8.35.79</td><td>KECHAOUI</td><td>Mustapha</td><td>Racing CF</td><td>62</td><td>25/06/2003</td><td>Montgeron</td></tr>
+<tr><td>22</td><td>8.35.80</td><td>FETIZON</td><td>Pascal</td><td>ASPTT Chalons ebn Champagne</td><td>62</td><td>17/01/2004</td><td>reims</td></tr>
+<tr><td>23</td><td>8.36.04</td><td>EL</td><td>KHARRAT</td><td>Ali Velo sports chartres</td><td>66</td><td>07/05/2006</td><td>Chateaudun</td></tr>
+<tr><td>24</td><td>8.36.15</td><td>PERRAIS</td><td>Patrice</td><td>Herbauges athletic club</td><td>69</td><td>23/05/2010</td><td>Nantes</td></tr>
+<tr><td>26</td><td>8.37.26</td><td>CHATEL</td><td>Gilles</td><td>CA Flers</td><td>54</td><td>28/09/1996</td><td>Flers</td></tr>
+<tr><td>27</td><td>8.37.80</td><td>BRAND</td><td>Lionel</td><td>JA Melesse</td><td>55</td><td>03/09/1997</td><td>Rennes</td></tr>
+<tr><td>28</td><td>8.37.87</td><td>COSSIN</td><td>Sylvain</td><td>As saint remy vittel</td><td>68</td><td>05/07/2008</td><td>Thaon</td></tr>
+
+
+
+
+</tbody>
+</table>
+
+</div>
+</article>
+
+
+	<script src="js/menu.js" type="text/javascript"></script>
+	
+	
+	<script type="text/javascript" class="init">
+		$('.dropdown-toggle').dropdown();
+		
+// 		$(document).ready(function() {
+// 			$('#example').DataTable(
+// 					{
+// 				        "order": [[ 1, "desc" ]]
+// 				    }
+// 			);
+// 		});
+
+	</script>
+	<script>document.getElementById("statistiques").setAttribute("class", "active");</script>
+</body>
+</html>

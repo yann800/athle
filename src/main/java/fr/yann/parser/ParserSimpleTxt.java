@@ -52,17 +52,16 @@ public class ParserSimpleTxt {
 		// String to be scanned to find the pattern.
 		String motAccent = "[A-Za-z\\u00C0\\u00C1\\u00C2\\u00C3\\u00C4\\u00C5\\u00C6\\u00C7\\u00C8\\u00C9\\u00CA\\u00CB\\u00CC\\u00CD\\u00CE\\u00CF\\u00D0\\u00D1\\u00D2\\u00D3\\u00D4\\u00D5\\u00D6\\u00D8\\u00D9\\u00DA\\u00DB\\u00DC\\u00DD\\u00DF\\u00E0\\u00E1\\u00E2\\u00E3\\u00E4\\u00E5\\u00E6\\u00E7\\u00E8\\u00E9\\u00EA\\u00EB\\u00EC\\u00ED\\u00EE\\u00EF\\u00F0\\u00F1\\u00F2\\u00F3\\u00F4\\u00F5\\u00F6\\u00F9\\u00FA\\u00FB\\u00FC\\u00FD\\u00FF\\u0153]+";
 		
-		
 		String rang = "(\\d+)\\s";
-		String perf = "(1'\\d\\d\"\\d\\d)\\s";
+		String perf = "(\\d{1,2}'\\d\\d\"\\d{1,2})\\s";
 		String nom = "([A-Z]+)\\s";
 		String prenom = "(" + motAccent + ")\\s";
-		String club = "([a-zA-Z\\s]+[a-zA-Z])\\s";
+		String club = "([a-zA-Z\\s\\.]+[a-zA-Z])\\s";
 		String annee = "(\\d{2})\\s";
 		String strDate = "(\\d{2}/\\d{2}/\\d{4})\\s";
 		String ville = "(" + motAccent + ")";		
 
-		// String pattern = rang + perf + nom + "([^\\s]+)\\s([A-Za-z\\s]+)\\s(\\d\\d)\\s(\\d{2}/\\d{2}/\\d{4})\\s(\\w+)";
+		// String pattern = (\d)+\s(1'\d\d"\d\d)\s([A-Z]+)\s([^\s]+)\s([A-Za-z\s]+)\s(\d\d)\s(\d{2}/\d\d/\d\d\d\d)\s(\w+)
 		String pattern = rang + perf + nom + prenom + club + annee + strDate + ville;
 		
 		// Create a Pattern object
