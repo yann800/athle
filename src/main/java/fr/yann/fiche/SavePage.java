@@ -1,5 +1,11 @@
 package fr.yann.fiche;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+
 public class SavePage {
 	
 	private static final String	URL_BASE_COM				= "http://bases.athle.com/asp.net/liste.aspx";
@@ -55,6 +61,15 @@ public class SavePage {
 		String page = URL_BASE_COM + PARAM_DEFAULT + "&frmannee=2012&frmepreuve=" + ID_FRM_EPREUVE_800_INDOOR + "&frmsexe=M";
 
 		
+		try {
+			final File file = new File("c:\\temp\\toto1.txt");
+			FileUtils.writeStringToFile(file, "aaaaaa bbbbb", "UTF-8");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 //		try {
 //			http.sendGet(urlFiche);
 //		} catch (Exception e) {
