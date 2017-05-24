@@ -6,9 +6,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpURLConnectionAthle {
-	
+
 	private static final String USER_AGENT = "Mozilla/5.0";
-	
+
 	// HTTP GET request
 	public void sendGet(String url) throws Exception {
 
@@ -25,8 +25,7 @@ public class HttpURLConnectionAthle {
 		System.out.println("\nSending 'GET' request to URL : " + url);
 		System.out.println("Response Code : " + responseCode);
 
-		BufferedReader in = new BufferedReader(
-		        new InputStreamReader(con.getInputStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 
