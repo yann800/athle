@@ -30,6 +30,27 @@
 
 			<nav id="menu"></nav>
 
+				<h2>Ages moyens auxquels auxquels sont battus les records</h2>
+				
+				
+				<pre>
+SELECT AVG(l.annee - l.naissance) FROM 
+
+	(
+	SELECT best.nom AS r_nom, best.prenom AS r_prenom, min(best.perf) AS r_perf
+	FROM ligne best WHERE best.idEpreuve = 800 -- ou 1500 ou 3000
+	GROUP BY best.nom
+	) tmp, ligne l
+	
+WHERE l.nom = r_nom AND l.prenom = r_prenom AND l.perf = r_perf;
+</pre>
+
+Résultats bruts (quelques corrections minimes de biais) :
+<ul>
+<li>800 : 23.0203</li>
+<li>1500 : 24.2735</li>
+<li>3000 : 28.4254</li>
+</ul> 
 
 				<h2>Nombre de performances par âge</h2>
 				
