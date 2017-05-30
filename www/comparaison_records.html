@@ -77,19 +77,40 @@
 			 <br/><br/>
 
 			 <div id="divAthlete2" style="display:none">
-			 <label for="athlete2" class="col-sm-3 control-label">Athlète</label>
-			 <div class="col-sm-5">
+
+			 <label for="athlete2" class="col-sm-1 control-label">Athlète</label>
+
+			 <div class="col-sm-2">
+					<datalist id="listeAthlete2"></datalist>
+			 </div>
+			 <div class="col-sm-2">
+		 		<input type="text" name="searchAthlete2" id="searchAthlete2" placeholder="saisissez le début du nom" list="listeAthlete2"
+		 	 		autocomplete="off" required="required" style="width: 250px;"/>
+		 	 		
+		 	 		
+
+
+		<div class="form-group">
+			<label for="nom" class="col-sm-2 control-label">Nom</label>
+			<div class="col-sm-4">
+				<input type="search" class="alphaonly form-control" name="nom" placeholder="nom"
+				 onkeyup="showHint(this.value, 'txtHint')"								
+			 size="20" maxlength="20" required="required">
+			</div>
+			<div class="col-sm-4"><span id="txtHint"></span></div>
+
+		</div>
+
+		 	 		
+		 	 		
+		 	 		
+		 	 </div>
+		 	 <div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete();">OK</button></div>
+
 			 </div> 
-
- 	<input type="text" name="searchAthlete2" id="searchAthlete2" placeholder="saisissez le début du nom" list="listeAthlete2"
- 	 autocomplete="off" required="required" style="width: 250px;"/>
-	<datalist id="listeAthlete2"></datalist>
-
+		</div>
 
 <!-- =========================== -->			 
-			 
-		</div>
-	</div>
 </form>	
 </div> <!-- END row -->
 <br/>
@@ -127,9 +148,12 @@ function selection(){
 	$("#selectCategorie2").css({'display' : ''});
 	$("#selectSexe2").css({'display' : ''});
 	
+	// club on montre input club et on laisse sexe - catégorie
 	if(zone2 == 3){
 		$("#divClub2").css({'display' : ''});	
-	} else if(zone2 == 4){
+	}
+	// athlete on montre inuput athle et on masque sexe - categorie
+	else if(zone2 == 4){
 		$("#divAthlete2").css({'display' : ''});
 		$("#selectCategorie2").css({'display' : 'none'});
 		$("#selectSexe2").css({'display' : 'none'});
@@ -433,8 +457,72 @@ createTableHead();
 	for (var i = 0; i < elts.length; i++){
 		elts[i].addEventListener("change", selection, true);
 	}
-		
 
+		$("#searchClub2").on("input", function(e) {
+			var val = $(this).val();
+			if(val === ""){
+				return;
+			}
+
+			$.get("getClub.php", {q:val}, function(listeClubs) {
+
+				var dataList = $("#listeClub2");
+				dataList.empty();
+				
+				for (var i = 0; i < listeClubs.clubs.length; i++) {
+				    var obj = listeClubs.clubs[i];
+				    console.log(obj.c);
+					var opt = $("<option></option>").attr("value", obj.c);
+					dataList.append(opt);
+				}
+			},"json");
+		});
+
+		$("#searchAthlete2").on("input", function(e) {
+			var val = $(this).val();
+			if(val === ""){
+				return;
+			}
+
+			$.get("getAthlete.php", {q:val}, function(listeClubs) {
+
+				var dataList = $("#listeAthlete2");
+				dataList.empty();
+				
+				for (var i = 0; i < listeAthletes.athletes.length; i++) {
+				    var obj = listeClubs.clubs[i];
+				    console.log(obj.c);
+					var opt = $("<option></option>").attr("value", obj.c);
+					dataList.append(opt);
+				}
+			},"json");
+		});
+
+		
+		function chargeAthlete(){
+			alert('chargeAthlete');
+		}
+		
+// idSpan : txtHint
+function showHint(str, idSpan) {
+    if (str.length < 3) { 
+        document.getElementById(idSpan).innerHTML = "";
+        return;
+    } else {
+    	var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var nom = this.responseText;
+                document.getElementById(idSpan).innerHTML = nom;
+            }
+        };
+        xmlhttp.open("GET", "getNom.php?q=" + str, true);
+        xmlhttp.send();
+
+    }
+    
+}
+		
 </script>
 <script>document.getElementById("statistiques").setAttribute("class", "active");</script>
 	

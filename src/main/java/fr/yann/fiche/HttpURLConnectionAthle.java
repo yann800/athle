@@ -9,34 +9,29 @@ public class HttpURLConnectionAthle {
 
 	private static final String USER_AGENT = "Mozilla/5.0";
 
-	// HTTP GET request
-	public void sendGet(String url) throws Exception {
+	public static String getPage(String url) throws Exception {
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-		// optional default is GET
 		con.setRequestMethod("GET");
-
-		//add request header
 		con.setRequestProperty("User-Agent", USER_AGENT);
 
-		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
+		// int responseCode = con.getResponseCode();
+		// System.out.println("\nSending 'GET' request to URL : " + url);
+		// System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuffer response = new StringBuffer();
 
 		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
+			if (inputLine.contains("<tr")) {
+				response.append("\n" + inputLine);
+			}
 		}
 		in.close();
 
-		//print result
-		System.out.println(response.toString());
-
+		return response.toString();
 	}
-
 }

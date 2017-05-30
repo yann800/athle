@@ -1,10 +1,11 @@
 package fr.yann.fiche;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
+
+import fr.yann.model.SexeEnum;
 
 public class SavePage {
 	
@@ -51,31 +52,43 @@ public class SavePage {
 	=== 10 km
 	URL_BASE_COM PARAM_DEFAULT &frmannee=2014&frmepreuve=261&frmsexe=M&frmvent=VR
 	URL_BASE_COM PARAM_DEFAULT &frmannee=2014&frmepreuve=261&frmsexe=M&frmvent=VR&frmposition=2
+	 * @param args 
+	 * @throws Exception 
 	
 	 */
 
-	public static void main(String[] args) {
-
-		HttpURLConnectionAthle http = new HttpURLConnectionAthle();
-		
-		String page = URL_BASE_COM + PARAM_DEFAULT + "&frmannee=2012&frmepreuve=" + ID_FRM_EPREUVE_800_INDOOR + "&frmsexe=M";
+	public static void main(String[] args) throws Exception {
 
 		
-		try {
-			final File file = new File("c:\\temp\\toto1.txt");
-			FileUtils.writeStringToFile(file, "aaaaaa bbbbb", "UTF-8");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		ArrayList<String> urls = new ArrayList<>();
+		
+		for (int annee = 2006; annee < 2017; annee++) {
+
+			String url = getUrlBilan(ID_FRM_EPREUVE_400, annee, SexeEnum.MASCULIN.getCodeStr());
+			urls.add(url);
 		}
 
-//		try {
-//			http.sendGet(urlFiche);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		save(getUrlRecords("EU", SexeEnum.MASCULIN.getCodeStr()), "recordsEurope.html");
 
+		for (String page : urls) {
+			// save(page, "bilan_800_M.html");
+			System.out.println(page);
+		}
 	}
 
+	private static String getUrlRecords(String niveau, String sexe) {
+		return URL_BASE_COM + "?frmpostback=true&frmbase=records&frmmode=1&frmespace=0&frmexploitation=actuel&frmtype=RD&frmcategorie=&frmsexe=&frmniveau=" + niveau;
+	}
+	private static String getUrlBilan(int idFrmEpreuve, int annee, String sexe) {
+		return URL_BASE_COM + PARAM_DEFAULT + "&frmannee=" + annee + "&frmepreuve=" + idFrmEpreuve + "&frmsexe=" + sexe;
+	}
+
+	private static void save(String url, String nomFichierToSave) {
+		try {
+			final File file = new File("c:\\temp\\" + nomFichierToSave);
+			FileUtils.writeStringToFile(file, HttpURLConnectionAthle.getPage(url), "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
