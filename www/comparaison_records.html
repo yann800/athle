@@ -167,7 +167,9 @@ function selection(){
 	else if (zone1 == 0 && categorie1 == 2 && sexe1 == 1){	recordsSel1 = recordsMondeHommeJunior;}
 	else if (zone1 == 0 && categorie1 == 2 && sexe1 == 0){	recordsSel1 = recordsMondeFemmeJunior;}
 	// zone europe 1
-	// TODO
+	else if (zone1 == 1 && sexe1 == 1){recordsSel1 = recordsEuropeHommeJunior;}
+	else if (zone1 == 1 && sexe1 == 0){recordsSel1 = recordsEuropeFemme;}
+	
 	// zone france 2
 	else if (zone1 == 2 && categorie1 == 0 && sexe1 == 1){	recordsSel1 = recordsFranceHomme;}
 	else if (zone1 == 2 && categorie1 == 0 && sexe1 == 0){	recordsSel1 = recordsFranceFemme;}
@@ -441,6 +443,33 @@ var recordsFranceFemmeJunior =
 {epreuve : '10000', nom : 'xxx', perf : ''},
 {epreuve : 'Marathon', nom : 'xxx', perf : ''},
 {epreuve : 'Longueur', nom : 'xxxx', perf : '6m80'}
+]
+};
+
+
+var recordsEuropeHommeJunior =
+{'record' : [
+{epreuve:'100', nom:'LEMAITRE Christophe', perf:'10.04', annee:'2009'},
+{epreuve:'200', nom:'HOWE Andrew (Ita)', perf:'20.28', annee:'2004'},
+{epreuve:'400', nom:'SCHÖNLEBE Thomas (GDR)', perf:'45.01', annee:'1984'},
+{epreuve:'800', nom:'BUSSE Andreas (GDR)', perf:'1.45.45', annee:'1978'},
+{epreuve:'1500', nom:'ESTEVES Reyes (ESP)', perf:'3.35.51', annee:'1995'},
+{epreuve:'3000', nom:'PAUNONEN Ari (FIN)', perf:'7.43.20', annee:'1977'},
+{epreuve:'10000', nom:'LEUPRECHT Christian (ITA)', perf:'28.22.48', annee:'1990'}
+]
+};
+
+var recordsEuropeFemme =
+{'record' : [
+{epreuve:'100', nom:'ARRON Christine', perf:'10.73', annee:'9999'},
+{epreuve:'200', nom:'SCHIPPERS Dafne (Ned)', perf:'21.63', annee:'9999'},
+{epreuve:'400', nom:'KOCH Marita (GDR)', perf:'47.60', annee:'1985'},
+{epreuve:'800', nom:'KRATOCHVILOVA Jarmila (TCH)', perf:'1.53.28', annee:'1983'},
+{epreuve:'1000', nom:'MASTERKOVA Svetlana (RUS)', perf:'2.28.98', annee:'1996'},
+{epreuve:'1500', nom:'KAZANKINA Tatyana (URS)', perf:'3.52.47', annee:'1980'},
+{epreuve:'3000', nom:'SZABO Gabriela (ROM)', perf:'8.21.42', annee:'2002'},
+{epreuve:'5000', nom:'SHOBUKHOVA Lilia (RUS)', perf:'14.23"75', annee:'2008'},
+{epreuve:'10000', nom:'ABEYLEGESSE Elvan (TUR)', perf:'29.56"34', annee:'2008'}
 ]
 };
 
