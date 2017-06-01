@@ -34,14 +34,22 @@
 		<option>Athlète</option>
 	</select>
 	<select name="sexe1" class="form-control">
-		<option selected="selected">Femme</option>
-		<option>Homme</option>
+		<option>Femme</option>
+		<option selected="selected">Homme</option>
 	</select>	
 	<select name="categorie1" class="form-control">
 		<option selected="selected">Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
-		<option>Plus de 40 ans</option>
+		<option selected="selected">35</option>
+		<option>40</option>
+		<option>50</option>
+		<option>55</option>
+		<option>60</option>
+		<option>65</option>
+		<option>70</option>
+		<option>75</option>
+		<option>80</option>
 	</select>
 	</div>
 	<div class="form-group col-sm-5">
@@ -54,14 +62,22 @@
 		<option>Athlète</option>
 	</select>
 	<select id="selectSexe2" name="sexe2" class="form-control">
-		<option>Femme</option>
-		<option selected="selected">Homme</option>
+		<option selected="selected">Femme</option>
+		<option>Homme</option>
 	</select>	
 	<select id="selectCategorie2" name="categorie2" class="form-control">
 		<option selected="selected">Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
-		<option>Plus de 40 ans</option>
+		<option>40</option>
+		<option>50</option>
+		<option>55</option>
+		<option>60</option>
+		<option>65</option>
+		<option>70</option>
+		<option>75</option>
+		<option>80</option>
+
 	</select>
 
 <!-- =========================== -->
@@ -161,11 +177,32 @@ function selection(){
     
     // ---- SELECTION 1 ----
     var recordsSel1;
-	// zone monde 0, europe 1, france 2
-    if (zone1 == 0 && categorie1 == 0 && sexe1 == 1){		recordsSel1 = recordsMondeHomme;}
-	else if (zone1 == 0 && categorie1 == 0 && sexe1 == 0){	recordsSel1 = recordsMondeFemme;}
-	else if (zone1 == 0 && categorie1 == 2 && sexe1 == 1){	recordsSel1 = recordsMondeHommeJunior;}
-	else if (zone1 == 0 && categorie1 == 2 && sexe1 == 0){	recordsSel1 = recordsMondeFemmeJunior;}
+	// zone monde 0
+	// -------- categorie all
+    if (zone1 == 0) {
+
+	// ---- sexe femme  
+	if (sexe1 == 0){
+		if (categorie1 == 0){recordsSel1 = recordsMondeFemme;}
+		else {recordsSel1 = recordsMondeFemmeJunior;} // TODO autres cat.
+	}
+		// ---- sexe homme 
+	else {
+		if (categorie1 == 0){	recordsSel1 = recordsMondeHomme;}
+		else if (categorie1 == 1){	recordsSel1 = recordsMondeHommeCadet;}
+		else if (categorie1 == 2){	recordsSel1 = recordsMondeHommeJunior;}
+		else if (categorie1 == 3){	recordsSel1 = recordsMondeHomme35;}
+		else if (categorie1 == 4){	recordsSel1 = recordsMondeHomme40;}
+		else if (categorie1 == 5){	recordsSel1 = recordsMondeHomme45;}
+		else if (categorie1 == 6){	recordsSel1 = recordsMondeHomme50;}
+		else if (categorie1 == 7){	recordsSel1 = recordsMondeHomme55;}
+		else if (categorie1 == 8){	recordsSel1 = recordsMondeHomme60;}
+		else if (categorie1 == 9){	recordsSel1 = recordsMondeHomme65;}
+		else if (categorie1 == 10){	recordsSel1 = recordsMondeHomme70;}
+		else if (categorie1 == 11){	recordsSel1 = recordsMondeHomme75;}
+		else if (categorie1 == 12){	recordsSel1 = recordsMondeHomme80;}
+	}
+	} // end monde
 	// zone europe 1
 	else if (zone1 == 1 && sexe1 == 1){recordsSel1 = recordsEuropeHommeJunior;}
 	else if (zone1 == 1 && sexe1 == 0){recordsSel1 = recordsEuropeFemme;}
@@ -341,6 +378,12 @@ var recordsMondeHomme =
 ]
 };
 
+var recordsMondeHommeCadet =
+{'record' : [
+
+]
+};
+
 var recordsMondeHommeJunior =
 {'record' : [
 {epreuve : '100', nom : 'Brommel',        perf :  '9.97'}, 
@@ -355,7 +398,57 @@ var recordsMondeHommeJunior =
 {epreuve : 'Longueur', nom : 'xxxx', perf : '8m20'}
 ]
 };
-	
+
+var recordsMondeHomme35 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme40 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme45 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme55 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme65 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme70 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme75 =
+{'record' : [
+
+]
+};
+
+var recordsMondeHomme80 =
+{'record' : [
+
+]
+};
+
+
+
 var recordsMondeFemme =
 {'record' : [
 {epreuve : '100', nom : 'Joyner', perf :  '10.48'}, 
