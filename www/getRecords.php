@@ -20,43 +20,6 @@ if ($q == "") {
 }
 
 
-include 'constantes.php';
 
-
-
-
-// Create connection http://php.net/manual/fr/function.mysql-connect.php
-
-$link  =  mysql_connect($servername, $username, $password)
-or die( "Impossible de se connecter : "  .  mysql_error ());
-
-mysql_select_db($dbname);
-
-
-$sql = "SELECT DISTINCT nom FROM club WHERE nom LIKE '%". $q ."%' LIMIT 30;";
-
-
-$req = mysql_query($sql) or die("['Erreur SQL !','" .$sql. "','" . mysql_error() . "]");
-
-$nb = mysql_num_rows($req);
-
-if ( $nb == 0 ) {
-	// rien à faire
-
-} else {
-	// on fait une boucle qui va faire un tour pour chaque enregistrement
-	while($row = mysql_fetch_assoc($req)){
-		
-		if ($hint === "") {
-			$hint = '{ "clubs": [{"c":"' . $row["nom"] . '"}';
-		} else {
-			$hint .= ',{"c":"' . $row["nom"] . '"}';
-		}
-		
-	}
-	$hint .= ']}';
-}
-
-// Output "no suggestion" if no hint was found or output correct values 
-echo $hint === "" ? "aucun nom trouvé" : $hint;
+echo '{"record" : [ {"epreuve" : "100", "nom" : "Bolt",        "perf" :  "9.58"}, {"epreuve" : "200", "nom" : "Bolt", "perf" : "19.19"}]}';
 ?>

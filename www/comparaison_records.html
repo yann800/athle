@@ -125,7 +125,7 @@
 
 			 </div> 
 		</div>
-
+<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete();">OK</button></div>
 <!-- =========================== -->			 
 </form>	
 </div> <!-- END row -->
@@ -176,7 +176,6 @@ function selection(){
 	}
     
     // ---- SELECTION 1 ----
-    var recordsSel1;
 	// zone monde 0
 	// -------- categorie all
     if (zone1 == 0) {
@@ -216,7 +215,6 @@ function selection(){
 	else {console.log('sélection autre non dispo actuellement'); return;}
 
     // ---- SELECTION 2 ----
-    var recordsSel2;
     if (zone2 == 0 && categorie2 == 0 && sexe2 == 0){		recordsSel2 = recordsMondeFemme;}
 	else if (zone2 == 0 && categorie2 == 0 && sexe2 == 1){	recordsSel2 = recordsMondeHomme;} 
 	// zone europe 1
@@ -362,6 +360,9 @@ function calculEcartCentiemes(c1, c2) {
 <script type="text/javascript" class="init">
 
 $('.dropdown-toggle').dropdown();
+
+var recordsSel1;
+var recordsSel2;
 
 var recordsMondeHomme =
 {'record' : [
@@ -600,29 +601,59 @@ createTableHead();
 			},"json");
 		});
 
-		$("#searchAthlete2").on("input", function(e) {
-			var val = $(this).val();
-			if(val === ""){
-				return;
-			}
+// 		$("#searchAthlete2").on("input", function(e) {
+//			var val = $(this).val();
+//			if(val === ""){
+//				return;
+//			}
 
-			$.get("getAthlete.php", {q:val}, function(listeClubs) {
+			//$.get("getAthlete.php", {q:val}, function(listeClubs) {
 
-				var dataList = $("#listeAthlete2");
-				dataList.empty();
+				//var dataList = $("#listeAthlete2");
+				//dataList.empty();
 				
-				for (var i = 0; i < listeAthletes.athletes.length; i++) {
-				    var obj = listeClubs.clubs[i];
-				    console.log(obj.c);
-					var opt = $("<option></option>").attr("value", obj.c);
-					dataList.append(opt);
-				}
-			},"json");
-		});
-
+				//for (var i = 0; i < listeAthletes.athletes.length; i++) {
+					//var obj = listeClubs.clubs[i];
+				    //console.log(obj.c);
+				    //var opt = $("<option></option>").attr("value", obj.c);
+					//					dataList.append(opt);
+					//				}
+				//},"json");
+			//});
+		// 
 		
 		function chargeAthlete(){
-			alert('chargeAthlete');
+	        var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	             if (this.readyState == 4 && this.status == 200) {
+	                 var reponseGetRecords = this.responseText;
+	                 
+		             var jsonData = JSON.parse(reponseGetRecords);
+
+		             recordsSel1 = jsonData;
+
+		             var laTable = $("#table_ecarts").DataTable();
+		             
+		             laTable.clear();
+		             
+		             for (var i = 0; i < recordsSel1.record.length; i++) {
+		             	var sel1 = recordsSel1.record[i];
+		             	var sel2 = recordsSel2.record[i];
+
+		             	// add en HTML à supprimer
+		             	//$("#table_ecarts tbody").append('<tr><td>' + sel1.epreuve + '</td>' 			+ '<td>' + sel1.nom + '</td><td>' + sel1.perf + '</td>' 			+ '<td>' + sel2.nom + '</td><td>' + sel2.perf + '</td><td></td></tr>');	
+
+		             	// add en objet plus propre
+		             	// $("#table_ecarts").dataTable().add(['111','ssss','ssss','ssss','ssss']);
+		             	// laTable.row.add(['111','ssss','ssss','ssss','ssss']);
+
+		             	var compute = computeEcarts(sel1.perf, sel2.perf);
+		             	laTable.row.add({epreuve : sel1.epreuve, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
+		             }
+	             }
+	         };
+	         xmlhttp.open("GET", "getRecords.php?q=toto", true);
+	         xmlhttp.send();
 		}
 		
 // idSpan : txtHint
