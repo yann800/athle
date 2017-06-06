@@ -1,4 +1,4 @@
-package fr.yann.launch;
+package fr.yann.lauch;
 
 import java.io.IOException;
 

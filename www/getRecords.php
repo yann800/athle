@@ -20,6 +20,43 @@ if ($q == "") {
 }
 
 
+include 'constantes.php';
 
-echo '{"record" : [ {"epreuve" : "100", "nom" : "Bolt",        "perf" :  "9.58"}, {"epreuve" : "200", "nom" : "Bolt", "perf" : "19.19"}]}';
+
+// Create connection http://php.net/manual/fr/function.mysql-connect.php
+
+$link  =  mysql_connect($servername, $username, $password)
+or die( "Impossible de se connecter : "  .  mysql_error ());
+
+mysql_select_db($dbname);
+
+
+$sql = "SELECT idEpreuve AS e, min(perf) AS pFROM ligne WHERE nom LIKE '%". $q ."%' GROUP BY idEpreuve;";
+
+
+$req = mysql_query($sql) or die("['Erreur SQL !','" .$sql. "','" . mysql_error() . "]");
+
+$nb = mysql_num_rows($req);
+
+if ( $nb == 0 ) {
+	// rien à faire
+
+} else {
+	// on fait une boucle qui va faire un tour pour chaque enregistrement
+	while($row = mysql_fetch_assoc($req)){
+		
+		{'record' : [
+		
+		if ($hint === "") {
+			$hint = '{ "record": [{"e":"' . $row["p"] . ',"nom":"' . $q . ',"perf":"' . $row["p"] . '"}';
+		} else {
+			$hint .= ',{"e":"' . $row["p"] . ',"nom":"' . $q . ',"perf":"' . $row["p"] . '"}';
+		}
+	}
+	$hint .= ']}';
+}
+
+// echo $hint === "" ? "aucun nom trouvé" : $hint;
+echo $hint === "" ? '{"record" : [ {"epreuve" : "100", "nom" : "aucun nom trouvé","perf" : "10.00"}, {"epreuve" : "200", "nom" : "aucun nom trouvé", "perf" : "20.00"}]}' : $hint;
+
 ?>
