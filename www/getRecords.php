@@ -31,7 +31,7 @@ or die( "Impossible de se connecter : "  .  mysql_error ());
 mysql_select_db($dbname);
 
 
-$sql = "SELECT idEpreuve AS e, min(perf) AS pFROM ligne WHERE nom LIKE '%". $q ."%' GROUP BY idEpreuve;";
+$sql = "SELECT idEpreuve AS e, min(perf) AS p FROM ligne WHERE nom = '". $q ."' GROUP BY idEpreuve;";
 
 
 $req = mysql_query($sql) or die("['Erreur SQL !','" .$sql. "','" . mysql_error() . "]");
@@ -44,8 +44,6 @@ if ( $nb == 0 ) {
 } else {
 	// on fait une boucle qui va faire un tour pour chaque enregistrement
 	while($row = mysql_fetch_assoc($req)){
-		
-		{'record' : [
 		
 		if ($hint === "") {
 			$hint = '{ "record": [{"e":"' . $row["p"] . ',"nom":"' . $q . ',"perf":"' . $row["p"] . '"}';

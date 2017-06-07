@@ -24,7 +24,9 @@
 
 <form name="formRecords">
 	
+	<!-- div selection1 -->
 	<div class="form-group  col-sm-5">
+	
 	<label>Records de la 1ère sélection</label>
 	<select name="zone1" class="form-control">
 		<option selected="selected">Monde</option>
@@ -52,7 +54,39 @@
 		<option>75</option>
 		<option>80</option>
 	</select>
+
+	<div id="divClub1" style="display:none">
+		<label for="club1" class="col-sm-3 control-label">Club</label>
+		<div class="col-sm-5">
+		 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom" list="listeClub1"
+		 	 autocomplete="off" required="required" style="width: 250px;"/>
+			<datalist id="listeClub1"></datalist>	
+		</div>
 	</div>
+			 
+	<br/><br/>
+
+	<div id="divAthlete1">
+		<label for="nom1" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-5">
+			<input type="search" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
+		 size="20" maxlength="20" required="required">
+		</div>
+		<div class="col-sm-5"><span id="txtHint1"></span></div>		
+		
+		<br/><br/>
+
+		<label for="prenom1" class="col-sm-2 control-label">Prénom</label>
+		
+		<div class="col-sm-5">
+			<input type="search" class="alphaonly form-control" name="prenom1" placeholder="prénom" size="20" maxlength="20" required="required">
+		</div>
+		<div class="col-sm-5"><span id="txtHint1Prenom"></span></div>
+		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete1();">OK</button></div>
+	</div>
+	</div> <!-- end selection 1 -->
+
+	<!-- selection 2 -->
 	<div class="form-group col-sm-5">
 	<label>Records de la 2nde sélection</label>
 	<select id="zone2" name="zone2" class="form-control">
@@ -82,53 +116,37 @@
 
 	</select>
 
-<!-- =========================== -->
-		 <div id="divClub2" style="display:none">
-			<label for="club2" class="col-sm-3 control-label">Club</label>
-			 <div class="col-sm-5">
- 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom" list="listeClub2"
- 	 autocomplete="off" required="required" style="width: 250px;"/>
-	<datalist id="listeClub2"></datalist>	
-			 </div>
-			 </div>
+	<div id="divClub2" style="display:none">
+		<label for="club2" class="col-sm-3 control-label">Club</label>
+		<div class="col-sm-5">
+		 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom" list="listeClub2"
+		 	 autocomplete="off" required="required" style="width: 250px;"/>
+			<datalist id="listeClub2"></datalist>	
+		</div>
+	</div>
 			 
 			 <br/><br/>
 
-			 <div id="divAthlete2" style="display:none">
-
-			 <label for="athlete2" class="col-sm-1 control-label">Athlète</label>
-
-			 <div class="col-sm-2">
-					<datalist id="listeAthlete2"></datalist>
-			 </div>
-			 <div class="col-sm-2">
-		 		<input type="text" name="searchAthlete2" id="searchAthlete2" placeholder="saisissez le début du nom" list="listeAthlete2"
-		 	 		autocomplete="off" required="required" style="width: 250px;"/>
+	<div id="divAthlete2" style="display:none">
 		 	 		
-		 	 		
-
-
-		<div class="form-group">
-			<label for="nom" class="col-sm-2 control-label">Nom</label>
-			<div class="col-sm-4">
-				<input type="search" class="alphaonly form-control" name="nom" placeholder="nom"
-				 onkeyup="showHint(this.value, 'txtHint')"								
-			 size="20" maxlength="20" required="required">
-			</div>
-			<div class="col-sm-4"><span id="txtHint"></span></div>
-
+		<label for="nom2" class="col-sm-2 control-label">Nom</label>
+		<div class="col-sm-5">
+			<input type="search" class="alphaonly form-control" name="nom2" placeholder="nom" onkeyup="showHint(this.value, 'txtHint2')"
+		 size="20" maxlength="20" required="required">
 		</div>
-
-		 	 		
-		 	 		
-		 	 		
-		 	 </div>
-		 	 <div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete();">OK</button></div>
-
-			 </div> 
+		<div class="col-sm-5"><span id="txtHint2"></span></div>		
+				
+		<br/><br/>
+	
+		<label for="prenom2" class="col-sm-2 control-label">Prénom</label>
+		<div class="col-sm-5">
+			<input type="search" class="alphaonly form-control" name="prenom2" placeholder="prénom" size="20" maxlength="20" required="required">
 		</div>
-<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete();">OK</button></div>
-<!-- =========================== -->			 
+		<div class="col-sm-5"><span id="txtHint2Prenom"></span></div> 		
+		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete2();">OK</button></div>
+		</div> 
+	</div>
+		 
 </form>	
 </div> <!-- END row -->
 <br/>
@@ -589,7 +607,14 @@ createTableHead();
 			//});
 		// 
 		
-		function chargeAthlete(){
+		function chargeAthlete1(){
+			chargeAthlete($("#nom1").text());
+		}
+		function chargeAthlete2(){
+			chargeAthlete($("#nom2").text());
+		}
+		
+		function chargeAthlete(p_nom){
 	        var xmlhttp = new XMLHttpRequest();
 	        xmlhttp.onreadystatechange = function() {
 	             if (this.readyState == 4 && this.status == 200) {
@@ -607,19 +632,12 @@ createTableHead();
 		             	var sel1 = recordsSel1.record[i];
 		             	var sel2 = recordsSel2.record[i];
 
-		             	// add en HTML à supprimer
-		             	//$("#table_ecarts tbody").append('<tr><td>' + sel1.e + '</td>' 			+ '<td>' + sel1.nom + '</td><td>' + sel1.perf + '</td>' 			+ '<td>' + sel2.nom + '</td><td>' + sel2.perf + '</td><td></td></tr>');	
-
-		             	// add en objet plus propre
-		             	// $("#table_ecarts").dataTable().add(['111','ssss','ssss','ssss','ssss']);
-		             	// laTable.row.add(['111','ssss','ssss','ssss','ssss']);
-
 		             	var compute = computeEcarts(sel1.perf, sel2.perf);
 		             	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
 		             }
 	             }
 	         };
-	         xmlhttp.open("GET", "getRecords.php?q=toto", true);
+	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
 	         xmlhttp.send();
 		}
 		
@@ -642,9 +660,15 @@ function showHint(str, idSpan) {
     }
     
 }
-		
 </script>
-<script>document.getElementById("statistiques").setAttribute("class", "active");</script>
+<script>
+	document.getElementById("statistiques").setAttribute("class", "active");
+	
+	$('.alphaonly').bind('keyup blur', function() {
+		var node = $(this);
+		node.val(node.val().replace(/[^A-Za-z ]/g, ''));
+	});
+</script>
 	
 	
 </body>

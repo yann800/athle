@@ -64,10 +64,11 @@ public class ParserRecord {
 		if (m.find()) {
 
 			lb = new LigneRecord(
+					"categorie",
 					m.group(1), // epreuve
 					m.group(2), // perf
 					m.group(3), // nom
-					// m.group(4), // naissance
+					Integer.parseInt(m.group(4)), // age
 					getAnnee(m.group(5)), // date
 					SexeEnum.FEMININ);
 		} else {
