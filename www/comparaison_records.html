@@ -69,7 +69,7 @@
 		<label for="nom1" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
 			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
-		 size="20" maxlength="20" value="balage"/>
+		 size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint1"></span></div>		
 		
@@ -131,7 +131,7 @@
 		<label for="textNom2" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
 			<input type="text" class="alphaonly form-control" id="textNom2" name="textNom2" placeholder="nom" onkeyup="showHint(this.value, 'txtHint2')"
-		 size="20" maxlength="20" value="balage">
+		 size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint2"></span></div>		
 				
@@ -631,8 +631,7 @@ createTableHead();
 		});
 
 		function chargeAthlete1(){
-			// chargeJsonAthlete1($("#nom1")[0].value);
-			chargeJsonAthlete1('balage');
+			chargeJsonAthlete1($("#nom1")[0].value);
 		}
 		function chargeAthlete2(){
 			console.log($("#textNom2")[0].value);			
