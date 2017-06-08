@@ -23,24 +23,26 @@
 <div class="row">
 
 <form name="formRecords">
-	
+
+
 	<!-- div selection1 -->
-	<div class="form-group  col-sm-5">
+	<div class="form-group col-sm-5">
 	
 	<label>Records de la 1ère sélection</label>
 	<select name="zone1" class="form-control">
-		<option selected="selected">Monde</option>
-		<option>Europe</option>
-		<option>France</option>
-		<option>Club</option>
-		<option>Athlète</option>
+		<option value="1"  >Monde</option>
+		<option value="2">Europe</option>
+		<option value="3">France</option>
+		<option value="4">Club</option>
+		<option value="5" selected="selected">Athlète</option>
+
 	</select>
 	<select name="sexe1" class="form-control">
 		<option>Femme</option>
 		<option selected="selected">Homme</option>
 	</select>	
 	<select name="categorie1" class="form-control">
-		<option selected="selected">Toutes catégories</option>
+		<option>Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
 		<option selected="selected">35</option>
@@ -59,7 +61,7 @@
 		<label for="club1" class="col-sm-3 control-label">Club</label>
 		<div class="col-sm-5">
 		 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom" list="listeClub1"
-		 	 autocomplete="off" required="required" style="width: 250px;"/>
+		 	 autocomplete="off" style="width: 250px;"/>
 			<datalist id="listeClub1"></datalist>	
 		</div>
 	</div>
@@ -69,8 +71,8 @@
 	<div id="divAthlete1">
 		<label for="nom1" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
-		 size="20" maxlength="20" required="required">
+			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
+		 size="20" maxlength="20" value="balage"/>
 		</div>
 		<div class="col-sm-5"><span id="txtHint1"></span></div>		
 		
@@ -79,7 +81,7 @@
 		<label for="prenom1" class="col-sm-2 control-label">Prénom</label>
 		
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="prenom1" placeholder="prénom" size="20" maxlength="20" required="required">
+			<input type="search" class="alphaonly form-control" name="prenom1" placeholder="prénom" size="20" maxlength="20" >
 		</div>
 		<div class="col-sm-5"><span id="txtHint1Prenom"></span></div>
 		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete1();">OK</button></div>
@@ -90,11 +92,11 @@
 	<div class="form-group col-sm-5">
 	<label>Records de la 2nde sélection</label>
 	<select id="zone2" name="zone2" class="form-control">
-		<option selected="selected">Monde</option>
-		<option>Europe</option>
-		<option>France</option>
-		<option>Club</option>
-		<option>Athlète</option>
+		<option selected="selected" value="1">Monde</option>
+		<option value="2">Europe</option>
+		<option value="3">France</option>
+		<option value="4">Club</option>
+		<option value="5">Athlète</option>
 	</select>
 	<select id="selectSexe2" name="sexe2" class="form-control">
 		<option selected="selected">Femme</option>
@@ -120,19 +122,19 @@
 		<label for="club2" class="col-sm-3 control-label">Club</label>
 		<div class="col-sm-5">
 		 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom" list="listeClub2"
-		 	 autocomplete="off" required="required" style="width: 250px;"/>
+		 	 autocomplete="off" style="width: 250px;"/>
 			<datalist id="listeClub2"></datalist>	
 		</div>
 	</div>
 			 
 			 <br/><br/>
 
-	<div id="divAthlete2" style="display:none">
+	<div id="divAthlete2"> <!--  style="display:none"> -->
 		 	 		
-		<label for="nom2" class="col-sm-2 control-label">Nom</label>
+		<label for="textNom2" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="nom2" placeholder="nom" onkeyup="showHint(this.value, 'txtHint2')"
-		 size="20" maxlength="20" required="required">
+			<input type="text" class="alphaonly form-control" id="textNom2" name="textNom2" placeholder="nom" onkeyup="showHint(this.value, 'txtHint2')"
+		 size="20" maxlength="20" value="balage">
 		</div>
 		<div class="col-sm-5"><span id="txtHint2"></span></div>		
 				
@@ -140,14 +142,13 @@
 	
 		<label for="prenom2" class="col-sm-2 control-label">Prénom</label>
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="prenom2" placeholder="prénom" size="20" maxlength="20" required="required">
+			<input type="search" class="alphaonly form-control" name="prenom2" placeholder="prénom" size="20" maxlength="20" >
 		</div>
 		<div class="col-sm-5"><span id="txtHint2Prenom"></span></div> 		
 		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete2();">OK</button></div>
 		</div> 
 	</div>
-		 
-</form>	
+</form>
 </div> <!-- END row -->
 <br/>
 
@@ -232,20 +233,55 @@ function selection(){
 	else if (zone1 == 2 && categorie1 == 2 && sexe1 == 1){	recordsSel1 = recordsFranceHommeJunior;}
 	else if (zone1 == 2 && categorie1 == 2 && sexe1 == 0){	recordsSel1 = recordsFranceFemmeJunior;}    
 	// zone autre
-	else {console.log('sélection autre non dispo actuellement'); return;}
+	else {
+		console.log('selection 1 : athlète');
+		recordsSel1 = {'record' : []};
+	}
 
     // ---- SELECTION 2 ----
-    if (zone2 == 0 && categorie2 == 0 && sexe2 == 0){		recordsSel2 = recordsMondeFemme;}
-	else if (zone2 == 0 && categorie2 == 0 && sexe2 == 1){	recordsSel2 = recordsMondeHomme;} 
-	// zone europe 1
-	// TODO
-	// zone france 2
-	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 0){	recordsSel2 = recordsFranceFemme;}
-	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 1){	recordsSel2 = recordsFranceHomme;}
-	// zone autre
-	else {console.log('sélection autre non dispo actuellement'); return;}
+    	// zone monde 0
+	// -------- categorie all
+	// zone monde 0
+	// -------- categorie all
+    if (zone2 == 0) {
 
-	     	
+	// ---- sexe femme  
+	if (sexe2 == 0){
+		if (categorie2 == 0){recordsSel2 = recordsMondeFemme;}
+		else {recordsSel2 = recordsMondeFemmeJunior;} // TODO autres cat.
+	}
+		// ---- sexe homme 
+	else {
+		if (categorie2 == 0){	recordsSel2 = recordsMondeHomme;}
+		else if (categorie2 == 1){	recordsSel2 = recordsMondeHommeCadet;}
+		else if (categorie2 == 2){	recordsSel2 = recordsMondeHommeJunior;}
+		else if (categorie2 == 3){	recordsSel2 = recordsMondeHomme35;}
+		else if (categorie2 == 4){	recordsSel2 = recordsMondeHomme40;}
+		else if (categorie2 == 5){	recordsSel2 = recordsMondeHomme45;}
+		else if (categorie2 == 6){	recordsSel2 = recordsMondeHomme50;}
+		else if (categorie2 == 7){	recordsSel2 = recordsMondeHomme55;}
+		else if (categorie2 == 8){	recordsSel2 = recordsMondeHomme60;}
+		else if (categorie2 == 9){	recordsSel2 = recordsMondeHomme65;}
+		else if (categorie2 == 10){	recordsSel2 = recordsMondeHomme70;}
+		else if (categorie2 == 11){	recordsSel2 = recordsMondeHomme75;}
+		else if (categorie2 == 12){	recordsSel2 = recordsMondeHomme80;}
+	}
+	} // end monde
+	// zone europe 2
+	else if (zone2 == 1 && sexe2 == 1){recordsSel2 = recordsEuropeHommeJunior;}
+	else if (zone2 == 1 && sexe2 == 0){recordsSel2 = recordsEuropeFemme;}
+	
+	// zone france 2
+	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 1){	recordsSel2 = recordsFranceHomme;}
+	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 0){	recordsSel2 = recordsFranceFemme;}
+	else if (zone2 == 2 && categorie2 == 2 && sexe2 == 1){	recordsSel2 = recordsFranceHommeJunior;}
+	else if (zone2 == 2 && categorie2 == 2 && sexe2 == 0){	recordsSel2 = recordsFranceFemmeJunior;}    
+	// zone autre
+	else {
+		console.log('selection 2 : athlète');
+		recordsSel2 = {'record' : []};
+	}
+
     
     var laTable = $("#table_ecarts").DataTable();
     
@@ -274,7 +310,7 @@ function createTableHead(){
 	
 	var records = { data : [
 	
-	]}
+	]};
 	
 	var table = $('#table_ecarts').DataTable({
 		data : records.data,
@@ -385,8 +421,8 @@ function calculEcartCentiemes(c1, c2) {
 $('.dropdown-toggle').dropdown();
 
 
-var recordsSel1;
-var recordsSel2;
+var recordsSel1 = {'record' : []};
+var recordsSel2 = {'record' : []};
 
 var recordsMondeHomme =
 {'record' : [
@@ -586,35 +622,18 @@ createTableHead();
 			},"json");
 		});
 
-// 		$("#searchAthlete2").on("input", function(e) {
-//			var val = $(this).val();
-//			if(val === ""){
-//				return;
-//			}
-
-			//$.get("getAthlete.php", {q:val}, function(listeClubs) {
-
-				//var dataList = $("#listeAthlete2");
-				//dataList.empty();
-				
-				//for (var i = 0; i < listeAthletes.athletes.length; i++) {
-					//var obj = listeClubs.clubs[i];
-				    //console.log(obj.c);
-				    //var opt = $("<option></option>").attr("value", obj.c);
-					//					dataList.append(opt);
-					//				}
-				//},"json");
-			//});
-		// 
-		
 		function chargeAthlete1(){
-			chargeAthlete($("#nom1").text());
+			console.log("======" + $("#textNom1"));
+			// console.log("======" + $("#textNom1")[0].value);
+			// chargeJsonAthlete1($("#nom1")[0].value);
+			chargeJsonAthlete1('balage');
 		}
 		function chargeAthlete2(){
-			chargeAthlete($("#nom2").text());
+			console.log($("#textNom2")[0].value);			
+			chargeJsonAthlete2($("#textNom2")[0].value);
 		}
 		
-		function chargeAthlete(p_nom){
+		function chargeJsonAthlete1(p_nom){
 	        var xmlhttp = new XMLHttpRequest();
 	        xmlhttp.onreadystatechange = function() {
 	             if (this.readyState == 4 && this.status == 200) {
@@ -640,6 +659,35 @@ createTableHead();
 	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
 	         xmlhttp.send();
 		}
+
+		
+		function chargeJsonAthlete2(p_nom){
+	        var xmlhttp = new XMLHttpRequest();
+	        xmlhttp.onreadystatechange = function() {
+	             if (this.readyState == 4 && this.status == 200) {
+	                 var reponseGetRecords = this.responseText;
+	                 
+		             var jsonData = JSON.parse(reponseGetRecords);
+
+		             recordsSel2 = jsonData;
+
+		             var laTable = $("#table_ecarts").DataTable();
+		             
+		             laTable.clear();
+		             
+		             for (var i = 0; i < recordsSel2.record.length; i++) {
+		             	var sel1 = recordsSel1.record[i];
+		             	var sel2 = recordsSel2.record[i];
+
+		             	var compute = computeEcarts(sel1.perf, sel2.perf);
+		             	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
+		             }
+	             }
+	         };
+	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
+	         xmlhttp.send();
+		}
+
 		
 // idSpan : txtHint
 function showHint(str, idSpan) {
