@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
-<!-- <link href="css/bootstrap-theme.css" media="screen, projection" rel="stylesheet" type="text/css" /> -->
 <link href="css/dataTables.bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
 <script src="js/jquery-1.12.3.js" type="text/javascript"></script>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
@@ -22,26 +22,23 @@
 
 <div class="row">
 
-<form name="formRecords">
-
-
 	<!-- div selection1 -->
 	<div class="form-group col-sm-5">
 	
 	<label>Records de la 1ère sélection</label>
-	<select name="zone1" class="form-control">
-		<option value="1"  >Monde</option>
+	<select id="selectZone1" class="form-control">
+		<option value="1" selected="selected">Monde</option>
 		<option value="2">Europe</option>
 		<option value="3">France</option>
 		<option value="4">Club</option>
-		<option value="5" selected="selected">Athlète</option>
+		<option value="5">Athlète</option>
 
 	</select>
-	<select name="sexe1" class="form-control">
+	<select id="selectSexe1" class="form-control">
 		<option>Femme</option>
 		<option selected="selected">Homme</option>
 	</select>	
-	<select name="categorie1" class="form-control">
+	<select id="selectCategorie1" class="form-control">
 		<option>Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
@@ -68,7 +65,7 @@
 			 
 	<br/><br/>
 
-	<div id="divAthlete1">
+	<div id="divAthlete1" style="display:none">
 		<label for="nom1" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
 			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
@@ -91,18 +88,18 @@
 	<!-- selection 2 -->
 	<div class="form-group col-sm-5">
 	<label>Records de la 2nde sélection</label>
-	<select id="zone2" name="zone2" class="form-control">
+	<select id="selectZone2" class="form-control">
 		<option selected="selected" value="1">Monde</option>
 		<option value="2">Europe</option>
 		<option value="3">France</option>
 		<option value="4">Club</option>
 		<option value="5">Athlète</option>
 	</select>
-	<select id="selectSexe2" name="sexe2" class="form-control">
+	<select id="selectSexe2" class="form-control">
 		<option selected="selected">Femme</option>
 		<option>Homme</option>
 	</select>	
-	<select id="selectCategorie2" name="categorie2" class="form-control">
+	<select id="selectCategorie2" class="form-control">
 		<option selected="selected">Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
@@ -148,7 +145,7 @@
 		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete2();">OK</button></div>
 		</div> 
 	</div>
-</form>
+<!--  </form>  -->
 </div> <!-- END row -->
 <br/>
 
@@ -169,33 +166,44 @@ function selection(){
 	
     $("#table_ecarts tbody").children().remove();
     
-    // var jsonData = JSON.parse(reponseGetLicence);
-    // for (var i = 0; i < jsonData.clubs.length; i++) {
-	var zone1 = document.formRecords.zone1.selectedIndex;
-	var zone2 = document.formRecords.zone2.selectedIndex;
-	var categorie1 = document.formRecords.categorie1.selectedIndex;
-	var categorie2 = document.formRecords.categorie2.selectedIndex;
-	var sexe1 = document.formRecords.sexe1.selectedIndex;
-	var sexe2 = document.formRecords.sexe2.selectedIndex;
+    var zone1 = document.getElementById("selectZone1").selectedIndex;
+	var zone2 = document.getElementById("selectZone2").selectedIndex;
+	var categorie1 = document.getElementById("selectCategorie1").selectedIndex;
+	var categorie2 = document.getElementById("selectCategorie2").selectedIndex;
+	var sexe1 = document.getElementById("selectSexe1").selectedIndex;
+	var sexe2 = document.getElementById("selectSexe2").selectedIndex;
 	
 	console.log(zone1 + ' ' + categorie1 + ' ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
 
+	// Par défaut on masque les div "Club" et "Athlete"
 	$("#divClub2").css({'display' : 'none'});	
 	$("#divAthlete2").css({'display' : 'none'});
 	$("#selectCategorie2").css({'display' : ''});
 	$("#selectSexe2").css({'display' : ''});
-	
-	// club on montre input club et on laisse sexe - catégorie
+
+	// ======= ZONE 1 =======
+	// Si selection "Club" alors on montre input club et on laisse sexe - catégorie
+	if(zone1 == 3){
+		$("#divClub2").css({'display' : ''});	
+	}
+	// Si selection "Athlete" alors on montre inuput athle et on masque sexe - categorie
+	else if(zone1 == 4){
+		$("#divAthlete1").css({'display' : ''});
+		$("#selectCategorie1").css({'display' : 'none'});
+		$("#selectSexe1").css({'display' : 'none'});
+	}
+	// ======= ZONE 2 =======
+	// Si selection "Club" alors on montre input club et on laisse sexe - catégorie
 	if(zone2 == 3){
 		$("#divClub2").css({'display' : ''});	
 	}
-	// athlete on montre inuput athle et on masque sexe - categorie
+	// Si selection "Athlete" alors on montre inuput athle et on masque sexe - categorie
 	else if(zone2 == 4){
 		$("#divAthlete2").css({'display' : ''});
 		$("#selectCategorie2").css({'display' : 'none'});
 		$("#selectSexe2").css({'display' : 'none'});
 	}
-    
+
     // ---- SELECTION 1 ----
 	// zone monde 0
 	// -------- categorie all
@@ -623,8 +631,6 @@ createTableHead();
 		});
 
 		function chargeAthlete1(){
-			console.log("======" + $("#textNom1"));
-			// console.log("======" + $("#textNom1")[0].value);
 			// chargeJsonAthlete1($("#nom1")[0].value);
 			chargeJsonAthlete1('balage');
 		}
@@ -682,7 +688,7 @@ createTableHead();
 		             	var compute = computeEcarts(sel1.perf, sel2.perf);
 		             	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
 		             }
-	             }
+	            }
 	         };
 	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
 	         xmlhttp.send();
