@@ -66,9 +66,9 @@
 	<br/><br/>
 
 	<div id="divAthlete1" style="display:none">
-		<label for="nom1" class="col-sm-2 control-label">Nom</label>
+		<label for="textNom1" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
-			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')" size="20" maxlength="20" />
+			<input type="text" class="alphaonly form-control" id="textNom1" name="textNom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')" size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint1"></span></div>		
 		
@@ -175,6 +175,11 @@ function selection(){
 	console.log(zone1 + ' ' + categorie1 + ' ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
 
 	// Par défaut on masque les div "Club" et "Athlete"
+	$("#divClub1").css({'display' : 'none'});	
+	$("#divAthlete1").css({'display' : 'none'});
+	$("#selectCategorie1").css({'display' : ''});
+	$("#selectSexe1").css({'display' : ''});
+
 	$("#divClub2").css({'display' : 'none'});	
 	$("#divAthlete2").css({'display' : 'none'});
 	$("#selectCategorie2").css({'display' : ''});
@@ -643,14 +648,13 @@ $("#searchClub2").on("input", function(e) {
 });
 
 function chargeAthlete1(){
-	chargeJsonAthlete1($("#nom1")[0].value);
+	chargeJsonAthlete($("#textNom1")[0].value, 1);
 }
 function chargeAthlete2(){
-	console.log($("#textNom2")[0].value);			
-	chargeJsonAthlete2($("#textNom2")[0].value);
+	chargeJsonAthlete($("#textNom2")[0].value, 2);
 }
 
-function chargeJsonAthlete1(p_nom){
+function chargeJsonAthlete(p_nom, numAthlete){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		 if (this.readyState == 4 && this.status == 200) {
@@ -658,7 +662,11 @@ function chargeJsonAthlete1(p_nom){
 			 
 			 var jsonData = JSON.parse(reponseGetRecords);
 
-			 recordsSel1 = jsonData;
+			 if (numAthlete == 1){
+				recordsSel1 = jsonData;
+			} else {
+				recordsSel2 = jsonData;
+			}
 
 			 var laTable = $("#table_ecarts").DataTable();
 			 
@@ -704,33 +712,6 @@ function getRecordOfEpreuve(epreuve, recordsJson){
 		}
 	}
 	return '';
-}
-
-		
-function chargeJsonAthlete2(p_nom){
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-	if (this.readyState == 4 && this.status == 200) {
-
-			var reponseGetRecords = this.responseText;
-			var jsonData = JSON.parse(reponseGetRecords);
-			recordsSel2 = jsonData;
-			var laTable = $("#table_ecarts").DataTable();
-			laTable.clear();
-			
-			 for (var i = 0; i < listeEpreuves.length; i++) {
-				var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
-				var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
-				
-				// var sel1 = getRecordEpreuve(sel1.e, recordsSel1.record);
-				// var sel2 = getRecordEpreuve(sel1.e, recordsSel2.record);
-				var compute = computeEcarts(sel1.perf, sel2.perf);
-				laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
-			}
-		}
-	};
-	xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
-	xmlhttp.send();
 }
 
 // idSpan : txtHint
