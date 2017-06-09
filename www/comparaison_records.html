@@ -602,106 +602,114 @@ var recordsFranceFemmeJunior =
 ]
 };
 
+// chaine = chaine.substring(1);
+
+var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', 'Longueur', 'Triple'];
 
 
 
 createTableHead();
-		
-		
-	//	$("select").change(
-	//		function(){
-//				console.log("uhuhuhu");		
-//			}
-//		);
-	var elts = document.querySelectorAll("select");
-	for (var i = 0; i < elts.length; i++){
-		elts[i].addEventListener("change", selection, true);
+
+var elts = document.querySelectorAll("select");
+for (var i = 0; i < elts.length; i++){
+	elts[i].addEventListener("change", selection, true);
+}
+
+$("#searchClub2").on("input", function(e) {
+	var val = $(this).val();
+	if(val === ""){
+		return;
 	}
 
-		$("#searchClub2").on("input", function(e) {
-			var val = $(this).val();
-			if(val === ""){
-				return;
+	$.get("getClub.php", {q:val}, function(listeClubs) {
+
+		var dataList = $("#listeClub2");
+		dataList.empty();
+		
+		for (var i = 0; i < listeClubs.clubs.length; i++) {
+			var obj = listeClubs.clubs[i];
+			console.log(obj.c);
+			var opt = $("<option></option>").attr("value", obj.c);
+			dataList.append(opt);
+		}
+	},"json");
+});
+
+function chargeAthlete1(){
+	chargeJsonAthlete1($("#nom1")[0].value);
+}
+function chargeAthlete2(){
+	console.log($("#textNom2")[0].value);			
+	chargeJsonAthlete2($("#textNom2")[0].value);
+}
+
+function chargeJsonAthlete1(p_nom){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+			 var reponseGetRecords = this.responseText;
+			 
+			 var jsonData = JSON.parse(reponseGetRecords);
+
+			 recordsSel1 = jsonData;
+
+			 var laTable = $("#table_ecarts").DataTable();
+			 
+			 laTable.clear();
+			 
+			 for (var i = 0; i < listeEpreuves.length; i++) {
+
+				var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+				var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+
+				var compute = computeEcarts(sel1.perf, sel2.perf);
+				laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();      
+			 }
+		 }
+	 };
+	 xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
+	 xmlhttp.send();
+}
+
+function getRecordOfEpreuve(epreuve, recordsJson){
+
+	for(var i = 0; i < recordsJson.record.length; i++){
+		if(recordsJson.record[i].e == epreuve){
+			var p = recordsJson.record[i].perf;
+			if (p.startWith("0")){
+				return p.substring(1);
 			}
-
-			$.get("getClub.php", {q:val}, function(listeClubs) {
-
-				var dataList = $("#listeClub2");
-				dataList.empty();
-				
-				for (var i = 0; i < listeClubs.clubs.length; i++) {
-				    var obj = listeClubs.clubs[i];
-				    console.log(obj.c);
-					var opt = $("<option></option>").attr("value", obj.c);
-					dataList.append(opt);
-				}
-			},"json");
-		});
-
-		function chargeAthlete1(){
-			chargeJsonAthlete1($("#nom1")[0].value);
+			return p;
 		}
-		function chargeAthlete2(){
-			console.log($("#textNom2")[0].value);			
-			chargeJsonAthlete2($("#textNom2")[0].value);
-		}
-		
-		function chargeJsonAthlete1(p_nom){
-	        var xmlhttp = new XMLHttpRequest();
-	        xmlhttp.onreadystatechange = function() {
-	             if (this.readyState == 4 && this.status == 200) {
-	                 var reponseGetRecords = this.responseText;
-	                 
-		             var jsonData = JSON.parse(reponseGetRecords);
-
-		             recordsSel1 = jsonData;
-
-		             var laTable = $("#table_ecarts").DataTable();
-		             
-		             laTable.clear();
-		             
-		             for (var i = 0; i < recordsSel1.record.length; i++) {
-		             	var sel1 = recordsSel1.record[i];
-		             	var sel2 = recordsSel2.record[i];
-
-		             	var compute = computeEcarts(sel1.perf, sel2.perf);
-		             	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
-		             }
-	             }
-	         };
-	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
-	         xmlhttp.send();
-		}
+	}
+	return '';
+}
 
 		
-		function chargeJsonAthlete2(p_nom){
-	        var xmlhttp = new XMLHttpRequest();
-	        xmlhttp.onreadystatechange = function() {
-	             if (this.readyState == 4 && this.status == 200) {
-	                 var reponseGetRecords = this.responseText;
-	                 
-		             var jsonData = JSON.parse(reponseGetRecords);
+function chargeJsonAthlete2(p_nom){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
 
-		             recordsSel2 = jsonData;
+			var reponseGetRecords = this.responseText;
+			var jsonData = JSON.parse(reponseGetRecords);
+			recordsSel2 = jsonData;
+			var laTable = $("#table_ecarts").DataTable();
+			laTable.clear();
 
-		             var laTable = $("#table_ecarts").DataTable();
-		             
-		             laTable.clear();
-		             
-		             for (var i = 0; i < recordsSel2.record.length; i++) {
-		             	var sel1 = recordsSel1.record[i];
-		             	var sel2 = recordsSel2.record[i];
+			for (var i = 0; i < recordsSel2.record.length; i++) {
+				var sel1 = recordsSel1.record[i];
+				var sel2 = recordsSel2.record[i];
 
-		             	var compute = computeEcarts(sel1.perf, sel2.perf);
-		             	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();		             
-		             }
-	            }
-	         };
-	         xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
-	         xmlhttp.send();
+				var compute = computeEcarts(sel1.perf, sel2.perf);
+				laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+			}
 		}
+	};
+	xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
+	xmlhttp.send();
+}
 
-		
 // idSpan : txtHint
 function showHint(str, idSpan) {
     if (str.length < 3) { 
