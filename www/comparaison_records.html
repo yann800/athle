@@ -59,7 +59,7 @@
 		<div class="col-sm-5">
 		 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom" list="listeClub1"
 		 	 autocomplete="off" style="width: 250px;"/>
-			<datalist id="listeClub1"></datalist>	
+			<datalist id="listeClub1"></datalist>
 		</div>
 	</div>
 			 
@@ -68,8 +68,7 @@
 	<div id="divAthlete1" style="display:none">
 		<label for="nom1" class="col-sm-2 control-label">Nom</label>
 		<div class="col-sm-5">
-			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')"								
-		 size="20" maxlength="20" />
+			<input type="text" class="alphaonly form-control" name="nom1" placeholder="nom" onkeyup="showHint(this.value, 'txtHint1')" size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint1"></span></div>		
 		
@@ -78,7 +77,7 @@
 		<label for="prenom1" class="col-sm-2 control-label">Prénom</label>
 		
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="prenom1" placeholder="prénom" size="20" maxlength="20" >
+			<input type="search" class="alphaonly form-control" name="prenom1" placeholder="prénom" size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint1Prenom"></span></div>
 		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete1();">OK</button></div>
@@ -139,7 +138,7 @@
 	
 		<label for="prenom2" class="col-sm-2 control-label">Prénom</label>
 		<div class="col-sm-5">
-			<input type="search" class="alphaonly form-control" name="prenom2" placeholder="prénom" size="20" maxlength="20" >
+			<input type="search" class="alphaonly form-control" name="prenom2" placeholder="prénom" size="20" maxlength="20" />
 		</div>
 		<div class="col-sm-5"><span id="txtHint2Prenom"></span></div> 		
 		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeAthlete2();">OK</button></div>
@@ -345,6 +344,10 @@ function createTableHead(){
 
 function computeEcarts(p1, p2){
 	
+	if (p1 == null || p2 == null){
+		return "";
+	}
+	
 	var c1 = getCentiemes(p1);
     var c2 = getCentiemes(p2);
     
@@ -355,6 +358,10 @@ function computeEcarts(p1, p2){
 }
 
 function getCentiemes(temps) {
+
+	if (temps == null){
+		return 0;
+	}
 
 	var heures;
 	var minutes;
@@ -662,13 +669,27 @@ function chargeJsonAthlete1(p_nom){
 				var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
 				var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
 
-				var compute = computeEcarts(sel1.perf, sel2.perf);
-				laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();      
-			 }
-		 }
-	 };
-	 xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
-	 xmlhttp.send();
+				if (sel1.length == 0 && sel2.length == 0){
+					// rien, pas de record ni pour aucun des deux athlètes
+				}
+				// sel1 null, sel2 non null
+				else if (sel1.length == 0){
+					laTable.row.add({e : listeEpreuves[i], nom1 : '', perf1 :  '', nom2 : sel2.nom,  perf2 : sel2.perf, ecart : ''}).draw();
+				}
+				// sel1 non null, sel2 null
+				else if (sel2.length == 0){
+					laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : '',  perf2 : '', ecart : ''}).draw();
+				}
+				// les deux athlètes avec perf
+				else {
+					var compute = computeEcarts(sel1.perf, sel2.perf);
+					laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+				}
+			}
+		}
+	};
+	xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
+	xmlhttp.send();
 }
 
 function getRecordOfEpreuve(epreuve, recordsJson){
@@ -676,10 +697,10 @@ function getRecordOfEpreuve(epreuve, recordsJson){
 	for(var i = 0; i < recordsJson.record.length; i++){
 		if(recordsJson.record[i].e == epreuve){
 			var p = recordsJson.record[i].perf;
-			if (p.startWith("0")){
-				return p.substring(1);
+			if (p.charAt(0) == "0"){
+				recordsJson.record[i].perf = p.substring(1);
 			}
-			return p;
+			return recordsJson.record[i];
 		}
 	}
 	return '';
@@ -696,11 +717,13 @@ function chargeJsonAthlete2(p_nom){
 			recordsSel2 = jsonData;
 			var laTable = $("#table_ecarts").DataTable();
 			laTable.clear();
-
-			for (var i = 0; i < recordsSel2.record.length; i++) {
-				var sel1 = recordsSel1.record[i];
-				var sel2 = recordsSel2.record[i];
-
+			
+			 for (var i = 0; i < listeEpreuves.length; i++) {
+				var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+				var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+				
+				// var sel1 = getRecordEpreuve(sel1.e, recordsSel1.record);
+				// var sel2 = getRecordEpreuve(sel1.e, recordsSel2.record);
 				var compute = computeEcarts(sel1.perf, sel2.perf);
 				laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
 			}
@@ -729,16 +752,12 @@ function showHint(str, idSpan) {
     }
     
 }
+document.getElementById("statistiques").setAttribute("class", "active");
+
+$('.alphaonly').bind('keyup blur', function() {
+	var node = $(this);
+	node.val(node.val().replace(/[^A-Za-z ]/g, ''));
+});
 </script>
-<script>
-	document.getElementById("statistiques").setAttribute("class", "active");
-	
-	$('.alphaonly').bind('keyup blur', function() {
-		var node = $(this);
-		node.val(node.val().replace(/[^A-Za-z ]/g, ''));
-	});
-</script>
-	
-	
 </body>
 </html>
