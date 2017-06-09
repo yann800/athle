@@ -299,19 +299,27 @@ function selection(){
     	var sel1 = recordsSel1.record[i];
     	var sel2 = recordsSel2.record[i];
 
-    	// add en HTML à supprimer
-    	//$("#table_ecarts tbody").append('<tr><td>' + sel1.e + '</td>' 			+ '<td>' + sel1.nom + '</td><td>' + sel1.perf + '</td>' 			+ '<td>' + sel2.nom + '</td><td>' + sel2.perf + '</td><td></td></tr>');	
-
-    	// add en objet plus propre
-    	// $("#table_ecarts").dataTable().add(['111','ssss','ssss','ssss','ssss']);
-    	// laTable.row.add(['111','ssss','ssss','ssss','ssss']);
-
     	if (sel1 == null || sel2 == null){
     		break;
     	}
-    	var compute = computeEcarts(sel1.perf, sel2.perf);
-    	laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+    	// supposons sel1.e est 100. On doit chercher sel2.perf correspondant, sinon '0'.
+     	sel2 = getRecordEpreuve(sel1.e, recordsSel2.record);
+
+     	if (sel1.e == sel2.e){
+	    	var compute = computeEcarts(sel1.perf, sel2.perf);
+    		laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+     	}
  	}	
+}
+
+function getRecordEpreuve(epr, tabRecords){
+	for (var i = 0; i < tabRecords.length; i++) {
+		// console.info('test si = ' + tabRecords[i].e);
+		if (tabRecords[i].e == epr){
+			return tabRecords[i];
+		}
+	}
+	return '0';
 }
 
 function createTableHead(){

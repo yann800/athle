@@ -1,6 +1,9 @@
 package fr.yann.fiche;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import org.apache.commons.io.FileUtils;
 
 import fr.yann.model.EpreuveEnum;
 import fr.yann.model.SexeEnum;
@@ -16,6 +19,9 @@ public class SavePage {
 	private static final int	ID_FRM_EPREUVE_1500			= 215;
 	//			URL_BASE_COM PARAM_DEFAULT &frmannee=2012&&frmepreuve=140&frmsexe=M&frmposition=2
 	//			
+	// 2002 400 page 1
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=5&frmtype=Plein+air&frmepreuve=140400m&frmplaces=&frmnaissance=&frmvent=&frmcategorie=&frmsexe=M&frmligue=&frmnom=&frmlicence=&frmclub=	
+
 	//			=== 800
 	//			URL_BASE_COM PARAM_DEFAULT &frmannee=2012&&frmepreuve=208&frmsexe=M&frmposition=2
 	//			URL_BASE_COM PARAM_DEFAULT &frmannee=2013&frmsexe=M&frmepreuve=208
@@ -48,11 +54,21 @@ public class SavePage {
 		// sexe annee epreuve page
 		// M_2006_800_1.html
 		
-		for (int annee = 2006; annee < 2017; annee++) {
+		SexeEnum sexeEnum = SexeEnum.MASCULIN;
 
-			Bilan b = new Bilan();
-			b.url = getUrlBilan(ID_FRM_EPREUVE_400, annee, SexeEnum.MASCULIN.getCodeStr());
-			bilans.add(b);
+		for (int annee = 2004; annee < 2017; annee++) {
+
+			for (int numPage = 0; numPage < 6; numPage++) {
+				Bilan b = new Bilan();
+				b.epreuve = EpreuveEnum.COURSE_400;
+				b.sexe = sexeEnum;
+				b.annee = annee;
+				b.frmPosition = numPage;
+
+				b.url = getUrlBilan(ID_FRM_EPREUVE_400, annee, sexeEnum.getCodeStr(), numPage);
+				bilans.add(b);
+
+			}
 		}
 
 		// save(getUrlRecords("EU", SexeEnum.MASCULIN.getCodeStr()), "recordsEurope.html");
@@ -63,23 +79,23 @@ public class SavePage {
 	}
 
 	private static String getFileName(Bilan b) {
-		return b.sexe.getCodeStr() + "_" + b.annee + "_" + b.frmPosition + ".html";
+		return b.epreuve.getCode() + "_" + b.sexe.getCodeStr() + "_" + b.annee + "_" + b.frmPosition + ".html";
 	}
 
-	private static String getUrlRecords(String niveau, String sexe) {
-		return URL_BASE_COM + "?frmpostback=true&frmbase=records&frmmode=1&frmespace=0&frmexploitation=actuel&frmtype=RD&frmcategorie=&frmsexe=&frmniveau=" + niveau;
-	}
+	//	private static String getUrlRecords(String niveau, String sexe) {
+	//		return URL_BASE_COM + "?frmpostback=true&frmbase=records&frmmode=1&frmespace=0&frmexploitation=actuel&frmtype=RD&frmcategorie=&frmsexe=&frmniveau=" + niveau;
+	//	}
 
-	private static String getUrlBilan(int idFrmEpreuve, int annee, String sexe) {
-		return URL_BASE_COM + PARAM_DEFAULT + "&frmannee=" + annee + "&frmepreuve=" + idFrmEpreuve + "&frmsexe=" + sexe;
+	private static String getUrlBilan(int idFrmEpreuve, int annee, String sexe, int numPage) {
+		return URL_BASE_COM + PARAM_DEFAULT + "&frmannee=" + annee + "&frmepreuve=" + idFrmEpreuve + "&frmsexe=" + sexe + "&frmposition=" + numPage;
 	}
 
 	private static void save(String url, String nomFichierToSave) {
 		try {
-			//			final File file = new File("c:\\temp\\" + nomFichierToSave);
-			//			FileUtils.writeStringToFile(file, HttpURLConnectionAthle.getPage(url), "UTF-8");
-
-			System.out.println(nomFichierToSave);
+			System.out.println(nomFichierToSave + "\t" + url);
+			final File file = new File("c:\\temp\\" + nomFichierToSave);
+			FileUtils.writeStringToFile(file, HttpURLConnectionAthle.getPage(url), "UTF-8");
+			Thread.sleep(500);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
