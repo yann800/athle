@@ -1,0 +1,374 @@
+100m
+W 35 10.74 Merlene Ottey JAM 36 09/09/96 Milano, ITA
+W 40 11.09 Merlene Ottey SLO 44 03/08/04 Liege, BEL
+W 45 11.34 Merlene Ottey SLO 47 12/08/08 Glasgow, GBR
+W 50 11.67 Merlene Ottey SLO 50 13/07/10 Novo Mesto, GER
+W 55 12.80 Nicole Alexis FRA 55 20/06/15 Ivre Sur Seine, FRA
+W 60 13.63 Karla Del Grande CAN 61 18/07/14 Winston-Salem, USA
+W 65 14.10 Nadine O'Connor USA 65 30/06/07 San Marcos, USA
+W 70 14.76 Kathy Bergen USA 70 17/04/10 Walnut, USA
+W 75 15.31 Kathy Bergen USA 75 18/04/15 Walnut, USA
+W 80 16.81 Irene Obera USA 80 19/07/14 Winston-Salem, USA
+W 85 a 19.83 Nora Wedemo SWE 86 21/08/99 Norrtälje, SWE
+W 85 b 19.83 Mitsu Morita JPN 85 20/07/08 Isahaya City, JPN
+W 90 23.15 Mitsu Morita JPN 90 06/10/13 Kyoto, JPN
+W 95 35.48 Katsuko Iwaki JPN 95 03/10/10 Fukuroi City, JPN
+200m
+W 35 21.93 Merlene Ottey JAM 35 25/08/95 Brussels, BEL
+W 40 22.72 Merlene Ottey SLO 44 23/08/04 Athens, GRE
+W 45 23.82 Merlene Ottey SLO 46 27/08/06 Bánska Bystrica, SLO
+W 50 24.33 Merlene Ottey SLO 50 18/07/10 Valenje, SLO
+W 55 26.36 Nicole Alexis FRA 55 28/06/15 Norgent Sur M., FRA
+W 60 28.11 Karla Del Grande CAN 60 22/10/13 Porto Alegre, BRA
+W 65 29.37 Nadine O'Connor USA 65 08/07/07 Del Mar, USA
+W 70 31.39 Kathy Bergen USA 72 22/07/12 Pasadena, USA
+W 75 33.79 Kathy Bergen USA 75 10/08/15 Lyon, FRA
+W 80 36.80 Irene Obera USA 80 20/07/14 Winston-Salem, USA
+W 85 45.65 Mitsu Morita JPN 85 20/07/08 Isahaya City, JPN
+W 90 55.62 Mitsu Morita JPN 90 30/06/13 Nagasaki, JPN
+W 95 79.96 Katsuko Iwaki JPN 96 30/10/11 Shizuoka City, JPN
+400m
+W 35 50.56 Aurelia Penton CUB 35 15/07/78 Medellin, COL
+W 40 53.68 Sara Montecinos CHI 40 20/03/94 Cali, COL
+W 45 56.15 Marie Lande Mathieu PUR 46 12/07/03 Carolina, PUR
+W 50 57.66 Marie Lande Mathieu PUR 50 14/09/07 Riccione, ITA
+W 55 60.56 Marie Mathieu PUR 56 26/10/13 Porto Alegre, BRA
+W 60 64.31 Caroline Powell GBR 61 12/08/15 Lyon, FRA
+W 65 68.21 Diane Palmason CAN 65 08/08/03 Eugene, USA
+W 70 73.97 Aletta Ungerer RSA 70 05/11/16 Perth, AUS
+W 75 79.53 Christa Bortignon CAN 76 22/08/13 Kamloops, CAN
+W 80 1:31.21 Emma Mazzenga ITA 80 01/09/13 Padova, ITA
+W 85 1:49.46 Nina Naumenko RUS 86 16/09/11 Lignano, ITA
+W 90 2:46.56 Emilia Garcia de Fontán COL 90 15/08/15 Lyon, FRA
+800m
+W 35 1:56.53 Lyubov Gurina RUS 36 30/07/94 Hetchtel, BEL
+W 40 1:59.25 Yekatarina Podkopayeva URS 42 30/06/94 Luxembourg, LUX
+W 45 2:02.82 Yekatarina Podkopayeva URS 46 26/06/98 Moscow, RUS
+W 50 2:16.05 Jeanette Flynn AUS 53 29/01/05 Brisbane, AUS
+W 55 2:21.98 Jeanette Flynn AUS 55 03/03/07 Brisbane, AUS
+W 60 2:33.09 Lidia Zentner GER 60 14/09/13 Bar Le Duc, FRA
+W 65 2:39.61 Sabra Harvey USA 67 31/10/16 Perth, AUS
+W 70 2:59.55 Elfriede Hodapp GER 70 26/06/06 Löffingen, GER
+W 75 3:07.35 Jeanne Daprano USA 75 23/10/11 Moor Park, USA
+W 80 3:38.15 Yoko Nakano JPN 80 17/09/16 Nigata, JPN
+W 85 4:15.99 Melitta Czerwenka-Nagel GER 85 09/08/15 Lyon, FRA
+W 90 6:59.18 Rosario Iglesias MEX 90 09/07/01 Brisbane, AUS
+1500m
+W 35 3:57.73 Maricica Puica ROM 35 30/08/85 Bruxelles, BEL
+W 40 3:59.78 Yekatarina Podkopayeva URS 42 18/07/94 Nice, FRA
+W 45 4:05.44 Yekatarina Podkopayeva URS 46 03/08/98 Moscow, RUS
+W 50 4:36.79 Clare Elms GBR 50 05/07/14 Eton, GBR
+W 55 4:51.26 Silke Schmidt GER 55 16/07/15 Rotterdam, NED
+W 60 5:06.65 Lidia Zentner GER 60 21/09/13 Helmsheim, GER
+W 65 5:29.85 Sabra Harvey USA 65 19/07/14 Winston-Salem, USA
+W 70 6:00.50 Rimma Vasina RUS 71 15/09/11 Lignano, ITA
+W 75 6:34.22 Elfriede Hodapp GER 75 03/07/10 Kevelaer, GER
+W 80 6:52.77 Yoko Nakano JPN 80 23/07/16 Tokyo, JPN
+W 85 8:50.42 Melitta Czerwenka-Nagel GER 85 14/08/15 Lyon, FRA
+1mile
+W 35 4:17.33 Maricica Puica ROM 35 21/08/85 Zurich, SWI
+W 40 4:23.78 Yekatarina Podkopayeva URS 40 09/06/93 Rome, ITA
+W 45 4:48.42 Yekatarina Podkopayeva URS 45 13/09/97 Fukuoka, JPN
+W 50 5:00.59 Gitte Karlshöj DEN 51 21/08/10 Århus, DEN
+W 55 5:17.37 Silke Schmidt GER 56 02/09/15 Zevenbergse, NED
+W 60 5:42.65 Kathryn Martin USA 61 17/07/13 Franklyn Square, USA
+W 65 5:54.59 Angela Copson GBR 68 19/07/15 Solihull, GBR
+W 70 6:47.91 Jeanne Daprano USA 70 05/05/07 Durham, USA
+W 75 6:58.44 Jeanne Daprano USA 75 21/07/12 Pasadena, USA
+W 80 8:33.76 Helly Visser CAN 80 31/05/14 Calgary, CAN
+W 85 10:55.25 Blanche Cummings USA 85 20/06/15 Norwalk, USA
+3000m
+W 35 8:27.83 Maricica Puica ROM 35 07/09/85 Roma. ITA
+W 40 9:11.2 Joyce Smith GBR 40 30/04/78 London, GBR
+W 45 9:17.27 Yekatarina Podkopayeva URS 45 22/06/97 München, GER
+W 50 9:47.20 Gitte Karlshöj DEN 50 19/05/09 Århus, DEN
+W 55 10:03.90 Silke Schmidt GER 55 10/07/15 Utrecht, NED
+W 60 10:54.04 Lidia Zentner GER 60 04/09/13 Pfungstadt,  GER
+W 65 11:48.2 Angela Copson GBR 65 25/07/12 Leicester , GBR
+W 70 12:52.03 Lavinia Petrie AUS 71 18/11/14 Dendigo, AUS
+W 75 13:55.58 Yoko Nakano JPN 76 21/09/12 Okayama City,JPN
+W 80 14:47.89 Yoko Nakano JPN 80 17/09/16 Nigata, JPN
+W 85 24:08.62 Ivy Granstrom CAN 86 28/06/98 Eugene, USA
+5000m
+W 35 14:33.84 Edith Masai KEN 39 02/06/06 Oslo, NOR
+W 40 15:04.87 Joanne Pavey GBR 40 05/06/14 Rome, ITA
+W 45 15:55.71 Nicole Leveque FRA 45 01/06/96 Angers. FRA
+W 50 16:51.17 Gitte Karlshöj DEN 50 23/06/09 Århus, DEN
+W 55 17:29.28 Silke Schmidt GER 55 27/06/15 Eindhoven, NED
+W 60 18:48.62 Lidia Zentner GER 60 27/08/13 Flein, GER
+W 65 20:08.17 Kathryn Martin USA 65 28/10/16 Perth, AUS
+W 70 21:34.08 Lavinia Petrie AUS 70 09/03/14 Hobart, AUS
+W 75 24:03.90 Yoko Nakano JPN 77 06/10/13 Kyoto, JPN
+W 80 26:33.60 Denise Leclerc FRA 80 29/08/14 Izmir, TUR
+W 85 32:36.20 Lenore Montgomery CAN 85 26/08/15 Burnaby, CAN
+10000m
+W 35 30:53.20 Jo Pavey GBR 38 03/08/12 London, GBR
+W 40 31:33.44 Jo Pavey GBR 42 08/12/16 Rio de Janeiro, BRA
+W 45 32:34.06 Evy Palm SWE 46 04/09/88 Helsinki, FIN
+W 50 35:05.7 Fiona Matheson GBR 50 16/10/11 Coatbridge, GBR
+W 55 36:53.81 Silke Schmidt GER 55 02/05/15 Ohrdruf, GER
+W 60 39:04.23 Bernadine Portenski NZL 60 28/02/10 Wellington, NZL
+W 65 41:40.27 Angela Copson GBR 65 05/08/12 Oxford, GBR
+W 70 44:43.27 Lavinia Petrie AUS 70 07/04/14 Hobart, AUS
+W 75 50:00.93 Melitta Czerwenka-Nagel GER 75 28/06/05 Saarbrücken, GER
+W 80 55:26.46 Denise Leclerc FRA 80 21/10/13 Porto Alegre, BRA
+W 85 1:26:15.07 Vladyklena Kokina UKR 87 21/09/14 Kyiv, UKR
+4x100m
+W35 47.65 Stafford,Springer,Hutchinson,Mark-Baird TTO     16/08/15 Lyon, FRA
+W40 48.01 Mogentale,Brims,Bezuidenhout,Strong AUS     08/08/09 Lahti, FIN
+W45 48.92 Motti,Brims,Forster,Mogentale AUS     23/04/11 Brisbane, AUS
+W50 51.50 Powell,Horder,McClelland,Godsell GBR     03/08/08 Lјublјana, SLO
+W55 54.31 Priestman,Lewington,Parsons,Bonner GBR     01/04/08 Ǻarhus, FIN
+W60 55.77 Drecoll,Reichert,Hoffman,Hoffman GER     09/07/00 Jyväskylä, FIN
+W65 60.31 Zörner,Buchholz,Reismann,Meier GER     16/08/15 Lyon, FRA
+W70 66.05 Schuele,Schneiderhan,Haule,Mangler GER     17/10/93 Miyazaki, JPN
+W75 70.19 Obera,Jordan,Donley,Meiler USA     17/07/11 Sacramento, USA
+W80 1:21.06 Donley,Meiler,Chou,Obera USA     16/08/15 Lyon, FRA
+W85 1:50.31 Styles,Peterson,Valien,Stewart USA     26/07/13 Berea, USA
+4x400m
+W35 3:50.80 Mitchell,Mathews,Beadhall,Gabriel GBR     08/08/99 Gateshead, GBR
+W40 3:56.02 Seidel,Gazda-Sagolla,Kroner,Heidrich GER     25/08/02 Potsdam, GER
+W45 4:01.22 Forster,Motti,Mogentale,Brims AUS     24/04/11 Brisbane, AUS
+W50 4:10.80 Mahady,Horder,Saunders-Mullins,Powell GBR     08/08/09 Lahti, FIN
+W55 4:28.74 Trimble,Howe,Mullim,Power GBR     24/07/10 Nyiregyháza, HUN
+W60 4:49.58 Godsell,Trimble,Roe,Powell GBR     16/08/15 Lyon, FRA
+W65 5:16.39 Allison,Macliver,Stobaus,Parrish AUS     17/07/11 Sacramento, USA
+W70 5:32.95 Macliver,Hampson,Lang,Allison AUS     16/08/15 Lyon, FRA
+W75 6:58.70 Petley,Cumming,VanDerVeeken,Peters NZL     08/08/09 Lahti, FIN
+W80 8:39.32 Chou,Harada,Donley,Obera USA     16/08/15 Lyon, FRA
+4x800m
+W35-39 9:25.27 Rizzo, Metz, Reifer, McGrath USA     09/07/11 New York, USA
+W40-49 9:16.91 Boyle,Babcock,Cummins,MacMillan CAN     29/08/16 Vancouver, CAN
+W50-59 10:24.21 Shisler, Allers, Groenendaal, Jasper USA     20/07/14 Winston-Salem, USA
+W60-69 11:06.02 Harvey,Richards,Steinbach,Martin USA     20/07/14 Winston-Salem, USA
+W70-79 14:45.88 Lammet,Staubermann,Reintraut,Ritter GER     27/09/13 Essen, GER
+2000m Steeplechase
+W 35 6:30.83 Leslie Lehane USA 35 31/07/98 Orono, USA
+W 40 6:49.58 Lisa Ryan USA 41 17/07/11 Sacramento, USA
+W 45 6:58.89 Lisa Valle USA 45 17/07/11 Sacramento, USA
+W 50 7:42.04 Marie Bodilis-Loaëc FRA 50 02/07/11 Nantes, FRA
+W 55 7:58.43 Margaret Orman NZL 55 27/07/97 Durban, RSA
+W 60 8:37.34 Kathryn Martin USA 62 18/07/14 Winston-Salem, USA
+W 65 8:57.54 Kathryn Martin USA 65 06/11/16 Perth, AUS
+W 70 10:20.43 Marie Michelsohn USA 70 03/08/12 Lisle, USA
+W 75 11:30.55 Xuhua Chen CHN 76 06/11/16 Perth, AUS
+W 80 13:38.80 Anne Martin GBR 80 06/11/16 Perth, AUS
+W85 18:30.80 Clasina Van der Veeken NZL 85 06/11/16 Perth, AUS
+100m Hurdles
+W 35 12.40 Gail Devers USA 35 02/07/02 Lausanne. SWI
+80m Hurdles
+W 40 11.24 Monica Pellegrinelli SUI 40 31/08/05 San Sebastian, ESP
+W 45 11.51 Christine Müller SUI 46 22/07/04 Raleigh, USA
+W 50 12.08 Christine Müller SUI 50 10/07/09 Vaterstetten, GER
+W 55 12.31 Helgi Lamp EST 55 17/07/99 Haapsalu, EST
+W 60 13.26 Phil Raschker USA 60 04/09/07 Riccione, ITA
+W 65 14.03 Edith Graff BEL 66 10/08/08 Lјublјana, SLO
+W 70 15.72 -0.8 Marianne Maier AUT 73 28/10/16 Perth, AUS
+W 75 17.44 Christa Bortignon CAN 76 21/08/13 Kamloops, CAN
+W 80 18.70 -0.1 Irene Obera USA 82 04/11/16 Perth, AUS
+400m Hurdles
+W 35 52.94 Marina Stepanova URS 36 17/09/86 Tashkent, UZB
+W 40 58.35 Barbara Gähling GER 42 21/07/07 Erfurt, GER
+W 45 62.85 Barbara Gähling GER 45 27/06/10 Kaiserslautern, GER
+300m Hurdles
+W 50 44.90 Barbara Gähling GER 50 11/08/15 Lyon, FRA
+W 55 49.00 Jane Horder GBR 55 21/07/12 Derby, GBR
+W 60 51.64 Marge Alison AUS 60 26/08/05 San Sebastian, ESP
+W 65 54.06 Marge Alison AUS 66 11/07/11 Sacramento, USA
+200m Hurdles
+W 70 36.71 Marge Alison AUS 70 11/08/15 Lyon, FRA
+W 75 39.89 Christa Bortignon CAN 76 18/05/13 Kamloops, CAN
+W 80 42.24 Irene Obera USA 80 20/07/14 Winston-Salem, USA
+3000m  Race Walk
+W 35 12:02.39 K. Junna-Saxby AUS     28/02/97 Melbourne, AUS
+W 40 13:19.7 Suzanne Griesbach FRA 41 22/02/87 Lievin, FRA
+W 45 13:57.43 Lynette Ventris AUS 46 16/03/02 Perth, AUS
+W 50 13:54.3 Lynette Ventris AUS 50 24/03/07 Perth, AUS
+W 55 14:16.41 Lynette Ventris AUS 55 24/03/12 Perth, AUS
+W 60 15:21.94 Heather Carr AUS 61 22/01/11 Ballarat, AUS
+W 65 16:22.1 Brenda Riley AUS 66 01/04/06 Melbourne, AUS
+W 70 18:05.0 Britta Tibbling SWE 71 05/07/89 Ostersund, SWE
+W 75 20:41.0 Miriam Gordon USA 75 10/09/00 Miami, USA
+W 80 21:08.2 Aina Engberg SWE 80 30/05/03 Vāsterås, SWE
+W 85 23:24.89 Heather Lee AUS 85 05/11/12 Southport, AUS
+5000m  Race Walk
+W 35 20:12.41 Elisabetta Perronne ITA 35 02/08/03 Rieti, ITA
+W 40 21:57.40 Kelly Ruddick AUS 40 07/10/13 Geelong, AUS
+W 45 23:42.4 Lynette Ventris AUS 49 25/02/05 Perth, AUS
+W 50 23:37.78 Lynette Ventris AUS 50 07/04/07 Hobart, AUS
+W 55 23:57.58 Siw Karlström SWE 55 01/09/12 Göteborg,SWE
+W 60 26:10.22 Heather Carr AUS 61 04/03/11 Melbourne, AUS
+W 65 27:19.1 Brenda Riley AUS 66 12/02/06 Coburg, AUS
+W 70 29:16.0 Britta Tibbling SWE 71 21/07/89 San Diego, USA
+W 75 32:44.76 Britta Tibbling SWE 75 16/10/93 Miyazaki, JPN
+W 80 34:48.49 Britta Tibbling SWE 81 06/08/99 Gateshead, GBR
+W 85 40:06.96 Heather Lee AUS 85 03/11/12 Southport, AUS
+W 90 44:28.33 Elena Pagu ROU 90 27/10/16 Perth, AUS
+High Jump
+W 35 a 2.01 Inga Babakova UKR 35 03/06/03 Oslo, NOR
+W 35 b 2.01 Ruth Beitia ESP 35 17/08/14 Zürich, SWI
+W 40 1.87 Iryná Myhalchenko UKR 40 13/06/12 Yalta, UKR
+W 45 1.76 Debbie Brill CAN 46 06/08/99 Gateshead, GBR
+W 50 1.60 Debbie Brill CAN 51 19/06/04 Langley, CAN
+W 55 1.55 Florence Picaut FRA 55 18/05/08 Versailles, FRA
+W 60 1.47 Weia Reinboud NED 60 19/09/10 Naaldwijk, NED
+W 65 1.42 Weia Reinboud NED 65 21/06/15 Den Helder, NED
+W 70 1.30 Kathy Bergen USA 70 24/07/10 Sacramento, USA
+W 75 1.22 Rietje Dijkman NED 76 07/08/15 Lyon, FRA
+W 75 1.22 Kathy Bergen USA 75 06/06/15 Pasadena, USA
+W 80 1.10 Rosemary Chrimes GBR 80 21/10/13 Porto Alegre, BRA
+W 85 0.95 Rosa Pedersen DEN 85 07/08/15 Lyon, FRA
+W 90 0.82 Olga Kotelko CAN 90 01/08/09 Lahti, FIN
+W 95 .75 Olga Kotelko CAN 95 18/05/14 Kamloops, CAN
+Pole Vault
+W 35 4.55 Stacy Dragila USA 38 28/06/09 Eugene, USA
+W 40 4.10 Doris Auer AUT 40 06/08/11 Innsbruck, AUT
+W 45 3.76 Irie Hill GBR 46 03/07/15 Regensburg, GER
+W 50 3.40 Dawn Hartigan AUS 50 06/03/07 Coburg, AUS
+W 55 3.26 Dawn Hartigan AUS 56 23/03/13 Melbourne, AUS
+W 60 3.12 Nadine O'Connor USA 64 22/07/06 Long Beach, USA
+W 65 3.19 Nadine O'Connor USA 67 17/07/09 San Diego, USA
+W 70 2.95 Nadine O'Connor USA 70 13/07/12 San Diego, USA
+W 75 2.03 Florence Meiler USA 76 04/07/10 Valatie, USA
+W 80 1.83 Florence Meiler USA 80 21/06/14 Albany, USA
+W 85 1.25 Johnnye Valien USA 85 08/07/11 Sacramento, USA
+Long Jump
+W 35 6.99 Heike Drechsler GER 35 29/09/00 Sydney, AUS
+W 40 6.55 Tatyana Ter-Mesrobian RUS 40 18/07/08 Kazan, RUS
+W 45 5.62 Kriemhild Mann GER 45 28/04/12 Osterode, GER
+W 50 5.41 Marie Kay AUS 50 02/04/10 Perth, AUS
+W 55 5.06 Ramona Pfeiffer GER 55 03/09/16 Essen, GER
+W 60 4.75 Christiane Schmalbruch GER 60 19/07/97 Durban, RSA
+W 65 4.64 Christiane Schmalbruch GER 65 16/08/02 Athens, GRE
+W 70 4.26 Carol LaFayette-Boyd CAN 70 10/08/12 Saint John, CAN
+W 75 3.77 Paula Schneiderhan GER 75 04/10/97 Nieder-Olm, GER
+W 80 3.05 Christel Happ GER 80 02/07/10 Kevelaer, GER
+W 85 2.93 Rosa Pedersen DEN 85 12/08/15 Lyon, FRA
+W 90 1.77 Olga Kotelko CAN 90 07/08/09 Lahti, FIN
+W 95 1.28 Olga Kotelko CAN 95 17/05/14 Kamloops, CAN
+Triple Jump
+W 35 14.65 Yamilé Aldama GBR 39 31/05/12 Roma. ITA
+W 40 14.06 Yamilé Aldama GBR 40 01/06/13 Eugene, USA
+W 45 12.01 Murielle Glovil FRA 47 15/10/15 Lyon, FRA
+W 50 11.66 Akiko Ohinata JPN 54 08/08/04 Skikishima, JPN
+W 55 10.97 Akiko Ohinata JPN 56 25/06/06 Kofu, JPN
+W 60 11.04 Akiko Ohinata JPN 60 06/06/10 Tajimi City, JPN
+W 65 9.68 Akiko Ohinata JPN 65 17/05/15 Ise, JPN
+W 70 8.65 Christiane Schmalbruch GER 72 02/08/09 Lahti, FIN
+W 75 8.11 Christa Bortignon CAN 75 10/10/12 St. George, USA
+W 80 6.55 Elsa Enarsson SWE 80 11/09/10 Olofström, SWE
+W 85 5.50 Ruth Frith AUS 86 25/03/95 Sydney, AUS
+W 90 4.25 Olga Kotelko CAN 90 18/09/09 Richmond, CAN
+W 95 3.37 Olga Kotelko CAN 95 18/05/14 Kamloops, CAN
+Shot Put
+W 35 21.46 Larisa Peleshenko RUS 36 26/08/00 Moskva, RUS
+W 40 19.05 Antonina Ivanova URS 40 28/08/73 Orel, RUS
+W 45 16.95 Denka Silhava CZE 45 26/06/99 Ostrava, CZE
+W 50 15.15 Alexandra Marghieva MOL 50 04/08/09 Lahti, FIN
+W 55 14.47 Sigrin Kofink GER 56 21/07/91 Turku, FIN
+W 60 13.68 Loghlin Mihaela ROM 60 09/06/12 Bucharest, ROM
+W 65 12.21 Sigrin Kofink GER 65 19/08/00 Kevelaer, GER
+W 70 11.02 Rosemary Chrimes GBR 70 07/06/03 Derby, GBR
+W 75 11.10 Evaun B. Williams GBR 75 18/10/13 Porto Alegre, BRA
+W 80 9.50 Rosemary Chrimes GBR 80 26/06/13 Birmingham ,GBR
+W 85 7.97 Rachel Hanssens BEL 85 09/08/14 Allter, BEL
+W 90 5.85 Nora Kutti EST 90 09/10/12 Tartu, EST
+W 95 5.32 Gabre Gabric ITA 95 23/07/10 Nyiregyháza, HUN
+W 100 4.10 Ruth Frith AUS 101 22/08/10 Southport, AUS
+Discus Throw
+W 35 69.60 Faina Myelnik URS 35 09/09/80 Donetsk, UKR
+W 40 67.89 Iryná Yatchenko BLR 42 29/06/08 Staiki, BLR
+W 45 64.09 Zdenka Silhava CZE 45 11/08/99 Pardubice, CZE
+W 50 46.11 Olga Cherniavskaia RUS 51 11/08/15 Lyon, FRA
+W 55 43.36 Tamara Danilova RUS 57 10/08/96 Prien, GER
+W 60 39.24 Karen Illgen GER 61 15/06/02 Halle, GER
+W 65 37.62 Tamara Danilova RUS 65 28/08/05 San Sebastian, ESP
+W 70 33.55 Tamara Danilova RUS 70 23/07/10 Nyiregyháza, HUN
+W 75 31.56 Tamara Danilova RUS 76 16/10/15 Nice, FRA
+W 80 24.42 Susanne Wissinger GER 80 01/03/14 Erfurt, GER
+W 85 19.49 Rachel Hanssens BEL 85 27/08/14 Izmir, TUR
+W 90 14.80 Olga Kotelko CAN 90 06/08/09 Lahti, FIN
+W 95 12.86 Gabre Gabric ITA 95 21/07/10 Nyiregyháza, HUN
+W 100 9.30 Ruth Frith AUS 101 02/04/11 Brisbane, AUS
+Hammer Throw
+W 35 72.36 Olga Kuzenkova RUS 36 02/08/07 Tula, RUS
+W 40 57.08 Oneithea Lewis USA 44 06/04/05 Reading, USA
+W 45 56.21 Oneithea Lewis USA 45 16/07/05 Denver, USA
+W 50 55.46 Oneithea Lewis USA 50 22/07/10 Sacramento, USA
+W 55 51.30 M.-Leena Parviainen AUS 58 10/10/02 Melbourne, AUS
+W 60 46.09 Helen Searle AUS 60 29/09/01 Canberra, AUS
+W 65 44.38 Jutta Schäfer GER 65 17/08/97 Schweinfurt, GER
+W 70 37.40 Evaun B. Williams GBR 70 02/08/08 Lјublјana, SLO
+W 75 39.64 Evaun B. Williams GBR 75 19/10/13 Porto Alegre, BRA
+W 80 29.58 Susanne Wissinger GER 80 28/03/14 Budapest, HUN
+W 85 26.80 Rachel Hanssens BEL 85 25/08/14 Izmir, TUR
+W 90 16.71 Olga Kotelko CAN 92 08/07/11 Sacramento, USA
+W 95 14.92 Olga Kotelko CAN 95 16/05/14 Kamloops, CAN
+W 100 11.30 Ruth Frith AUS 101 10/10/10 Turner, AUS
+Javelin Throw
+W 35 68.34 Steffi Nerius GER 36 31/08/08 Elstal, GER
+W 40 61.23 Felicia Moldovan ROM 40 06/06/08 Bucharest, ROM
+W 45 50.47 Elisabeth Wallander SWE 45 21/08/05 Helsingborg, SWE
+W 50 47.14 Genowefa Patla POL 52 12/08/15 Lyon, FRA
+W 55 44.44 Natasa Bezjak SLO 56 21/08/02 Potsdam, GER
+W 60 37.50 Linda Cohn USA 61 02/05/14 Northridge, USA
+W 65 32.02 Weia Reinboud NED 65 25/09/16 Woerden, NED
+W 70 27.78 Carol Frost USA 70 21/06/15 Ames, USA
+W 75 29.92 Evaun B. Williams GBR 75 22/10/13 Porto Alegre, BRA
+W 80 21.83 Rachel Hanssens BEL 81 22/07/10 Nyiregyháza, HUN
+W 85 18.96 Rachel Hanssens BEL 85 15/06/14 Lebbeke, BEL
+W 90 13.54 Olga Kotelko CAN 90 03/08/09 Lahti, FIN
+W 95 11.24 Olga Kotelko CAN 95 29/03/14 Budapest, HUN
+W 100 6.43 Ruth Frith AUS 100 23/08/09 Southport, AUS
+Weight Throw
+W 35 18.02 Bryrony Glass AUS 35 05/02/13 Perth, AUS
+W 40 19.09 Oneithea Lewis USA 42 28/09/02 Newark, USA
+W 45 17.88 Oneithea Lewis USA 45 13/08/05 Arlington, USA
+W 50 18.76 Oneithea Lewis USA 51 11/07/11 Sacramento, USA
+W 55 17.02 Evaun B. Williams GBR 56 10/06/94 Athens, GRE
+W 60 17.84 Inge Faldager DEN 60 24/07/08 Lјublјana, SLO
+W 65 17.34 Annie van Anholt NED 67 22/03/14 Roermond, NED
+W 70 15.00 Jutta Schäefer ITA 72 10/03/04 Sindelfingen, GER
+W 75 14.74 Evaun B. Williams GBR 75 24/10/13 Porto Alegre, BRA
+W 80 10.56 Rachel Hanssens BEL 83 22/08/12 Zittau, GER
+W 85 9.23 Hilja Bakhoff EST 87 26/08/14 Izmir, TUR
+W 90 7.90 Olga Kotelko CAN 91 17/09/10 Courtenay, CAN
+W 95 6.72 Olga Kotelko CAN 95 15/06/14 Langley, CAN
+W 100 4.68 Ruth Frith AUS 101 02/04/11 Brisbane, AUS
+Throws Pentathlon
+W 35 4114 Marie-Josee Le Jour CAN 36 15/08/15 Lyon, FRA
+W 40 4841 Oneithea Lewis USA 43 23/08/03 Fort Collins, USA
+W 45 4752 Oneithea Lewis USA 45 13/08/05 Arlington, USA
+W 50 4800 Oneithea Lewis USA 50 07/08/10 Lisle, USA
+W 55 4581 Margaretta Tomanek BEL 56 08/10/05 Bogen, GER
+W 60 4519 Anne Jensen DEN 61 16/08/15 Lyon, FRA
+W 65 4754 Myrle Mensey USA 66 18/09/15 Kent, USA
+W 70 4418 Maria Luisa Fancello ITA 71 29/08/14 Izmir, TUR
+W 75 5528 Evaun B. Williams GBR 75 25/10/13 Porto Alegre, BRA
+W 80 4845 Susanne Wissinger GER 80 28/09/14 Bauntal, GER
+W 85 4846 Rachel Hanssens BEL 85 27/08/14 Izmir, TUR
+W 90 4090 Olga Kotelko CAN 90 06/08/09 Lahti, FIN
+W 95 5016 Olga Kotelko CAN 95 16/05/14 Kamloops, CAN
+W 100 5180 Ruth Frith AUS 101 02/04/11 Brisbane, AUS
+Pentathlon
+W 35 4362 Inma Clopes Gasull ESP 35 07/06/03 Murcia, ESP
+W 40 4249 Diana Faye Norman GBR 41 13/09/15 Sutton Surrey, GBR
+W 45 4254 Phil Raschker USA 45 11/08/93 Provo, USA
+W 50 4390 Anna Wlodarczyk POL 50 08/08/02 Orono, USA
+W 55 4511 Phil Raschker USA 55 08/08/02 Orono, USA
+W 60 4635 Phil Raschker USA 60 02/08/07 Orono, USA
+W 65 4894 Marianne Maier AUT 65 01/08/08 Lјublјana, SLO
+W 70 4664 Riet Jonkers-Slegers NED 70 16/06/14 Tilburg, NED
+W 75 4743 Christa Bortignon CAN 75 09/08/12 Saint John, CAN
+W 80 4319 Florence Meiler USA 80 17/07/14 Winston-Salem, USA
+Heptathlon
+W 35 6860 Sabine Braun GER 37 10/08/02 München, GER
+W 40 5843 Sonia Del Prete FRA 40 05/06/10 Tours, FRA
+W 45 6006 Marie Kay AUS 49 29/07/09 Lahti, FIN
+W 50 6456 Barbara Gähling GER 50 05/08/15 Lyon, FRA
+W 55 6682 Marie Kay AUS 55 05/08/15 Lyon, FRA
+W 60 6043 Rita Hanscom USA 61 28/06/15 San Antonio, USA
+W 65 6253 Weia Reinboud NED 65 31/05/15 Stendal, GER
+W 70  6218 Marianne Maier AUT 71 23/08/14 Izmir, TUR
+W 75 6519 Christa Bortignon CAN 76 04/08/13 Torino, ITA
+W 80 6071 Irene Obera USA 82 29/10/16 Perth, AUS

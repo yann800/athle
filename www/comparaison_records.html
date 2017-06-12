@@ -214,36 +214,78 @@ function selection(){
     if (zone1 == 0) {
 
 	// ---- sexe femme  
-	if (sexe1 == 0){
-		if (categorie1 == 0){recordsSel1 = recordsMondeFemme;}
-		else {recordsSel1 = recordsMondeFemmeJunior;} // TODO autres cat.
-	}
+		if (sexe1 == 0){
+			if (categorie1 == 0){recordsSel1 = recordsMondeFemme;}
+			else if (categorie1 == 1){	recordsSel1 = recordsMondeFemmeCadet;}
+			else if (categorie1 == 2){	recordsSel1 = recordsMondeFemmeJunior;}
+			else if (categorie1 == 3){	recordsSel1 = recordsMondeFemme35;}
+			else if (categorie1 == 4){	recordsSel1 = recordsMondeFemme40;}
+			else if (categorie1 == 5){	recordsSel1 = recordsMondeFemme45;}
+			else if (categorie1 == 6){	recordsSel1 = recordsMondeFemme50;}
+			else if (categorie1 == 7){	recordsSel1 = recordsMondeFemme55;}
+			else if (categorie1 == 8){	recordsSel1 = recordsMondeFemme60;}
+			else if (categorie1 == 9){	recordsSel1 = recordsMondeFemme65;}
+			else if (categorie1 == 10){	recordsSel1 = recordsMondeFemme70;}
+			else if (categorie1 == 11){	recordsSel1 = recordsMondeFemme75;}
+			else if (categorie1 == 12){	recordsSel1 = recordsMondeFemme80;}
+		}
 		// ---- sexe homme 
-	else {
-		if (categorie1 == 0){	recordsSel1 = recordsMondeHomme;}
-		else if (categorie1 == 1){	recordsSel1 = recordsMondeHommeCadet;}
-		else if (categorie1 == 2){	recordsSel1 = recordsMondeHommeJunior;}
-		else if (categorie1 == 3){	recordsSel1 = recordsMondeHomme35;}
-		else if (categorie1 == 4){	recordsSel1 = recordsMondeHomme40;}
-		else if (categorie1 == 5){	recordsSel1 = recordsMondeHomme45;}
-		else if (categorie1 == 6){	recordsSel1 = recordsMondeHomme50;}
-		else if (categorie1 == 7){	recordsSel1 = recordsMondeHomme55;}
-		else if (categorie1 == 8){	recordsSel1 = recordsMondeHomme60;}
-		else if (categorie1 == 9){	recordsSel1 = recordsMondeHomme65;}
-		else if (categorie1 == 10){	recordsSel1 = recordsMondeHomme70;}
-		else if (categorie1 == 11){	recordsSel1 = recordsMondeHomme75;}
-		else if (categorie1 == 12){	recordsSel1 = recordsMondeHomme80;}
-	}
+		else {
+			if (categorie1 == 0){	recordsSel1 = recordsMondeHomme;}
+			else if (categorie1 == 1){	recordsSel1 = recordsMondeHommeCadet;}
+			else if (categorie1 == 2){	recordsSel1 = recordsMondeHommeJunior;}
+			else if (categorie1 == 3){	recordsSel1 = recordsMondeHomme35;}
+			else if (categorie1 == 4){	recordsSel1 = recordsMondeHomme40;}
+			else if (categorie1 == 5){	recordsSel1 = recordsMondeHomme45;}
+			else if (categorie1 == 6){	recordsSel1 = recordsMondeHomme50;}
+			else if (categorie1 == 7){	recordsSel1 = recordsMondeHomme55;}
+			else if (categorie1 == 8){	recordsSel1 = recordsMondeHomme60;}
+			else if (categorie1 == 9){	recordsSel1 = recordsMondeHomme65;}
+			else if (categorie1 == 10){	recordsSel1 = recordsMondeHomme70;}
+			else if (categorie1 == 11){	recordsSel1 = recordsMondeHomme75;}
+			else if (categorie1 == 12){	recordsSel1 = recordsMondeHomme80;}
+		}
 	} // end monde
 	// zone europe 1
 	else if (zone1 == 1 && sexe1 == 1){recordsSel1 = recordsEuropeHommeJunior;}
 	else if (zone1 == 1 && sexe1 == 0){recordsSel1 = recordsEuropeFemme;}
-	
+
+	// ===============================
 	// zone france 2
-	else if (zone1 == 2 && categorie1 == 0 && sexe1 == 1){	recordsSel1 = recordsFranceHomme;}
-	else if (zone1 == 2 && categorie1 == 0 && sexe1 == 0){	recordsSel1 = recordsFranceFemme;}
-	else if (zone1 == 2 && categorie1 == 2 && sexe1 == 1){	recordsSel1 = recordsFranceHommeJunior;}
-	else if (zone1 == 2 && categorie1 == 2 && sexe1 == 0){	recordsSel1 = recordsFranceFemmeJunior;}    
+	else if (zone1 == 2){
+	// ---- sexe femme  
+		if (sexe1 == 0){
+			if (categorie1 == 0){recordsSel1 = recordsFranceFemme;}
+			else if (categorie1 == 1){	recordsSel1 = recordsFranceFemmeCadet;}
+			else if (categorie1 == 2){	recordsSel1 = recordsFranceFemmeJunior;}
+			else if (categorie1 == 3){	recordsSel1 = recordsFranceFemme35;}
+			else if (categorie1 == 4){	recordsSel1 = recordsFranceFemme40;}
+			else if (categorie1 == 5){	recordsSel1 = recordsFranceFemme45;}
+			else if (categorie1 == 6){	recordsSel1 = recordsFranceFemme50;}
+			else if (categorie1 == 7){	recordsSel1 = recordsFranceFemme55;}
+			else if (categorie1 == 8){	recordsSel1 = recordsFranceFemme60;}
+			else if (categorie1 == 9){	recordsSel1 = recordsFranceFemme65;}
+			else if (categorie1 == 10){	recordsSel1 = recordsFranceFemme70;}
+			else if (categorie1 == 11){	recordsSel1 = recordsFranceFemme75;}
+			else if (categorie1 == 12){	recordsSel1 = recordsFranceFemme80;}
+		}
+		// ---- sexe homme 
+		else {
+			if (categorie1 == 0){	recordsSel1 = recordsFranceHomme;}
+			else if (categorie1 == 1){	recordsSel1 = recordsFranceHommeCadet;}
+			else if (categorie1 == 2){	recordsSel1 = recordsFranceHommeJunior;}
+			else if (categorie1 == 3){	recordsSel1 = recordsFranceHomme35;}
+			else if (categorie1 == 4){	recordsSel1 = recordsFranceHomme40;}
+			else if (categorie1 == 5){	recordsSel1 = recordsFranceHomme45;}
+			else if (categorie1 == 6){	recordsSel1 = recordsFranceHomme50;}
+			else if (categorie1 == 7){	recordsSel1 = recordsFranceHomme55;}
+			else if (categorie1 == 8){	recordsSel1 = recordsFranceHomme60;}
+			else if (categorie1 == 9){	recordsSel1 = recordsFranceHomme65;}
+			else if (categorie1 == 10){	recordsSel1 = recordsFranceHomme70;}
+			else if (categorie1 == 11){	recordsSel1 = recordsFranceHomme75;}
+			else if (categorie1 == 12){	recordsSel1 = recordsFranceHomme80;}
+		}		
+	}
 	// zone autre
 	else {
 		console.log('selection 1 : athlète');
@@ -260,34 +302,77 @@ function selection(){
 	// ---- sexe femme  
 	if (sexe2 == 0){
 		if (categorie2 == 0){recordsSel2 = recordsMondeFemme;}
-		else {recordsSel2 = recordsMondeFemmeJunior;} // TODO autres cat.
+		else if (categorie2 == 1){	recordsSel2 = recordsMondeFemmeCadet;}
+		else if (categorie2 == 2){	recordsSel2 = recordsMondeFemmeJunior;}
+		else if (categorie2 == 3){	recordsSel2 = recordsMondeFemme35;}
+		else if (categorie2 == 4){	recordsSel2 = recordsMondeFemme40;}
+		else if (categorie2 == 5){	recordsSel2 = recordsMondeFemme45;}
+		else if (categorie2 == 6){	recordsSel2 = recordsMondeFemme50;}
+		else if (categorie2 == 7){	recordsSel2 = recordsMondeFemme55;}
+		else if (categorie2 == 8){	recordsSel2 = recordsMondeFemme60;}
+		else if (categorie2 == 9){	recordsSel2 = recordsMondeFemme65;}
+		else if (categorie2 == 10){	recordsSel2 = recordsMondeFemme70;}
+		else if (categorie2 == 11){	recordsSel2 = recordsMondeFemme75;}
+		else if (categorie2 == 12){	recordsSel2 = recordsMondeFemme80;}
 	}
 		// ---- sexe homme 
 	else {
 		if (categorie2 == 0){	recordsSel2 = recordsMondeHomme;}
-		else if (categorie2 == 1){	recordsSel2 = recordsMondeHommeCadet;}
-		else if (categorie2 == 2){	recordsSel2 = recordsMondeHommeJunior;}
-		else if (categorie2 == 3){	recordsSel2 = recordsMondeHomme35;}
-		else if (categorie2 == 4){	recordsSel2 = recordsMondeHomme40;}
-		else if (categorie2 == 5){	recordsSel2 = recordsMondeHomme45;}
-		else if (categorie2 == 6){	recordsSel2 = recordsMondeHomme50;}
-		else if (categorie2 == 7){	recordsSel2 = recordsMondeHomme55;}
-		else if (categorie2 == 8){	recordsSel2 = recordsMondeHomme60;}
-		else if (categorie2 == 9){	recordsSel2 = recordsMondeHomme65;}
-		else if (categorie2 == 10){	recordsSel2 = recordsMondeHomme70;}
-		else if (categorie2 == 11){	recordsSel2 = recordsMondeHomme75;}
-		else if (categorie2 == 12){	recordsSel2 = recordsMondeHomme80;}
-	}
+			else if (categorie2 == 1){	recordsSel2 = recordsMondeHommeCadet;}
+			else if (categorie2 == 2){	recordsSel2 = recordsMondeHommeJunior;}
+			else if (categorie2 == 3){	recordsSel2 = recordsMondeHomme35;}
+			else if (categorie2 == 4){	recordsSel2 = recordsMondeHomme40;}
+			else if (categorie2 == 5){	recordsSel2 = recordsMondeHomme45;}
+			else if (categorie2 == 6){	recordsSel2 = recordsMondeHomme50;}
+			else if (categorie2 == 7){	recordsSel2 = recordsMondeHomme55;}
+			else if (categorie2 == 8){	recordsSel2 = recordsMondeHomme60;}
+			else if (categorie2 == 9){	recordsSel2 = recordsMondeHomme65;}
+			else if (categorie2 == 10){	recordsSel2 = recordsMondeHomme70;}
+			else if (categorie2 == 11){	recordsSel2 = recordsMondeHomme75;}
+			else if (categorie2 == 12){	recordsSel2 = recordsMondeHomme80;}
+		}
 	} // end monde
 	// zone europe 2
 	else if (zone2 == 1 && sexe2 == 1){recordsSel2 = recordsEuropeHommeJunior;}
 	else if (zone2 == 1 && sexe2 == 0){recordsSel2 = recordsEuropeFemme;}
 	
+	// ===============================
 	// zone france 2
-	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 1){	recordsSel2 = recordsFranceHomme;}
-	else if (zone2 == 2 && categorie2 == 0 && sexe2 == 0){	recordsSel2 = recordsFranceFemme;}
-	else if (zone2 == 2 && categorie2 == 2 && sexe2 == 1){	recordsSel2 = recordsFranceHommeJunior;}
-	else if (zone2 == 2 && categorie2 == 2 && sexe2 == 0){	recordsSel2 = recordsFranceFemmeJunior;}    
+	else if (zone2 == 2){
+	// ---- sexe femme  
+		if (sexe2 == 0){
+			if (categorie2 == 0){recordsSel2 = recordsFranceFemme;}
+			else if (categorie2 == 1){	recordsSel2 = recordsFranceFemmeCadet;}
+			else if (categorie2 == 2){	recordsSel2 = recordsFranceFemmeJunior;}
+			else if (categorie2 == 3){	recordsSel2 = recordsFranceFemme35;}
+			else if (categorie2 == 4){	recordsSel2 = recordsFranceFemme40;}
+			else if (categorie2 == 5){	recordsSel2 = recordsFranceFemme45;}
+			else if (categorie2 == 6){	recordsSel2 = recordsFranceFemme50;}
+			else if (categorie2 == 7){	recordsSel2 = recordsFranceFemme55;}
+			else if (categorie2 == 8){	recordsSel2 = recordsFranceFemme60;}
+			else if (categorie2 == 9){	recordsSel2 = recordsFranceFemme65;}
+			else if (categorie2 == 10){	recordsSel2 = recordsFranceFemme70;}
+			else if (categorie2 == 11){	recordsSel2 = recordsFranceFemme75;}
+			else if (categorie2 == 12){	recordsSel2 = recordsFranceFemme80;}
+		}
+		// ---- sexe homme 
+		else {
+			if (categorie2 == 0){	recordsSel2 = recordsFranceHomme;}
+			else if (categorie2 == 1){	recordsSel2 = recordsFranceHommeCadet;}
+			else if (categorie2 == 2){	recordsSel2 = recordsFranceHommeJunior;}
+			else if (categorie2 == 3){	recordsSel2 = recordsFranceHomme35;}
+			else if (categorie2 == 4){	recordsSel2 = recordsFranceHomme40;}
+			else if (categorie2 == 5){	recordsSel2 = recordsFranceHomme45;}
+			else if (categorie2 == 6){	recordsSel2 = recordsFranceHomme50;}
+			else if (categorie2 == 7){	recordsSel2 = recordsFranceHomme55;}
+			else if (categorie2 == 8){	recordsSel2 = recordsFranceHomme60;}
+			else if (categorie2 == 9){	recordsSel2 = recordsFranceHomme65;}
+			else if (categorie2 == 10){	recordsSel2 = recordsFranceHomme70;}
+			else if (categorie2 == 11){	recordsSel2 = recordsFranceHomme75;}
+			else if (categorie2 == 12){	recordsSel2 = recordsFranceHomme80;}
+		}		
+	}
+
 	// zone autre
 	else {
 		console.log('selection 2 : athlète');
@@ -298,23 +383,48 @@ function selection(){
     var laTable = $("#table_ecarts").DataTable();
     
     laTable.clear();
-    
-    for (var i = 0; i < recordsSel1.record.length; i++) {
-    	var sel1 = recordsSel1.record[i];
-    	var sel2 = recordsSel2.record[i];
+	
+	for (var i = 0; i < listeEpreuves.length; i++) {
 
-    	if (sel1 == null || sel2 == null){
-    		break;
-    	}
-    	// supposons sel1.e est 100. On doit chercher sel2.perf correspondant, sinon '0'.
-     	sel2 = getRecordEpreuve(sel1.e, recordsSel2.record);
+		var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+		var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
 
-     	if (sel1.e == sel2.e){
-	    	var compute = computeEcarts(sel1.perf, sel2.perf);
-    		laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
-     	}
- 	}	
+		if (sel1.length == 0 && sel2.length == 0){
+			// rien, pas de record ni pour aucun des deux athlètes
+		}
+		// sel1 null, sel2 non null
+		else if (sel1.length == 0){
+			laTable.row.add({e : listeEpreuves[i], nom1 : '', perf1 :  '', nom2 : sel2.nom,  perf2 : sel2.perf, ecart : ''}).draw();
+		}
+		// sel1 non null, sel2 null
+		else if (sel2.length == 0){
+			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : '',  perf2 : '', ecart : ''}).draw();
+		}
+		// les deux athlètes avec perf
+		else {
+			var compute = computeEcarts(sel1.perf, sel2.perf);
+			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+		}
+	}
 }
+
+    
+  //  for (var i = 0; i < recordsSel1.record.length; i++) {
+//    	var sel1 = recordsSel1.record[i];
+    	//var sel2 = recordsSel2.record[i];
+
+//    	if (sel1 == null || sel2 == null){
+//    		break;
+//    	}
+    	// supposons sel1.e est 100. On doit chercher sel2.perf correspondant, sinon '0'.
+//     	sel2 = getRecordEpreuve(sel1.e, recordsSel2.record);
+
+//     	if (sel1.e == sel2.e){
+//	    	var compute = computeEcarts(sel1.perf, sel2.perf);
+//    		laTable.row.add({e : sel1.e, nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+//     	}
+// 	}	
+
 
 function getRecordEpreuve(epr, tabRecords){
 	for (var i = 0; i < tabRecords.length; i++) {
@@ -464,8 +574,7 @@ var recordsMondeHomme =
 {e : '10000', nom : 'Bekele', perf : '26.17.53'},
 {e : 'Marathon', nom : 'Kipchoge', perf : '2h00.25'},
 {e : 'Longueur', nom : 'Powell', perf : '8m95'}
-]
-};
+]};
 
 
 var recordsMondeHommeCadet =
@@ -507,10 +616,7 @@ var recordsMondeFemme =
 ]
 };
 
-var recordsMondeFemmeCadet =
-{'record' : [
-]
-};
+var recordsMondeFemmeCadet = {'record' : [ ] };
 
 var recordsMondeFemmeJunior =
 {'record' : [
@@ -527,6 +633,20 @@ var recordsMondeFemmeJunior =
 ]
 };
 
+var recordsMondeFemme35 = {'record' : [{e:'100', nom:'Merlene Ottey JAM', age:'36', perf:'10.74', annee:'1996'},{e:'200', nom:'Merlene Ottey JAM', age:'35', perf:'21.93', annee:'1995'},{e:'400', nom:'Aurelia Penton CUB', age:'35', perf:'50.56', annee:'1978'},{e:'800', nom:'Lyubov Gurina RUS', age:'36', perf:'1:56.53', annee:'1994'},{e:'1500', nom:'Maricica Puica ROM', age:'35', perf:'3:57.73', annee:'1985'},{e:'1500', nom:'Maricica Puica ROM', age:'35', perf:'4:17.33', annee:'1985'},{e:'3000', nom:'Maricica Puica ROM', age:'35', perf:'8:27.83', annee:'1985'},{e:'5000', nom:'Edith Masai KEN', age:'39', perf:'14:33.84', annee:'2006'},{e:'10000', nom:'Jo Pavey GBR', age:'38', perf:'30:53.20', annee:'2012'},{e:'3000st.', nom:'Leslie Lehane USA', age:'35', perf:'6:30.83', annee:'1998'},{e:'3000st.', nom:'Gail Devers USA', age:'35', perf:'12.40', annee:'2002'},{e:'400', nom:'Marina Stepanova URS', age:'36', perf:'52.94', annee:'1986'},{e:'5000', nom:'Elisabetta Perronne ITA', age:'35', perf:'20:12.41', annee:'2003'},{e:'Hauteur', nom:'Inga Babakova UKR', age:'35', perf:'a 2.01', annee:'2003'},{e:'Hauteur', nom:'Ruth Beitia ESP', age:'35', perf:'b 2.01', annee:'2014'},{e:'Perche', nom:'Stacy Dragila USA', age:'38', perf:'4.55', annee:'2009'},{e:'Perche', nom:'Heike Drechsler GER', age:'35', perf:'6.99', annee:'2000'},{e:'Triple', nom:'Yamilé Aldama GBR', age:'39', perf:'14.65', annee:'2012'},{e:'Triple', nom:'Larisa Peleshenko RUS', age:'36', perf:'21.46', annee:'2000'},{e:'Triple', nom:'Faina Myelnik URS', age:'35', perf:'69.60', annee:'1980'},{e:'Triple', nom:'Olga Kuzenkova RUS', age:'36', perf:'72.36', annee:'2007'},{e:'Triple', nom:'Steffi Nerius GER', age:'36', perf:'68.34', annee:'2008'},{e:'Triple', nom:'Bryrony Glass AUS', age:'35', perf:'18.02', annee:'2013'}]};
+var recordsMondeFemme40 = {'record' : [{e:'100', nom:'Merlene Ottey SLO', age:'44', perf:'11.09', annee:'2004'},{e:'200', nom:'Merlene Ottey SLO', age:'44', perf:'22.72', annee:'2004'},{e:'400', nom:'Sara Montecinos CHI', age:'40', perf:'53.68', annee:'1994'},{e:'800', nom:'Yekatarina Podkopayeva URS', age:'42', perf:'1:59.25', annee:'1994'},{e:'1500', nom:'Yekatarina Podkopayeva URS', age:'42', perf:'3:59.78', annee:'1994'},{e:'1500', nom:'Yekatarina Podkopayeva URS', age:'40', perf:'4:23.78', annee:'1993'},{e:'3000', nom:'Joyce Smith GBR', age:'40', perf:'9:11.2', annee:'1978'},{e:'5000', nom:'Joanne Pavey GBR', age:'40', perf:'15:04.87', annee:'2014'},{e:'10000', nom:'Jo Pavey GBR', age:'42', perf:'31:33.44', annee:'2016'},{e:'3000st.', nom:'Lisa Ryan USA', age:'41', perf:'6:49.58', annee:'2011'},{e:'3000st.', nom:'Monica Pellegrinelli SUI', age:'40', perf:'11.24', annee:'2005'},{e:'400', nom:'Barbara Gähling GER', age:'42', perf:'58.35', annee:'2007'},{e:'3000', nom:'Suzanne Griesbach FRA', age:'41', perf:'13:19.7', annee:'1987'},{e:'5000', nom:'Kelly Ruddick AUS', age:'40', perf:'21:57.40', annee:'2013'},{e:'Hauteur', nom:'Iryná Myhalchenko UKR', age:'40', perf:'1.87', annee:'2012'},{e:'Perche', nom:'Doris Auer AUT', age:'40', perf:'4.10', annee:'2011'},{e:'Perche', nom:'Tatyana Ter-Mesrobian RUS', age:'40', perf:'6.55', annee:'2008'},{e:'Triple', nom:'Yamilé Aldama GBR', age:'40', perf:'14.06', annee:'2013'},{e:'Triple', nom:'Antonina Ivanova URS', age:'40', perf:'19.05', annee:'1973'},{e:'Triple', nom:'Iryná Yatchenko BLR', age:'42', perf:'67.89', annee:'2008'},{e:'Triple', nom:'Oneithea Lewis USA', age:'44', perf:'57.08', annee:'2005'},{e:'Triple', nom:'Felicia Moldovan ROM', age:'40', perf:'61.23', annee:'2008'},{e:'Triple', nom:'Oneithea Lewis USA', age:'42', perf:'19.09', annee:'2002'}]};
+var recordsMondeFemme45 = {'record' : [{e:'100', nom:'Merlene Ottey SLO', age:'47', perf:'11.34', annee:'2008'},{e:'200', nom:'Merlene Ottey SLO', age:'46', perf:'23.82', annee:'2006'},{e:'400', nom:'Marie Lande Mathieu PUR', age:'46', perf:'56.15', annee:'2003'},{e:'800', nom:'Yekatarina Podkopayeva URS', age:'46', perf:'2:02.82', annee:'1998'},{e:'1500', nom:'Yekatarina Podkopayeva URS', age:'46', perf:'4:05.44', annee:'1998'},{e:'1500', nom:'Yekatarina Podkopayeva URS', age:'45', perf:'4:48.42', annee:'1997'},{e:'3000', nom:'Yekatarina Podkopayeva URS', age:'45', perf:'9:17.27', annee:'1997'},{e:'5000', nom:'Nicole Leveque FRA', age:'45', perf:'15:55.71', annee:'1996'},{e:'10000', nom:'Evy Palm SWE', age:'46', perf:'32:34.06', annee:'1988'},{e:'3000st.', nom:'Lisa Valle USA', age:'45', perf:'6:58.89', annee:'2011'},{e:'3000st.', nom:'Christine Müller SUI', age:'46', perf:'11.51', annee:'2004'},{e:'400', nom:'Barbara Gähling GER', age:'45', perf:'62.85', annee:'2010'},{e:'3000', nom:'Lynette Ventris AUS', age:'46', perf:'13:57.43', annee:'2002'},{e:'5000', nom:'Lynette Ventris AUS', age:'49', perf:'23:42.4', annee:'2005'},{e:'Hauteur', nom:'Debbie Brill CAN', age:'46', perf:'1.76', annee:'1999'},{e:'Perche', nom:'Irie Hill GBR', age:'46', perf:'3.76', annee:'2015'},{e:'Perche', nom:'Kriemhild Mann GER', age:'45', perf:'5.62', annee:'2012'},{e:'Triple', nom:'Murielle Glovil FRA', age:'47', perf:'12.01', annee:'2015'},{e:'Triple', nom:'Denka Silhava CZE', age:'45', perf:'16.95', annee:'1999'},{e:'Triple', nom:'Zdenka Silhava CZE', age:'45', perf:'64.09', annee:'1999'},{e:'Triple', nom:'Oneithea Lewis USA', age:'45', perf:'56.21', annee:'2005'},{e:'Triple', nom:'Elisabeth Wallander SWE', age:'45', perf:'50.47', annee:'2005'},{e:'Triple', nom:'Oneithea Lewis USA', age:'45', perf:'17.88', annee:'2005'}]};
+var recordsMondeFemme50 = {'record' : [{e:'100', nom:'Merlene Ottey SLO', age:'50', perf:'11.67', annee:'2010'},{e:'200', nom:'Merlene Ottey SLO', age:'50', perf:'24.33', annee:'2010'},{e:'400', nom:'Marie Lande Mathieu PUR', age:'50', perf:'57.66', annee:'2007'},{e:'800', nom:'Jeanette Flynn AUS', age:'53', perf:'2:16.05', annee:'2005'},{e:'1500', nom:'Clare Elms GBR', age:'50', perf:'4:36.79', annee:'2014'},{e:'1500', nom:'Gitte Karlshöj DEN', age:'51', perf:'5:00.59', annee:'2010'},{e:'3000', nom:'Gitte Karlshöj DEN', age:'50', perf:'9:47.20', annee:'2009'},{e:'5000', nom:'Gitte Karlshöj DEN', age:'50', perf:'16:51.17', annee:'2009'},{e:'10000', nom:'Fiona Matheson GBR', age:'50', perf:'35:05.7', annee:'2011'},{e:'3000st.', nom:'Marie Bodilis-Loaëc FRA', age:'50', perf:'7:42.04', annee:'2011'},{e:'3000st.', nom:'Christine Müller SUI', age:'50', perf:'12.08', annee:'2009'},{e:'400', nom:'Barbara Gähling GER', age:'50', perf:'44.90', annee:'2015'},{e:'3000', nom:'Lynette Ventris AUS', age:'50', perf:'13:54.3', annee:'2007'},{e:'5000', nom:'Lynette Ventris AUS', age:'50', perf:'23:37.78', annee:'2007'},{e:'Hauteur', nom:'Debbie Brill CAN', age:'51', perf:'1.60', annee:'2004'},{e:'Perche', nom:'Dawn Hartigan AUS', age:'50', perf:'3.40', annee:'2007'},{e:'Perche', nom:'Marie Kay AUS', age:'50', perf:'5.41', annee:'2010'},{e:'Triple', nom:'Akiko Ohinata JPN', age:'54', perf:'11.66', annee:'2004'},{e:'Triple', nom:'Alexandra Marghieva MOL', age:'50', perf:'15.15', annee:'2009'},{e:'Triple', nom:'Olga Cherniavskaia RUS', age:'51', perf:'46.11', annee:'2015'},{e:'Triple', nom:'Oneithea Lewis USA', age:'50', perf:'55.46', annee:'2010'},{e:'Triple', nom:'Genowefa Patla POL', age:'52', perf:'47.14', annee:'2015'},{e:'Triple', nom:'Oneithea Lewis USA', age:'51', perf:'18.76', annee:'2011'}]};
+var recordsMondeFemme55 = {'record' : [{e:'100', nom:'Nicole Alexis FRA', age:'55', perf:'12.80', annee:'2015'},{e:'200', nom:'Nicole Alexis FRA', age:'55', perf:'26.36', annee:'2015'},{e:'400', nom:'Marie Mathieu PUR', age:'56', perf:'60.56', annee:'2013'},{e:'800', nom:'Jeanette Flynn AUS', age:'55', perf:'2:21.98', annee:'2007'},{e:'1500', nom:'Silke Schmidt GER', age:'55', perf:'4:51.26', annee:'2015'},{e:'1500', nom:'Silke Schmidt GER', age:'56', perf:'5:17.37', annee:'2015'},{e:'3000', nom:'Silke Schmidt GER', age:'55', perf:'10:03.90', annee:'2015'},{e:'5000', nom:'Silke Schmidt GER', age:'55', perf:'17:29.28', annee:'2015'},{e:'10000', nom:'Silke Schmidt GER', age:'55', perf:'36:53.81', annee:'2015'},{e:'3000st.', nom:'Margaret Orman NZL', age:'55', perf:'7:58.43', annee:'1997'},{e:'3000st.', nom:'Helgi Lamp EST', age:'55', perf:'12.31', annee:'1999'},{e:'400', nom:'Jane Horder GBR', age:'55', perf:'49.00', annee:'2012'},{e:'3000', nom:'Lynette Ventris AUS', age:'55', perf:'14:16.41', annee:'2012'},{e:'5000', nom:'Siw Karlström SWE', age:'55', perf:'23:57.58', annee:'2012'},{e:'Hauteur', nom:'Florence Picaut FRA', age:'55', perf:'1.55', annee:'2008'},{e:'Perche', nom:'Dawn Hartigan AUS', age:'56', perf:'3.26', annee:'2013'},{e:'Perche', nom:'Ramona Pfeiffer GER', age:'55', perf:'5.06', annee:'2016'},{e:'Triple', nom:'Akiko Ohinata JPN', age:'56', perf:'10.97', annee:'2006'},{e:'Triple', nom:'Sigrin Kofink GER', age:'56', perf:'14.47', annee:'1991'},{e:'Triple', nom:'Tamara Danilova RUS', age:'57', perf:'43.36', annee:'1996'},{e:'Triple', nom:'M.-Leena Parviainen AUS', age:'58', perf:'51.30', annee:'2002'},{e:'Triple', nom:'Natasa Bezjak SLO', age:'56', perf:'44.44', annee:'2002'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'56', perf:'17.02', annee:'1994'}]};
+var recordsMondeFemme60 = {'record' : [{e:'100', nom:'Karla Del Grande CAN', age:'61', perf:'13.63', annee:'2014'},{e:'200', nom:'Karla Del Grande CAN', age:'60', perf:'28.11', annee:'2013'},{e:'400', nom:'Caroline Powell GBR', age:'61', perf:'64.31', annee:'2015'},{e:'800', nom:'Lidia Zentner GER', age:'60', perf:'2:33.09', annee:'2013'},{e:'1500', nom:'Lidia Zentner GER', age:'60', perf:'5:06.65', annee:'2013'},{e:'1500', nom:'Kathryn Martin USA', age:'61', perf:'5:42.65', annee:'2013'},{e:'3000', nom:'Lidia Zentner GER', age:'60', perf:'10:54.04', annee:'2013'},{e:'5000', nom:'Lidia Zentner GER', age:'60', perf:'18:48.62', annee:'2013'},{e:'10000', nom:'Bernadine Portenski NZL', age:'60', perf:'39:04.23', annee:'2010'},{e:'3000st.', nom:'Kathryn Martin USA', age:'62', perf:'8:37.34', annee:'2014'},{e:'3000st.', nom:'Phil Raschker USA', age:'60', perf:'13.26', annee:'2007'},{e:'400', nom:'Marge Alison AUS', age:'60', perf:'51.64', annee:'2005'},{e:'3000', nom:'Heather Carr AUS', age:'61', perf:'15:21.94', annee:'2011'},{e:'5000', nom:'Heather Carr AUS', age:'61', perf:'26:10.22', annee:'2011'},{e:'Hauteur', nom:'Weia Reinboud NED', age:'60', perf:'1.47', annee:'2010'},{e:'Perche', nom:'Nadine O Connor USA', age:'64', perf:'3.12', annee:'2006'},{e:'Perche', nom:'Christiane Schmalbruch GER', age:'60', perf:'4.75', annee:'1997'},{e:'Triple', nom:'Akiko Ohinata JPN', age:'60', perf:'11.04', annee:'2010'},{e:'Triple', nom:'Loghlin Mihaela ROM', age:'60', perf:'13.68', annee:'2012'},{e:'Triple', nom:'Karen Illgen GER', age:'61', perf:'39.24', annee:'2002'},{e:'Triple', nom:'Helen Searle AUS', age:'60', perf:'46.09', annee:'2001'},{e:'Triple', nom:'Linda Cohn USA', age:'61', perf:'37.50', annee:'2014'},{e:'Triple', nom:'Inge Faldager DEN', age:'60', perf:'17.84', annee:'2008'}]};
+var recordsMondeFemme65 = {'record' : [{e:'100', nom:'Nadine O Connor USA', age:'65', perf:'14.10', annee:'2007'},{e:'200', nom:'Nadine O Connor USA', age:'65', perf:'29.37', annee:'2007'},{e:'400', nom:'Diane Palmason CAN', age:'65', perf:'68.21', annee:'2003'},{e:'800', nom:'Sabra Harvey USA', age:'67', perf:'2:39.61', annee:'2016'},{e:'1500', nom:'Sabra Harvey USA', age:'65', perf:'5:29.85', annee:'2014'},{e:'1500', nom:'Angela Copson GBR', age:'68', perf:'5:54.59', annee:'2015'},{e:'3000', nom:'Angela Copson GBR', age:'65', perf:'11:48.2', annee:'2012'},{e:'5000', nom:'Kathryn Martin USA', age:'65', perf:'20:08.17', annee:'2016'},{e:'10000', nom:'Angela Copson GBR', age:'65', perf:'41:40.27', annee:'2012'},{e:'3000st.', nom:'Kathryn Martin USA', age:'65', perf:'8:57.54', annee:'2016'},{e:'3000st.', nom:'Edith Graff BEL', age:'66', perf:'14.03', annee:'2008'},{e:'400', nom:'Marge Alison AUS', age:'66', perf:'54.06', annee:'2011'},{e:'3000', nom:'Brenda Riley AUS', age:'66', perf:'16:22.1', annee:'2006'},{e:'5000', nom:'Brenda Riley AUS', age:'66', perf:'27:19.1', annee:'2006'},{e:'Hauteur', nom:'Weia Reinboud NED', age:'65', perf:'1.42', annee:'2015'},{e:'Perche', nom:'Nadine O Connor USA', age:'67', perf:'3.19', annee:'2009'},{e:'Perche', nom:'Christiane Schmalbruch GER', age:'65', perf:'4.64', annee:'2002'},{e:'Triple', nom:'Akiko Ohinata JPN', age:'65', perf:'9.68', annee:'2015'},{e:'Triple', nom:'Sigrin Kofink GER', age:'65', perf:'12.21', annee:'2000'},{e:'Triple', nom:'Tamara Danilova RUS', age:'65', perf:'37.62', annee:'2005'},{e:'Triple', nom:'Jutta Schäfer GER', age:'65', perf:'44.38', annee:'1997'},{e:'Triple', nom:'Weia Reinboud NED', age:'65', perf:'32.02', annee:'2016'},{e:'Triple', nom:'Annie van Anholt NED', age:'67', perf:'17.34', annee:'2014'}]};
+var recordsMondeFemme70 = {'record' : [{e:'100', nom:'Kathy Bergen USA', age:'70', perf:'14.76', annee:'2010'},{e:'200', nom:'Kathy Bergen USA', age:'72', perf:'31.39', annee:'2012'},{e:'400', nom:'Aletta Ungerer RSA', age:'70', perf:'73.97', annee:'2016'},{e:'800', nom:'Elfriede Hodapp GER', age:'70', perf:'2:59.55', annee:'2006'},{e:'1500', nom:'Rimma Vasina RUS', age:'71', perf:'6:00.50', annee:'2011'},{e:'1500', nom:'Jeanne Daprano USA', age:'70', perf:'6:47.91', annee:'2007'},{e:'3000', nom:'Lavinia Petrie AUS', age:'71', perf:'12:52.03', annee:'2014'},{e:'5000', nom:'Lavinia Petrie AUS', age:'70', perf:'21:34.08', annee:'2014'},{e:'10000', nom:'Lavinia Petrie AUS', age:'70', perf:'44:43.27', annee:'2014'},{e:'3000st.', nom:'Marie Michelsohn USA', age:'70', perf:'10:20.43', annee:'2012'},{e:'200', nom:'Marge Alison AUS', age:'70', perf:'36.71', annee:'2015'},{e:'3000', nom:'Britta Tibbling SWE', age:'71', perf:'18:05.0', annee:'1989'},{e:'5000', nom:'Britta Tibbling SWE', age:'71', perf:'29:16.0', annee:'1989'},{e:'Hauteur', nom:'Kathy Bergen USA', age:'70', perf:'1.30', annee:'2010'},{e:'Perche', nom:'Nadine O Connor USA', age:'70', perf:'2.95', annee:'2012'},{e:'Perche', nom:'Carol LaFayette-Boyd CAN', age:'70', perf:'4.26', annee:'2012'},{e:'Triple', nom:'Christiane Schmalbruch GER', age:'72', perf:'8.65', annee:'2009'},{e:'Triple', nom:'Rosemary Chrimes GBR', age:'70', perf:'11.02', annee:'2003'},{e:'Triple', nom:'Tamara Danilova RUS', age:'70', perf:'33.55', annee:'2010'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'70', perf:'37.40', annee:'2008'},{e:'Triple', nom:'Carol Frost USA', age:'70', perf:'27.78', annee:'2015'},{e:'Triple', nom:'Jutta Schäefer ITA', age:'72', perf:'15.00', annee:'2004'}]};
+var recordsMondeFemme75 = {'record' : [{e:'100', nom:'Kathy Bergen USA', age:'75', perf:'15.31', annee:'2015'},{e:'200', nom:'Kathy Bergen USA', age:'75', perf:'33.79', annee:'2015'},{e:'400', nom:'Christa Bortignon CAN', age:'76', perf:'79.53', annee:'2013'},{e:'800', nom:'Jeanne Daprano USA', age:'75', perf:'3:07.35', annee:'2011'},{e:'1500', nom:'Elfriede Hodapp GER', age:'75', perf:'6:34.22', annee:'2010'},{e:'1500', nom:'Jeanne Daprano USA', age:'75', perf:'6:58.44', annee:'2012'},{e:'3000', nom:'Yoko Nakano JPN', age:'76', perf:'13:55.58', annee:'2012'},{e:'5000', nom:'Yoko Nakano JPN', age:'77', perf:'24:03.90', annee:'2013'},{e:'10000', nom:'Melitta Czerwenka-Nagel GER', age:'75', perf:'50:00.93', annee:'2005'},{e:'3000st.', nom:'Xuhua Chen CHN', age:'76', perf:'11:30.55', annee:'2016'},{e:'3000st.', nom:'Christa Bortignon CAN', age:'76', perf:'17.44', annee:'2013'},{e:'200', nom:'Christa Bortignon CAN', age:'76', perf:'39.89', annee:'2013'},{e:'3000', nom:'Miriam Gordon USA', age:'75', perf:'20:41.0', annee:'2000'},{e:'5000', nom:'Britta Tibbling SWE', age:'75', perf:'32:44.76', annee:'1993'},{e:'Hauteur', nom:'Rietje Dijkman NED', age:'76', perf:'1.22', annee:'2015'},{e:'Hauteur', nom:'Kathy Bergen USA', age:'75', perf:'1.22', annee:'2015'},{e:'Perche', nom:'Florence Meiler USA', age:'76', perf:'2.03', annee:'2010'},{e:'Perche', nom:'Paula Schneiderhan GER', age:'75', perf:'3.77', annee:'1997'},{e:'Triple', nom:'Christa Bortignon CAN', age:'75', perf:'8.11', annee:'2012'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'75', perf:'11.10', annee:'2013'},{e:'Triple', nom:'Tamara Danilova RUS', age:'76', perf:'31.56', annee:'2015'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'75', perf:'39.64', annee:'2013'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'75', perf:'29.92', annee:'2013'},{e:'Triple', nom:'Evaun B. Williams GBR', age:'75', perf:'14.74', annee:'2013'}]};
+var recordsMondeFemme80 = {'record' : [{e:'100', nom:'Irene Obera USA', age:'80', perf:'16.81', annee:'2014'},{e:'200', nom:'Irene Obera USA', age:'80', perf:'36.80', annee:'2014'},{e:'400', nom:'Emma Mazzenga ITA', age:'80', perf:'1:31.21', annee:'2013'},{e:'800', nom:'Yoko Nakano JPN', age:'80', perf:'3:38.15', annee:'2016'},{e:'1500', nom:'Yoko Nakano JPN', age:'80', perf:'6:52.77', annee:'2016'},{e:'1500', nom:'Helly Visser CAN', age:'80', perf:'8:33.76', annee:'2014'},{e:'3000', nom:'Yoko Nakano JPN', age:'80', perf:'14:47.89', annee:'2016'},{e:'5000', nom:'Denise Leclerc FRA', age:'80', perf:'26:33.60', annee:'2014'},{e:'10000', nom:'Denise Leclerc FRA', age:'80', perf:'55:26.46', annee:'2013'},{e:'3000st.', nom:'Anne Martin GBR', age:'80', perf:'13:38.80', annee:'2016'},{e:'200', nom:'Irene Obera USA', age:'80', perf:'42.24', annee:'2014'},{e:'3000', nom:'Aina Engberg SWE', age:'80', perf:'21:08.2', annee:'2003'},{e:'5000', nom:'Britta Tibbling SWE', age:'81', perf:'34:48.49', annee:'1999'},{e:'Hauteur', nom:'Rosemary Chrimes GBR', age:'80', perf:'1.10', annee:'2013'},{e:'Perche', nom:'Florence Meiler USA', age:'80', perf:'1.83', annee:'2014'},{e:'Perche', nom:'Christel Happ GER', age:'80', perf:'3.05', annee:'2010'},{e:'Triple', nom:'Elsa Enarsson SWE', age:'80', perf:'6.55', annee:'2010'},{e:'Triple', nom:'Rosemary Chrimes GBR', age:'80', perf:'9.50', annee:'2013'},{e:'Triple', nom:'Susanne Wissinger GER', age:'80', perf:'24.42', annee:'2014'},{e:'Triple', nom:'Susanne Wissinger GER', age:'80', perf:'29.58', annee:'2014'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'81', perf:'21.83', annee:'2010'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'83', perf:'10.56', annee:'2012'},]};
+var recordsMondeFemme85 = {'record' : [{e:'100', nom:'Nora Wedemo SWE', age:'86', perf:'a 19.83', annee:'1999'},{e:'100', nom:'Mitsu Morita JPN', age:'85', perf:'b 19.83', annee:'2008'},{e:'200', nom:'Mitsu Morita JPN', age:'85', perf:'45.65', annee:'2008'},{e:'400', nom:'Nina Naumenko RUS', age:'86', perf:'1:49.46', annee:'2011'},{e:'800', nom:'Melitta Czerwenka-Nagel GER', age:'85', perf:'4:15.99', annee:'2015'},{e:'1500', nom:'Melitta Czerwenka-Nagel GER', age:'85', perf:'8:50.42', annee:'2015'},{e:'1500', nom:'Blanche Cummings USA', age:'85', perf:'10:55.25', annee:'2015'},{e:'3000', nom:'Ivy Granstrom CAN', age:'86', perf:'24:08.62', annee:'1998'},{e:'5000', nom:'Lenore Montgomery CAN', age:'85', perf:'32:36.20', annee:'2015'},{e:'3000', nom:'Heather Lee AUS', age:'85', perf:'23:24.89', annee:'2012'},{e:'5000', nom:'Heather Lee AUS', age:'85', perf:'40:06.96', annee:'2012'},{e:'Hauteur', nom:'Rosa Pedersen DEN', age:'85', perf:'0.95', annee:'2015'},{e:'Perche', nom:'Johnnye Valien USA', age:'85', perf:'1.25', annee:'2011'},{e:'Perche', nom:'Rosa Pedersen DEN', age:'85', perf:'2.93', annee:'2015'},{e:'Triple', nom:'Ruth Frith AUS', age:'86', perf:'5.50', annee:'1995'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'85', perf:'7.97', annee:'2014'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'85', perf:'19.49', annee:'2014'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'85', perf:'26.80', annee:'2014'},{e:'Triple', nom:'Rachel Hanssens BEL', age:'85', perf:'18.96', annee:'2014'},{e:'Triple', nom:'Hilja Bakhoff EST', age:'87', perf:'9.23', annee:'2014'}]};
+
+// ====================
+// EUROPE
 var recordsEuropeHommeJunior =
 {'record' : [
 {e:'100', nom:'LEMAITRE Christophe', perf:'10.04', annee:'2009'},
@@ -554,6 +674,8 @@ var recordsEuropeFemme =
 };
 
 
+// ====================
+// FRANCE
 var recordsFranceHomme =
 {'record' : [
 {e : '100', nom : 'Vicaud',        perf :  '9.86'}, 
@@ -569,6 +691,12 @@ var recordsFranceHomme =
 ]
 };
 
+var recordsFranceHommeCadet =
+{'record' : [
+	]
+};
+
+	
 var recordsFranceHommeJunior =
 {'record' : [
 {e : '100', nom : 'xxx', perf :  ''}, 
@@ -583,7 +711,19 @@ var recordsFranceHommeJunior =
 {e : 'Longueur', nom : 'xxxx', perf : '8m20'}
 ]
 };
-    
+
+var recordsFranceHomme35 = {'record' : [ ] };
+var recordsFranceHomme40 = {'record' : [ ] };
+var recordsFranceHomme45 = {'record' : [ ] };
+var recordsFranceHomme50 = {'record' : [ ] };
+var recordsFranceHomme55 = {'record' : [ ] };
+var recordsFranceHomme60 = {'record' : [ ] };
+var recordsFranceHomme65 = {'record' : [ ] };
+var recordsFranceHomme70 = {'record' : [ ] };
+var recordsFranceHomme75 = {'record' : [ ] };
+var recordsFranceHomme80 = {'record' : [ ] };
+
+
 var recordsFranceFemme =
 {'record' : [
 {e : '100', nom : 'Arron',  perf :  '10.73'}, 
@@ -599,24 +739,181 @@ var recordsFranceFemme =
 ]
 };
 
-var recordsFranceFemmeJunior =
+var recordsFranceFemmeCadet =
 {'record' : [
-{e : '100', nom : 'xxx', perf :  ''}, 
-{e : '200', nom : 'xxx', perf : ''},
-{e : '400', nom : 'xxx', perf : ''},
-{e : '800', nom : 'xxx', perf : ''},
-{e : '1500', nom : 'xxx', perf : ''},
-{e : '3000', nom : 'xxx', perf : ''},
-{e : '5000', nom : 'xxx', perf : ''},
-{e : '10000', nom : 'xxx', perf : ''},
-{e : 'Marathon', nom : 'xxx', perf : ''},
-{e : 'Longueur', nom : 'xxxx', perf : '6m80'}
-]
-};
+{e : '100', nom : 'LOVAL Marie-france', perf :  '11.38'},
+{e : '200', nom : 'MIGNON Marine', perf :  '23.35'},
+{e : '400', nom : 'CARTI Iyndra-sareena', perf :  '53.54'},
+{e : '800', nom : 'FOULON Severine', perf :  '2.05.0'},
+{e : '1000', nom : 'GIOLITTI Florence', perf :  '2.47.12'},
+{e : '1500', nom : 'BEAUGRAND Cassandre', perf :  '4.17.04'},
+{e : '3000', nom : 'AUDIER Charlotte', perf :  '9.13.77'},
+{e : '100m Haies', nom : 'LAMALLE Adrianna', perf :  '13.08'},
+{e : '400m Haies', nom : 'CHABOUDEZ Aurelie', perf :  '58.41'},
+{e : 'Hauteur', nom : 'EWANJE-EPEE Maryse', perf :  '1m87'},
+{e : 'Perche', nom : 'DEHAYNAIN Alix', perf :  '4m13'},
+{e : 'Longueur', nom : 'ARNETON Heather', perf :  '6m57 I.'},
+{e : 'Triple saut', nom : 'GALLE Sokhna', perf :  '13m42'},
+{e : 'Poids (3 kg)', nom : 'VILLENEUVE Claudia', perf :  '17m84'},
+{e : 'Disque (1.0 kg)', nom : 'BEAUVAIS Catherine', perf :  '53m74'},
+{e : 'Marteau (3 kg)', nom : 'CIOFANI Audrey', perf :  '68m22'},
+{e : 'Javelot (500 g)', nom : 'NICOLLIN Margaux', perf :  '59m07'},
+]};
 
-// chaine = chaine.substring(1);
+var recordsFranceFemmeJunior = {'record' : [
+{e : '100', nom : 'SIDIBE Odiah', perf :  '11.25'},
+{e : '200', nom : 'HURTIS Muriel', perf :  '22.76'},
+{e : '400', nom : 'FICHER Fabienne', perf :  '52.52'},
+{e : '800', nom : 'GIOLITTI Florence', perf :  '2.01.79'},
+{e : '1000', nom : 'RENTIES Véronique', perf :  '2.37.2'},
+{e : '1500', nom : 'GIOLITTI Florence', perf :  '4.10.38'},
+{e : '3000', nom : 'DUROS Marie-pierre', perf :  '9.13.15'},
+{e : '5000', nom : 'AUDIER Charlotte', perf :  '16.07.72'},
+{e : '10000', nom : 'DECONIHOUT Fleur', perf :  '34.22.0'},
+{e : '100m Haies', nom : 'EWANJE-EPEE Monique', perf : '13.07'},
+{e : '400m Haies', nom : 'CHABOUDEZ Aurelie', perf :  '57.14'},
+{e : 'Steeple', nom : 'OUDIOU Emma', perf :  '10.12.69'},
+{e : 'Hauteur', nom : 'EWANJE-EPEE Maryse', perf :  '1m95'},
+{e : 'Perche', nom : 'FIACK Marion', perf :  '4m36'},
+{e : 'Longueur', nom : 'KHODADIN-FERGA Linda', perf :  '6m60'},
+{e : 'Triple saut', nom : 'DIALLO Rouguy', perf :  '14m20'}
+]};
 
-var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', 'Longueur', 'Triple'];
+
+var recordsFranceFemme35 = 
+{'record' : [
+{e : '100', nom : 'ARRON Christine', perf :  '11.27'},
+{e : '200', nom : 'BUVAL Patricia', perf :  '23.85'},
+{e : '400', nom : 'HURTIS Muriel', perf :  '52.17'},
+{e : '800', nom : 'LEHEUTRE Valerie', perf :  '2.03.94'},
+{e : '1000', nom : 'ESSAROKH Latifa', perf :  '2.47.61'},
+{e : '1500', nom : 'ESSAROKH Latifa', perf :  '4.09.45'},
+{e : '3000', nom : 'DAUNAY Christelle', perf :  '9.02.16'},
+{e : '5000', nom : 'BARDELLE Christine', perf :  '15.20.84'},
+{e : '10000', nom : 'DAUNAY Christelle', perf :  '31.35.81'},
+{e : '100m Haies', nom : 'GIRARD Patricia', perf :  '12.74'},
+{e : '400m Haies', nom : 'LOPEZ Peggy', perf :  '59.46'},
+{e : 'Steeple', nom : 'OLIVARES Elodie', perf :  '9.49.11'},
+{e : 'Hauteur', nom : 'CHAMPION Sandrine', perf :  '1m82'},
+{e : 'Perche', nom : 'DENIS Beatrice', perf :  '3m95'},
+{e : 'Longueur', nom : 'BARBER Eunice', perf :  '6m64'},
+{e : 'Triple saut', nom : 'M BANGO ETONE Francoise', perf :  '14m27'},
+{e : 'Poids (4 kg)', nom : 'MANFREDI Laurence', perf :  '18m16'},
+{e : 'Disque (1.0 kg)', nom : 'ROBERT-MICHON Melina', perf :  '66m73'},
+{e : 'Marteau (4 kg)', nom : 'PERRIN Amelie', perf :  '61m36'},
+{e : 'Javelot (600 g)', nom : 'AUZEIL Nadine', perf :  '62m16'}
+]};
+
+var recordsFranceFemme40 = {'record' : [
+{e : '100m', nom : 'GIRARD Patricia', perf :  '11.71 (+2,0)'},
+{e : '200m', nom : 'LAPIERRE Violetta', perf :  '24.25'},
+{e : '400m', nom : 'AKNIN Barbara', perf :  '56.48'},
+{e : '800m', nom : 'BURLEIGH Antoinette', perf :  '2'11.0'},
+{e : '1 000m', nom : 'BURLEIGH Antoinette', perf :  '2'53.5'},
+{e : '1 500m', nom : 'BARDELLE Christine', perf :  '4'21.96'},
+{e : '3 000m', nom : 'LEVEQUE Nicole', perf :  '9'14.72'},
+{e : '5 000m', nom : 'LEVEQUE Nicole', perf :  '15'51.7'},
+{e : '10 000m', nom : 'LEVEQUE Nicole', perf :  '32'12.07'},
+{e : 'Heure Piste', nom : 'DASSONVILLE Isabelle', perf :  '15 550 m'},
+{e : '100 km piste', nom : 'JOUAULT Huguette', perf :  '7h46'53.'},
+{e : '80m Haies (76)', nom : 'DEL PRETE Sonia', perf :  '11.83'},
+{e : '400m Haies (76)', nom : 'LEGENDRE Carine', perf :  '62.38'},
+{e : '400m Haies (76)', nom : 'MARTINETTO Christiane', perf :  '65.0'},
+{e : '2000m Steeple (76)', nom : 'BODILIS LOAEC Marie-claud', perf :  '7'22"22'},
+{e : '3000m Steeple (76)', nom : 'ROY Corinne', perf :  '10'48.37'},
+{e : 'Hauteur', nom : 'BRESSY Marie-christine', perf :  '1m67'},
+{e : 'Perche', nom : 'CHATEAU Valerie', perf :  '3m27 I.'},
+{e : 'Longueur', nom : 'LEVARD Anne', perf :  '5m87'},
+{e : 'Triple saut', nom : 'GLOVIL Muriel', perf :  '12m57'},
+]};
+
+var recordsFranceFemme45 = {'record' : [
+{e : '100m', nom : 'LAPIERRE Violetta', perf :  '12.25'},
+{e : '100m', nom : 'DESMIER Danièle', perf :  '12.5'},
+{e : '200m', nom : 'ICARRE Maryvonne', perf :  '25.05'},
+{e : '400m', nom : 'BEAUJEAN Juliette', perf :  '59.18'},
+{e : '800m', nom : 'BAILLEUL Catherine', perf :  '2'17.85'},
+{e : '1 000m', nom : 'BULTOT Tatiana', perf :  '2'59"72'},
+{e : '1 500m', nom : 'LEVEQUE Nicole', perf :  '4'29.98'},
+{e : '3 000m', nom : 'LEVEQUE Nicole', perf :  '9'34.09'},
+{e : '5 000m', nom : 'LEVEQUE Nicole', perf :  '15'55.71'},
+{e : '10 000m', nom : 'LEVEQUE Nicole', perf :  '32'38.54'},
+{e : 'Heure Piste', nom : 'MARCHAL Yolande', perf :  '14km482'},
+{e : '100 km piste', nom : 'JOUAULT Huguette', perf :  '7h46'53.'},
+{e : '80m Haies (76)', nom : 'BAJEAT Petra', perf :  '12.14'},
+{e : '400m Haies (76)', nom : 'PIERRE-JOSEPH Corinne', perf :  '65.09'},
+{e : '2000m Steeple (76)', nom : 'BODILIS LOAEC Marie-claud', perf :  '7'31"77'},
+{e : '3000m Steeple (76)', nom : 'BODILIS LOAEC Marie-claud', perf :  '11'32.80'},
+{e : 'Hauteur', nom : 'ROYER-NACK Lolita', perf :  '1m61 I.'},
+{e : 'Perche', nom : 'WOLFF Pascale', perf :  '3m30 I.'},
+{e : 'Longueur', nom : 'BAJEAT Petra', perf :  '5m68 I.'},
+{e : 'Triple saut', nom : 'GLOVIL Muriel', perf :  '12m42'},
+]};
+
+var recordsFranceFemme50 = {'record' : [
+{e : '100m', nom : 'ALEXIS Nicole', perf :  '12.74'},
+{e : '200m', nom : 'ICARRE Maryvonne', perf :  '26.34 I.'},
+{e : '400m', nom : 'ICARRE Maryvonne', perf :  '61.62 I.'},
+{e : '800m', nom : 'DOUAY Helene', perf :  '2'23.2'},
+{e : '1 000m', nom : 'BAILLEUL Catherine', perf :  '3'10.08'},
+{e : '1 500m', nom : 'DUCRET-BITZNER Blandine', perf :  '4'49.67'},
+{e : '1 500m', nom : 'DUCRET-BITZNER Blandine', perf :  '4'51.12'},
+{e : '1 500m', nom : 'DUCRET-BITZNER Blandine', perf :  '4'51.95'},
+{e : '3 000m', nom : 'LEVEQUE Nicole', perf :  '10'10.0'},
+{e : '5 000m', nom : 'LEVEQUE Nicole', perf :  '17'09.96'},
+{e : '10 000m', nom : 'ROBINE Martine', perf :  '38'28.5'},
+{e : 'Heure Piste', nom : 'AUFFREDIC Monique', perf :  '14km476'},
+{e : '100 km piste', nom : 'GEFFROY Danielle', perf :  '8h08'56"'},
+{e : '80m Haies (76)', nom : 'BAJEAT Petra', perf :  '13.13'},
+{e : '80m Haies (76)', nom : 'DELGRANGE Marie-paule', perf :  '13.49'},
+{e : '300m Haies (76)', nom : 'HACHOTTE Dolores', perf :  '51.63'},
+{e : '2000m Steeple (76)', nom : 'BODILIS LOAEC Marie-claud', perf :  '7'42"04'},
+{e : 'Hauteur', nom : 'BAJEAT Petra', perf :  '1m48'},
+{e : 'Hauteur', nom : 'BAJEAT Petra', perf :  '1m45'},
+{e : 'Hauteur', nom : 'BAJEAT Petra', perf :  '1m45 I.'},
+{e : 'Perche', nom : 'WOLFF Pascale', perf :  '3m10 I.'},
+{e : 'Longueur', nom : 'BAJEAT Petra', perf :  '5m28'},
+{e : 'Triple saut', nom : 'DESMIER Danielle', perf :  '10m94'},
+]};
+
+var recordsFranceFemme55 = {'record' : [
+{e : '100', nom : 'ALEXIS Nicole', perf :  '12.80'},
+{e : '200', nom : 'ALEXIS Nicole', perf :  '26.36'},
+{e : '400', nom : 'ZONGO Joelle', perf :  '66.34'},
+{e : '800', nom : 'HIERSO HARKOU Marie-odile', perf :  '2.35.44'},
+{e : '800', nom : 'DOUAY Helene', perf :  '2.36.03'},
+{e : '1000', nom : 'LEVESQUE-MARGUIN Sylviane', perf :  '3.28.3'},
+{e : '1500', nom : 'FRECHOU Houria', perf :  '5.09.39'},
+{e : '3000', nom : 'ROBINE Martine', perf :  '10.22.59'},
+{e : '5000', nom : 'FRECHOU Houria', perf :  '18.34.85'},
+{e : '10000', nom : 'BRAKEBUSCH-LEVEQUE Odile', perf :  '39.02.66'},
+{e : 'Hauteur', nom : 'PICAUT Florence', perf :  '1m55'},
+{e : 'Longueur', nom : 'DELGRANGE Marie-paule', perf :  '4m40'},
+]};
+
+var recordsFranceFemme60 = {'record' : [
+{e : '100', nom : 'BELBEZE Vela', perf :  '15.03'},
+{e : '200', nom : 'DE LAVERGNE Marguerit', perf :  '31.4'},
+{e : '400', nom : 'CAUX Edith', perf :  '72.66'},
+{e : '800', nom : 'ROBINE Martine', perf :  '2.47.00'},
+{e : '1000', nom : 'KROES Annick', perf :  '3.30.42'},
+{e : '1500', nom : 'ROBINE Martine', perf :  '5.24.05'},
+{e : '3000', nom : 'ROBINE Martine', perf :  '11.11.88'},
+{e : '5000', nom : 'KROES Annick', perf :  '20.05.22'},
+{e : '10000', nom : 'COMBES Dominique', perf :  '42.16.59'},
+{e : 'Hauteur', nom : 'RESLINGER Carole', perf :  '1m15'},
+{e : 'Longueur', nom : 'KULA Anne', perf :  '3m98'},
+{e : 'Triple saut', nom : 'DAGUENE Irene', perf :  '7m56'},
+]};
+
+var recordsFranceFemme65 = {'record' : [ ] };
+var recordsFranceFemme70 = {'record' : [ ] };
+var recordsFranceFemme75 = {'record' : [ ] };
+var recordsFranceFemme80 = {'record' : [ ] };
+
+
+
+var listeEpreuves = ['100', '200', '400', '800', '1000', '1500', '3000', '5000', '10000', 'Marathon', '400m Haies', 'Steeple', 'Longueur', 'Triple'];
 
 
 

@@ -14,30 +14,30 @@ import fr.yann.model.SexeEnum;
 
 /**
  * 
- * Parsing du texte simple issu du copier coller de PDF tel que
-		M 35 9.96 Kim Collins SKN 38 20/07/14 London, GBR
-		M 40 9.93 Kim Collins SKN 40 29/05/16 Bottrop, GER
+ * Parsing du texte simple issu du copier coller de HTML tel que
+100m		11''38 (+0.8)		 		LOVAL Marie-france		64		Aa pointre-à-pitre		20/08/81		Utrecht
  */
-public class ParserSimpleTxtFromPdfRecord {
+public class ParserSimpleTxtFromTabularRecord {
 
 	static SexeEnum			SEXE_COURANT	= SexeEnum.FEMININ;
 	static String			sexeStr			= "Femme";
 
-	static String			categorie		= "([W]\\s\\d{1,2})\\s";						// M ou W selon sexe
-	static String perf = "(\\d{0,2}\\D{0,2}\\d{1,2}\\D\\d{1,2})\\s";
-	static String nom = "([^\\d]+)\\s";
-	static String age = "(\\d\\d)\\s";
-	static String strDate = "(\\d{2}/\\d{2}/\\d{2})\\s";
-	static String pattern = categorie + perf + nom + age + strDate;
+	static String			epreuve			= "([\\d]+[\\w]+)[\\s]{1,4}";
+	static String			perf			= "(\\d{0,2}\\D{0,2}\\d{1,2})[\\s]{1,4}";
+	static String			nom				= "([^\\d]+)";
+	// static String			age				= "(\\d\\d)\\t";
+	// static String 		strDate = "(\\d{2}/\\d{2}/\\d{2})\\s";
+	static String			pattern			= epreuve + perf + nom;							// + age + strDate;
 	
 	static Pattern r = Pattern.compile(pattern);
 	private static String currentEpreuve = "100m";
+	private static String currentCategorie = "cadet";
 
 	static Records records = new Records();
 	
 	public static void main(String[] args) throws FileNotFoundException {
 
-		String path = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record\\recordMondeVeteranFemme.txt";
+		String path = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record\\recordFranceFemme.txt";
 
 		StringBuffer sb = new StringBuffer();
 		
@@ -47,6 +47,8 @@ public class ParserSimpleTxtFromPdfRecord {
 
 		// System.out.println(sb.toString());
 		List<String> categories = new ArrayList<String>();
+		categories.add(SEXE_COURANT.getCodeStr() + "cadet");
+		categories.add(SEXE_COURANT.getCodeStr() + "junior");
 		categories.add(SEXE_COURANT.getCodeStr() + "35");
 		categories.add(SEXE_COURANT.getCodeStr() + "40");
 		categories.add(SEXE_COURANT.getCodeStr() + "45");
@@ -107,32 +109,38 @@ public class ParserSimpleTxtFromPdfRecord {
 			return;
 		}
 
+		// supprimer les partenthèses
+		// line = line.replaceAll("\\([\\+\\-]\\d\\.\\d\\)", "");
+
+		if (line.contains("cadet")){currentCategorie = "Fcadet";currentEpreuve="100"; return;}
+		if (line.contains("cadet")){currentCategorie = "Fjunior";currentEpreuve="100"; return;}
+		if (line.contains("F35")){currentCategorie = "F35";currentEpreuve="100"; return;}
+		if (line.contains("F40")){currentCategorie = "F40";currentEpreuve="100"; return;}
+		
 		if (line.contains("200m")){currentEpreuve = "200";return;}
 		if (line.contains("400m")){currentEpreuve = "400";return;}
-		if (line.contains("800m")){
-			currentEpreuve = "800";return;}
-		if (line.contains("1500m")){currentEpreuve = "1500";return;}
-		if (line.contains("3000m")){currentEpreuve = "3000";return;}
-		if (line.contains("5000m")){currentEpreuve = "5000";return;}
-		if (line.contains("10000m")){currentEpreuve = "10000";return;}
-		if (line.contains("Steeplechase")){currentEpreuve = "3000 st.";return;}
-		if (line.contains("400m Hurdles")){currentEpreuve = "400H";return;}
-		if (line.contains("High Jump")){currentEpreuve = "Hauteur";return;}
-		if (line.contains("Pole Vault")){currentEpreuve = "Perche";return;}
-		if (line.contains("Longueur")){currentEpreuve = "Longueur";return;}
-		if (line.contains("Triple Jump")){currentEpreuve = "Triple";return;}
+		if (line.contains("800m")){currentEpreuve = "800";return;}
+		if (line.contains("1 500m")){currentEpreuve = "1500";return;}
+		if (line.contains("3 000m")){currentEpreuve = "3000";return;}
+		if (line.contains("5 000m")){currentEpreuve = "5000";return;}
+		if (line.contains("10 000m")){currentEpreuve = "10000";return;}
+		if (line.contains("Steeple")){currentEpreuve = "3000 st.";return;}
+		if (line.contains("400m Haies")){currentEpreuve = "400H";return;}
+		if (line.contains("Longueur")){currentEpreuve = "Hauteur";return;}
+		if (line.contains("Perche")){currentEpreuve = "Perche";return;}
+		if (line.contains("Triple")){currentEpreuve = "Triple";return;}
 		
 		
 		Matcher m = r.matcher(line);
 		if (m.find()) {
 
 			LigneRecord lb = new LigneRecord(
-					m.group(1).replace(" ", "").replace("W", "F"), // categorie
+					currentCategorie,
 					currentEpreuve,
 					m.group(2), // perf
 					m.group(3), // nom
-					Integer.parseInt(m.group(4)), // age
-					getAnnee(m.group(5)), // annee
+					0, // Integer.parseInt(m.group(4)), // age
+					0, // getAnnee(m.group(5)), // annee
 					sexeEnum
 					);
 			// sb.append(lb.toStringJson() + "\n");
