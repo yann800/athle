@@ -17,6 +17,35 @@ Disque (1.0 kg)		53m74		 		BEAUVAIS Catherine		65		Racing cf (paris)		20/06/82		
 Marteau (3 kg)		68m22		 		CIOFANI Audrey		96		Athletic club pays de l ourcq		29/06/13		Gagny
 Javelot (500 g)		59m07		 		NICOLLIN Margaux		95		Saint claude athletisme		21/07/12		Lens
 
+100m		10''73 (+2.0)		 		ARRON Christine		73		Racing cf (paris)		19/08/98		Budapest
+200m		21''99 (+1.1)		 		PEREC Marie josé		68		Stade francais (paris)		02/07/93		Villeneuve-d'ascq
+400m		48''25		 		PEREC Marie josé		68		Stade francais (paris)		29/07/96		Atlanta
+800m		1'56''53		 		DJATE Patricia		71		Sa pamiers basse ariege		09/09/95		Monaco
+1 000m		2'31''93		 		DJATE Patricia		71		Sa pamiers basse ariege		25/08/95		Bruxelles
+1 500m		3'59''76		 		DEHIBA CHAHYD Hind		79		As anzinoise athletisme *		16/07/10		St-denis
+Mile		4'27''43		 		QUENTIN Frederique		69		Asptt lille metropole		14/08/96		Zurich
+2 000m		5'39''00		 		SERGENT Annette		62		Asu lyon		11/07/86		Londres
+3 000m		8'35''41		 		GHEZIELLE Bouchra		79		Ea franconville le parisis		01/07/05		St-denis
+5 000m		14'43''90		 		MAURY Margaret		74		Clermont athletisme auvergne		03/09/04		Bruxelles
+10 000m		31'35''81		 		DAUNAY Christelle		74		Sco ste-marguerite marseille*		03/06/12		Bilbao
+Heure Piste		17km332		 		DUVIALARD Valerie		73		Asptt rouen		23/03/96		Rouen
+100m Haies (84)		12''56 (+1.2)		 		BILLAUD Cindy		86		Us creteil		12/07/14		Reims
+100m Haies (84)		12''56 (+1.2)		 		EWANJE-EPEE Monique		67		Us créteil		29/06/90		Villeneuve-d'ascq
+400m Haies (76)		53''21		 		PEREC Marie josé		68		Stade francais (paris)		16/08/95		Zurich
+3000m Steeple (76)		9'25''62		 		DUARTE Sophie		81		Ac paris-joinville		10/07/09		Rome
+Hauteur		1m97 I.		 		SKOTNIK Melanie		82		Alsace nord athletisme*		18/02/07		Aubière
+Perche		4m71 I.		 		FIACK Marion		92		E sportive thionville-yutz		10/01/15		Aubiere
+Longueur		7m05 (-0.4)		 		BARBER Eunice		74		Efs reims a. *		14/09/03		Monaco
+Triple saut		14m69 (+2.0)		 		NZOLA MESO BA Teresa		83		Entente sud lyonnais*		23/06/07		Munich
+Poids (4 kg)		18m69		 		MANFREDI Laurence		74		Us gap		19/02/00		Liévin
+Disque (1.0 kg)		66m73		 		ROBERT-MICHON Melina		79		Lyon athletisme*		16/08/16		Rio de janeiro
+Marteau (4 kg)		74m66		 		MONTEBRUN Manuela		79		Stade laval		11/07/05		Zagreb
+Javelot (600 g)		63m54		 		ANDRAUD Mathilde		89		Nice cote d'azur athletisme *		21/05/16		Halle
+Heptathlon JSF		6 889 pts		 		BARBER Eunice		74		Efs reims a. *		04/06/05		Arles
+ 	12''62(+2.9) - 1m91 - 12m61 - 24''12(+1.2) - 6m78(+3.4) - 53m07 - 2'14''66
+Decathlon JSF		8 150 pts		 		COLLONVILLE Marie		73		Amiens uc		25/09/04		Talence
+ 	12''48(+0,4) - 34m69 - 3m50 - 47m19 - 56''15 - 13''96(+0,4) - 6m18(+1,0) - 11m90 - 1m80 - 5'06''09
+
 Seniors | F35 | Femmes
 100m		11''27 		 		ARRON Christine		73		Strasbourg agglomeration athle		16/06/12		Angers
 200m		23''85 		 		BUVAL Patricia		76		Ca montreuil 93		27/07/13		Ninove
