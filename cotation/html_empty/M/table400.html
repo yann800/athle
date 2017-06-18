@@ -30,7 +30,9 @@
 
 </script>
 
+<!--  
 <link rel="stylesheet" type="text/css" href="index.css">
+-->
 
 <head>
 <TITLE>Table de cotation</TITLE>
@@ -50,7 +52,7 @@ function update_all()
 }
 
 function calcul_points(perf) {
-	var choix = 24 // 800m document.formulaire.epreuve.selectedIndex;
+	var choix = 16 // 800m masc document.formulaire.epreuve.selectedIndex;
 	if ((choix < 72) || (choix > 97)) 
 	{
 		perf_en_seconde = new Number(0);
@@ -121,7 +123,7 @@ function calcul_points(perf) {
 
 function formule_points(perf) {
 	perf = new Number(perf);
-	var choix = 24; // document.formulaire.epreuve.selectedIndex;
+	var choix = 16; // document.formulaire.epreuve.selectedIndex;
 	if (perf < 0) {return 0}
 	if (coef_c[choix] == 0) {
 		if (perf > - coef_b[choix]) {return 0}
@@ -138,6 +140,8 @@ function formule_points(perf) {
 <body onload="init()">
 
 <form id="form">
+
+<button onclick="outputConsole()">output console</button>
 
 <table>
 <tr><td></td></tr></table>
@@ -318,41 +322,13 @@ function formule_points(perf) {
 <input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
 <input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
 
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-<input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/><input/><input/><br/>
-
 
 
 </form>
 
 <script >
 
-function f_chrono(m, s, c){
+function f_chrono(s, c){
 
 	var str_s = s;
 	var str_c = c;
@@ -360,65 +336,41 @@ function f_chrono(m, s, c){
 	if (s < 10){str_s = '0' + s;}
 	if (c < 10){str_c = '0' + c;}
 	
-	return m + '.' + str_s + '.' + str_c;
+	return str_s + '.' + str_c;
 }
 
-// 1,42 -> 0
-// 0,1 -> 2
-// 1,0 -> 200
-// 1,1 -> 202
+// 43 -> 0
 function computeIndex(s,c){
 	
-	// on commence à 1'41
-	// si s > 40 c'est qu'on est dans les chrono 1'41 - 1'59
-	// sinon c'est qu'on est dans les chrono 2'00 - 2'41
-	if (s > 40){
-		return ((s - 41) * 200) + (c * 2);
-	}
-	// si 2'00 alors index = 190
-	return ((s + 19) * 200) + (c * 2);
+	// on commence à 43
+	return ((s - 43) * 200) + (c * 2);
 }
 
 function init(){
 
-	var minutes = 1;
-	var secondes = 41;
+	var secondes = 43;
 	var centiemes = 0;
 	
-	while (secondes < 60){
+	while (secondes < 56){
 	
 		centiemes = 0;
 		
 		while (centiemes < 100){
-			form[computeIndex(secondes,centiemes)].value = f_chrono(minutes, secondes, centiemes);
+			var currentIndex = computeIndex(secondes,centiemes)
+			// console.log('currentIndex ' + currentIndex)
+			form[currentIndex].value = f_chrono(secondes, centiemes);
 			centiemes = centiemes + 1;
 		}
 		
 		secondes = secondes + 1;
 	}
 
-	minutes = 2;
-	secondes = 0;
-	// on arrete a 2'04
-	while (secondes < 5){
-	
-		centiemes = 0;
-		
-		while (centiemes < 100){
-			form[computeIndex(secondes,centiemes)].value = f_chrono(minutes, secondes, centiemes);
-			centiemes = centiemes + 1;
-		}
-		
-		secondes = secondes + 1;
-	}
-	
-	
 	var i = 0;
 // alert(i);
 
-	while ( i < 4800){
+	while ( i < 3000){
 
-// alert('calcul_points(' + form[i].value + ')');
+		// console.log('calcul_points(' + form[i].value + ')');
 
 		form[i+1].value = calcul_points(form[i].value);
 
@@ -427,6 +379,21 @@ function init(){
 	// alert('END');
 
 }	
+
+function outputConsole(){
+	
+	var i = 0;
+	while (i < 3000){
+ 
+		if (i % 100 == 0){
+			console.info("('" + form[i].value + "'," + form[i+1].value + ");");
+			console.info("INSERT INTO cotation (perf, points) VALUES ");
+		}else {
+			console.info("('" + form[i].value + "'," + form[i+1].value + "),");
+		}
+		i = i + 2;
+	}
+}
 
 </script>
 </body>
