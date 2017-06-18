@@ -4,7 +4,7 @@ import fr.yann.dao.Insert;
 import fr.yann.model.EpreuveEnum;
 import fr.yann.model.SexeEnum;
 import fr.yann.parser.LastRang;
-import fr.yann.parser.Parser;
+import fr.yann.parser.ParserHtml;
 
 /**
  * CHECK DOUBLONS 
@@ -49,7 +49,7 @@ public class BuildDatabase {
 			LastRang lastRang = new LastRang();
 			lastRang.setRang(1);
 
-			Parser.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
+			ParserHtml.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
 			// Insert.main(path + ".sql");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class BuildDatabase {
 				System.out.println(path);
 	
 				try {
-					Parser.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
+					ParserHtml.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
 					Insert.main(path + ".sql");
 				} catch (Exception e) {
 					e.printStackTrace();
