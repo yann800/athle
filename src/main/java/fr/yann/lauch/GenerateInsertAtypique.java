@@ -5,12 +5,9 @@ import java.io.IOException;
 import fr.yann.model.EpreuveEnum;
 import fr.yann.model.SexeEnum;
 import fr.yann.parser.LastRang;
-import fr.yann.parser.Parser;
+import fr.yann.parser.ParserHtml;
 
 public class GenerateInsertAtypique {
-
-	private static final int	NOMBRE_PAGE_55	= 55;
-	private static final int	NOMBRE_PAGE_85	= 85;
 
 	public static void main(String[] args) {
 
@@ -20,7 +17,7 @@ public class GenerateInsertAtypique {
 		// importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.FEMININ, NOMBRE_PAGE_55);
 		// importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
 
-		importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.FEMININ, NOMBRE_PAGE_85);
+		// importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.FEMININ, NOMBRE_PAGE_85);
 		// importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.MASCULIN, NOMBRE_PAGE_85);
 
 	}
@@ -41,7 +38,7 @@ public class GenerateInsertAtypique {
 			// System.out.println(path);
 
 			try {
-				Parser.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
+				ParserHtml.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
