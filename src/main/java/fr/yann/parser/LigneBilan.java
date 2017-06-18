@@ -12,10 +12,10 @@ public class LigneBilan {
 	private int		anneeNaissance;
 	private String	datePerf;
 	private String	ville;
-	private int		idEpreuve;
+	private String	idEpreuve;
 	private int		sexe;
 
-	public LigneBilan(int rang, String perf, String nom, String prenom, String club, String ligue, int anneeNaissance, String datePerf, String ville, int idEpreuve, int sexe) {
+	public LigneBilan(int rang, String perf, String nom, String prenom, String club, String ligue, int anneeNaissance, String datePerf, String ville, String idEpreuve, int sexe) {
 		super();
 		this.setRang(rang);
 		this.perf = perf;
@@ -38,7 +38,7 @@ public class LigneBilan {
 				+ club + "','" + ligue + "','" + datePerf
 				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve;
 
-		if ((rang % 200) == 0) {
+		if ((rang % 250) == 0) {
 			return str + ");";
 		}
 		return str + "),";

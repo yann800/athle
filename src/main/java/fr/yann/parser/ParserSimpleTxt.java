@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.yann.model.EpreuveEnum;
+import fr.yann.model.SexeEnum;
+
 /**
  * 
  * Parsing du texte simple issu du copier coller de PDF
@@ -29,9 +32,9 @@ public class ParserSimpleTxt {
 
 		StringBuffer sb = new StringBuffer();
 
-		String path = "/home/mak/Bureau/Yann/workspace/athle/www/aaa.txt";
+		String path = "C:\\Yann\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\aaa.txt";
 		
-		lireFichier(path, sb, 800, 0);
+		lireFichier(path, sb, EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
 
 		System.out.println(sb.toString());
 		
@@ -43,7 +46,7 @@ public class ParserSimpleTxt {
 	 * @param sb 
 	 * @param isLastLine 
 	 */
-	private static void traiteLigne(String line, StringBuffer sb, int idEpreuve, int sexe) {
+	private static void traiteLigne(String line, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum) {
 
 		if (line == null) {
 			return;
@@ -85,15 +88,15 @@ public class ParserSimpleTxt {
 					Integer.parseInt(m.group(6)), // anneeNaissance
 					m.group(7), // datePerf
 					m.group(8).replace("'", " "),  // ville
-					idEpreuve,
-					sexe);
+					epreuveEnum.getCode(),
+					sexeEnum.getCodeInt());
 
 			sb.append(lb.toStringHtmlTrOfTable() + "\n");
 		}
 
 	}
 
-	private static void lireFichier(String path, StringBuffer sb, int idEpreuve, int sexe) throws FileNotFoundException {
+	private static void lireFichier(String path, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum) throws FileNotFoundException {
 		File f = new File(path);
 		FileReader fr = new FileReader(f);
 		BufferedReader br = new BufferedReader(fr);
@@ -102,7 +105,7 @@ public class ParserSimpleTxt {
 			String line = br.readLine();
 			while (line != null) {
 				line = br.readLine();
-				traiteLigne(line, sb, idEpreuve, sexe);
+				traiteLigne(line, sb, epreuveEnum, sexeEnum);
 			}
 
 			br.close();

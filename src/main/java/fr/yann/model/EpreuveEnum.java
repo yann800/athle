@@ -1,27 +1,18 @@
 package fr.yann.model;
 
 public enum EpreuveEnum {
-	COURSE_800, COURSE_1500, COURSE_3000, COURSE_10_KM, COURSE_400;
+	COURSE_400("400"),
+	COURSE_800("800"),
+	COURSE_1500("1500"),
+	COURSE_3000("3000"),
+	COURSE_10_KM("10")
+	;
 
-	public int getCode() {
-		if (this == COURSE_400) {
-			return 400;
-		}
-		if (this == COURSE_800) {
-			return 800;
-		}
-		if (this == COURSE_1500) {
-			return 1500;
-		}
-
-		if (this == COURSE_3000) {
-			return 3000;
-		}
-
-		if (this == COURSE_10_KM) {
-			return 10;
-		}
-		return 0;
+	private EpreuveEnum(String code) {
+		this.code = code;
 	}
-
+	public final String code;
+	public String getCode() {
+		return this.code;
+	}
 }

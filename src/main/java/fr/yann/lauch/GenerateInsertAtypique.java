@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import fr.yann.model.EpreuveEnum;
 import fr.yann.model.SexeEnum;
+import fr.yann.parser.LastRang;
 import fr.yann.parser.Parser;
 
 public class GenerateInsertAtypique {
@@ -26,10 +27,13 @@ public class GenerateInsertAtypique {
 
 	private static void importEpreuve(final EpreuveEnum epreuveEnum, final SexeEnum sexeEnum, final int nbPages) {
 
-		int idEpreuve = epreuveEnum.getCode();
+		String idEpreuve = epreuveEnum.getCode();
 		String strSexe = sexeEnum.getCodeStr();
-		int sexe = sexeEnum.getCodeInt();
 
+		LastRang lastRang = new LastRang();
+		lastRang.setRang(1);
+
+		
 		for (int i = 1; i < nbPages; i++) {
 
 			String path = "C:\\workspace_athle\\parser\\bilan\\" + idEpreuve + "\\" + strSexe + "\\liste_" + String.format("%03d", i);
@@ -37,7 +41,7 @@ public class GenerateInsertAtypique {
 			// System.out.println(path);
 
 			try {
-				Parser.main(path + ".html", idEpreuve, sexe);
+				Parser.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
