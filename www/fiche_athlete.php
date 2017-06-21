@@ -63,7 +63,7 @@ else {
    google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-		  ['Année', '800', '1500', '3000'],
+		  ['Année', '400', '800', '1500', '3000'],
 
 
 
@@ -87,30 +87,40 @@ else {
 	mysql_select_db($dbname);
 	
 	
-	$sql = "SELECT annee as annee, max(e_800) as e_800, max(e_1500) as e_1500, max(e_3000) as e_3000
+	$sql = "SELECT annee as annee, max(e_400) as e_400, max(e_800) as e_800, max(e_1500) as e_1500, max(e_3000) as e_3000
 FROM
 (
 	SELECT annee, 
 		CASE idEpreuve
+			WHEN 400 THEN points
+			WHEN 800 THEN 0
+			WHEN 1500  THEN 0
+			WHEN 3000  THEN 0  
+		END as e_400,
+		
+		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN points
 			WHEN 1500  THEN 0
 			WHEN 3000  THEN 0  
 		END as e_800,
 		
 		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN 0
 			WHEN 1500  THEN points
 			WHEN 3000  THEN 0
 		END as e_1500,
 	
 		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN 0
 			WHEN 1500 THEN 0
 			WHEN 3000  THEN points
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.nom = '". $param_nom ."' AND prenom = '". $param_prenom ."' AND l.idEpreuve IN (800, 1500, 3000) AND annee > 2005
+	WHERE l.nom = '". $param_nom ."' AND prenom = '". $param_prenom ."' AND l.idEpreuve IN (400, 800, 1500, 3000) AND annee > 2005
 
 ) tmp
 GROUP by annee";
@@ -130,7 +140,7 @@ if ( $nb == 0 ) {
 // on fait une boucle qui va faire un tour pour chaque enregistrement
 while($row = mysql_fetch_assoc($req)){
 
-        echo "['" . $row["annee"]. "'," . $row["e_800"]. "," . $row["e_1500"]. "," .  $row["e_3000"]. "]";
+        echo "['" . $row["annee"]. "'," . $row["e_400"]. "," . $row["e_800"]. "," . $row["e_1500"]. "," .  $row["e_3000"]. "]";
 
 		if ($row["e_3000"] > 0 and $row["annee"] == 2016){
 			// derniere ligne donc rien
@@ -183,30 +193,40 @@ Note : on n'aurait pu faire plus simple si MySql avait implémenté la fonction PI
 		</div>
 
 <pre>
-SELECT annee,max(e_800), max(e_1500), max(e_3000)
+SELECT annee, max(e_800), max(e_1500), max(e_3000)
 FROM
 (
 	SELECT annee, 
 		CASE idEpreuve
+			WHEN 400 THEN points
+			WHEN 800 THEN 0
+			WHEN 1500  THEN 0
+			WHEN 3000  THEN 0  
+		END as e_400,
+		
+		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN points
 			WHEN 1500  THEN 0
 			WHEN 3000  THEN 0  
 		END as e_800,
 		
 		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN 0
 			WHEN 1500  THEN points
 			WHEN 3000  THEN 0
 		END as e_1500,
 	
 		CASE idEpreuve
+			WHEN 400 THEN 0
 			WHEN 800 THEN 0
 			WHEN 1500 THEN 0
 			WHEN 3000  THEN points
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.nom = '[NOM]' AND prenom = '[PRENOM]' AND l.idEpreuve IN (800, 1500, 3000) AND annee &gt; 2005
+	WHERE l.nom = '[NOM]' AND prenom = '[PRENOM]' AND l.idEpreuve IN (400, 800, 1500, 3000) AND annee &gt; 2005
 
 ) tmp
 GROUP by annee

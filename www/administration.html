@@ -128,7 +128,7 @@ LES COTATIONS
  
  UPDATE cotation SET sexe = 0 where perf like '9%' and idEpreuve = 3000 and points &lt; 920;
  
-UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
+UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8);
 
 
 
@@ -140,13 +140,13 @@ UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
 <pre>
 <code>
 
-/* cas général (10km) */
+/* cas général 400 */
 UPDATE ligne l
 SET l.points =
 	(SELECT c.points FROM cotation c
-		WHERE c.idEpreuve = l.idEpreuve
-		AND c.sexe = l.sexe AND l.perf = c.perf)
-WHERE l.idEpreuve = 10;
+		WHERE c.idEpreuve = 400 AND c.sexe = 0 AND c.perf = l.perf)
+WHERE l.idEpreuve = 400 AND l.sexe = 0;
+
 
 /* chrono manuel : on est obligé de traiter à part */
 UPDATE ligne l
