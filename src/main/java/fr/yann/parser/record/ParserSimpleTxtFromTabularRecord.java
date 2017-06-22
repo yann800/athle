@@ -125,7 +125,7 @@ public class ParserSimpleTxtFromTabularRecord {
 		if (line.contains("5 000m")){currentEpreuve = "5000";return;}
 		if (line.contains("10 000m")){currentEpreuve = "10000";return;}
 		if (line.contains("Steeple")){currentEpreuve = "3000 st.";return;}
-		if (line.contains("400m Haies")){currentEpreuve = "400H";return;}
+		if (line.contains("400m Haies")){currentEpreuve = "400 Haies";return;}
 		if (line.contains("Longueur")){currentEpreuve = "Hauteur";return;}
 		if (line.contains("Perche")){currentEpreuve = "Perche";return;}
 		if (line.contains("Triple")){currentEpreuve = "Triple";return;}

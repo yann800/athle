@@ -116,7 +116,7 @@ public class ParserSimpleTxtFromPdfRecord {
 		if (line.contains("5000m")){currentEpreuve = "5000";return;}
 		if (line.contains("10000m")){currentEpreuve = "10000";return;}
 		if (line.contains("Steeplechase")){currentEpreuve = "3000 st.";return;}
-		if (line.contains("400m Hurdles")){currentEpreuve = "400H";return;}
+		if (line.contains("400m Hurdles")){currentEpreuve = "400 Haies";return;}
 		if (line.contains("High Jump")){currentEpreuve = "Hauteur";return;}
 		if (line.contains("Pole Vault")){currentEpreuve = "Perche";return;}
 		if (line.contains("Longueur")){currentEpreuve = "Longueur";return;}
