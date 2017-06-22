@@ -10,6 +10,7 @@ var recordsMondeHomme =
 {e : '10000', nom : 'Kenenisa Bekele', perf : '26.17.53'},
 {e : 'Marathon', nom : 'Eliud Kipchoge', perf : '2h00.25'},
 {e : 'Longueur', nom : 'Mike Powell', perf : '8m95'},
+{e : 'Triple saut', nom:'Jonathan Edwards GBR', perf:'18m29'},
 {e : '400 Haies', nom : 'Kevin Young', perf : '46.78'},
 {e:'Steeple', nom : 'Saif Saaeed SHAHEEN', perf : '7.53.63'}
 ]};
@@ -17,15 +18,28 @@ var recordsMondeHomme =
 
 var recordsMondeHommeCadet =
 {'record' : [
+	{e : '100', perf : '10.15', nom : 'Anthony Schwartz USA'},
+	{e : '200', perf : '20.13', nom : 'Usain Bolt JAM'},
+	{e : '400', perf : '45.14', nom : '	Obea Moore USA'},
+	{e : '800', perf : '1.43.37', nom : 'Mohamed Aman ETH'},
+	{e : '1500', perf : '3.33.72', nom : 'Kiptanui Kemboi KEN'},
+	{e : '3000', perf : '7.32.37', nom : 'Abreham Cherkos ETH'},
+	{e : '110 Haies', perf : '12 s 96', nom : 'Jaheel Hyde JAM'},
+	{e : '400 Haies', perf : '48 s 89', nom : 'J. van Zyl AFS'},
+	{e : 'Longueur', perf : '8m25', nom : 'Luis Alberto Bueno CUB'},
+	{e : 'Triple saut', perf : '17m24', perf : 'Lázaro Martínez CUB'}
 ]
 };
 
-var recordsMondeHommeJunior = {'record' : [{e:'100', nom:'Brommel', perf :'9.97'}, {e : '200', nom : 'Bolt',        perf : '19.93'},
-{e : '400', nom : 'Lewis', perf : '43.87'}, {e : '800', nom : 'Amos', perf : '1.41.73'},
-{e : '1500', nom : 'Kwemoi', perf : '3.28.81'}, {e : '3000', nom : 'Kejelcha', perf : '7.28.19'},
-{e : '5000', nom : 'Gebrhiwet', perf : '12.47.53'}, {e : '10000', nom : 'Wanjiru', perf : '26.41.75'},
-{e : 'Marathon', nom : 'xxxxx', perf : '2h00.00'}, {e : 'Longueur', nom : 'xxxx', perf : '8m20'},
-{e : '400 Haies', nom : 'xxxx', perf : '48.00'}
+var recordsMondeHommeJunior = {'record' : [{e:'100', nom:'Trayvon Brommel USA', perf :'9.97'},
+{e : '200', nom : 'Usain Bolt JAM', perf : '19.93'},
+{e : '400', nom : 'Steve Lewis', perf : '43.87'}, {e : '800', nom : 'Nigel Amos BOT', perf : '1.41.73'},
+{e : '1500', nom : 'Ronald Kwemoi KEN', perf : '3.28.81'}, {e : '3000', nom : 'Kejelcha', perf : '7.28.19'},
+{e : '5000', nom : 'Gebrhiwet', perf : '12.47.53'}, {e : '10000', nom : 'Samuel Wanjiru KEN', perf : '26.41.75'},
+{e : 'Marathon', nom : 'non reconnu', perf : '2h08.00'},
+{e : 'Longueur', nom : 'Sergey Morgunov RUS', perf : '8m35'},
+{e : 'Triple saut', nom:'Volker Mai GER', perf:'17m50'},
+{e : '400 Haies', nom : 'Danny Harris USA', perf : '48.02'}, {e : 'Steeple', nom : 'Stephen Cherono', perf : '7.58.66'}
 ]
 };
 // https://en.wikipedia.org/wiki/List_of_world_records_in_masters_athletics#Marathon
