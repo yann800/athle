@@ -5,7 +5,7 @@
 <link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
 <link href="css/dataTables.bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
-<script src="js/jquery-1.12.4.js" type="text/javascript"></script>
+<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
 <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -430,11 +430,7 @@ function selection(){
     libelleSel1 = getLibelle(zone1, sexe1, categorie1);
     libelleSel2 = getLibelle(zone2, sexe2, categorie2);
     
-	var laTable = $("#table_ecarts").DataTable({
-        "paging":   false,
-        "ordering": false,
-        "info":     false
-	});
+	var laTable = $("#table_ecarts").DataTable();
 
 	laTable.clear();
 	
