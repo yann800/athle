@@ -518,6 +518,8 @@ function createTableHead(){
 	
 	var table = $('#table_ecarts').DataTable({
 		data : records.data,
+        "paging": false, 
+        "info": false,         
 	  columns : [
 	    { data: 'e', title: 'Epreuve' },
 	    { data: 'nom1', title: 'Nom' },
