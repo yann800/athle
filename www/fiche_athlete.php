@@ -120,7 +120,7 @@ FROM
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.nom = '". $param_nom ."' AND prenom = '". $param_prenom ."' AND l.idEpreuve IN (400, 800, 1500, 3000) AND annee > 2005
+	WHERE l.nom = '". $param_nom ."' AND prenom = '". $param_prenom ."' AND l.idEpreuve IN (400, 800, 1500, 3000) 
 
 ) tmp
 GROUP by annee";
@@ -226,7 +226,7 @@ FROM
 		END as e_3000
 	
 	FROM ligne l
-	WHERE l.nom = '[NOM]' AND prenom = '[PRENOM]' AND l.idEpreuve IN (400, 800, 1500, 3000) AND annee &gt; 2005
+	WHERE l.nom = '[NOM]' AND prenom = '[PRENOM]' AND l.idEpreuve IN (400, 800, 1500, 3000)
 
 ) tmp
 GROUP by annee
@@ -280,7 +280,12 @@ mysql_close();
 	
 		<script type="text/javascript" class="init">
 		$(document).ready(function() {
-			$('#example').DataTable();
+			$('#example').DataTable( 
+		{
+	        "paging": false
+		}
+
+			);
 		});
 
 		$('.dropdown-toggle').dropdown();
