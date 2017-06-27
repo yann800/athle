@@ -6,6 +6,11 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 
+ * complément de correction.sql et administration.html
+ *
+ */
 public class Update {
 
 	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
@@ -13,6 +18,23 @@ public class Update {
 	private static final String	USER			= "root";
 	private static final String	PASSWORD		= "";
 
+	public static void updatePoints() {
+		
+	}
+	public static void updatePrenom() {
+		// clean parentheses 
+		
+		// 	SELECT prenom, INSTR(prenom, '(') FROM ligne where prenom like '%(%';
+		
+
+// GET 3 LETTRES CODE PAYS SELECT nom, SUBSTRING(prenom, INSTR(prenom, '(')) FROM ligne where prenom like '%(%';
+
+		
+// DELETE codes pays des prenoms
+// UPDATE ligne SET prenom = SUBSTRING(prenom, 1, INSTR(prenom, '(') - 1) WHERE prenom like '%(%';
+// UPDATE ligne SET prenom = TRIM(prenom)
+		
+	}
 	public static void updateAnnee() {
 
 		try {
@@ -23,7 +45,7 @@ public class Update {
 
 			con.createStatement().executeUpdate("UPDATE ligne SET annee = 2000 + SUBSTRING(datePerf,7, 8)");
 
-			// con.createStatement().executeUpdate("UPDATE ligne l SET l.points = (SELECT c.points FROM Cotation c WHERE c.idEpreuve = l.idEpreuve AND c.sexe = l.sexe AND l.perf = c.perf)");
+			// con.createStatement().executeUpdate("UPDATE ligne l SET l.points = (SELECT c.points FROM Cotation c WHERE c.idEpreuve = l.idEpreuve AND c.sexe = l.sexe AND l.perf = c.perf) WHERE l.points IS NULL)";
 
 			con.createStatement().executeUpdate("UPDATE ligne l SET naissance = naissance + 1900 WHERE naissance > 30 and naissance <= 99");
 

@@ -36,7 +36,7 @@ public class LigneBilan {
 				+ perf + "','"
 				+ nom + "','" + prenom + "'," + sexe + ",'"
 				+ club + "','" + ligue + "','" + datePerf
-				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve;
+				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve + "," + Integer.parseInt(datePerf.substring(6));
 
 		if ((rang % 250) == 0) {
 			return str + ");";

@@ -1,3 +1,4 @@
+-- complément de Update.java et administration.html
 select * from ligne order by naissance desc;
 
 UPDATE ligne SET naissance = 1993 WHERE nom like 'anselme' and prenom = 'jeanne' and naissance = 2030;
@@ -80,3 +81,6 @@ DELETE from licence where id in (36621,36683,36688,36743,36750,36806,36813,37048
 
 )
 
+
+INSERT INTO `ligne` (`rang`, `perf`, `nom`, `prenom`, `sexe`, `club`, `ligue`, `datePerf`, `naissance`, `ville`, `idEpreuve`, `annee`)
+VALUES (1600,'1.58.12','ABDELKADER','Yann',0,'NEUILLY-PLAISANCE SPORTS','','18/06/2002',1977,'Nogent sur marn',800,2002);
