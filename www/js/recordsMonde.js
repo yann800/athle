@@ -95,18 +95,18 @@ var recordsMondeHomme80 = {'record' : [{e:'100', nom:'Payton Jordan USA', age:'8
 var recordsMondeHomme85 = {'record' : [{e:'100', nom:'Hiroo Tanaka JPN', age:'85', perf:'15.19', annee:'2016'},{e:'200', nom:'Hiroo Tanaka JPN', age:'85', perf:'31.95', annee:'2016'},{e:'400', nom:'Earl Fee CAN', age:'85', perf:'77.12', annee:'2014'},				{e:'800', nom:'Earl Fee CAN', age:'85', perf:'3:09.10', annee:'2014'},			{e:'1500', nom:'Edward Whitlock CAN', age:'85', perf:'6:38.23', annee:'2016'},	{e:'3000', nom:'Julian Bernal Medina ESP', age:'85', perf:'14:13.4', annee:'2005'},{e:'5000', nom:'Edward Whitlock ITA', age:'85', perf:'24:03.99', annee:'2015'},{e:'10000', nom:'Edward Whitlock CAN', age:'86', perf:'51:07.53', annee:'2016'},{e:'Hauteur', nom:'Samuli Korpi FIN', age:'85', perf:'1.25', annee:'2015'},{e:'Perche', nom:'Carol Johnston USA', age:'85', perf:'2.24', annee:'1997'},{e:'Longueur', nom:'Gudmund Skrivervik NOR', age:'85', perf:'3m77', annee:'2006'},{e:'Triple saut', nom:'Aatos Saino FIN', age:'85', perf:'8m17', annee:'2010'},]};
 
 var recordsMondeFemme =
-{'record' : [{e:'100', nom:'Joyner', perf :'10.48'}, 
-{e:'200', nom : 'Joyner', perf : '21.34'},
-{e:'400', nom : 'Koch', perf : '47.60'},
-{e:'800', nom : 'Kratochilova', perf : '1.53.28'},
-{e:'1500', nom : 'Dibaba G.', perf : '3.50.07'},
-{e:'3000', nom : 'Junxia', perf : '8.06.11'},
-{e:'5000', nom : 'Dibaba T.', perf : '14.11.15'},
-{e:'10000', nom : 'Ayana', perf : '29.17.45'},
-{e:'Marathon', nom : 'Radclif', perf : '2h15.25'},
-{e:'Longueur', nom : 'Joyner', perf : '7m52'},
-{e:'Triple saut', nom : 'Kravets', perf : '15m50'},
-{e:'Steeple', nom : 'JEBET Ruth (Brn)', perf : '8.52.78'},
+{'record' : [{e:'100', nom:'Florence Griffith-Joyner (USA)', perf :'10.49'}, 
+{e:'200', nom : 'Florence Griffith-Joyner (USA)', perf : '21.34'},
+{e:'400', nom : 'Marita Koch (GER) ', perf : '47.60'},
+{e:'800', nom : 'Jarmila Kratochilova (TCH)', perf : '1.53.28'},
+{e:'1500', nom : 'Genzebe Dibaba (ETH)', perf : '3.50.07'},
+{e:'3000', nom : 'Wang Junxia (CHN)', perf : '8.06.11'},
+{e:'5000', nom : 'Tirunesh Dibaba (ETH))', perf : '14.11.15'},
+{e:'10000', nom : 'Almaz Ayana (ETH)', perf : '29.17.45'},
+{e:'Marathon', nom : 'Paula Radcliffe (GBR)', perf : '2h15.25'},
+{e:'Longueur', nom : 'Galina Chistyakova (URS)', perf : '7m52'},
+{e:'Triple saut', nom : 'Iness Kravets (URS)', perf : '15m50'},
+{e:'Steeple', nom : 'Ruth Jebet (BRN)', perf : '8.52.78'},
 {e:'400 Haies', nom :'PECHONKINA Yuliya (RUS)', perf : '52.34'}
 ]
 };
@@ -115,16 +115,16 @@ var recordsMondeFemmeCadet = {'record' : [ ] };
 
 var recordsMondeFemmeJunior =
 {'record' : [
-{e : '100', nom : 'xxx', perf :''}, 
-{e : '200', nom : 'xxx', perf : ''},
-{e : '400', nom : 'xxx', perf : ''},
-{e : '800', nom : 'xxx', perf : ''},
-{e : '1500', nom : 'xxx', perf : ''},
-{e : '3000', nom : 'xxx', perf : ''},
-{e : '5000', nom : 'xxx', perf : ''},
-{e : '10000', nom : 'xxx', perf : ''},
-{e : 'Marathon', nom : 'xxx', perf : ''},
-{e : 'Longueur', nom : 'xxxx', perf : '7m20'}
+{e : '100', perf :'10.88', nom : 'OELSNER Marlies (GDR)'},
+{e : '200', perf :'22.18', nom : 'FELIX Allyson (USA)'},
+{e : '400', perf :'49.42', nom : 'BREUER Grit (GER)'},
+{e : '800', perf :'1.54.01', nom : 'JELIMO Pamela (KEN)'},
+{e : '1500', perf :'3.51.34', nom : 'YINGLAI Lang (CHN)'},
+{e : '3000', perf :'8.28.83', nom : 'PIETERSE Zola (GBR)'},
+{e : '5000', perf :'14.30.88', nom : 'DIBABA Tirunesh (ETH)'},
+{e : '10000', perf :'30.26.50', nom : 'CHEPKWEMOI-MASAI Linet (KEN)'}, 
+{e : '400m Haies', perf :'54.15', nom : 'MC LAUGHLIN Sydney (USA)'}, 
+{e : 'Longueur', nom : 'DAUTE Heike (GDR)', perf : '7m14'}
 ]
 };
 

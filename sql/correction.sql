@@ -18,11 +18,11 @@ CREATE TABLE IF NOT EXISTS personne (
 
 
 INSERT INTO personne (nom, prenom, naissance)
-select nom, prenom, naissance from ligne  
-where naissance > 1950 and naissance < 2000
-group by nom, prenom, naissance 
-order by nom, prenom, naissance;
--- 20 826 lignes
+SELECT DISTINCT nom, prenom, naissance from ligne  
+WHERE naissance > 1950 and naissance < 2000
+GROUP BY nom, prenom, naissance 
+ORDER BY nom, prenom, naissance;
+-- 32 553 lignes
 
 
 
@@ -45,10 +45,10 @@ WHERE l.naissance > 2000;
 -- insertion des athletes, done
 -- insertion des clubs, done
 -- insertion des licences
-INSERT INTO licence (idPersonne, idClub, annee)
-SELECT p.id, (SELECT c.id FROM club c WHERE c.nom = l.club), l.annee
+INSERT INTO licence (idPersonne, idClub)
+SELECT DISTINCT p.id, (SELECT c.id FROM club c WHERE c.nom = l.club)
 FROM personne p 
-INNER JOIN ligne l ON p.nom = l.nom AND p.prenom = l.prenom 
+INNER JOIN ligne l ON p.nom = l.nom AND p.prenom = l.prenom WHERE l.idEpreuve = 800 
 
 -- select * from licence l1, licence l2 where l1.id != l2
 

@@ -137,19 +137,54 @@ if ( $nb == 0 ) {
 	echo "['0',  0, 0, 0]";
 
 } else {
-// on fait une boucle qui va faire un tour pour chaque enregistrement
+
+$atLeastOne400 = false;
+$atLeastOne800 = false;
+$atLeastOne1500 = false;
+$atLeastOne3000 = false;
+
 while($row = mysql_fetch_assoc($req)){
 
-        echo "['" . $row["annee"]. "'," . $row["e_400"]. "," . $row["e_800"]. "," . $row["e_1500"]. "," .  $row["e_3000"]. "]";
+		$current400 = "null";
+		$current800 = "null";
+		$current1500 = "null";
+		$current3000 = "null";
 
-		if ($row["e_3000"] > 0 and $row["annee"] == 2016){
+		if ($row["e_400"]){  $current400  = $row["e_400"]; $atLeastOne400 = true;}
+		if ($row["e_800"]){  $current800  = $row["e_800"]; $atLeastOne800 = true;}
+		if ($row["e_1500"]){ $current1500 = $row["e_1500"]; $atLeastOne1500 = true;}
+		if ($row["e_3000"]){ $current3000 = $row["e_3000"]; $atLeastOne3000 = true;}
+		
+        echo "['" . $row["annee"]. "'," . $current400 . "," . $current800 . "," . $current1500 . "," .  $current3000 . "],";
+
+		// if ($row["e_3000"] > 0 and $row["annee"] == 2016){
 			// derniere ligne donc rien
-		}
-		else {
-			echo ",";
-		}
+		// }
+		// else {
+		//	echo ",";
+		// }
 
 }
+
+$val400 = 0;
+$val800 = 0;
+$val1500 = 0;
+$val3000 = 0;
+
+if ($atLeastOne400){
+	$val400 = null;
+}
+if ($atLeastOne800){
+	$val800 = null;
+}
+if ($atLeastOne1500){
+	$val1500 = null;
+}
+else if ($atLeastOne3000){
+	$val3000 = null;
+}
+echo "['2017',$val400,$val800,$val1500,$val3000]";
+
 }
 
 
