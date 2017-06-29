@@ -1,14 +1,14 @@
-package fr.yann.fiche;
+package fr.yann.service;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 
-import fr.yann.model.EpreuveEnum;
-import fr.yann.model.SexeEnum;
+import fr.yann.model.enums.EpreuveEnum;
+import fr.yann.model.enums.SexeEnum;
 
-public class SavePage {
+public class E1_SavePage {
 	
 	private static final String	URL_BASE_COM				= "http://bases.athle.com/asp.net/liste.aspx";
 	private static final String	PARAM_DEFAULT				= "?frmpostback=true&frmbase=bilans&frmmode=1&frmespace=0";

@@ -67,9 +67,8 @@ public class Mutations {
 		Optional<Person> resultat = liste.stream().filter(p -> p.getNom().equals(nom) && p.getPrenom().equals(prenom)).findFirst();
 		if (resultat.isPresent()) {
 			return resultat.get();
-		} else {
-			return null;
 		}
+		return null;
 	}
 
 	// fonction lambada pour créer une personne

@@ -3,8 +3,11 @@ package fr.yann.parser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.yann.model.EpreuveEnum;
-import fr.yann.model.SexeEnum;
+import fr.yann.model.NomPrenom;
+import fr.yann.model.bilan.LastRang;
+import fr.yann.model.bilan.LigneBilan;
+import fr.yann.model.enums.EpreuveEnum;
+import fr.yann.model.enums.SexeEnum;
 
 public class CleanXml {
 

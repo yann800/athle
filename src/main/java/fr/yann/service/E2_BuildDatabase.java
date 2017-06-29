@@ -1,9 +1,9 @@
-package fr.yann.lauch;
+package fr.yann.service;
 
 import fr.yann.dao.Insert;
-import fr.yann.model.EpreuveEnum;
-import fr.yann.model.SexeEnum;
-import fr.yann.parser.LastRang;
+import fr.yann.model.bilan.LastRang;
+import fr.yann.model.enums.EpreuveEnum;
+import fr.yann.model.enums.SexeEnum;
 import fr.yann.parser.ParserHtml;
 
 /**
@@ -11,10 +11,12 @@ import fr.yann.parser.ParserHtml;
  * 
  * SELECT * FROM ligne l1, ligne l2 WHERE l1.id != l2.id AND l1.perf = l2.perf AND l1.nom = l2.nom AND l1.datePerf = l2.datePerf;
  * 
- * 
+ * 1. on save les HTML
+ * 2. on génère les SQL
+ * 3. on exécute les SQL générés
  *
  */
-public class BuildDatabase {
+public class E2_BuildDatabase {
 
 	private static final int	NOMBRE_PAGE_5	= 6; // pages 0 - 5
 	// private static final int	NOMBRE_PAGE_55	= 55;
@@ -25,16 +27,6 @@ public class BuildDatabase {
 		// importEpreuve(EpreuveEnum.COURSE_400, SexeEnum.FEMININ, NOMBRE_PAGE_5);
 		importEpreuve(EpreuveEnum.COURSE_400, SexeEnum.MASCULIN, NOMBRE_PAGE_5);
 		// trucBug();
-		
-		// importEpreuve(EpreuveEnum.COURSE_800, SexeEnum.FEMININ, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_800, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.FEMININ, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_1500, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_3000, SexeEnum.FEMININ, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_3000, SexeEnum.MASCULIN, NOMBRE_PAGE_55);
-		// importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.FEMININ, NOMBRE_PAGE_85);
-		// importEpreuve(EpreuveEnum.COURSE_10_KM, SexeEnum.MASCULIN, NOMBRE_PAGE_85);
-
 	}
 
 	//	private static void trucBug() {

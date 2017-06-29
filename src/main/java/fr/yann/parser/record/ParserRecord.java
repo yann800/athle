@@ -3,7 +3,8 @@ package fr.yann.parser.record;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.yann.model.SexeEnum;
+import fr.yann.model.enums.SexeEnum;
+import fr.yann.model.record.LigneRecord;
 
 public class ParserRecord {
 

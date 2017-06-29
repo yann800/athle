@@ -1,6 +1,6 @@
-package fr.yann.parser.record;
+package fr.yann.model.record;
 
-import fr.yann.model.SexeEnum;
+import fr.yann.model.enums.SexeEnum;
 
 public class LigneRecord {
 

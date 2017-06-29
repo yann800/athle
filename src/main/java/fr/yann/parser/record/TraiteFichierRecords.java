@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+import fr.yann.model.record.LigneRecord;
+
 public class TraiteFichierRecords {
 
 	public static void main(String[] args) throws Exception {

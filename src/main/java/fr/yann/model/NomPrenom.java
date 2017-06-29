@@ -1,4 +1,4 @@
-package fr.yann.parser;
+package fr.yann.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

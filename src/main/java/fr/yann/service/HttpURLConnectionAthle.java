@@ -1,4 +1,4 @@
-package fr.yann.fiche;
+package fr.yann.service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -34,4 +34,5 @@ public class HttpURLConnectionAthle {
 
 		return response.toString();
 	}
+
 }

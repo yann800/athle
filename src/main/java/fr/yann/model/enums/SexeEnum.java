@@ -1,4 +1,4 @@
-package fr.yann.model;
+package fr.yann.model.enums;
 
 public enum SexeEnum {
 	FEMININ, MASCULIN;

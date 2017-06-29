@@ -1,4 +1,4 @@
-package fr.yann.parser;
+package fr.yann.model.bilan;
 
 public class LigneBilan {
 

@@ -1,4 +1,4 @@
-package fr.yann.model;
+package fr.yann.model.enums;
 
 public enum EpreuveEnum {
 	COURSE_400("400"),

@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import fr.yann.model.SexeEnum;
+import fr.yann.model.enums.SexeEnum;
+import fr.yann.model.record.LigneRecord;
+import fr.yann.model.record.Records;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package fr.yann.parser.record;
+package fr.yann.model.record;
 
 import java.util.ArrayList;
 import java.util.HashMap;
