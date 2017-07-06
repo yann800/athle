@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class NomPrenom {
 
-	String	nom;
-	String	prenom;
+	public String	nom;
+	public String	prenom;
 
 	public NomPrenom(String str) {
 		String pattern = "([\\p{Lu}\\s-]*)\\s([\\p{Alpha}\\s-\\(\\)]*)";

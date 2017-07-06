@@ -12,15 +12,30 @@ public class E1_SavePage {
 	
 	private static final String	URL_BASE_COM				= "http://bases.athle.com/asp.net/liste.aspx";
 	private static final String	PARAM_DEFAULT				= "?frmpostback=true&frmbase=bilans&frmmode=1&frmespace=0";
+	private static final String	PARAM_DEFAULT_AVANT_2004		= "?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0";
 
-	private static final int	ID_FRM_EPREUVE_400			= 140;
+	private static final String	ID_FRM_EPREUVE_400_AVANT_2004	= "140400m";
+
+	// private static final int	ID_FRM_EPREUVE_400			= 140;
 	private static final int	ID_FRM_EPREUVE_800_INDOOR	= 209;
 	private static final int	ID_FRM_EPREUVE_1000			= 210;
 	private static final int	ID_FRM_EPREUVE_1500			= 215;
-	//			URL_BASE_COM PARAM_DEFAULT &frmannee=2012&&frmepreuve=140&frmsexe=M&frmposition=2
-	//			
-	// 2002 400 page 1
-	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=5&frmtype=Plein+air&frmepreuve=140400m&frmplaces=&frmnaissance=&frmvent=&frmcategorie=&frmsexe=M&frmligue=&frmnom=&frmlicence=&frmclub=	
+
+	// ======= AVANT 2004 =======			
+	// frmsaison indique l'annee. 5 : 2002, 8 : 2003. Attention cela remplace frmannee
+	// 
+	// page 1 : [&frmposition=] page 2 : &frmposition=1
+	// 
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=5&frmtype=Plein+air&frmepreuve=140400m&frmsexe=M	
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=8&frmtype=Plein+air&frmepreuve=140400m&frmsexe=M
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=8&frmtype=Plein+air&frmepreuve=140400m&frmsexe=M&frmposition=1
+
+	// ---------------------------
+	// la vraie (page 2 400 2002):
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=8&frmtype=Plein+air&frmepreuve=140400m&frmplaces=&frmnaissance=&frmvent=&frmcategorie=&frmsexe=M&frmligue=&frmnom=&frmlicence=&frmclub=&frmposition=1
+	// généréé
+	// http://bases.athle.com/asp.net/liste.aspx?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0&frmsaison=5&frmtype=Plein+air&frmepreuve=140400m&frmsexe=M&frmposition=1
+	// ---------------------------
 
 	//			=== 800
 	//			URL_BASE_COM PARAM_DEFAULT &frmannee=2012&&frmepreuve=208&frmsexe=M&frmposition=2
@@ -56,7 +71,7 @@ public class E1_SavePage {
 		
 		SexeEnum sexeEnum = SexeEnum.MASCULIN;
 
-		for (int annee = 2004; annee < 2017; annee++) {
+		for (int annee = 2002; annee < 2004; annee++) {
 
 			for (int numPage = 0; numPage < 6; numPage++) {
 				Bilan b = new Bilan();
@@ -65,13 +80,11 @@ public class E1_SavePage {
 				b.annee = annee;
 				b.frmPosition = numPage;
 
-				b.url = getUrlBilan(ID_FRM_EPREUVE_400, annee, sexeEnum.getCodeStr(), numPage);
+				b.url = getUrlBilanAvant2004(ID_FRM_EPREUVE_400_AVANT_2004, annee, sexeEnum.getCodeStr(), numPage);
 				bilans.add(b);
 
 			}
 		}
-
-		// save(getUrlRecords("EU", SexeEnum.MASCULIN.getCodeStr()), "recordsEurope.html");
 
 		for (Bilan b : bilans) {
 			save(b.url, getFileName(b));
@@ -82,12 +95,27 @@ public class E1_SavePage {
 		return b.epreuve.getCode() + "_" + b.sexe.getCodeStr() + "_" + b.annee + "_" + b.frmPosition + ".html";
 	}
 
-	//	private static String getUrlRecords(String niveau, String sexe) {
-	//		return URL_BASE_COM + "?frmpostback=true&frmbase=records&frmmode=1&frmespace=0&frmexploitation=actuel&frmtype=RD&frmcategorie=&frmsexe=&frmniveau=" + niveau;
-	//	}
-
 	private static String getUrlBilan(int idFrmEpreuve, int annee, String sexe, int numPage) {
 		return URL_BASE_COM + PARAM_DEFAULT + "&frmannee=" + annee + "&frmepreuve=" + idFrmEpreuve + "&frmsexe=" + sexe + "&frmposition=" + numPage;
+	}
+
+	private static String getUrlBilanAvant2004(String idFrmEpreuve, int annee, String sexe, int numPage) throws Exception {
+
+		// frmsaison indique l'annee. 5 : 2002, 8 : 2003
+		int saison = 0;
+		if (annee == 2002) {
+			saison = 5;
+		} else if (annee == 2003) {
+			saison = 8;
+		} else {
+			throw new Exception("annee [" + annee + "]  non prévue");
+		}
+
+		String frmPosition = "";
+		if (numPage > 1) {
+			frmPosition = "&frmposition=" + (numPage - 1);
+		}
+		return URL_BASE_COM + PARAM_DEFAULT_AVANT_2004 + "&frmsaison=" + saison + "&frmtype=Plein+air" + "&frmepreuve=" + idFrmEpreuve + "&frmsexe=" + sexe + frmPosition;
 	}
 
 	private static void save(String url, String nomFichierToSave) {
