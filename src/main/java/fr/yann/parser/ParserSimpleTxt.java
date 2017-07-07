@@ -35,7 +35,7 @@ public class ParserSimpleTxt {
 
 		String path = "C:\\Yann\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\aaa.txt";
 		
-		lireFichier(path, sb, EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
+		lireFichier(path, sb, EpreuveEnum.COURSE_800, SexeEnum.MASCULIN, 2003);
 
 		System.out.println(sb.toString());
 		
@@ -45,9 +45,10 @@ public class ParserSimpleTxt {
 	 * Ex : <tr><td class="datas0">1</td><td class="separator3"></td><td class="datas0"><b>1'44''04</b></td><td class="separator3"></td><td class="datas0">E</td><td class="separator3"></td><td class="datas0"><a href="javascript:bddThrowAthlete('bilans',%20127580,%200)" title="cliquez pour le détail">BAALA Mehdi</a></td><td class="separator3"></td><td class="datas0">Asptt strasbourg*</td><td class="separator3"></td><td class="datas0"><a href="http://bases.athle.com/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2006&amp;frmepreuve=208&amp;frmsexe=M&amp;frmligue=ALS">ALS</a></td><td class="separator3"></td><td class="datas0"><a href="http://bases.athle.com/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2006&amp;frmepreuve=208&amp;frmsexe=M&amp;frmdepartement=067">067</a></td><td class="separator3"></td><td class="datas0">SEM</td><td class="separator3"></td><td class="datas0"><a href="http://bases.athle.com/asp.net/liste.aspx?frmbase=bilans&amp;frmmode=1&amp;frmannee=2006&amp;frmepreuve=208&amp;frmsexe=M&amp;frmamini=1978&amp;frmamaxi=1978">78</a></td><td class="separator3"></td><td class="datas0">18/08/06</td><td class="separator3"></td><td class="datas0">Zurich (SUI)</td></tr>
 	 * @param line
 	 * @param sb 
+	 * @param p_annee 
 	 * @param isLastLine 
 	 */
-	private static void traiteLigne(String line, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum) {
+	private static void traiteLigne(String line, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum, int p_annee) {
 
 		if (line == null) {
 			return;
@@ -79,25 +80,36 @@ public class ParserSimpleTxt {
 			//	System.out.println(i + " " + m.group(i));
 			// }
 
+			prenom = m.group(4).replace("'", " ");
+			String pays = "";
+
+			if (prenom.contains("(")) {
+				int indexParenthese = prenom.indexOf("(");
+				pays = prenom.substring(indexParenthese);
+				System.out.println(pays);
+				prenom = prenom.substring(0, indexParenthese - 1);
+			}
+
 			LigneBilan lb = new LigneBilan(
 					Integer.parseInt(m.group(1)), // rang
 					m.group(2).replace("\"", ".").replace("'", "."), // perf
 					m.group(3).replace("'", " "), // nom
-					m.group(4).replace("'", " "), // prenom
+					prenom, // prenom
 					m.group(5).replace("'", " "), // club
 					"", // ligue
 					Integer.parseInt(m.group(6)), // anneeNaissance
 					m.group(7), // datePerf
 					m.group(8).replace("'", " "),  // ville
 					epreuveEnum.getCode(),
-					sexeEnum.getCodeInt());
+					sexeEnum.getCodeInt(),
+					pays, p_annee);
 
 			sb.append(lb.toStringHtmlTrOfTable() + "\n");
 		}
 
 	}
 
-	private static void lireFichier(String path, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum) throws FileNotFoundException {
+	private static void lireFichier(String path, StringBuffer sb, EpreuveEnum epreuveEnum, SexeEnum sexeEnum, int annee) throws FileNotFoundException {
 		File f = new File(path);
 		FileReader fr = new FileReader(f);
 		BufferedReader br = new BufferedReader(fr);
@@ -106,7 +118,7 @@ public class ParserSimpleTxt {
 			String line = br.readLine();
 			while (line != null) {
 				line = br.readLine();
-				traiteLigne(line, sb, epreuveEnum, sexeEnum);
+				traiteLigne(line, sb, epreuveEnum, sexeEnum, annee);
 			}
 
 			br.close();

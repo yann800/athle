@@ -9,7 +9,7 @@ import fr.yann.model.bilan.LigneBilan;
 import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 
-public class CleanXml {
+public class CleanXmlBefore2004 {
 
 	private static final String CHAR_JOKER = "_";
 
@@ -75,7 +75,7 @@ public class CleanXml {
 				lastRang.setRang(Integer.parseInt(mGroup1));
 			}
 
-			NomPrenom nomPrenom = new NomPrenom(m.group(4));
+			NomPrenom nomPrenom = new NomPrenom(m.group(5));
 
 			String prenom = nomPrenom.prenom.replace("'", " ");
 			String pays = "";
@@ -99,12 +99,12 @@ public class CleanXml {
 					m.group(2).replace("''", ".").replace("'", "."), // perf
 					nomPrenom.nom,
 					nomPrenom.prenom,
-					m.group(5).replace("'", " "), // club
-					m.group(6), // ligue
+					m.group(6).replace("'", " "), // club
+					m.group(7), // ligue
 					Integer.parseInt(anneNaissance), // anneeNaissance
 					// m.group(8), // categorie
 					m.group(10), // datePerf
-					m.group(11).replace("'", " "), //  + m.group(12).replace("'", " ") + m.group(13).replace("'", " "), // ville
+					m.group(11).replace("'", " "), // ville
 					epreuveEnum.code,
 					sexeEnum.getCodeInt(),
 					pays, annee);

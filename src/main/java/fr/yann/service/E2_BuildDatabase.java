@@ -1,6 +1,5 @@
 package fr.yann.service;
 
-import fr.yann.dao.Insert;
 import fr.yann.model.bilan.LastRang;
 import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
@@ -18,14 +17,12 @@ import fr.yann.parser.ParserHtml;
  */
 public class E2_BuildDatabase {
 
-	private static final int	NOMBRE_PAGE_5	= 6; // pages 0 - 5
-	// private static final int	NOMBRE_PAGE_55	= 55;
-	// private static final int	NOMBRE_PAGE_85	= 85;
+	private static final int NOMBRE_PAGE_5 = 1; // pages 0 - 5
 
 	public static void main(String[] args) {
 
 		// importEpreuve(EpreuveEnum.COURSE_400, SexeEnum.FEMININ, NOMBRE_PAGE_5);
-		importEpreuve(EpreuveEnum.COURSE_400, SexeEnum.MASCULIN, NOMBRE_PAGE_5);
+		importEpreuve(EpreuveEnum.COURSE_800, SexeEnum.MASCULIN, NOMBRE_PAGE_5);
 		// trucBug();
 	}
 
@@ -50,7 +47,7 @@ public class E2_BuildDatabase {
 
 	private static void importEpreuve(final EpreuveEnum epreuveEnum, final SexeEnum sexeEnum, final int nbPages) {
 
-		for (int annee = 2004; annee < 2017; annee++) {
+		for (int annee = 2003; annee < 2004; annee++) {
 
 			LastRang lastRang = new LastRang();
 			lastRang.setRang(1);
@@ -65,8 +62,8 @@ public class E2_BuildDatabase {
 				System.out.println(path);
 	
 				try {
-					ParserHtml.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang);
-					Insert.main(path + ".sql");
+					ParserHtml.ecrireSqlInsertValues(path + ".html", epreuveEnum, sexeEnum, lastRang, annee);
+					// Insert.main(path + ".sql");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

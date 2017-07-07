@@ -14,8 +14,11 @@ public class LigneBilan {
 	private String	ville;
 	private String	idEpreuve;
 	private int		sexe;
+	private String				pays;
+	private int					annee;
 
-	public LigneBilan(int rang, String perf, String nom, String prenom, String club, String ligue, int anneeNaissance, String datePerf, String ville, String idEpreuve, int sexe) {
+	public LigneBilan(int rang, String perf, String nom, String prenom, String club, String ligue, int anneeNaissance, String datePerf, String ville, String idEpreuve, int sexe,
+			String pays, int annee) {
 		super();
 		this.setRang(rang);
 		this.perf = perf;
@@ -28,15 +31,19 @@ public class LigneBilan {
 		this.datePerf = datePerf;
 		this.idEpreuve = idEpreuve;
 		this.sexe = sexe;
+		this.pays = pays;
+		this.annee = annee;
 	}
 
 	@Override
 	public String toString() {
+
 		String str = "(" + rang + ",'"
 				+ perf + "','"
 				+ nom + "','" + prenom + "'," + sexe + ",'"
+				// + pays + "','"
 				+ club + "','" + ligue + "','" + datePerf
-				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve + "," + Integer.parseInt(datePerf.substring(6));
+				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve + "," + annee;
 
 		if ((rang % 250) == 0) {
 			return str + ");";
@@ -54,10 +61,10 @@ public class LigneBilan {
 	}
 
 	public String toStringInsert() {
-		String str = "INSERT INTO `ligne` (`rang`, `perf`, `nom`, `prenom`, `sexe`, `club`, `ligue`, `datePerf`, `naissance`, `ville`, `idEpreuve`) VALUES(" + rang + ",'"
+		String str = "INSERT INTO `ligne` (`rang`, `perf`, `nom`, `prenom`, `sexe`, `idPays`, `club`, `ligue`, `datePerf`, `naissance`, `ville`, `idEpreuve`) VALUES(" + rang + ",'"
 				+ perf + "','"
 				+ nom + "','" + prenom + "'," + sexe + ",'"
-				+ club + "','" + ligue + "','" + datePerf
+				+ pays + "','" + club + "','" + ligue + "','" + datePerf
 				+ "'," + anneeNaissance + ",'" + ville + "'," + idEpreuve + ");";
 
 		return str;
@@ -65,7 +72,7 @@ public class LigneBilan {
 	
 	public String toStringHtmlTrOfTable() {
 		return "<tr><td>" + rang + SEPARATOR_TD + perf 
-				+ SEPARATOR_TD + nom + SEPARATOR_TD + prenom
+				+ SEPARATOR_TD + nom + SEPARATOR_TD + prenom + SEPARATOR_TD + pays
 				+ SEPARATOR_TD + club + SEPARATOR_TD + anneeNaissance
 				+ SEPARATOR_TD + datePerf + SEPARATOR_TD + ville
 				+ "</td></tr>";
