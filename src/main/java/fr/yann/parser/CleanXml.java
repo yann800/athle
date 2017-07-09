@@ -94,6 +94,12 @@ public class CleanXml {
 				return null;
 			}
 			
+			String datePerf = m.group(10);
+			if (datePerf.length() != 5) { // ex : 15/05
+				return null;
+			}
+			datePerf = datePerf + "/" + annee;
+			
 			lb = new LigneBilan(
 					lastRang.getRang(), // rang
 					m.group(2).replace("''", ".").replace("'", "."), // perf
@@ -103,7 +109,7 @@ public class CleanXml {
 					m.group(6), // ligue
 					Integer.parseInt(anneNaissance), // anneeNaissance
 					// m.group(8), // categorie
-					m.group(10), // datePerf
+					datePerf,
 					m.group(11).replace("'", " "), //  + m.group(12).replace("'", " ") + m.group(13).replace("'", " "), // ville
 					epreuveEnum.code,
 					sexeEnum.getCodeInt(),
