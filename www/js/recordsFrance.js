@@ -62,7 +62,7 @@ var recordsFranceHomme = {'record' : [
 {e : 'Poids', nom : 'NIARE Yves', perf :'20m72'},
 {e : 'Disque', nom : 'RETEL Jean-claude', perf :'68m90'},
 {e : 'Marteau', nom : 'DUPRAY Gilles', perf :'82m38'},
-{e : 'Javelot (800 g)', nom : 'LEFEVRE Pascal', perf :'82m56'},
+{e : 'Javelot', nom : 'LEFEVRE Pascal', perf :'82m56'},
 {e : 'Decathlon SH', nom : 'MAYER Kevin', perf :'8834 pts'}
 ]
 };
@@ -88,9 +88,9 @@ var recordsFranceHomme35 = {'record' : [
 {e : 'Longueur', nom : 'SDIRI Salim', perf :'8m35'},
 {e : 'Triple saut', nom : 'TAILLEPIERRE Karl', perf :'16m84'},
 {e : 'Poids', nom : 'BUCKI Gaetan', perf :'20m18'},
-{e : 'Disque (2.0 kg)', nom : 'RETEL Jean-claude', perf :'61m93'},
+{e : 'Disque', nom : 'RETEL Jean-claude', perf :'61m93'},
 {e : 'Marteau', nom : 'EPALLE Christophe', perf :'79m01'},
-{e : 'Javelot (800 g)', nom : 'BRISSEAULT David', perf :'82m20'},
+{e : 'Javelot', nom : 'BRISSEAULT David', perf :'82m20'},
 {e : 'Decathlon VH', nom : 'LAMBESE Bruno', perf :'8090 pts'},
 ] };
 
@@ -115,15 +115,15 @@ var recordsFranceHomme40 = {'record' : [
 {e : 'Longueur', nom : 'DAROUECHE Bakri', perf :'7m29'},
 {e : 'Triple saut', nom : 'MORMIN Maxime', perf :'15m14'},
 {e : 'Poids', nom : 'COLNARD Pierre', perf :'19m77'},
-{e : 'Disque (2.0 kg)', nom : 'RETEL Jean-claude', perf :'59m00'},
+{e : 'Disque', nom : 'RETEL Jean-claude', perf :'59m00'},
 {e : 'Marteau', nom : 'EPALLE Christophe', perf :'71m49'},
-{e : 'Javelot (800 g)', nom : 'LECURIEUX Philippe', perf :'71m00'},
+{e : 'Javelot', nom : 'LECURIEUX Philippe', perf :'71m00'},
 ] };
 
 var recordsFranceHomme45 = {'record' : [
-{e : 'Javelot (800 g)', nom : 'LECURIEUX Philippe', perf :'71m00'},
+{e : 'Javelot', nom : 'LECURIEUX Philippe', perf :'71m00'},
 {e : '100', nom : 'CLAUDEON Philippe', perf :'11.13'},
-{e : '200', nom : 'DUPUY Bruno', perf :'22.80 (+0.8)'},
+{e : '200', nom : 'DUPUY Bruno', perf :'22.80'},
 {e : '400', nom : 'HOMBEL Damien', perf :'51.1'},
 {e : '800', nom : 'RIOU Herve', perf :'1.58.06'},
 {e : '1000', nom : 'HAEMMERER Bruno', perf :'2.36.36'},
@@ -134,7 +134,7 @@ var recordsFranceHomme45 = {'record' : [
 {e : '5000', nom : 'RAULT Lucien', perf :'14.23.5'},
 {e : '10000', nom : 'MIMOUN Alain', perf :'30.16.8'},
 {e : 'Heure Piste', nom : 'MIMOUN Alain', perf :'18km862'},
-{e : '110m Haies', nom : 'GARRIGUES Marin', perf :'14.87 (+1.0)'},
+{e : '110m Haies', nom : 'GARRIGUES Marin', perf :'14.87'},
 {e : '400 Haies', nom : 'THOMAS Thierry', perf :'57.74'},
 {e : 'Steeple', nom : 'BALLOUARD Jean-paul', perf :'9.32.61'},
 {e : 'Hauteur', nom : 'ANDRE Patrick', perf :'1m98'},
@@ -142,13 +142,13 @@ var recordsFranceHomme45 = {'record' : [
 {e : 'Longueur', nom : 'LEJEUNE Bernard', perf :'6m64'},
 {e : 'Triple saut', nom : 'MORMIN Maxime', perf :'14m38'},
 {e : 'Poids', nom : 'COLNARD Pierre', perf :'17m71'},
-{e : 'Disque (2.0 kg)', nom : 'RETEL Jean-claude', perf :'56m87'},
+{e : 'Disque', nom : 'RETEL Jean-claude', perf :'56m87'},
 {e : 'Marteau', nom : 'SEDYKH Youri', perf :'67m74'},
-{e : 'Javelot (800 g)', nom : 'LECURIEUX Philippe', perf :'65m15'},
+{e : 'Javelot', nom : 'LECURIEUX Philippe', perf :'65m15'},
 ] };
 
 var recordsFranceHomme50 = {'record' : [
-{e : '100', nom : 'DUPUY Bruno', perf :'11.29 (+1,2)'},
+{e : '100', nom : 'DUPUY Bruno', perf :'11.29'},
 {e : '200', nom : 'DUPUY Bruno', perf :'23.08'},
 {e : '400', nom : 'ROGER Hugues', perf :'51.80'},
 {e : '800', nom : 'ZAVATTERO Benoit', perf :'2.02.85'},
@@ -166,8 +166,8 @@ var recordsFranceHomme50 = {'record' : [
 {e : 'Perche', nom : 'VIGNERON Thierry', perf :'4m40'},
 {e : 'Longueur', nom : 'BARBIER Patrick', perf :'6m41'},
 {e : 'Triple saut', nom : 'BRISCAN Andre', perf :'13m42'},
-{e : 'Poids (6 kg)', nom : 'CHALA Patrick', perf :'16m02'},
-{e : 'Disque (1.5 kg)', nom : 'KATONA Sandor', perf :'55m15'},
+{e : 'Poids', nom : 'CHALA Patrick', perf :'16m02'},
+{e : 'Disque', nom : 'KATONA Sandor', perf :'55m15'},
 ] };
 
 var recordsFranceHomme55 = {'record' : [
@@ -206,9 +206,6 @@ var recordsFranceHomme60 = {'record' : [
 	{e : '10000', nom : 'ROUSSEL Patrick', perf :'34.52.44'},
 	{e : '20000', nom : 'DUBOCS Pierre', perf :'1h19.25.'},
 	{e : 'Heure Piste', nom : 'GRADOS Andre', perf :'15 833 m'},
-	{e : '100 Haies (84)', nom : 'PEY Didier', perf :'16.32'},
-	{e : '300 Haies (76)', nom : 'PEY Didier', perf :'47.33'},
-	{e : '2000 Steeple (76)', nom : 'FAUCHEUR Pierre', perf :'7.24.06'},
 	{e : 'Hauteur', nom : 'ANDRE Patrick', perf :'1m70'},
 	{e : 'Hauteur', nom : 'ANDRE Patrick', perf :'1m65'},
 	{e : 'Hauteur', nom : 'FERNANDEZ Daniel', perf :'1m60'},
@@ -218,7 +215,7 @@ var recordsFranceHomme60 = {'record' : [
 
 var recordsFranceHomme65 = {'record' : [
 {e : '100', nom : 'SAMPERE Jo', perf :'13.16'},
-{e : '200', nom : 'CILLA Charles', perf :'26.86 (+1,0)'},
+{e : '200', nom : 'CILLA Charles', perf :'26.86'},
 {e : '400', nom : 'ALLENBACH Jean-martin', perf :'61.85'},
 {e : '800', nom : 'AGUERO Alain', perf :'2.24.09'},
 {e : '1000', nom : 'DEMARQUE Jean-claude', perf :'3.09.36'},
@@ -228,12 +225,6 @@ var recordsFranceHomme65 = {'record' : [
 {e : '10000', nom : 'ROUSSEL Patrick', perf :'36.02.29'},
 {e : '20000', nom : 'DUBOCS Pierre', perf :'1h26.36.'},
 {e : 'Heure Piste', nom : 'DEMICHELIS Alex', perf :'15 059 m'},
-{e : '100 Haies (84)', nom : 'PEY Didier', perf :'18.09'},
-{e : '100 Haies (84)', nom : 'DEREMY Jean-claude', perf :'19.61'},
-{e : '300 Haies (76)', nom : 'PEY Didier', perf :'51.71'},
-{e : '300 Haies (76)', nom : 'METZINGER Manuel', perf :'52.16'},
-{e : '300 Haies (76)', nom : 'FINDELLI André', perf :'52.1'},
-{e : '2000 Steeple (76)', nom : 'BLANCHOU Pierre', perf :'7.49.15'},
 {e : 'Hauteur', nom : 'FERNANDEZ Daniel', perf :'1m54'},
 {e : 'Perche', nom : 'GUIYESSE Jean-françois', perf :'3m20'},
 {e : 'Longueur', nom : 'LEJEUNE Bernard', perf :'4m95'},
@@ -254,9 +245,6 @@ var recordsFranceHomme70 = {'record' : [
 {e : '10000', nom : 'DEMARQUE Jean-claude', perf :'41.26.68'},
 {e : '20000', nom : 'BERGE Robert', perf :'1h34.04.'},
 {e : 'Heure Piste', nom : 'ROBIC Claude', perf :'13km710'},
-{e : '80m Haies (76)', nom : 'CHEVRIER Jean', perf :'15.5'},
-{e : '300 Haies (69)', nom : 'MAYNARD Henri', perf :'58.0'},
-{e : '2000 Steeple (76)', nom : 'ESNAULT Jean-louis', perf :'8.25.47'},
 {e : 'Hauteur', nom : 'FERNANDEZ Daniel', perf :'1m43'},
 {e : 'Perche', nom : 'GUIEYSSE Jean-francois', perf :'3m00'},
 {e : 'Longueur', nom : 'CHAUMONT Jean-claude', perf :'4m61'},
@@ -311,10 +299,10 @@ var recordsFranceFemmeCadet =
 {e : 'Perche', nom : 'DEHAYNAIN Alix', perf :'4m13'},
 {e : 'Longueur', nom : 'ARNETON Heather', perf :'6m57'},
 {e : 'Triple saut', nom : 'GALLE Sokhna', perf :'13m42'},
-{e : 'Poids (3 kg)', nom : 'VILLENEUVE Claudia', perf :'17m84'},
+{e : 'Poids', nom : 'VILLENEUVE Claudia', perf :'17m84'},
 {e : 'Disque', nom : 'BEAUVAIS Catherine', perf :'53m74'},
-{e : 'Marteau (3 kg)', nom : 'CIOFANI Audrey', perf :'68m22'},
-{e : 'Javelot (500 g)', nom : 'NICOLLIN Margaux', perf :'59m07'},
+{e : 'Marteau', nom : 'CIOFANI Audrey', perf :'68m22'},
+{e : 'Javelot', nom : 'NICOLLIN Margaux', perf :'59m07'},
 ]};
 
 var recordsFranceFemmeJunior = {'record' : [
