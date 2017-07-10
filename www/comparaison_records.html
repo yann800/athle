@@ -60,12 +60,15 @@
 	<div id="divClub1" style="display:none">
 		<label for="club1" class="col-sm-3 control-label">Club</label>
 		<div class="col-sm-3">
-		 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom" list="listeClub1"
+		 	<input type="text" name="searchClub1" id="searchClub1" placeholder="saisissez le début du nom ou sélectionnez" list="listeClub1"
 		 	 autocomplete="off" style="width: 250px;"/>
-			<datalist id="listeClub1"></datalist>
+			<datalist id="listeClub1">
+			<option value="Ac Paris-joinville" selected="selected" />
+			<option value="Us Creteil"/>
+			</datalist>
 			<button class="btn btn-primary btn-sm" onclick="chargeClub1();">OK</button>
 		</div>
-
+		<div class="clearfix"></div>
 		<div class="alert alert-info" role="alert">
 		Les records des clubs ne sont proposés que pour 400, 800 et 3000 d'après la base athle.fr.
 		Pour les clubs <b>Ac Paris-joinville</b> et <b>Us Creteil</b> les records sont extraits des sites de ces derniers.  
@@ -126,15 +129,23 @@
 
 	<div id="divClub2" style="display:none">
 		<label for="club2" class="col-sm-3 control-label">Club</label>
-		<div class="col-sm-5">
-		 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom" list="listeClub2"
+		<div class="col-sm-3">
+		 	<input type="text" name="searchClub2" id="searchClub2" placeholder="saisissez le début du nom ou sélectionnez" list="listeClub2"
 		 	 autocomplete="off" style="width: 250px;"/>
-			<datalist id="listeClub2"></datalist>	
+			<datalist id="listeClub2">
+			<option value="Ac Paris-joinville"  />
+			<option value="Us Creteil" selected="selected"/>
+			</datalist>
+			<button class="btn btn-primary btn-sm" onclick="chargeClub2();">OK</button>
 		</div>
-		<div class="col-sm-1"><button class="btn btn-primary btn-sm" onclick="chargeClub2();">OK</button></div>
+		<div class="clearfix"></div>
+		<div class="alert alert-info" role="alert">
+		Les records des clubs ne sont proposés que pour 400, 800 et 3000 d'après la base athle.fr.
+		Pour les clubs <b>Ac Paris-joinville</b> et <b>Us Creteil</b> les records sont extraits des sites de ces derniers.  
+		</div>		
 	</div>
 			 
-			 <br/><br/>
+	<br/><br/>
 
 	<div id="divAthlete2"> <!--  style="display:none"> -->
 		 	 		
@@ -476,6 +487,9 @@ function getLibelle(zone, sexe, categorie, nom){
 	else if (zone === 1){
 		str = 'Records france';
 	}
+	else if (zone === 2){
+		str = 'club ';		
+	}
 	else {
 		return 'Records ' + nom;
 	}
@@ -717,10 +731,10 @@ $("#searchClub2").on("input", function(e) {
 });
 
 function chargeClub1(){
-	chargeJsonClub($("#textNom1")[0].value, 1);
+	chargeJsonClub($("#searchClub1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
 }
 function chargeClub2(){
-	chargeJsonClub($("#textNom2")[0].value, 2);
+	chargeJsonClub($("#searchClub2")[0].value, 2, document.getElementById("selectSexe2").selectedIndex);
 }
 
 function chargeAthlete1(){
@@ -731,7 +745,7 @@ function chargeAthlete2(){
 }
 
 
-function chargeJsonClub(p_nom, numClub){
+function chargeJsonClub(p_nom, numSelectionClub, p_sexe){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		 if (this.readyState == 4 && this.status == 200) {
@@ -739,7 +753,7 @@ function chargeJsonClub(p_nom, numClub){
 			 
 			 var jsonData = JSON.parse(reponseGetRecords);
 
-			 if (numAthlete == 1){
+			 if (numSelectionClub == 1){
 				recordsSel1 = jsonData;
 			} else {
 				recordsSel2 = jsonData;
@@ -774,7 +788,9 @@ function chargeJsonClub(p_nom, numClub){
 			drawChart();
 		}
 	};
-	xmlhttp.open("GET", "getRecordsClub.php?q=" + p_nom, true);
+	if (p_sexe == 0){p_sexe = 1;}
+	if (p_sexe == 1){p_sexe = 0;}
+	xmlhttp.open("GET", "getRecordsClub.php?nom_club=" + p_nom + "&sexe=" + p_sexe, true);
 	xmlhttp.send();
 }
 
