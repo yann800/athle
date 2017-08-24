@@ -157,7 +157,7 @@ while($row = mysql_fetch_assoc($req)){
 		
         echo "['" . $row["annee"]. "'," . $current400 . "," . $current800 . "," . $current1500 . "," .  $current3000 . "],";
 
-		// if ($row["e_3000"] > 0 and $row["annee"] == 2016){
+		// if ($row["e_3000"] > 0 and $row["annee"] == 2017){
 			// derniere ligne donc rien
 		// }
 		// else {
@@ -183,7 +183,7 @@ if ($atLeastOne1500){
 else if ($atLeastOne3000){
 	$val3000 = null;
 }
-echo "['2017',$val400,$val800,$val1500,$val3000]";
+echo "['2018',$val400,$val800,$val1500,$val3000]";
 
 }
 
