@@ -119,7 +119,7 @@
     myDiagram.linkTemplate =
       $(go.Link,  // the whole link panel
         {
-          curve: go.Link.Bezier, adjusting: go.Link.Stretch,
+          curve: go.Link.None, adjusting: go.Link.Stretch,
           reshapable: true, relinkableFrom: true, relinkableTo: true,
           toShortLength: 3
         },
@@ -161,31 +161,17 @@
   }
 </script>
 </head>
-<body onload="init()">
-<div id="sample">
-  <div id="myDiagramDiv" style="border: solid 1px black; width: 60%; height: 400px"></div>
-  <p>
-Exercice : écrire la requête SQL qui sort la liste des couples (athlète, course) tels que l’athlète participe à une course que son club ne rembourse pas.
-
-Ex :
-<ul><li>[Juliette, 5 km Médard] doit sortir car US Créteil ne rembourse pas Médar.</li>
-<li>En revanche (Yann, 10 km joinville] ne doit pas sortir, car ACPJ rembourse cette course</li>
-</ul>
-
-  </p>
-  <div>
-     <!--<div>
-      <button id="SaveButton" onclick="save()">Enregistrer</button>
-      <button onclick="load()">Recharger</button>
-    </div>-->
-
-    <textarea id="mySavedModel" style="width:380px;height:200px; display:none">
+<body onload="init()"; style="font-family: Verdana; font-size: 12px">
+	<div id="schema" style="float: left;width: 500px; margin-right: 50px;padding-left: 10px">
+		<h2>Schéma</h2>
+		<div id="myDiagramDiv" style="border: solid 1px black; height: 400px"></div>
+<textarea id="mySavedModel" style="width: 380px; height: 200px; display: none">
 { "nodeKeyProperty": "id",
   "nodeDataArray": [
     { "id": 0, "loc": "175 0", "text": "athlete" },
     { "id": 1, "loc": "350 300", "text": "course" },
     { "id": 2, "loc": "0 300", "text": "club" },
-    { "id": 3, "loc": "200 150", "text": "participe" },
+    { "id": 3, "loc": "250 150", "text": "participe" },
     { "id": 4, "loc": "75 150", "text": "appartient" },	
     { "id": 5, "loc": "150 300", "text": "rembourse" }
   ],
@@ -198,8 +184,58 @@ Ex :
     { "from": 5, "to": 2, "text": "idClub" }
   ]
 }
-    </textarea>
-  </div>
-</div>
+</textarea>
+	</div><!-- end div schema -->
+	
+	<div id="valeurs" style="float: left;">
+	<h2>Valeurs</h2>
+	<pre style="background-color: #EEEEEE;padding: 10px">INSERT INTO athlete (id,nom) VALUES (1,'Juliette');
+INSERT INTO athlete (id,nom) VALUES (2,'Yann');
+INSERT INTO athlete (id,nom) VALUES (3,'Olivier');
+INSERT INTO athlete (id,nom) VALUES (4,'Mehdi');
+
+INSERT INTO club (id,nom) VALUES (91,'Ac paris-joinville');
+INSERT INTO club (id,nom) VALUES (1583,'Us creteil');
+
+INSERT INTO appartient (idAthlete,idClub) VALUES (1,1583);
+INSERT INTO appartient (idAthlete,idClub) VALUES (2,91);
+INSERT INTO appartient (idAthlete,idClub) VALUES (3,91);
+INSERT INTO appartient (idAthlete,idClub) VALUES (4,1583);
+
+INSERT INTO course (id,nom) VALUES (1,'10 km Joinville');
+INSERT INTO course (id,nom) VALUES (2,'ch. masters Aarhus');
+INSERT INTO course (id,nom) VALUES (3,'5 km Médard');
+INSERT INTO course (id,nom) VALUES (4,'dép. cross');
+
+INSERT INTO participe (idAthlete,idCourse) VALUES (1,3);
+INSERT INTO participe (idAthlete,idCourse) VALUES (2,1), (2,2),(2,3), (2,4);
+INSERT INTO participe (idAthlete,idCourse) VALUES (3,4);
+INSERT INTO participe (idAthlete,idCourse) VALUES (4,3);
+
+INSERT INTO rembourse (idClub,idCourse) VALUES (91,1);
+INSERT INTO rembourse (idClub,idCourse) VALUES (91,4);</pre>
+	
+	</div>
+	
+	<div style="clear: both;"></div>
+	
+	
+	<div style="margin-right: 50px;padding-left: 10px">
+		<h2>Exercice</h2>
+
+		Écrire la requête SQL qui sort la liste des couples (athlète, course) tels que l’athlète participe à une course que son club ne rembourse pas.
+		<br/>Exemple :
+		<ul>
+			<li>[Juliette, 5 km Médard] doit sortir car US Créteil ne rembourse pas Médar.</li>
+			<li>En revanche (Yann, 10 km joinville] ne doit pas sortir, car ACPJ rembourse cette course</li>
+		</ul>
+	</div>
+	
+	<div style="margin-right: 50px;padding-left: 10px">
+		<h2>Réponse</h2>
+		<pre style="background-color: #EEEEEE;padding: 10px;width: 600px">SELECT ...</pre>
+	</div>
+
+	
 </body>
 </html>
