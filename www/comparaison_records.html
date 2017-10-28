@@ -12,6 +12,7 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
 <script src="js/recordsMonde.js" type="text/javascript"></script>
+<script src="js/recordsCuba.js" type="text/javascript"></script>
 <script src="js/recordsFrance.js" type="text/javascript"></script>
 </head>
 
@@ -32,22 +33,27 @@
 	<label>Records de la 1ère sélection</label>
 	<select id="selectZone1" class="form-control">
 		<option value="1" >Monde</option>
-		<option value="2" selected="selected">France</option>
+		<option value="2" selected="selected">Pays</option>
 		<option value="3">Club</option>
 		<option value="4">Athlète</option>
 
 	</select>
+	<select id="selectPays1" class="form-control">
+		<option disabled="disabled">Catalogne (soon)</option>
+		<option selected="selected">Cuba</option>
+		<option>France</option>
+	</select>	
 	<select id="selectSexe1" class="form-control">
 		<option>Femme</option>
 		<option selected="selected">Homme</option>
 	</select>	
 	<select id="selectCategorie1" class="form-control">
-		<option>Toutes catégories</option>
+		<option selected="selected">Toutes catégories</option>
 		<option>Cadet</option>
 		<option>Junior</option>
 		<option >35</option>
 		<option>40</option>
-		<option selected="selected">45</option>
+		<option>45</option>
 		<option>50</option>
 		<option>55</option>
 		<option>60</option>
@@ -56,6 +62,8 @@
 		<option>75</option>
 		<option>80</option>
 	</select>
+			 
+	<br/><br/>
 
 	<div id="divClub1" style="display:none">
 		<label for="club1" class="col-sm-3 control-label">Club</label>
@@ -101,14 +109,19 @@
 	<div class="form-group col-sm-5">
 	<label>Records de la 2nde sélection</label>
 	<select id="selectZone2" class="form-control">
-		<option selected="selected" value="1">Monde</option>
-		<option value="2">France</option>
+		<option value="1">Monde</option>
+		<option selected="selected"  value="2">Pays</option>
 		<option value="3">Club</option>
 		<option value="4">Athlète</option>
 	</select>
+	<select id="selectPays2" class="form-control">
+		<option disabled="disabled">Catalogne (soon)</option>
+		<option>Cuba</option>
+		<option selected="selected">France</option>
+	</select>	
 	<select id="selectSexe2" class="form-control">
-		<option selected="selected">Femme</option>
-		<option>Homme</option>
+		<option >Femme</option>
+		<option selected="selected">Homme</option>
 	</select>	
 	<select id="selectCategorie2" class="form-control">
 		<option selected="selected">Toutes catégories</option>
@@ -124,9 +137,10 @@
 		<option>70</option>
 		<option>75</option>
 		<option>80</option>
-
 	</select>
 
+			 
+	<br/><br/>
 	<div id="divClub2" style="display:none">
 		<label for="club2" class="col-sm-3 control-label">Club</label>
 		<div class="col-sm-3">
@@ -243,24 +257,33 @@ function selection(){
 	var categorie2 = document.getElementById("selectCategorie2").selectedIndex;
 	var sexe1 = document.getElementById("selectSexe1").selectedIndex;
 	var sexe2 = document.getElementById("selectSexe2").selectedIndex;
-	
-	console.log(zone1 + ' ' + categorie1 + ' ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
+	var pays1 = document.getElementById("selectPays1").selectedIndex;
+	var pays2 = document.getElementById("selectPays2").selectedIndex;
 
-	// Par défaut on masque les div "Club" et "Athlete"
+	console.log('zone1 ' + zone1 + ' ' + 'pays : ' +  pays1 + categorie1 + ' ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
+
+	// Par défaut on masque les select pays et div "Club" et "Athlete" 
+	$("#selectPays1").css({'display' : 'none'});
 	$("#divClub1").css({'display' : 'none'});	
 	$("#divAthlete1").css({'display' : 'none'});
 	$("#selectCategorie1").css({'display' : ''});
 	$("#selectSexe1").css({'display' : ''});
 
+	$("#selectPays2").css({'display' : 'none'});
 	$("#divClub2").css({'display' : 'none'});	
 	$("#divAthlete2").css({'display' : 'none'});
 	$("#selectCategorie2").css({'display' : ''});
 	$("#selectSexe2").css({'display' : ''});
 
 	// ======= ZONE 1 =======
+	// Si selection "Pays" alors on montre input pays et on laisse sexe et catégorie
+	if(zone1 == 1){
+		$("#selectPays1").css({'display' : ''});	
+	}
 	// Si selection "Club" alors on montre input club et on laisse sexe - catégorie
 	if(zone1 == 2){
 		$("#divClub1").css({'display' : ''});	
+		$("#selectPays1").css({'display' : 'block'});	
 	}
 	// Si selection "Athlete" alors on montre inuput athle et on masque sexe - categorie
 	else if(zone1 == 3){
@@ -270,6 +293,10 @@ function selection(){
 	}
 	// ======= ZONE 2 =======
 	// Si selection "Club" alors on montre input club et on laisse sexe - catégorie
+	if (zone2 == 1){
+		$("#selectPays2").css({'display' : ''});
+	}
+	
 	if(zone2 == 2){
 		$("#divClub2").css({'display' : ''});	
 	}
@@ -320,40 +347,55 @@ function selection(){
 		}
 	} // end monde
 	// ===============================
-	// zone france 1
+	// zone pays 1
 	else if (zone1 == 1){
-	// ---- sexe femme  
-		if (sexe1 == 0){
-			if (categorie1 == 0){recordsSel1 = recordsFranceFemme;}
-			else if (categorie1 == 1){	recordsSel1 = recordsFranceFemmeCadet;}
-			else if (categorie1 == 2){	recordsSel1 = recordsFranceFemmeJunior;}
-			else if (categorie1 == 3){	recordsSel1 = recordsFranceFemme35;}
-			else if (categorie1 == 4){	recordsSel1 = recordsFranceFemme40;}
-			else if (categorie1 == 5){	recordsSel1 = recordsFranceFemme45;}
-			else if (categorie1 == 6){	recordsSel1 = recordsFranceFemme50;}
-			else if (categorie1 == 7){	recordsSel1 = recordsFranceFemme55;}
-			else if (categorie1 == 8){	recordsSel1 = recordsFranceFemme60;}
-			else if (categorie1 == 9){	recordsSel1 = recordsFranceFemme65;}
-			else if (categorie1 == 10){	recordsSel1 = recordsFranceFemme70;}
-			else if (categorie1 == 11){	recordsSel1 = recordsFranceFemme75;}
-			else if (categorie1 == 12){	recordsSel1 = recordsFranceFemme80;}
+		// Cuba 
+		if (pays1 == 1){
+			$("#selectCategorie1").css({'display' : 'none'});
+			if (sexe1 == 0){
+				recordsSel1 = recordsCubaFemme;
+			}
+			else {
+				recordsSel1 = recordsCubaHomme;
+			}
 		}
-		// ---- sexe homme 
+		// France
 		else {
-			if (categorie1 == 0){	recordsSel1 = recordsFranceHomme;}
-			else if (categorie1 == 1){	recordsSel1 = recordsFranceHommeCadet;}
-			else if (categorie1 == 2){	recordsSel1 = recordsFranceHommeJunior;}
-			else if (categorie1 == 3){	recordsSel1 = recordsFranceHomme35;}
-			else if (categorie1 == 4){	recordsSel1 = recordsFranceHomme40;}
-			else if (categorie1 == 5){	recordsSel1 = recordsFranceHomme45;}
-			else if (categorie1 == 6){	recordsSel1 = recordsFranceHomme50;}
-			else if (categorie1 == 7){	recordsSel1 = recordsFranceHomme55;}
-			else if (categorie1 == 8){	recordsSel1 = recordsFranceHomme60;}
-			else if (categorie1 == 9){	recordsSel1 = recordsFranceHomme65;}
-			else if (categorie1 == 10){	recordsSel1 = recordsFranceHomme70;}
-			else if (categorie1 == 11){	recordsSel1 = recordsFranceHomme75;}
-			else if (categorie1 == 12){	recordsSel1 = recordsFranceHomme80;}
-		}		
+		
+		
+			// ---- sexe femme  
+			if (sexe1 == 0){
+				if (categorie1 == 0){recordsSel1 = recordsFranceFemme;}
+				else if (categorie1 == 1){	recordsSel1 = recordsFranceFemmeCadet;}
+				else if (categorie1 == 2){	recordsSel1 = recordsFranceFemmeJunior;}
+				else if (categorie1 == 3){	recordsSel1 = recordsFranceFemme35;}
+				else if (categorie1 == 4){	recordsSel1 = recordsFranceFemme40;}
+				else if (categorie1 == 5){	recordsSel1 = recordsFranceFemme45;}
+				else if (categorie1 == 6){	recordsSel1 = recordsFranceFemme50;}
+				else if (categorie1 == 7){	recordsSel1 = recordsFranceFemme55;}
+				else if (categorie1 == 8){	recordsSel1 = recordsFranceFemme60;}
+				else if (categorie1 == 9){	recordsSel1 = recordsFranceFemme65;}
+				else if (categorie1 == 10){	recordsSel1 = recordsFranceFemme70;}
+				else if (categorie1 == 11){	recordsSel1 = recordsFranceFemme75;}
+				else if (categorie1 == 12){	recordsSel1 = recordsFranceFemme80;}
+			}
+			// ---- sexe homme 
+			else {
+				if (categorie1 == 0){	recordsSel1 = recordsFranceHomme;}
+				else if (categorie1 == 1){	recordsSel1 = recordsFranceHommeCadet;}
+				else if (categorie1 == 2){	recordsSel1 = recordsFranceHommeJunior;}
+				else if (categorie1 == 3){	recordsSel1 = recordsFranceHomme35;}
+				else if (categorie1 == 4){	recordsSel1 = recordsFranceHomme40;}
+				else if (categorie1 == 5){	recordsSel1 = recordsFranceHomme45;}
+				else if (categorie1 == 6){	recordsSel1 = recordsFranceHomme50;}
+				else if (categorie1 == 7){	recordsSel1 = recordsFranceHomme55;}
+				else if (categorie1 == 8){	recordsSel1 = recordsFranceHomme60;}
+				else if (categorie1 == 9){	recordsSel1 = recordsFranceHomme65;}
+				else if (categorie1 == 10){	recordsSel1 = recordsFranceHomme70;}
+				else if (categorie1 == 11){	recordsSel1 = recordsFranceHomme75;}
+				else if (categorie1 == 12){	recordsSel1 = recordsFranceHomme80;}
+			}
+		}
 	}
 	// zone 2 ou 3 : athlte ou club
 	else {
@@ -402,40 +444,54 @@ function selection(){
 		}
 	} // end monde
 	// ===============================
-	// zone france 1
+	// zone pays 1
 	else if (zone2 == 1){
-	// ---- sexe femme  
-		if (sexe2 == 0){
-			if (categorie2 == 0){recordsSel2 = recordsFranceFemme;}
-			else if (categorie2 == 1){	recordsSel2 = recordsFranceFemmeCadet;}
-			else if (categorie2 == 2){	recordsSel2 = recordsFranceFemmeJunior;}
-			else if (categorie2 == 3){	recordsSel2 = recordsFranceFemme35;}
-			else if (categorie2 == 4){	recordsSel2 = recordsFranceFemme40;}
-			else if (categorie2 == 5){	recordsSel2 = recordsFranceFemme45;}
-			else if (categorie2 == 6){	recordsSel2 = recordsFranceFemme50;}
-			else if (categorie2 == 7){	recordsSel2 = recordsFranceFemme55;}
-			else if (categorie2 == 8){	recordsSel2 = recordsFranceFemme60;}
-			else if (categorie2 == 9){	recordsSel2 = recordsFranceFemme65;}
-			else if (categorie2 == 10){	recordsSel2 = recordsFranceFemme70;}
-			else if (categorie2 == 11){	recordsSel2 = recordsFranceFemme75;}
-			else if (categorie2 == 12){	recordsSel2 = recordsFranceFemme80;}
+		// Cuba 
+		if (pays2 == 1){
+			$("#selectCategorie2").css({'display' : 'none'});
+			if (sexe2 == 0){
+				recordsSel2 = recordsCubaFemme;
+			}
+			else {
+				recordsSel2 = recordsCubaHomme;
+			}
 		}
-		// ---- sexe homme 
+		// France
 		else {
-			if (categorie2 == 0){	recordsSel2 = recordsFranceHomme;}
-			else if (categorie2 == 1){	recordsSel2 = recordsFranceHommeCadet;}
-			else if (categorie2 == 2){	recordsSel2 = recordsFranceHommeJunior;}
-			else if (categorie2 == 3){	recordsSel2 = recordsFranceHomme35;}
-			else if (categorie2 == 4){	recordsSel2 = recordsFranceHomme40;}
-			else if (categorie2 == 5){	recordsSel2 = recordsFranceHomme45;}
-			else if (categorie2 == 6){	recordsSel2 = recordsFranceHomme50;}
-			else if (categorie2 == 7){	recordsSel2 = recordsFranceHomme55;}
-			else if (categorie2 == 8){	recordsSel2 = recordsFranceHomme60;}
-			else if (categorie2 == 9){	recordsSel2 = recordsFranceHomme65;}
-			else if (categorie2 == 10){	recordsSel2 = recordsFranceHomme70;}
-			else if (categorie2 == 11){	recordsSel2 = recordsFranceHomme75;}
-			else if (categorie2 == 12){	recordsSel2 = recordsFranceHomme80;}
-		}		
+	
+		// ---- sexe femme  
+			if (sexe2 == 0){
+				if (categorie2 == 0){recordsSel2 = recordsFranceFemme;}
+				else if (categorie2 == 1){	recordsSel2 = recordsFranceFemmeCadet;}
+				else if (categorie2 == 2){	recordsSel2 = recordsFranceFemmeJunior;}
+				else if (categorie2 == 3){	recordsSel2 = recordsFranceFemme35;}
+				else if (categorie2 == 4){	recordsSel2 = recordsFranceFemme40;}
+				else if (categorie2 == 5){	recordsSel2 = recordsFranceFemme45;}
+				else if (categorie2 == 6){	recordsSel2 = recordsFranceFemme50;}
+				else if (categorie2 == 7){	recordsSel2 = recordsFranceFemme55;}
+				else if (categorie2 == 8){	recordsSel2 = recordsFranceFemme60;}
+				else if (categorie2 == 9){	recordsSel2 = recordsFranceFemme65;}
+				else if (categorie2 == 10){	recordsSel2 = recordsFranceFemme70;}
+				else if (categorie2 == 11){	recordsSel2 = recordsFranceFemme75;}
+				else if (categorie2 == 12){	recordsSel2 = recordsFranceFemme80;}
+			}
+			// ---- sexe homme 
+			else {
+				if (categorie2 == 0){	recordsSel2 = recordsFranceHomme;}
+				else if (categorie2 == 1){	recordsSel2 = recordsFranceHommeCadet;}
+				else if (categorie2 == 2){	recordsSel2 = recordsFranceHommeJunior;}
+				else if (categorie2 == 3){	recordsSel2 = recordsFranceHomme35;}
+				else if (categorie2 == 4){	recordsSel2 = recordsFranceHomme40;}
+				else if (categorie2 == 5){	recordsSel2 = recordsFranceHomme45;}
+				else if (categorie2 == 6){	recordsSel2 = recordsFranceHomme50;}
+				else if (categorie2 == 7){	recordsSel2 = recordsFranceHomme55;}
+				else if (categorie2 == 8){	recordsSel2 = recordsFranceHomme60;}
+				else if (categorie2 == 9){	recordsSel2 = recordsFranceHomme65;}
+				else if (categorie2 == 10){	recordsSel2 = recordsFranceHomme70;}
+				else if (categorie2 == 11){	recordsSel2 = recordsFranceHomme75;}
+				else if (categorie2 == 12){	recordsSel2 = recordsFranceHomme80;}
+			}
+		}
 	}
 
 	// zone 2 ou 3 : athlete ou club
@@ -729,6 +785,14 @@ $("#searchClub2").on("input", function(e) {
 		}
 	},"json");
 });
+
+function chargePays1(){
+	chargeJsonPays($("#searchPays1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
+}
+function chargePays2(){
+	chargeJsonPays($("#searchPays2")[0].value, 2, document.getElementById("selectSexe2").selectedIndex);
+}
+
 
 function chargeClub1(){
 	chargeJsonClub($("#searchClub1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
