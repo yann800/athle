@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="mermaid.css">
+</head>
+<body>
+  <div class="mermaid">
+
+graph TD;
+    athlete --> course
+    course-->participe;
+    participe-->appartient;
+    appartient-->course;
+    C-->D;
+
+  </div>
+  <script src="mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+</html>

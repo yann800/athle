@@ -14,12 +14,14 @@ public class E1_SavePage {
 	private static final String	PARAM_DEFAULT				= "?frmpostback=true&frmbase=bilans&frmmode=1&frmespace=0";
 	private static final String	PARAM_DEFAULT_AVANT_2004		= "?frmpostback=true&frmbase=bilansa&frmmode=1&frmespace=0";
 
-	private static final String	ID_FRM_EPREUVE_400_AVANT_2004	= "140400m";
+	// private static final String	ID_FRM_EPREUVE_400_AVANT_2004	= "140400m";
 
 	// private static final int	ID_FRM_EPREUVE_400			= 140;
+	private static final int	ID_FRM_EPREUVE_800			= 208;
 	private static final int	ID_FRM_EPREUVE_800_INDOOR	= 209;
 	private static final int	ID_FRM_EPREUVE_1000			= 210;
 	private static final int	ID_FRM_EPREUVE_1500			= 215;
+	private static final int	ID_FRM_EPREUVE_3000			= 230;
 
 	// ======= AVANT 2004 =======			
 	// frmsaison indique l'annee. 5 : 2002, 8 : 2003. Attention cela remplace frmannee
@@ -69,22 +71,48 @@ public class E1_SavePage {
 		// sexe annee epreuve page
 		// M_2006_800_1.html
 		
-		SexeEnum sexeEnum = SexeEnum.MASCULIN;
+		// #####################################
 
-		for (int annee = 2002; annee < 2004; annee++) {
+		SexeEnum sexeEnum = SexeEnum.FEMININ;
+		EpreuveEnum epreuveCourante = EpreuveEnum.COURSE_1500;
+		int ID_FRM_EPREUVE_CURRENT = ID_FRM_EPREUVE_1500;
+
+		// #####################################
+
+		for (int annee = 2017; annee < 2018; annee++) {
 
 			for (int numPage = 0; numPage < 6; numPage++) {
 				Bilan b = new Bilan();
-				b.epreuve = EpreuveEnum.COURSE_400;
+				b.epreuve = epreuveCourante;
 				b.sexe = sexeEnum;
 				b.annee = annee;
 				b.frmPosition = numPage;
 
-				b.url = getUrlBilanAvant2004(ID_FRM_EPREUVE_400_AVANT_2004, annee, sexeEnum.getCodeStr(), numPage);
+				// b.url = getUrlBilanAvant2004(ID_FRM_EPREUVE_400_AVANT_2004, annee, sexeEnum.getCodeStr(), numPage);
+				b.url = getUrlBilan(ID_FRM_EPREUVE_CURRENT, annee, sexeEnum.getCodeStr(), numPage);
 				bilans.add(b);
 
 			}
 		}
+
+		sexeEnum = SexeEnum.MASCULIN;
+
+		for (int annee = 2017; annee < 2018; annee++) {
+
+			for (int numPage = 0; numPage < 6; numPage++) {
+				Bilan b = new Bilan();
+				b.epreuve = epreuveCourante;
+				b.sexe = sexeEnum;
+				b.annee = annee;
+				b.frmPosition = numPage;
+
+				// b.url = getUrlBilanAvant2004(ID_FRM_EPREUVE_400_AVANT_2004, annee, sexeEnum.getCodeStr(), numPage);
+				b.url = getUrlBilan(ID_FRM_EPREUVE_CURRENT, annee, sexeEnum.getCodeStr(), numPage);
+				bilans.add(b);
+
+			}
+		}
+
 
 		for (Bilan b : bilans) {
 			save(b.url, getFileName(b));
