@@ -114,14 +114,14 @@ include 'constantes.php';
 // --------------
 // OLD PHP FOR FREE
 // Create connection http://php.net/manual/fr/function.mysql-connect.php
-// $link  =  mysql_connect($servername, $username, $password) or die( "Impossible de se connecter : "  .  mysql_error ());
-// mysql_select_db($dbname);
+$link  =  mysql_connect($servername, $username, $password) or die( "Impossible de se connecter : "  .  mysql_error ());
+mysql_select_db($dbname);
 
 // NEW PHP
-$conn = new mysqli($servername, $username, $password, $dbname);
+// $conn = new mysqli($servername, $username, $password, $dbname);
 
 
-if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
+// if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
 
 
 
