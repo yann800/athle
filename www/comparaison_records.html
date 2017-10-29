@@ -260,7 +260,7 @@ function selection(){
 	var pays1 = document.getElementById("selectPays1").selectedIndex;
 	var pays2 = document.getElementById("selectPays2").selectedIndex;
 
-	console.log('zone1 ' + zone1 + ' ' + 'pays : ' +  pays1 + categorie1 + ' ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
+	console.log('zone1 ' + zone1 + ' ' + ', pays1 ' +  pays1 + ', categorie1 ' + categorie1 + ', sexe1 ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
 
 	// Par défaut on masque les select pays et div "Club" et "Athlete" 
 	$("#selectPays1").css({'display' : 'none'});
@@ -500,8 +500,8 @@ function selection(){
 		recordsSel2 = {'record' : []};
 	}
     
-    libelleSel1 = getLibelle(zone1, sexe1, categorie1);
-    libelleSel2 = getLibelle(zone2, sexe2, categorie2);
+    libelleSel1 = getLibelle(zone1, pays1, sexe1, categorie1);
+    libelleSel2 = getLibelle(zone2, pays2, sexe2, categorie2);
     
 	var laTable = $("#table_ecarts").DataTable();
 
@@ -533,7 +533,7 @@ function selection(){
 	drawChart();
 }
 
-function getLibelle(zone, sexe, categorie, nom){
+function getLibelle(zone, pays, sexe, categorie, nom){
 	
 	var str = "";
 	
@@ -541,7 +541,12 @@ function getLibelle(zone, sexe, categorie, nom){
 		str = 'Records monde';
 	}
 	else if (zone === 1){
-		str = 'Records france';
+		if (pays === 1){
+			str = 'Records Cuba';
+		}
+		else {
+			str = 'Records France';
+		}
 	}
 	else if (zone === 2){
 		str = 'club ';		
@@ -558,9 +563,13 @@ function getLibelle(zone, sexe, categorie, nom){
 	}
 
 	if (categorie === 0){
-		// str = str + " ";
+		return str;
 	}
-	else if (categorie === 1){ 	str = str + " cadets"; 	}
+	if (pays === 1){ // cuba n'a que la categorie senior
+		return str;
+	}
+
+	if (categorie === 1){ 	str = str + " cadets"; 	}
 	else if (categorie === 2){ 	str = str + " junior"; 	}
 	else if (categorie === 3){ 	str = str + " master 35"; 	}
 	else if (categorie === 4){ 	str = str + " master 40"; 	}
