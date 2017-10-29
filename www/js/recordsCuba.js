@@ -21,6 +21,12 @@ var recordsCubaFemme =
 {e : '100', nom : 'Liliana Alle', perf :'9.98'},
 {e : '200', nom : 'Roxana Díaz', perf :'22.68'},
 {e : '400', nom : 'Ana Fidelia Quirot', perf :'49.61'},
-{e : '800', nom : 'Ana Fidelia Quirot', perf :'1.54.44'}
+{e : '800', nom : 'Ana Fidelia Quirot', perf :'1.54.44'},
+{e : '1500', nom : 'Adriana Muñoz', perf : '4.09.57'},
+{e : '3000', nom : 'Yudelkis Martínez', perf : '9.17.7'},
+{e : '5000', nom : 'Yudelkis Martínez', perf : '16.01.71'},
+{e : '10000', nom : 'Mariela González', perf : '33.48.33'},
+{e : 'Longueur', nom : 'Lissete Cuza', perf :'6m99'},
+{e : 'Triple saut', nom : 'Yargelis Savigne', perf :'15m28'}
 ]
 };
