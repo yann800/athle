@@ -1,7 +1,14 @@
+/*
+@font-face {
+    font-family: Raleway;
+    src: url(Raleway-Medium.ttf);
+}*/
+
 body {
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-top: 20px;
+	/* font-family: Raleway; */
 	font-family: Arial;
 	font-size: small;
 }
@@ -10,6 +17,7 @@ nav {
 	text-align: center;
 	border-top: 1px solid #DDD;
 	border-bottom: 1px solid #DDD;
+	margin-top: 20px;
 	padding-top: 30px;
 	padding-bottom: 30px;
 	font-size: medium;
@@ -29,11 +37,28 @@ nav a.last {
 }
 
 a {
+	color:black;
 	text-decoration: none;
 }
 
+a:hover {
+	background-color: #CCC;
+	border-radius: 4px;
+}
+
+nav a:hover {
+	background-color: #CCC;
+	border-radius: 4px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+section a:hover {
+	padding: 5px;
+}
+
 #presentation {
-	padding: 50px;
+	padding: 40px;
 	border-bottom: 1px solid #DDD;
 }
 
@@ -44,15 +69,28 @@ section {
 
 section.left {
 	float: left;
-	padding: 50px;
+	padding: 40px;
 	border-right: 1px solid #DDD;
 }
 
 section.right {
 	float: left;
-	padding: 50px;
+	padding: 40px;
 }
 
 h2 {
 	font-size: medium;
+}
+
+td {
+	padding-right: 10px;
+}
+
+footer {
+	width: 100%;
+	float:left;
+	text-align: center;
+	font-style: italic;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
