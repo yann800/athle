@@ -3,13 +3,23 @@
     font-family: Raleway;
     src: url(Raleway-Medium.ttf);
 }*/
+@font-face {
+	font-family: "Source Sans Pro";
+	font-style: normal;
+	font-weight: 400;
+	src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
+		url("ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2")
+		format("woff2");
+	unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC,
+		U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
 
 body {
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-top: 20px;
 	/* font-family: Raleway; */
-	font-family: Arial;
+	font-family: "Source Sans Pro";
 	font-size: small;
 }
 
@@ -37,7 +47,7 @@ nav a.last {
 }
 
 a {
-	color:black;
+	color: black;
 	text-decoration: none;
 }
 
@@ -66,7 +76,6 @@ section {
 	border-top: 1px solid #DDD;
 }
 
-
 section.left {
 	float: left;
 	padding: 40px;
@@ -88,7 +97,7 @@ td {
 
 footer {
 	width: 100%;
-	float:left;
+	float: left;
 	text-align: center;
 	font-style: italic;
 	padding-top: 20px;
