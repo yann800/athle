@@ -1,14 +1,14 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	// font-size: 1.3em;
+	// 	font-size: 1.3em;
 }
 
 footer {
-	text-align:center;
+	text-align: center;
 }
 
-nav{
+nav {
 	padding-bottom: 20px;
 }
 
@@ -17,8 +17,7 @@ p {
 	padding-bottom: 20px;
 }
 
-
-li{
+li {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -29,12 +28,67 @@ li{
 	left: 500px;
 	top: 20px;
 }
+
 .panel-heading a:after {
-    font-family:'Glyphicons Halflings';
-    content:"\e114";
-    float: right;
-    color: grey;
+	font-family: 'Glyphicons Halflings';
+	content: "\e114";
+	float: right;
+	color: grey;
 }
+
 .panel-heading a.collapsed:after {
-    content:"\e080";
+	content: "\e080";
+}
+
+figure.effect-sadie figcaption::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: '';
+	opacity: 0;
+	-webkit-transform: translate3d(0, 50%, 0);
+	transform: translate3d(0, 50%, 0)
+}
+
+figure.effect-sadie h2 {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	width: 100%;
+	color: #484c61;
+	-webkit-transition: -webkit-transform .35s, color .35s;
+	transition: transform .35s, color .35s;
+	-webkit-transform: translate3d(0, -50%, 0);
+	transform: translate3d(0, -10%, 0)
+}
+
+figure.effect-sadie figcaption::before, figure.effect-sadie p {
+	-webkit-transition: opacity .35s, -webkit-transform .35s;
+	transition: opacity .35s, transform .35s
+}
+
+figure.effect-sadie p {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 2em;
+	width: 100%;
+	opacity: 0;
+	-webkit-transform: translate3d(0, 10px, 0);
+	transform: translate3d(0, 10px, 0)
+}
+
+figure.effect-sadie:hover h2 {
+	color: #fff;
+	-webkit-transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+	transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0)
+}
+
+figure.effect-sadie:hover figcaption::before, figure.effect-sadie:hover p
+	{
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0)
 }
