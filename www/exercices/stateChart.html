@@ -227,15 +227,29 @@ INSERT INTO rembourse (idClub,idCourse) VALUES (91,4);</pre>
 		<br/>Exemple :
 		<ul>
 			<li>[Juliette, 5 km Médard] doit sortir car US Créteil ne rembourse pas Médar.</li>
-			<li>En revanche (Yann, 10 km joinville] ne doit pas sortir, car ACPJ rembourse cette course</li>
+			<li>En revanche (Yann, 10 km Joinville) ne doit pas sortir, car ACPJ rembourse cette course</li>
 		</ul>
 	</div>
 	
-	<div style="margin-right: 50px;padding-left: 10px">
+	<div style="float: left;width: 500px; margin-right: 50px;padding-left: 10px">
 		<h2>Réponse</h2>
-		<pre style="background-color: #EEEEEE;padding: 10px;width: 600px">SELECT ...</pre>
+		<pre style="background-color: #EEEEEE;padding: 10px;width: 400px">SELECT a.nom, co.nom FROM athlete a
+INNER JOIN participe p  ON p.idAthlete = a.id
+INNER JOIN course    co ON co.id       = p.idCourse
+LEFT  JOIN rembourse r  ON r.idCourse  = co.id
+LEFT  JOIN club      cl ON cl.id       = r.idClub
+WHERE cl.nom IS NULL
+ORDER BY a.nom, co.nom</pre>
 	</div>
-
 	
+	<div id="resultat" style="float: left;">
+	<h2>Résultat</h2>	
+<table><tr bgcolor="#CCCCFF"><th>a.nom</th><th>co.nom</th></tr>
+<tr><td>Juliette</td><td>5 km Médard</td></tr>
+<tr><td>Mehdi</td><td>5 km Médard</td></tr>
+<tr><td>Yann</td><td>5 km Médard</td></tr>
+<tr><td>Yann</td><td>ch. masters Aarhus</td></tr>
+</table>
+</div>
 </body>
 </html>

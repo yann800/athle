@@ -14,96 +14,36 @@
 		U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
+
 body {
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-top: 20px;
-	/* font-family: Raleway; */
-	font-family: "Source Sans Pro";
-	font-size: small;
+    font-size: 14px;
+    background: #4E85B1; /* For browsers that do not support gradients */
+    background-image: linear-gradient(#4E85B1, #1C6B8C); /* Standard syntax (must be last) */
+    color: white;
+    font-family: "Source Sans Pro", Verdana;
 }
 
-nav {
-	text-align: center;
-	border-top: 1px solid #DDD;
-	border-bottom: 1px solid #DDD;
-	margin-top: 20px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	font-size: medium;
+div > div {
+	padding: 30px;
+	padding-left: 100px;
 }
 
-nav a {
-	padding-left: 30px;
-	padding-right: 30px;
-	border-right: 1px solid #DDD;
-	font-weight: bold;
-	color: #000;
-	/* font-variant:small-caps; */
-}
-
-nav a.last {
-	border-right: 0px solid #DDD;
+#footer {
+ background: #1C6B8C;
+ position: fixed;
+ bottom: 0;
+ height: 20px;
+ width: 100%;
+ display: block;
+ text-align: center;
+ margin-left: -7px;
 }
 
 a {
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 
 a:hover {
-	background-color: #CCC;
-	border-radius: 4px;
-}
-
-nav a:hover {
-	background-color: #CCC;
-	border-radius: 4px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-section a:hover {
-	padding: 5px;
-}
-
-#presentation {
-	padding: 40px;
-	border-bottom: 1px solid #DDD;
-}
-
-section {
-	border-top: 1px solid #DDD;
-}
-
-section.left {
-	float: left;
-	padding: 40px;
-	border-right: 1px solid #DDD;
-}
-
-section.right {
-	float: left;
-	padding: 40px;
-}
-
-h2 {
-	font-size: medium;
-}
-
-td {
-	padding-right: 10px;
-}
-
-footer {
-	width: 100%;
-	float: left;
-	text-align: center;
-	font-style: italic;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-
-li {
-	padding-bottom: 15px;
+	text-decoration: underline;
 }
