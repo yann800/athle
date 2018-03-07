@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr-FR" class="js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Tendance Claire, côté obscur</title>
+<link rel="stylesheet" id="themonic-fonts-css" href="css/font.css" type="text/css" media="all">
+<link rel="stylesheet" id="themonic-style-css" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/popup.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/font-awesome.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/siw.js"></script>
+</head>
+<!-- <body style="font-family: Verdana;font-size: 0.9em"> -->
+<body>
+	<div id="page" class="site">
+		<header class="site-header" role="banner">
+			<div style="float: right;">
+				<a id="pdf" href="tendance_claire_cote_obscur.pdf" style="display: none; padding-right: 10px; color: #444">Télécharger au format PDF</a> <a id="toc" title="Table des matières"><i
+					class="fa fa-bars" aria-hidden="true" style="font-size: 1.5em; color: #444"></i></a>
+			</div>
+			<!--		
+			<div class="site-wordpress">
+ 				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org/">Wordpress</a> 
+				<a id="pdf" href="#">Télécharger au format PDF</a>
+				<a id="toc" title="Table des matières"><i class="fa fa-bars" aria-hidden="true" style="font-size: 1.5em;color: #444"></i></a>
+			</div>
+			-->
+			<div class="io-title-description">
+				<h1>Tendance Claire, côté obscur</h1>
+				<span style="font-size: 0.9em; display: none; margin-top: 20px" id="metadata">
+				Problèmes de conscience écologique, sanitaire et autres détails
+				<br />
+				<br />
+				<br />
+				Kavé<br />
+				<br />
+				<br />version 5 mars 2018
+				</span>
+			</div>
+			<div style="clear: both"></div>
+			<!-- <nav id="site-navigation" class="themonic-nav" role="navigation"> -->
+			<!-- 	<a class="assistive-text" href="#ccc" title="Aller au contenu">Aller au contenu</a> -->
+			<!-- 	<ul id="menu-top" class="nav-menu"> -->
+			<!-- 		<li><a id="toc">Table des matières</a></li> -->
+			<!-- 	</ul> -->
+			<!-- </nav> -->
+			<!-- <div class="clear"></div> -->
+		</header>
+		<script type="text/javascript">
+			$("#toc").click(function() {
+				if ($("#secondary").is(":visible")) {
+					hide();
+				} else {
+					show();
+				}
+			});
+		</script>
+
+		<nav id="main" class="wrapper">
+
+
+			<div id="primary" class="site-content" style="display: none">
+				<section id="content" role="main">
+
+					<div class="centrage">
+						<img alt="" src="tintin_start.jpg" width="70%" />
+					</div>
+				</section>
+			</div>
+
+
+
+			<div id="secondary" class="widget-area" role="complementary" style="display: none;">
+				<aside id="m_introduction" class="widget widget_recent_entries">
+					<p class="widget-title"><a href="#introduction">Introduction</a></p>
+					<ul>
+						<li><a href="#01">Un procès</a></li>
+						<li><a href="#02">Des contradictions</a></li>
+						<li><a href="#03">Un peu d'humilité</a></li>
+					</ul>
+				</aside>
+				<aside id="m_1" class="widget widget_recent_entries">
+					<p class="widget-title">
+						<a href="#1_revue_presse">1. Écologie - à la fois anti-productiviste et pro-industrie</a>
+					</p>
+					
+
+					<ul>
+<li><a href="#11">1.1 Leur écologie et la nôtre</a></li>
+<li><a href="#12">1.2 Wiki rouge, rubrique « décroissance » : un modèle</a></li>
+<li><a href="#13">1.3 N’est pas écologiste qui veut</a></li>
+<li><a href="#14">1.4 Compromis et lâcheté (ça c’est moi)</a></li>
+<li><a href="#15">1.5 Conscience de classe, conscience écologique : grilles de lecture</a></li>
+<li><a href="#16">1.6 Il n’y a pas d’écologie. Il n’y a que des preuves d’écologie</a></li>
+
+					</ul>
+				</aside>
+				<aside id="m_2" class="widget widget_recent_entries">
+					<p class="widget-title">
+						<a href="#2_commentaires">2. Sanitaire &ndash; allié objectif de FFT et Monsanto</a>
+					</p>
+					<ul>
+<li><a href="#21">2.1 Des suicides et des luttes</a></li>
+<li><a href="#22">2.2 Monsanto Papers, quelles leçons ?</a></li>
+<li><a href="#23">2.3 Quand</a></li>					
+<li><a href="#24">2.4 Comment</a></li>
+					</ul>
+				</aside>
+				<aside id="m_3" class="widget widget_recent_entries">
+					<p class="widget-title">
+						<a href="#3_discussion">3. Discussion</a>
+					</p>
+					<ul>
+<li><a href="#31">3.1 Des suicides et des luttes</a></li>
+<li><a href="#32">3.2 Responsabilités</a></li>
+<li><a href="#33">3.3 Pourquoi je n'aurais pas voté la PF T</a></li>					
+<li><a href="#34">3.4 Le scientisme, le fascime</a></li>
+					</ul>
+				</aside>
+				<aside id="m_conclusion" class="widget widget_recent_entries">
+					<p class="widget-title"><a href="#conclusion">Conclusion</a></p>
+				</aside>
+				<aside id="m_references" class="widget widget_recent_entries">
+					<p class="widget-title"><a href="#references">Références</a></p>
+				</aside>
+			</div>
+			<!-- #secondary -->
+		</nav>
+
+
+		<div class="clear"></div>
+
+		<article id="introduction" class="article_custom">
+			<header class="entry-header">
+				<h3 class="entry-title">Introduction</h3>
+			</header>
+
+<div class="entry-content">
+Les champions de marathon sont des exemples. L'article de VO2 Magazine n°89
+consacré à Ahmed Salah inspire quatre réflexions.
+
+			<div class="centrage">
+				<img src="0_ahmed_salah.jpg" style="max-width: 80%; height: auto;">
+			</div>
+<br/><br/>
+<p>
+1. Avec les cyclistes, les marathoniens rappellent une évidence :  il est possible de se déplacer sans bagnole.
+Avaler 10 km quotidien sans pétrole, c'est l'écologie en pratique. C'est le quotidien des écoliers kenyens
+(pas keynésiens, ne pas confondre). Ce qui explique pourquoi certains finissent
+par faire 2h00'25 et d'autres s'arrêtent à 2h06'35. Sans demander de battre des
+records, athlètes ou simples piétons sont écologistes. Les seuls dignes de ce nom.
+
+</p>
+<p>
+
+2. Après le critère écologie, le critère de classe. Les prolétaires se déplacent à pied. Les bourgeois, en bagnole.
+Cette dénonciation est une banalité. Chacun fait son choix et s'arrange avec sa conscience, éventuellement 
+avec la pitoyable recherche d'excuse derrière le prétentu caractère subi (si, si, on a entendu des
+révolutionnaires tenir de tels propos).
+Non, le point surtout à relever est l'efficacité de l'endocrinement qui réussi a inculquer l'idée  « La
+bagnole, s'en passer ? Inconcevable. Même pas en rêve. Et les milliers d'emplois ! 
+Restons sérieux, je vous prie. ». Il y a une certaine ironie à se voir disqualifié pour utopie aux yeux de
+révolutionnaires.
+Ici donc un combat idéologique de longue haleine, qui nécessite de l'endurance...
+
+</p>
+<p>
+
+
+3. Ahmed Salah n'a jamais gagné de titre mondial. Mais il a, du moins, le mérite de la tentative.
+L'histoire de beaucoup de révolutionnaires. Certains ont rêvé de révolution nationale, d'autres
+internationnale. Salah était trotskyste de ce point de vue.
+
+</p>
+<p>
+
+
+4. Il n'était pas foutu d'épingler son dossard correctement (Fig.1). Personne n'est parfait.
+Il ne faut pas s'attacher aux détails. Non, respirer un coup, prendre de la distance et juger l'ensemble.
+</p>
+</div>
+
+			<section class="entry-content" id="01">
+
+<header class="entry-header">
+	<h3 class="entry-title">Un procès</h3>
+</header>
+
+<div class="entry-content">
+
+	<div style="text-align: right;">
+	
+	<i>I want to send a friendly message,<br/>commin straight from the undergroud</i>
+	<br/>
+	Rage Against The Machine
+	
+	<br/><br/>
+	
+	<i>Que dieu nous garde de nos camarades,<br/>
+	les capitalistes on s'en charge.
+	</i>
+	<br/>
+	Inspiré d'un voeux célèbre, repris par Ärsenik notament
+	<br/>
+	<br/>
+	<i>Qui euphémise est un ennemi,<br/>qui nie est un cadavre.</i>
+	<br/>
+	Inspiré d'une devise khmer rouge
+	</div>
+	
+	<p style="margin-top: 30px">
+La <span class="tooltip">Tendance Claire<sup>1</sup>
+  <span class="tooltiptext"><a href="http://tendanceclaire.org">http://tendanceclaire.org</a>  
+désignée par l'acronyme « TC ». Comme trauma-crâne, un hommage à Trotsky, peut-être. J'ai été
+militant de la TC, je n'en suis aujourd'hui que simple sympathisant.
+Le but de ce texte n'est pas de donner les explications de ma mise en retraite militante ;
+elles peuvent néanmoins être lues incidemment entre les lignes.</span>
+</span> pourrait demander être
+jugée, avant tout, sur ses positions lutte des classes.
+Malheureusement, il s'agit, ici, de ses positions écologiques et sanitaires. En faire le procès ?
+Tout de suite les grands mots… pourquoi ? En guise de début de réponse, deux accusations qui viennent
+à l'esprit lors de la lecture de la presse
+bourgeoise et des textes militants contre la société industrielle.
+La « une » du Monde du 14 novembre 2017 relaie l'appel de 15.000 scientifiques à <i>« changer radicalement de mode de
+vie »</i>
+</p> 
+				<div class="centrage">
+
+					<div class="popup" onclick="openPopup('myPopup')">
+						<img alt="" src="1_0_lemonde_il_sera_trop_tard_stabilo.jpg" width="50%" />
+						<div class="popuptext" id="myPopup">
+							<img alt="" src="1_0_lemonde_il_sera_trop_tard_stabilo.jpg" /> Le Monde 14 novembre 2017
+						</div>
+					</div>
+
+				</div>
+
+</div>
+			</section>
+
+
+
+			<section class="entry-content" id="02">
+
+<header class="entry-header">
+	<h3 class="entry-title">Des contradictions</h3>
+</header>
+
+<div class="entry-content">
+<p>
+Nul n'est tenu à la sainteté. Des contradictions, qui n'en a pas ?
+Mais en être conscients, les reconnaître, c'est un devoir militant.
+Sous Mao les séances publiques d'autocritique étaient encouragées.
+Alors deux mots pour me confesser. Pour expier mes fautes. Et pour 
+lever une éventuelle ambiguïté : je ne prétends faire la leçon à personne
+ici ; je m'en fous. <span class="tooltip">Ce texte est un texte militant<sup>2</sup><span class="tooltiptext">Le ton accusatoire est un choix pragmatique.
+Le texte [KC15] a été ignoré par les camarades TC, malgré des questions, voire les mises en causes, pourtant suffisamment
+gênantes en soi, croyais-je. Grave erreur. Gardons le fond, essayons améliorer la forme. Ceci dit, ledit texte était
+loin d'être parfait (« trop long » a jugé le camarade, Z., ha ha), c'est certain. Mais cela devrait interpeller la TC
+qu'une dizaine de personnes &ndash; certaines que je ne connais pas &ndash; écrivent leurs remerciements. Euh… merci à vous
+si vous lisez ces lignes. Les OEM à la TC et au NPA, ce n'est pas toujours gagné. Le présent texte existe
+en partie grâve à votre soutien.</span></span>.
+</p>
+<p>
+Donc des contradictions. Je ne suis pas vegan. Je bouffe rarement du jambon industriel, mais cela m'arrive. Je prends la
+voiture. Même avec plaisir coupable quand c'est Renault Scenic ou Audi Q7. Circonstances atténuantes : c'est pour
+déplacement athlé (également athée, mais pas nécessairement) et uniquement en covoiturage.  
+J'ai la francisque &ndash; je veux dire le permis B &ndash;. Je l'ai utilisé cinq fois dans ma vie. Trois déménagements (avec
+l'athlé, c'est excusable), un trajet militant avec SPEB &ndash; ah folle jeunesse &ndash; jusqu'à Longo Maï (la communauté, pas la
+cycliste ; les deux ont mon admiration), et un trajet perso pour rando. Je prends l'avion une fois tous les 3 ans.
+J'ai même pris l'hélico un fois, ha ha. J'ai commencé à utiliser la 1ère fois un téléphone portable en 2014,
+dans des conditions pour partie <span class="tooltip">« subies ». Et sans être geek, fan des trucs de l'informatique
+qu'ils soient <i>open source</i>inspiration anar ou Google<sup>3</sup><span class="tooltiptext">« Fuck off Google » dixit le Comité
+Invisible,
+<i>À nos amis</i>, p. 101. Un point de vue qui vaut bien l'article TC [TC08g] sur le sujet &ndash; un poil moins offensif,
+mais bon… il y a toujours plus révolutionnaire que soi.</span></span>
+
+</p>
+<p>
+
+
+Fin de la confession. Si deux remarques sont permises :
+
+</p>
+<p>
+
+Primo, l'autocritique s'applique à peu près tout le monde, prolos ou bourgeois dans
+un pays industrialisé comme la France. Tenter de l'esquiver au nom de « notre ennemi
+c'est le système capitaliste, tout est de sa faute, pas de culpabilisation
+des travailleurs » est une erreur. Récurrente au sein de la TC. Et alors le summum : la « moralisation ». Un pêcher.
+Vade retro.
+
+</p>
+<p>
+
+Secundo, la gradation dans la responsabilité. L'exemple suivant ne concerne pas  la TC. Il sert d'image car en revanche,
+pour d'autre sujet... Voilà, des nuances sont à considérer. C'est une chose de bouffer de la viande ; c'en est une autre
+de nier la souffrance animale. Il y a une gradation. Par exemple, il y a une nuance entre ignorer l'association L214
+(par désintérêt, par manque de temps, par contrainte de priorité) et dénigrer leurs actions ou tenter de jeter le doute
+sur leur sérieux. La sensibilité des oies qu'on gave, est-ce bien prouvé d'abord ? Les anti-spécistes, franchement…
+L'histoire d'un siècle de scandales sanitaires montrent que les industries ont eu les moyens de disséminer des éléments
+de nature à discréditer leur opposants. Amiante, tabagisme, pharmaceutique, aujourd'hui dieselgate, Roundup et
+électrosensibilité.
+
+</p>
+<p>
+
+La propagande n'est pas le seul piège. L'idéologie réussi aussi rend aveugle aux contradictions. On finirait pas ne
+plus voir l'énormité de la cohabitation des alertes climats du Monde et des pubs pour des 4x4. Le pauvre Hulot en a
+d'ailleurs un parmi ses 6 carrosses. Mais que celui qui n'a jamais péché jette la première pierre…  La TC à arrêté
+les jambon Leader Price (bas de gamme en plus, même pas bon) au repas des réunions paraît-il (cela fait pas mal de temps
+que je n'y ai pas participé), mais les gobelets plastiques continue je crois.
+
+
+
+</div>
+</section>
+
+
+			<section class="entry-content" id="03">
+
+<header class="entry-header">
+	<h3 class="entry-title">Un peu d’humilité</h3>
+</header>
+<div class="entry-content">
+
+<p>
+Accessoirement, ce texte est aussi écrit en réaction à quelques présomptions de la TC. 
+</p>
+<p>
+Lors de la préparation du IVème congrès NPA (un bon chiffre pour les trotskystes), le camarade D. de Lyon
+a écrit « Notre parti est sans doute la force politique avec le meilleur programme sur l'écologie dans ce pays »
+(mail 17/12/2017).
+Sans vouloir jouer le rabat-joie, c'est s'emballer un peu, là.
+
+</p>
+<p>
+
+
+Même avec beaucoup d'indulgence, la TC ne peut être qualifié de bonne écologiste. Anticapitaliste, oui, sans
+hésitation. La TC ne peux pas être bonne partout ! Ainsi, elle est pleinement légitime à donner des leçons
+d'anticapitalisme aux réformistes de la France Insoumise. Mais, en matière écologie, un poil gonflée.
+Se permettre de donner un satisfecit à Mélenchon dans la critique de son programme de 2017 
+pour <i>la réduction de « la part des protéines carnées dans l'alimentation au profit des protéines végétales »</i>
+[TC17] alors que soi même capable d'oublier parfois que la viande produit 15% du réchauffement climatique.  
+Sauf erreur de ma part, la diminution de consommation de la viande n'a jamais été une revendication importante à la TC
+&ndash; au mieux une mention perdue ici ou là. Et lui reprocher d'être « mollasson » sur le nucléaire quand soi-même on
+se refuse de revendiquer mieux que la sortie en 10 ans, il faut oser. Beaucoup d'humour indéniablement.
+
+
+
+					<div class="centrage">
+						<img alt="" src="0_lisez_ceci.jpg" width="70%" />
+					</div>
+
+
+Trêve de polémique. En matière écologique le mensuel <i>La Décroissance</i> a fait des critiques bien
+meilleures de Mélenchon. Lui- même a d'ailleurs été capable de faire la preuve de sa compréhension de
+l'anti-productivisme bien meilleure que toute l'extrême-gauche trotskyste<sup>4</sup>pour qui ça intéresse, cela a
+été discuté dans [KV12]}. Moralité, un peu d'humilité en matière écologique. Vis-à-vis des autres organisations, et a
+fortiori des organes de presse.
+
+</p>
+<p>
+
+
+Très souvent, chaque semaine, les <i>« Plouf ! »</i> et <i>« Conflit de canard »</i> de la page 5 du Canard
+Enchaîné apparaissent meilleurs que la TC. Bien meilleurs. Par exemple, la dénonciation des OGM. À ma
+connaissance, la TC ne s'est encore jamais prononcé contre. Diverses positions écologiques nettement plus avancées que
+celles de la TC ont été défendues dans <i>le Monde Diplomatique</i>, en matière de dénonciations des pollutions. Nous y
+reviendrons. Et encore en s'y tenant à des extraits de presse nationale. Mais l'on devrait aussi 
+comparer les positions écologiques de la TC et celles de PMO et EdN. La comparaison serait cruelle.
+
+
+</p>
+<p>
+
+
+Dans la rubrique <i>« Que voulons-nous ? »</i>, à la question <i>« Est-ce que vous n'êtes pas une sorte de
+secte ? »</i> la TC répond <i>« Nous avons des idées radicalement différentes de celles que les puissants véhiculent tous les
+jours, donc il est facile pour eux de nous discréditer. Mais à regarder les choses en face, ce petit monde de politiciens
+qui fait son rituel dans l'Assemblée, ou de PDG rivés aux cours de leurs actions, pendant que des gens crèvent à leurs
+portes, ce sont eux qui se mettent en dehors de l'humanité. Nos idées et nos propositions sont argumentées et adressées
+à tout le monde, nous n'avons rien à cacher.»</i>. Très bien. Mais un peu d'humilité SVP. <i>« Idées radicalement différentes »</i>
+en matière politique, sociale et économique, oui. En matière écologique et sanitaire, non. Pas « radicalement ».
+Il serait bien de s'en rendre compte.
+</p>
+
+</div>
+</section>
+
+		</article>
+
+		<article id="1_revue_presse" class="article_custom">
+			<header class="entry-header">
+				<h3 class="entry-title">1. Écologie - à la fois anti-productiviste et pro-industrie</h3>
+			</header>
+
+			<section class="entry-content" id="11">
+				<h2>12</h2>
+
+
+			</section>
+
+
+			<section class="entry-content" id="13">
+				<h2>13</h2>
+
+				<p>33333333</p>
+
+			</section>
+
+
+			<section class="entry-content" id="14">
+				<h2>Deux façons</h2>
+				
+				<p>444444</p>
+			</section>
+
+			<section class="entry-content" id="15">
+				<h2>555555</h2>
+				<p>Ce que dit la Décroissance, p.ex. en 2002 :</p>
+				<div class="popup centrage" onclick="openPopup('myPopup2')">
+					<img alt="" src="1_4_casseurs_de_pub_peugeot.png" width="50%" />
+					<div class="popuptext" id="myPopup2">
+						<img alt="" src="1_4_casseurs_de_pub_peugeot.png" /> <br /> Casseurs de pub 2002
+					</div>
+				</div>
+
+				<p>Ce que dit le groupe CRI [2003-2008], dans son programme encore valable au moment de la dissolution :</p>
+
+				<pre style="font-size: 0.8em">
+<b>Pour le droit aux transports</b> <br />Le système capitaliste conduit
+ les travailleurs à perdre un temps considérable
+ dans les transports pour se rendre à leur travail, accroissant leur fatigue
+  et leur stress.
+ 
+ Beaucoup de  travailleurs sont donc contraints d’utiliser leur propre automobile
+  pour aller travailler, ce qui représente
+ 
+   des frais et des risques d’accident supplémentaires. Cela conduit aussi à rendre 
+   les villes invivables (bruit,
+ pollution,chauffards…). Le parti communiste révolutionnaire internationaliste doit
+  tenir compte des préoccupations 
+ quotidiennes des travailleurs et mettre en avant
+les mots d’ordre suivants : <br />
+<br />(...) <br />Par ailleurs, chaque année, dans chaque pays, des milliers ou des
+ dizaines de milliers de vie
+ sont fauchées dans les accidents de la route</pre>
+ 
+
+
+			<div class="centrage">
+				<img alt="" src="1_3_cyrano_compromis.jpg" style="max-width: 60%; height: auto;">
+			</div>
+
+			</section>
+
+		<article id="conclusion" class="article_custom">
+			<header class="entry-header">
+				<h1 class="entry-title">Conclusion</h1>
+			</header>
+
+			<img src="2_0_tir_fixe.png" style="max-width: 100%; height: auto;">
+
+			<div class="entry-content">
+				<p>Une des erreurs constatée est la suivante Une des erreurs constatée est la suivante
+				Une des erreurs constatée est la suivante Une des erreurs
+					constatée est la suivante Une des erreurs constatée est la suivante</p>
+			</div>
+		</article>
+	</div>
+
+</body>
+</html>

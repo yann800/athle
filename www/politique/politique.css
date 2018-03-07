@@ -26,6 +26,26 @@ body {
 div > div {
 	padding: 30px;
 	padding-left: 100px;
+	border-color: white;
+}
+div > div > span {
+	border-width: thin;
+	border-style: solid;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+    color: #4E85B1;
+}
+
+span:hover {
+	background-color: white;
 }
 
 #footer {
@@ -39,11 +59,3 @@ div > div {
  margin-left: -7px;
 }
 
-a {
-	color: white;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
