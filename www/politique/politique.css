@@ -17,8 +17,8 @@
 
 body {
     font-size: 14px;
-    background: #4E85B1; /* For browsers that do not support gradients */
-    background-image: linear-gradient(#4E85B1, #1C6B8C); /* Standard syntax (must be last) */
+    background: #022A36; /* For browsers that do not support gradients */
+    background-image: linear-gradient(#4E85B1, #022A36); /* Standard syntax (must be last) */
     color: white;
     font-family: "Source Sans Pro", Verdana;
 }
@@ -49,7 +49,7 @@ span:hover {
 }
 
 #footer {
- background: #1C6B8C;
+ background: #022A36;
  position: fixed;
  bottom: 0;
  height: 20px;
