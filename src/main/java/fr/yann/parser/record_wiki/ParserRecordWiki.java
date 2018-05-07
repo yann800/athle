@@ -87,6 +87,16 @@ public class ParserRecordWiki {
 	// on traite les td : epreuve, perf, nom, date
 	public static void traiteLine(String line, LigneRecordWiki lr) throws Exception {
 
+		if (line.contains("Discipline")
+				|| line.contains("Performance")
+				|| line.contains("Athlète")
+				|| line.contains("Compétition")
+				|| line.contains("Lieu")
+				|| line.contains("Date")
+				|| line.contains("<td></td>")) {
+			return;
+		}
+
 		String plainText = replaceHtmlTagByJoker(line);
 
 		// String lineWithoutNL = replace(plainText, "NL la veille de la compétition", "null");

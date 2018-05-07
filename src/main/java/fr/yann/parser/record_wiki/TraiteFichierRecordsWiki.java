@@ -28,7 +28,7 @@ public class TraiteFichierRecordsWiki {
 		FileReader fr = new FileReader(f);
 		BufferedReader br = new BufferedReader(fr);
 
-		boolean bTrEncours = false;
+		// boolean bTrEncours = false;
 
 		SexeEnum sexe = SexeEnum.MASCULIN;
 		LigneRecordWiki lr = null;
@@ -44,23 +44,21 @@ public class TraiteFichierRecordsWiki {
 			}
 
 			if (line.startsWith("<tr>")) {
-				bTrEncours = true;
 				lr = new LigneRecordWiki(sexe);
 				continue;
 			}
 
 			if (line.startsWith("</tr>")) {
-				bTrEncours = false;
 				listeRecords.add(lr);
 				continue;
 			}
 
-			if (bTrEncours && !line.startsWith("<td>")) {
+			if (!line.startsWith("<td>")) {
 				continue;
 			}
 
 			// on traite les td : epreuve, perf, nom, date 
-			System.out.println(line);
+			// System.out.println(line);
 
 			ParserRecordWiki.traiteLine(line, lr);
 
