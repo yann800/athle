@@ -42,7 +42,7 @@ public class LigneRecordWiki {
 		if (epreuve == null) {
 			return null;
 		}
-		return epreuve.replace(" m", ".").replace("&#160;", "").trim();
+		return epreuve.trim();
 	}
 
 	private String getPerf(String str) {

@@ -109,8 +109,8 @@ public class ParserRecordWiki {
 		valeurTd = valeurTd.replace("__", "").replace("_", "");
 
 		if (lr.getEpreuve() == null) {
-			if (valeurTd.matches(".*\\d+.*")) {
-				valeurTd.replace(" ", "").replace("m", "").trim().replace("&#160;", "");
+			if (valeurTd.matches("\\d+.*")) {
+				valeurTd = valeurTd.replace(" ", "").replace("m", "").replace("&#160;", "");
 			}
 
 			lr.setEpreuve(valeurTd.replace(".", ""));
