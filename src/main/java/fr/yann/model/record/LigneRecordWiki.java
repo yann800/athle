@@ -10,15 +10,17 @@ public class LigneRecordWiki {
 	private int			age;
 	private int			annee;
 	private SexeEnum	sexe;
+	private int			idPays;
 
-	public LigneRecordWiki(SexeEnum sexe) {
+	public LigneRecordWiki(int idPays, SexeEnum sexe) {
 		super();
+		this.idPays = idPays;
 		this.sexe = sexe;
 	}
 
 	@Override
 	public String toString() {
-		return "LigneRecord [epreuve:" + epreuve + ", perf:" + perf + ", nom:" + nom + ", annee:" + annee + ", sexe:" + sexe + "]";
+		return "LigneRecord [epreuve:" + getEpreuve() + ", perf:" + getPerf() + ", nom:" + getNom() + ", annee:" + getAnnee() + ", sexe:" + sexe + "]";
 	}
 
 	public String toStringJson() {
@@ -26,13 +28,31 @@ public class LigneRecordWiki {
 		return str;
 	}
 
+	public String toStringSql() {
+		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee) VALUES ("
+				+ idPays + ","
+				+ sexe.getCodeInt() + ",'"
+				+ getEpreuve() + "', '"
+				+ nom + "','"
+				+ getPerf(perf) + "',"
+				+ annee + ");";
+		return str;
+	}
 	public String getEpreuve() {
-		return epreuve; // .replace("m", "").replace(" ", "");
+		if (epreuve == null) {
+			return null;
+		}
+		return epreuve.replace(" m", ".").replace("&#160;", "").trim();
 	}
 
 	private String getPerf(String str) {
 
-		String result = str.replace("''", ".").replace("'", ".");
+		String result = str.replace("''", ".")
+				.replace("'", ".")
+				.replace("&#160;", "")
+				.replace(" s ", ".")
+				.replace(" min ", ".")
+				.trim();
 
 		int indexParenthese = str.indexOf("(");
 

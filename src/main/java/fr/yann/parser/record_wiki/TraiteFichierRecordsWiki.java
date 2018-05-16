@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.model.record.LigneRecordWiki;
@@ -13,16 +14,27 @@ public class TraiteFichierRecordsWiki {
 
 	public static void main(String[] args) throws Exception {
 
-		List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\belgique.html");
+		Map<Integer, String> map = GetNomPays.getMap();
 
-		System.out.println("NOMBRE : " + liste.size() + "\n");
-		for (LigneRecordWiki lr : liste) {
-			System.out.println(lr);
+
+		for (Integer num : map.keySet()) {
+			System.out.println(num + " " + map.get(num));
+			List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays(" + num + ")", num);
+
+			System.out.println("NOMBRE : " + liste.size() + "\n");
+			for (LigneRecordWiki lr : liste) {
+				if (lr.getPerf() == null) {
+					continue;
+				}
+
+				System.out.println(lr.toStringSql());
+			}
 		}
+
 
 	}
 
-	private static List<LigneRecordWiki> traite(final String pathFile) throws Exception {
+	private static List<LigneRecordWiki> traite(final String pathFile, int idPays) throws Exception {
 
 		File f = new File(pathFile);
 		FileReader fr = new FileReader(f);
@@ -44,16 +56,18 @@ public class TraiteFichierRecordsWiki {
 			}
 
 			if (line.startsWith("<tr>")) {
-				lr = new LigneRecordWiki(sexe);
+				lr = new LigneRecordWiki(idPays, sexe);
 				continue;
 			}
 
 			if (line.startsWith("</tr>")) {
-				listeRecords.add(lr);
+				if (lr != null) {
+					listeRecords.add(lr);
+				}
 				continue;
 			}
 
-			if (!line.startsWith("<td>")) {
+			if (!line.startsWith("<td")) {
 				continue;
 			}
 

@@ -9,6 +9,13 @@ public class ParserRecordWiki {
 
 	private static final String CHAR_JOKER = "_";
 
+	public static void main(String[] args) {
+		String str = "3 septembre 1999";
+
+		System.out.println(getAnneeFromDate(str));
+
+	}
+
 	private static String replaceHtmlTagByJoker(final String str) {
 
 		// supression des balises html
@@ -17,7 +24,7 @@ public class ParserRecordWiki {
 		Matcher m1 = p1.matcher(str);
 		String strPlainText = m1.replaceAll(CHAR_JOKER);
 
-		// supression des balises html
+		// supression des (RP)
 		String patternCleanRP = "[\\s]*\\(RP\\)[\\s]*";
 		Pattern p2 = Pattern.compile(patternCleanRP);
 		Matcher m2 = p2.matcher(strPlainText);
@@ -30,7 +37,7 @@ public class ParserRecordWiki {
 	}
 
 	// 1_2_3_4__5_6_7_8_9
-	private static String parseStringWithJoker(String line) throws Exception {
+	private static String parseStringWithJoker(String line) {
 
 		final String PATTERN = "[_]*([^_]+)";
 		final int NB_COL_HTML = 1;
@@ -51,7 +58,7 @@ public class ParserRecordWiki {
 			return (m.group(0));
 		}
 		System.err.println(line);
-		throw new Exception();
+		return null;
 	}
 
 	private static int getAnneeFromDate(String date) {
@@ -77,15 +84,8 @@ public class ParserRecordWiki {
 		}
 	}
 
-	public static void main(String[] args) {
-		String str = "3 septembre 1999";
-
-		System.out.println(getAnneeFromDate(str));
-
-	}
-
 	// on traite les td : epreuve, perf, nom, date
-	public static void traiteLine(String line, LigneRecordWiki lr) throws Exception {
+	public static void traiteLine(String line, LigneRecordWiki lr) {
 
 		if (line.contains("Discipline")
 				|| line.contains("Performance")
@@ -102,10 +102,18 @@ public class ParserRecordWiki {
 		// String lineWithoutNL = replace(plainText, "NL la veille de la compétition", "null");
 		// String lineWithoutCF = replace(plainText, " (F)", "");
 
-		String valeurTd = parseStringWithJoker(plainText).replace("__", "").replace("_", "");
+		String valeurTd = parseStringWithJoker(plainText);
+		if (valeurTd == null) {
+			return;
+		}
+		valeurTd = valeurTd.replace("__", "").replace("_", "");
 
 		if (lr.getEpreuve() == null) {
-			lr.setEpreuve(valeurTd);
+			if (valeurTd.matches(".*\\d+.*")) {
+				valeurTd.replace(" ", "").replace("m", "").trim().replace("&#160;", "");
+			}
+
+			lr.setEpreuve(valeurTd.replace(".", ""));
 			return;
 		}
 
