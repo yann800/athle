@@ -18,10 +18,10 @@ public class TraiteFichierRecordsWiki {
 
 
 		for (Integer num : map.keySet()) {
-			System.out.println(num + " " + map.get(num));
+			System.out.println();
 			List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays(" + num + ")", num);
 
-			System.out.println("NOMBRE : " + liste.size() + "\n");
+			// System.out.println("NOMBRE : " + liste.size() + "\n");
 			for (LigneRecordWiki lr : liste) {
 				if (lr.getPerf() == null) {
 					continue;
@@ -61,7 +61,18 @@ public class TraiteFichierRecordsWiki {
 			}
 
 			if (line.startsWith("</tr>")) {
-				if (lr != null) {
+
+				if (lr != null && lr.getEpreuve() == null) {
+					// System.err.println("=========" + lr);
+					continue;
+				}
+
+				if (lr != null && !lr.getEpreuve().contains("arche") && !lr.getEpreuve().contains("erlin")) {
+
+					// FIXME remetre
+					if (lr.getEpreuve().contains("thlon")) {
+						continue;
+					}
 					listeRecords.add(lr);
 				}
 				continue;

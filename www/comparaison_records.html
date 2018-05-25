@@ -32,16 +32,138 @@
 	
 	<label>Records de la 1ère sélection</label>
 	<select id="selectZone1" class="form-control">
-		<option value="1" >Monde</option>
-		<option value="2" selected="selected">Pays</option>
+		<option value="1"  selected="selected">Monde</option>
+		<option value="2">Pays</option>
 		<option value="3">Club</option>
 		<option value="4">Athlète</option>
 
 	</select>
 	<select id="selectPays1" class="form-control">
-		<option disabled="disabled">Catalogne (soon)</option>
-		<option selected="selected">Cuba</option>
-		<option>France</option>
+
+<optgroup label="Afrique">
+	<option value="3">Afrique du Sud</option>
+	<option value="4">Algérie</option>
+<option value="1">Égypte</option>
+	<option value="22">Éthiopie</option>
+	<option value="62">Zambie</option>
+	<option value="97">Zimbabwe</option>
+</optgroup>
+
+<optgroup label="Amérique du Nord">
+	<option value="63">États fédérés de Micronésie</option>
+	<option value="64">États-Unis</option>
+
+</optgroup>
+<optgroup label="Amérique centrale et Caraïbes">
+	<option value="6">Antigua-et-Barbuda</option>
+	<option value="65">Bahamas</option>
+	<option value="2">Équateur</option>
+
+</optgroup>
+<optgroup label="Amérique du Sud">
+	<option value="8">Argentine</option>
+</optgroup>
+	<option value="36">Grenade</option>
+	<option value="37">Hongrie</option>
+	<option value="38">Jamaïque</option>
+	<option value="39">la Barbade</option>
+	<option value="40">Lettonie</option>
+<optgroup label="Asie">
+
+</optgroup>
+<optgroup label="Europe">
+	<option value="5">Allemagne</option>
+	<option disabled="disabled">Catalogne (soon)</option>
+	<option value="11">Espagne</option>
+	<option value="1789" selected="selected">France</option>
+	<option value="17">Italie</option>
+	<option value="90">Portugal</option>
+	<option value="92">Royaume-Uni</option>
+</optgroup>
+<optgroup label="Océanie">
+
+	<option value="7">Arabie saoudite</option>
+	<option value="9">Australie</option>
+	<option value="10">Autriche</option>
+	<option value="12">Estonie</option>
+	<option value="13">Inde</option>
+	<option value="14">Iran</option>
+	<option value="15">Irlande</option>
+	<option value="16">Israël</option>
+	<option value="18">Ouganda</option>
+	<option value="19">Ouzbékistan</option>
+	<option value="20">Ukraine</option>
+	<option value="21">Uruguay</option>
+	<option value="23">Bahreïn</option>
+	<option value="24">Belgique</option>
+	<option value="25">Biélorussie</option>
+	<option value="26">Bulgarie</option>
+	<option value="27">Côte d''Ivoire</option>
+	<option value="28">Chine</option>
+	<option value="29">Chypre</option>
+	<option value="30">Colombie</option>
+	<option value="31">Corée du Sud</option>
+	<option value="32">Croatie</option>
+	<option value="33">Cuba</option>
+	<option value="34">Finlande</option>
+	<option value="35">Grèce</option>
+
+	<option value="41">Lituanie</option>
+	<option value="42">Maurice</option>
+	<option value="43">Namibie</option>
+	<option value="44">Norvège</option>
+	<option value="45">Nouvelle-Zélande</option>
+	<option value="46">Pologne</option>
+	<option value="47">Porto Rico</option>
+	<option value="48">République démocratique du Congo</option>
+	<option value="49">République dominicaine</option>
+	<option value="50">République tchèque</option>
+	<option value="51">Roumanie</option>
+	<option value="52">Russie</option>
+	<option value="53">Serbie</option>
+	<option value="54">Slovénie</option>
+	<option value="55">Slovaquie</option>
+	<option value="56">Suède</option>
+	<option value="57">Suisse</option>
+	<option value="58">Taïwan</option>
+	<option value="59">Thaïlande</option>
+	<option value="60">Trinité-et-Tobago</option>
+	<option value="61">Turquie</option>
+	<option value="66">Bermudes</option>
+	<option value="67">Pays-Bas</option>
+	<option value="68">Seychelles</option>
+	<option value="69">Botswana</option>
+	<option value="70">Brésil</option>
+	<option value="71">Burundi</option>
+	<option value="72">Cameroun</option>
+	<option value="73">Canada</option>
+	<option value="74">Chili</option>
+	<option value="75">Costa Rica</option>
+	<option value="76">Danemark</option>
+	<option value="77">Gabon</option>
+	<option value="78">Ghana</option>
+	<option value="79">Japon</option>
+	<option value="80">Kazakhstan</option>
+	<option value="81">Kenya</option>
+	<option value="82">Kirghizistan</option>
+	<option value="83">Luxembourg</option>
+	<option value="84">Mali</option>
+	<option value="85">Maroc</option>
+	<option value="86">Mexique</option>
+	<option value="87">Nigeria</option>
+	<option value="88">Panama</option>
+	<option value="89">Paraguay</option>
+	<option value="91">Qatar</option>
+	<option value="93">Sénégal</option>
+	<option value="94">Soudan</option>
+	<option value="95">Sri Lanka</option>
+	<option value="96">Venezuela</option>
+
+	
+		
+</optgroup>
+
+		
 	</select>	
 	<select id="selectSexe1" class="form-control">
 		<option>Femme</option>
@@ -109,8 +231,8 @@
 	<div class="form-group col-sm-5">
 	<label>Records de la 2nde sélection</label>
 	<select id="selectZone2" class="form-control">
-		<option value="1">Monde</option>
-		<option selected="selected"  value="2">Pays</option>
+		<option value="1" selected="selected">Monde</option>
+		<option value="2">Pays</option>
 		<option value="3">Club</option>
 		<option value="4">Athlète</option>
 	</select>
@@ -194,8 +316,9 @@
 		</div> 
        <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
+<!-- FIXME #############################################
 <script type="text/javascript" src="charts/google/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
- 
+ -->
 <script type="text/javascript">
 var button = document.getElementById('btnShowHide'); // Assumes element with id='button'
 
@@ -209,6 +332,8 @@ button.onclick = function() {
     }
 };
 
+//FIXME
+/*
 google.setOnLoadCallback(drawChart);
 function drawChart() {
 	var tableCalculee = [];
@@ -229,16 +354,17 @@ function drawChart() {
 			tableCalculee.push([listeEpreuves[i], 100, ecart]);
 		}
 	}
-	var data = google.visualization.arrayToDataTable(tableCalculee);
+*/	
+// FIXME	var data = google.visualization.arrayToDataTable(tableCalculee);
 
-	var options = {
-		title: 'Comparatif'
-    };
+// FIXME	var options = {
+// FIXME		title: 'Comparatif'
+// FIXME   };
 
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+// FIXME	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-	chart.draw(data, options);
-}
+// FIXME	chart.draw(data, options);
+//}
    </script>
 
 	<table class="table table-striped table-bordered" id="table_ecarts"></table>
@@ -269,11 +395,6 @@ function selection(){
 	console.log('zone1 ' + zone1 + ' ' + ', pays1 ' +  pays1 + ', categorie1 ' + categorie1 + ', sexe1 ' + sexe1 + ' ' + zone2 + ' ' + categorie2 + ' ' + sexe2);
 
 	// Par défaut on masque les select pays et div "Club" et "Athlete" 
-	$("#selectPays1").css({'display' : 'none'});
-	$("#divClub1").css({'display' : 'none'});	
-	$("#divAthlete1").css({'display' : 'none'});
-	$("#selectCategorie1").css({'display' : ''});
-	$("#selectSexe1").css({'display' : ''});
 
 	$("#selectPays2").css({'display' : 'none'});
 	$("#divClub2").css({'display' : 'none'});	
@@ -283,11 +404,18 @@ function selection(){
 
 	// ======= ZONE 1 =======
 	// Si selection "Pays" alors on montre input pays et on laisse sexe et catégorie
-	if(zone1 == 1){
+	if(zone1 == 0){
+		$("#selectPays1").css({'display' : 'none'});
+		$("#divClub1").css({'display' : 'none'});	
+		$("#divAthlete1").css({'display' : 'none'});
+		$("#selectCategorie1").css({'display' : ''});
+		$("#selectSexe1").css({'display' : ''});
+	}
+	else if(zone1 == 1){
 		$("#selectPays1").css({'display' : ''});	
 	}
 	// Si selection "Club" alors on montre input club et on laisse sexe - catégorie
-	if(zone1 == 2){
+	else if(zone1 == 2){
 		$("#divClub1").css({'display' : ''});	
 		$("#selectPays1").css({'display' : 'block'});	
 	}
@@ -303,7 +431,7 @@ function selection(){
 		$("#selectPays2").css({'display' : ''});
 	}
 	
-	if(zone2 == 2){
+	else if(zone2 == 2){
 		$("#divClub2").css({'display' : ''});	
 	}
 	// Si selection "Athlete" alors on montre inuput athle et on masque sexe - categorie
@@ -355,19 +483,13 @@ function selection(){
 	// ===============================
 	// zone pays 1
 	else if (zone1 == 1){
-		// Cuba 
-		if (pays1 == 1){
+		// Tous pays sauf France 
+		if (pays1 != 1789){
 			$("#selectCategorie1").css({'display' : 'none'});
-			if (sexe1 == 0){
-				recordsSel1 = recordsCubaFemme;
-			}
-			else {
-				recordsSel1 = recordsCubaHomme;
-			}
+			recordsSel1 = chargeJsonRecordsPays(1, pays1, sexe1);
 		}
 		// France
-		else {
-		
+		else if (pays1 == 1789){
 		
 			// ---- sexe femme  
 			if (sexe1 == 0){
@@ -536,7 +658,7 @@ function selection(){
 		}
 	}
 	
-	drawChart();
+// FIXME	drawChart();
 }
 
 function getLibelle(zone, pays, sexe, categorie, nom){
@@ -801,14 +923,6 @@ $("#searchClub2").on("input", function(e) {
 	},"json");
 });
 
-function chargePays1(){
-	chargeJsonPays($("#searchPays1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
-}
-function chargePays2(){
-	chargeJsonPays($("#searchPays2")[0].value, 2, document.getElementById("selectSexe2").selectedIndex);
-}
-
-
 function chargeClub1(){
 	chargeJsonClub($("#searchClub1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
 }
@@ -823,7 +937,56 @@ function chargeAthlete2(){
 	chargeJsonAthlete($("#textNom2")[0].value, 2);
 }
 
+function chargeJsonRecordsPays(numSelection, p_id_pays, p_sexe){
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+			 var reponseGetRecords = this.responseText;
+			 
+			 var jsonData = JSON.parse(reponseGetRecords);
 
+			 if (numSelection == 1){
+				recordsSel1 = jsonData;
+			} else {
+				recordsSel2 = jsonData;
+			}
+
+			 var laTable = $("#table_ecarts").DataTable();
+			 
+			 laTable.clear();
+			 
+			 for (var i = 0; i < listeEpreuves.length; i++) {
+
+				var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+				var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+
+				if (sel1.length == 0 && sel2.length == 0){
+					// rien, pas de record ni pour aucun des deux sélections
+				}
+				// sel1 null, sel2 non null
+				else if (sel1.length == 0){
+					laTable.row.add({e : listeEpreuves[i], nom1 : '', perf1 :  '', nom2 : sel2.nom,  perf2 : sel2.perf, ecart : ''}).draw();
+				}
+				// sel1 non null, sel2 null
+				else if (sel2.length == 0){
+					laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : '',  perf2 : '', ecart : ''}).draw();
+				}
+				// les deux sélections avec perf
+				else {
+					var compute = computeEcarts(sel1.perf, sel2.perf);
+					laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+				}
+			}
+			drawChart();
+		}
+	};
+	if (p_sexe == 0){p_sexe = 1;}
+	if (p_sexe == 1){p_sexe = 0;}
+	xmlhttp.open("GET", "getRecordsPays.php?id_pays=" + p_id_pays + "&sexe=" + p_sexe, true);
+	xmlhttp.send();
+	
+}
 function chargeJsonClub(p_nom, numSelectionClub, p_sexe){
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {

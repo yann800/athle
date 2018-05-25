@@ -20,15 +20,7 @@ public class GetNomPays {
 	public static void main(String[] args) throws Exception {
 		Map<Integer, String> map = getMap();
 		for (Integer num : map.keySet()) {
-			System.out.println(num + " " + map.get(num)
-					.replace("Records de ", "")
-					.replace("Records des ", "")
-					.replace("Records du ", "")
-					.replace("Records d’", "")
-					.replace("Records d'", "")
-					.replace("d'athlétisme", "")
-
-			);
+			System.out.println("INSERT INTO pays(id, nom) VALUES (" + num + ", '" + map.get(num) + "');");
 		}
 	}
 
@@ -49,14 +41,28 @@ public class GetNomPays {
 		}
 
 		for (String f : fichiers) {
+			if (f.equals(".gitignore")) {
+				continue;
+			}
 			// System.out.println(f);
 			String nom = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\" + f);
 			int numero = Integer.parseInt(f.replace("pays(", "").replace(")", ""));
-			map.put(numero, nom);
+			map.put(numero, clean(nom));
 			// System.out.println(numero + " " + nom);
 		}
 
 		return map;
+	}
+
+	private static String clean(String nom) {
+		return nom
+				.replace("Records de ", "")
+				.replace("Records des ", "")
+				.replace("Records du ", "")
+				.replace("Records d’", "")
+				.replace("Records d'", "")
+				.replace("d'athlétisme", "").trim();
+
 	}
 
 	//	private static void parcours(String repertoire) {

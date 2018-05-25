@@ -10,9 +10,15 @@ public class ParserRecordWiki {
 	private static final String CHAR_JOKER = "_";
 
 	public static void main(String[] args) {
-		String str = "3 septembre 1999";
+		// String str = "3 septembre 1999";
+		// System.out.println(getAnneeFromDate(str));
 
-		System.out.println(getAnneeFromDate(str));
+		// System.out.println(isDate("01/01/2013"));
+		// System.out.println(isDate("2013/01/01"));
+		// System.out.println(isPerf("10.01 er"));
+		// System.out.println(isPerf("Bolt Usain 454"));
+
+		System.out.println(cleanPerf("10.13 (+2,8 m/s)"));
 
 	}
 
@@ -84,7 +90,8 @@ public class ParserRecordWiki {
 		}
 	}
 
-	// on traite les td : epreuve, perf, nom, date
+	// on traite les td : [epreuve, perf, nom, date]
+	// Comme l'ordre n'est pas toujours le même, on reconnait la colonne en analysant la valeur
 	public static void traiteLine(String line, LigneRecordWiki lr) {
 
 		if (line.contains("Discipline")
@@ -108,28 +115,100 @@ public class ParserRecordWiki {
 		}
 		valeurTd = valeurTd.replace("__", "").replace("_", "");
 
-		if (lr.getEpreuve() == null) {
-			if (valeurTd.matches("\\d+.*")) {
-				valeurTd = valeurTd.replace(" ", "").replace("m", "").replace("&#160;", "");
-			}
-
-			lr.setEpreuve(valeurTd.replace(".", ""));
+		if (lr.getEpreuve() == null && isEpreuve(valeurTd)) {
+			lr.setEpreuve(cleanEpreuve(valeurTd));
 			return;
 		}
 
-		if (lr.getPerf() == null) {
-			lr.setPerf(valeurTd);
+		if (lr.getPerf() == null && isPerf(valeurTd)) {
+			lr.setPerf(cleanPerf(valeurTd));
 			return;
 		}
-		if (lr.getNom() == null) {
-			lr.setNom(valeurTd);
+		if (lr.getNom() == null && isNom(valeurTd)) {
+			lr.setNom(valeurTd.replace("'", " "));
 			return;
 		}
-		if (lr.getAnnee() == 0) {
+		if (lr.getAnnee() == 0 && isDate(valeurTd)) {
 			if (getAnneeFromDate(valeurTd) != -1) {
 				lr.setAnnee(getAnneeFromDate(valeurTd));
 			}
 		}
+	}
+
+	private static String cleanEpreuve(String str) {
+		if (str.matches("\\d+.*")) {
+			str = str.replace("&#160;", "");
+
+			if (str.contains("steeple") || str.contains("steeple")) {
+				str = str.replace("m", "");
+			} else {
+				str = str.replace(" ", "").replace("m", "");
+			}
+		}
+
+		str = str.replace(" 000", "000").replace("ètres", "").replace("kilo", "");
+		str = str.replace(".", "").replace("  ", " ").replace(" 000", "000").replace("ètres", "").replace("kilo", "");
+		str = str.replace("haies", "H");
+
+		return str;
+	}
+
+	private static boolean isNom(String str) {
+		boolean bContient3Caracteres = str.matches(".*[a-zA-Z]{4}.*");
+		return bContient3Caracteres;
+	}
+
+	private static boolean isDate(String str) {
+		boolean bContient4Chiffres = str.matches(".*[0-9]{4}.*");
+		return bContient4Chiffres;
+	}
+
+	private static boolean isPerf(String str) {
+
+		if (str.matches(".*[a-zA-Z]{4}.*")) {
+			return false;
+		}
+
+		boolean bContient2Chiffres = str.matches(".*[0-9]{2}.*");
+		return bContient2Chiffres;
+	}
+
+	private static boolean isEpreuve(String str) {
+		if (str.startsWith("100") || str.startsWith("200") || str.startsWith("400")
+				|| str.startsWith("800") || str.startsWith("1500") || str.startsWith("3000")
+				|| str.startsWith("1 500") || str.startsWith("3 000")
+				|| str.startsWith("50")
+				|| str.startsWith("10 000")
+				|| str.startsWith("110")
+				|| str.startsWith("Semi")
+				|| str.startsWith("Marathon")
+				|| str.startsWith("Lancer")
+				|| str.startsWith("Saut")
+				|| str.startsWith("Triple")
+				|| str.startsWith("Décathlon")
+				|| str.startsWith("Heptathlon")) {
+			return true;
+		}
+		if (str.contains("steeple") || str.contains("arche")) {
+			return true;
+		}
+		if (str.contains("auteur") || str.contains("ongueur")) {
+			return true;
+		}
+		return false;
+	}
+
+	private static String cleanPerf(String perf) {
+
+
+		String patternParenthes = "\\([^\\)]*\\)";
+
+		perf = perf.replaceAll(patternParenthes, "");
+
+		perf = perf.replace("&#160;", "").replace(" points", "").replace("points", "");
+		perf = perf.replace(" min ", ".").replace(" s ", ".");
+
+		return perf.trim();
 	}
 
 }

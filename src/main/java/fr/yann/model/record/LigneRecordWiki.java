@@ -49,8 +49,10 @@ public class LigneRecordWiki {
 
 		String result = str.replace("''", ".")
 				.replace("'", ".")
+				.replace(",", ".")
 				.replace("&#160;", "")
 				.replace(" s ", ".")
+				.replace("s", ".")
 				.replace(" min ", ".")
 				.trim();
 
