@@ -18,7 +18,7 @@ public class ParserRecordWiki {
 		// System.out.println(isPerf("10.01 er"));
 		// System.out.println(isPerf("Bolt Usain 454"));
 
-		System.out.println(cleanPerf("10.13 (+2,8 m/s)"));
+		// System.out.println(cleanPerf("10.13 (+2,8 m/s)", "100"));
 
 	}
 
@@ -121,7 +121,7 @@ public class ParserRecordWiki {
 		}
 
 		if (lr.getPerf() == null && isPerf(valeurTd)) {
-			lr.setPerf(cleanPerf(valeurTd));
+			lr.setPerf(valeurTd);
 			return;
 		}
 		if (lr.getNom() == null && isNom(valeurTd)) {
@@ -197,18 +197,4 @@ public class ParserRecordWiki {
 		}
 		return false;
 	}
-
-	private static String cleanPerf(String perf) {
-
-
-		String patternParenthes = "\\([^\\)]*\\)";
-
-		perf = perf.replaceAll(patternParenthes, "");
-
-		perf = perf.replace("&#160;", "").replace(" points", "").replace("points", "");
-		perf = perf.replace(" min ", ".").replace(" s ", ".");
-
-		return perf.trim();
-	}
-
 }

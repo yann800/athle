@@ -18,6 +18,11 @@ public class TraiteFichierRecordsWiki {
 
 
 		for (Integer num : map.keySet()) {
+			
+			if (num != 81){
+				continue;
+			}
+			
 			System.out.println();
 			List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays(" + num + ")", num);
 
@@ -73,6 +78,13 @@ public class TraiteFichierRecordsWiki {
 					if (lr.getEpreuve().contains("thlon")) {
 						continue;
 					}
+					
+					if (lr.getPerf() == null){
+						System.err.println("-- " + lr.getEpreuve());
+						continue;
+					}
+					
+					lr.setPerf(cleanPerf(lr.getPerf(), lr.getEpreuve()));
 					listeRecords.add(lr);
 				}
 				continue;
@@ -92,4 +104,23 @@ public class TraiteFichierRecordsWiki {
 		fr.close();
 		return listeRecords;
 	}
+	
+	private static String cleanPerf(String perf, String epreuve) {
+
+		String patternParenthes = "\\([^\\)]*\\)";
+
+		perf = perf.replaceAll(patternParenthes, "");
+
+		perf = perf.replace("&#160;", "").replace(" points", "").replace("points", "");
+		perf = perf.replace(" min ", ".").replace(" s ", ".");
+
+		// cas des chronos
+		if (epreuve.contains("00")){
+			perf = perf.replace(" A", "");
+		}
+		
+		
+		return perf.trim();
+	}
+
 }
