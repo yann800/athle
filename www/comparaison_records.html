@@ -506,12 +506,10 @@ function drawChart() {
 <script type="text/javascript">
 function selection1(){
 	recordsSel1 = selectionNum(1);
-	selection();
 }
 
 function selection2(){
 	recordsSel2 = selectionNum(2);
-	selection();
 }
 
 
@@ -968,6 +966,7 @@ function chargeJsonRecordsPays(numSelection, p_id_pays, p_sexe){
 			} else {
 				recordsSel2 = jsonData;
 			}
+			selection();
 		}
 	};
 	if (p_sexe == 0){p_sexe = 1;}
