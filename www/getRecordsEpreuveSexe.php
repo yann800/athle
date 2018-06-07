@@ -62,7 +62,7 @@ else {
 	while($row = mysql_fetch_assoc($req)){
 	// NEW while($row = $result->fetch_assoc()) {
 		if ($hint === "") {
-			$hint = '{ "record": [{"rang":"' . $row["rang"] . '","perf":"' . $row["perf"] . '","pays":"' . $row["pays"] . '","athlete":"' . $row["athlete"] . '","annee":"' . $row["annee"] . '"}';
+			$hint = '{ "records": [{"rang":"' . $row["rang"] . '","perf":"' . $row["perf"] . '","pays":"' . $row["pays"] . '","athlete":"' . $row["athlete"] . '","annee":"' . $row["annee"] . '"}';
 		} else {
 			$hint .=            ',{"rang":"' . $row["rang"] . '","perf":"' . $row["perf"] . '","pays":"' . $row["pays"] . '","athlete":"' . $row["athlete"] . '","annee":"' . $row["annee"] . '"}';
 		}
@@ -70,6 +70,6 @@ else {
 	$hint .= ']}';
 }
 
-echo $hint === "" ? '{"record" : [ {"e" : "100", "nom" : "pays non trouvé","perf" : "10.00"}, {"e" : "200", "nom" : "pays nom trouvé", "perf" : "20.00"}]}' : $hint;
+echo $hint === "" ? '{"records" : [ {"e" : "100", "nom" : "pays non trouvé","perf" : "10.00"}, {"e" : "200", "nom" : "pays nom trouvé", "perf" : "20.00"}]}' : $hint;
 
 ?>
