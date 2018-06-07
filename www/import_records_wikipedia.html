@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<link href="politique.css" media="screen" rel="stylesheet" type="text/css" />-->
+<title>Records nationnaux</title>
+<link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+th, td {
+padding:5px
+}
+
+</style>
+
+</head>
+<body>
+	<div class="content">
+
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+		
+<h2>Pages Wikipedia des records nationnaux --&gt; MySQL</h2>
+
+<ul><li>itération sur chaque URL
+<li>itération  sur chaque ligne. On ignore si on n'est pas au sein du <code>tr</code> d'une <code>table</code>.
+<li>remplacement toute les balises HTML par "_" 
+<br/><br/><pre style="width:400px">
+ String patternCleanHtml = "&lt;[^>]*>";
+ Pattern p1 = Pattern.compile(patternCleanHtml);
+ Matcher m1 = p1.matcher(str);
+ String strPlainText = m1.replaceAll("_");
+</pre>
+
+<li>pour chaque valeur de cellule, détection si <code>isEpreuve() isNom() isPerf() isDate()</code> (l'ordre des colonnes est variable selon les pays)</li>
+<li>INSERT INTO MySQL</li>
+</ul>
+
+
+
+<h2>Rang des pays par épreuve</h2>
+<pre style="width:600px">
+-- param pays, sexe
+
+SELECT r_param.epreuve, count(r_best.perf) FROM record r_best
+JOIN record r_param ON r_param.epreuve = r_best.epreuve 
+WHERE r_param.idPays = 1789 AND r_param.sexe = 0
+AND r_best.sexe = 0 AND r_best.perf &lt; r_param.perf
+GROUP BY r_param.epreuve
+ORDER BY r_param.epreuve</pre>
+
+<table style="border-style:solid;font-size: 11px" border="1px">
+<th>épreuve</th>
+<th>rang</th>
+<th>pays devant</th>
+
+<tr><td>100</td><td>42</td><td>...</td></tr>
+<tr><td>10000</td><td>3</td><td>...</td></tr>
+<tr><td>200</td><td>5</td><td>...</td></tr>
+<tr><td>3000</td><td>3</td><td>...</td></tr>
+<tr><td>400</td><td>11</td><td>...</td></tr>
+<tr><td>800</td><td>5</td><td>...</td></tr>
+<tr><td>Triple saut</td><td>49</td><td>...</td></tr>
+</table>
+
+<h2>Ancienneté des records</h2>
+<pre>SELECT epreuve, AVG(annee) FROM record GROUP BY epreuve</pre>
+
+
+
+
+</div>
+</div>
+</body>
+</html>
