@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="author" content="Yann Abd-el-Kader"> 
+	<meta name="description" content="requêtes SQL avancées sur base athlétisme"> 
+	<meta name="keyword" content="SQL athlétisme requêtes avancées"> 
+	<meta property="og:title" content="SQL athlétisme requêtes avancées" />
+	<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
+	
+	<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+	<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+	<link rel="manifest" href="/manifest.json">
+	
+	<title>SQL et athl&eacute;tisme</title>
+
+</head>
+
+<body>
+
+	<article class="content">
+
+		<div class="col-sm-2"></div>
+
+		<div class="col-sm-8">
+
+			<nav class="navbar" role="navigation" id="menu"></nav>
+		
+<h2>Sélection du pays</h2>
+
+			<table class="table table-striped table-bordered table-hover table-condensed" id="example">
+				<thead>
+					<tr>
+						<th>Pays</th>
+						<th>Continent</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+	<tr>
+		<td><a href="">Algeria</a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Angola </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Benin </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Botswana </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Burkina Faso </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Burundi </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Cameroon </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Cape Verde </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Central African Republic </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Chad </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Comoros </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Democratic Republic of the Congo </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Republic of the Congo </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Djibouti </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Egypt </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Equatorial Guinea </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Eritrea </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Ethiopia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Gabon </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">The Gambia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Ghana </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Guinea </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Guinea-Bissau </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Ivory Coast </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Kenya </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Lesotho </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Liberia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Libya </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Madagascar </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Malawi </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Mali </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Mauritania </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Mauritius </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Morocco </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Mozambique </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Namibia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Niger </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Nigeria </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Rwanda </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">São Tomé and Príncipe </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Senegal </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Seychelles </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Sierra Leone </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Somalia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">South Africa </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">South Sudan </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Sudan </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Swaziland </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Tanzania </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Togo </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Tunisia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Uganda </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Zambia </a></td><td>Afrique</td>
+	</tr>
+	<tr>
+		<td><a href="">Zimbabwe</a></td><td>Afrique</td>
+	</tr>
+
+<!-- ====================================== -->
+<tr><td><a href="">Afghanistan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Bahrain</a></td><td>Asie</td></tr>
+<tr><td><a href="">Bangladesh</a></td><td>Asie</td></tr>
+<tr><td><a href="">Bhutan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Brunei</a></td><td>Asie</td></tr>
+<tr><td><a href="">Cambodia</a></td><td>Asie</td></tr>
+<tr><td><a href="">China</a></td><td>Asie</td></tr>
+<tr><td><a href="">Chinese Taipei</a></td><td>Asie</td></tr>
+<tr><td><a href="">East Timor</a></td><td>Asie</td></tr>
+<tr><td><a href="">Hong Kong</a></td><td>Asie</td></tr>
+<tr><td><a href="">India</a></td><td>Asie</td></tr>
+<tr><td><a href="">Indonesia</a></td><td>Asie</td></tr>
+<tr><td><a href="">Iran</a></td><td>Asie</td></tr>
+<tr><td><a href="">Iraq</a></td><td>Asie</td></tr>
+<tr><td><a href="">Japan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Jordan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Kazakhstan</a></td><td>Asie</td></tr>
+<tr><td><a href="">North Korea</a></td><td>Asie</td></tr>
+<tr><td><a href="">South Korea</a></td><td>Asie</td></tr>
+<tr><td><a href="">Kuwait</a></td><td>Asie</td></tr>
+<tr><td><a href="">Kyrgyzstan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Laos</a></td><td>Asie</td></tr>
+<tr><td><a href="">Lebanon</a></td><td>Asie</td></tr>
+<tr><td><a href="">Macau</a></td><td>Asie</td></tr>
+<tr><td><a href="">Malaysia</a></td><td>Asie</td></tr>
+<tr><td><a href="">Maldives</a></td><td>Asie</td></tr>
+<tr><td><a href="">Mongolia</a></td><td>Asie</td></tr>
+<tr><td><a href="">Myanmar</a></td><td>Asie</td></tr>
+<tr><td><a href="">Nepal</a></td><td>Asie</td></tr>
+<tr><td><a href="">Oman</a></td><td>Asie</td></tr>
+<tr><td><a href="">Pakistan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Palestine</a></td><td>Asie</td></tr>
+<tr><td><a href="">Philippines</a></td><td>Asie</td></tr>
+<tr><td><a href="">Qatar</a></td><td>Asie</td></tr>
+<tr><td><a href="">Saudi Arabia</a></td><td>Asie</td></tr>
+<tr><td><a href="">Singapore</a></td><td>Asie</td></tr>
+<tr><td><a href="">Sri Lanka</a></td><td>Asie</td></tr>
+<tr><td><a href="">Syria</a></td><td>Asie</td></tr>
+<tr><td><a href="">Tajikistan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Thailand</a></td><td>Asie</td></tr>
+<tr><td><a href="">Turkmenistan</a></td><td>Asie</td></tr>
+<tr><td><a href="">United Arab Emirates</a></td><td>Asie</td></tr>
+<tr><td><a href="">Uzbekistan</a></td><td>Asie</td></tr>
+<tr><td><a href="">Vietnam</a></td><td>Asie</td></tr>
+<tr><td><a href="">Yemen</a></td><td>Asie</td></tr>
+
+<tr><td><a href="">Anguilla</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Antigua and Barbuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Aruba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Bahamas</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Barbados</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Belize</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Bermuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">British Virgin Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Canada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Cayman Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Costa Rica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Cuba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Curaçao</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Dominica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Dominican Republic</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">El Salvador</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Grenada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Guatemala</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Haiti</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Honduras</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Jamaica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Mexico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Montserrat</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Netherlands Antilles</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Nicaragua</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Puerto Rico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Saint Kitts and Nevis</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Saint Lucia</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Saint Vincent and the Grenadines</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Trinidad and Tobago</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">Turks and Caicos Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a href="">United States</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+
+
+<tr><td><a href="">Argentina</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Bolivia</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Brazil</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Chile</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Colombia</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Ecuador</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Guyana</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Panama</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Paraguay</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Peru</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Suriname</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Uruguay</a></td><td>Amérique Sud</td></tr>
+<tr><td><a href="">Venezuela</a></td><td>Amérique Sud</td></tr>
+
+<!-- ====================================== -->
+<tr><td><a href="">American Samoa</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Australia</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Cook Islands</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Federated States of Micronesia</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Fiji</a></td><td>Océanie</td></tr>
+<tr><td><a href="">French Polynesia</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Guam</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Kiribati</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Marshall Islands</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Nauru</a></td><td>Océanie</td></tr>
+<tr><td><a href="">New Caledonia</a></td><td>Océanie</td></tr>
+<tr><td><a href="">New Zealand</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Niue</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Norfolk Island</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Northern Mariana Islands</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Palau</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Papua New Guinea</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Samoa</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Solomon Islands</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Tonga</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Tuvalu</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Vanuatu</a></td><td>Océanie</td></tr>
+<tr><td><a href="">Wallis and Futuna</a></td><td>Océanie</td></tr>
+<!-- ====================================== -->
+
+<tr><td><a href="">Albania</a></td><td>Europe</td></tr>
+<tr><td><a href="">Andorra</a></td><td>Europe</td></tr>
+<tr><td><a href="">Armenia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Austria</a></td><td>Europe</td></tr>
+<tr><td><a href="">Azerbaijan</a></td><td>Europe</td></tr>
+<tr><td><a href="">Belarus</a></td><td>Europe</td></tr>
+<tr><td><a href="">Belgium</a></td><td>Europe</td></tr>
+<tr><td><a href="">Bosnia and Herzegovina</a></td><td>Europe</td></tr>
+<tr><td><a href="">Bulgaria</a></td><td>Europe</td></tr>
+<tr><td><a href="">Croatia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Cyprus</a></td><td>Europe</td></tr>
+<tr><td><a href="">Czech Republic</a></td><td>Europe</td></tr>
+<tr><td><a href="">Denmark</a></td><td>Europe</td></tr>
+<tr><td><a href="">Estonia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Finland</a></td><td>Europe</td></tr>
+<tr><td><a href="">France</a></td><td>Europe</td></tr>
+<tr><td><a href="">Georgia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Germany</a></td><td>Europe</td></tr>
+<tr><td><a href="">Gibraltar</a></td><td>Europe</td></tr>
+<tr><td><a href="">Great Britain and N.I.</a></td><td>Europe</td></tr>
+<tr><td><a href="">England</a></td><td>Europe</td></tr>
+<tr><td><a href="">Scotland</a></td><td>Europe</td></tr>
+<tr><td><a href="">Greece</a></td><td>Europe</td></tr>
+<tr><td><a href="">Hungary</a></td><td>Europe</td></tr>
+<tr><td><a href="">Iceland</a></td><td>Europe</td></tr>
+<tr><td><a href="">Ireland</a></td><td>Europe</td></tr>
+<tr><td><a href="">Israel</a></td><td>Europe</td></tr>
+<tr><td><a href="">Italy</a></td><td>Europe</td></tr>
+<tr><td><a href="">masters</a></td><td>Europe</td></tr>
+<tr><td><a href="">Kosovo</a></td><td>Europe</td></tr>
+<tr><td><a href="">Latvia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Liechtenstein</a></td><td>Europe</td></tr>
+<tr><td><a href="">Lithuania</a></td><td>Europe</td></tr>
+<tr><td><a href="">Luxembourg</a></td><td>Europe</td></tr>
+<tr><td><a href="">Republic of Macedonia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Malta</a></td><td>Europe</td></tr>
+<tr><td><a href="">Moldova</a></td><td>Europe</td></tr>
+<tr><td><a href="">Monaco</a></td><td>Europe</td></tr>
+<tr><td><a href="">Montenegro</a></td><td>Europe</td></tr>
+<tr><td><a href="">Netherlands</a></td><td>Europe</td></tr>
+<tr><td><a href="">Norway</a></td><td>Europe</td></tr>
+<tr><td><a href="">Poland</a></td><td>Europe</td></tr>
+<tr><td><a href="">Portugal</a></td><td>Europe</td></tr>
+<tr><td><a href="">Romania</a></td><td>Europe</td></tr>
+<tr><td><a href="">Russia</a></td><td>Europe</td></tr>
+<tr><td><a href="">San Marino</a></td><td>Europe</td></tr>
+<tr><td><a href="">Serbia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Slovakia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Slovenia</a></td><td>Europe</td></tr>
+<tr><td><a href="">Spain</a></td><td>Europe</td></tr>
+<tr><td><a href="">Sweden</a></td><td>Europe</td></tr>
+<tr><td><a href="">Switzerland</a></td><td>Europe</td></tr>
+<tr><td><a href="">Turkey</a></td><td>Europe</td></tr>
+<tr><td><a href="">Ukraine</a></td><td>Europe</td></tr>
+
+				</tbody>
+			</table>
+
+
+
+<h2>Rang de la France par épreuve</h2>
+
+<div class="panel panel-default pull-right">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Le code</a></h4>
+		</div>
+		<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+
+On est obligé de pré-calculer les rangs.
+Donc <code>ALTER TABLE record ADD rang INT NOT NULL AFTER perf;</code>
+<br/>Puis en Java, itération sur tous les pays, sur toutes les épreuves SET rang. 
+			
+<br/>
+Calcul :
+<br/>
+<pre style="width:600px">
+-- param pays, sexe
+SELECT r_param.epreuve, count(r_best.perf) FROM record r_best
+JOIN record r_param ON r_param.epreuve = r_best.epreuve 
+WHERE r_param.idPays = 1789 AND r_param.sexe = 0
+AND r_best.sexe = 0 AND r_best.perf &lt; r_param.perf
+GROUP BY r_param.epreuve
+ORDER BY r_param.epreuve</pre>
+
+
+
+		</div>
+</div></div>
+<div style="clear:both"></div>
+
+
+			<table class="table table-striped table-bordered table-hover table-condensed" id="table_pays_sel">
+				<thead>
+					<tr>
+<th>&Eacute;preuve</th>
+<th>Rang</th>
+<th>Pays devant</th>
+					</tr>
+				</thead>
+				<tbody>
+
+<tr><td>100</td><td>42</td><td>...</td></tr>
+<tr><td>10000</td><td>3</td><td>...</td></tr>
+<tr><td>200</td><td>5</td><td>...</td></tr>
+<tr><td>3000</td><td>3</td><td>...</td></tr>
+<tr><td>400</td><td>11</td><td>...</td></tr>
+<tr><td>800</td><td>5</td><td>...</td></tr>
+<tr><td>Triple saut</td><td>49</td><td>...</td></tr>
+</table>
+
+	</div>
+</article>
+	<script src="js/menu.js" type="text/javascript"></script>
+	<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+
+		$('.dropdown-toggle').dropdown();
+
+	</script>
+	<script>document.getElementById("records").setAttribute("class", "active");</script>
+</body>
+</html>

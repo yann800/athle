@@ -13,8 +13,9 @@ CREATE TABLE IF NOT EXISTS pays (
 
 CREATE TABLE IF NOT EXISTS record (
   id int(11) NOT NULL AUTO_INCREMENT,
-  epvreuve VARCHAR(65) DEFAULT '0',
+  epreuve VARCHAR(65) DEFAULT '0',
   perf varchar(12) NOT NULL,
+  rang int(11) DEFAULT NULL AUTO,
   nom varchar(30) NOT NULL,
   sexe int(1) NOT NULL DEFAULT '0',
   naissance int(11) NOT NULL,
