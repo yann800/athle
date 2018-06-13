@@ -1,6 +1,8 @@
 package fr.yann.model.enums;
 
 public enum EpreuveEnum {
+	COURSE_100("100"),
+	COURSE_200("200"),
 	COURSE_400("400"),
 	COURSE_400_HAIES("400H"),
 	COURSE_800("800"),
