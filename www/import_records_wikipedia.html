@@ -15,7 +15,7 @@ padding:5px
 
 </head>
 <body>
-	<div class="content">
+	<article class="content">
 
 		<div class="col-sm-2"></div>
 		<div class="col-sm-8">
@@ -32,11 +32,21 @@ Dans un second temps, importation des pages <a href="https://en.wikipedia.org/wi
 bien plus complètes comme on aurait pu s'en douter...  
 </p>
 
-<ul><li>itération sur chaque URL
+
+
+<ul>
+<li>enregistrement de chaque page<pre style="width:650px;font-size: 11px">for (String url : urls) {
+	Path p = FileSystems.getDefault().getPath("./record", "pays" + num + ".html");
+	URL website = new URL(url);
+	try (InputStream in = website.openStream()) {
+		Files.copy(in, p, StandardCopyOption.REPLACE_EXISTING);
+	}
+}</pre></li>
+<li>itération sur chaque page</li>
 <li>itération  sur chaque ligne. On ignore si on n'est pas au sein du <code>tr</code> d'une <code>table</code>.
 <li>remplacement toute les balises HTML par "_" 
-<br/><br/><pre style="width:400px">
- String patternCleanHtml = "&lt;[^>]*>";
+<br/><br/><pre style="width:400px;font-size: 11px">
+ String patternCleanHtml = "&lt;[^&gt;]*&gt;";
  Pattern p1 = Pattern.compile(patternCleanHtml);
  Matcher m1 = p1.matcher(str);
  String strPlainText = m1.replaceAll("_");
@@ -55,6 +65,7 @@ bien plus complètes comme on aurait pu s'en douter...
 
 </div>
 </article>
+
 	<script src="js/menu.js" type="text/javascript"></script>
 	<script type="text/javascript" class="init">
 		$(document).ready(function() {
