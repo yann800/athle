@@ -11,27 +11,64 @@
 <link href="../css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="../css/athle.css" media="screen" rel="stylesheet" type="text/css" />
 
+<script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 
 <style type="text/css">
 td {
 	font-size: 11px
 }
+
 .good {
-width: 60.0pt;
-border: none;
-border-right: solid windowtext 1.0pt;
-padding: 0cm 3.5pt 0cm 3.5pt;
-height: 15.0pt;
-background-color: #d5f8d5;
+	width: 60.0pt;
+	border: none;
+	border-right: solid windowtext 1.0pt;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	height: 15.0pt;
+	background-color: #d5f8d5;
 }
+
 .bad {
-width: 60.0pt;
-border: none;
-border-right: solid windowtext 1.0pt;
-padding: 0cm 3.5pt 0cm 3.5pt;
-height: 15.0pt;
-background-color: #ffd8d8;
+	width: 60.0pt;
+	border: none;
+	border-right: solid windowtext 1.0pt;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	height: 15.0pt;
+	background-color: #ffd8d8;
+}
+
+.c0 {
+	width: 60.0pt;
+	border: none;
+	border-top: solid windowtext 1.0pt;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	height: 15.0pt;
+}
+
+.c1 {
+	width: 60.0pt;
+	border-top: none;
+	border-left: solid windowtext 1.0pt;
+	border-bottom: none;
+	border-right: solid windowtext 1.0pt;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	height: 15.0pt;
+}
+
+.c2 {
+	width: 60.0pt;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	height: 15.0pt
+}
+
+.c3 {
+	width: 60.0pt;
+	border: none;
+	padding: 0cm 3.5pt 0cm 3.5pt;
+	border-right: solid windowtext 1.0pt;
+	height: 15.0pt'
 }
 </style>
 
@@ -91,280 +128,214 @@ background-color: #ffd8d8;
 				<table>
 					<tr>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
 						<td
 							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Argentine</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Argentine</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Argentine</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Argentine</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Uruguay</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Uruguay</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Portugal</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Uruguay</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Mexique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Mexique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Belgique</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Belgique</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Belgique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Belgique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Belgique</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Belgique</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Japon</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
+						<td class="c1">Japon</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3">Croatie</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Espagne</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Espagne</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Russie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Russie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Croatie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Croatie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Croatie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Danemark</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Danemark</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Croatie</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suisse</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suisse</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Colombie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Colombie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Colombie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Colombie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Colombie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Colombie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
@@ -385,280 +356,214 @@ background-color: #ffd8d8;
 				<table>
 					<tr>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
 						<td
 							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Argentine</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Argentine</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Argentine</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Argentine</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Uruguay</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Uruguay</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Portugal</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Brésil</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Mexique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Mexique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Brésil</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Belgique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Belgique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Belgique</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Belgique</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Japon</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
+						<td class="c1">Japon</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3">Brésil</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Espagne</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Russie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Russie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Russie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Russie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Croatie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Croatie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Croatie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Danemark</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Danemark</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Croatie</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Suisse</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Suisse</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suisse</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suisse</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Suisse</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Suisse</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Colombie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Colombie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Angleterre</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
@@ -678,280 +583,214 @@ background-color: #ffd8d8;
 				<table>
 					<tr>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
 						<td
 							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
+						<td class="c1">&nbsp;</td>
 						<td class="bad">France</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Argentine</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Argentine</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">France</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Uruguay</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Uruguay</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Portugal</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Portugal</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">France</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Mexique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Mexique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Brésil</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Belgique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Belgique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Belgique</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Belgique</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Japon</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
+						<td class="c1">Japon</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3">France</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Espagne</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Russie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Russie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Russie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Russie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Croatie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Croatie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Croatie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Danemark</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Danemark</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Croatie</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suisse</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suisse</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Colombie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Colombie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Colombie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Colombie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Colombie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Colombie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
@@ -974,280 +813,214 @@ background-color: #ffd8d8;
 				<table>
 					<tr>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
 						<td
 							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
+						<td class="c1">&nbsp;</td>
 						<td class="good">Argentine</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Argentine</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Argentine</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Uruguay</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Uruguay</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Uruguay</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Portugal</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Brésil</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Mexique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Mexique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Brésil</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Belgique</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Belgique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Belgique</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Belgique</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Japon</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Brésil</td>
+						<td class="c1">Japon</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3">Brésil</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Espagne</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Russie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Russie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Russie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Russie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Russie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Russie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Croatie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Croatie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Croatie</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Croatie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Danemark</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Danemark</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Russie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Russie</td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suède</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Suisse</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Suisse</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Suisse</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Suisse</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
 						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Angleterre</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							Colombie</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>&nbsp;</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">Colombie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td
-							style='width: 60.0pt; border-top: none; border-left: solid windowtext 1.0pt; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>
-
-							&nbsp;</td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Angleterre</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
@@ -1272,25 +1045,226 @@ background-color: #ffd8d8;
 				<table>
 					<tr>
 						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>c'est des mauvais</td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style='width: 60.0pt; border: none; border-top: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
 						<td
 							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
-<tr>
-										<td style="border-bottom: solid windowtext 1.0pt;"></td>
+					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="bad">France</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
+						<td class="c1">Argentine</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">France</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
+						<td class="c1">Uruguay</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Uruguay</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
+						<td class="c1">Portugal</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Belgique</td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
+						<td class="c1">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Brésil</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
+						<td class="c1">Mexique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Belgique</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
+						<td class="c1">Belgique</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Belgique</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
+						<td class="c1">Japon</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3">Croatie</td>
+					</tr>
+					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
+						<td class="c1">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Espagne</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
+						<td class="c1">Russie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Croatie</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
+						<td class="c1">Croatie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Croatie</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
+						<td class="c1">Danemark</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2">Croatie</td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
+						<td class="c1">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Suède</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
+						<td class="c1">Suisse</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
+						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2">Angleterre</td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
+						<td class="c1">Colombie</td>
+						<td class="c3">&nbsp;</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
+						<td class="c1">&nbsp;</td>
+						<td class="c3">Angleterre</td>
+						<td class="c2"></td>
+						<td class="c2"></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='height: 15.0pt'>
+						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
+						<td style="border-bottom: solid windowtext 1.0pt;"></td>
 						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
 						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
 					</tr>
 				</table>
 
-
+<br/>
 			</div>
-
-
-
 
 
 		</div>
