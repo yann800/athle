@@ -18,57 +18,39 @@
 
 <style type="text/css">
 td {
-	font-size: 11px
-}
-
-.good {
+	font-size: 11px;
 	width: 60.0pt;
-	border: none;
-	border-right: solid windowtext 1.0pt;
 	padding: 0cm 3.5pt 0cm 3.5pt;
 	height: 15.0pt;
+}
+.good {
 	background-color: #d5f8d5;
 }
 
 .bad {
-	width: 60.0pt;
-	border: none;
-	border-right: solid windowtext 1.0pt;
-	padding: 0cm 3.5pt 0cm 3.5pt;
-	height: 15.0pt;
 	background-color: #ffd8d8;
 }
 
 .c0 {
-	width: 60.0pt;
 	border: none;
 	border-top: solid windowtext 1.0pt;
-	padding: 0cm 3.5pt 0cm 3.5pt;
-	height: 15.0pt;
+}
+
+.cHG {
+	border: solid windowtext 1.0pt;
+	border-bottom: none;
 }
 
 .c1 {
-	width: 60.0pt;
 	border-top: none;
 	border-left: solid windowtext 1.0pt;
 	border-bottom: none;
 	border-right: solid windowtext 1.0pt;
-	padding: 0cm 3.5pt 0cm 3.5pt;
-	height: 15.0pt;
-}
-
-.c2 {
-	width: 60.0pt;
-	padding: 0cm 3.5pt 0cm 3.5pt;
-	height: 15.0pt
 }
 
 .c3 {
-	width: 60.0pt;
 	border: none;
-	padding: 0cm 3.5pt 0cm 3.5pt;
 	border-right: solid windowtext 1.0pt;
-	height: 15.0pt'
 }
 </style>
 
@@ -88,36 +70,43 @@ td {
 
 			<h3>Classement des pronostics</h3>
 
-			<table class="table table-striped table-bordered">
+			<table id="table_pronostics" class="table table-striped table-bordered">
 				<thead>
 					<tr>
 
 						<th>Nom</th>
-						<th>Nombre bons pronostics</th>
+						<th>Bons pronostics</th>
+						<th>Mauvais pronostics</th>
 					</tr>
 				</thead>
 				<tr>
-					<td>Igor</td>
-					<td>...</td>
-				</tr>
-				<tr>
 					<td>Ilyas</td>
-					<td>...</td>
+					<td>5</td>
+					<td>0</td>
+				</tr>
+
+				<tr>
+					<td>Igor</td>
+					<td>4</td>
+					<td>1</td>
 				</tr>
 
 				<tr>
 					<td>Juliette</td>
-					<td>...</td>
+					<td>4</td>
+					<td>1</td>
 				</tr>
 
 				<tr>
 					<td>Olivier</td>
-					<td>...</td>
+					<td>4</td>
+					<td>1</td>
 				</tr>
 
 				<tr>
 					<td>Yann</td>
-					<td>...</td>
+					<td>4</td>
+					<td>1</td>
 				</tr>
 			</table>
 
@@ -127,677 +116,671 @@ td {
 
 				<table>
 					<tr>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
+						<td style='border: solid windowtext 1.0pt; border-bottom: none; height: 15.0pt'>France</td>
 						<td class="c0"></td>
 						<td class="c0"></td>
 						<td class="c0"></td>
-						<td
-							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Argentine</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 bad">Argentine</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
 						<td class="c1">Argentine</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Uruguay</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Uruguay</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
 						<td class="c1">Uruguay</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Uruguay</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Uruguay</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
 						<td class="c1">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Uruguay</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Brésil</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
 						<td class="c1">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Brésil</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
 						<td class="c1">Mexique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Belgique</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Brésil</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
 						<td class="c1">Belgique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Belgique</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
 						<td class="c1">Japon</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3">Croatie</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3">Brésil</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
 						<td class="c1">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Russie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
 						<td class="c1">Russie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Croatie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td >Croatie</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
 						<td class="c1">Croatie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Croatie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Croatie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
 						<td class="c1">Danemark</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Croatie</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Croatie</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
 						<td class="c1">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3">Suisse</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
 						<td class="c1">Suisse</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Colombie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Suisse</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
 						<td class="c1">Colombie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Colombie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3">Angleterre</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
+						<td style='border: solid windowtext 1.0pt; border-top: none; height: 15.0pt'>Angleterre</td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; height: 15.0pt'></td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 				</table>
-
-
-
 			</div>
+			
 			<div style="float: right;">
 
 				<h3>Pronostics Ilyas</h3>
 
 				<table>
 					<tr>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
+						<td style='border: solid windowtext 1.0pt; border-bottom: none; height: 15.0pt'>France</td>
 						<td class="c0"></td>
 						<td class="c0"></td>
 						<td class="c0"></td>
-						<td
-							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Argentine</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">France</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
 						<td class="c1">Argentine</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Uruguay</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Uruguay</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
 						<td class="c1">Uruguay</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Uruguay</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Uruguay</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
 						<td class="c1">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Brésil</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Brésil</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
 						<td class="c1">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Brésil</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
 						<td class="c1">Mexique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Brésil</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Brésil</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
 						<td class="c1">Belgique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Belgique</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
 						<td class="c1">Japon</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3">Brésil</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
 						<td class="c1">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Russie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Russie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
 						<td class="c1">Russie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Croatie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td >Croatie</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
 						<td class="c1">Croatie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Croatie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Croatie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
 						<td class="c1">Danemark</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Croatie</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Croatie</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
 						<td class="c1">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Suisse</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
 						<td class="c1">Suisse</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Suisse</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Suisse</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
 						<td class="c1">Colombie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Angleterre</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
+						<td style='border: solid windowtext 1.0pt; border-top: none; height: 15.0pt'>Angleterre</td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; height: 15.0pt'></td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 				</table>
-
 			</div>
 
-			<div style="float: left;">
+			<div style="float: left ;">
 
 				<h3>Pronostics Juliette</h3>
 
 				<table>
 					<tr>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
+						<td class="cHG">France</td>
 						<td class="c0"></td>
 						<td class="c0"></td>
 						<td class="c0"></td>
-						<td
-							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="bad">France</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">France</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
 						<td class="c1">Argentine</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">France</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>France</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
 						<td class="c1">Uruguay</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 bad">Portugal</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
 						<td class="c1">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">France</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>France</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
 						<td class="c1">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Brésil</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
 						<td class="c1">Mexique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Brésil</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Brésil</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
 						<td class="c1">Belgique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Belgique</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
 						<td class="c1">Japon</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3">France</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
 						<td class="c1">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Russie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Russie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
 						<td class="c1">Russie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Croatie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Croatie</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
 						<td class="c1">Croatie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Croatie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Croatie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
 						<td class="c1">Danemark</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Croatie</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Croatie</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
 						<td class="c1">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
 						<td class="c1">Suisse</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Colombie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Colombie</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
 						<td class="c1">Colombie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Colombie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
+						<td style='border: solid windowtext 1.0pt; border-top: none;'>Angleterre</td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt;'></td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt;'></td>
 					</tr>
 				</table>
 
@@ -805,470 +788,477 @@ td {
 
 
 			</div>
+
 
 			<div style="float: right;">
-
-				<h3>Pronostics Yann</h3>
-
-				<table>
-					<tr>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
-						<td class="c0"></td>
-						<td class="c0"></td>
-						<td class="c0"></td>
-						<td
-							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-					</tr>
-					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="good">Argentine</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
-						<td class="c1">Argentine</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Uruguay</td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
-						<td class="c1">Uruguay</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Uruguay</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
-						<td class="c1">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Brésil</td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
-						<td class="c1">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
-						<td class="c1">Mexique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Brésil</td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
-						<td class="c1">Belgique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Belgique</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
-						<td class="c1">Japon</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3">Brésil</td>
-					</tr>
-					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
-						<td class="c1">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Russie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
-						<td class="c1">Russie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Russie</td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
-						<td class="c1">Croatie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Croatie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
-						<td class="c1">Danemark</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Russie</td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
-						<td class="c1">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Suisse</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
-						<td class="c1">Suisse</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Angleterre</td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
-						<td class="c1">Colombie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Angleterre</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c3"></td>
-					</tr>
-					<tr style='height: 15.0pt'>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
-						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-					</tr>
-				</table>
-			</div>
-
-
-
-
-
-
-
-			<div style="float: left;">
 
 				<h3>Pronostics Olivier</h3>
 
 				<table>
 					<tr>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-bottom: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>France</td>
+						<td class="cHG">France</td>
 						<td class="c0"></td>
 						<td class="c0"></td>
 						<td class="c0"></td>
-						<td
-							style='width: 60.0pt; border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="bad">France</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">France</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
 						<td class="c1">Argentine</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">France</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>France</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
 						<td class="c1">Uruguay</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Uruguay</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Uruguay</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
 						<td class="c1">Portugal</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Belgique</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Belgique</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
 						<td class="c1">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Brésil</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Brésil</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
 						<td class="c1">Mexique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Belgique</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Belgique</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
 						<td class="c1">Belgique</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Belgique</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
 						<td class="c1">Japon</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3">Croatie</td>
 					</tr>
 					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
 						<td class="c1">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Espagne</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 bad">Espagne</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
 						<td class="c1">Russie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Croatie</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Croatie</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
 						<td class="c1">Croatie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
-						<td class="c3">Croatie</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c1"></td>
+						<td class="c3 good">Croatie</td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
 						<td class="c1">Danemark</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2">Croatie</td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Croatie</td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
 						<td class="c1">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Suède</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
 						<td class="c1">Suisse</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
-						<td style='width: 60.0pt; border: none; border-left: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2">Angleterre</td>
-						<td class="c2"></td>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Angleterre</td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
 						<td class="c1">Colombie</td>
-						<td class="c3">&nbsp;</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
-						<td class="c1">&nbsp;</td>
+						<td class="c1"></td>
 						<td class="c3">Angleterre</td>
-						<td class="c2"></td>
-						<td class="c2"></td>
+						<td></td>
+						<td></td>
 						<td class="c3"></td>
 					</tr>
 					<tr style='height: 15.0pt'>
-						<td style='width: 60.0pt; border: solid windowtext 1.0pt; border-top: none; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'>Angleterre</td>
+						<td style='border: solid windowtext 1.0pt; border-top: none; height: 15.0pt'>Angleterre</td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='width: 60.0pt; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; height: 15.0pt'></td>
 						<td style="border-bottom: solid windowtext 1.0pt;"></td>
-						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; padding: 0cm 3.5pt 0cm 3.5pt; height: 15.0pt'></td>
+						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
 					</tr>
 				</table>
 
-<br/>
+				<br />
+			</div>
+
+			<div style="float: left;">
+
+				<h3>Pronostics Yann</h3>
+
+				<table>
+					<tr>
+						<td style='border: solid windowtext 1.0pt; border-bottom: none; height: 15.0pt'>France</td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td class="c0"></td>
+						<td style='border-top: solid windowtext 1.0pt; border-left: none; border-bottom: none; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
+					</tr>
+					<tr style='mso-yfti-irow: 1; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="bad">Argentine</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 2; height: 15.0pt'>
+						<td class="c1">Argentine</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 3; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Uruguay</td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 4; height: 15.0pt'>
+						<td class="c1">Uruguay</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 5; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3 good">Uruguay</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 6; height: 15.0pt'>
+						<td class="c1">Portugal</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 7; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Brésil</td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 8; height: 15.0pt'>
+						<td class="c1">Brésil</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 9; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3 good">Brésil</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 10; height: 15.0pt'>
+						<td class="c1">Mexique</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 11; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Brésil</td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 12; height: 15.0pt'>
+						<td class="c1">Belgique</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 13; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3">Belgique</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 14; height: 15.0pt'>
+						<td class="c1">Japon</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3">Brésil</td>
+					</tr>
+					<tr style='mso-yfti-irow: 15; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 16; height: 15.0pt'>
+						<td class="c1">Espagne</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 17; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3 good">Russie</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 18; height: 15.0pt'>
+						<td class="c1">Russie</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 19; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Russie</td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 20; height: 15.0pt'>
+						<td class="c1">Croatie</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 21; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3 good">Croatie</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 22; height: 15.0pt'>
+						<td class="c1">Danemark</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 23; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td></td>
+						<td></td>
+						<td>Russie</td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 24; height: 15.0pt'>
+						<td class="c1">Suède</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 25; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3">Suisse</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 26; height: 15.0pt'>
+						<td class="c1">Suisse</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 27; height: 15.0pt'>
+						<td style='border: none; border-left: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td class="c3"></td>
+						<td>Angleterre</td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 28; height: 15.0pt'>
+						<td class="c1">Colombie</td>
+						<td class="c3"></td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='mso-yfti-irow: 29; height: 15.0pt'>
+						<td class="c1"></td>
+						<td class="c3">Angleterre</td>
+						<td></td>
+						<td></td>
+						<td class="c3"></td>
+					</tr>
+					<tr style='height: 15.0pt'>
+						<td style='border: solid windowtext 1.0pt; border-top: none; height: 15.0pt'>Angleterre</td>
+						<td style="border-bottom: solid windowtext 1.0pt;"></td>
+						<td style='border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; height: 15.0pt'></td>
+						<td style="border-bottom: solid windowtext 1.0pt;"></td>
+						<td style='border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; height: 15.0pt'></td>
+					</tr>
+				</table>
 			</div>
 
 
 		</div>
 	</article>
+	<!-- <script type="text/javascript" class="init">
+			$(document).ready(function() {
+			$('#table_pronostics').DataTable(
+					{
+				        "order": [[ 0, "asc" ]],
+				        paging: false
+					
+				    }
+			);
+		});
+
+		$('.dropdown-toggle').dropdown();
+
+	</script> -->
 
 	<script src="../js/menu.js" type="text/javascript"></script>
 	<!-- 	<script>document.getElementById("index").setAttribute("class", "active");</script> -->
