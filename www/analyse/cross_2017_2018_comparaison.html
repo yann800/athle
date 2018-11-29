@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross Inter IdF 05/02/2017 VS Val-de-Marne 17/11/2018</title>
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="../exercices/js/go.js"></script>
+<script id="code">
+function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",
+        {
+          initialContentAlignment: go.Spot.Center,
+          validCycle: go.Diagram.CycleNotDirected,  // don't allow loops
+          // For this sample, automatically show the state of the diagram's model on the page
+          "ModelChanged": function(e) {
+              if (e.isTransactionFinished) showModel();
+            },
+          "undoManager.isEnabled": true
+        });
+
+    // This template is a Panel that is used to represent each item in a Panel.itemArray.
+    // The Panel is data bound to the item object.
+    var fieldTemplate =
+      $(go.Panel, "TableRow",  // this Panel is a row in the containing Table
+        new go.Binding("portId", "name"),  // this Panel is a "port"
+        {
+          background: "transparent",  // so this port's background can be picked by the mouse
+          fromSpot: go.Spot.Right,  // links only go from the right side to the left side
+          toSpot: go.Spot.Left,
+          // allow drawing links from or to this port:
+          fromLinkable: false, toLinkable: true
+        },
+        $(go.Shape,
+          { width: 12, height: 12, column: 0, strokeWidth: 2, margin: 4,
+            // but disallow drawing links from or to this shape:
+            fromLinkable: false, toLinkable: false },
+          new go.Binding("figure", "figure"),
+          new go.Binding("fill", "color")),
+        $(go.TextBlock,
+          { margin: new go.Margin(0, 0), column: 1, font: "bold 13px sans-serif",
+            alignment: go.Spot.Left,
+            // and disallow drawing links from or to this text:
+            fromLinkable: false, toLinkable: false },
+          new go.Binding("text", "name")),
+        $(go.TextBlock,
+          { margin: new go.Margin(0, 0), column: 2, font: "13px sans-serif", alignment: go.Spot.Left },
+          new go.Binding("text", "info"))
+      );
+
+    // This template represents a whole "record".
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",
+        { movable: false,
+          copyable: false,
+          deletable: false },
+        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        // this rectangular shape surrounds the content of the node
+        $(go.Shape,
+          { fill: "#EEEEEE" }),
+        // the content consists of a header and a list of items
+        $(go.Panel, "Vertical",
+          // this is the header for the whole node
+          $(go.Panel, "Auto",
+            { stretch: go.GraphObject.Horizontal },  // as wide as the whole node
+            $(go.Shape,
+              { fill: "#1570A6", stroke: null }),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Center,
+                margin: 3,
+                stroke: "white",
+                textAlign: "center",
+                font: "bold 12pt sans-serif"
+              },
+              new go.Binding("text", "key"))),
+          // this Panel holds a Panel for each item object in the itemArray;
+          // each item Panel is defined by the itemTemplate to be a TableRow in this Table
+          $(go.Panel, "Table",
+            {
+              padding: 2,
+              minSize: new go.Size(100, 10),
+              defaultStretch: go.GraphObject.Horizontal,
+              itemTemplate: fieldTemplate
+            },
+            new go.Binding("itemArray", "fields")
+          )  // end Table Panel of items
+        )  // end Vertical Panel
+      );  // end Node
+
+    myDiagram.linkTemplate =
+      $(go.Link,
+        {
+          relinkableFrom: true, relinkableTo: true, // let user reconnect links
+          toShortLength: 4,  fromShortLength: 2
+        },
+        $(go.Shape, { strokeWidth: 1.5 }),
+        $(go.Shape, { toArrow: "Standard", stroke: null })
+      );
+
+    myDiagram.model =
+      $(go.GraphLinksModel,
+        {
+          linkFromPortIdProperty: "fromPort",
+          linkToPortIdProperty: "toPort",
+          nodeDataArray: [
+            { key: "Inter2017",
+              fields: [
+{ name: "JEMMAL Abdelghani", info: "36'39''", color:"#00BCF2"},
+{ name: "FAVIER Francois-rene", info: "36'47''", color:"#F7B84B"},
+{ name: "KHEZZANE Noreddine", info: "37'34''", color:"#00BCF2"},
+{ name: "CARANTON Laurent", info: "37'49''", color:"#F7B84B"},
+{ name: "ATMANI Khalid", info: "37'57''", color:"#00BCF2"},
+{ name: "VERDOL Widdy", info: "38'30''", color:"#00BCF2"},
+{ name: "MOUQUET Sylvain", info: "38'36''", color:"#00BCF2"},
+{ name: "ROUYER Thomas", info: "38'43''", color:"#00BCF2"},
+{ name: "BEN-HOUDJA Mohammed", info: "39'06''", color:"#00BCF2"},
+{ name: "EL YAMANI Mohammed", info: "39'11''", color:"#00BCF2"},
+{ name: "MERROUNE Mohamed", info: "39'11''", color:"#00BCF2"},
+{ name: "RUIZ Pascal", info: "39'13''", color:"#00BCF2"},
+{ name: "GUIVARCH Pierre-yves", info: "39'21''", color:"#00BCF2"},
+{ name: "JARRY Alain", info: "39'29''", color:"#00BCF2"},
+{ name: "PERCEVAULT Philippe", info: "39'33''", color:"#00BCF2"},
+{ name: "CHOUKRI Mohamed", info: "39'40''", color:"#00BCF2"},
+{ name: "HARDY David", info: "39'41''", color:"#00BCF2"},
+{ name: "ABBES Mohamed", info: "39'45''", color:"#00BCF2"},
+{ name: "ALLONGUE Antoine", info: "39'50''", color:"#00BCF2"},
+{ name: "ABACHAD Adil", info: "39'56''", color:"#00BCF2"},
+{ name: "FARIA Rolando", info: "39'57''", color:"#F7B84B"},
+{ name: "SAIM Ahmed (Alg)", info: "39'58''", color:"#00BCF2"},
+{ name: "CROIZIER Lilian", info: "39'58''", color:"#00BCF2"},
+{ name: "VILFEU Ludovic", info: "40'01''", color:"#00BCF2"},
+{ name: "ROBILLARD Damien", info: "40'02''", color:"#00BCF2"},
+{ name: "HERCOUET Didier", info: "40'02''", color:"#00BCF2"},
+{ name: "GRAS Herve", info: "40'06''", color:"#00BCF2"},
+{ name: "ROSSE Christophe", info: "40'09''", color:"#00BCF2"},
+{ name: "PHILIPONA Bruno", info: "40'11''", color:"#00BCF2"},
+{ name: "VIOLARD Frederic", info: "40'17''", color:"#00BCF2"},
+{ name: "ARRAS Mohamed", info: "40'19''", color:"#00BCF2"},
+{ name: "BENHAMOU Michael", info: "40'22''", color:"#F7B84B"},
+{ name: "MAO Stephane", info: "40'28''", color:"#00BCF2"},
+{ name: "TASSIN Jerome", info: "40'30''", color:"#00BCF2"},
+{ name: "DESFOUX Yoann", info: "40'31''", color:"#00BCF2"},
+{ name: "URRUTIA Laurent", info: "40'36''", color:"#00BCF2"},
+{ name: "GHIANI Marc", info: "40'37''", color:"#00BCF2"},
+{ name: "SAILLY Patrice", info: "40'42''", color:"#00BCF2"},
+{ name: "HUE Sylvain", info: "40'44''", color:"#00BCF2"},
+{ name: "ABDELKADER Yann", info: "40'47''", color:"#00BCF2"},
+{ name: "GUEGANO Raphael", info: "40'50''", color:"#00BCF2"},
+{ name: "LAMRABAT Zakarya", info: "40'52''", color:"#00BCF2"},
+{ name: "DIAZ MARTINEZ Pablo (Esp)", info: "40'53''", color:"#00BCF2"},
+{ name: "FISCHER Marc", info: "40'55''", color:"#00BCF2"},
+{ name: "COACOLO Didier", info: "40'58''", color:"#00BCF2"},
+{ name: "BEAUFORT Sebastien", info: "40'59''", color:"#00BCF2"},
+{ name: "MAROLLES Frederic", info: "40'59''", color:"#00BCF2"},
+{ name: "MEGHAZI Mhamed", info: "41'00''", color:"#00BCF2"},
+{ name: "DELEPINE Sylvain", info: "41'06''", color:"#00BCF2"},
+{ name: "PELLETIER Gilles", info: "41'10''", color:"#00BCF2"}               
+                
+],
+loc: "0 0" },
+
+              { key: "Creteil2018",
+              fields: [
+// ,  figure: "Rectangle"
+{ name: "GRUNDTNER Willy", info: "27'57''", color:"#00BCF2"},
+{ name: "FAVIER Francois-rene", info: "27'58''", color:"#F7B84B"},
+{ name: "EL HOUSNI Mounir", info: "28'00''", color:"#00BCF2"},
+{ name: "LECIEUX Thomas", info: "28'09''", color:"#00BCF2"},
+{ name: "CARANTON Laurent", info: "28'35''", color:"#F7B84B"},
+{ name: "BENHAMOU Michael", info: "28'47''", color:"#F7B84B"},
+{ name: "BOUBEKEUR Achour", info: "29'06''", color:"#00BCF2"},
+{ name: "GANDELOT Benoit", info: "29'09''", color:"#00BCF2"},
+{ name: "MARTINHO Ezequiel", info: "29'17''", color:"#00BCF2"},
+{ name: "ABACHAD Adil", info: "29'25''", color:"#00BCF2"},
+{ name: "ARRAS Mohamed", info: "29'26''", color:"#00BCF2"},
+{ name: "DIANI Ilyas", info: "29'35''", color:"#00BCF2"},
+{ name: "BEN-HOUDJA Mohammed", info: "29'37''", color:"#00BCF2"},
+{ name: "DESTREMON Manuel", info: "30'01''", color:"#00BCF2"},
+{ name: "DUHALDE Miguel", info: "30'11''", color:"#00BCF2"},
+{ name: "FARIA Rolando", info: "30'13''", color:"#F7B84B"},
+{ name: "TOURNIER Martial", info: "30'14''", color:"#00BCF2"},
+{ name: "MOUILLERON Jean-francois", info: "30'18''", color:"#00BCF2"},
+{ name: "BEAU Guillaume", info: "30'24''", color:"#00BCF2"},
+{ name: "LACHEREST Sebastien", info: "30'30''", color:"#00BCF2"},
+{ name: "ALZOULEH Kamel (Alg)", info: "30'33''", color:"#00BCF2"},
+{ name: "PERTHUIS Nicolas", info: "30'35''", color:"#00BCF2"},
+{ name: "ABDELKADER Yann", info: "30'37''", color:"#00BCF2"},
+{ name: "CHOUKRI Mohamed", info: "30'44''", color:"#00BCF2"},
+{ name: "BLANCHARD Nicolas", info: "30'46''", color:"#00BCF2"},
+{ name: "GHIANI Marc", info: "31'04''", color:"#00BCF2"},
+{ name: "BERTHO-LAUNAY Cyrille", info: "31'10''", color:"#00BCF2"},
+{ name: "FAUCHEUX Cerile", info: "31'16''", color:"#00BCF2"},
+{ name: "BARAONA Christophe", info: "31'22''", color:"#00BCF2"},
+{ name: "HANNOUDI Mounir", info: "31'27''", color:"#00BCF2"},
+{ name: "CURADO Pedro (Por)", info: "31'30''", color:"#00BCF2"},
+{ name: "HAKMI Abdelaziz", info: "31'33''", color:"#00BCF2"},
+{ name: "GRANGER David", info: "31'48''", color:"#00BCF2"},
+{ name: "BROY Frederic", info: "31'51''", color:"#00BCF2"},
+{ name: "MARCOVICI Jean-baptiste", info: "32'06''", color:"#00BCF2"},
+{ name: "JACQUIN Philippe", info: "32'19''", color:"#00BCF2"},
+{ name: "DUPONT Marc", info: "32'27''", color:"#00BCF2"},
+{ name: "LAFARGUE Victorien", info: "32'28''", color:"#00BCF2"},
+{ name: "LE MOING Joel", info: "32'29''", color:"#00BCF2"},
+{ name: "SMITH Julien", info: "32'40''", color:"#00BCF2"},
+{ name: "CHEBLAL Hassan", info: "32'42''", color:"#00BCF2"},
+{ name: "TONI Stephane", info: "32'42''", color:"#F7B84B"},
+{ name: "IKHADDALENE Mouloud", info: "32'43''", color:"#00BCF2"},
+{ name: "LINTIGNAT Boris", info: "32'45''", color:"#00BCF2"},
+{ name: "GILLES Fabrice", info: "32'54''", color:"#00BCF2"},
+{ name: "JOUGLAS Franck", info: "32'56''", color:"#00BCF2"},
+{ name: "AUGIER Jacky", info: "33'05''", color:"#00BCF2"},
+{ name: "SACHIER Laurent", info: "33'13''", color:"#00BCF2"},
+{ name: "DOSPAZOS Jose", info: "33'16''", color:"#00BCF2"},
+{ name: "LIBERMAN Bernard", info: "33'24''", color:"#00BCF2"}
+
+             
+],
+
+loc: "400 0" }
+          ],
+          linkDataArray: [
+            { from: "Inter2017", fromPort: "FAVIER Francois-rene", to: "Creteil2018", toPort: "FAVIER Francois-rene" },
+            { from: "Inter2017", fromPort: "CARANTON Laurent", to: "Creteil2018", toPort: "CARANTON Laurent" },
+            { from: "Inter2017", fromPort: "BEN-HOUDJA Mohammed", to: "Creteil2018", toPort: "BEN-HOUDJA Mohammed" },
+            { from: "Inter2017", fromPort: "CHOUKRI Mohamed", to: "Creteil2018", toPort: "CHOUKRI Mohamed" },
+            { from: "Inter2017", fromPort: "ABACHAD Adil", to: "Creteil2018", toPort: "ABACHAD Adil" },
+            { from: "Inter2017", fromPort: "FARIA Rolando", to: "Creteil2018", toPort: "FARIA Rolando" },
+            { from: "Inter2017", fromPort: "ARRAS Mohamed", to: "Creteil2018", toPort: "ARRAS Mohamed" },
+            { from: "Inter2017", fromPort: "BENHAMOU Michael", to: "Creteil2018", toPort: "BENHAMOU Michael" },
+            { from: "Inter2017", fromPort: "GHIANI Marc", to: "Creteil2018", toPort: "GHIANI Marc" },
+            { from: "Inter2017", fromPort: "ABDELKADER Yann", to: "Creteil2018", toPort: "ABDELKADER Yann" },
+            
+ 
+          ]
+        });
+
+    showModel();  // show the diagram's initial model
+
+    function showModel() {
+      document.getElementById("mySavedModel").textContent = myDiagram.model.toJson();
+    }
+  }</script>
+</head>
+<body onload="init()"; style="font-family: Verdana; font-size: 12px">
+	<div id="schema" style="float: left;width: 1000px; margin-right: 50px;padding-left: 10px">
+		<h2>Cross Inter IdF 05/02/2017 VS Val-de-Marne 17/11/2018</h2>
+		
+		<p>Construisons un graph pour visualiser l'évolution de la hiérarchie des athlètes.
+		Quand les flêches de deux athlètes se croisent c'est que l'ordre a changé entre les deux courses (ici deux cross 2017 et 2018).</p>
+		
+		<p>On peut mettre en coureur des athlètes. Ici ceux du club Solon (cf. filtre dans la page <a href="cross_2017_2018_resultats.html">résulats</a>)</p>
+		
+		<div id="sample">
+  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:1200px"></div>
+
+  <div>
+    <textarea id="mySavedModel" style="width:100%;height:250px;display: none "></textarea>
+
+<h2>Construction</h2>
+
+On commence par le HTML en Java. Cela nous donne deux listes d'athlètes avec leur chrono.
+
+<h3>Contruction des tableaux des résultats</h3>
+
+<p>Pour chaque ligne de résultat, ajout de</p>
+
+<pre>{ name: "nom_prénom", info: "chrono", color: "#00BCF2"}</pre>
+
+<h3>Contruction des liens entre les tableaux</h3>
+	<p>On a deux tableaux. Pour chaque ligne X du tab1, si on trouve l'athlète dans la tab2 on ajoute dans notre <b>linkDataArray</b>. Utiliser le nom comme clé n'est pas top mais plus simple.</p>    
+    <pre>for (String a : list1) {
+	if (list2.contains(a)) {
+		System.out.println("{ from: \"Inter2017\", fromPort: \"" + a + "\", to: \"Creteil2018\", toPort: \"" + a + "\" },");
+	}
+}
+</pre>
+    
+  </div>
+</div>	
+</body>
+</html>
