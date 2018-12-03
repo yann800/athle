@@ -35,6 +35,30 @@ function init() {
           // allow drawing links from or to this port:
           fromLinkable: false, toLinkable: true
         },
+
+        { // allow the user to select items -- the background color indicates whether "selected"
+            click: function(e, item) {
+              // assume "transparent" means not "selected", for items
+              var oldskips = item.diagram.skipsUndoManager;
+              item.diagram.skipsUndoManager = true;
+              if (item.background === "transparent") {
+                item.background = "dodgerblue";
+                console.log(item.Zd.name);
+                console.log(item.Zd.info);
+
+                selectionLigne(item.Zd.name);
+
+                // https://gojs.net/latest/learn/graphobject.html
+                // model.setDataProperty(item.Zd, "info", "aaa");                
+                
+                
+              } else {
+                item.background = "transparent";
+              }
+              item.diagram.skipsUndoManager = oldskips;
+            }
+          },        
+        
         $(go.Shape,
           { width: 12, height: 12, column: 0, strokeWidth: 2, margin: 4,
             // but disallow drawing links from or to this shape:
@@ -95,7 +119,7 @@ function init() {
     myDiagram.linkTemplate =
       $(go.Link,
         {
-          relinkableFrom: true, relinkableTo: true, // let user reconnect links
+          relinkableFrom: false, relinkableTo: false, // let user reconnect links
           toShortLength: 4,  fromShortLength: 2
         },
         $(go.Shape, { strokeWidth: 1.5 }),
@@ -108,6 +132,148 @@ function init() {
           linkFromPortIdProperty: "fromPort",
           linkToPortIdProperty: "toPort",
           nodeDataArray: [
+
+        	  {key:"Dep14",
+        	  fields: [
+{ info: "29'20''", name: "LEJEUNE Olivier", color:"#00BCF2"},
+{ info: "29'54''", name: "KERROUA Yanis", color:"#00BCF2"},
+{ info: "30'24''", name: "BOUBEKEUR Achour", color:"#00BCF2"},
+{ info: "30'29''", name: "DELVER Geoffrey", color:"#00BCF2"},
+{ info: "30'39''", name: "MFUFU Tomy", color:"#00BCF2"},
+{ info: "30'48''", name: "IDY Jean-maxime", color:"#00BCF2"},
+{ info: "30'54''", name: "BROSSET Romuald", color:"#00BCF2"},
+{ info: "31'05''", name: "DEAGE Vincent", color:"#00BCF2"},
+{ info: "31'29''", name: "PEREZ Jean", color:"#00BCF2"},
+{ info: "31'32''", name: "ANDRIEU Olivier", color:"#00BCF2"},
+{ info: "31'42''", name: "DIANI Ilyas", color:"#00BCF2"},
+{ info: "32'03''", name: "ABDELKADER Yann", color:"#00BCF2"},
+{ info: "32'15''", name: "BRAHIC Ludovic", color:"#00BCF2"},
+{ info: "32'16''", name: "LAURENT Thomas", color:"#00BCF2"},
+{ info: "32'19''", name: "SUREAU Jean-baptiste", color:"#00BCF2"},
+{ info: "32'20''", name: "DURAND Mathieu", color:"#00BCF2"},
+{ info: "32'24''", name: "SICOT Maxime", color:"#00BCF2"},
+{ info: "32'27''", name: "FERREIRO Thibaut", color:"#00BCF2"},
+{ info: "32'36''", name: "ZATOUNI Amine", color:"#00BCF2"},
+{ info: "32'44''", name: "ROTH DIT BETTONI Romain", color:"#00BCF2"},
+{ info: "32'53''", name: "BUET Stephane jean", color:"#00BCF2"},
+{ info: "33'07''", name: "LE ROUX Devrig", color:"#00BCF2"},
+{ info: "33'12''", name: "GAUDEIX Christophe", color:"#00BCF2"},
+{ info: "33'13''", name: "CIZEAU Thibault", color:"#00BCF2"},
+{ info: "33'15''", name: "RICHARD Maxime", color:"#00BCF2"},
+{ info: "33'24''", name: "GIRARD Louis", color:"#00BCF2"},
+{ info: "33'35''", name: "SOFFIATI Thibaud", color:"#00BCF2"},
+{ info: "33'37''", name: "JOUGLAS Franck", color:"#00BCF2"},
+{ info: "33'38''", name: "PROST Hugo", color:"#00BCF2"},
+{ info: "33'38''", name: "BLANCHARD Nicolas", color:"#00BCF2"},
+{ info: "33'44''", name: "BURETTE Matthieu", color:"#00BCF2"},
+{ info: "33'46''", name: "GOBET Frederic", color:"#00BCF2"},
+{ info: "33'49''", name: "ABBES Mohamed", color:"#00BCF2"},
+{ info: "34'02''", name: "TOIRON Maxime", color:"#00BCF2"},
+{ info: "34'05''", name: "LEVY Christophe", color:"#00BCF2"},
+{ info: "34'07''", name: "DE VENDEGIES Xavier", color:"#00BCF2"},
+{ info: "34'09''", name: "LECOMTE Olivier", color:"#00BCF2"},
+{ info: "34'10''", name: "MEALLET Sylvain", color:"#00BCF2"},
+{ info: "34'13''", name: "RIZZARELLO Romain", color:"#00BCF2"},
+{ info: "34'20''", name: "CHASTANG Cedric", color:"#00BCF2"},
+{ info: "34'28''", name: "CHASTANG Christophe", color:"#00BCF2"},
+{ info: "34'32''", name: "PELLOIS Vincent", color:"#00BCF2"},
+{ info: "34'33''", name: "MEYER Jerome", color:"#00BCF2"},
+{ info: "34'34''", name: "KWONG-CHEONG Nicolas", color:"#00BCF2"},
+{ info: "34'35''", name: "CHAMOULAUD David", color:"#00BCF2"},
+{ info: "34'35''", name: "CLARES Jonathan", color:"#00BCF2"},
+{ info: "34'35''", name: "GUILLONNEAU Aymeric", color:"#00BCF2"},
+{ info: "34'43''", name: "BERTHE Damien", color:"#00BCF2"},
+{ info: "34'59''", name: "BOUGAA Ryad", color:"#00BCF2"},
+{ info: "35'04''", name: "BOUSSION Brice", color:"#00BCF2"}
+
+        	  ],
+        	  loc: "0 0" },
+        	 
+        	  {key:"Reg14",
+            	  fields: [
+    { info: "00'00''", name: "FAVIER Francois-rene", color:"#00BCF2"},
+	  ],
+	  loc: "350 0" },
+    
+
+	  {key:"Dep15",
+    	  fields: [
+{ name: "RIFFLARD Nicolas", info: "28'17''", color:"#00BCF2"},
+{ name: "KERROUA Yanis", info: "28'42''", color:"#00BCF2"},
+{ name: "ODIN Bertrand", info: "28'49''", color:"#00BCF2"},
+{ name: "DELVER Geoffrey", info: "28'55''", color:"#00BCF2"},
+{ name: "RENAULT Vincent", info: "29'20''", color:"#00BCF2"},
+{ name: "MFUFU Tomy", info: "29'38''", color:"#00BCF2"},
+{ name: "ZATOUNI Amine", info: "29'46''", color:"#00BCF2"},
+{ name: "DIANI Ilyas", info: "30'22''", color:"#00BCF2"},
+{ name: "IDY Jean-maxime", info: "30'25''", color:"#00BCF2"},
+{ name: "ABDELKADER Yann", info: "30'31''", color:"#00BCF2"},
+{ name: "FERREIRO Thibaut", info: "30'39''", color:"#00BCF2"},
+{ name: "ANDRIEU Olivier", info: "30'40''", color:"#00BCF2"},
+{ name: "LABOUTE Karim-alain", info: "30'57''", color:"#00BCF2"},
+{ name: "LOUVIERS Kenji", info: "31'10''", color:"#00BCF2"},
+{ name: "ROTH DIT BETTONI Romain", info: "31'12''", color:"#00BCF2"},
+{ name: "CIZEAU Thibault", info: "31'14''", color:"#00BCF2"},
+{ name: "LECUIR Fabien", info: "31'25''", color:"#00BCF2"},
+{ name: "RICHARD Maxime", info: "31'27''", color:"#00BCF2"},
+{ name: "BRAHIC Ludovic", info: "31'32''", color:"#00BCF2"},
+{ name: "ARLOT Damien", info: "31'34''", color:"#00BCF2"},
+{ name: "PROST Hugo", info: "31'38''", color:"#00BCF2"},
+{ name: "BURETTE Matthieu", info: "31'40''", color:"#00BCF2"},
+{ name: "BELHIMER Mohamed (Alg)", info: "31'44''", color:"#00BCF2"},
+{ name: "DURAND Mathieu", info: "31'50''", color:"#00BCF2"},
+{ name: "BLANCHARD Nicolas", info: "31'51''", color:"#00BCF2"},
+{ name: "DEPREZ Remi", info: "31'54''", color:"#00BCF2"},
+{ name: "GOBET Frederic", info: "32'03''", color:"#00BCF2"},
+{ name: "LARIVE Vincent", info: "32'06''", color:"#00BCF2"},
+{ name: "TOIRON Maxime", info: "32'09''", color:"#00BCF2"},
+{ name: "GUILLONNEAU Aymeric", info: "32'12''", color:"#00BCF2"},
+{ name: "SURY Thibault", info: "32'15''", color:"#00BCF2"},
+{ name: "NOEL Raphael", info: "32'16''", color:"#00BCF2"},
+{ name: "FOLLIASSON Hubert", info: "32'17''", color:"#00BCF2"},
+{ name: "SUREAU Jean-baptiste", info: "32'38''", color:"#00BCF2"},
+{ name: "PELLOIS Vincent", info: "32'43''", color:"#00BCF2"},
+{ name: "DUPOUX Aymeric", info: "32'44''", color:"#00BCF2"},
+{ name: "ALEXANDRE Christophe", info: "32'45''", color:"#00BCF2"},
+{ name: "CHASTANG Cedric", info: "32'45''", color:"#00BCF2"},
+{ name: "COULOMB Mathieu", info: "32'50''", color:"#00BCF2"},
+{ name: "DE NASCIMENTO MARTIN Adilson (Cpv)", info: "32'50''", color:"#00BCF2"},
+{ name: "GIRARD Louis", info: "32'58''", color:"#00BCF2"},
+{ name: "GALLAND Damien", info: "33'00''", color:"#00BCF2"},
+{ name: "MEYERIE FRERE Thomas", info: "33'07''", color:"#00BCF2"},
+{ name: "ZEPPA Nicolas", info: "33'09''", color:"#00BCF2"},
+{ name: "DEGLANE Emmanuel", info: "33'10''", color:"#00BCF2"},
+{ name: "WAUTIER Antoine", info: "33'10''", color:"#00BCF2"},
+{ name: "MANGIN Frederic", info: "33'15''", color:"#00BCF2"},
+{ name: "SICOT Maxime", info: "33'16''", color:"#00BCF2"},
+{ name: "PELLERIN Johan", info: "33'16''", color:"#00BCF2"},
+{ name: "BOUISSOU Anthony", info: "33'21''", color:"#00BCF2"}
+
+],
+loc: "700 0" },
+
+{key:"Reg15",
+	  fields: [
+{ info: "00'00''", name: "FAVIER Francois-rene", color:"#00BCF2"},
+],
+loc: "1050 0" },
+
+        	  
+        	  
+{key:"Dep16",
+	  fields: [
+{ info: "00'00''", name: "FAVIER Francois-rene", color:"#00BCF2"},
+],
+loc: "1400 0" },
+
+{key:"Reg16",
+fields: [
+{ info: "00'00''", name: "FAVIER Francois-rene", color:"#00BCF2"},
+],
+loc: "1750 0" },
+
+  	  
+  	  
             { key: "Inter2017",
               fields: [
 { name: "JEMMAL Abdelghani", info: "36'39''", color:"#00BCF2"},
@@ -162,7 +328,7 @@ function init() {
 { name: "PELLETIER Gilles", info: "41'10''", color:"#00BCF2"}               
                 
 ],
-loc: "0 0" },
+loc: "2100 0" },
 
               { key: "Creteil2018",
               fields: [
@@ -221,7 +387,24 @@ loc: "0 0" },
              
 ],
 
-loc: "400 0" }
+loc: "2450 0" },
+
+
+{ key: "Dep2019",
+    fields: [
+//,  figure: "Rectangle"
+{ name: "FAVIER Francois-rene", info: "0'0", color:"#F7B84B"},
+{ name: "CARANTON Laurent", info: "0'0", color:"#F7B84B"},
+{ name: "BENHAMOU Michael", info: "0'0", color:"#F7B84B"},
+{ name: "DIANI Ilyas", info: "0'0", color:"#00BCF2"},
+{ name: "ANDRIEU Olivier", info: "0'0", color:"#00BCF2"},
+{ name: "FARIA Rolando", info: "0'0", color:"#F7B84B"},
+{ name: "ABDELKADER Yann", info: "0'0", color:"#00BCF2"},
+{ name: "TONI Stephane", info: "0'0", color:"#F7B84B"}
+],
+
+loc: "2800 0" }
+
           ],
           linkDataArray: [
             { from: "Inter2017", fromPort: "FAVIER Francois-rene", to: "Creteil2018", toPort: "FAVIER Francois-rene" },
@@ -235,19 +418,125 @@ loc: "400 0" }
             { from: "Inter2017", fromPort: "GHIANI Marc", to: "Creteil2018", toPort: "GHIANI Marc" },
             { from: "Inter2017", fromPort: "ABDELKADER Yann", to: "Creteil2018", toPort: "ABDELKADER Yann" },
             
- 
+
+            { from: "Creteil2018", fromPort: "FAVIER Francois-rene", to: "Dep2019", toPort: "FAVIER Francois-rene" },
+            { from: "Creteil2018", fromPort: "CARANTON Laurent", to: "Dep2019", toPort: "CARANTON Laurent" },
+            { from: "Creteil2018", fromPort: "BENHAMOU Michael", to: "Dep2019", toPort: "BENHAMOU Michael" },
+            { from: "Creteil2018", fromPort: "DIANI Ilyas", to: "Dep2019", toPort: "DIANI Ilyas" },
+            { from: "Creteil2018", fromPort: "FARIA Rolando", to: "Dep2019", toPort: "FARIA Rolando" },
+            { from: "Creteil2018", fromPort: "TONI Stephane", to: "Dep2019", toPort: "TONI Stephane" },
+            { from: "Creteil2018", fromPort: "ABDELKADER Yann", to: "Dep2019", toPort: "ABDELKADER Yann" },
+
+            
           ]
         });
 
     showModel();  // show the diagram's initial model
+}
 
     function showModel() {
       document.getElementById("mySavedModel").textContent = myDiagram.model.toJson();
     }
-  }</script>
+    
+    function selectionLigne(sel){
+    	if (document.getElementById("sel1").innerText == "__"){
+    		document.getElementById("sel1").innerText = sel;
+    	}
+    	else {
+    		document.getElementById("sel2").innerText = sel;
+    		document.getElementById("btnCompareSel1Sel2").disabled = false;
+    	}
+    }
+    
+    function resetSelection(){
+    	document.getElementById("sel1").innerText = '__';
+    	document.getElementById("sel2").innerText = '__';
+    	document.getElementById("btnCompareSel1Sel2").disabled = true;
+    	resetTable();
+    }
+    function compareSel1Sel2(){
+    	var sel1 = document.getElementById("sel1").innerText;
+    	var sel2 = document.getElementById("sel2").innerText;
+    	
+    	
+    	var arr = myDiagram.model.De;
+    	
+    	for (var i = 0; i < arr.length; i++){
+    	    var obj = arr[i];
+    	    for (var key in obj){
+    	        var val = obj[key];
+    	        
+    	        // console.log(key);
+    	        if (val == 'Dep14' || val == 'Dep15' || val == 'Dep16' || val == 'Dep17' || val == 'Dep18' || val == 'Dep19' ||
+    	        	val == 'Reg14' || val == 'Reg15' || val == 'Reg16' || val == 'Reg17' || val == 'Reg18' || val == 'Reg19' ||
+    	        	val == 'Inter2017' || val == 'Creteil2018'
+    	        ) {
+    	        	ecart(obj, sel1, sel2);
+    	        }
+    	    }
+    	}
+    	
+    	var itr2 = myDiagram.nodes;
+    	while (itr2.next()) {
+    	  var node = itr2.value;
+    	  // console.log(node);
+    	}
+    }
+    
+    function ecart(obj, sel1, sel2){
+
+  		  for (var key in obj){
+  		    var value = obj[key];
+  		    if (key == 'fields'){
+  		    	// console.log(key + ": " + value);
+  		    	traiteTab(value, sel1, sel2);
+  		    }
+  		  }
+    }
+    
+    function traiteTab(tab, sel1, sel2){
+    	
+      var chrono1 = "_";
+   	  var chrono2 = "_";
+    	
+   	  for (var p in tab) {
+   		    
+   		//  console.log(p + "  " + tab[p].name + "  " + tab[p].info);
+   		if (tab[p].name == sel1){
+   			chrono1 = tab[p].info;
+   		}
+   		if (tab[p].name == sel2){
+   			chrono2 = tab[p].info;
+   		}
+      }
+   	  
+   	   console.log(chrono1 + " ---- " + chrono2);
+   	   insertRow(chrono1, chrono2);
+    }
+    
+    function insertRow(c1, c2){
+    	var table = document.getElementById("ecarts");
+
+    	// Create an empty <tr> element and add it to the 1st position of the table:
+    	var row = table.insertRow(0);
+
+    	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    	var cell1 = row.insertCell(0);
+    	var cell2 = row.insertCell(1);
+
+    	// Add some text to the new cells:
+    	cell1.innerHTML = c1;
+    	cell2.innerHTML = c2;
+    }
+    
+    function resetTable(){
+  	    document.getElementById("ecarts").deleteRow(0);
+    }
+    
+</script>
 </head>
 <body onload="init()"; style="font-family: Verdana; font-size: 12px">
-	<div id="schema" style="float: left;width: 1000px; margin-right: 50px;padding-left: 10px">
+	<div id="schema" style="float: left;width: 1300px; margin-right: 50px;padding-left: 10px">
 		<h2>Cross Inter IdF 05/02/2017 VS Val-de-Marne 17/11/2018</h2>
 		
 		<p>Construisons un graph pour visualiser l'évolution de la hiérarchie des athlètes.
@@ -255,8 +544,25 @@ loc: "400 0" }
 		
 		<p>On peut mettre en coureur des athlètes. Ici ceux du club Solon (cf. filtre dans la page <a href="cross_2017_2018_resultats.html">résulats</a>)</p>
 		
+		<p>Sélection 1 : <span id="sel1" style="margin-right: 50px">ANDRIEU Olivier</span>Sélection 2 : <span id="sel2">ABDELKADER Yann</span>
+			<button id="btnCompareSel1Sel2" onclick="compareSel1Sel2()">Calcul des écarts</button>
+			<button onclick="resetSelection()">Reset sélection</button>
+		</p>
+		
+		<table id="ecarts">
+		<thead>
+		<tr>
+		<th>Dep14</th><th>Rep14</th><th></th><th>Dep15</th><th>Rep15</th><th>Dep16</th><th>Dep17</th><th>Dep18</th><th>Dep19</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+		</table>
+		<br/>
+		
 		<div id="sample">
-  <div id="myDiagramDiv" style="border: solid 1px black; width:100%; height:1200px"></div>
+  <div id="myDiagramDiv" style="border: solid 1px black; width:200%; height:1200px"></div>
 
   <div>
     <textarea id="mySavedModel" style="width:100%;height:250px;display: none "></textarea>
