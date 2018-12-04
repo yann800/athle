@@ -1,136 +1,60 @@
 package fr.yann.service;
 
-import java.util.Arrays;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class Comparaison {
 
-	static String[]	tab1	= new String[] {
-			"JEMMAL Abdelghani",
-			"FAVIER Francois-rene",
-			"KHEZZANE Noreddine",
-			"CARANTON Laurent",
-			"ATMANI Khalid",
-			"VERDOL Widdy",
-			"MOUQUET Sylvain",
-			"ROUYER Thomas",
-			"BEN-HOUDJA Mohammed",
-			"EL YAMANI Mohammed",
-			"MERROUNE Mohamed",
-			"RUIZ Pascal",
-			"GUIVARCH Pierre-yves",
-			"JARRY Alain",
-			"PERCEVAULT Philippe",
-			"CHOUKRI Mohamed",
-			"HARDY David",
-			"ABBES Mohamed",
-			"ALLONGUE Antoine",
-			"ABACHAD Adil",
-			"FARIA Rolando",
-			"SAIM Ahmed (Alg)",
-			"CROIZIER Lilian",
-			"VILFEU Ludovic",
-			"ROBILLARD Damien",
-			"HERCOUET Didier",
-			"GRAS Herve",
-			"ROSSE Christophe",
-			"PHILIPONA Bruno",
-			"VIOLARD Frederic",
-			"ARRAS Mohamed",
-			"BENHAMOU Michael",
-			"MAO Stephane",
-			"TASSIN Jerome",
-			"DESFOUX Yoann",
-			"URRUTIA Laurent",
-			"GHIANI Marc",
-			"SAILLY Patrice",
-			"HUE Sylvain",
-			"ABDELKADER Yann",
-			"GUEGANO Raphael",
-			"LAMRABAT Zakarya",
-			"DIAZ MARTINEZ Pablo (Esp)",
-			"FISCHER Marc",
-			"COACOLO Didier",
-			"BEAUFORT Sebastien",
-			"MAROLLES Frederic",
-			"MEGHAZI Mhamed",
-			"DELEPINE Sylvain",
-			"PELLETIER Gilles",
-			"BARBETTE Frederic",
-			"RODRIGUES DOS SANTOS Joao",
-			"MASTOURI Djamel",
-			"NOIRY Julien",
-			"BERTRAND Nicolas",
-			"MARTIN Stephane",
-			"GRONDIN Alain",
-			"BETTAHAR Fodil (Alg)",
-			"TAJIRI Franck",
-	};
 
-	static String[]	tab2	= new String[] {
-			"GRUNDTNER Willy",
-			"FAVIER Francois-rene",
-			"EL HOUSNI Mounir",
-			"LECIEUX Thomas",
-			"CARANTON Laurent",
-			"BENHAMOU Michael",
-			"BOUBEKEUR Achour",
-			"GANDELOT Benoit",
-			"MARTINHO Ezequiel",
-			"ABACHAD Adil",
-			"ARRAS Mohamed",
-			"DIANI Ilyas",
-			"BEN-HOUDJA Mohammed",
-			"DESTREMON Manuel",
-			"DUHALDE Miguel",
-			"FARIA Rolando",
-			"TOURNIER Martial",
-			"MOUILLERON Jean-francois",
-			"BEAU Guillaume",
-			"LACHEREST Sebastien",
-			"ALZOULEH Kamel (Alg)",
-			"PERTHUIS Nicolas",
-			"ABDELKADER Yann",
-			"CHOUKRI Mohamed",
-			"BLANCHARD Nicolas",
-			"GHIANI Marc",
-			"BERTHO-LAUNAY Cyrille",
-			"FAUCHEUX Cerile",
-			"BARAONA Christophe",
-			"HANNOUDI Mounir",
-			"CURADO Pedro (Por)",
-			"HAKMI Abdelaziz",
-			"GRANGER David",
-			"BROY Frederic",
-			"MARCOVICI Jean-baptiste",
-			"JACQUIN Philippe",
-			"DUPONT Marc",
-			"LAFARGUE Victorien",
-			"LE MOING Joel",
-			"SMITH Julien",
-			"CHEBLAL Hassan",
-			"TONI Stephane",
-			"IKHADDALENE Mouloud",
-			"LINTIGNAT Boris",
-			"GILLES Fabrice",
-			"JOUGLAS Franck",
-			"AUGIER Jacky",
-			"SACHIER Laurent",
-			"DOSPAZOS Jose",
-			"LIBERMAN Bernard",
-	};
+	private static List<Cross> listCross;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
-		List<String> list1 = Arrays.asList(tab1);
-		List<String> list2 = Arrays.asList(tab2);
+		// 1. JSON to Java object, read it from a file.
+		// Cross cross = gson.fromJson(new FileReader("cross.json"), Cross.class);
+		Type listType = new TypeToken<List<Cross>>() {}.getType();
+		listCross = new Gson().fromJson(new FileReader("D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\service\\cross.json"), listType);
 
-		for (String a : list1) {
-			if (list2.contains(a)) {
-				System.out.println("{ from: \"Inter2017\", fromPort: \"" + a + "\", to: \"Creteil2018\", toPort: \"" + a + "\" },");
-			}
-		}
+		String k1 = "Dep14";
+		String k2 = "Dep15";
+		String k3 = "Reg14";
+		String k4 = "Reg15";
+		
+		generateLinks(getCross(k1), getCross(k2));
+		generateLinks(getCross(k2), getCross(k3));
+		generateLinks(getCross(k3), getCross(k4));
 
 	}
 
+	private static Cross getCross(String k) {
+		for (Cross c : listCross) {
+			if (c.getKey().equals(k)) {
+				return c;
+			}
+		}
+		return null;
+	}
+
+	private static void generateLinks(Cross c1, Cross c2) {
+
+		for (Field a : c1.getFields()) {
+			if (contains(c2.getFields(), a)) {
+				System.out.println("{ from: \"" + c1.getKey() + "\", fromPort: \"" + a.getName() + "\", to: \"" + c2.getKey() + "\", toPort: \"" + a.getName() + "\" },");
+			}
+		}
+	}
+
+	private static boolean contains(List<Field> liste, Field a) {
+		for (Field f : liste) {
+			if (f.getName().equals(a.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

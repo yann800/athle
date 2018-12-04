@@ -1,0 +1,997 @@
+[
+{
+	"key": "Dep14",
+	"fields": [
+		{
+			"info": "29'20''",
+			"name": "LEJEUNE Olivier"
+		},
+		{
+			"info": "29'54''",
+			"name": "KERROUA Yanis"
+		},
+		{
+			"info": "30'24''",
+			"name": "BOUBEKEUR Achour"
+		},
+		{
+			"info": "30'29''",
+			"name": "DELVER Geoffrey"
+		},
+		{
+			"info": "30'39''",
+			"name": "MFUFU Tomy"
+		},
+		{
+			"info": "30'48''",
+			"name": "IDY Jean-maxime"
+		},
+		{
+			"info": "30'54''",
+			"name": "BROSSET Romuald"
+		},
+		{
+			"info": "31'05''",
+			"name": "DEAGE Vincent"
+		},
+		{
+			"info": "31'29''",
+			"name": "PEREZ Jean"
+		},
+		{
+			"info": "31'32''",
+			"name": "ANDRIEU Olivier"
+		},
+		{
+			"info": "31'42''",
+			"name": "DIANI Ilyas"
+		},
+		{
+			"info": "32'03''",
+			"name": "ABDELKADER Yann"
+		},
+		{
+			"info": "32'15''",
+			"name": "BRAHIC Ludovic"
+		},
+		{
+			"info": "32'16''",
+			"name": "LAURENT Thomas"
+		},
+		{
+			"info": "32'19''",
+			"name": "SUREAU Jean-baptiste"
+		},
+		{
+			"info": "32'20''",
+			"name": "DURAND Mathieu"
+		},
+		{
+			"info": "32'24''",
+			"name": "SICOT Maxime"
+		},
+		{
+			"info": "32'27''",
+			"name": "FERREIRO Thibaut"
+		},
+		{
+			"info": "32'36''",
+			"name": "ZATOUNI Amine"
+		},
+		{
+			"info": "32'44''",
+			"name": "ROTH DIT BETTONI Romain"
+		},
+		{
+			"info": "32'53''",
+			"name": "BUET Stephane jean"
+		},
+		{
+			"info": "33'07''",
+			"name": "LE ROUX Devrig"
+		},
+		{
+			"info": "33'12''",
+			"name": "GAUDEIX Christophe"
+		},
+		{
+			"info": "33'13''",
+			"name": "CIZEAU Thibault"
+		},
+		{
+			"info": "33'15''",
+			"name": "RICHARD Maxime"
+		},
+		{
+			"info": "33'24''",
+			"name": "GIRARD Louis"
+		},
+		{
+			"info": "33'35''",
+			"name": "SOFFIATI Thibaud"
+		},
+		{
+			"info": "33'37''",
+			"name": "JOUGLAS Franck"
+		},
+		{
+			"info": "33'38''",
+			"name": "PROST Hugo"
+		},
+		{
+			"info": "33'38''",
+			"name": "BLANCHARD Nicolas"
+		},
+		{
+			"info": "33'44''",
+			"name": "BURETTE Matthieu"
+		},
+		{
+			"info": "33'46''",
+			"name": "GOBET Frederic"
+		},
+		{
+			"info": "33'49''",
+			"name": "ABBES Mohamed"
+		},
+		{
+			"info": "34'02''",
+			"name": "TOIRON Maxime"
+		},
+		{
+			"info": "34'05''",
+			"name": "LEVY Christophe"
+		},
+		{
+			"info": "34'07''",
+			"name": "DE VENDEGIES Xavier"
+		},
+		{
+			"info": "34'09''",
+			"name": "LECOMTE Olivier"
+		},
+		{
+			"info": "34'10''",
+			"name": "MEALLET Sylvain"
+		},
+		{
+			"info": "34'13''",
+			"name": "RIZZARELLO Romain"
+		},
+		{
+			"info": "34'20''",
+			"name": "CHASTANG Cedric"
+		},
+		{
+			"info": "34'28''",
+			"name": "CHASTANG Christophe"
+		},
+		{
+			"info": "34'32''",
+			"name": "PELLOIS Vincent"
+		},
+		{
+			"info": "34'33''",
+			"name": "MEYER Jerome"
+		},
+		{
+			"info": "34'34''",
+			"name": "KWONG-CHEONG Nicolas"
+		},
+		{
+			"info": "34'35''",
+			"name": "CHAMOULAUD David"
+		},
+		{
+			"info": "34'35''",
+			"name": "CLARES Jonathan"
+		},
+		{
+			"info": "34'35''",
+			"name": "GUILLONNEAU Aymeric"
+		},
+		{
+			"info": "34'43''",
+			"name": "BERTHE Damien"
+		},
+		{
+			"info": "34'59''",
+			"name": "BOUGAA Ryad"
+		},
+		{
+			"info": "35'04''",
+			"name": "BOUSSION Brice"
+		}
+	]
+},
+{
+	"key": "Reg14",
+	"fields": [
+		
+{ "name": "LECIEUX Thomas", "info": "32'45'' qi", "color":"#00BCF2"},
+{ "name": "ROUSSEAU Benjamin", "info": "32'47'' qe", "color":"#00BCF2"},
+{ "name": "MANAR Taoufick", "info": "32'47'' qi", "color":"#00BCF2"},
+{ "name": "BERTHAUD Michael", "info": "32'48'' qe", "color":"#00BCF2"},
+{ "name": "TOWETT-RUTO Dominic (Uga)", "info": "33'06'' qe", "color":"#00BCF2"},
+{ "name": "BENNACER Mustapha (Alg)", "info": "33'21'' qe", "color":"#00BCF2"},
+{ "name": "KERROUA Yanis", "info": "33'23'' qe", "color":"#00BCF2"},
+{ "name": "DUCROT Joel", "info": "33'31'' qe", "color":"#00BCF2"},
+{ "name": "BESNARD Fabrice", "info": "33'33'' qe", "color":"#00BCF2"},
+{ "name": "BOUMAZA Naboulsy", "info": "33'53'' qe", "color":"#00BCF2"},
+{ "name": "PAILLUSSON Christophe", "info": "33'58'' qe", "color":"#00BCF2"},
+{ "name": "CARANTON Laurent", "info": "34'01'' qi", "color":"#00BCF2"},
+{ "name": "TEIXEIRA FURTADO Adalberto (Por)", "info": "34'08'' qi", "color":"#00BCF2"},
+{ "name": "SAINT AMAND Lionel", "info": "34'11'' qi", "color":"#00BCF2"},
+{ "name": "GRUNDTNER Willy", "info": "34'12'' qe", "color":"#00BCF2"},
+{ "name": "CHIROL Jean-baptiste", "info": "34'14'' qe", "color":"#00BCF2"},
+{ "name": "PERNEL Thomas", "info": "34'20'' qi", "color":"#00BCF2"},
+{ "name": "BENICHOU Thomas", "info": "34'22'' qi", "color":"#00BCF2"},
+{ "name": "LEJEUNE Olivier", "info": "34'23'' qi", "color":"#00BCF2"},
+{ "name": "MAAMOUZ Ahmed", "info": "34'26'' qe", "color":"#00BCF2"},
+{ "name": "RAJKOWSKI Sebastien", "info": "34'27'' qe", "color":"#00BCF2"},
+{ "name": "ROUGER Guillaume", "info": "34'39'' qi", "color":"#00BCF2"},
+{ "name": "LECOMTE Benoit", "info": "34'42'' qi", "color":"#00BCF2"},
+{ "name": "BOUBEKEUR Achour", "info": "34'57'' qi", "color":"#00BCF2"},
+{ "name": "RODRIGUEZ Samuel", "info": "34'58'' qi", "color":"#00BCF2"},
+{ "name": "HUBERT Tony", "info": "35'01'' qe", "color":"#00BCF2"},
+{ "name": "MAIRESSE Jean-baptiste", "info": "35'03'' qe", "color":"#00BCF2"},
+{ "name": "VALAT Jeremy", "info": "35'11'' qe", "color":"#00BCF2"},
+{ "name": "HENNION Gregory", "info": "35'13'' qi", "color":"#00BCF2"},
+{ "name": "DIANI Ilyas", "info": "35'15'' qe", "color":"#00BCF2"},
+{ "name": "LAURENT Thibaud", "info": "35'16'' qi", "color":"#00BCF2"},
+{ "name": "CHRETIEN Laurent", "info": "35'25'' qe", "color":"#00BCF2"},
+{ "name": "DEAGE Vincent", "info": "35'27'' qi", "color":"#00BCF2"},
+{ "name": "DEHAN Pierrick", "info": "35'29'' qe", "color":"#00BCF2"},
+{ "name": "BOUBAYA Aimen", "info": "35'32'' qi", "color":"#00BCF2"},
+{ "name": "YAHIAOUI Toufik (Alg)", "info": "35'37'' qe", "color":"#00BCF2"},
+{ "name": "GALMICHE Benoit", "info": "35'39'' qe", "color":"#00BCF2"},
+{ "name": "ANDRIEU Olivier", "info": "35'39'' qe", "color":"#00BCF2"},
+{ "name": "PEREZ Jean", "info": "35'42'' qi", "color":"#00BCF2"},
+{ "name": "SANCHEZ Christian", "info": "35'44'' qe", "color":"#00BCF2"},
+{ "name": "WAMSTER David", "info": "35'47'' qi", "color":"#00BCF2"},
+{ "name": "MFUFU Tomy", "info": "35'50'' qe", "color":"#00BCF2"},
+{ "name": "MEDUS Lilian", "info": "35'53'' qi", "color":"#00BCF2"},
+{ "name": "SADJI Ahmed", "info": "36'04'' qe", "color":"#00BCF2"},
+{ "name": "EDELINE Paul", "info": "36'06'' qi", "color":"#00BCF2"},
+{ "name": "GARAMPON Cedric", "info": "36'07'' qe", "color":"#00BCF2"},
+{ "name": "VASSE Pierrick", "info": "36'15'' qi", "color":"#00BCF2"},
+{ "name": "ABDELKADER Yann", "info": "36'17'' qe", "color":"#00BCF2"},
+{ "name": "SICOT Maxime", "info": "36'21'' qi", "color":"#00BCF2"},
+{ "name": "COISNON Arnaud", "info": "36'23'' qi", "color":"#00BCF2"},
+{ "name": "PIANT Philippe", "info": "36'23'' qe", "color":"#00BCF2"},
+{ "name": "BODIER Nicolas", "info": "36'28'' qi", "color":"#00BCF2"},
+{ "name": "JUNCHAT Christophe", "info": "36'33'' qi", "color":"#00BCF2"},
+{ "name": "COUTAND Francois", "info": "36'34'' qe", "color":"#00BCF2"},
+{ "name": "PROME Thomas", "info": "36'38'' qe", "color":"#00BCF2"},
+{ "name": "ZATOUNI Amine", "info": "36'41'' qi", "color":"#00BCF2"},
+{ "name": "SOFFIATI Thibaud", "info": "36'42'' qe", "color":"#00BCF2"},
+{ "name": "PASQUET Olivier", "info": "36'43'' qe", "color":"#00BCF2"},
+{ "name": "ZERROUKI Farid", "info": "36'44'' qe", "color":"#00BCF2"},
+{ "name": "WEIGEL Thibault", "info": "36'44'' qe", "color":"#00BCF2"},
+{ "name": "GUYON Julien", "info": "36'47'' qe", "color":"#00BCF2"},
+{ "name": "DURAND Mathieu", "info": "36'47'' qi", "color":"#00BCF2"},
+{ "name": "NASSIET Francois", "info": "36'49'' qi", "color":"#00BCF2"},
+{ "name": "ABDELMALEK Morad", "info": "36'50'' qe", "color":"#00BCF2"},
+{ "name": "FERREIRO Thibaut", "info": "36'51'' qi", "color":"#00BCF2"},
+{ "name": "GELLAERTS Jules", "info": "36'51'' qi", "color":"#00BCF2"},
+{ "name": "DUPOUX Aymeric", "info": "36'54'' qi", "color":"#00BCF2"},
+{ "name": "KENNEY William (Gbr)", "info": "36'56'' qi", "color":"#00BCF2"},
+{ "name": "D'OLIVEIRA Nicolas", "info": "36'57'' qe", "color":"#00BCF2"},
+{ "name": "FORTUN Armel", "info": "36'58'' qi", "color":"#00BCF2"},
+{ "name": "DECAMBRON Antoine", "info": "36'59'' qe", "color":"#00BCF2"},
+{ "name": "DESMONS Antoine", "info": "37'00'' qe", "color":"#00BCF2"},
+{ "name": "BOILEAU Matthieu", "info": "37'09'' qi", "color":"#00BCF2"},
+{ "name": "PROST Hugo", "info": "37'09'' qi", "color":"#00BCF2"},
+{ "name": "GODET Sebastien", "info": "37'14'' qi", "color":"#00BCF2"},
+{ "name": "RUGGIERO-JULIO Vincent", "info": "37'18'' qi", "color":"#00BCF2"},
+{ "name": "HANROT Christophe", "info": "37'19'' qi", "color":"#00BCF2"},
+{ "name": "FINET Thomas", "info": "37'24'' qe", "color":"#00BCF2"},
+{ "name": "PONTON Benoit", "info": "37'27'' qi", "color":"#00BCF2"},
+{ "name": "RENAI Abdenour", "info": "37'28'' qi", "color":"#00BCF2"},
+{ "name": "BRAHIC Ludovic", "info": "37'28'' qe", "color":"#00BCF2"},
+{ "name": "CIZEAU Thibault", "info": "37'29'' qi", "color":"#00BCF2"},
+{ "name": "MAUVAIS Clement", "info": "37'32'' qi", "color":"#00BCF2"},
+{ "name": "VIOLARD Frederic", "info": "37'37'' qi", "color":"#00BCF2"},
+{ "name": "LE ROUX Devrig", "info": "37'41'' qi", "color":"#00BCF2"},
+{ "name": "BLANCHARD Nicolas", "info": "37'42'' qi", "color":"#00BCF2"},
+{ "name": "GAUDEIX Christophe", "info": "37'43'' qe", "color":"#00BCF2"},
+{ "name": "FLEURIAL Brice", "info": "37'44'' qi", "color":"#00BCF2"},
+{ "name": "BUET Stephane jean", "info": "37'45'' qi", "color":"#00BCF2"},
+{ "name": "PORCIER Guillaume", "info": "37'46'' qi", "color":"#00BCF2"},
+{ "name": "PAPON Clement", "info": "37'50'' qi", "color":"#00BCF2"},
+{ "name": "GIRARD Louis", "info": "37'53'' qi", "color":"#00BCF2"},
+{ "name": "FAURET Antonin", "info": "37'56'' qe", "color":"#00BCF2"},
+{ "name": "CELLIER Nicolas", "info": "37'57'' qi", "color":"#00BCF2"},
+{ "name": "LEFEBVRE Manuel", "info": "37'58'' qe", "color":"#00BCF2"},
+{ "name": "HULIN Alexandre", "info": "37'59'' qe", "color":"#00BCF2"},
+{ "name": "FERRARI Aurelien", "info": "38'00'' qe", "color":"#00BCF2"}
+		
+	]
+},
+{
+	"key": "Dep15",
+	"fields": [
+		{
+			"name": "RIFFLARD Nicolas",
+			"info": "28'17''"
+		},
+		{
+			"name": "KERROUA Yanis",
+			"info": "28'42''"
+		},
+		{
+			"name": "ODIN Bertrand",
+			"info": "28'49''"
+		},
+		{
+			"name": "DELVER Geoffrey",
+			"info": "28'55''"
+		},
+		{
+			"name": "RENAULT Vincent",
+			"info": "29'20''"
+		},
+		{
+			"name": "MFUFU Tomy",
+			"info": "29'38''"
+		},
+		{
+			"name": "ZATOUNI Amine",
+			"info": "29'46''"
+		},
+		{
+			"name": "DIANI Ilyas",
+			"info": "30'22''"
+		},
+		{
+			"name": "IDY Jean-maxime",
+			"info": "30'25''"
+		},
+		{
+			"name": "ABDELKADER Yann",
+			"info": "30'31''"
+		},
+		{
+			"name": "FERREIRO Thibaut",
+			"info": "30'39''"
+		},
+		{
+			"name": "ANDRIEU Olivier",
+			"info": "30'40''"
+		},
+		{
+			"name": "LABOUTE Karim-alain",
+			"info": "30'57''"
+		},
+		{
+			"name": "LOUVIERS Kenji",
+			"info": "31'10''"
+		},
+		{
+			"name": "ROTH DIT BETTONI Romain",
+			"info": "31'12''"
+		},
+		{
+			"name": "CIZEAU Thibault",
+			"info": "31'14''"
+		},
+		{
+			"name": "LECUIR Fabien",
+			"info": "31'25''"
+		},
+		{
+			"name": "RICHARD Maxime",
+			"info": "31'27''"
+		},
+		{
+			"name": "BRAHIC Ludovic",
+			"info": "31'32''"
+		},
+		{
+			"name": "ARLOT Damien",
+			"info": "31'34''"
+		},
+		{
+			"name": "PROST Hugo",
+			"info": "31'38''"
+		},
+		{
+			"name": "BURETTE Matthieu",
+			"info": "31'40''"
+		},
+		{
+			"name": "BELHIMER Mohamed (Alg)",
+			"info": "31'44''"
+		},
+		{
+			"name": "DURAND Mathieu",
+			"info": "31'50''"
+		},
+		{
+			"name": "BLANCHARD Nicolas",
+			"info": "31'51''"
+		},
+		{
+			"name": "DEPREZ Remi",
+			"info": "31'54''"
+		},
+		{
+			"name": "GOBET Frederic",
+			"info": "32'03''"
+		},
+		{
+			"name": "LARIVE Vincent",
+			"info": "32'06''"
+		},
+		{
+			"name": "TOIRON Maxime",
+			"info": "32'09''"
+		},
+		{
+			"name": "GUILLONNEAU Aymeric",
+			"info": "32'12''"
+		},
+		{
+			"name": "SURY Thibault",
+			"info": "32'15''"
+		},
+		{
+			"name": "NOEL Raphael",
+			"info": "32'16''"
+		},
+		{
+			"name": "FOLLIASSON Hubert",
+			"info": "32'17''"
+		},
+		{
+			"name": "SUREAU Jean-baptiste",
+			"info": "32'38''"
+		},
+		{
+			"name": "PELLOIS Vincent",
+			"info": "32'43''"
+		},
+		{
+			"name": "DUPOUX Aymeric",
+			"info": "32'44''"
+		},
+		{
+			"name": "ALEXANDRE Christophe",
+			"info": "32'45''"
+		},
+		{
+			"name": "CHASTANG Cedric",
+			"info": "32'45''"
+		},
+		{
+			"name": "COULOMB Mathieu",
+			"info": "32'50''"
+		},
+		{
+			"name": "DE NASCIMENTO MARTIN Adilson (Cpv)",
+			"info": "32'50''"
+		},
+		{
+			"name": "GIRARD Louis",
+			"info": "32'58''"
+		},
+		{
+			"name": "GALLAND Damien",
+			"info": "33'00''"
+		},
+		{
+			"name": "MEYERIE FRERE Thomas",
+			"info": "33'07''"
+		},
+		{
+			"name": "ZEPPA Nicolas",
+			"info": "33'09''"
+		},
+		{
+			"name": "DEGLANE Emmanuel",
+			"info": "33'10''"
+		},
+		{
+			"name": "WAUTIER Antoine",
+			"info": "33'10''"
+		},
+		{
+			"name": "MANGIN Frederic",
+			"info": "33'15''"
+		},
+		{
+			"name": "SICOT Maxime",
+			"info": "33'16''"
+		},
+		{
+			"name": "PELLERIN Johan",
+			"info": "33'16''"
+		},
+		{
+			"name": "BOUISSOU Anthony",
+			"info": "33'21''"
+		}
+	]
+},
+{
+	"key": "Reg15",
+	"fields": [
+		{
+			"name": "AMDOUNI Morhad",
+			"info": "30'25''"
+		},
+		{
+			"name": "HABZ Azeddine (Mar)",
+			"info": "30'30''"
+		},
+		{
+			"name": "HATTOUCHI Mohamed (Mar)",
+			"info": "30'51''"
+		},
+		{
+			"name": "CHAREIL Ken",
+			"info": "30'56''"
+		},
+		{
+			"name": "BOUMAZA Naboulsy",
+			"info": "31'08''"
+		},
+		{
+			"name": "TEIXEIRA FURTADO Adalberto (Por)",
+			"info": "31'29''"
+		},
+		{
+			"name": "LECIEUX Thomas",
+			"info": "31'30''"
+		},
+		{
+			"name": "OMARAT Brahim (Mar)",
+			"info": "31'39''"
+		},
+		{
+			"name": "CARANTON Laurent",
+			"info": "31'40''"
+		},
+		{
+			"name": "MAAMOUZ Ahmed",
+			"info": "31'46''"
+		},
+		{
+			"name": "BROOKS Jerome",
+			"info": "31'52''"
+		},
+		{
+			"name": "TRONCONI Alexandro",
+			"info": "32'01''"
+		},
+		{
+			"name": "ROUGER Guillaume",
+			"info": "32'05''"
+		},
+		{
+			"name": "BENICHOU Thomas",
+			"info": "32'11''"
+		},
+		{
+			"name": "GROSJANT Julien",
+			"info": "32'13''"
+		},
+		{
+			"name": "DELVER Geoffrey",
+			"info": "32'15''"
+		},
+		{
+			"name": "NAIT HAMMOU Otmane (Mar)",
+			"info": "32'28''"
+		},
+		{
+			"name": "RENAULT Vincent",
+			"info": "32'33''"
+		},
+		{
+			"name": "PAILLUSSON Christophe",
+			"info": "32'38''"
+		},
+		{
+			"name": "SAINT AMAND Lionel",
+			"info": "32'47''"
+		},
+		{
+			"name": "REGUIG Jibril",
+			"info": "32'53''"
+		},
+		{
+			"name": "DUCROT Joel",
+			"info": "32'56''"
+		},
+		{
+			"name": "AZAHRAI Mustapha (Mar)",
+			"info": "32'58''"
+		},
+		{
+			"name": "POZZO DI BORGO Romain",
+			"info": "33'11''"
+		},
+		{
+			"name": "HUBERT Tony",
+			"info": "33'18''"
+		},
+		{
+			"name": "NGANGA Anthony",
+			"info": "33'19''"
+		},
+		{
+			"name": "NAVE Jean-baptiste",
+			"info": "33'20''"
+		},
+		{
+			"name": "SAUVEY Romain",
+			"info": "33'22''"
+		},
+		{
+			"name": "BOCQUET Gregory",
+			"info": "33'24''"
+		},
+		{
+			"name": "GENGOUL Pascal",
+			"info": "33'25''"
+		},
+		{
+			"name": "EDELINE Paul",
+			"info": "33'29''"
+		},
+		{
+			"name": "VAZ Frederic",
+			"info": "33'30''"
+		},
+		{
+			"name": "PORCIER Guillaume",
+			"info": "33'31''"
+		},
+		{
+			"name": "FERREIRO Thibaut",
+			"info": "33'36''"
+		},
+		{
+			"name": "ALIX Herve",
+			"info": "33'37''"
+		},
+		{
+			"name": "HARVET Samuel",
+			"info": "33'40''"
+		},
+		{
+			"name": "GALMICHE Benoit",
+			"info": "33'43''"
+		},
+		{
+			"name": "ZATOUNI Amine",
+			"info": "33'47''"
+		},
+		{
+			"name": "DIANI Ilyas",
+			"info": "33'53''"
+		},
+		{
+			"name": "RODRIGUEZ Samuel",
+			"info": "33'54''"
+		},
+		{
+			"name": "LOUVIERS Kenji",
+			"info": "33'55''"
+		},
+		{
+			"name": "RAJKOWSKI Sebastien",
+			"info": "34'01''"
+		},
+		{
+			"name": "ABDELKADER Yann",
+			"info": "34'03''"
+		},
+		{
+			"name": "BELLAHMER Lounis",
+			"info": "34'11''"
+		},
+		{
+			"name": "BOUHAZA Mohamed",
+			"info": "34'12''"
+		},
+		{
+			"name": "LACHEREST Sebastien",
+			"info": "34'13''"
+		},
+		{
+			"name": "DIOU Anthony",
+			"info": "34'16''"
+		},
+		{
+			"name": "ANDRIEU Olivier",
+			"info": "34'17''"
+		},
+		{
+			"name": "BOUBAYA Aimen",
+			"info": "34'18''"
+		},
+		{
+			"name": "CULLIER Guillaume",
+			"info": "34'23''"
+		},
+		{
+			"name": "MAIRESSE Jean-baptiste",
+			"info": "34'30''"
+		},
+		{
+			"name": "LESAVRE Antoine",
+			"info": "34'33''"
+		},
+		{
+			"name": "VIRLICHIE Vincent",
+			"info": "34'35''"
+		},
+		{
+			"name": "LECUIR Fabien",
+			"info": "34'36''"
+		},
+		{
+			"name": "MOHLER Felix (Ger)",
+			"info": "34'36''"
+		},
+		{
+			"name": "DELANERIE Jonathan",
+			"info": "34'37''"
+		},
+		{
+			"name": "CHATEAU Anthony",
+			"info": "34'37''"
+		},
+		{
+			"name": "SANCHEZ Christian",
+			"info": "34'38''"
+		},
+		{
+			"name": "ABDELMALEK Morad",
+			"info": "34'38''"
+		},
+		{
+			"name": "DECAMBRON Antoine",
+			"info": "34'42''"
+		},
+		{
+			"name": "LATRACH Kamal (Mar)",
+			"info": "34'45''"
+		},
+		{
+			"name": "CHRETIEN Laurent",
+			"info": "34'48''"
+		},
+		{
+			"name": "ROTH DIT BETTONI Romain",
+			"info": "34'54''"
+		},
+		{
+			"name": "CIZEAU Thibault",
+			"info": "34'55''"
+		},
+		{
+			"name": "CELLIER Nicolas",
+			"info": "34'57''"
+		},
+		{
+			"name": "BEN-ABDELKARIM Azeddine",
+			"info": "34'59''"
+		},
+		{
+			"name": "DA SILVA CARVALHO LE Thomas",
+			"info": "35'00''"
+		},
+		{
+			"name": "PASQUET Olivier",
+			"info": "35'03''"
+		},
+		{
+			"name": "PADOVANI Alexandre",
+			"info": "35'05''"
+		},
+		{
+			"name": "SEVESTRE Cyrille",
+			"info": "35'06''"
+		},
+		{
+			"name": "DEFAY Daniel",
+			"info": "35'06''"
+		},
+		{
+			"name": "SURY Thibault",
+			"info": "35'07''"
+		},
+		{
+			"name": "COMPAIN Gaetan",
+			"info": "35'08''"
+		},
+		{
+			"name": "HERCHENROEDER Nathan (Usa)",
+			"info": "35'08''"
+		},
+		{
+			"name": "FERRE Fabrice",
+			"info": "35'09''"
+		},
+		{
+			"name": "VIOLARD Frederic",
+			"info": "35'09''"
+		},
+		{
+			"name": "CHIROL Jean-baptiste",
+			"info": "35'09''"
+		},
+		{
+			"name": "DURAND Mathieu",
+			"info": "35'15''"
+		},
+		{
+			"name": "SICOT Maxime",
+			"info": "35'18''"
+		},
+		{
+			"name": "DUPOUX Aymeric",
+			"info": "35'25''"
+		},
+		{
+			"name": "TOURE Diawoye",
+			"info": "35'27''"
+		},
+		{
+			"name": "TORRICELLI Raffaello",
+			"info": "35'27''"
+		},
+		{
+			"name": "DUPONT Mathieu",
+			"info": "35'28''"
+		},
+		{
+			"name": "LEDUCQ Damien",
+			"info": "35'28''"
+		},
+		{
+			"name": "CARDUNER Cedric",
+			"info": "35'29''"
+		},
+		{
+			"name": "AITSI Rachid (Mar)",
+			"info": "35'30''"
+		},
+		{
+			"name": "BRAHIC Ludovic",
+			"info": "35'31''"
+		},
+		{
+			"name": "PROST Hugo",
+			"info": "35'31''"
+		},
+		{
+			"name": "BLANCHARD Nicolas",
+			"info": "35'34''"
+		},
+		{
+			"name": "DELATTRE Nicolas",
+			"info": "35'35''"
+		},
+		{
+			"name": "TOIRON Maxime",
+			"info": "35'35''"
+		},
+		{
+			"name": "DREAN Gwilhem",
+			"info": "35'36''"
+		},
+		{
+			"name": "CHOPINET Clement",
+			"info": "35'39''"
+		},
+		{
+			"name": "BURETTE Matthieu",
+			"info": "35'43''"
+		},
+		{
+			"name": "BELLANGER Miguel",
+			"info": "35'46''"
+		},
+		{
+			"name": "PONTON Benoit",
+			"info": "35'48''"
+		},
+		{
+			"name": "HAMELIN Cyril",
+			"info": "35'51''"
+		},
+		{
+			"name": "ALLAIN Loic",
+			"info": "35'53''"
+		},
+		{
+			"name": "GUILLONNEAU Aymeric",
+			"info": "35'54''"
+		},
+		{
+			"name": "PILLARD Nicolas",
+			"info": "35'55''"
+		},
+		{
+			"name": "TOURE Bakari",
+			"info": "35'56''"
+		},
+		{
+			"name": "DEPREZ Remi",
+			"info": "35'57''"
+		},
+		{
+			"name": "COULOMB Mathieu",
+			"info": "35'59''"
+		},
+		{
+			"name": "LEBRUN Julien",
+			"info": "36'00''"
+		},
+		{
+			"name": "GUEDNEE Arnaud",
+			"info": "36'03''"
+		},
+		{
+			"name": "CHRISTI LOUIS Frederic",
+			"info": "36'04''"
+		},
+		{
+			"name": "ZEPPA Nicolas",
+			"info": "36'05''"
+		},
+		{
+			"name": "RENAI Abdenour",
+			"info": "36'06''"
+		},
+		{
+			"name": "LEFEBVRE Manuel",
+			"info": "36'07''"
+		},
+		{
+			"name": "GUYON Julien",
+			"info": "36'07''"
+		},
+		{
+			"name": "PIANT Philippe",
+			"info": "36'09''"
+		},
+		{
+			"name": "BARDET Regis",
+			"info": "36'12''"
+		},
+		{
+			"name": "GODET Sebastien",
+			"info": "36'15''"
+		},
+		{
+			"name": "BADR Youssef",
+			"info": "36'17''"
+		},
+		{
+			"name": "AKARKACH Mounir",
+			"info": "36'21''"
+		},
+		{
+			"name": "GIRARD Louis",
+			"info": "36'26''"
+		},
+		{
+			"name": "FLEURIAL Brice",
+			"info": "36'27''"
+		},
+		{
+			"name": "MAUBERGER Briac",
+			"info": "36'28''"
+		},
+		{
+			"name": "DE NASCIMENTO MARTIN Adilson (Cpv)",
+			"info": "36'30''"
+		}
+	]
+}
+]
