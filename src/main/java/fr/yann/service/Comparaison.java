@@ -22,12 +22,14 @@ public class Comparaison {
 
 		String k1 = "Dep14";
 		String k2 = "Dep15";
-		String k3 = "Reg14";
+		String k3 = "Dep16";
 		String k4 = "Reg15";
+		String k5 = "Reg15";
 		
 		generateLinks(getCross(k1), getCross(k2));
 		generateLinks(getCross(k2), getCross(k3));
-		generateLinks(getCross(k3), getCross(k4));
+		// generateLinks(getCross(k3), getCross(k4));
+		// generateLinks(getCross(k4), getCross(k5));
 
 	}
 
