@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>&Eacute;volution des classements cross 2014 - 2019</title>
+<title>Classements cross 2014 - 2019 et calcul écarts</title>
 <!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
 <meta charset="UTF-8">
 <script src="../exercices/js/go.js"></script>
@@ -941,12 +941,24 @@ loc: "3200 0" }
     	document.getElementById("btnCompareSel1Sel2").disabled = true;
     	resetTable();
     }
+
+    function convertSecondes(chrono) {
+    	var min = parseInt(chrono.substr(0,2));
+    	var sec = parseInt(chrono.substr(3,2));
+    	return (min * 60) + sec; 
+    }
+    	
+    
     function compareSel1Sel2(){
     	var sel1 = document.getElementById("sel1").innerText;
     	var sel2 = document.getElementById("sel2").innerText;
     	
-    	
     	var arr = myDiagram.model.De;
+    	
+    	var table = document.getElementById("ecarts");
+    	// Create an empty <tr> element and add it to the 1st position of the table:
+    	var row = table.insertRow(1);
+		var num = 0;
     	
     	for (var i = 0; i < arr.length; i++){
     	    var obj = arr[i];
@@ -958,7 +970,8 @@ loc: "3200 0" }
     	        	val == 'Reg14' || val == 'Reg15' || val == 'Reg16' || val == 'Reg17' || val == 'Reg18' || val == 'Reg19' ||
     	        	val == 'Inter2017' || val == 'Creteil2018'
     	        ) {
-    	        	ecart(obj, sel1, sel2);
+    	        	ecart(row, val, obj, sel1, sel2, num);
+    	        	num = num + 1;
     	        }
     	    }
     	}
@@ -970,18 +983,22 @@ loc: "3200 0" }
     	}
     }
     
-    function ecart(obj, sel1, sel2){
-
-  		  for (var key in obj){
-  		    var value = obj[key];
-  		    if (key == 'fields'){
-  		    	// console.log(key + ": " + value);
-  		    	traiteTab(value, sel1, sel2);
-  		    }
-  		  }
-    }
     
-    function traiteTab(tab, sel1, sel2){
+    function insertCell(row, diff, i){
+
+    	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    	var cell1 = row.insertCell(i);
+
+    	if (isNaN(diff)){
+    		cell1.innerHTML = "";
+    	}
+    	else {
+    		cell1.innerHTML = diff + "''";
+    	}
+    }
+
+    
+    function traiteTab(row, cross, tab, sel1, sel2, i){
     	
       var chrono1 = "_";
    	  var chrono2 = "_";
@@ -997,52 +1014,64 @@ loc: "3200 0" }
    		}
       }
    	  
-   	   console.log(chrono1 + " ---- " + chrono2);
-   	   insertRow(chrono1, chrono2);
+   	  console.log(chrono1 + " ---- " + chrono2);
+   	  insertCell(row, convertSecondes(chrono2) - convertSecondes(chrono1), i);
     }
+
+    function ecart(row, cross, obj, sel1, sel2, i){
+
+		  for (var key in obj){
+		    var value = obj[key];
+		    if (key == 'fields'){
+		    	// console.log(key + ": " + value);
+		    	traiteTab(row, cross, value, sel1, sel2, i);
+		    }
+		  }
+  }
     
-    function insertRow(c1, c2){
-    	var table = document.getElementById("ecarts");
-
-    	// Create an empty <tr> element and add it to the 1st position of the table:
-    	var row = table.insertRow(1);
-
-    	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    	var cell1 = row.insertCell(0);
-    	var cell2 = row.insertCell(1);
-
-    	// Add some text to the new cells:
-    	cell1.innerHTML = c1;
-    	cell2.innerHTML = c2;
-    }
     
     function resetTable(){
-  	    document.getElementById("ecarts").deleteRow(0);
+  	    document.getElementById("ecarts").deleteRow(1);
     }
     
 </script>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	margin: 0px 0px 0px 0px;
+	font-size: 11px;
+}
+
+th, td {
+	border: 1px solid;
+	padding: 10px;
+}
+</style>
+
 </head>
 <body onload="init()"; style="font-family: Verdana; font-size: 12px">
 	<div id="schema" style="float: left;width: 1300px; margin-right: 50px;padding-left: 10px">
-		<h2>&Eacute;volution des classements cross 2014 - 2019</h2>
+		<h2>Classements cross 2014 - 2019 et et calcul écarts</h2>
 		
 		<p>Le diagramme permet de visualiser l'évolution de la hiérarchie des athlètes.
 		Deux flêches se croisent : l'ordre entre deux athlètes change.</p>
 		
-		<p>Pour calculer l'évolution des écarts entre deux athlètes : sélection en cliquant deux noms puis 
+		<h3>Calcul des écarts entre un athlète de référence et plusieurs autres</h3>
+		<p>
+		[sélection par clic sur nom] Athlète 1 : <span id="sel1" style="margin-right: 50px">ANDRIEU Olivier</span>Athlète 2 : <span id="sel2" style="margin-right: 50px">DIANI Ilyas</span>
 			<button id="btnCompareSel1Sel2" onclick="compareSel1Sel2()">Calcul des écarts</button>
-			<button onclick="resetSelection()">Reset sélection</button>
-		Sélection 1 : <span id="sel1" style="margin-right: 50px">ANDRIEU Olivier</span>Sélection 2 : <span id="sel2">DIANI Ilyas</span>
+			<button onclick="resetSelection()">Suppression dernier calcul</button>
 		</p>
+		<table id="ecarts">
+		<tr>
+		<th>Dep14</th><th>Rep14</th><th>Dep15</th><th>Rep15</th><th>Dep16</th><th>Dep17</th><th>Dep18</th><th>Dep19</th>
+		<tr><td>10''</td><td>-24''</td><td>-18''</td><td>-24''</td><td></td><td></td><td></td><td></td></tr>
+		</table>
+		<br/>
 		<p><button onclick="selectClubJoinville()">select club Joinville</button>
 		<button onclick="selectClubCreteil()">select club Créteil</button>
 		<button onclick="selectClubSolon()">select club Solon</button>
 		</p>
-		<table id="ecarts">
-		<tr>
-		<th>Dep14</th><th>Rep14</th><th></th><th>Dep15</th><th>Rep15</th><th>Dep16</th><th>Dep17</th><th>Dep18</th><th>Dep19</th>
-		</table>
-		<br/>
 		
 		<div id="sample">
   <div id="myDiagramDiv" style="border: solid 1px black; width:3450px; height:1200px"></div>
