@@ -20,7 +20,7 @@ public class CleanXml {
 		LastRang lastRang = new LastRang();
 		lastRang.setRang(1);
 
-		System.out.println(traiteLineAtypique(line, EpreuveEnum.COURSE_10_KM, SexeEnum.MASCULIN, lastRang, 2003));
+		// System.out.println(traiteLineAtypique(line, EpreuveEnum.COURSE_10_KM, SexeEnum.MASCULIN, lastRang, 2003));
 
 	}
 

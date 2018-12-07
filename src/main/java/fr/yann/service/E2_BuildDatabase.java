@@ -57,7 +57,7 @@ public class E2_BuildDatabase {
 
 				// 400_M_2004_0.html
 				String fileName = epreuveEnum.getCode() + "_"+ sexeEnum.getCodeStr() + "_" + annee + "_" + i;
-				String path = "C:\\workspace_athle\\parser\\bilan\\" + epreuveEnum.getCode() + "\\" + fileName;
+				String path = "D:\\workspace_athle\\parser\\bilan\\" + epreuveEnum.getCode() + "\\" + fileName;
 	
 				System.out.println(path);
 	

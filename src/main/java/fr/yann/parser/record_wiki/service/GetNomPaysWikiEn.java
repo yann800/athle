@@ -1,4 +1,4 @@
-package fr.yann.parser.record_wiki;
+package fr.yann.parser.record_wiki.service;
 
 import java.util.HashMap;
 import java.util.Map;

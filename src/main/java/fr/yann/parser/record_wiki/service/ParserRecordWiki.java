@@ -1,4 +1,4 @@
-package fr.yann.parser.record_wiki;
+package fr.yann.parser.record_wiki.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -174,6 +174,9 @@ public class ParserRecordWiki {
 	}
 
 	private static boolean isEpreuve(String str) {
+		if (str.contains("y")) {
+			return false;
+		}
 		if (str.startsWith("100") || str.startsWith("200") || str.startsWith("400")
 				|| str.startsWith("800") || str.startsWith("1500") || str.startsWith("3000")
 				|| str.startsWith("1 500") || str.startsWith("3 000")

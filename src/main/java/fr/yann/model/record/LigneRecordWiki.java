@@ -4,9 +4,11 @@ import fr.yann.model.enums.SexeEnum;
 
 public class LigneRecordWiki {
 
+	private int			rang;
 	private String		epreuve;
 	private String		perf;
 	private String		nom;
+	private int			naissance;
 	private int			age;
 	private int			annee;
 	private SexeEnum	sexe;
@@ -29,11 +31,12 @@ public class LigneRecordWiki {
 	}
 
 	public String toStringSql() {
-		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee) VALUES ("
+		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, naissance, perf, annee) VALUES ("
 				+ idPays + ","
 				+ sexe.getCodeInt() + ",'"
 				+ getEpreuve() + "', '"
 				+ nom + "','"
+				+ naissance + "','"
 				+ getPerf(perf) + "',"
 				+ annee + ");";
 		return str;
@@ -108,4 +111,27 @@ public class LigneRecordWiki {
 		this.epreuve = epreuve;
 	}
 
+	public int getNaissance() {
+		return this.naissance;
+	}
+
+	public void setNaissance(int naissance) {
+		this.naissance = naissance;
+	}
+
+	public int getRang() {
+		return rang;
+	}
+
+	public void setRang(int rang) {
+		this.rang = rang;
+	}
+
+	public int getIdPays() {
+		return idPays;
+	}
+
+	public void setIdPays(int idPays) {
+		this.idPays = idPays;
+	}
 }

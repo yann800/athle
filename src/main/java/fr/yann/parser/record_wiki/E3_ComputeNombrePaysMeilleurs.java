@@ -9,7 +9,7 @@ import java.sql.Statement;
 import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 
-public class ComputeNombrePaysMeilleurs {
+public class E3_ComputeNombrePaysMeilleurs {
 
 	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/athle";

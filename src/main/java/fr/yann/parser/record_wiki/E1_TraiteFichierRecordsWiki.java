@@ -7,24 +7,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.model.record.LigneRecordWiki;
+import fr.yann.parser.record_wiki.service.GetNomPaysWikiEn;
+import fr.yann.parser.record_wiki.service.ParserRecordWiki;
+import fr.yann.parser.record_wiki.service.SqlService;
 
-public class TraiteFichierRecordsWiki {
-
+/**
+ * 
+ * HTML -> SQL
+ *
+ */
+public class E1_TraiteFichierRecordsWiki {
+	// Insert.main(path + ".sql");
 	public static void main(String[] args) throws Exception {
 
 		Map<Integer, String> map = GetNomPaysWikiEn.getMap();
 
 		for (Integer num : map.keySet()) {
 			
-			if (num != 69){
-				continue;
-			}
+			// if (num != 69) {continue;}
 			
 			System.out.println();
+			StringBuffer sb = new StringBuffer();
+
+			String path = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays" + num + ".html";
+
 			// List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays(" + num + ")", num);
-			List<LigneRecordWiki> liste = traite("/home/aek/yann/git/athle/record/pays" + num + ".html", num);
+			List<LigneRecordWiki> liste = traite(path, num);
 
 			// System.out.println("NOMBRE : " + liste.size() + "\n");
 			for (LigneRecordWiki lr : liste) {
@@ -33,7 +44,9 @@ public class TraiteFichierRecordsWiki {
 				}
 
 				System.out.println(lr.toStringSql());
+				sb.append(lr.toStringSql() + "\n");
 			}
+			SqlService.writeFile(path, sb.toString());
 		}
 
 
@@ -64,24 +77,20 @@ public class TraiteFichierRecordsWiki {
 				continue;
 			}
 
-			if (line.startsWith("<tr>")) {
+			if (line.startsWith("<tr")) {
 				lr = new LigneRecordWiki(idPays, sexe);
 				continue;
 			}
 
-			if (line.startsWith("</tr>")) {
+			if (line.contains("</tr>")) {
 
-				if (lr != null && lr.getEpreuve() == null) {
+				if (lr == null || lr.getEpreuve() == null) {
 					// System.err.println("=========" + lr);
 					continue;
 				}
+				EpreuveEnum epreuveEnum = EpreuveEnum.getEnumFromCode(lr.getEpreuve());
 
-				if (lr != null && !lr.getEpreuve().contains("arche") && !lr.getEpreuve().contains("walk") && !lr.getEpreuve().contains("erlin")) {
-
-					// FIXME remetre
-					if (lr.getEpreuve().contains("thlon")) {
-						continue;
-					}
+				if (epreuveEnum != null) {
 					
 					if (lr.getPerf() == null){
 						// System.err.println("-- " + lr.getEpreuve());
