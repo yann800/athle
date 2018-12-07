@@ -22,9 +22,7 @@ public class ParserSimpleTxt {
 
 	/**
 	 * arg : D:\Users\yabd-el-kader\Desktop\athle\bilan\liste_000.html
-	 * @param path 
-	 * @param idEpreuve 
-	 * @param sexe 
+	 * @param args 
 	 * @throws FileNotFoundException 
 	 * @throws IOException 
 	 */

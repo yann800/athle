@@ -84,7 +84,7 @@ public class ParserRecord {
 
 		try {
 			annee2 = Integer.parseInt(date.substring(6, 8));
-		} catch (Exception e) {
+		} catch (@SuppressWarnings("unused") Exception e) {
 			return 9999;
 		}
 		if (annee2 > 50) {

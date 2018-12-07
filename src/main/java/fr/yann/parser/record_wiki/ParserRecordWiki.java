@@ -84,7 +84,7 @@ public class ParserRecordWiki {
 
 		try {
 			return Integer.parseInt(strAnnee);
-		} catch (Exception e) {
+		} catch (@SuppressWarnings("unused") Exception e) {
 			// System.err.println(date + " n'est pas une date " + e.getMessage());
 			return -1;
 		}

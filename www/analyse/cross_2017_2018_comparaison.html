@@ -848,97 +848,86 @@ loc: "3200 0" }
     }
     
     
-    function selectClubJoinville(){
+    function selectionAthleteJoinville(cross, athletes){
+    	for (var i in athletes) {
+    		if (athletes[i].name == "ABDELKADER Yann"
+|| athletes[i].name == "ANDRIEU Olivier"
+|| athletes[i].name == "LEJEUNE Olivier"
+|| athletes[i].name == "DIANI Ilyas"
+|| athletes[i].name == "BRAHIC Ludovic"
+|| athletes[i].name == "LE ROUX Devrig"
+|| athletes[i].name == "SOFFIATI Thibaud"
+|| athletes[i].name == "JOUGLAS Franck"
+|| athletes[i].name == "DE VENDEGIES Xavier"
+|| athletes[i].name == "RIZZARELLO Romain"
+|| athletes[i].name == "CHASTANG Cedric"
+|| athletes[i].name == "CHASTANG Christophe"
+|| athletes[i].name == "MEYER Jerome"
+    	      ){
+				// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "red");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectionAthleteSolon(cross, athletes){
     	
+    	for (var i in athletes) {
+        	if (athletes[i].name == "FAVIER Francois-rene"
+|| athletes[i].name == "CARANTON Laurent"
+|| athletes[i].name == "BENHAMOU Michael"
+|| athletes[i].name == "FARIA Rolando"
+|| athletes[i].name == "TONI Stephane"
+    	      ){
+				// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "black");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectionAthleteCreteil(cross, athletes){
+    	for (var i in athletes) {
+    		if (athletes[i].name == "LEJEUNE Olivier"
+|| athletes[i].name == "DELVER Geoffrey"
+|| athletes[i].name == "PROST Hugo"
+|| athletes[i].name == "BERTHE Damien"
+    	      ){
+				// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "blue");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectClubJoinville(){
     	var arr = myDiagram.model.De;
-
-    	console.log(arr);
-
     	for (var i = 0; i < arr.length; i++){
     	    var obj = arr[i];
-    	    for (var key in obj){
-    	    	
-    	    	if (key == "fields"){
-	    	        var tab = obj[key];
-					
-	    	        for (var i in tab) {
-	    	        	if (tab[i].name == "ABDELKADER Yann"
-|| tab[i].name == "ANDRIEU Olivier"
-|| tab[i].name == "LEJEUNE Olivier"
-|| tab[i].name == "DIANI Ilyas"
-|| tab[i].name == "BRAHIC Ludovic"
-|| tab[i].name == "LE ROUX Devrig"
-|| tab[i].name == "SOFFIATI Thibaud"
-|| tab[i].name == "JOUGLAS Franck"
-|| tab[i].name == "DE VENDEGIES Xavier"
-|| tab[i].name == "RIZZARELLO Romain"
-|| tab[i].name == "CHASTANG Cedric"
-|| tab[i].name == "CHASTANG Christophe"
-|| tab[i].name == "MEYER Jerome"
-	    	        		
-	    	        		
-	    	        	){
-	    	        		// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
-	    	        		myDiagram.model.setDataProperty(tab[i], "color", "red");
-	    	        	}
-    	        	}
-    	        }
-   	    	}
+    	    selectionAthleteJoinville(obj.key, obj.fields);
    	    }
     }
     function selectClubCreteil(){
     	var arr = myDiagram.model.De;
     	for (var i = 0; i < arr.length; i++){
     	    var obj = arr[i];
-    	    for (var key in obj){
-    	    	
-    	    	if (key == "fields"){
-	    	        var tab = obj[key];
-					
-	    	        for (var i in tab) {
-	    	        	if (tab[i].name == "LEJEUNE Olivier"
-|| tab[i].name == "DELVER Geoffrey"
-|| tab[i].name == "PROST Hugo"
-|| tab[i].name == "BERTHE Damien"
-	    	        	){
-	    	        		// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
-	    	        		myDiagram.model.setDataProperty(tab[i], "color", "blue");
-	    	        	}
-    	        	}
-    	        }
-   	    	}
+    	    selectionAthleteCreteil(obj.key, obj.fields);
    	    }
     }
     function selectClubSolon(){
     	var arr = myDiagram.model.De;
     	for (var i = 0; i < arr.length; i++){
     	    var obj = arr[i];
-    	    for (var key in obj){
-    	    	
-    	    	if (key == "fields"){
-	    	        var tab = obj[key];
-					
-	    	        for (var i in tab) {
-	    	        	if (tab[i].name == "FAVIER Francois-rene"
-|| tab[i].name == "CARANTON Laurent"
-|| tab[i].name == "BENHAMOU Michael"
-|| tab[i].name == "FARIA Rolando"
-|| tab[i].name == "TONI Stephane"
-	    	        	){
-	    	        		// model.setDataProperty(item.Zd, "info", "XXXX");			    	      
-	    	        		myDiagram.model.setDataProperty(tab[i], "color", "black");
-	    	        	}
-    	        	}
-    	        }
-   	    	}
+    	    selectionAthleteSolon(obj.key, obj.fields);
    	    }
     }
-    
+        
     
     function resetSelection(){
     	document.getElementById("sel1").innerText = '__';
     	document.getElementById("sel2").innerText = '__';
     	document.getElementById("btnCompareSel1Sel2").disabled = true;
+    }
+
+    function supprimerDerniereLigne(){
     	resetTable();
     }
 
@@ -960,6 +949,7 @@ loc: "3200 0" }
     	var row = table.insertRow(1);
 		var num = 0;
     	
+		
     	for (var i = 0; i < arr.length; i++){
     	    var obj = arr[i];
     	    for (var key in obj){
@@ -975,6 +965,7 @@ loc: "3200 0" }
     	        }
     	    }
     	}
+       	insertFirstCell(row, sel1, sel2);
     	
     	var itr2 = myDiagram.nodes;
     	while (itr2.next()) {
@@ -983,6 +974,10 @@ loc: "3200 0" }
     	}
     }
     
+    function insertFirstCell(row, sel1, sel2){
+    	var cell = row.insertCell(0);
+   		cell.innerHTML = sel1 + " - " + sel2;
+    }
     
     function insertCell(row, diff, i){
 
@@ -1002,7 +997,7 @@ loc: "3200 0" }
     	
       var chrono1 = "_";
    	  var chrono2 = "_";
-    	
+    
    	  for (var p in tab) {
    		    
    		//  console.log(p + "  " + tab[p].name + "  " + tab[p].info);
@@ -1019,7 +1014,7 @@ loc: "3200 0" }
     }
 
     function ecart(row, cross, obj, sel1, sel2, i){
-
+    	
 		  for (var key in obj){
 		    var value = obj[key];
 		    if (key == 'fields'){
@@ -1060,12 +1055,15 @@ th, td {
 		<p>
 		[sélection par clic sur nom] Athlète 1 : <span id="sel1" style="margin-right: 50px">ANDRIEU Olivier</span>Athlète 2 : <span id="sel2" style="margin-right: 50px">DIANI Ilyas</span>
 			<button id="btnCompareSel1Sel2" onclick="compareSel1Sel2()">Calcul des écarts</button>
-			<button onclick="resetSelection()">Suppression dernier calcul</button>
+			<button onclick="resetSelection()">Ré-initialiser sélections</button>
+			<button onclick="supprimerDerniereLigne()">Suppression dernière ligne</button>
 		</p>
 		<table id="ecarts">
 		<tr>
-		<th>Dep14</th><th>Rep14</th><th>Dep15</th><th>Rep15</th><th>Dep16</th><th>Dep17</th><th>Dep18</th><th>Dep19</th>
-		<tr><td>10''</td><td>-24''</td><td>-18''</td><td>-24''</td><td></td><td></td><td></td><td></td></tr>
+<th>Comparaison</th>							<th>Dep14</th>	<th>Dep15</th>	<th>Dep16</th>	<th>Rep14</th>	<th>Rep15</th><th>Dep17M</th><th>Dep18M</th><th>Dep19M</th>
+<tr><td>ANDRIEU Olivier - DIANI Ilyas</td>		<td>10''</td>	<td>-24''</td>	<td>-18''</td>	<td>-24''</td>	<td></td><td></td><td></td><td></td></tr>
+<tr><td>ABDELKADER Yann - SOFFIATI Thibaud</td>	<td>92''</td>	<td>25''</td>	<td>70''</td>	<td></td>		<td></td><td></td><td></td><td></td></tr>
+						
 		</table>
 		<br/>
 		<p><button onclick="selectClubJoinville()">select club Joinville</button>

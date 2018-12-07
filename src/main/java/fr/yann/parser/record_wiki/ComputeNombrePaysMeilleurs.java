@@ -36,7 +36,9 @@ public class ComputeNombrePaysMeilleurs {
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
-			con.close();
+			if (con != null) {
+				con.close();
+			}
 		}
 	}
 
