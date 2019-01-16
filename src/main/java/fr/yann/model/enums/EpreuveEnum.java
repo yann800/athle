@@ -16,6 +16,7 @@ public enum EpreuveEnum {
 	COURSE_100_HAIES("100H"),
 	COURSE_110_HAIES("110H"),
 	COURSE_400_HAIES("400H"),
+	COURSE_3000_STEEPLE("3000 steeple"),	
 
 	LANCER_POIDS("Poids"),
 	LANCER_DISQUE("Disque"),
@@ -27,6 +28,7 @@ public enum EpreuveEnum {
 	SAUT_HAUTEUR("Hauteur"),
 	SAUT_PERCHE("Perche"),
 	
+	HEPTATHLON("Heptathlon"),
 	DECATHLON("Decathlon")
 	;
 
@@ -47,6 +49,33 @@ public enum EpreuveEnum {
 	}
 
 	public static EpreuveEnum getEnumFromCode(String str) {
+		if (str.equals("3000 steeplechase")){
+			return EpreuveEnum.COURSE_3000_STEEPLE;
+		}	
+		if (str.equals("High jump")){
+			return EpreuveEnum.LANCER_JAVELOT;	
+		}
+		if (str.equals("Pole vault")){
+			return EpreuveEnum.SAUT_PERCHE;
+		}
+		if (str.equals("Long jump")){
+			return EpreuveEnum.SAUT_LONGUEUR;
+		}
+		if (str.equals("Triple jump")){
+			return EpreuveEnum.SAUT_TRIPLE;
+		}
+		if (str.equals("Shot put")){
+			return EpreuveEnum.LANCER_POIDS;
+		}
+		if (str.equals("Discus throw")){
+			return EpreuveEnum.LANCER_DISQUE;
+		}
+		if (str.equals("Hammer throw")){
+			return EpreuveEnum.LANCER_MARTEAU;
+		}	
+		if (str.equals("Javelin throw")){
+			return EpreuveEnum.LANCER_JAVELOT;	
+		}
 		return lookup.get(str);
 	}
 }

@@ -1,11 +1,12 @@
 package fr.yann.model.record;
 
+import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 
 public class LigneRecordWiki {
 
 	private int			rang;
-	private String		epreuve;
+	private EpreuveEnum	epreuve;
 	private String		perf;
 	private String		nom;
 	private int			naissance;
@@ -33,18 +34,15 @@ public class LigneRecordWiki {
 		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, naissance, perf, annee) VALUES ("
 				+ idPays + ","
 				+ sexe.getCodeInt() + ",'"
-				+ getEpreuve() + "', '"
+				+ getEpreuve().getCode() + "', '"
 				+ nom + "','"
 				+ naissance + "','"
 				+ getPerf(perf) + "',"
 				+ annee + ");";
 		return str;
 	}
-	public String getEpreuve() {
-		if (epreuve == null) {
-			return null;
-		}
-		return epreuve.trim();
+	public EpreuveEnum getEpreuve() {
+		return epreuve;
 	}
 
 	private String getPerf(String str) {
@@ -98,7 +96,7 @@ public class LigneRecordWiki {
 		this.sexe = sexe;
 	}
 
-	public void setEpreuve(String epreuve) {
+	public void setEpreuve(EpreuveEnum epreuve) {
 		this.epreuve = epreuve;
 	}
 

@@ -30,7 +30,7 @@ public class E1_TraiteFichierRecordsWiki {
 
 		for (Integer num : map.keySet()) {
 			
-			if (num != 69) {continue;}
+			// if (num != 69) {continue;}
 			
 			System.out.println();
 			StringBuffer sb = new StringBuffer();
@@ -90,7 +90,7 @@ public class E1_TraiteFichierRecordsWiki {
 					// System.err.println("=========" + lr);
 					continue;
 				}
-				EpreuveEnum epreuveEnum = EpreuveEnum.getEnumFromCode(lr.getEpreuve());
+				EpreuveEnum epreuveEnum = lr.getEpreuve();
 
 				if (epreuveEnum != null) {
 					
@@ -120,7 +120,7 @@ public class E1_TraiteFichierRecordsWiki {
 		return listeRecords;
 	}
 	
-	private static String cleanPerf(String perf, String epreuve) {
+	private static String cleanPerf(String perf, EpreuveEnum epreuve) {
 
 		String patternParenthes = "\\([^\\)]*\\)";
 
@@ -130,7 +130,7 @@ public class E1_TraiteFichierRecordsWiki {
 		perf = perf.replace(" min ", ".").replace(" s ", ".");
 
 		// cas des chronos
-		if (epreuve.contains("00")){
+		if (epreuve.name().startsWith("COURSE")){
 			perf = perf.replace(" A", "");
 		}
 		

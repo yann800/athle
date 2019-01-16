@@ -3,6 +3,7 @@ package fr.yann.parser.record_wiki.service;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.record.LigneRecordWiki;
 
 public class ParserRecordWiki {
@@ -135,7 +136,7 @@ public class ParserRecordWiki {
 		}
 	}
 
-	private static String cleanEpreuve(String str) {
+	private static EpreuveEnum cleanEpreuve(String str) {
 		if (str.matches("\\d+.*")) {
 			str = str.replace("&#160;", "");
 
@@ -150,7 +151,17 @@ public class ParserRecordWiki {
 		str = str.replace(".", "").replace(",", "").replace("  ", " ").replace(" 000", "000").replace("ètres", "").replace("kilo", "");
 		str = str.replace("hurdles", "H");
 
-		return str;
+		
+		
+		EpreuveEnum e = null;
+		
+		e = EpreuveEnum.getEnumFromCode(str);
+		
+		if (e == null){
+			System.err.println("not epreuve : " + str);
+		}
+		
+		return e;
 	}
 
 	private static boolean isNom(String str) {
