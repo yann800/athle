@@ -20,6 +20,9 @@ import fr.yann.parser.record_wiki.service.SqlService;
  *
  */
 public class E1_TraiteFichierRecordsWiki {
+
+	public  static final String PATH_PAGES_WIKI = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\pages";
+
 	// Insert.main(path + ".sql");
 	public static void main(String[] args) throws Exception {
 
@@ -27,14 +30,13 @@ public class E1_TraiteFichierRecordsWiki {
 
 		for (Integer num : map.keySet()) {
 			
-			// if (num != 69) {continue;}
+			if (num != 69) {continue;}
 			
 			System.out.println();
 			StringBuffer sb = new StringBuffer();
 
-			String path = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays" + num + ".html";
+			String path = PATH_PAGES_WIKI + "\\pays" + num + ".html";
 
-			// List<LigneRecordWiki> liste = traite("C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\record_wiki\\wiki\\pays(" + num + ")", num);
 			List<LigneRecordWiki> liste = traite(path, num);
 
 			// System.out.println("NOMBRE : " + liste.size() + "\n");

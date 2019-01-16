@@ -92,16 +92,40 @@ legend.scheduler-border {
 
 			
 <div class="row">
-<div class="col-md-9">
-<pre>SET @pos=0;
-SELECT @pos:=@pos+1 AS rang, r.perf AS perf, p.nom AS pays, r.nom AS athlete, r.annee AS annee
+	<div class="col-md-12">
+
+	<div class="panel panel-default pull-right">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Notes</a></h4>
+		</div>
+		<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+
+<small>Awaiting ratification</small><br/>
+<small>Record not kept by FGA</small><br/>
+<small>+ = <a href="https://en.wiktionary.org/wiki/en_route" class="extiw" title="wikt:en route">en route</a> to a longer distance</small><br />
+<small>ht = hand timing</small><br />
+<small>A = affected by altitude</small><br />
+<small>mx = mixed race</small><br />
+<small># = not ratified by federation</small><br />
+<small>y = denotes 880 yards</small><br />
+<small>OT = oversized track (&gt; 200m in circumference)</small>
+<br/>
+
+Athlètes possédant plusieurs records dans différentes épreuves (Mutola 200 -&gt; 1500)
+parfois dans divers pays (Lagat 1500 Kenya et US).
+<pre>SELECT r.nom, COUNT(r.perf) AS nb, GROUP_CONCAT(r.epreuve, ' '), GROUP_CONCAT(p.nom, ' ')
 FROM record r
 INNER JOIN pays_wiki p ON p.id = r.idPays
-WHERE r.epreuve = 1500 AND sexe = <span id="sqlSexe">1</span>
-ORDER BY r.perf;</pre>
-</div>
-<div class="col-md-3"><a href="import_records_wikipedia.html">&Agrave; propos de la construction de la base</a></div>
+GROUP BY r.nom
+ORDER BY nb DESC, r.nom;</pre>
+			<br/><a href="import_records_wikipedia.html">&Agrave; propos de la construction de la base</a>
+			</div>
 
+		</div> <!-- enf collapse -->
+
+		</div>
+	</div>
 </div>
 			
 <!--
@@ -119,79 +143,6 @@ ORDER BY r.perf;</pre>
 <tr><td>6</td><td>3.56.05</td><td>Pays-Bas</td><td>Sifan Hassan</td><td>2015</td></tr>
 <tr><td>7</td><td>3.56.14</td><td>Ouzbékistan</td><td>Zamira Zaytseva</td><td>1982</td></tr>
 <tr><td>8</td><td>3.56.18</td><td>Bahreïn</td><td>Maryam Yusuf Jamal</td><td>2006</td></tr>
-<tr><td>9</td><td>3.56.29</td><td>États-Unis</td><td>Shannon Rowbury</td><td>0</td></tr>
-<tr><td>10</td><td>3.56.60</td><td>Suède</td><td>Abeba Aregawi</td><td>2013</td></tr>
-<tr><td>11</td><td>3.56.63</td><td>Ukraine</td><td>Nadezhda Ralldugina</td><td>1984</td></tr>
-<tr><td>12</td><td>3.57.71</td><td>Allemagne</td><td>Christiane Wartenberg</td><td>0</td></tr>
-<tr><td>13</td><td>3.57.71</td><td>Portugal</td><td>Carla Sacramento</td><td>1998</td></tr>
-<tr><td>14</td><td>3.58.40</td><td>Biélorussie</td><td>Ravilya Agletdinova-Kotovich</td><td>1985</td></tr>
-<tr><td>15</td><td>3.59.51</td><td>Espagne</td><td>Natalia Rodríguez</td><td>2005</td></tr>
-<tr><td>16</td><td>3.59.76</td><td>France</td><td>DEHIBA CHAHYD Hind</td><td>&lt;null&gt;</td></tr>
-<tr><td>17</td><td>3.59.98</td><td>États-Unis</td><td>Regina Jacobs</td><td>0</td></tr>
-<tr><td>18</td><td>4.00.24</td><td>Lituanie</td><td>Laimut? Baikauskait?</td><td>1988</td></tr>
-<tr><td>19</td><td>4.00.27</td><td>Canada</td><td>Lynn Williams</td><td>1985</td></tr>
-<tr><td>20</td><td>4.00.55</td><td>Norvège</td><td>Grete Waitz</td><td>1978</td></tr>
-<tr><td>21</td><td>4.00.71</td><td>Afrique du Sud</td><td>Caster Semenya</td><td>2018</td></tr>
-<tr><td>22</td><td>4.00.93</td><td>Australie</td><td>Sarah Jamieson</td><td>2006</td></tr>
-<tr><td>23</td><td>4.01.84</td><td>Jamaïque</td><td>Yvonne Mai-Graham</td><td>1995</td></tr>
-<tr><td>24</td><td>4.01.84</td><td>République tchèque</td><td>Ivana Walterová</td><td>1986</td></tr>
-<tr><td>25</td><td>4.02.13</td><td>Slovénie</td><td>Sonja Roman</td><td>2009</td></tr>
-<tr><td>26</td><td>4.02.99</td><td>Slovaquie</td><td>Lucia Klocová</td><td>2012</td></tr>
-<tr><td>27</td><td>4.03.02</td><td>Autriche</td><td>Theresia Kiesl</td><td>1996</td></tr>
-<tr><td>28</td><td>4.04.82</td><td>Nouvelle-Zélande</td><td>Nikki Hamblin</td><td>2011</td></tr>
-<tr><td>29</td><td>4.05.30</td><td>Namibie</td><td>Agnes Samaria</td><td>2008</td></tr>
-<tr><td>30</td><td>4.05.52</td><td>Ouganda</td><td>Janet Achola</td><td>2012</td></tr>
-<tr><td>31</td><td>4.05.89</td><td>Kirghizistan</td><td>Lyudmila Derevyankina</td><td>1988</td></tr>
-<tr><td>32</td><td>4.06.01</td><td>Finlande</td><td>Sinikka Tyynelä</td><td>1977</td></tr>
-<tr><td>33</td><td>4.06.03</td><td>Inde</td><td>Sunita Rani</td><td>2002</td></tr>
-<tr><td>34</td><td>4.06.99</td><td>Colombie</td><td>Muriel Coneo</td><td>2016</td></tr>
-<tr><td>35</td><td>4.07.18</td><td>Danemark</td><td>Heidi Jensen</td><td>2002</td></tr>
-<tr><td>36</td><td>4.07.30</td><td>Brésil</td><td>Juliana Paula dos Santos</td><td>2010</td></tr>
-<tr><td>37</td><td>4.07.82</td><td>Zimbabwe</td><td>Julia Sakara</td><td>1998</td></tr>
-<tr><td>38</td><td>4.07.86</td><td>Japon</td><td>Yuriko Kobayashi</td><td>2006</td></tr>
-<tr><td>39</td><td>4.07.98</td><td>Suisse</td><td>Sandra Gasser</td><td>1993</td></tr>
-<tr><td>40</td><td>4.09.14</td><td>Croatie</td><td>Slobodanka ?olovi?</td><td>1987</td></tr>
-<tr><td>41</td><td>4.09.57</td><td>Cuba</td><td>Adriana Muñoz</td><td>2003</td></tr>
-<tr><td>42</td><td>4.09.92</td><td>Porto Rico</td><td>Beverly Ramos</td><td>2011</td></tr>
-<tr><td>43</td><td>4.10.26</td><td>Kazakhstan</td><td>Galina Reznikova</td><td>1983</td></tr>
-<tr><td>44</td><td>4.10.48</td><td>Bermudes</td><td>Ashley Couper</td><td>2006</td></tr>
-<tr><td>45</td><td>4.11.26</td><td>Mexique</td><td>Nora Rocha</td><td>1998</td></tr>
-<tr><td>46</td><td>4.11.71</td><td>Argentine</td><td>Carolina Lozano</td><td>2016</td></tr>
-<tr><td>47</td><td>4.11.78</td><td>Nouvelle-Zélande</td><td>Lucy Van Dalen</td><td>2012</td></tr>
-<tr><td>48</td><td>4.12.01</td><td>Soudan</td><td>Ehsan Gibril</td><td>2011</td></tr>
-<tr><td>49</td><td>4.12.61</td><td>Uruguay</td><td>María Pía Fernández</td><td>2016</td></tr>
-<tr><td>50</td><td>4.12.86</td><td>Jamaïque</td><td>Mardrea Hyman</td><td>2004</td></tr>
-<tr><td>51</td><td>4.13.07</td><td>Chili</td><td>Alejandra Ramos</td><td>1990</td></tr>
-<tr><td>52</td><td>4.13.21</td><td>Trinité-et-Tobago</td><td>Pilar McShine</td><td>2013</td></tr>
-<tr><td>53</td><td>4.13.24</td><td>Finlande</td><td>Mari Järvenpää</td><td>2008</td></tr>
-<tr><td>54</td><td>4.13.57</td><td>Cameroun</td><td>Florence Djépé</td><td>2003</td></tr>
-<tr><td>55</td><td>4.14.18</td><td>Israël</td><td>Edna Lankri</td><td>1993</td></tr>
-<tr><td>56</td><td>4.14.18</td><td>Corée du Sud</td><td>Lee Mi-kyung</td><td>1992</td></tr>
-<tr><td>57</td><td>4.14.45</td><td>Chypre</td><td>Andri Avraam</td><td>1986</td></tr>
-<tr><td>58</td><td>4.15.22</td><td>Panama</td><td>Andrea Ferris</td><td>2013</td></tr>
-<tr><td>59</td><td>4.16.42</td><td>Sri Lanka</td><td>Champika Dilrukshi</td><td>2012</td></tr>
-<tr><td>60</td><td>4.16.8</td><td>Zambie</td><td>Evelyn Musonda</td><td>1990</td></tr>
-<tr><td>61</td><td>4.17.1</td><td>Nigeria</td><td>Victoria Moradeyo</td><td>1999</td></tr>
-<tr><td>62</td><td>4.17.70</td><td>Équateur</td><td>Janeth Caizalitin</td><td>1990</td></tr>
-<tr><td>63</td><td>4.18.31</td><td>Venezuela</td><td>María Osorio</td><td>2016</td></tr>
-<tr><td>64</td><td>4.19.59</td><td>Maurice</td><td>Josiane Nairac-Boullé</td><td>1988</td></tr>
-<tr><td>65</td><td>4.2.39</td><td>Royaume-Uni</td><td>Laura Muir</td><td>2017</td></tr>
-<tr><td>66</td><td>4.20.03</td><td>Sénégal</td><td>Raïssa Laval</td><td>2016</td></tr>
-<tr><td>67</td><td>4.20.93</td><td>Paraguay</td><td>María Caballero</td><td>2013</td></tr>
-<tr><td>68</td><td>4.20.95</td><td>Burundi</td><td>Diane Nukuri</td><td>2007</td></tr>
-<tr><td>69</td><td>4.22.08</td><td>Botswana</td><td>Onneile Dintwe</td><td>2009</td></tr>
-<tr><td>70</td><td>4.23.00</td><td>Grenade</td><td>Neisha Bernard-Thomas</td><td>2009</td></tr>
-<tr><td>71</td><td>4.27.51</td><td>Antigua-et-Barbuda</td><td>Janill Williams</td><td>2000</td></tr>
-<tr><td>72</td><td>4.27.73</td><td>Iran</td><td>Leila Ebrahimi</td><td>2010</td></tr>
-<tr><td>73</td><td>4.32.40</td><td>Gabon</td><td>Josiane Aboungono</td><td>2000</td></tr>
-<tr><td>74</td><td>4.32.64</td><td>la Barbade</td><td>Sheena Gooding</td><td>2008</td></tr>
-<tr><td>75</td><td>4.33.07</td><td>Égypte</td><td>Noha Ahmad Mohamad</td><td>2011</td></tr>
-<tr><td>76</td><td>4.37.89</td><td>Seychelles</td><td>Margaret Morel</td><td>1980</td></tr>
-<tr><td>77</td><td>4.38.06</td><td>Mali</td><td>Matata Sanogo</td><td>2003</td></tr>
-<tr><td>78</td><td>4.38.3</td><td>Côte d'Ivoire</td><td>Caroline Aba</td><td>1991</td></tr>
-<tr><td>79</td><td>4.39.09</td><td>Bahamas</td><td>Hughnique Rolle</td><td>2012</td></tr>
-<tr><td>80</td><td>4.9.18</td><td>Belgique</td><td>Lindsey De Grande</td><td>2011</td></tr>
-<tr><td>81</td><td>5.25.61</td><td>Qatar</td><td>Nada Nabil Abdullah</td><td>2010</td></tr>
 	</tbody>
 			</table>
   -->
@@ -206,28 +157,28 @@ ORDER BY r.perf;</pre>
 	
 	<script type="text/javascript">
 	
-	function createTableHead(){
+// 	function createTableHead(){
 		
-		var records = { data : [
+// 		var records = { data : [
 		
-		]};
+// 		]};
 		
-		var table = $('#table_ecarts').DataTable({
-			data : records.data,
-	        "paging": false, 
-	        "info": false,         
-		  columns : [
-		    { data: 'e', title: 'Epreuve' },
-		    { data: 'nom1', title: 'Nom' },
-		    { data: 'perf1', title: 'Performance' },    
-		    { data: 'nom2', title: 'Nom' },
-		    { data: 'perf2', title: 'Performance' },    
-		    { data: 'ecart', title: 'Pourcentage' },
-	      ]  
-		});
+// 		var table = $('#table_ecarts').DataTable({
+// 			data : records.data,
+// 	        "paging": false, 
+// 	        "info": false,         
+// 		  columns : [
+// 		    { data: 'e', title: 'Epreuve' },
+// 		    { data: 'nom1', title: 'Nom' },
+// 		    { data: 'perf1', title: 'Performance' },    
+// 		    { data: 'nom2', title: 'Nom' },
+// 		    { data: 'perf2', title: 'Performance' },    
+// 		    { data: 'ecart', title: 'Pourcentage' },
+// 	      ]  
+// 		});
 
-		selection();
-	}
+// 		selection();
+// 	}
 
     function selection() {
         
@@ -265,7 +216,7 @@ ORDER BY r.perf;</pre>
     	laTable.clear();
     	
     	for (var i = 0; i < records.length; i++) {
-    		laTable.row.add({rang: records[i].rang, perf: records[i].perf, pays: records[i].pays, athlete: records[i].athlete, annee: records[i].annee}).draw();
+    		laTable.row.add({rang: records[i].rang, perf: records[i].perf, pays: records[i].pays, athlete: records[i].athlete, age: records[i].age, annee: records[i].annee}).draw();
    			// laTable.row.add({e : records[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
    			// laTable.row.add({rang: " + records[i].rang + ", perf: "20.10", pays: "Etats-Unis", athlete: "Wallace Spearmon", annee: "2005"}).draw();
    			// console.log(records[i]);
@@ -286,6 +237,7 @@ ORDER BY r.perf;</pre>
 		    { data: 'perf', title: 'Perf' },
 		    { data: 'pays', title: 'Pays' },    
 		    { data: 'athlete', title: 'Athlète' },
+		    { data: 'age', title: 'Age' },
 		    { data: 'annee', title: 'Année' }
 	      ]  
 		});

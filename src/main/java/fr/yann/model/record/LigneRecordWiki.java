@@ -9,7 +9,6 @@ public class LigneRecordWiki {
 	private String		perf;
 	private String		nom;
 	private int			naissance;
-	private int			age;
 	private int			annee;
 	private SexeEnum	sexe;
 	private int			idPays;
@@ -26,7 +25,7 @@ public class LigneRecordWiki {
 	}
 
 	public String toStringJson() {
-		String str = "{e:'" + getEpreuve() + "', nom:'" + nom + "', age:'" + age + "', perf:'" + getPerf(perf) + "', annee:'" + annee + "'},";
+		String str = "{e:'" + getEpreuve() + "', nom:'" + nom  + "', perf:'" + getPerf(perf) + "', annee:'" + annee + "'},";
 		return str;
 	}
 
@@ -81,14 +80,6 @@ public class LigneRecordWiki {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public int getAnnee() {

@@ -42,14 +42,15 @@ $link  =  mysql_connect($servername, $username, $password) or die( "Impossible d
 mysql_select_db($dbname);
 
 
-$sql = "SET @pos=0;";
-$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
-
-$sql = "SELECT @pos:=@pos+1 AS rang, r.perf AS perf, p.nom AS pays, r.nom AS athlete, r.annee AS annee FROM record r"
+$condition_100 = '';
+if ($epreuve == '100') {
+	$condition_100 = "LENGTH(r.perf),";
+}
+$sql = "SELECT r.rang AS rang, r.perf AS perf, p.nom AS pays, r.nom AS athlete, r.annee AS annee FROM record r"
 . " INNER JOIN pays_wiki p ON p.id = r.idPays"
-. " WHERE r.epreuve = " . $epreuve . " AND r.sexe = " . $sexe 
-. " ORDER BY r.perf;";	
-
+. " WHERE r.epreuve = '" . $epreuve . "' AND r.sexe = " . $sexe 
+. " ORDER BY " . $condition_100 . "r.perf;";	
+	
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
 $nb = mysql_num_rows($req);

@@ -147,8 +147,8 @@ public class ParserRecordWiki {
 		}
 
 		str = str.replace(" 000", "000").replace("ètres", "").replace("kilo", "");
-		str = str.replace(".", "").replace("  ", " ").replace(" 000", "000").replace("ètres", "").replace("kilo", "");
-		str = str.replace("haies", "H");
+		str = str.replace(".", "").replace(",", "").replace("  ", " ").replace(" 000", "000").replace("ètres", "").replace("kilo", "");
+		str = str.replace("hurdles", "H");
 
 		return str;
 	}
@@ -180,22 +180,29 @@ public class ParserRecordWiki {
 		if (str.startsWith("100") || str.startsWith("200") || str.startsWith("400")
 				|| str.startsWith("800") || str.startsWith("1500") || str.startsWith("3000")
 				|| str.startsWith("1 500") || str.startsWith("3 000")
+				|| str.startsWith("1500") || str.startsWith("3000")
 				|| str.startsWith("50")
-				|| str.startsWith("10 000")
-				|| str.startsWith("110")
-				|| str.startsWith("Semi")
+				|| (str.contains("10") && str.contains("000")) // cas 10[separator]000
+				|| (str.contains("relay") && (str.contains("100") || str.contains("400")))
+
 				|| str.startsWith("Marathon")
-				|| str.startsWith("Lancer")
-				|| str.startsWith("Saut")
-				|| str.startsWith("Triple")
-				|| str.startsWith("Décathlon")
+
+				|| str.startsWith("100 m hurdles") || str.startsWith("110 m hurdles")
+				|| str.startsWith("400 m hurdles")
+				|| str.startsWith("3000 m steeplechase")
+
+				|| str.startsWith("High jump")
+				|| str.startsWith("Pole vault")
+				|| str.startsWith("Long jump")
+				|| str.startsWith("Triple jump")
+				
+				|| str.startsWith("Shot put")
+				|| str.startsWith("Discus throw")
+				|| str.startsWith("Hammer throw")
+				|| str.startsWith("Javelin throw")
+				
+				|| str.startsWith("Decathlon")
 				|| str.startsWith("Heptathlon")) {
-			return true;
-		}
-		if (str.contains("steeple") || str.contains("arche")) {
-			return true;
-		}
-		if (str.contains("auteur") || str.contains("ongueur")) {
 			return true;
 		}
 		return false;

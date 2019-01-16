@@ -10,12 +10,24 @@ public enum EpreuveEnum {
 	COURSE_800("800"),
 	COURSE_1500("1500"),
 	COURSE_3000("3000"),
-	// COURSE_10_KM("10"),
 	COURSE_5000("5000"),
 	COURSE_10000("10000"),
 	COURSE_MARATHON("Marathon"),
+	COURSE_100_HAIES("100H"),
+	COURSE_110_HAIES("110H"),
 	COURSE_400_HAIES("400H"),
-	DECATHLON("Decathlon"),
+
+	LANCER_POIDS("Poids"),
+	LANCER_DISQUE("Disque"),
+	LANCER_MARTEAU("Marteau"),
+	LANCER_JAVELOT("Javelot"),
+	
+	SAUT_LONGUEUR("Longueur"),
+	SAUT_TRIPLE("Triple"),
+	SAUT_HAUTEUR("Hauteur"),
+	SAUT_PERCHE("Perche"),
+	
+	DECATHLON("Decathlon")
 	;
 
 	private static final Map<String, EpreuveEnum> lookup = new HashMap<String, EpreuveEnum>();

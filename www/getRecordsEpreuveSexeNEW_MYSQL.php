@@ -31,7 +31,6 @@ if ($sexe == "") {
 	exit;
 }
 
-
 // ===================
 include 'constantes.php';
 
@@ -39,13 +38,17 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
 
-$sql = "SET @pos=0;";
-$result = $conn->query($sql);
+// $sql = "SET @pos=0;";
+// $result = $conn->query($sql);
+$condition_100 = '';
+if ($epreuve == '100') {
+	$condition_100 = "LENGTH(r.perf),";
+}
 
-$sql = "SELECT @pos:=@pos+1 AS rang, r.perf AS perf, p.nom AS pays, r.nom AS athlete, r.annee AS annee FROM record r"
+$sql = "SELECT r.rang AS rang, r.perf AS perf, p.nom AS pays, r.nom AS athlete, r.annee AS annee FROM record r"
 . " INNER JOIN pays_wiki p ON p.id = r.idPays"
-. " WHERE r.epreuve = " . $epreuve . " AND r.sexe = " . $sexe 
-. " ORDER BY r.perf;";	
+. " WHERE r.epreuve = '" . $epreuve . "' AND r.sexe = " . $sexe 
+. " ORDER BY " . $condition_100 . "r.perf;";	
 	
 $result = $conn->query($sql);
 

@@ -29,14 +29,14 @@ include 'constantes.php';
 // --------------
 // OLD PHP FOR FREE
 // Create connection http://php.net/manual/fr/function.mysql-connect.php
-$link  =  mysql_connect($servername, $username, $password) or die( "Impossible de se connecter : "  .  mysql_error ());
-mysql_select_db($dbname);
+// $link  =  mysql_connect($servername, $username, $password) or die( "Impossible de se connecter : "  .  mysql_error ());
+// mysql_select_db($dbname);
 
 // NEW PHP
-// $conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
 
-
-// if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
+if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); } 
 
 $clauseSexe = '';
 if ($sexe != "") {
@@ -48,23 +48,22 @@ $sql = "SELECT r.epreuve AS e, r.nom AS n, r.perf AS p, r.annee AS a, r.rang AS 
 	$clauseSexe .
 	";";
 
-$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+$result = $conn->query($sql);
 
-$nb = mysql_num_rows($req);
-
-if ( $nb == 0 ) {
+if ($result->num_rows == -1) {
 	// rien à faire
 }
 else {
 	// on fait une boucle qui va faire un tour pour chaque enregistrement
-	while($row = mysql_fetch_assoc($req)){
+	while($row = $result->fetch_assoc()) {
 	// NEW while($row = $result->fetch_assoc()) {
 		if ($hint === "") {
-			$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '"}' . '","rang":"' . $row["rang"] . '";
+
+		$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","rang":"' . $row["rang"]. '"}';
 		} else {
-			$hint .= ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] .'"}';
+			$hint .= ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","rang":"' . $row["rang"].'"}';
 		}
-		}
+	}
 	$hint .= ']}';
 }
 
