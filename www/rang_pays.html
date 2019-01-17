@@ -2,7 +2,7 @@
 <html lang="fr" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Yann Abd-el-Kader"> 
 	<meta name="description" content="requêtes SQL avancées sur base athlétisme"> 
 	<meta name="keyword" content="SQL athlétisme requêtes avancées"> 
@@ -67,71 +67,70 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 		
 <h2>Sélection du pays</h2>
 
-			<table class="table table-striped table-bordered table-hover table-condensed" id="example">
-				<thead>
-					<tr>
-						<th>Pays</th>
-						<th>Continent</th>
-					</tr>
-				</thead>
-				<tbody>
+<table class="table table-striped table-bordered table-hover table-condensed" id="table_pays">
+	<thead>
+		<tr>
+			<th>Pays</th>
+			<th>Continent</th>
+		</tr>
+	</thead>
+	<tbody>
 
 
 <tr><td>
-<button onclick="chargeJsonRecordsPays(69)">Algeria</a></button>
-<a onclick="chargeJsonRecordsPays(69)">Algeria</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Angola </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Benin </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Botswana </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Burkina Faso </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Burundi </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Cameroon </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Cape Verde </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Central African Republic </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Chad </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Comoros </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Democratic Republic of the Congo </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Republic of the Congo </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Djibouti </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Egypt </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Equatorial Guinea </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Eritrea </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ethiopia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Gabon </a></td><td>Afrique</td></tr>
-<tr><td><a href="">The Gambia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ghana </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Guinea </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Guinea-Bissau </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ivory Coast </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Kenya </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Lesotho </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Liberia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Libya </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Madagascar </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Malawi </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mali </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mauritania </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mauritius </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Morocco </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mozambique </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Namibia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Niger </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Nigeria </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Rwanda </a></td><td>Afrique</td></tr>
-<tr><td><a href="">São Tomé and Príncipe </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Senegal </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Seychelles </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Sierra Leone </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Somalia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">South Africa </a></td><td>Afrique</td></tr>
-<tr><td><a href="">South Sudan </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Sudan </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Swaziland </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Tanzania </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Togo </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Tunisia </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Uganda </a></td><td>Afrique</td></tr>
-<tr><td><a href="">Zambia </a></td><td>Afrique</td></tr>
+<button onclick="chargeJsonRecordsPays(3)">Algeria</a></button></td><td>Afrique</td></tr>
+<tr><td><a href="">Angola</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Benin</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Botswana</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Burkina Faso</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Burundi</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Cameroon</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Cape Verde</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Central African Republic</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Chad</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Comoros</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Democratic Republic of the Congo</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Republic of the Congo</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Djibouti</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Egypt</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Equatorial Guinea</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Eritrea</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Ethiopia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Gabon</a></td><td>Afrique</td></tr>
+<tr><td><a href="">The Gambia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Ghana</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Guinea</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Guinea-Bissau</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Ivory Coast</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Kenya</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Lesotho</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Liberia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Libya</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Madagascar</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Malawi</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Mali</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Mauritania</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Mauritius</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Morocco</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Mozambique</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Namibia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Niger</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Nigeria</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Rwanda</a></td><td>Afrique</td></tr>
+<tr><td><a href="">São Tomé and Príncipe</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Senegal</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Seychelles</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Sierra Leone</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Somalia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">South Africa</a></td><td>Afrique</td></tr>
+<tr><td><a href="">South Sudan</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Sudan</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Swaziland</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Tanzania</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Togo</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Tunisia</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Uganda</a></td><td>Afrique</td></tr>
+<tr><td><a href="">Zambia</a></td><td>Afrique</td></tr>
 <tr><td><a href="">Zimbabwe</a></td><td>Afrique</td></tr>
 
 <!-- ====================================== -->
@@ -192,7 +191,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 <tr><td><a href="">Canada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Cayman Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Costa Rica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Cuba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><button onclick="chargeJsonRecordsPays(51)">Cuba</button></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Curaçao</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Dominica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Dominican Republic</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
@@ -201,7 +200,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 <tr><td><a href="">Guatemala</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Haiti</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Honduras</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Jamaica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><button onclick="chargeJsonRecordsPays(97)">Jamaica</button></a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Mexico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Montserrat</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
 <tr><td><a href="">Netherlands Antilles</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
@@ -317,7 +316,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 
 <h2>Rang de la France par épreuve</h2>
 
-<table class="table table-striped table-bordered table-hover table-condensed" id="table_pays"></table>
+<table class="table table-striped table-bordered table-hover table-condensed" id="table_records_pays_sel"></table>
 
 	</div>
 </article>
@@ -332,7 +331,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 		
 		]};
 		
-		var table = $('#table_pays').DataTable({
+		var table = $('#table_records_pays_sel').DataTable({
 			data : records.data,
 	        "paging": false, 
 	        "info": false,         
@@ -369,7 +368,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 
 	function selection(){
 
-		var laTable = $("#table_pays").DataTable();
+		var laTable = $("#table_records_pays_sel").DataTable();
 
 		laTable.clear();
 		
@@ -396,37 +395,63 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 	
 	</script>
 		<script type="text/javascript" class="init">
+		$(document).ready(function() {
+			$('#table_pays').DataTable();
+		});
+
 		// var recordsSel = {'record' : []};
 		var recordsSel = { "record": [
-			{"e":"100",		"nom":"Jimmy Vicaut",			"perf":"09.86",		"annee":"2015",	"rang":"5"},	
-			{"e":"200",		"nom":"Christophe Lemaitre",	"perf":"19.80",		"annee":"2011",	"rang":"7"},
-			{"e":"400",		"nom":"Leslie Djhone",			"perf":"44.46",		"annee":"2007",	"rang":"24"},	
-			{"e":"800",		"nom":"Pierre-Ambroise Bosse",	"perf":"1:42.53",	"annee":"2014",	"rang":"9"},
-			{"e":"1500",	"nom":"Mehdi Baala",			"perf":"3:28.98",	"annee":"2003",	"rang":"5"},
-			{"e":"3000",	"nom":"Mustapha Essaid",		"perf":"7:30.78",	"annee":"1998",	"rang":"21"},
-			{"e":"5000",	"nom":"Ismaïl Sghyr",			"perf":"12:58.83",	"annee":"2000","rang":"14"},
-
-			{"e":"Marathon","nom":"Benoît Zwierzchiewski",	"perf":"2:06:36",	"annee":"2003","rang":"9"},
-			{"e":"100",		"nom":"Christine Arron",		"perf":"10.73",		"annee":"1998","rang":"4"},
-			{"e":"200",		"nom":"Marie-José Pérec",		"perf":"21.99",		"annee":"1993","rang":"10"},
-			{"e":"400",		"nom":"Marie-José Pérec",		"perf":"48.25",		"annee":"1996","rang":"28"},
-			{"e":"800",		"nom":"Patricia Djaté-Taillard","perf":"1:56.53",	"annee":"1995","rang":"22"},
-			{"e":"1500",	"nom":"Hind Dehiba",			"perf":"3:59.76",	"annee":"2010","rang":"27"},
-			{"e":"3000",	"nom":"Bouchra Ghezielle",		"perf":"8:35.41",	"annee":"2005","rang":"104"},
-			{"e":"5000",	"nom":"Margaret Maury",			"perf":"14:43.90",	"annee":"2004","rang":"17"},
-			{"e":"10000",	"nom":"Christelle Daunay",		"perf":"31:35.81",	"annee":"2012","rang":"36"},
-			{"e":"Marathon","nom":"Christelle Daunay",		"perf":"2:24:22",	"annee":"2010","rang":"25"}]};
-		}
-
+			{"e":"100",			"nom":"Jimmy Vicaut",			"perf":"09.86",		"annee":"2015",	"rang":"5"},	
+			{"e":"200",			"nom":"Christophe Lemaitre",	"perf":"19.80","annee":"2011","rang":"7"},
+			{"e":"400",			"nom":"Leslie Djhone",			"perf":"44.46","annee":"2007","rang":"24"},
+			{"e":"800",			"nom":"Pierre-Ambroise Bosse",	"perf":"1:42.53","annee":"2014","rang":"9"},
+			{"e":"1500",		"nom":"Mehdi Baala",			"perf":"3:28.98","annee":"2003","rang":"5"},
+			{"e":"3000",		"nom":"Mustapha Essaid",		"perf":"7:30.78","annee":"1998","rang":"21"},
+			{"e":"5000",		"nom":"Ismaïl Sghyr",			"perf":"12:58.83","annee":"2000","rang":"0"},
+			{"e":"10000",		"nom":"Antonio Martins",		"perf":"27:22.78","annee":"1992","rang":"0"},
+			{"e":"Marathon",	"nom":"Benoît Zwierzchiewski",	"perf":"2:06:36","annee":"2003","rang":"0"},
+			{"e":"110H",		"nom":"Pascal Martinot-Lagarde","perf":"12.95","annee":"2014","rang":"0"},
+			{"e":"400H",		"nom":"Stéphane Diagana",		"perf":"47.37","annee":"1995","rang":"0"},
+			{"e":"3000 steeple","nom":"Mahiedine Mekhissi Benabbad","perf":"8:00.09","annee":"2013","rang":"0"},
+			{"e":"Javelot",		"nom":"Mickaël Hanany",			"perf":"2.34 m A","annee":"2014","rang":"0"},
+			{"e":"Perche",		"nom":"Renaud Lavillenie",		"perf":"6.05 m","annee":"2015","rang":"0"},
+			{"e":"Longueur",	"nom":"Salim Sdiri",			"perf":"8.42 m","annee":"2009","rang":"0"},
+			{"e":"Triple",		"nom":"Teddy Tamgho",			"perf":"18.04 m","annee":"2013","rang":"0"},
+			{"e":"Poids",		"nom":"Yves Niaré",				"perf":"20.72 m","annee":"2008","rang":"0"},
+			{"e":"Disque",		"nom":"Jean-Claude Retel",		"perf":"68.90 m","annee":"2002","rang":"0"},
+			{"e":"Marteau",		"nom":"Gilles Dupray",		"perf":"82.38 m","annee":"2000","rang":"0"},
+			{"e":"Javelot",		"nom":"Pascal Lefevre",		"perf":"82.56 m","annee":"1989","rang":"0"},
+			{"e":"Decathlon",	"nom":"Kevin Mayer",		"perf":"8834 pt.","annee":"2016","rang":"0"},
+			{"e":"100",			"nom":"Christine Arron",		"perf":"10.73","annee":"1998","rang":"4"},
+			{"e":"200",			"nom":"Marie-José Pérec",		"perf":"21.99","annee":"1993","rang":"10"},
+			{"e":"400",			"nom":"Marie-José Pérec",		"perf":"48.25","annee":"1996","rang":"28"},
+			{"e":"800",			"nom":"Patricia Djaté-Taillard",		"perf":"1:56.53","annee":"1995","rang":"22"},
+			{"e":"1500",		"nom":"Hind Dehiba",		"perf":"3:59.76","annee":"2010","rang":"27"},
+			{"e":"3000",		"nom":"Bouchra Ghezielle",		"perf":"8:35.41","annee":"2005","rang":"0"},
+			{"e":"5000",		"nom":"Margaret Maury",		"perf":"14:43.90","annee":"2004","rang":"0"},
+			{"e":"10000",		"nom":"Christelle Daunay",		"perf":"31:35.81","annee":"2012","rang":"0"},
+			{"e":"Marathon",	"nom":"Christelle Daunay",		"perf":"2:24:22","annee":"2010","rang":"0"},
+			{"e":"100H",		"nom":"Monique Éwanjé-Épée",		"perf":"12.56","annee":"1990","rang":"0"},
+			{"e":"400H",		"nom":"Marie-José Pérec",		"perf":"53.21","annee":"1995","rang":"0"},
+			{"e":"3000 steeple","nom":"Sophie Duarte",		"perf":"9:25.62","annee":"2009","rang":"0"},
+			{"e":"Javelot",		"nom":"Maryse Éwanjé-Épée",		"perf":"1.96 m","annee":"1985","rang":"0"},
+			{"e":"Perche",		"nom":"Vanessa Boslak",		"perf":"4.70 m","annee":"2006","rang":"0"},
+			{"e":"Longueur",	"nom":"Eunice Barber",		"perf":"7.05 m","annee":"2003","rang":"0"},
+			{"e":"Triple",		"nom":"Teresa Nzola Meso Ba",		"perf":"14.69 m","annee":"2007","rang":"0"},
+			{"e":"Poids",		"nom":"Laurence Manfredi",		"perf":"18.68 m","annee":"2000","rang":"0"},
+			{"e":"Disque",		"nom":"Mélina Robert-Michon",		"perf":"66.73 m","annee":"2016","rang":"0"},
+			{"e":"Marteau",		"nom":"Manuela Montebrun",		"perf":"74.66 m","annee":"2005","rang":"0"},
+			{"e":"Javelot",		"nom":"Mathilde Andraud",		"perf":"63.54 m","annee":"2016","rang":"0"},
+			{"e":"Heptathlon",	"nom":"Eunice Barber",		"perf":"6889 pt.","annee":"2005","rang":"0"},
+			{"e":"Decathlon",	"nom":"Marie Collonvillé",		"perf":"8150 pt.","annee":"2004","rang":"0"}
+		]};
+		
 		var libelleSel = 'aaaa';
 
-		var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', '400 Haies', 'Steeple', 'Longueur', 'Triple saut'];
+		var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', '400H', '3000 steeple', 'Longueur', 'Triple'];
 
 		createTableHead();
 		
-		// $(document).ready(function() {
-		// 	$('#example').DataTable();
-		// });
 
 		$('.dropdown-toggle').dropdown();
 	</script>

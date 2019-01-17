@@ -10,7 +10,7 @@ import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.parser.record_wiki.service.GetNomPaysWikiEn;
 
-public class E3_ComputeNombrePaysMeilleurs {
+public class E3_UpdateRangRecordPays {
 
 	private static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/athle";

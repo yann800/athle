@@ -9,7 +9,6 @@ public class LigneRecordWiki {
 	private EpreuveEnum	epreuve;
 	private String		perf;
 	private String		nom;
-	private int			naissance;
 	private int			annee;
 	private SexeEnum	sexe;
 	private int			idPays;
@@ -31,12 +30,11 @@ public class LigneRecordWiki {
 	}
 
 	public String toStringSql() {
-		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, naissance, perf, annee) VALUES ("
+		String str = "INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee) VALUES ("
 				+ idPays + ","
 				+ sexe.getCodeInt() + ",'"
 				+ getEpreuve().getCode() + "', '"
 				+ nom + "','"
-				+ naissance + "','"
 				+ getPerf(perf) + "',"
 				+ annee + ");";
 		return str;
@@ -98,14 +96,6 @@ public class LigneRecordWiki {
 
 	public void setEpreuve(EpreuveEnum epreuve) {
 		this.epreuve = epreuve;
-	}
-
-	public int getNaissance() {
-		return this.naissance;
-	}
-
-	public void setNaissance(int naissance) {
-		this.naissance = naissance;
 	}
 
 	public int getRang() {
