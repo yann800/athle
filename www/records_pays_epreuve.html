@@ -216,7 +216,7 @@ ORDER BY nb DESC, r.nom;</pre>
     	laTable.clear();
     	
     	for (var i = 0; i < records.length; i++) {
-    		laTable.row.add({rang: records[i].rang, perf: records[i].perf, pays: records[i].pays, athlete: records[i].athlete, age: records[i].age, annee: records[i].annee}).draw();
+    		laTable.row.add({rang: records[i].rang, perf: records[i].perf, pays: records[i].pays, athlete: records[i].athlete, annee: records[i].annee}).draw();
    			// laTable.row.add({e : records[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
    			// laTable.row.add({rang: " + records[i].rang + ", perf: "20.10", pays: "Etats-Unis", athlete: "Wallace Spearmon", annee: "2005"}).draw();
    			// console.log(records[i]);
@@ -237,7 +237,6 @@ ORDER BY nb DESC, r.nom;</pre>
 		    { data: 'perf', title: 'Perf' },
 		    { data: 'pays', title: 'Pays' },    
 		    { data: 'athlete', title: 'Athlète' },
-		    { data: 'age', title: 'Age' },
 		    { data: 'annee', title: 'Année' }
 	      ]  
 		});

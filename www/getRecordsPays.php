@@ -60,11 +60,11 @@ else {
 	while($row = mysql_fetch_assoc($req)){
 	// NEW while($row = $result->fetch_assoc()) {
 		if ($hint === "") {
-			$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '"}' . '","rang":"' . $row["rang"] . '";
+			$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '", "rang":"' . $row["rang"] . '"}';
 		} else {
-			$hint .= ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] .'"}';
+			$hint .=            ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '", "rang":"' . $row["rang"] . '"}';
 		}
-		}
+	}
 	$hint .= ']}';
 }
 
