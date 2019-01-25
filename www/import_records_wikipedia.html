@@ -2,36 +2,116 @@
 <html lang="fr">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!--<link href="politique.css" media="screen" rel="stylesheet" type="text/css" />-->
-<title>Records nationaux</title>
-<link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<title>Records nationaux</title>
+	<link href="css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+	<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
+	<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 
 <style type="text/css">
-th, td {
-padding:5px
+section > ul > li {
+margin-top: 15px;
+margin-bottom: 15px;
 }
 
+ul {
+margin-left: -24px;
+}
+
+table {
+ font-size: 0.8em;
+}
+
+th, td {
+padding:5px;
+border:solid 1px black;
+}
 </style>
 
 </head>
 <body>
+	<nav class="navbar col-sm-offset-2 col-sm-8" role="navigation" id="menu"></nav>
+
 	<article class="content">
 
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8">
 
-			<nav class="navbar" role="navigation" id="menu"></nav>
+	<div class="col-sm-offset-2 col-sm-8">
 
-		
-<h2>Pages Wikipedia des records nationaux &rarr; MySQL</h2>
+		<div class="alert alert-info">
+			<div style="text-align: center;">
+				<div style="font-weight: bold;font-size: 1.3em">Pages Wikipedia des records nationaux &rarr; MySQL</div>
+	 		</div>
+	 	<br/>
+		<ul style="list-style-type: none;">
+			<li><a href="#1">1. Code</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#1.1">Enregistrement et parsing des pages HTML</a></li>
+				<li><a href="#1.2">Calcul des rangs</a></li>
+				<li><a href="#1.3">Corrections manuelles</a></li>
+			</ul>
+			<li><a href="#2">2. Caractéristiques des records</a></li>
+
+			<ul style="list-style-type: none;">
+				<li><a href="#2.1">Records codétenus</a></li>
+				<li><a href="#2.2">Records annulés ou non homologués</a></li>					
+				<li><a href="#2.3">Conditions de réalisation des records</a></li>
+				<li><a href="#2.4">Paramètres annexes des records</a></li>
+			</ul>
+			
+			<li><a href="#3">3. Politique</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#3.1">Guerre froide : records socialistes / capitalistes</a></li>
+				<li><a href="#3.2">Condition des femmes</a></li>
+				<li><a href="#3.3">Changement de nationnalité</a></li>
+			</ul>
+			
+			<li><a href="#4">4. Requêtes</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#4.1">Interclubs des pays</a></li>
+				<li><a href="#4.2">Comparaison rangs hommes et femmes d'un pays</a></li>
+				<li><a href="#4.3">Athlètes polyvalents</a></li>
+				<li><a href="#4.4">Ancienneté des records</a></li>
+			</ul>
+			
+		</ul>
+	
+		</div>
+	
+	</div>
+	
+	
+	<section class="col-sm-offset-2 col-sm-8">
+	<p>
+Au commencement fut l'enregistrement des pages Wikipedia. Ensuite tout a été construit 
+sur machine perso sans connexion internet. &Agrave; la fin, clé USB et merci Juliette
+pour le prêt de la connexion permettant déploiement sur free et sauvegarde Git. 
+</p>
+
+<p> 
+Ceci pour expliquer pourquoi la présente page souffre de lacunes et manque de références.
+Je n'ai pas encore eu l'occasion de chercher les sites qui analysent les records nationaux. Nul doute qu'ils existent !
+Je suis preneur pour tout lien ou pour signalement de toute erreur. &Eacute;crire à base.athle (plutôt @gmail.com ; @free.fr marche aussi mais moins
+pratique à consulter surtout en période congés, toute pub Google mise à part).    
+</p>
+  	
+	</section>	
+
+<div style="clear:both"></div>
+
+	<section class="col-sm-offset-2 col-sm-8">
+
+<h2>1. Code</h2>
+
+<h3 id="1.1">Enregistrement et parsing des pages HTML</h3>
+
 <p>
 Initialement, importation des pages françaises <a href="https://fr.wikipedia.org/wiki/Cat%C3%A9gorie:Record_national_d%27athl%C3%A9tisme">https://fr.wikipedia.org/wiki/Catégorie:Record_national_d'athlétisme</a>.
 </p>
 <p>
 Dans un second temps, importation des pages <a href="https://en.wikipedia.org/wiki/National_records_in_athletics">https://en.wikipedia.org/wiki/National_records_in_athletics</a>,
-bien plus complètes comme on aurait pu s'en douter...  
+bien plus complètes et propres comme on aurait pu s'en douter...  
 </p>
-
 
 
 <ul>
@@ -43,38 +123,491 @@ bien plus complètes comme on aurait pu s'en douter...
 	}
 }</pre></li>
 <li>itération sur chaque page</li>
-<li>itération  sur chaque ligne. On ignore si on n'est pas au sein du <code>tr</code> d'une <code>table</code>.
+<li>itération  sur chaque ligne. On ne prend en compte que les <code>tr</code> des <code>table</code>.
 <li>remplacement toute les balises HTML par "_" 
-<br/><br/><pre style="width:400px;font-size: 11px">
+<br/><pre style="width:400px;font-size: 11px">
  String patternCleanHtml = "&lt;[^&gt;]*&gt;";
  Pattern p1 = Pattern.compile(patternCleanHtml);
  Matcher m1 = p1.matcher(str);
  String strPlainText = m1.replaceAll("_");
 </pre>
 
-<li>pour chaque valeur de cellule, détection si <code>isEpreuve() isNom() isPerf() isDate()</code> (l'ordre des colonnes est variable selon les pays)</li>
-<li>INSERT INTO MySQL</li>
+<li>pour chaque valeur de cellule, détection si <code>isEpreuve() isNom() isPerf() isDate()</code>
+
+	<ul>
+		<li>hypothèses minimales mais suffisantes sur le format. P.ex. <code>isDate(String str) : 
+		str.matches(".*[0-9]{4}.*")</code> suffit car seules les valeurs avec 4 chiffres ne peuvent être que des années, donc des dates.
+		Pour les performances, un peu de travail pour tolérer les variantes de format. L'objectif est d'automatiser totalement le processus
+		d'importation. Quand de nouveaux records seront battus (Kipchoge n'a pas dit son dernier mot p.ex.), il faudra pouvoir remettre la base à zéro et
+		ré-importer les pages Wikipedia sans intervention manuelle.</li>
+		<li>hypothèse insatisfaisante unicité [epreuve, pays, sexe].
+		Donc pas de records codétenus. Et donc p.ex. les statistiques sur année sont faussées (je ne retiens que le record le plus ancien s'il faut choisir)
+		</li>
+		<li>pas d'hypothèse sur l'ordre des colonnes ; il peut varier selon les pays.</li>
+	</ul> 
+</li>
+<li>Il n'y a plus qu'à INSERT INTO en base.</li>
+</ul>
+
+<h3 id="1.2">Calcul des rangs</h3>
+
+Les rangs doivent être pré-calculés, pour des raisons de performance évidentes (pour des pages dédiés aux performances record, ce serait un comble).
+ 
+Donc <code>ALTER TABLE record ADD rang INT AFTER perf;</code>
+</p><p>Puis le calcul :</p>
+
+<pre style="width:850px">-- pour chaque pays et pour chaque épreuve (for à l'ancienne car plus facile à débugger que keySet().stream()...)  
+for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
+	for (EpreuveEnum e:EpreuveEnum.values()){
+		updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.MASCULIN, con);
+		updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.FEMININ, con);
+	}
+}
+-- ... on calcule le rang et on le stock dans la variable [nombrePaysMeilleurs] 
+SELECT count(*) AS nb FROM record r  WHERE r.epreuve = ['100'] AND r.sexe = [0] AND r.perf < 
+(
+  SELECT recordSelectedPays.perf FROM record recordSelectedPays
+  WHERE recordSelectedPays.epreuve = ['100'] AND recordSelectedPays.idPays =[69] AND recordSelectedPays.sexe = [0]
+);
+
+-- ... et on affecte le rang
+UPDATE record r SET r.rang = " + nombrePaysMeilleurs + clauseEpreuvePaysSexe;
+</pre>
+
+<br/>Ceci est très bien, à un détail près. Pour 100, 400 et 3000 on doit encadrer les opérations précédentes par des concaténations temporaires de '0'.<br/>
+<br/>
+<pre style="width:850px">-- 100 hommes (pour 09.58 &lt; 10.00)
+UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '9';
+
+-- 400 femmes (pour 047.60 &lt; 1.00.00)
+UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '400' AND SUBSTRING(r.perf, 1, 1) IN ('4', '5');
+
+-- on calcule les rangs... 
+
+-- puis on retire les '0' disgracieux ajoutés précédement
+UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRING(r.perf, 1, 1) = '0';</pre>
+
+<h3 id="1.3">Corrections manuelles</h3>
+
+Problème de parsing Grande Bretagne
+
+<pre>INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee)
+VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
+</pre>
+
+</section>
+
+<section class="col-sm-offset-2 col-sm-8">
+<h2 id="2">2. Caractéristiques des records</h2>
+
+<h3 id="2.1">Records codétenus</h3>
+<p>
+Certains records sont codétenus. Comme cela pose des problèmes, j'ai du ne retenir que les premiers chronologiquement.
+Sinon il aurait fallu complexifier le modèle et le requêtes.  
+On peut supposer que le cas ne concerne que les sauts ou le 100. Vérifions le.
+</p>
+
+<pre style="width:600px;font-size: 11px">SELECT r.epreuve, r.nom, r2.nom, r.perf, r2.perf
+FROM record r
+JOIN record r2 ON r2.idPays = r.idPays AND r2.epreuve = r.epreuve AND r2.sexe = r.sexe
+AND r2.id != r.id</pre>
+
+<h3 id="2.2">Records annulés ou non homologués</h3>
+
+<ul>
+<li>records effacés pour dopage</li>
+	<ul>
+	<li>Maroc 3000 steeple (Boulami ?) homme 7.53.xx </li>
+	<li>Ben Johnson 100 homme 9.79</li>
+	<li>France 1500 femme xxx 3.59</li>
+	<li>France Marteau homme xxx 80.xx</li>
+	</ul>
+<li>records non-homologués</li>
+	<ul>
+	<li>Pedroso 8.96 Sestrières pb mesure vent</li> 
+	<li>Lewis + 9m mordu </li>
+	<li>Radcliffe 2:15:25 avec lièvres hommes (du coup record toujours reconnu ? si non, il doit y avoir 2:17 d'une kenyanne ? ... mais  
+	elle aurait pu avoir des lièvres jusqu'au bout tant que c'est des femmes. Hm. D'accord mais problème de cohérence quand même.)</li>
+	<li>Kipchoge 2:00:25 Monza 2018 lièvres. &Agrave; ce propos son 2:01:39 est énorme car il était seul à partir du km 17 je crois.</li>
+	</ul>
+<li>records effacés</li>
+
+	<ul><li>javelot femme Petra Felke RDA 80m00, annulé lors du changement des javelot. Comme les hommes pouvaient
+	dépasser 100m, ça pouvait se comprendre qu'il faille adopter des javelot plongeant et éviter des Sdiri.
+	D'accord. Mais pour les femmes, un prétexte à remettre le record à zéro... :-/</li></ul>
+
+<li>records "not ratified by federation"</li>
+
+<pre style="width:400px;font-size: 11px">SELECT r.epreuve, r.nom, r.perf, r.annee, p.nom
+FROM record r
+JOIN pays_wiki p ON p.id = r.idPays
+WHERE r.perf LIKE '%#%'
+ORDER BY r.epreuve</pre>
+
+Il y a 88 records non ratifiés. P.ex. sur 3000 Paula Radcliffe 8:22.20. Pourquoi ?? 
 </ul>
 
 
-<h2>Ancienneté des records</h2>
+<h3 id="2.3">Conditions de réalisation</h3>
+
+
+<ul>
+<li>Plein air ou salle</li>
+	<ul>
+		<li>Perche unifié. Les 6m14 de Bubka effacés par les 6m16 indoor de Lavillenie. Bon... mais la 2ème perf plein air ? Duplantis 6m05 aux Europe 2018 ? Si oui 11 cm
+		cela ferait beaucoup, de quoi laisser circonspect sur l'équivalent plein air / indoor pour la perche. </li>
+		<li>Longueur et triple non. En raison du vent ? Et le poids ?</li>
+	</ul>
+
+<li>Dureté de la piste.<br/>
+La dureté est réglementée. Il doit y avoir un test de rebond maximal de balle. D'où la réputation de la "rapidité" des pistes. &Agrave; ce titre - à vérifier - le record 19.32 de Michael Jonhson à Atlanta 1996 
+aurait pas dû être homologué. Piste trop dure. Détruite juste après les jeux pour reconvertir en terrain de baseball où un truc de ce genre. Tss.
+La dureté a d'ailleurs coûter le doublé à Gebressalissié. Après sa victoire devant Tergat au 10 000, ses tendons d'Achille ont trop morflé et 
+il a du renoncer au 5000. Par parenthèse, la nouvelle piste Mondo de Chéron est belle mais dure. Sans doute dans les normes mais des cas Gebrelassié
+sont à prévoir (déjà l'été dernier...).
+</li>
+<li>Le rebond des pistes en bois.<br/> 
+Pour les concours en salle, le rebond des pistes d'élan en bois procure un avantage. Des témoignages l'attestent (pour Bercy notamment je crois).
+<br/>
+
+<li>Largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. existe, Gay doit l'avoir, dans les 19.4).
+Le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
+
+9 van 400
+1972 aki bua (M Fr 49 2018 couloir 1)
+</li>
+<li>Vent. &Eacute;videment Beamon et Mennea exemples les plus connus (surtout avec en plus l'altitude de Mexico). Pour les courses et les concours je crois que c'est le max qui est retenu. Ou une moyenne, s'il y a un souffle juste une seconde ?
+Comme il y a plusieurs courses et concours sur les décathlons, un Athlé mag disait qu'il y avait une moyenne. Ou éventuellement pourrait être 
+retenu un essai moins fort mais avec vent régulier.
+<br/>
+&Agrave; Villeneuve d'Asq en 1955 Edwards a fait 18m43 avec vent +2.3. Auparavant Conley avait fait 18m17 (?) avec juste +2.1.
+</li>
+<li>
+heure
+température
+série ou finale... belgique 44.43
+</li>
+<li>Aide de lièvres
+Sur 100 et 200 la concurrence avantage ou pas (Asafa Powell...)
+<br/>
+&Agrave; partir du 400 l'aide lièvre devient évidente. P.ex. Le RM 43.29 d'Harry Butch Reynolds avait été aidé par 
+le départ kamikaze (un nigérien ?) sur le couloir extérieur. Après avec un lièvre, Van Niekerke aurait pu / pourra descendre sous les 43'' ?  
+<br/>
+Sur 800 Caster Semenya a demandé à l'organisateur Paris Diamond League de ne pas mettre de lièvre. Cela lui
+a réussi de mettre une claque à son record 1.54.xx (<a href="http://paris.diamond.xxx/resulat.pdf">un beau meeting ce samedi à Charléty</a>).  
+Rudisha aussi sans lièvre pour son RM à Londres 2012... derrière Amos Nigel ne retrouvera sans doute 
+jamais un tel lièvre.
+<br/>
+Le RM 800 en salle est réussi aussi sans lièvre, deux fois même : à ch. Europe Bercy 1997, Kipketer seul en série et en finale
+1.42.xx et 1.43.xx (il s'était reposé en demi 1.4xx.xx). Pour l'anecdote je crois qu'il n'a touché la prime prévue qu'une fois. Il n'a pas
+fait son Bubka...
+Dans l'histoire il doit être le seul avec Jonathan Edwards à taper deux fois le RM dans le même championnat. 
+<br/>
+&Agrave; un niveau bien éloigné, d'expérience perso le gain de lièvre sur 800 est indéniable. Je l'estime entre 1'' ou 2''. &Agrave; Eaubonne indoor deux fois :
+19 janvier 2001 1.55.45 (Bertrand Valcin 1.55.82 lièvre involontaire 750m en série 2, pour l'anecdote un junior Joël Ducrot fait 3 en 2.06.38 :-) , en série 1 Florent Lacasse avait battu le record de France Espoir 1'48''[32?]).
+; 18 janvier 2003 ch. rég. 1.55.05 (Igor Flandrin-Thoniel gagne 1.54.70). Forme identique, mais seul de bout en bout c'est 1.57.13 (Liévin, 04 février 2001) et 1.57.43 (Eaubonne ch. IdF FFSU, 09 janvier 2003). La différence avec ou sans lièvre est là.  
+<br/><br/>
+L'aide des lièvres est réglementée. Pas de mixité pour commencer (je ne sais pas si cela marche dans les deux sens d'ailleurs, si un
+record homme tombe avec l'aide d'une femme c'est non homologué ?). Pour l'âge aussi. Dans un athlé magazine, sauf erreur, il était dit
+que pour les records junior les lièvres catégorie espoir ou senior, pas de problème. Mais pour les cadets, non. Lièvres cadets seulement. Ah, bon...  
+</li>
+</ul>
+<br/>
+
+
+
+<h3 id="2.5">Paramètres annexes des records</h3>
+
+Dans les pages Wikipedia on lit
+<div style="margin-left: 30px;background-color: #EEFFFF;width: 300px">
+<!-- <small>+ = <a href="https://en.wiktionary.org/wiki/en_route" class="extiw" title="wikt:en route">en route</a> to a longer distance</small><br /> 
+<small>ht = hand timing</small><br />
+-->
+<small>A = affected by altitude</small><br />
+<small>mx = mixed race</small><br />
+<small># = not ratified by federation</small><br />
+<small>y = denotes 880 yards</small><br />
+<small>OT = oversized track (&gt; 200m in circumference)</small>
+</div>
+<br/>
+D'autres paramètres peuvent être relevés.
+<ul>
+<li>
+&Agrave; la perche la règle des taquet a été durcie. C'est une bonne chose, cela évite le coup de Collet au ch. Europe 1994. Il avait fait
+4ème en passant 5m80 après avoir fait tomber la barre... et réussir à la replacer à la main dans les taquets qui forment un angle (bravo néanmoins
+pour un retour improbable de convalescence, un exemple).
+La chose est devenue quasi impossible aujourd'hui que la barre est juste posée. 
+
+<br/>
+</li>
+<li>Pour longueur et triple, la distance à la planche pourrait être indiquée. L'idée de mesurer le saut sans contrainte de la plance 
+n'est pas bonne. Lewis serait content, il aurait le record. Mais cela changerait l'essence de la discipline, la contrainte fait
+partie du jeu.
+<br/>
+</li>
+<li>De même, au sprint compter les temps de réaction changerait les résultats. Ainsi p.ex. Johan Blake aurait peut-être avoir le record du 200. Lors de ses 19.26
+son temps de réaction était très mauvais (+200ms ?). Si on enlève 1/10ème... (il faudrait alors regarder le temps de réaction des 19.19 de Bolt, mais il perdrait
+quand même le record. Enfin dans la logique il faudrait aussi voir le vent, le couloir, l'altitude, etc.)
+<br/>
+</li>
+<li>Autre paramètre : les millièmes. Ils sont ignorés pour les records... mais utilisés pour départager dans les photos finish. Le ex-aequo c'est moche,
+et surtout impossible en cas de sélection p.ex. (pour les podiums il faudrait au pire re-faire courir. Ou descendre les barres. Comme les penalties au foot.)
+<br/>Le record de France 800 de Marajo était contesté. Sauf erreur (?) ses 1.43.9 étaient temps manuel. Alors les 1.43.95 électrique de Collard...  
+</ul>
+
+</section>
+<section class="col-sm-offset-2 col-sm-8">
+<h2 id="3">3. Politique</h2>
+
+<h3 id="3.1">3.1 Guerre froide : records socialistes / capitalistes</h3>
+
+Un dirigeant URSS - Brejnev je crois - déclarait voir dans la  
+victoire d'un champion soviétique l'illustration de la supériorité du monde socialiste 
+sur celui capitaliste décadent (la même chose avait été dite au moment de Gargarine, premier homme dans l'espace).  
+<br/>
+Plus tard, de façon similaire, on peut estimer que les records cubains plaident pour le régime - pour le régime 
+"rice and beans" en tout cas. La sobriété - la décroissance même ! - prônée par Castro dans le contexte de l'embargo US
+(p.ex. cf. extrait discours dans le film <i id="surplus">Surplus : la consommation par la terreur</i> <a href="ref_surplus">[1]</a>). &Agrave; cette lumière, par curiosité comparons les records   
+Russie/U.S. ou France/Algérie. TODO : relever la répartition des records RDA / RFA avant unification.
+<br/>
+TABLE 
+
+<br/>
+Les records d'athlétisme reflètent beaucoup d'aspects des sociétés. Ils ont été été des enjeux idéologiques lors de la guerre froide.
+Aujourd'hui on verrait plus les enjeux concernant la condition des femmes ou ceux écologique liés au mode de vie.
+La revendication des gilets jaunes "Macron démission" ou "ISF", soutien 100%. En revanche déplacement en bagnole
+(même pour trajet de moins 1 ou 3km ? cf. chiffres INSEE 2015), ça... Cela peut poser problème d'un point de vue
+écologique... et athlétique. Les travailleurs et écoliers kenyans et éthiopéens se déplacent à pied. Une bonne part de l'explication
+des records et les médailles...    
+<br/>
+Pour l'enjeu idéologique, un numéro récent de Sport &amp; Vie reportait que Staline était, paraît-il, réticent  
+à l'idée de la participation aux JO 1952 d'Helsinki ("sport bourgeois" ?). Mais il aurait été convaincu par ses camarades de l'enjeu idéologique.
+Il n'était donc peut-être pas si dogmatique. Tant mieux ! (blague à part, il se trouve que le rejet pénible de la décroissance
+par certains trotkystes me donne envie d'être plus prudent sur la condamnation de leur assassin, mais c'est un autre sujet).
+ 
+
+<h3 id="3.2">Condition des femmes</h3>
+Les premiers tests Pérec réservent quelques surprises. Notre Marie-Josée Pérec se retrouve au 27ème rang sur 400. C'est
+un peu bizarre. Pourquoi ? Eh bien parce que 24 records féminins du 400 sont supérieurs à la minute. Et pour l'opérateur alphanumérique <code>&lt;</code>
+1:00 est devant 48.25...
+
+<table><tr bgcolor="#EEEEEE"><th>Pays</th><th>Athlète</th><th>Perf</th></tr>
+<tr><td>Maldivian</td><td>Mirufath Ahmed</td><td>1:00.33</td></tr>
+<tr><td>Omani</td><td>Hanaa Al-Qassimi</td><td>1:00.83</td></tr>
+<tr><td>Cook_Islands</td><td>Attina Sawtell</td><td>1:01.65</td></tr>
+<tr><td>South_Sudanese</td><td>Margret Hassan</td><td>1:01.72</td></tr>
+<tr><td>Djiboutian</td><td>Hibo Rarejeh</td><td>1:01.8  #</td></tr>
+<tr><td>Montserrat</td><td>Jenalyn Weekes</td><td>1:01.80</td></tr>
+<tr><td>Laotian</td><td>Dalivanh Detthonthip</td><td>1:01.90</td></tr>
+<tr><td>Qatari</td><td>Jyothi Janardhanan</td><td>1:01.92</td></tr>
+<tr><td>Norfolk_Island</td><td>April Quintal</td><td>1:02.54</td></tr>
+<tr><td>Palauan</td><td>Ngerak Florencio</td><td>1:02.67</td></tr>
+<tr><td>Cambodian</td><td>Seyha Chan</td><td>1:03.56</td></tr>
+<tr><td>Niuean</td><td>Zelda Folau Brown</td><td>1:04.36</td></tr>
+<tr><td>Federated_States_of_Micronesia</td><td>Adiriana Jack</td><td>1:04.41</td></tr>
+<tr><td>Somalian</td><td>Jamad Ismail Abdi</td><td>1:04.89</td></tr>
+<tr><td>Yemeni</td><td>Fatima Suleiman Al-Dahman</td><td>1:05.22</td></tr>
+<tr><td>Nauruan</td><td>Trudy Duburiya</td><td>1:06.80</td></tr>
+<tr><td>Kiribati</td><td>Kaingaue David</td><td>1:07.01</td></tr>
+<tr><td>American_Samoan</td><td>Afega Fetaiai</td><td>1:07.14</td></tr>
+<tr><td>Kuwaiti</td><td>Latifa Hussein Muftah</td><td>1:07.86</td></tr>
+<tr><td>Bhutanese</td><td>Khandu Lhamo</td><td>1:08.2</td></tr>
+<tr><td>Mauritanian</td><td>Khoury Keïta</td><td>1:09.6</td></tr>
+<tr><td>Palestinian</td><td>Maram Kabakali</td><td>1:09.69</td></tr>
+<tr><td>Tuvaluan</td><td>Asenate Manoa</td><td>1:11.71</td></tr>
+<tr><td>Afghan</td><td>Yalda Amini</td><td>1:16.98</td></tr>
+<tr><td>Allemagne</td><td>Marita Koch</td><td>47.60</td></tr>
+<tr><td>Czech</td><td>Jarmila Kratochvílová</td><td>47.99</td></tr>
+<tr><td>French</td><td>Marie-José Pérec</td><td>48.25</td></tr>
+<tr><td>Ukrainian</td><td>Olha Bryzhina</td><td>48.27</td></tr>
+<tr><td>Australian</td><td>Cathy Freeman</td><td>48.63</td></tr>
+<tr><td>United_States</td><td>Sanya Richards</td><td>48.70</td></tr>
+<tr><td>...</td><td>...</td><td>...</td></tr>
+</table>
+
+Au delà de la bête correction nécessaire, ces records supérieurs à la minute laissent songeur.
+Ils donnent une idée du développement du sport dans les pays. Et accessoirement de la condition des femmes.
+
+<h3 id="3.3">Colonisation</h3>
+
+Athlètes possèdent des records nationnaux dans plusieurs pays à la fois. Exemple connu : Bernard Lagat 1500 Kenya et US. Et les autres ?
+
+<pre>SELECT * FROM (
+SELECT r.nom, COUNT(DISTINCT r.idPays) AS nb_pays, GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ') 
+FROM record r
+INNER JOIN pays_wiki p ON p.id = r.idPays
+GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
+
+<table><tr BGCOLOR="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>
+<tr><td>Bernard Lagat</td><td>Kenyan 1500 3:26.34<br/>United_States 1500 3:29.30<br/>United_States 3000 7:29.00<br/>United_States 5000 12:53.60 </td></tr>
+<tr><td>Churandy Martina</td><td>Dutch 100 9.91<br/>Dutch 200 19.81<br/>Netherlands_Antillean 100 9.93<br/>Netherlands_Antillean 200 20.08<br/>Netherlands_Antillean 400 046.13 </td></tr>
+<tr><td>Jan Železný</td><td>Czech Javelot 98.48 m<br/>Slovak Javelot 87.66 m </td></tr>
+<tr><td>Nelson Évora</td><td>Cape_Verdean Longueur 7.57 m<br/>Cape_Verdean Triple 16.15 m<br/>Portuguese Triple 17.74 m </td></tr>
+<tr><td>Dmitri Markov</td><td>Australian Perche 6.05 m<br/>Belarusian Perche 6.00 m </td></tr>
+<tr><td>Eduard Hämäläinen</td><td>Finnish Decathlon 8730 pt.<br/>Belarusian Decathlon 8735 pt. </td></tr>
+<tr><td>Eunice Barber</td><td>Sierra_Leonean 200 24.32<br/>Sierra_Leonean 100H 13.38<br/>Sierra_Leonean Javelot 1.83 m<br/>Sierra_Leonean Longueur 6.75 m<br/>Sierra_Leonean Poids 12.87 m<br/>Sierra_Leonean Heptathlon 6416 pt.<br/>French Longueur 7.05 m<br/>French Heptathlon 6889 pt. </td></tr>
+<tr><td>Merlene Ottey</td><td>Slovenian 100 11.09<br/>Slovenian 200 22.72<br/>Jamaican 200 21.64 </td></tr>
+<tr><td>Mark McKoy</td><td>Austrian 110H 13.14<br/>Canadian 110H 13.08 </td></tr>
+<tr><td>Francis Obikwelu</td><td>Nigerian 200 19.84<br/>Portuguese 100 9.86<br/>Portuguese 200 20.01 </td></tr>
+</table>
+
+<br/>
+<br/>
+
+<div class="panel panel-default" style="width: 500px">
+	<div class="panel-heading" role="tab" id="headingOne">
+		<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">... et les moins connus</a></h4>
+	</div>
+	<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+<table><tr BGCOLOR="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>		
+<tr><td>Ahmed Ali</td><td>Sudanese 100 10.27<br/>Sudanese 200 20.16<br/>Djiboutian Triple 12.75 m </td></tr>
+<tr><td>Aleksandr Kovalenko</td><td>Belarusian Triple 17.77 m<br/>Russian Triple 17.77 m </td></tr>
+<tr><td>Amra Temim</td><td>Serbian Javelot 1.94 m<br/>Bosnian_and_Herzegovinian Javelot 1.94 m </td></tr>
+<tr><td>Astrit Kryeziu</td><td>Albanian 800 1:48.03<br/>Kosovan 400 048.22 </td></tr>
+<tr><td>Eduardo García</td><td>Nicaraguan Perche 3.75 m<br/>United_States_Virgin_Islands 5000 14:10.83<br/>United_States_Virgin_Islands 10000 29:36.26<br/>United_States_Virgin_Islands Marathon 2:25:16.4 </td></tr>
+<tr><td>Evelyn Farrell</td><td>Aruban 100 11.73 #<br/>Netherlands_Antillean 100 11.73 </td></tr>
+<tr><td>Fatmata Fofanah</td><td>Bahraini 100H 13.34<br/>Guinean 100H 12.96 </td></tr>
+<tr><td>Frantz Kruger</td><td>Finnish Disque 69.97 m<br/>South_African Disque 70.32 m </td></tr>
+<tr><td>Ignisious Gaisah</td><td>Dutch Longueur 8.29 m<br/>Ghanaian Longueur 8.43 m </td></tr>
+<tr><td>Karin Melis Mey</td><td>South_African Longueur 6.93 m<br/>Turkish Longueur 6.93 m </td></tr>
+<tr><td>Liliana Allen</td><td>Cuban 100 11.10<br/>Mexican 100 11.09<br/>Mexican 200 23.13 </td></tr>
+<tr><td>Lorène Bazolo</td><td>Republic_of_the_Congo 100 11.39<br/>Republic_of_the_Congo 200 23.34<br/>Portuguese 100 11.21 </td></tr>
+<tr><td>Marina Mihajlova</td><td>Serbian Heptathlon 5618 pt.<br/>Macedonian Javelot 1.72 m<br/>Macedonian Longueur 6.17 m<br/>Macedonian Heptathlon 5676 pt. </td></tr>
+<tr><td>Meraf Bahta</td><td>Eritrean 1500 4:05.11<br/>Eritrean 3000 8:58.55<br/>Swedish 3000 8:37.50<br/>Swedish 5000 14:49.95<br/>Swedish 10000 31:13.06 </td></tr>
+<tr><td>Naide Gomes</td><td>Santomean 100H 14.06<br/>Santomean Javelot 1.80 m<br/>Santomean Longueur 6.36 m<br/>Santomean Poids 13.22 m<br/>Santomean Javelot 42.86 m<br/>Santomean Heptathlon 5671 pt.<br/>Portuguese Longueur 7.12 m<br/>Portuguese Heptathlon 6230 pt. </td></tr>
+<tr><td>Philippos Philippou</td><td>Cypriot 5000 13:34.29<br/>Cypriot 3000 steeple 8:24:01<br/>Greek 3000 steeple 8:24.01 </td></tr>
+<tr><td>Ramil Guliyev</td><td>Azerbaijani 100 10.08<br/>Azerbaijani 200 20.04<br/>Turkish 200 19.88 </td></tr>
+<tr><td>Shara Proctor</td><td>Anguillian Longueur 6.71 m<br/>Anguillian Triple 13.74 m<br/>Anguillian Disque 28.55 m<br/>British Longueur 7.07 m </td></tr>
+<tr><td>Sherry Howell</td><td>Netherlands_Antillean Disque 41.04 m<br/>Aruban Disque 41.04 m #<br/>Aruban Javelot 42.20 m # </td></tr>
+<tr><td>Vera Barbosa</td><td>Cape_Verdean 400 054.50<br/>Cape_Verdean 400H 1:01.24<br/>Cape_Verdean Javelot 1.62 m<br/>Portuguese 400H 55.22 </td></tr>
+<tr><td>Yamilé Aldama</td><td>Cuban Triple 15.29 m  #<br/>Sudanese Javelot 1.85 m<br/>Sudanese Longueur 6.34 m ,Sudanese Triple 15.28 m </td></tr>
+</table>
+		</div>
+	</div>
+</div>
+<div style="clear:both"></div>
+
+</section>
+
+<section class="col-sm-offset-2 col-sm-8">
+<h2 id="4">4. Requêtes</h2>
+
+<h3 id="4.1">Interclubs des pays</h3>
+
+Classement des pays par la somme de tous les rangs.
+
+xxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxx
+
+
+<h3 id="4.2">Comparaison rangs hommes et femmes d'un pays</h3>
+
+Par exemple la France.
+
+<pre style="width:500px;font-size: 11px">-- total des rangs de chaque sexe
+SELECT r.sexe, SUM(r.rang)
+FROM record r
+WHERE r.idPays = 69
+GROUP BY r.sexe;
+
+-- mis en regard pour chaque épreuve
+SELECT r0.nom, r0.rang, r1.nom, r1.rang
+FROM record r0
+JOIN record r1 ON r0.epreuve = r1.epreuve
+WHERE r0.idPays = 69 AND r0.sexe = 1 AND r1.idPays = 69 AND r1.sexe = 0; 
+</pre>
+
+<table><tr bgcolor="#EEEEEE"><th>epreuve</th><th>nom</th><th>rang</th><th>nom</th><th>rang</th></tr>
+<tr><td>100</td><td>Christine Arron</td><td>4</td><td>Jimmy Vicaut</td><td>194</td></tr>
+<tr><td>200</td><td>Marie-José Pérec</td><td>10</td><td>Christophe Lemaitre</td><td>7</td></tr>
+<tr><td>400</td><td>Marie-José Pérec</td><td>28</td><td>Leslie Djhone</td><td>24</td></tr>
+<tr><td>800</td><td>Patricia Djaté-Taillard</td><td>22</td><td>Pierre-Ambroise Bosse</td><td>9</td></tr>
+<tr><td>1500</td><td>Hind Dehiba</td><td>27</td><td>Mehdi Baala</td><td>5</td></tr>
+<tr><td>3000</td><td>Bouchra Ghezielle</td><td>104</td><td>Mustapha Essaid</td><td>21</td></tr>
+<tr><td>5000</td><td>Margaret Maury</td><td>17</td><td>Ismaïl Sghyr</td><td>14</td></tr>
+<tr><td>10000</td><td>Christelle Daunay</td><td>36</td><td>Antonio Martins</td><td>19</td></tr>
+<tr><td>Marathon</td><td>Christelle Daunay</td><td>25</td><td>Benoît Zwierzchiewski</td><td>9</td></tr>
+<tr><td>400H</td><td>Marie-José Pérec</td><td>81</td><td>Stéphane Diagana</td><td>11</td></tr>
+<tr><td>3000 steeple</td><td>Sophie Duarte</td><td>90</td><td>Mahiedine Mekhissi Benabbad</td><td>24</td></tr>
+<tr><td>Javelot</td><td>Maryse Éwanjé-Épée</td><td>-1</td><td>Mickaël Hanany</td><td>-1</td></tr>
+<tr><td>Javelot</td><td>Mathilde Andraud</td><td>-1</td><td>Mickaël Hanany</td><td>-1</td></tr>
+<tr><td>Perche</td><td>Vanessa Boslak</td><td>16</td><td>Renaud Lavillenie</td><td>1</td></tr>
+<tr><td>Longueur</td><td>Eunice Barber</td><td>21</td><td>Salim Sdiri</td><td>20</td></tr>
+<tr><td>Triple</td><td>Teresa Nzola Meso Ba</td><td>41</td><td>Teddy Tamgho</td><td>3</td></tr>
+<tr><td>Poids</td><td>Laurence Manfredi</td><td>48</td><td>Yves Niaré</td><td>44</td></tr>
+<tr><td>Disque</td><td>Mélina Robert-Michon</td><td>20</td><td>Jean-Claude Retel</td><td>18</td></tr>
+<tr><td>Marteau</td><td>Manuela Montebrun</td><td>11</td><td>Gilles Dupray</td><td>14</td></tr>
+<tr><td>Javelot</td><td>Maryse Éwanjé-Épée</td><td>-1</td><td>Pascal Lefevre</td><td>-1</td></tr>
+<tr><td>Javelot</td><td>Mathilde Andraud</td><td>-1</td><td>Pascal Lefevre</td><td>-1</td></tr>
+<tr><td>Decathlon</td><td>Marie Collonvillé</td><td>1</td><td>Kevin Mayer</td><td>1</td></tr>
+<tr bgcolor="#CCCCFF"><td colspan="2">Totaux</td><td>à corriger</td><td></td><td>à corriger</td></tr>
+</table>
+
+
+<h3 id="4.3">Athlètes polyvalents</h3>
+<p>Athlètes possédant plusieurs records dans différentes épreuves (Mutola 200 -&gt; 1500)</p>
+
+<pre>SELECT r.nom, COUNT(r.perf) AS nb, GROUP_CONCAT(r.epreuve, ' '), GROUP_CONCAT(p.nom, ' ')
+FROM record r
+INNER JOIN pays_wiki p ON p.id = r.idPays
+GROUP BY r.nom
+ORDER BY nb DESC, r.nom;</pre>
+
+<div class="panel panel-default pull-right">
+	<div class="panel-heading" role="tab" id="heading2">
+		<h4 class="panel-title"><a data-toggle="collapse" href="#collapse2">Résultats</a></h4>
+	</div>
+	<div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+		<div class="panel-body">
+
+
+<table><tr bgcolor="#CCCCFF"><th>nom</th><th>nb</th><th>GROUP_CONCAT(r.epreuve, ' ')</th><th>GROUP_CONCAT(p.nom, ' ')</th></tr>
+<tr><td>Eunice Barber</td><td>8</td><td>200 ,100H ,Javelot ,Longueur ,Poids ,Heptathlon ,Longueur ,Heptathlon </td><td>Sierra_Leonean ,Sierra_Leonean ,Sierra_Leonean ,Sierra_Leonean ,Sierra_Leonean ,Sierra_Leonean ,French ,French </td></tr>
+<tr><td>Freddy Burgos</td><td>8</td><td>110H ,400H ,Triple ,Disque ,Decathlon ,110H ,Triple ,Decathlon </td><td>Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban </td></tr>
+<tr><td>Kimball Reynierse</td><td>8</td><td>1500 ,3000 ,5000 ,10000 ,Marathon ,3000 steeple ,1500 ,3000 steeple </td><td>Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban </td></tr>
+<tr><td>Naide Gomes</td><td>8</td><td>100H ,Javelot ,Longueur ,Poids ,Javelot ,Heptathlon ,Longueur ,Heptathlon </td><td>Santomean ,Santomean ,Santomean ,Santomean ,Santomean ,Santomean ,Portuguese ,Portuguese </td></tr>
+<tr><td>Ghada Shouaa</td><td>7</td><td>200 ,100H ,Javelot ,Longueur ,Poids ,Javelot ,Heptathlon </td><td>Syrian ,Syrian ,Syrian ,Syrian ,Syrian ,Syrian ,Syrian </td></tr>
+<tr><td>Julianne Dorothal</td><td>7</td><td>100H ,Poids ,Heptathlon ,100H ,Poids ,Javelot ,Heptathlon </td><td>Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban ,Aruban </td></tr>
+<tr><td>Montserrat Pujol</td><td>7</td><td>200 ,100H ,Longueur ,Triple ,Poids ,Javelot ,Heptathlon </td><td>Andorran ,Andorran ,Andorran ,Andorran ,Andorran ,Andorran ,Andorran </td></tr>
+<tr><td>Sla?ana Perunovi?</td><td>7</td><td>800 ,1500 ,3000 ,5000 ,10000 ,Marathon ,3000 steeple </td><td>Montenegrin ,Montenegrin ,Montenegrin ,Montenegrin ,Montenegrin ,Montenegrin ,Montenegrin </td></tr>
+<tr><td>Alain Lazare</td><td>6</td><td>1500 ,3000 ,5000 ,10000 ,Marathon ,3000 steeple </td><td>New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian </td></tr>
+<tr><td>Beverly Ramos</td><td>6</td><td>1500 ,3000 ,5000 ,10000 ,Marathon ,3000 steeple </td><td>Puerto_Rican ,Puerto_Rican ,Puerto_Rican ,Puerto_Rican ,Puerto_Rican ,Puerto_Rican </td></tr>
+<tr><td>Luiza Gega</td><td>6</td><td>800 ,1500 ,3000 ,5000 ,10000 ,3000 steeple </td><td>Albanian ,Albanian ,Albanian ,Albanian ,Albanian ,Albanian </td></tr>
+<tr><td>Nadie Bernard-Prasad</td><td>6</td><td>800 ,1500 ,3000 ,5000 ,10000 ,Marathon </td><td>New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian ,New_Caledonian </td></tr>
+<tr><td>Najla Aqdeir Ali Salem</td><td>6</td><td>200 ,400 ,800 ,1500 ,400H ,3000 steeple </td><td>Libyan ,Libyan ,Libyan ,Libyan ,Libyan ,Libyan </td></tr>
+</table>
+		</div>
+	</div>
+</div>
+<div style="clear:both"></div>
+
+
+
+<h3 id="4.4">Ancienneté des records</h3>
 <pre>SELECT epreuve, AVG(annee) FROM record GROUP BY epreuve</pre>
 
 
+</section>
 
+<section class="col-sm-offset-2 col-sm-8">
+<h2>Références</h2>
+<a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague 2009</a>. Cela ne nous rajeunit pas. 
+L'idée de la décroissance ne faisait pas l'unanimité au sein du NPA, et en particulier au sein de la Tendance Claire. Pas beaucoup d'évolution dix ans plus tard...
+(cf. <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur - 2018)</a>
+</section>
+<br/><br/>
 
-</div>
 </article>
 
+<footer class="col-md-offset-3 col-md-6">
+	<hr />
+	<p style="text-align: center;">
+		<i>Dernière MAJ <time pubdate="pubdate">25/01/2019</time></i>
+	</p>
+</footer>
+
 	<script src="js/menu.js" type="text/javascript"></script>
-	<script type="text/javascript" class="init">
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
-
-		$('.dropdown-toggle').dropdown();
-
-	</script>
 	<script>document.getElementById("records").setAttribute("class", "active");</script>
 </body>
 </html>

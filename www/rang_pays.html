@@ -32,38 +32,6 @@
 		<div class="col-sm-8">
 
 			<nav class="navbar" role="navigation" id="menu"></nav>
-
-<div class="panel panel-default pull-right">
-		<div class="panel-heading" role="tab" id="headingOne">
-			<h4 class="panel-title"><a data-toggle="collapse" href="#collapse1">Notes</a></h4>
-		</div>
-		<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-			<div class="panel-body">
-
-<b>Pour aller plus loin</b><br/>
-<ul>
-<li><a href="xxxx">Classement des pays par la moyenne de leurs rangs.</a></li>
-<li><a href="xxxx">Compairaison des rangs de pays ou de sexe.</a></li>
-</ul>
-
-<br/><b>Le code</b><br/>
-Les rangs ont été pré-calculés.
-Donc <code>ALTER TABLE record ADD rang INT NOT NULL AFTER perf;</code>
-<br/>Puis le calcul :<br/>
-<br/>
-<pre style="width:600px">UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '9';
-
-SELECT count(*) AS nb FROM record r  WHERE r.epreuve = '100' AND r.sexe = 0 AND r.perf < 
-(
-	SELECT recordSelectedPays.perf FROM record recordSelectedPays
-	WHERE recordSelectedPays.epreuve = '100' AND recordSelectedPays.idPays = 69 AND recordSelectedPays.sexe = 0
-);
-
-UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '0';</pre>
-		</div>
-</div></div>
-<div style="clear:both"></div>
-
 		
 <h2>Sélection du pays</h2>
 
@@ -76,238 +44,222 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 	</thead>
 	<tbody>
 
-
-<tr><td>
-<button onclick="chargeJsonRecordsPays(3)">Algeria</a></button></td><td>Afrique</td></tr>
-<tr><td><a href="">Angola</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Benin</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Botswana</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Burkina Faso</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Burundi</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Cameroon</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Cape Verde</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Central African Republic</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Chad</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Comoros</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Democratic Republic of the Congo</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Republic of the Congo</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Djibouti</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Egypt</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Equatorial Guinea</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Eritrea</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ethiopia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Gabon</a></td><td>Afrique</td></tr>
-<tr><td><a href="">The Gambia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ghana</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Guinea</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Guinea-Bissau</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Ivory Coast</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Kenya</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Lesotho</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Liberia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Libya</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Madagascar</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Malawi</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mali</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mauritania</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mauritius</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Morocco</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Mozambique</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Namibia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Niger</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Nigeria</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Rwanda</a></td><td>Afrique</td></tr>
-<tr><td><a href="">São Tomé and Príncipe</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Senegal</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Seychelles</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Sierra Leone</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Somalia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">South Africa</a></td><td>Afrique</td></tr>
-<tr><td><a href="">South Sudan</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Sudan</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Swaziland</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Tanzania</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Togo</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Tunisia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Uganda</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Zambia</a></td><td>Afrique</td></tr>
-<tr><td><a href="">Zimbabwe</a></td><td>Afrique</td></tr>
-
-<!-- ====================================== -->
-<tr><td><a href="">Afghanistan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Bahrain</a></td><td>Asie</td></tr>
-<tr><td><a href="">Bangladesh</a></td><td>Asie</td></tr>
-<tr><td><a href="">Bhutan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Brunei</a></td><td>Asie</td></tr>
-<tr><td><a href="">Cambodia</a></td><td>Asie</td></tr>
-<tr><td><a href="">China</a></td><td>Asie</td></tr>
-<tr><td><a href="">Chinese Taipei</a></td><td>Asie</td></tr>
-<tr><td><a href="">East Timor</a></td><td>Asie</td></tr>
-<tr><td><a href="">Hong Kong</a></td><td>Asie</td></tr>
-<tr><td><a href="">India</a></td><td>Asie</td></tr>
-<tr><td><a href="">Indonesia</a></td><td>Asie</td></tr>
-<tr><td><a href="">Iran</a></td><td>Asie</td></tr>
-<tr><td><a href="">Iraq</a></td><td>Asie</td></tr>
-<tr><td><a href="">Japan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Jordan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Kazakhstan</a></td><td>Asie</td></tr>
-<tr><td><a href="">North Korea</a></td><td>Asie</td></tr>
-<tr><td><a href="">South Korea</a></td><td>Asie</td></tr>
-<tr><td><a href="">Kuwait</a></td><td>Asie</td></tr>
-<tr><td><a href="">Kyrgyzstan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Laos</a></td><td>Asie</td></tr>
-<tr><td><a href="">Lebanon</a></td><td>Asie</td></tr>
-<tr><td><a href="">Macau</a></td><td>Asie</td></tr>
-<tr><td><a href="">Malaysia</a></td><td>Asie</td></tr>
-<tr><td><a href="">Maldives</a></td><td>Asie</td></tr>
-<tr><td><a href="">Mongolia</a></td><td>Asie</td></tr>
-<tr><td><a href="">Myanmar</a></td><td>Asie</td></tr>
-<tr><td><a href="">Nepal</a></td><td>Asie</td></tr>
-<tr><td><a href="">Oman</a></td><td>Asie</td></tr>
-<tr><td><a href="">Pakistan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Palestine</a></td><td>Asie</td></tr>
-<tr><td><a href="">Philippines</a></td><td>Asie</td></tr>
-<tr><td><a href="">Qatar</a></td><td>Asie</td></tr>
-<tr><td><a href="">Saudi Arabia</a></td><td>Asie</td></tr>
-<tr><td><a href="">Singapore</a></td><td>Asie</td></tr>
-<tr><td><a href="">Sri Lanka</a></td><td>Asie</td></tr>
-<tr><td><a href="">Syria</a></td><td>Asie</td></tr>
-<tr><td><a href="">Tajikistan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Thailand</a></td><td>Asie</td></tr>
-<tr><td><a href="">Turkmenistan</a></td><td>Asie</td></tr>
-<tr><td><a href="">United Arab Emirates</a></td><td>Asie</td></tr>
-<tr><td><a href="">Uzbekistan</a></td><td>Asie</td></tr>
-<tr><td><a href="">Vietnam</a></td><td>Asie</td></tr>
-<tr><td><a href="">Yemen</a></td><td>Asie</td></tr>
-
-<tr><td><a href="">Anguilla</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Antigua and Barbuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Aruba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Bahamas</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Barbados</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Belize</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Bermuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">British Virgin Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Canada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Cayman Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Costa Rica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><button onclick="chargeJsonRecordsPays(51)">Cuba</button></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Curaçao</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Dominica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Dominican Republic</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">El Salvador</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Grenada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Guatemala</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Haiti</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Honduras</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><button onclick="chargeJsonRecordsPays(97)">Jamaica</button></a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Mexico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Montserrat</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Netherlands Antilles</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Nicaragua</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Puerto Rico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Saint Kitts and Nevis</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Saint Lucia</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Saint Vincent and the Grenadines</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Trinidad and Tobago</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">Turks and Caicos Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-<tr><td><a href="">United States</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
-
-
-<tr><td><a href="">Argentina</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Bolivia</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Brazil</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Chile</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Colombia</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Ecuador</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Guyana</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Panama</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Paraguay</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Peru</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Suriname</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Uruguay</a></td><td>Amérique Sud</td></tr>
-<tr><td><a href="">Venezuela</a></td><td>Amérique Sud</td></tr>
-
-<!-- ====================================== -->
-<tr><td><a href="">American Samoa</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Australia</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Cook Islands</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Federated States of Micronesia</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Fiji</a></td><td>Océanie</td></tr>
-<tr><td><a href="">French Polynesia</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Guam</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Kiribati</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Marshall Islands</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Nauru</a></td><td>Océanie</td></tr>
-<tr><td><a href="">New Caledonia</a></td><td>Océanie</td></tr>
-<tr><td><a href="">New Zealand</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Niue</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Norfolk Island</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Northern Mariana Islands</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Palau</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Papua New Guinea</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Samoa</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Solomon Islands</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Tonga</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Tuvalu</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Vanuatu</a></td><td>Océanie</td></tr>
-<tr><td><a href="">Wallis and Futuna</a></td><td>Océanie</td></tr>
-<!-- ====================================== -->
-
-<tr><td><a href="">Albania</a></td><td>Europe</td></tr>
-<tr><td><a href="">Andorra</a></td><td>Europe</td></tr>
-<tr><td><a href="">Armenia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Austria</a></td><td>Europe</td></tr>
-<tr><td><a href="">Azerbaijan</a></td><td>Europe</td></tr>
-<tr><td><a href="">Belarus</a></td><td>Europe</td></tr>
-<tr><td><a href="">Belgium</a></td><td>Europe</td></tr>
-<tr><td><a href="">Bosnia and Herzegovina</a></td><td>Europe</td></tr>
-<tr><td><a href="">Bulgaria</a></td><td>Europe</td></tr>
-<tr><td><a href="">Croatia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Cyprus</a></td><td>Europe</td></tr>
-<tr><td><a href="">Czech Republic</a></td><td>Europe</td></tr>
-<tr><td><a href="">Denmark</a></td><td>Europe</td></tr>
-<tr><td><a href="">Estonia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Finland</a></td><td>Europe</td></tr>
-<tr><td><a href="">France</a></td><td>Europe</td></tr>
-<tr><td><a href="">Georgia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Germany</a></td><td>Europe</td></tr>
-<tr><td><a href="">Gibraltar</a></td><td>Europe</td></tr>
-<tr><td><a href="">Great Britain and N.I.</a></td><td>Europe</td></tr>
-<tr><td><a href="">England</a></td><td>Europe</td></tr>
-<tr><td><a href="">Scotland</a></td><td>Europe</td></tr>
-<tr><td><a href="">Greece</a></td><td>Europe</td></tr>
-<tr><td><a href="">Hungary</a></td><td>Europe</td></tr>
-<tr><td><a href="">Iceland</a></td><td>Europe</td></tr>
-<tr><td><a href="">Ireland</a></td><td>Europe</td></tr>
-<tr><td><a href="">Israel</a></td><td>Europe</td></tr>
-<tr><td><a href="">Italy</a></td><td>Europe</td></tr>
-<tr><td><a href="">masters</a></td><td>Europe</td></tr>
-<tr><td><a href="">Kosovo</a></td><td>Europe</td></tr>
-<tr><td><a href="">Latvia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Liechtenstein</a></td><td>Europe</td></tr>
-<tr><td><a href="">Lithuania</a></td><td>Europe</td></tr>
-<tr><td><a href="">Luxembourg</a></td><td>Europe</td></tr>
-<tr><td><a href="">Republic of Macedonia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Malta</a></td><td>Europe</td></tr>
-<tr><td><a href="">Moldova</a></td><td>Europe</td></tr>
-<tr><td><a href="">Monaco</a></td><td>Europe</td></tr>
-<tr><td><a href="">Montenegro</a></td><td>Europe</td></tr>
-<tr><td><a href="">Netherlands</a></td><td>Europe</td></tr>
-<tr><td><a href="">Norway</a></td><td>Europe</td></tr>
-<tr><td><a href="">Poland</a></td><td>Europe</td></tr>
-<tr><td><a href="">Portugal</a></td><td>Europe</td></tr>
-<tr><td><a href="">Romania</a></td><td>Europe</td></tr>
-<tr><td><a href="">Russia</a></td><td>Europe</td></tr>
-<tr><td><a href="">San Marino</a></td><td>Europe</td></tr>
-<tr><td><a href="">Serbia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Slovakia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Slovenia</a></td><td>Europe</td></tr>
-<tr><td><a href="">Spain</a></td><td>Europe</td></tr>
-<tr><td><a href="">Sweden</a></td><td>Europe</td></tr>
-<tr><td><a href="">Switzerland</a></td><td>Europe</td></tr>
-<tr><td><a href="">Turkey</a></td><td>Europe</td></tr>
-<tr><td><a href="">Ukraine</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(1)">Afghanistan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(2)">Albania</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(3)">Algeria</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(4)">American Samoa</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(5)">Andorra</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(6)">Angola</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(7)">Anguilla</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(8)">Antigua and Barbuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(9)">Argentina</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(10)">Armenia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(11)">Aruba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(12)">Australia</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(13)">Austria</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(14)">Azerbaijan</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(15)">Bahamas</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(16)">Bahrain</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(17)">Bangladesh</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(18)">Barbados</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(19)">Belarus</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(20)">Belgium</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(21)">Belize</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(22)">Benin</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(23)">Bermuda</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(24)">Bhutan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(25)">Bolivia</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(26)">Bosnia and Herzegovina</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(27)">Botswana</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(28)">Brazil</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(29)">British Virgin Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(30)">Brunei</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(31)">Bulgaria</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(32)">Burkina Faso</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(33)">Burundi</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(34)">Cambodia</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(35)">Cameroon</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(36)">Canada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(37)">Cape Verde</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(38)">Cayman Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(39)">Central African Republic</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(40)">Chad</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(41)">Chili</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(42)">Chine</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(43)">Taiwan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(44)">Colombia</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(45)">Comores</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(46)">Democratic_Republic_of_the_Congo</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(47)">Cook Islands</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(48)">Costa Rica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(50)">Croatia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(51)">Cuba</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(52)">Cypriot</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(53)">Czech Republic</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(54)">Denmark</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(55)">Djibouti</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(56)">Dominica</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(57)">Dominican Republic</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(58)">East Timor</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(59)">Ecuador</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(60)">Egypt</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(61)">El Salvador</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(62)">Equatorial Guinea</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(63)">Eritrea</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(64)">Estonia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(65)">Ethiopia</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(66)">Federated States of Micronesia</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(67)">Fiji</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(68)">Finland</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(69)">France</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(70)">French Polynesia</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(71)">Gabon</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(72)">Gambie</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(73)">Georgia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(74)">Allemagne</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(75)">Ghana</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(76)">Gibraltar</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(77)">Greece</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(78)">Grenada</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(79)">Guam</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(80)">Guatemala</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(81)">Guinea</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(82)">Guinea-Bissau</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(83)">Guyana</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(84)">Haiti</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(85)">Honduras</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(86)">Hong Kong</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(87)">Hungary</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(88)">Iceland</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(89)">India</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(90)">Indonesia</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(91)">Iran</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(92)">Iraq</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(93)">Ireland</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(94)">Israel</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(95)">Italy</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(96)">Ivory Coast</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(97)">Jamaica</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(98)">Japan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(99)">Jordan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(100)">Kazakhstan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(101)">Kenya</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(102)">Kiribati</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(103)">Corée du Nord</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(104)">Corée du Sud</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(105)">Kosovo</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(106)">Kuwait</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(107)">Kyrgyzstan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(108)">Laos</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(109)">Latvia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(110)">Lebanon</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(111)">Lesotho</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(112)">Liberia</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(113)">Libya</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(114)">Liechtenstein</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(115)">Lithuania</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(116)">Luxembourg</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(117)">Macau</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(118)">Madagascar</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(119)">Malawi</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(120)">Malaysia</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(121)">Maldives</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(122)">Mali</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(123)">Malta</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(124)">Marshall Islands</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(125)">masters</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(126)">Mauritania</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(127)">Mauritius</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(128)">Mexico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(129)">Moldova</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(130)">Monaco</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(131)">Mongolia</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(132)">Montenegro</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(133)">Montserrat</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(134)">Morocco</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(135)">Mozambique</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(136)">Myanmar</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(137)">Namibia</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(138)">Nauru</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(139)">Nepal</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(140)">Netherlands</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(141)">Netherlands Antilles</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(142)">New Caledonia</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(143)">New Zealand</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(144)">Nicaragua</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(145)">Niger</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(146)">Nigeria</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(147)">Niue</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(148)">Norfolk Island</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(149)">Northern Mariana Islands</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(150)">Norway</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(151)">Oman</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(152)">Pakistan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(153)">Palau</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(154)">Palestine</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(155)">Panama</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(156)">Papua New Guinea</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(157)">Paraguay</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(158)">Pérou</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(159)">Philippines</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(160)">Pologne</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(161)">Portugal</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(162)">Puerto Rico</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(163)">Qatar</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(164)">Romania</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(165)">Russie</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(166)">Rwanda</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(167)">Saint Kitts and Nevis</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(168)">Saint Lucia</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(169)">Saint Vincent and the Grenadines</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(170)">Samoa</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(171)">San Marino</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(172)">Santomean</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(173)">Arabie Saoudite</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(174)">Senegal</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(175)">Serbia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(176)">Seychelles</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(177)">Sierra Leone</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(178)">Singapore</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(179)">Slovakia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(180)">Slovenia</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(181)">Solomon Islands</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(182)">Somalie</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(183)">Afrique du Sud</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(184)">South Sudan</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(185)">Espagne</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(186)">Sri Lanka</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(187)">Sudan</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(188)">Suriname</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(189)">Swaziland</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(190)">Sweden</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(191)">Switzerland</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(192)">Syria</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(193)">Tajikistan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(194)">Tanzania</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(195)">Thailand</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(196)">Togo</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(197)">Tonga</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(198)">Trinidad and Tobago</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(199)">Tunisia</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(200)">Turkey</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(201)">Turkmenistan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(202)">Turks and Caicos Islands</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(203)">Tuvalu</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(204)">Uganda</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(205)">Ukraine</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(206)">United Arab Emirates</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(207)">Grande Bretagne (United Kingdom)</a></td><td>Europe</td></tr>
+<tr><td><a onclick="pays(208)">United States</a></td><td>Amérique Nord-Centrale et Caraïbes</td></tr>
+<tr><td><a onclick="pays(209)">Uruguay</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(210)">Uzbekistan</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(211)">Vanuatu</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(212)">Venezuela</a></td><td>Amérique Sud</td></tr>
+<tr><td><a onclick="pays(213)">Vietnam</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(214)">Wallis and Futuna</a></td><td>OcÃ©anie</td></tr>
+<tr><td><a onclick="pays(215)">Yemen</a></td><td>Asie</td></tr>
+<tr><td><a onclick="pays(216)">Zambia</a></td><td>Afrique</td></tr>
+<tr><td><a onclick="pays(217)">Zimbabwe</a></td><td>Afrique</td></tr>
 
 				</tbody>
 			</table>
@@ -349,7 +301,7 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE r.epreuv
 	}
 
 	
-	function chargeJsonRecordsPays(p_id_pays){
+	function pays(p_id_pays){
 		
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
