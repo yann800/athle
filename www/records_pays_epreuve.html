@@ -101,25 +101,7 @@ legend.scheduler-border {
 		<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 			<div class="panel-body">
 
-<small>Awaiting ratification</small><br/>
-<small>Record not kept by FGA</small><br/>
-<small>+ = <a href="https://en.wiktionary.org/wiki/en_route" class="extiw" title="wikt:en route">en route</a> to a longer distance</small><br />
-<small>ht = hand timing</small><br />
-<small>A = affected by altitude</small><br />
-<small>mx = mixed race</small><br />
-<small># = not ratified by federation</small><br />
-<small>y = denotes 880 yards</small><br />
-<small>OT = oversized track (&gt; 200m in circumference)</small>
-<br/>
-
-Athlètes possédant plusieurs records dans différentes épreuves (Mutola 200 -&gt; 1500)
-parfois dans divers pays (Lagat 1500 Kenya et US).
-<pre>SELECT r.nom, COUNT(r.perf) AS nb, GROUP_CONCAT(r.epreuve, ' '), GROUP_CONCAT(p.nom, ' ')
-FROM record r
-INNER JOIN pays_wiki p ON p.id = r.idPays
-GROUP BY r.nom
-ORDER BY nb DESC, r.nom;</pre>
-			<br/><a href="import_records_wikipedia.html">&Agrave; propos de la construction de la base</a>
+...
 			</div>
 
 		</div> <!-- enf collapse -->

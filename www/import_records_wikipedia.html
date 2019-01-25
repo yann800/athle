@@ -15,7 +15,7 @@ margin-top: 15px;
 margin-bottom: 15px;
 }
 
-ul {
+section > ul {
 margin-left: -24px;
 }
 
@@ -26,6 +26,10 @@ table {
 th, td {
 padding:5px;
 border:solid 1px black;
+}
+
+pre {
+ font-size: 12px;
 }
 </style>
 
@@ -74,6 +78,7 @@ border:solid 1px black;
 				<li><a href="#4.4">Ancienneté des records</a></li>
 			</ul>
 			
+			<li><a href="#references">Références</a></li>
 		</ul>
 	
 		</div>
@@ -115,7 +120,7 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 
 
 <ul>
-<li>enregistrement de chaque page<pre style="width:650px;font-size: 11px">for (String url : urls) {
+<li>enregistrement de chaque page<pre style="width:650px">for (String url : urls) {
 	Path p = FileSystems.getDefault().getPath("./record", "pays" + num + ".html");
 	URL website = new URL(url);
 	try (InputStream in = website.openStream()) {
@@ -125,7 +130,7 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 <li>itération sur chaque page</li>
 <li>itération  sur chaque ligne. On ne prend en compte que les <code>tr</code> des <code>table</code>.
 <li>remplacement toute les balises HTML par "_" 
-<br/><pre style="width:400px;font-size: 11px">
+<br/><pre style="width:400px">
  String patternCleanHtml = "&lt;[^&gt;]*&gt;";
  Pattern p1 = Pattern.compile(patternCleanHtml);
  Matcher m1 = p1.matcher(str);
@@ -207,7 +212,7 @@ Sinon il aurait fallu complexifier le modèle et le requêtes.
 On peut supposer que le cas ne concerne que les sauts ou le 100. Vérifions le.
 </p>
 
-<pre style="width:600px;font-size: 11px">SELECT r.epreuve, r.nom, r2.nom, r.perf, r2.perf
+<pre style="width:600px">SELECT r.epreuve, r.nom, r2.nom, r.perf, r2.perf
 FROM record r
 JOIN record r2 ON r2.idPays = r.idPays AND r2.epreuve = r.epreuve AND r2.sexe = r.sexe
 AND r2.id != r.id</pre>
@@ -238,7 +243,7 @@ AND r2.id != r.id</pre>
 
 <li>records "not ratified by federation"</li>
 
-<pre style="width:400px;font-size: 11px">SELECT r.epreuve, r.nom, r.perf, r.annee, p.nom
+<pre style="width:400px">SELECT r.epreuve, r.nom, r.perf, r.annee, p.nom
 FROM record r
 JOIN pays_wiki p ON p.id = r.idPays
 WHERE r.perf LIKE '%#%'
@@ -505,7 +510,7 @@ xxxxxxxxxxxxxxxxxxxxx
 
 Par exemple la France.
 
-<pre style="width:500px;font-size: 11px">-- total des rangs de chaque sexe
+<pre style="width:500px">-- total des rangs de chaque sexe
 SELECT r.sexe, SUM(r.rang)
 FROM record r
 WHERE r.idPays = 69
@@ -591,7 +596,7 @@ ORDER BY nb DESC, r.nom;</pre>
 </section>
 
 <section class="col-sm-offset-2 col-sm-8">
-<h2>Références</h2>
+<h2 id="references">Références</h2>
 <a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague 2009</a>. Cela ne nous rajeunit pas. 
 L'idée de la décroissance ne faisait pas l'unanimité au sein du NPA, et en particulier au sein de la Tendance Claire. Pas beaucoup d'évolution dix ans plus tard...
 (cf. <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur - 2018)</a>
