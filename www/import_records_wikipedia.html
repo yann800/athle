@@ -67,7 +67,7 @@ pre {
 			<ul style="list-style-type: none;">
 				<li><a href="#3.1">Guerre froide : records socialistes / capitalistes</a></li>
 				<li><a href="#3.2">Condition des femmes</a></li>
-				<li><a href="#3.3">Changement de nationnalité</a></li>
+				<li><a href="#3.3">Changement de nationalité</a></li>
 			</ul>
 			
 			<li><a href="#4">4. Requêtes</a></li>
@@ -98,6 +98,13 @@ Ceci pour expliquer pourquoi la présente page souffre de lacunes et manque de r
 Je n'ai pas encore eu l'occasion de chercher les sites qui analysent les records nationaux. Nul doute qu'ils existent !
 Je suis preneur pour tout lien ou pour signalement de toute erreur. &Eacute;crire à base.athle (plutôt @gmail.com ; @free.fr marche aussi mais moins
 pratique à consulter surtout en période congés, toute pub Google mise à part).    
+</p>
+
+<p> 
+Au passage, si je peux me permettre, une suggestion aux responsables d'athle.fr au cas où l'un d'eux lit ces lignes. Le mécanisme ici brièvement décrit 
+pourrait aisément être appliqué aux pages des résultats antérieurs à 2004, actuellement ignorés. Et ainsi mettre à jour les fiches de pas mal d'athlètes. Sans parler
+des perspectives ouvertes pour les statistiques et analyses. Le budget de la fédé est sans doute limité, certes, mais comparé du prix
+de la vaisselle de l'Elysée par exemple, cela peut faire sourire.     
 </p>
   	
 	</section>	
@@ -194,9 +201,15 @@ UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRIN
 
 <h3 id="1.3">Corrections manuelles</h3>
 
-Problème de parsing Grande Bretagne
+Problème de parsing... 
+ 
+<pre>-- Suppression Latvian et Aruban
+DELETE FROM record WHERE idPays IN (
+	SELECT id FROM pays_wiki WHERE nom IN ('Latvian', 'Aruban')
+);
 
-<pre>INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee)
+-- Correction Grande Bretagne
+INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee)
 VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
 </pre>
 
@@ -204,6 +217,42 @@ VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
 
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="2">2. Caractéristiques des records</h2>
+
+
+
+<h3 id="2.0">&Eacute;preuves homme et femme</h3>
+
+<p>Retenus pour l'instant : les épreuves olympiques plus le 3000 (&Agrave; venir marche et relais).
+
+<table><tr BGCOLOR="#CCCCFF"><th>épreuve communes homme et femme</th></tr>
+<tr><td>100</td></tr>
+<tr><td>1500</td></tr>
+<tr><td>200</td></tr>
+<tr><td>400</td></tr>
+<tr><td>800</td></tr>
+<tr><td>3000</td></tr>
+<tr><td>5000</td></tr>
+<tr><td>10000</td></tr>
+<tr><td>Marathon</td></tr>
+<tr><td>Hauteur</td></tr>
+<tr><td>Perche</td></tr>
+<tr><td>Longueur</td></tr>
+<tr><td>Triple</td></tr>
+
+<tr><td colspan="2"></td></tr>
+<tr><td>400H</td></tr>
+<tr><td>3000 steeple</td></tr>
+<tr><td>Disque</td></tr>
+<tr><td>Javelot</td></tr>
+<tr><td>Marteau</td></tr>
+<tr><td>Poids</td></tr>
+<tr><td>100H</td></tr>
+<tr><td>110H</td></tr>
+<tr><td>Heptathlon</td></tr>
+<tr><td>Decathlon</td></tr>
+</table>
+</p>
+
 
 <h3 id="2.1">Records codétenus</h3>
 <p>
@@ -220,14 +269,493 @@ AND r2.id != r.id</pre>
 <h3 id="2.2">Records annulés ou non homologués</h3>
 
 <ul>
-<li>records effacés pour dopage</li>
-	<ul>
-	<li>Maroc 3000 steeple (Boulami ?) homme 7.53.xx </li>
-	<li>Ben Johnson 100 homme 9.79</li>
-	<li>France 1500 femme xxx 3.59</li>
-	<li>France Marteau homme xxx 80.xx</li>
-	</ul>
-<li>records non-homologués</li>
+<li>records effacés pour dopage
+
+<br/><br/>
+Lors du parsing on n'insère pas en base les records <small>"X = annulled due to doping violation"</small> mais on les log,
+par curiosité. L'examen de la liste appelle diverses remarques. Par exemple, le record du Maroc par   
+Brahim Boulami sur 3000 seeple, 7:53.17 le 16 août 2002 à Zürich, a été annulé. Ce temps reste le meilleur de tous les temps
+réalisé. Sauf erreur, c'est le seul record du monde virtuellement encore actuel.
+
+<br/><br/>
+Une autre caractéristique de Brahim Boulami est partagée : celle d'être détenteur à la fois d'un record national annulé... 
+et à la fois d'un record national reconnu. Le record actuel du Maroc est du même    
+Brahim Boulami, 7:55.28	24 août 2001 à Bruxelles. C'est triste à dire, mais le regrettable dopage de 2003 
+empêche du coup avoir totalement confiance dans la propreté du record de 2001.  	
+<br/><br/>
+De façon similaire, la slovène Jolanda Čeplak est l'actuelle détentrice record du monde du 800 indoor
+avec son 1.55.82 le 3 mars 2002 à Vienne. Mais malgré qu'elle est tombée plus tard pour EPO, elle garde officellement son record
+(mais perd le record national 4x400 3.32.50 24 juin 2007 à Milan).
+<br/><br/>
+Par ailleurs, il n'est pas certain que les records annulés pour dopage soient tous répertoriés dans Wikipedia.
+P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marteau homme +80m ? &Agrave; vérifier.</li>
+
+
+
+	<table border="1">
+		<tr>
+			<td rowspan="2">Argentine</td>
+			<td rowspan="2">Solange Witteveen</td>
+			<td>1.96 m</td>
+			<td>8 September 1997</td>
+		</tr>
+		<tr>
+			<td>1.97 m X</td>
+			<td>19 May 2001</td>
+			</td>
+		</tr>
+		<tr>
+			<td>15 Bahamian
+			<td>17.10 m X</td>
+			<td>Leevan Sands</td>
+			<td>11 February 2006</td>
+		</tr>
+		<tr>
+			<td rowspan="4">19 Belarusian
+			<td>22.10 m X</td>
+			<td>Andrei Mikhnevich</td>
+			<td>11 August 2011</td>
+		</tr>
+		<tr>
+			<td>86.73 m X</td>
+			<td>Ivan Tsikhan</td>
+			<td>2 July 2005</td>
+		</tr>
+		<tr>
+			<td>1:24:44+ X</td>
+			<td>Aleksandra Duliba</td>
+			<td>13 October 2013</td>
+		</tr>
+		<tr>
+			<td>1:41:44+ X</td>
+			<td>Aleksandra Duliba</td>
+			<td>13 October 2013</td>
+		</tr>
+		<tr>
+			<td>2:23:44 X</td>
+			<td rowspan="3">Aleksandra Duliba</td>
+			<td>13 October 2013</td>
+		</tr>
+		<tr>
+			<td>2:21:29 X</td>
+			<td>21 April 2014</td>
+		</tr>
+		<tr>
+			<td>2:23:06 X</td>
+			<td>23 January 2015</td>
+		</tr>
+		<tr>
+			<td>3:21.85 X <sup id="cite_ref-34" class="reference"><a href="#cite_note-34">[31]</sup></td>
+			<td>
+			Y. Yuschanka<br /> Iryna Khliustava<br />
+		</tr>
+		<tr>
+			<td rowspan="2">20 Belgian</td>
+			<td>5.71 m X</td>
+			<td rowspan="2">Kevin Rans</td>
+			<td>31 January 2010</td>
+
+		</tr>
+		<tr>
+			<td>5.71 m X</td>
+			<td>5 March 2010</td>
+		</tr>
+		<tr>
+			<td>22 Beninese
+			<td>54.26 X <sup id="cite_ref-15" class="reference"><a href="#cite_note-15">[15]</sup></td>
+			<td><a href="/w/index.php?title=Bimbo_Miel_Ayedou&amp;action=edit&amp;redlink=1" class="new"
+				title="Bimbo Miel Ayedou (page does not exist)">Bimbo Miel Ayedou</td>
+			<td>9 March 2012</td>
+		</tr>
+		<tr>
+			<td rowspan="6">36 Canadian
+			<td>9.83 X <sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[5]</sup></td>
+			<td rowspan="2"><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
+			<td>30 August 1987</td>
+		</tr>
+		<tr>
+			<td>9.79 X <sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[6]</sup></td>
+			<td>24 September 1988</td>
+		</tr>
+		<tr>
+			<td>10.97 X</td>
+			<td><a href="/wiki/Angella_Taylor-Issajenko" title="Angella Taylor-Issajenko">Angella Taylor-Issajenko</td>
+			<td>16 August 1987</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>22.25 X</td>
+			<td><a href="/wiki/Angella_Taylor-Issajenko" title="Angella Taylor-Issajenko">Angella Taylor-Issajenko</td>
+			<td>20 July 1982</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5.55 X</td>
+			<td><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
+			<td>31 January 1987</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6.41 X</td>
+			<td><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
+			<td>7 March 1987</td>
+		</tr>
+
+
+		<tr>
+			<td rowspan="2">Croatie</td>
+			<td>8.10 m X</td>
+			<td>16 February 2003</td>
+		</tr>
+		<tr>
+			<td>6.36 m X</td>
+			<td>19 February 1994</td>
+			<td>< title="Slovenia"><img alt="Slovenia"
+					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/23px-Flag_of_Slovenia.svg.png" width="23" height="12"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/35px-Flag_of_Slovenia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/46px-Flag_of_Slovenia.svg.png 2x"
+					data-file-width="1200" data-file-height="600" /></span> < title="Ljubljana">Ljubljana, Slovenia</td>
+		</tr>
+		<tr>
+			<td>68 Finnish</td>
+			<td>13:16.02 X</td>
+			<td>Martti Vainio</td>
+			<td>28 June 1984</td>
+		</tr>
+
+
+		<tr>
+			<td rowspan="2">77 Greek</td>
+			<td>18 August 1997</td>
+			<td>8:52.21 X</td>
+			<td>Maria Tsírba</td>
+			<td>15 March 2003</td>
+		</tr>
+		<td>Niki Xanthou</td>
+		<td>16 February 1997</td>
+		<td>< title="Meeting Pas de Calais">Meeting Pas de Calais</td>
+		</tr>
+		<tr>
+			<td>15.00 mX</td>
+			<td><s>Hrysopiyí Devetzí</s></td>
+			<td>8 March 2008</td>
+		</tr>
+
+
+
+		<tr>
+			<td>87 Hungarian
+			<td>51.50 X <sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</sup></td>
+			<td><a href="/wiki/Barbara_Petr%C3%A1hn" title="Barbara Petráhn">Barbara Petráhn</td>
+			<td>12 May 2006</td>
+		</tr>
+
+
+		<tr>
+			<td>89 Indian
+			<td>10.21 X</td>
+			<td>< title="Anil Kumar Prakash">Anil Kumar Prakash</td>
+			<td>5 July 2000</td>
+			<td></td>
+		</tr>
+
+
+		<tr>
+			<td>101 Kenyan
+			<td>51.14 A X</td>
+			<td rowspan="2">< class="mw-redirect" title="Joyce Zakari">Joyce Zakari</td>
+			<td>11 July 2015</td>
+			<td>Kenyan Championships</td>
+		</tr>
+		<tr>
+			<td>50.71 X</td>
+			<td>24 August 2015</td>
+		</tr>
+		<tr>
+			<td>55.82 A X</td>
+			<td>Francisca Koki</td>
+			<td>11 July 2015</td>
+		</tr>
+		<tr>
+			<td>134 Moroccan</td>
+			<td>7:53.17 X</td>
+			<td>16 August 2002</td>
+			<td><a href="/wiki/Weltklasse_Z%C3%BCrich" title="Weltklasse Zürich">Weltklasse Zürich</td>
+			<td>< title="Switzerland"><img alt="Switzerland"
+					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/16px-Flag_of_Switzerland.svg.png" width="16"
+					height="16" class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/24px-Flag_of_Switzerland.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/32px-Flag_of_Switzerland.svg.png 2x"
+					data-file-width="1000" data-file-height="1000" /></span> < title="Letzigrund">Zürich, Switzerland</td>
+			<td></td>
+		</tr>
+		<tr>
+
+
+
+
+			<td>140 Dutch</td>
+			<td>71.22 m X <sup id="cite_ref-35" class="reference"><a href="#cite_note-35">[35]</sup></td>
+			<td>Ria Stalman</td>
+			<td>15 July 1984</td>
+		</tr>
+
+		<td rowspan="2">16.75 m X</td>
+			<td>27 January 2012</td>
+			<td>Carthage Tadd Metzger Invitational</td>
+			<td><img alt="United States"
+				src="//upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/23px-Flag_of_the_United_States.svg.png" width="23"
+				height="12" class="thumbborder"
+				srcset="//upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/35px-Flag_of_the_United_States.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/46px-Flag_of_the_United_States.svg.png 2x"
+				data-file-width="1235" data-file-height="650" /></span> <a href="/wiki/Kenosha,_Wisconsin" title="Kenosha, Wisconsin">Kenosha, United
+					States</td>
+			<td>16.73 m X</td>
+			<td>9 February 2013</td>
+			<td></td>
+		</tr>
+		
+		
+		<tr>
+			<td>146 Nigerian
+			
+			<td>37.91 X<sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</sup></td>
+			<td>
+Innocent Asonze<br /> Francis Obikwelu<br />
+					<td>18.86 m X</td>
+					<td>1 July 2012</td>
+		</tr>
+		<tr>
+		<td>163 Qatari</td>
+			
+			<td>64.56 m X <sup id="cite_ref-12" class="reference"><a href="#cite_note-12">[12]</sup></td>
+			<td><a href="/w/index.php?title=Ahmed_Mohammed_Dheeb&amp;action=edit&amp;redlink=1" class="new"
+				title="Ahmed Mohammed Dheeb (page does not exist)">Ahmed Mohammed Dheeb</td>
+			<td>24 November 2010</td>
+			<td>< title="Athletics at the 2010 Asian Games">Asian Games</td>
+		</tr>
+		<tr>
+			<td>164 Romanian</td>
+			
+			<td>1:08:07+ X #</td>
+			<td><a href="/wiki/Constantina_Di%C8%9B%C4%83-Tomescu" class="mw-redirect" title="Constantina Diță-Tomescu">Constantina
+					Diță-Tomescu</td>
+			<td>22 October 2006</td>
+			<td>1:21:31+ X #</td>
+			<td><a href="/wiki/Constantina_Di%C8%9B%C4%83-Tomescu" class="mw-redirect" title="Constantina Diță-Tomescu">Constantina
+					Diță-Tomescu</td>
+			<td>22 October 2006</td>
+		</tr>
+		<tr>
+			<td rowspan="6">165 Russian
+			
+			<td>2:58.06 X <sup id="cite_ref-15" class="reference"><a href="#cite_note-15">[11]</sup></td>
+			<td><img alt=""
+					src="//upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/23px-Flag_of_Russia.svg.png" width="23" height="15"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/35px-Flag_of_Russia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/45px-Flag_of_Russia.svg.png 2x"
+					data-file-width="900" data-file-height="600" />&#160;</span>Russia<br /> Maksim Dyldin<br /> < title="Vladislav Frolov">Vladislav Frolov<br />
+			
+			<td>1:05:48+ X</td>
+			<td>Liliya Shabalova-Shobukhova</td>
+			<td>9 October 2011</td>
+		</tr>
+		<tr>
+			<td>1:22:08+ X</td>
+			<td>Liliya Shobukhova</td>
+			<td>9 October 2011</td>
+		</tr>
+		<tr>
+
+			<td>1:38:23+ X</td>
+			<td>Liliya Shobukhova</td>
+			<td>9 October 2011</td>
+		</tr>
+		<tr>
+
+			<td>2:18:20 X</td>
+			<td>Liliya Shobukhova</td>
+			<td>9 October 2011</td>
+		</tr>
+		<tr>
+
+			<td>1:56.49 X</td>
+			<td>Yelena Soboleva</td>
+			<td>9 February 2008</td>
+		</tr>
+		<tr>
+			<td>3:57.71 X</td>
+			<td>9 March 2008</td>
+			<td>< title="2008 IAAF World Indoor Championships">World Championships</td>
+			<td>< title="Spain"><img alt="Spain"
+					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
+					data-file-width="750" data-file-height="500" /></span> <a href="/wiki/Valencia,_Spain" class="mw-redirect" title="Valencia, Spain">Valencia,
+					Spain</td>
+		</tr>
+		<tr>
+			<td>4:20.21 X</td>
+			<td>Yelena Soboleva</td>
+			<td>27 January 2008</td>
+		</tr>
+		<tr>
+
+			<td>7.69 X<sup id="cite_ref-53" class="reference"><a href="#cite_note-53">[g]</sup></td>
+			<td>13 February 1993</td>
+			<td></td>
+			<td>< title="France"><img alt="France"
+					src="//upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/23px-Flag_of_France.svg.png" width="23" height="15"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/35px-Flag_of_France.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/45px-Flag_of_France.svg.png 2x"
+					data-file-width="900" data-file-height="600" /></span> <a href="/wiki/Li%C3%A9vin" title="Liévin">Liévin, France</td>
+		</tr>
+		<tr>
+
+			<td>7.68 X</td>
+			<td>2 March 1993</td>
+			<td></td>
+			<td>< title="Spain"><img alt="Spain"
+					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
+					data-file-width="750" data-file-height="500" /></span> <a href="/wiki/San_Sebasti%C3%A1n" title="San Sebastián">San Sebastián, Spain</td>
+		</tr>
+		<tr>
+
+			<td>7.66 X</td>
+			<td>4 March 1993</td>
+			<td></td>
+			<td>< title="Spain"><img alt="Spain"
+					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
+					data-file-width="750" data-file-height="500" /></span> < title="Seville">Seville, Spain</td>
+		</tr>
+		<tr>
+
+			<td>7.63 X</td>
+			<td>4 March 1993</td>
+			<td></td>
+
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td>173 Saudi_Arabian
+			</td>
+			<td>3:45.12 X</td>
+			<td>Mohammed Shaween</td>
+			<td>9 March 2012</td>
+			<td><a href="/wiki/2012_IAAF_World_Indoor_Championships_%E2%80%93_Men%27s_1500_metres"
+				title="2012 IAAF World Indoor Championships – Men's 1500 metres">World Championships</td>
+		</tr>
+		<tr>
+			<td>180 Slovenian</td>
+			
+			<td>3:32.50 X <sup id="cite_ref-20" class="reference"><a href="#cite_note-20">[20]</sup></td>
+			<td><img alt=""
+					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/23px-Flag_of_Slovenia.svg.png" width="23" height="12"
+					class="thumbborder"
+					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/35px-Flag_of_Slovenia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/46px-Flag_of_Slovenia.svg.png 2x"
+					data-file-width="1200" data-file-height="600" />&#160;</span>Slovenia<br /> A. Puc<br /> <a href="/wiki/Jolanda_%C4%8Ceplak"
+				title="Jolanda Čeplak">Jolanda Čeplak 
+		
+		</tr>
+		<tr>
+			<td>
+		
+		</tr>
+		<tr>
+			<td>187 Sudanese
+			
+			<td>3:39.40 X</td>
+			<td><a href="/w/index.php?title=Osman_Yahya&amp;action=edit&amp;redlink=1" class="new" title="Osman Yahya (page does not exist)">Osman
+					Yahya</td>
+			<td>15 February 2009</td>
+
+
+
+		</tr>
+		<tr>
+			<td>192 Syrian</td>
+			<td>53.79 X</td>
+			<td>26 February 2010</td>
+			<td>< title="2010 Asian Indoor Athletics Championships">Asian Championships</td>
+		</tr>
+
+		<tr>
+			<td>200 Turkish
+			
+			<td>29:56.34 X</td>
+			<td>Elvan Abeylegesse</td>
+			<td>15 August 2008</td>
+			<td>< title="Athletics at the 2008 Summer Olympics">Olympic Games</td>
+			<td>12.58 <small>(+0.6&#160;m/s)</small> X
+			</td>
+			<td rowspan="2"><a href="/wiki/Nevin_Yan%C4%B1t" class="mw-redirect" title="Nevin Yanıt">Nevin Yanıt</td>
+			<td rowspan="2">7 August 2012</td>
+			<td>12.58 (−0.2&#160;m/s) X</td>
+		</tr>
+
+
+
+
+
+		<tr>
+			<td>205 Ukrainian
+			
+			<td>2:22:09 X</td>
+			<td><a href="/wiki/Tetyana_Hamera-Shmyrko" title="Tetyana Hamera-Shmyrko">Tetyana Hamera-Shmyrko</td>
+			<td>25 January 2015</td>
+			<td>7.04 X <sup id="cite_ref-42" class="reference"><a href="#cite_note-42">[42]</sup></td>
+			<td rowspan="2"><a href="/wiki/Zhanna_Pintusevich-Block" title="Zhanna Pintusevich-Block">Zhanna Pintusevich-Block</td>
+			<td>14 March 2003</td>
+			<td><a href="/wiki/2003_IAAF_World_Indoor_Championships_%E2%80%93_Women%27s_60_metres"
+				title="2003 IAAF World Indoor Championships – Women's 60 metres">World Championships</td>
+
+
+		</tr>
+		<tr>
+			<td>207 Grande Bretagne</td>
+			<td>9.87 X</td>
+			<td>Dwain Chambers</td>
+			<td>14 September 2002</td>
+			<td>< title="2002 IAAF Grand Prix Final">IAAF Grand Prix Final</td>
+		</tr>
+		<tr>
+			<td rowspan="4">208 United_States
+			
+			<td>37.04 X <sup id="cite_ref-34" class="reference"><a href="#cite_note-34">[31]</sup></td>
+			<td>Trell Kimmons<br /> Justin Gatlin<br /> Tyson Gay
+			</td>
+		</tr>
+		<tr>
+			<td>2:54.20 X</td>
+			<td>Jerome Young<br />Antonio Pettigrew<br />Tyree Washington<br />Michael Johnson
+		
+		</tr>
+		<tr>
+
+			<td>22.18 X</td>
+			<td>Michelle Collins</td>
+			<td>March 15, 2003</td>
+		</tr>
+		<tr>
+
+			<td>1:58.27 X</td>
+			<td>Ajee Wilson</td>
+			<td>February 11, 2017</td>
+		</tr>
+		<tr>
+	
+	</table>
+
+
+
+
+
+
+
+<li>records non-homologués pour vent ou lièvres</li>
 	<ul>
 	<li>Pedroso 8.96 Sestrières pb mesure vent</li> 
 	<li>Lewis + 9m mordu </li>
@@ -235,7 +763,7 @@ AND r2.id != r.id</pre>
 	elle aurait pu avoir des lièvres jusqu'au bout tant que c'est des femmes. Hm. D'accord mais problème de cohérence quand même.)</li>
 	<li>Kipchoge 2:00:25 Monza 2018 lièvres. &Agrave; ce propos son 2:01:39 est énorme car il était seul à partir du km 17 je crois.</li>
 	</ul>
-<li>records effacés</li>
+<li>records effacés pour changement de norme</li>
 
 	<ul><li>javelot femme Petra Felke RDA 80m00, annulé lors du changement des javelot. Comme les hommes pouvaient
 	dépasser 100m, ça pouvait se comprendre qu'il faille adopter des javelot plongeant et éviter des Sdiri.
@@ -249,7 +777,7 @@ JOIN pays_wiki p ON p.id = r.idPays
 WHERE r.perf LIKE '%#%'
 ORDER BY r.epreuve</pre>
 
-Il y a 88 records non ratifiés. P.ex. sur 3000 Paula Radcliffe 8:22.20. Pourquoi ?? 
+Il y a 88 records non ratifiés. P.ex. sur 3000 Paula Radcliffe 8:22.20. Pourquoi ? 
 </ul>
 
 
@@ -275,8 +803,8 @@ sont à prévoir (déjà l'été dernier...).
 Pour les concours en salle, le rebond des pistes d'élan en bois procure un avantage. Des témoignages l'attestent (pour Bercy notamment je crois).
 <br/>
 
-<li>Largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. existe, Gay doit l'avoir, dans les 19.4).
-Le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
+<li>Largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. est détenu par 
+Tyson Gay 9.41 (−0.4 m/s) 16 mai 2010. Du reste, le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
 
 9 van 400
 1972 aki bua (M Fr 49 2018 couloir 1)
@@ -328,11 +856,14 @@ Dans les pages Wikipedia on lit
 <!-- <small>+ = <a href="https://en.wiktionary.org/wiki/en_route" class="extiw" title="wikt:en route">en route</a> to a longer distance</small><br /> 
 <small>ht = hand timing</small><br />
 -->
-<small>A = affected by altitude</small><br />
-<small>mx = mixed race</small><br />
 <small># = not ratified by federation</small><br />
-<small>y = denotes 880 yards</small><br />
+<small>! = timing by photo-electric cell</small>
+<small>a = aided road course according to IAAF rule 260.28</small>
+<small>A = affected by altitude</small><br />
+<small>Awaiting ratification</small><br />
+<small>mx = mixed race</small><br />
 <small>OT = oversized track (&gt; 200m in circumference)</small>
+<small>X = annulled due to doping violation</small>
 </div>
 <br/>
 D'autres paramètres peuvent être relevés.
@@ -435,7 +966,7 @@ Ils donnent une idée du développement du sport dans les pays. Et accessoiremen
 
 <h3 id="3.3">Colonisation</h3>
 
-Athlètes possèdent des records nationnaux dans plusieurs pays à la fois. Exemple connu : Bernard Lagat 1500 Kenya et US. Et les autres ?
+Athlètes possèdent des records nationaux dans plusieurs pays à la fois. Exemple connu : Bernard Lagat 1500 Kenya et US. Et les autres ?
 
 <pre>SELECT * FROM (
 SELECT r.nom, COUNT(DISTINCT r.idPays) AS nb_pays, GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ') 
@@ -500,10 +1031,27 @@ GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
 
 <h3 id="4.1">Interclubs des pays</h3>
 
-Classement des pays par la somme de tous les rangs.
+<p>Classement des pays par la somme de tous les rangs.</p>
 
-xxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxx
+<p>Certains pays n'ont pas de records pour toutes les épreuves. Alors on les ignore.
+
+Les pays complets ont 40 records :
+<ul style="list-style-type: none;">
+<li>2 x 19 records des épreuves communes homme et femme (100, ..., Marathon)</li>
+<li>+ 4 (100H, 110H, Heptathlon, Decathlon)</li>
+<li>= 42 records par pays</li>
+</ul>
+
+
+
+</p>
+
+<pre style="width:600px">SELECT p.nom, SUM(r.rang) AS total_rang, COUNT(r.id) AS total_epreuve
+FROM record r
+INNER JOIN pays_wiki p ON p.id  = r.idPays
+GROUP BY p.nom
+ORDER BY total_epreuve DESC, total_rang ASC</pre>
+
 
 
 <h3 id="4.2">Comparaison rangs hommes et femmes d'un pays</h3>
@@ -600,6 +1148,9 @@ ORDER BY nb DESC, r.nom;</pre>
 <a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague 2009</a>. Cela ne nous rajeunit pas. 
 L'idée de la décroissance ne faisait pas l'unanimité au sein du NPA, et en particulier au sein de la Tendance Claire. Pas beaucoup d'évolution dix ans plus tard...
 (cf. <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur - 2018)</a>
+<br/>
+[2] IAAF rules ... 
+
 </section>
 <br/><br/>
 

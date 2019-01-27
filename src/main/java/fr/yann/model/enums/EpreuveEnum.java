@@ -53,7 +53,7 @@ public enum EpreuveEnum {
 			return EpreuveEnum.COURSE_3000_STEEPLE;
 		}	
 		if (str.equals("High jump")){
-			return EpreuveEnum.LANCER_JAVELOT;	
+			return EpreuveEnum.SAUT_HAUTEUR;	
 		}
 		if (str.equals("Pole vault")){
 			return EpreuveEnum.SAUT_PERCHE;
