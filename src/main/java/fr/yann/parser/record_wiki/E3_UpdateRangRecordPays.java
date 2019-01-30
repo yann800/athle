@@ -26,6 +26,8 @@ public class E3_UpdateRangRecordPays {
 			Class.forName(DRIVER_NAME);
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 
+			concatZero(con);
+			
 			for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
 				for (EpreuveEnum e:EpreuveEnum.values()){
 					updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.MASCULIN, con);
@@ -44,6 +46,40 @@ public class E3_UpdateRangRecordPays {
 		}
 	}
 
+	private static void concatZero(Connection con) throws SQLException {
+		Statement stmt = con.createStatement();
+
+		String sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '9'";
+		int i = stmt.executeUpdate(sql);
+
+		System.out.println("100 : " + i + "UPDATE");
+		
+		
+		
+		//-- 400 femmes (pour 047.60 < 1.00.00)
+		sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '400' AND SUBSTRING(r.perf, 1, 1) IN ('4', '5')";
+
+		i = stmt.executeUpdate(sql);
+
+		System.out.println("400 : " + i + "UPDATE");
+		
+		
+		stmt.close();
+		
+	}
+
+	//-- puis on retire les '0' disgracieux ajoutés précédement
+	private static void retireZero(Connection con) throws SQLException {
+		Statement stmt = con.createStatement();
+	
+		int i = stmt.executeUpdate("UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRING(r.perf, 1, 1) = '0')");
+
+		System.out.println("update substring 0 : " + i);
+		
+		
+		stmt.close();
+		
+	}
 	public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(URL, USER, PASSWORD);
 	}
@@ -117,4 +153,10 @@ public class E3_UpdateRangRecordPays {
 		return " AND r.perf > " + perf;
 	}
 
+	// clean SQL
+	void clean(){
+		String sql;
+		sql = "delete  FROM record WHERE epreuve like 'dec%' and sexe = 1";
+		sql = "delete  FROM record WHERE annee = 0";
+	}
 }

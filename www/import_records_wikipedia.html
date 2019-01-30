@@ -48,7 +48,7 @@ pre {
 	 		</div>
 	 	<br/>
 		<ul style="list-style-type: none;">
-			<li><a href="#1">1. Code</a></li>
+			<li><a href="#1">1. Code Java &amp; SQL</a></li>
 			<ul style="list-style-type: none;">
 				<li><a href="#1.1">Enregistrement et parsing des pages HTML</a></li>
 				<li><a href="#1.2">Calcul des rangs</a></li>
@@ -65,9 +65,10 @@ pre {
 			
 			<li><a href="#3">3. Politique</a></li>
 			<ul style="list-style-type: none;">
-				<li><a href="#3.1">Guerre froide : records socialistes / capitalistes</a></li>
-				<li><a href="#3.2">Condition des femmes</a></li>
-				<li><a href="#3.3">Changement de nationalité</a></li>
+				<li><a href="#3.1">Records socialistes vs capitalistes, impérialistes vs colonisés</a></li>
+				<li><a href="#3.2">Changement de nationalité</a></li>
+				<li><a href="#3.3">&Eacute;cologie</a></li>				
+				<li><a href="#3.4">Condition des femmes</a></li>
 			</ul>
 			
 			<li><a href="#4">4. Requêtes</a></li>
@@ -88,23 +89,25 @@ pre {
 	
 	<section class="col-sm-offset-2 col-sm-8">
 	<p>
-Au commencement fut l'enregistrement des pages Wikipedia. Ensuite tout a été construit 
+Au commencement était l'enregistrement des pages Wikipedia. Ensuite tout a été construit 
 sur machine perso sans connexion internet. &Agrave; la fin, clé USB et merci Juliette
 pour le prêt de la connexion permettant déploiement sur free et sauvegarde Git. 
 </p>
 
 <p> 
-Ceci pour expliquer pourquoi la présente page souffre de lacunes et manque de références.
-Je n'ai pas encore eu l'occasion de chercher les sites qui analysent les records nationaux. Nul doute qu'ils existent !
-Je suis preneur pour tout lien ou pour signalement de toute erreur. &Eacute;crire à base.athle (plutôt @gmail.com ; @free.fr marche aussi mais moins
-pratique à consulter surtout en période congés, toute pub Google mise à part).    
+Ceci pour expliquer pourquoi la présente page manque de références.
+Je n'ai pas eu trop la possibilité de chercher les sites qui analysent les records nationaux. Nul doute qu'ils existent !
+Je suis preneur pour tout lien. Et pour signalement d'erreurs, voire idées de requêtes devenues
+possibles par la mise des records en base.  
+&Eacute;crire à base.athle
+(plutôt @gmail.com ; @free.fr marche aussi mais moins pratique à consulter).    
 </p>
 
 <p> 
-Au passage, si je peux me permettre, une suggestion aux responsables d'athle.fr au cas où l'un d'eux lit ces lignes. Le mécanisme ici brièvement décrit 
-pourrait aisément être appliqué aux pages des résultats antérieurs à 2004, actuellement ignorés. Et ainsi mettre à jour les fiches de pas mal d'athlètes. Sans parler
-des perspectives ouvertes pour les statistiques et analyses. Le budget de la fédé est sans doute limité, certes, mais comparé du prix
-de la vaisselle de l'Elysée par exemple, cela peut faire sourire.     
+Par ailleurs, une suggestion aux responsables d'athle.fr au cas où l'un d'eux lit ces lignes. Le mécanisme ici brièvement décrit 
+pourrait aisément être appliqué aux pages des résultats antérieurs à 2004, actuellement ignorés. Et ainsi mettre à jour les fiches
+de pas mal d'athlètes. Sans parler des perspectives ouvertes pour les statistiques et analyses. Le budget informatique de la fédé
+est sans doute limité, certes. Mais bon, comparé par exemple au prix de la vaisselle de l'Elysée... Et comme la période est aux doléances...
 </p>
   	
 	</section>	
@@ -113,7 +116,7 @@ de la vaisselle de l'Elysée par exemple, cela peut faire sourire.
 
 	<section class="col-sm-offset-2 col-sm-8">
 
-<h2>1. Code</h2>
+<h2>1. Code Java &amp; SQL</h2>
 
 <h3 id="1.1">Enregistrement et parsing des pages HTML</h3>
 
@@ -148,7 +151,8 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 
 	<ul>
 		<li>hypothèses minimales mais suffisantes sur le format. P.ex. <code>isDate(String str) : 
-		str.matches(".*[0-9]{4}.*")</code> suffit car seules les valeurs avec 4 chiffres ne peuvent être que des années, donc des dates.
+		str.matches(".*[1-2][0-9]{3}.*")</code> suffit car seules les valeurs avec 4 chiffres commençant par 1 ou 2 ne peuvent être que des années, donc des dates
+		(perfs hepta ou décathlon ne commencent pas par 1 ou 2).
 		Pour les performances, un peu de travail pour tolérer les variantes de format. L'objectif est d'automatiser totalement le processus
 		d'importation. Quand de nouveaux records seront battus (Kipchoge n'a pas dit son dernier mot p.ex.), il faudra pouvoir remettre la base à zéro et
 		ré-importer les pages Wikipedia sans intervention manuelle.</li>
@@ -159,6 +163,37 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 	</ul> 
 </li>
 <li>Il n'y a plus qu'à INSERT INTO en base.</li>
+<li>Vérification que les pays ont 42 records au maximum sur les épreuves retenues :
+<ul style="list-style-type: none;">
+<li>2 x 19 records des épreuves communes homme et femme (100, ..., Marathon)</li>
+<li>+ 4 (100H, 110H, Heptathlon, Decathlon)</li>
+<li>= 42 records</li>
+</ul>
+<pre style="width: 400px">SELECT p.nom, COUNT(r.id) AS total_epreuve
+FROM record r
+INNER JOIN pays_wiki p ON p.id  = r.idPays
+GROUP BY p.nom
+ORDER BY total_epreuve DESC</pre>
+</li>
+Parmi les cas particuliers dont le traitement automatique est difficile, records multiples ou codétenus.
+<br/><br/>
+<table><tr>
+<td rowspan="2">200 m</td>
+<td>19.87 <small>(+1.8&#160;m/s)</small> # not recognised by federation</td>
+<td>John Regis</td>
+<td>31 July 1994</td>
+<td></td>
+<td>Sestriere</a>, Italy</td>
+</tr>
+<tr>
+<td>19.94 <small>(+0.3&#160;m/s)</small></td>
+<td>John Regis</td>
+<td>20 August 1993</td>
+<td>World Championships</td>
+<td>Stuttgart, Germany</td>
+</tr></table>
+<br/>Dans ces cas, on retient le premier record trouvé ou premier en date ;
+sinon pour cas rares ou page wikipedia mal codée, soit règle <i>ad hoc</i>, soit tant pis on ignore.
 </ul>
 
 <h3 id="1.2">Calcul des rangs</h3>
@@ -222,34 +257,35 @@ VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
 
 <h3 id="2.0">&Eacute;preuves homme et femme</h3>
 
-<p>Retenus pour l'instant : les épreuves olympiques plus le 3000 (&Agrave; venir marche et relais).
+<p>Retenues pour l'instant : les épreuves olympiques plus le 3000 (&Agrave; venir marche et relais).
+<p>&Agrave; noter le record disque femme est la seule épreuve où le record femme est supérieur au record homme (pas la même norme évidemment).
+ En revanche pour les épreuves identiques, TODO liste pays avec record inférieur au WR.</p>
 
-<table><tr BGCOLOR="#CCCCFF"><th>épreuve communes homme et femme</th></tr>
-<tr><td>100</td></tr>
-<tr><td>1500</td></tr>
-<tr><td>200</td></tr>
-<tr><td>400</td></tr>
-<tr><td>800</td></tr>
-<tr><td>3000</td></tr>
-<tr><td>5000</td></tr>
-<tr><td>10000</td></tr>
-<tr><td>Marathon</td></tr>
-<tr><td>Hauteur</td></tr>
-<tr><td>Perche</td></tr>
-<tr><td>Longueur</td></tr>
-<tr><td>Triple</td></tr>
-
-<tr><td colspan="2"></td></tr>
-<tr><td>400H</td></tr>
-<tr><td>3000 steeple</td></tr>
-<tr><td>Disque</td></tr>
-<tr><td>Javelot</td></tr>
-<tr><td>Marteau</td></tr>
-<tr><td>Poids</td></tr>
-<tr><td>100H</td></tr>
-<tr><td>110H</td></tr>
-<tr><td>Heptathlon</td></tr>
-<tr><td>Decathlon</td></tr>
+<pre>SELECT wr_f.epreuve, count(r_h.id)
+FROM record wr_f
+JOIN record r_h ON wr_f.epreuve = r_h.epreuve
+AND r_h.sexe = 0 
+AND (r_h.epreuve LIKE '%0%' OR r_h.epreuve = 'Marathon') -- courses
+WHERE wr_f.sexe = 1 AND wr_f.rang = 1 AND wr_f.perf < r_h.perf
+GROUP BY wr_f.epreuve</pre>
+ 
+ <br/>
+ 
+<table><tr BGCOLOR="#EEEEEE"><th>&Eacute;preuves communes homme et femme</th><th>Nb pays record H inférieur au RM F</th><th>Non comparables</th></tr>
+<tr><td>100</td><td></td><td>400H</td></tr>
+<tr><td>1500</td><td></td><td>3000 steeple</td></tr>
+<tr><td>200</td><td></td><td>Disque</td></tr>
+<tr><td>200</td><td></td><td>Javelot</td></tr>
+<tr><td>400</td><td></td><td>Marteau</td></tr>
+<tr><td>800</td><td></td><td>Poids</td></tr>
+<tr><td>3000</td><td></td><td>100H</td></tr>
+<tr><td>5000</td><td></td><td>110H</td></tr>
+<tr><td>10000</td><td></td><td>Heptathlon</td></tr>
+<tr><td>Marathon</td><td></td><td>Decathlon</td></tr>
+<tr><td>Hauteur</td><td></td><td></tr>
+<tr><td>Perche</td><td></td><td></td></tr>
+<tr><td>Longueur</td><td></td><td></tr>
+<tr><td>Triple</td><td></td><td></tr>
 </table>
 </p>
 
@@ -275,7 +311,7 @@ AND r2.id != r.id</pre>
 Lors du parsing on n'insère pas en base les records <small>"X = annulled due to doping violation"</small> mais on les log,
 par curiosité. L'examen de la liste appelle diverses remarques. Par exemple, le record du Maroc par   
 Brahim Boulami sur 3000 seeple, 7:53.17 le 16 août 2002 à Zürich, a été annulé. Ce temps reste le meilleur de tous les temps
-réalisé. Sauf erreur, c'est le seul record du monde virtuellement encore actuel.
+réalisé. Sauf erreur, c'est avec 4x400 homme les deux seuls records du monde virtuellement actuels.
 
 <br/><br/>
 Une autre caractéristique de Brahim Boulami est partagée : celle d'être détenteur à la fois d'un record national annulé... 
@@ -295,8 +331,8 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 	<table border="1">
 		<tr>
 			<td rowspan="2">Argentine</td>
+			<td style="background-color: #AAEEAA">1.96 m</td>
 			<td rowspan="2">Solange Witteveen</td>
-			<td>1.96 m</td>
 			<td>8 September 1997</td>
 		</tr>
 		<tr>
@@ -311,7 +347,7 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>11 February 2006</td>
 		</tr>
 		<tr>
-			<td rowspan="4">19 Belarusian
+			<td rowspan="8">19 Belarusian
 			<td>22.10 m X</td>
 			<td>Andrei Mikhnevich</td>
 			<td>11 August 2011</td>
@@ -345,9 +381,9 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>23 January 2015</td>
 		</tr>
 		<tr>
-			<td>3:21.85 X <sup id="cite_ref-34" class="reference"><a href="#cite_note-34">[31]</sup></td>
-			<td>
-			Y. Yuschanka<br /> Iryna Khliustava<br />
+			<td>3:21.85 X</td>
+			<td>Y. Yuschanka<br /> Iryna Khliustava</td>
+			<td>23 August 2008</td>
 		</tr>
 		<tr>
 			<td rowspan="2">20 Belgian</td>
@@ -361,60 +397,58 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>5 March 2010</td>
 		</tr>
 		<tr>
-			<td>22 Beninese
-			<td>54.26 X <sup id="cite_ref-15" class="reference"><a href="#cite_note-15">[15]</sup></td>
-			<td><a href="/w/index.php?title=Bimbo_Miel_Ayedou&amp;action=edit&amp;redlink=1" class="new"
-				title="Bimbo Miel Ayedou (page does not exist)">Bimbo Miel Ayedou</td>
+			<td>22 Beninese</td>
+			<td>54.26 X</td>
+			<td>Bimbo Miel Ayedou</td>
 			<td>9 March 2012</td>
 		</tr>
 		<tr>
-			<td rowspan="6">36 Canadian
-			<td>9.83 X <sup id="cite_ref-6" class="reference"><a href="#cite_note-6">[5]</sup></td>
-			<td rowspan="2"><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
+			<td rowspan="6">36 Canadian</td>
+			<td>9.83 X</td>
+			<td rowspan="2">Ben Johnson</td>
 			<td>30 August 1987</td>
 		</tr>
 		<tr>
-			<td>9.79 X <sup id="cite_ref-7" class="reference"><a href="#cite_note-7">[6]</sup></td>
+			<td>9.79 X</td>
 			<td>24 September 1988</td>
 		</tr>
 		<tr>
 			<td>10.97 X</td>
-			<td><a href="/wiki/Angella_Taylor-Issajenko" title="Angella Taylor-Issajenko">Angella Taylor-Issajenko</td>
+			<td>Angella Taylor-Issajenko</td>
 			<td>16 August 1987</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td>22.25 X</td>
-			<td><a href="/wiki/Angella_Taylor-Issajenko" title="Angella Taylor-Issajenko">Angella Taylor-Issajenko</td>
+			<td>Angella Taylor-Issajenko</td>
 			<td>20 July 1982</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td>5.55 X</td>
-			<td><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
+			<td rowspan="2">Ben Johnson</td>
 			<td>31 January 1987</td>
-			<td></td>
 		</tr>
 		<tr>
 			<td>6.41 X</td>
-			<td><a href="/wiki/Ben_Johnson_(sprinter)" title="Ben Johnson (sprinter)">Ben Johnson</td>
 			<td>7 March 1987</td>
 		</tr>
-
-
 		<tr>
-			<td rowspan="2">Croatie</td>
+			<td rowspan="4">Croatie</td>
+			<td style="background-color: #AAEEAA">8.08 m</td>
+			<td rowspan="2">Siniša Ergotić</td>
+			<td>8 February 2003</td>
+		</tr>
+		<tr>
 			<td>8.10 m X</td>
 			<td>16 February 2003</td>
 		</tr>
+		</tr>
+		<tr>
+			<td style="background-color: #AAEEAA">6.28 m</td>
+			<td rowspan="2">Silvija Mrakovčić</td>
+			<td>4 February 1990</td>
 		<tr>
 			<td>6.36 m X</td>
 			<td>19 February 1994</td>
-			<td>< title="Slovenia"><img alt="Slovenia"
-					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/23px-Flag_of_Slovenia.svg.png" width="23" height="12"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/35px-Flag_of_Slovenia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/46px-Flag_of_Slovenia.svg.png 2x"
-					data-file-width="1200" data-file-height="600" /></span> < title="Ljubljana">Ljubljana, Slovenia</td>
 		</tr>
 		<tr>
 			<td>68 Finnish</td>
@@ -425,15 +459,14 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 
 
 		<tr>
-			<td rowspan="2">77 Greek</td>
-			<td>18 August 1997</td>
+			<td rowspan="3">77 Greek</td>
 			<td>8:52.21 X</td>
 			<td>Maria Tsírba</td>
 			<td>15 March 2003</td>
 		</tr>
 		<td>Niki Xanthou</td>
 		<td>16 February 1997</td>
-		<td>< title="Meeting Pas de Calais">Meeting Pas de Calais</td>
+			<td>18 August 1997</td>
 		</tr>
 		<tr>
 			<td>15.00 mX</td>
@@ -445,8 +478,8 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 
 		<tr>
 			<td>87 Hungarian
-			<td>51.50 X <sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</sup></td>
-			<td><a href="/wiki/Barbara_Petr%C3%A1hn" title="Barbara Petráhn">Barbara Petráhn</td>
+			<td>51.50 X</td>
+			<td>Barbara Petráhn</td>
 			<td>12 May 2006</td>
 		</tr>
 
@@ -454,18 +487,16 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 		<tr>
 			<td>89 Indian
 			<td>10.21 X</td>
-			<td>< title="Anil Kumar Prakash">Anil Kumar Prakash</td>
+			<td>Anil Kumar Prakash</td>
 			<td>5 July 2000</td>
-			<td></td>
 		</tr>
 
 
 		<tr>
-			<td>101 Kenyan
+			<td rowspan="3">101 Kenyan</td>
 			<td>51.14 A X</td>
-			<td rowspan="2">< class="mw-redirect" title="Joyce Zakari">Joyce Zakari</td>
+			<td rowspan="2">Joyce Zakari</td>
 			<td>11 July 2015</td>
-			<td>Kenyan Championships</td>
 		</tr>
 		<tr>
 			<td>50.71 X</td>
@@ -477,83 +508,67 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>11 July 2015</td>
 		</tr>
 		<tr>
-			<td>134 Moroccan</td>
+			<td rowspan="2">134 Moroccan</td>
+			<td style="background-color: #AAEEAA">7:55.28</td>
+			<td rowspan="2">Brahim Boulami</td>
+			<td>24 août 2001 à Bruxelles</td>
+		</tr>
+		<tr>			
 			<td>7:53.17 X</td>
 			<td>16 August 2002</td>
-			<td><a href="/wiki/Weltklasse_Z%C3%BCrich" title="Weltklasse Zürich">Weltklasse Zürich</td>
-			<td>< title="Switzerland"><img alt="Switzerland"
-					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/16px-Flag_of_Switzerland.svg.png" width="16"
-					height="16" class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/24px-Flag_of_Switzerland.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/32px-Flag_of_Switzerland.svg.png 2x"
-					data-file-width="1000" data-file-height="1000" /></span> < title="Letzigrund">Zürich, Switzerland</td>
-			<td></td>
 		</tr>
 		<tr>
-
-
-
-
-			<td>140 Dutch</td>
-			<td>71.22 m X <sup id="cite_ref-35" class="reference"><a href="#cite_note-35">[35]</sup></td>
+			<td rowspan="3">140 Dutch</td>
+			<td>71.22 m X</td>
 			<td>Ria Stalman</td>
 			<td>15 July 1984</td>
 		</tr>
 
-		<td rowspan="2">16.75 m X</td>
+		<tr>
+			<td>16.75 m X</td>
 			<td>27 January 2012</td>
-			<td>Carthage Tadd Metzger Invitational</td>
-			<td><img alt="United States"
-				src="//upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/23px-Flag_of_the_United_States.svg.png" width="23"
-				height="12" class="thumbborder"
-				srcset="//upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/35px-Flag_of_the_United_States.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/46px-Flag_of_the_United_States.svg.png 2x"
-				data-file-width="1235" data-file-height="650" /></span> <a href="/wiki/Kenosha,_Wisconsin" title="Kenosha, Wisconsin">Kenosha, United
-					States</td>
+</tr>
+		<tr>	
 			<td>16.73 m X</td>
 			<td>9 February 2013</td>
-			<td></td>
 		</tr>
 		
 		
 		<tr>
-			<td>146 Nigerian
+			<td rowspan="2">146 Nigerian</td>
+			<td>37.91 X</td>
+			<td>Innocent Asonze<br /> Francis Obikwelu<br /></td>
+		</tr>
+		<tr>
 			
-			<td>37.91 X<sup id="cite_ref-8" class="reference"><a href="#cite_note-8">[8]</sup></td>
-			<td>
-Innocent Asonze<br /> Francis Obikwelu<br />
-					<td>18.86 m X</td>
-					<td>1 July 2012</td>
+			<td>18.86 m X</td>
+			<td>1 July 2012</td>
 		</tr>
 		<tr>
 		<td>163 Qatari</td>
 			
-			<td>64.56 m X <sup id="cite_ref-12" class="reference"><a href="#cite_note-12">[12]</sup></td>
-			<td><a href="/w/index.php?title=Ahmed_Mohammed_Dheeb&amp;action=edit&amp;redlink=1" class="new"
-				title="Ahmed Mohammed Dheeb (page does not exist)">Ahmed Mohammed Dheeb</td>
+			<td>64.56 m X</td>
+			<td>Ahmed Mohammed Dheeb</td>
 			<td>24 November 2010</td>
-			<td>< title="Athletics at the 2010 Asian Games">Asian Games</td>
 		</tr>
 		<tr>
-			<td>164 Romanian</td>
+			<td rowspan="2">164 Romanian</td>
 			
 			<td>1:08:07+ X #</td>
-			<td><a href="/wiki/Constantina_Di%C8%9B%C4%83-Tomescu" class="mw-redirect" title="Constantina Diță-Tomescu">Constantina
-					Diță-Tomescu</td>
-			<td>22 October 2006</td>
-			<td>1:21:31+ X #</td>
-			<td><a href="/wiki/Constantina_Di%C8%9B%C4%83-Tomescu" class="mw-redirect" title="Constantina Diță-Tomescu">Constantina
-					Diță-Tomescu</td>
+			<td rowspan="2">Constantina	Diță-Tomescu</td>
 			<td>22 October 2006</td>
 		</tr>
 		<tr>
-			<td rowspan="6">165 Russian
-			
-			<td>2:58.06 X <sup id="cite_ref-15" class="reference"><a href="#cite_note-15">[11]</sup></td>
-			<td><img alt=""
-					src="//upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/23px-Flag_of_Russia.svg.png" width="23" height="15"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/35px-Flag_of_Russia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/45px-Flag_of_Russia.svg.png 2x"
-					data-file-width="900" data-file-height="600" />&#160;</span>Russia<br /> Maksim Dyldin<br /> < title="Vladislav Frolov">Vladislav Frolov<br />
-			
+			<td>1:21:31+ X #</td>
+			<td>22 October 2006</td>
+		</tr>
+		<tr>
+			<td rowspan="12">165 Russian</td>
+			<td>2:58.06 X </td>
+			<td>Maksim Dyldin<br />Vladislav Frolov<br />Anton Kokorin<br />Denis Alekseyev</td>
+		</tr>
+		<tr>
+		
 			<td>1:05:48+ X</td>
 			<td>Liliya Shabalova-Shobukhova</td>
 			<td>9 October 2011</td>
@@ -578,90 +593,51 @@ Innocent Asonze<br /> Francis Obikwelu<br />
 		<tr>
 
 			<td>1:56.49 X</td>
-			<td>Yelena Soboleva</td>
+			<td rowspan="3">Yelena Soboleva</td>
 			<td>9 February 2008</td>
 		</tr>
 		<tr>
 			<td>3:57.71 X</td>
 			<td>9 March 2008</td>
-			<td>< title="2008 IAAF World Indoor Championships">World Championships</td>
-			<td>< title="Spain"><img alt="Spain"
-					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
-					data-file-width="750" data-file-height="500" /></span> <a href="/wiki/Valencia,_Spain" class="mw-redirect" title="Valencia, Spain">Valencia,
-					Spain</td>
 		</tr>
 		<tr>
 			<td>4:20.21 X</td>
-			<td>Yelena Soboleva</td>
 			<td>27 January 2008</td>
 		</tr>
 		<tr>
 
-			<td>7.69 X<sup id="cite_ref-53" class="reference"><a href="#cite_note-53">[g]</sup></td>
+			<td>7.69 X</td>
+			<td rowspan="4">Lyudmila Narozhilenko</td>
 			<td>13 February 1993</td>
-			<td></td>
-			<td>< title="France"><img alt="France"
-					src="//upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/23px-Flag_of_France.svg.png" width="23" height="15"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/35px-Flag_of_France.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/45px-Flag_of_France.svg.png 2x"
-					data-file-width="900" data-file-height="600" /></span> <a href="/wiki/Li%C3%A9vin" title="Liévin">Liévin, France</td>
 		</tr>
 		<tr>
 
 			<td>7.68 X</td>
 			<td>2 March 1993</td>
-			<td></td>
-			<td>< title="Spain"><img alt="Spain"
-					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
-					data-file-width="750" data-file-height="500" /></span> <a href="/wiki/San_Sebasti%C3%A1n" title="San Sebastián">San Sebastián, Spain</td>
 		</tr>
 		<tr>
 
 			<td>7.66 X</td>
 			<td>4 March 1993</td>
-			<td></td>
-			<td>< title="Spain"><img alt="Spain"
-					src="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/23px-Flag_of_Spain.svg.png" width="23" height="15"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/35px-Flag_of_Spain.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/45px-Flag_of_Spain.svg.png 2x"
-					data-file-width="750" data-file-height="500" /></span> < title="Seville">Seville, Spain</td>
 		</tr>
 		<tr>
 
 			<td>7.63 X</td>
 			<td>4 March 1993</td>
-			<td></td>
-
 		</tr>
 		<tr>
 		</tr>
 		<tr>
-			<td>173 Saudi_Arabian
-			</td>
+			<td>173 Saudi_Arabian</td>
 			<td>3:45.12 X</td>
 			<td>Mohammed Shaween</td>
 			<td>9 March 2012</td>
-			<td><a href="/wiki/2012_IAAF_World_Indoor_Championships_%E2%80%93_Men%27s_1500_metres"
-				title="2012 IAAF World Indoor Championships – Men's 1500 metres">World Championships</td>
 		</tr>
 		<tr>
 			<td>180 Slovenian</td>
 			
-			<td>3:32.50 X <sup id="cite_ref-20" class="reference"><a href="#cite_note-20">[20]</sup></td>
-			<td><img alt=""
-					src="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/23px-Flag_of_Slovenia.svg.png" width="23" height="12"
-					class="thumbborder"
-					srcset="//upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/35px-Flag_of_Slovenia.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Flag_of_Slovenia.svg/46px-Flag_of_Slovenia.svg.png 2x"
-					data-file-width="1200" data-file-height="600" />&#160;</span>Slovenia<br /> A. Puc<br /> <a href="/wiki/Jolanda_%C4%8Ceplak"
-				title="Jolanda Čeplak">Jolanda Čeplak 
-		
-		</tr>
-		<tr>
-			<td>
+			<td>3:32.50 X </td>
+			<td>A. Puc<br />Jolanda Čeplak</td> 
 		
 		</tr>
 		<tr>
@@ -679,20 +655,20 @@ Innocent Asonze<br /> Francis Obikwelu<br />
 			<td>192 Syrian</td>
 			<td>53.79 X</td>
 			<td>26 February 2010</td>
-			<td>< title="2010 Asian Indoor Athletics Championships">Asian Championships</td>
 		</tr>
 
 		<tr>
-			<td>200 Turkish
-			
+			<td rowspan="3">200 Turkish</td>
 			<td>29:56.34 X</td>
 			<td>Elvan Abeylegesse</td>
 			<td>15 August 2008</td>
-			<td>< title="Athletics at the 2008 Summer Olympics">Olympic Games</td>
-			<td>12.58 <small>(+0.6&#160;m/s)</small> X
-			</td>
-			<td rowspan="2"><a href="/wiki/Nevin_Yan%C4%B1t" class="mw-redirect" title="Nevin Yanıt">Nevin Yanıt</td>
+		</tr>
+		<tr>
+			<td>12.58 (+0.6&#160;m/s) X</td>
+			<td rowspan="2">Nevin Yanıt</td>
 			<td rowspan="2">7 August 2012</td>
+		</tr>
+		<tr>
 			<td>12.58 (−0.2&#160;m/s) X</td>
 		</tr>
 
@@ -701,52 +677,41 @@ Innocent Asonze<br /> Francis Obikwelu<br />
 
 
 		<tr>
-			<td>205 Ukrainian
-			
+			<td rowspan="2">205 Ukrainian</td>
 			<td>2:22:09 X</td>
-			<td><a href="/wiki/Tetyana_Hamera-Shmyrko" title="Tetyana Hamera-Shmyrko">Tetyana Hamera-Shmyrko</td>
+			<td>Tetyana Hamera-Shmyrko</td>
 			<td>25 January 2015</td>
-			<td>7.04 X <sup id="cite_ref-42" class="reference"><a href="#cite_note-42">[42]</sup></td>
-			<td rowspan="2"><a href="/wiki/Zhanna_Pintusevich-Block" title="Zhanna Pintusevich-Block">Zhanna Pintusevich-Block</td>
+		</tr>
+		<tr>
+			<td>7.04 X </td>
+			<td>Zhanna Pintusevich-Block</td>
 			<td>14 March 2003</td>
-			<td><a href="/wiki/2003_IAAF_World_Indoor_Championships_%E2%80%93_Women%27s_60_metres"
-				title="2003 IAAF World Indoor Championships – Women's 60 metres">World Championships</td>
-
-
 		</tr>
 		<tr>
 			<td>207 Grande Bretagne</td>
 			<td>9.87 X</td>
 			<td>Dwain Chambers</td>
 			<td>14 September 2002</td>
-			<td>< title="2002 IAAF Grand Prix Final">IAAF Grand Prix Final</td>
 		</tr>
 		<tr>
-			<td rowspan="4">208 United_States
-			
-			<td>37.04 X <sup id="cite_ref-34" class="reference"><a href="#cite_note-34">[31]</sup></td>
-			<td>Trell Kimmons<br /> Justin Gatlin<br /> Tyson Gay
-			</td>
+			<td rowspan="4">208 United_States</td>
+			<td>37.04 X </td>
+			<td>Trell Kimmons<br /> Justin Gatlin<br /> Tyson Gay</td>
 		</tr>
 		<tr>
 			<td>2:54.20 X</td>
-			<td>Jerome Young<br />Antonio Pettigrew<br />Tyree Washington<br />Michael Johnson
-		
+			<td>Jerome Young<br />Antonio Pettigrew<br />Tyree Washington<br />Michael Johnson</td>
 		</tr>
 		<tr>
-
 			<td>22.18 X</td>
 			<td>Michelle Collins</td>
 			<td>March 15, 2003</td>
 		</tr>
 		<tr>
-
 			<td>1:58.27 X</td>
 			<td>Ajee Wilson</td>
 			<td>February 11, 2017</td>
 		</tr>
-		<tr>
-	
 	</table>
 
 
@@ -803,11 +768,11 @@ sont à prévoir (déjà l'été dernier...).
 Pour les concours en salle, le rebond des pistes d'élan en bois procure un avantage. Des témoignages l'attestent (pour Bercy notamment je crois).
 <br/>
 
-<li>Largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. est détenu par 
+<li>Numéro du couloir, donc largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. est détenu par 
 Tyson Gay 9.41 (−0.4 m/s) 16 mai 2010. Du reste, le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
-
-9 van 400
-1972 aki bua (M Fr 49 2018 couloir 1)
+<br/>L'avantage des couloirs centraux ou extérieurs ? Difficile à estimer. Dépend trop de paramètres. Pierre-Jean Vazel p.ex.
+avance le chiffre d'1 ou 2/100ème par couloir sur 200 <a href="#ref_couloir200" id="couloir2">[2]</a>.    
+Van Niekerke au couloir 9 lors de ses 43.03. Inversement Aki bua record et au couloir 1 400H 1972.
 </li>
 <li>Vent. &Eacute;videment Beamon et Mennea exemples les plus connus (surtout avec en plus l'altitude de Mexico). Pour les courses et les concours je crois que c'est le max qui est retenu. Ou une moyenne, s'il y a un souffle juste une seconde ?
 Comme il y a plusieurs courses et concours sur les décathlons, un Athlé mag disait qu'il y avait une moyenne. Ou éventuellement pourrait être 
@@ -815,11 +780,8 @@ retenu un essai moins fort mais avec vent régulier.
 <br/>
 &Agrave; Villeneuve d'Asq en 1955 Edwards a fait 18m43 avec vent +2.3. Auparavant Conley avait fait 18m17 (?) avec juste +2.1.
 </li>
-<li>
-heure
-température
-série ou finale... belgique 44.43
-</li>
+<li>Température et heure de la jounée, conséquence du contexte. P.ex. record Belgique 44.43 Jonathan Borlée en série des JO 2012.
+Ce serait intéressant de savoir son état d'esprit. Relâchement, motivation, pression ?</li>
 <li>Aide de lièvres
 Sur 100 et 200 la concurrence avantage ou pas (Asafa Powell...)
 <br/>
@@ -836,9 +798,12 @@ Le RM 800 en salle est réussi aussi sans lièvre, deux fois même : à ch. Euro
 fait son Bubka...
 Dans l'histoire il doit être le seul avec Jonathan Edwards à taper deux fois le RM dans le même championnat. 
 <br/>
-&Agrave; un niveau bien éloigné, d'expérience perso le gain de lièvre sur 800 est indéniable. Je l'estime entre 1'' ou 2''. &Agrave; Eaubonne indoor deux fois :
-19 janvier 2001 1.55.45 (Bertrand Valcin 1.55.82 lièvre involontaire 750m en série 2, pour l'anecdote un junior Joël Ducrot fait 3 en 2.06.38 :-) , en série 1 Florent Lacasse avait battu le record de France Espoir 1'48''[32?]).
-; 18 janvier 2003 ch. rég. 1.55.05 (Igor Flandrin-Thoniel gagne 1.54.70). Forme identique, mais seul de bout en bout c'est 1.57.13 (Liévin, 04 février 2001) et 1.57.43 (Eaubonne ch. IdF FFSU, 09 janvier 2003). La différence avec ou sans lièvre est là.  
+&Agrave; un niveau bien éloigné, d'expérience perso le gain de lièvre sur 800 est indéniable. Je l'estime entre 1'' ou 2''.
+<br/><i>Avec lièvre.</i> Eaubonne indoor deux fois :
+19 janvier 2001 1.55.45 (Bertrand Valcin 1.55.82 lièvre involontaire 750m. Pour l'anecdote derrière le junior Joël Ducrot avait fait 3 en 2.06.38 :-). Juste
+avant, dans la série 1 Florent Lacasse avait battu le record de France Espoir 1.48.32).
+; 18 janvier 2003 ch. rég. 1.55.05 (Igor Flandrin-Thoniel gagne 1.54.70).
+<br/><i>Sans lièvre.</i> Forme identique, mais seul de bout en bout c'est 1.57.13 (Liévin, 04 février 2001) et 1.57.43 (Eaubonne ch. IdF FFSU, 09 janvier 2003).  
 <br/><br/>
 L'aide des lièvres est réglementée. Pas de mixité pour commencer (je ne sais pas si cela marche dans les deux sens d'ailleurs, si un
 record homme tombe avec l'aide d'une femme c'est non homologué ?). Pour l'âge aussi. Dans un athlé magazine, sauf erreur, il était dit
@@ -852,17 +817,17 @@ que pour les records junior les lièvres catégorie espoir ou senior, pas de pro
 <h3 id="2.5">Paramètres annexes des records</h3>
 
 Dans les pages Wikipedia on lit
-<div style="margin-left: 30px;background-color: #EEFFFF;width: 300px">
+<div style="margin-left: 30px;background-color: #EEFFFF;width: 400px">
 <!-- <small>+ = <a href="https://en.wiktionary.org/wiki/en_route" class="extiw" title="wikt:en route">en route</a> to a longer distance</small><br /> 
 <small>ht = hand timing</small><br />
 -->
 <small># = not ratified by federation</small><br />
-<small>! = timing by photo-electric cell</small>
-<small>a = aided road course according to IAAF rule 260.28</small>
+<small>! = timing by photo-electric cell</small><br />
+<small>a = aided road course according to IAAF rule 260.28</small><br />
 <small>A = affected by altitude</small><br />
 <small>Awaiting ratification</small><br />
 <small>mx = mixed race</small><br />
-<small>OT = oversized track (&gt; 200m in circumference)</small>
+<small>OT = oversized track (&gt; 200m in circumference)</small><br />
 <small>X = annulled due to doping violation</small>
 </div>
 <br/>
@@ -892,88 +857,77 @@ et surtout impossible en cas de sélection p.ex. (pour les podiums il faudrait a
 </ul>
 
 </section>
+
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="3">3. Politique</h2>
 
-<h3 id="3.1">3.1 Guerre froide : records socialistes / capitalistes</h3>
+<h3 id="3.1">Records socialistes vs capitalistes, impérialistes vs colonisés</h3>
 
-Un dirigeant URSS - Brejnev je crois - déclarait voir dans la  
-victoire d'un champion soviétique l'illustration de la supériorité du monde socialiste 
-sur celui capitaliste décadent (la même chose avait été dite au moment de Gargarine, premier homme dans l'espace).  
-<br/>
-Plus tard, de façon similaire, on peut estimer que les records cubains plaident pour le régime - pour le régime 
-"rice and beans" en tout cas. La sobriété - la décroissance même ! - prônée par Castro dans le contexte de l'embargo US
-(p.ex. cf. extrait discours dans le film <i id="surplus">Surplus : la consommation par la terreur</i> <a href="ref_surplus">[1]</a>). &Agrave; cette lumière, par curiosité comparons les records   
-Russie/U.S. ou France/Algérie. TODO : relever la répartition des records RDA / RFA avant unification.
-<br/>
-TABLE 
+Au temps de la guerre froide, les records des athlètes soviétiques illustraient
+la supériorité du système socialiste sur celui capitaliste. De même que Gargarine avait été le premier homme dans l'espace.  
+<br/><br/>
+Plus tard, de façon similaire, on peut estimer que les records cubains plaident pour le régime
+ -  en tout cas pour le régime <i>rice and beans</i>. La sobriété - la décroissance même ! - prônée par Castro dans le contexte de l'embargo US
+(p.ex. cf. extrait discours dans le film <i id="surplus">Surplus : la consommation par la terreur</i> <a href="ref_surplus">[1]</a>).
+<br/><br/> &Agrave; cette lumière, il est dommage que l'unification des records plein air et salle de la perche prive le camp
+socialiste des deux records "vers le haut" de Bubka et Sotomayor. Un beau symbole. Les avantages
+de l'indoor ne sont guère discutables ; sans offense à Lavillenie le vrai record 6.14 reste à Bubka. Avec cette décision
+d'unification, l'IAAF est pour le coup "amateur" dans le mauvais sens du terme. &Agrave; moins que la raison
+soit idélogique, résidu de la guerre froide, ou quelque obscure politique, qui sait ? (tout complotisme mis à part... inutile. Reste
+que si le record plein air était US...? il n'est pas interdit de se poser la question, au vu des innombrables exemples  
+de différences de traitements en matière dopage et disqualifications à chaque championnat). 
 
-<br/>
-Les records d'athlétisme reflètent beaucoup d'aspects des sociétés. Ils ont été été des enjeux idéologiques lors de la guerre froide.
-Aujourd'hui on verrait plus les enjeux concernant la condition des femmes ou ceux écologique liés au mode de vie.
-La revendication des gilets jaunes "Macron démission" ou "ISF", soutien 100%. En revanche déplacement en bagnole
-(même pour trajet de moins 1 ou 3km ? cf. chiffres INSEE 2015), ça... Cela peut poser problème d'un point de vue
-écologique... et athlétique. Les travailleurs et écoliers kenyans et éthiopéens se déplacent à pied. Une bonne part de l'explication
-des records et les médailles...    
-<br/>
-Pour l'enjeu idéologique, un numéro récent de Sport &amp; Vie reportait que Staline était, paraît-il, réticent  
-à l'idée de la participation aux JO 1952 d'Helsinki ("sport bourgeois" ?). Mais il aurait été convaincu par ses camarades de l'enjeu idéologique.
-Il n'était donc peut-être pas si dogmatique. Tant mieux ! (blague à part, il se trouve que le rejet pénible de la décroissance
-par certains trotkystes me donne envie d'être plus prudent sur la condamnation de leur assassin, mais c'est un autre sujet).
- 
+<br/><br/> 
 
-<h3 id="3.2">Condition des femmes</h3>
-Les premiers tests Pérec réservent quelques surprises. Notre Marie-Josée Pérec se retrouve au 27ème rang sur 400. C'est
-un peu bizarre. Pourquoi ? Eh bien parce que 24 records féminins du 400 sont supérieurs à la minute. Et pour l'opérateur alphanumérique <code>&lt;</code>
-1:00 est devant 48.25...
+<div class="row">
+<div class="col-sm-3">
 
-<table><tr bgcolor="#EEEEEE"><th>Pays</th><th>Athlète</th><th>Perf</th></tr>
-<tr><td>Maldivian</td><td>Mirufath Ahmed</td><td>1:00.33</td></tr>
-<tr><td>Omani</td><td>Hanaa Al-Qassimi</td><td>1:00.83</td></tr>
-<tr><td>Cook_Islands</td><td>Attina Sawtell</td><td>1:01.65</td></tr>
-<tr><td>South_Sudanese</td><td>Margret Hassan</td><td>1:01.72</td></tr>
-<tr><td>Djiboutian</td><td>Hibo Rarejeh</td><td>1:01.8  #</td></tr>
-<tr><td>Montserrat</td><td>Jenalyn Weekes</td><td>1:01.80</td></tr>
-<tr><td>Laotian</td><td>Dalivanh Detthonthip</td><td>1:01.90</td></tr>
-<tr><td>Qatari</td><td>Jyothi Janardhanan</td><td>1:01.92</td></tr>
-<tr><td>Norfolk_Island</td><td>April Quintal</td><td>1:02.54</td></tr>
-<tr><td>Palauan</td><td>Ngerak Florencio</td><td>1:02.67</td></tr>
-<tr><td>Cambodian</td><td>Seyha Chan</td><td>1:03.56</td></tr>
-<tr><td>Niuean</td><td>Zelda Folau Brown</td><td>1:04.36</td></tr>
-<tr><td>Federated_States_of_Micronesia</td><td>Adiriana Jack</td><td>1:04.41</td></tr>
-<tr><td>Somalian</td><td>Jamad Ismail Abdi</td><td>1:04.89</td></tr>
-<tr><td>Yemeni</td><td>Fatima Suleiman Al-Dahman</td><td>1:05.22</td></tr>
-<tr><td>Nauruan</td><td>Trudy Duburiya</td><td>1:06.80</td></tr>
-<tr><td>Kiribati</td><td>Kaingaue David</td><td>1:07.01</td></tr>
-<tr><td>American_Samoan</td><td>Afega Fetaiai</td><td>1:07.14</td></tr>
-<tr><td>Kuwaiti</td><td>Latifa Hussein Muftah</td><td>1:07.86</td></tr>
-<tr><td>Bhutanese</td><td>Khandu Lhamo</td><td>1:08.2</td></tr>
-<tr><td>Mauritanian</td><td>Khoury Keïta</td><td>1:09.6</td></tr>
-<tr><td>Palestinian</td><td>Maram Kabakali</td><td>1:09.69</td></tr>
-<tr><td>Tuvaluan</td><td>Asenate Manoa</td><td>1:11.71</td></tr>
-<tr><td>Afghan</td><td>Yalda Amini</td><td>1:16.98</td></tr>
-<tr><td>Allemagne</td><td>Marita Koch</td><td>47.60</td></tr>
-<tr><td>Czech</td><td>Jarmila Kratochvílová</td><td>47.99</td></tr>
-<tr><td>French</td><td>Marie-José Pérec</td><td>48.25</td></tr>
-<tr><td>Ukrainian</td><td>Olha Bryzhina</td><td>48.27</td></tr>
-<tr><td>Australian</td><td>Cathy Freeman</td><td>48.63</td></tr>
-<tr><td>United_States</td><td>Sanya Richards</td><td>48.70</td></tr>
-<tr><td>...</td><td>...</td><td>...</td></tr>
-</table>
+	<table><tr bgcolor="#EEEEEE"><th>Russie</th><th>U.S.</th></tr>
+	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
+	
+	
+	</table>
+</div>
 
-Au delà de la bête correction nécessaire, ces records supérieurs à la minute laissent songeur.
-Ils donnent une idée du développement du sport dans les pays. Et accessoirement de la condition des femmes.
 
-<h3 id="3.3">Colonisation</h3>
+<div class="col-sm-3">
+	<table><tr bgcolor="#EEEEEE"><th>RDA</th><th>RFA</th></tr>
+	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
+	</table>
+</div>
 
-Athlètes possèdent des records nationaux dans plusieurs pays à la fois. Exemple connu : Bernard Lagat 1500 Kenya et US. Et les autres ?
+<div class="col-sm-3">
+	<table><tr bgcolor="#EEEEEE"><th>France</th><th>Cuba</th></tr>
+	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
+	</table>
+</div>
 
+<div class="col-sm-3">
+	<table><tr bgcolor="#EEEEEE"><th>France</th><th>Algérie</th></tr>
+	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
+	</table>
+
+</div>
+
+</div>
+
+<h3 id="3.2">Changement de nationalité</h3>
+
+La lecture des records nationaux à l'aune de l'histoire des colonisations et changements géopolitiques, vaste programme. Cela doit
+être fait. Références à trouver... 
+
+
+Déjà ici, recherche des athlètes qui possèdent des records nationaux dans plusieurs pays à la fois.
+<br/><br/>
 <pre>SELECT * FROM (
 SELECT r.nom, COUNT(DISTINCT r.idPays) AS nb_pays, GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ') 
 FROM record r
 INNER JOIN pays_wiki p ON p.id = r.idPays
 GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
+<br/>
 
+Les plus connus :
+<br/><br/>
 <table><tr BGCOLOR="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>
 <tr><td>Bernard Lagat</td><td>Kenyan 1500 3:26.34<br/>United_States 1500 3:29.30<br/>United_States 3000 7:29.00<br/>United_States 5000 12:53.60 </td></tr>
 <tr><td>Churandy Martina</td><td>Dutch 100 9.91<br/>Dutch 200 19.81<br/>Netherlands_Antillean 100 9.93<br/>Netherlands_Antillean 200 20.08<br/>Netherlands_Antillean 400 046.13 </td></tr>
@@ -1024,6 +978,87 @@ GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
 </div>
 <div style="clear:both"></div>
 
+
+
+<h3 id="3.3">&Eacute;cologie</h3>
+
+Les records d'athlétisme reflètent de nombreux aspects des sociétés. Ils ont été été des enjeux idéologiques lors de la guerre froide.
+Aujourd'hui on verrait plus les enjeux concernant la condition des femmes ou ceux écologique liés au mode de vie.
+La revendication des gilets jaunes "Macron démission" ou "ISF", soutien 100%. En revanche déplacement en bagnole
+même pour trajet de moins 1 ou 3km ? (cf. chiffres effarants INSEE 2015)... Cela peut poser problème d'un point de vue
+écologique. Et sportif - sans même aller jusque là, juste sanitaire d'ailleurs. Les travailleurs et écoliers kenyans et éthiopéens
+se déplacent à pied et pas en bagnole. Les records et les médailles commencent à se gagner là.    
+<br/><br/>
+Le sport est un puissant instrument idéologique. Il devrait être utilisé pour convaincre de la vertu de la décroissance.  
+Ne serait-ce pour se préparer à la fin inéluctable du pétrole - que ce soit pour climat ou épuisement des réserves.
+
+
+Un numéro récent de Sport &amp; Vie reportait que Staline était, paraît-il, réticent  
+à l'idée de la participation aux JO 1952 d'Helsinki ("sport bourgeois" ?) <a href="#ref_sport_vie_staline" id="sport_vie_staline">[3]</a>.
+Mais il aurait finalement été convaincu par ses camarades de l'enjeu idéologique.
+Il n'était donc peut-être pas si dogmatique comme on l'accuse !
+<br/><br/>Cette dernière blague pourrait paraître d'un goût douteux pour 
+certains trotskyses, je m'en fous ; c'est façon de les inviter à réfléchir à leur persistence 
+à s'abstenir de condamner les calomnies au sein de leurs propres rangs envers le mouvement de la décroissance
+et la timidité à remettre en question de l'industrie
+automobile et nucléaire  <a href="#ref_tc" id="tc">[4]</a>. Dit cela en m'en tenant aux positions 
+problématiques les plus évidentes. Qui augurent très mal des possibilités de discuter de questions
+sanitaires et scientifiques sans la même arrogance intellectuelle de Macron. Ce constat a une conséquence inattendue.
+Il m'incite à la prudence sur le jugement des révolutionnaires qui se sont entretués dans l'histoire. Sans connaître
+les enjeux vitaux méconnus, il est difficile de savoir ce que des camarades ou citoyens méritent. Parfois une
+médaille. Parfois le piolet ou la guillotine. Trotsky je ne pense pas. Ces successeurs, ça dépend. 
+
+
+ 
+
+<h3 id="3.4">Condition des femmes</h3>
+Les premiers tests Pérec réservent quelques surprises. Notre Marie-Josée Pérec se retrouve au 27ème rang sur 400. C'est
+un peu bizarre. Pourquoi ? Eh bien parce que 24 records féminins du 400 sont supérieurs à la minute. Et pour l'opérateur alphanumérique <code>&lt;</code>
+1:00 est devant 48.25...
+
+<br/><br/>
+Afghanistan. En 1980 l'invasion de l'URSS. &A propos
+
+comme record ou "meilleure performance" 
+(intervention... débat sur le terme comme ayjourd'hui "implantations") 
+
+<table><tr bgcolor="#EEEEEE"><th>Pays</th><th>Athlète</th><th>Perf</th></tr>
+<tr><td>Maldivian</td><td>Mirufath Ahmed</td><td>1:00.33</td></tr>
+<tr><td>Omani</td><td>Hanaa Al-Qassimi</td><td>1:00.83</td></tr>
+<tr><td>Cook_Islands</td><td>Attina Sawtell</td><td>1:01.65</td></tr>
+<tr><td>South_Sudanese</td><td>Margret Hassan</td><td>1:01.72</td></tr>
+<tr><td>Djiboutian</td><td>Hibo Rarejeh</td><td>1:01.8  #</td></tr>
+<tr><td>Montserrat</td><td>Jenalyn Weekes</td><td>1:01.80</td></tr>
+<tr><td>Laotian</td><td>Dalivanh Detthonthip</td><td>1:01.90</td></tr>
+<tr><td>Qatari</td><td>Jyothi Janardhanan</td><td>1:01.92</td></tr>
+<tr><td>Norfolk_Island</td><td>April Quintal</td><td>1:02.54</td></tr>
+<tr><td>Palauan</td><td>Ngerak Florencio</td><td>1:02.67</td></tr>
+<tr><td>Cambodian</td><td>Seyha Chan</td><td>1:03.56</td></tr>
+<tr><td>Niuean</td><td>Zelda Folau Brown</td><td>1:04.36</td></tr>
+<tr><td>Federated_States_of_Micronesia</td><td>Adiriana Jack</td><td>1:04.41</td></tr>
+<tr><td>Somalian</td><td>Jamad Ismail Abdi</td><td>1:04.89</td></tr>
+<tr><td>Yemeni</td><td>Fatima Suleiman Al-Dahman</td><td>1:05.22</td></tr>
+<tr><td>Nauruan</td><td>Trudy Duburiya</td><td>1:06.80</td></tr>
+<tr><td>Kiribati</td><td>Kaingaue David</td><td>1:07.01</td></tr>
+<tr><td>American_Samoan</td><td>Afega Fetaiai</td><td>1:07.14</td></tr>
+<tr><td>Kuwaiti</td><td>Latifa Hussein Muftah</td><td>1:07.86</td></tr>
+<tr><td>Bhutanese</td><td>Khandu Lhamo</td><td>1:08.2</td></tr>
+<tr><td>Mauritanian</td><td>Khoury Keïta</td><td>1:09.6</td></tr>
+<tr><td>Palestinian</td><td>Maram Kabakali</td><td>1:09.69</td></tr>
+<tr><td>Tuvaluan</td><td>Asenate Manoa</td><td>1:11.71</td></tr>
+<tr><td>Afghan</td><td>Yalda Amini</td><td>1:16.98</td></tr>
+<tr><td>Allemagne</td><td>Marita Koch</td><td>47.60</td></tr>
+<tr><td>Czech</td><td>Jarmila Kratochvílová</td><td>47.99</td></tr>
+<tr><td>French</td><td>Marie-José Pérec</td><td>48.25</td></tr>
+<tr><td>Ukrainian</td><td>Olha Bryzhina</td><td>48.27</td></tr>
+<tr><td>Australian</td><td>Cathy Freeman</td><td>48.63</td></tr>
+<tr><td>United_States</td><td>Sanya Richards</td><td>48.70</td></tr>
+<tr><td>...</td><td>...</td><td>...</td></tr>
+</table>
+
+Au delà de la bête correction nécessaire, ces records supérieurs à la minute laissent songeur.
+Ils donnent une idée du développement du sport dans les pays. Et accessoirement de la condition des femmes.
+
 </section>
 
 <section class="col-sm-offset-2 col-sm-8">
@@ -1033,18 +1068,7 @@ GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
 
 <p>Classement des pays par la somme de tous les rangs.</p>
 
-<p>Certains pays n'ont pas de records pour toutes les épreuves. Alors on les ignore.
-
-Les pays complets ont 40 records :
-<ul style="list-style-type: none;">
-<li>2 x 19 records des épreuves communes homme et femme (100, ..., Marathon)</li>
-<li>+ 4 (100H, 110H, Heptathlon, Decathlon)</li>
-<li>= 42 records par pays</li>
-</ul>
-
-
-
-</p>
+<p>Certains pays n'ont pas de records pour toutes les épreuves. Alors on les ignore.</p>
 
 <pre style="width:600px">SELECT p.nom, SUM(r.rang) AS total_rang, COUNT(r.id) AS total_epreuve
 FROM record r
@@ -1074,7 +1098,7 @@ WHERE r0.idPays = 69 AND r0.sexe = 1 AND r1.idPays = 69 AND r1.sexe = 0;
 <table><tr bgcolor="#EEEEEE"><th>epreuve</th><th>nom</th><th>rang</th><th>nom</th><th>rang</th></tr>
 <tr><td>100</td><td>Christine Arron</td><td>4</td><td>Jimmy Vicaut</td><td>194</td></tr>
 <tr><td>200</td><td>Marie-José Pérec</td><td>10</td><td>Christophe Lemaitre</td><td>7</td></tr>
-<tr><td>400</td><td>Marie-José Pérec</td><td>28</td><td>Leslie Djhone</td><td>24</td></tr>
+<tr><td>400</td><td>Marie-José Pérec</td><td>3</td><td>Leslie Djhone</td><td>24</td></tr>
 <tr><td>800</td><td>Patricia Djaté-Taillard</td><td>22</td><td>Pierre-Ambroise Bosse</td><td>9</td></tr>
 <tr><td>1500</td><td>Hind Dehiba</td><td>27</td><td>Mehdi Baala</td><td>5</td></tr>
 <tr><td>3000</td><td>Bouchra Ghezielle</td><td>104</td><td>Mustapha Essaid</td><td>21</td></tr>
@@ -1138,18 +1162,62 @@ ORDER BY nb DESC, r.nom;</pre>
 
 
 <h3 id="4.4">Ancienneté des records</h3>
-<pre>SELECT epreuve, AVG(annee) FROM record GROUP BY epreuve</pre>
+<pre>SELECT p.nom, r.epreuve, r.perf, r.nom, r.annee FROM record r
+JOIN pays_wiki p ON p.id = r.idPays
+ORDER BY annee</pre>
 
+<br/>Sélection de quelques uns remarquables :<br/><br/> 
 
+<table border="1"><tr BGCOLOR="#CCCCFF"><th>nom</th><th>epreuve</th><th>perf</th><th>nom</th><th>annee</th></tr>
+<tr><td>Haitian</td><td>Longueur</td><td>7.93 m</td><td>Sylvio Cator</td><td>1928</td></tr>
+<tr><td>Liechtensteinian</td><td>Disque</td><td>43.36 m</td><td>Oskar Ospelt</td><td>1938</td></tr>
+<tr><td>Monaco</td><td>3000</td><td>8:34.7</td><td>Emile Battaglia</td><td>1948</td></tr>
+<tr><td>Monaco</td><td>5000</td><td>14:48.2</td><td>Emile Battaglia</td><td>1948</td></tr>
+<tr><td>Azerbaijani</td><td>Hauteur</td><td>1.80 m</td><td>Nina Brintseva</td><td>1969</td></tr>
+<tr><td>Republic_of_the_Congo</td><td>Perche</td><td>4.25 m</td><td>Jean-Prosper Tsondzabéka</td><td>1969</td></tr>
+<tr><td>Libyan</td><td>Perche</td><td>3.70 m</td><td>Ali Magrowi</td><td>1969</td></tr>
+<tr><td>Lithuanian</td><td>3000 steeple</td><td>8:22.2</td><td>Vladimiras Dudinas</td><td>1969</td></tr>
+<tr><td>Luxembourgish</td><td>400</td><td>47.4</td><td>Emile Jung</td><td>1969</td></tr>
+<tr><td>Tunisian</td><td>10000</td><td>27:54.69</td><td>Mohammed Gammoudi</td><td>1972</td></tr>
+<tr><td>Ukrainian</td><td>100</td><td>10.07</td><td>Valeriy Borzov</td><td>1972</td></tr>
+<tr><td>Ukrainian</td><td>200</td><td>20.00</td><td>Valeriy Borzov</td><td>1972</td></tr>
+<tr><td>Zambian</td><td>Decathlon</td><td>5443 pt.</td><td>Samson Mubangalala</td><td>1972</td></tr>
+
+<tr><td>Swedish</td><td>Poids</td><td>21.33 m</td><td>Hans Höglund</td><td>1975</td></tr>
+<tr><td>Belgian</td><td>800</td><td>1:43.86</td><td>Ivo Van Damme</td><td>1976</td></tr>
+<tr><td>Belgian</td><td>Poids</td><td>19.34 m</td><td>Jos Schroeder</td><td>1976</td></tr>
+<tr><td>Polish</td><td>5000</td><td>13:17.69</td><td>Bronis?aw Malinowski</td><td>1976</td></tr>
+<tr><td>Polish</td><td>3000 steeple</td><td>8:09.11</td><td>Bronis?aw Malinowski</td><td>1976</td></tr>
+<tr><td>Polish</td><td>400</td><td>049.28</td><td>Irena Szewi?ska</td><td>1976</td></tr>
+<tr><td>Polish</td><td>Poids</td><td>19.58 m</td><td>Ludwika Chewi?ska</td><td>1976</td></tr>
+
+<tr><td>Cuban</td><td>100</td><td>09.98</td><td>Silvio Leonard</td><td>1977</td></tr>
+<tr><td>Cuban</td><td>5000</td><td>13:44.8 a</td><td>Luis Medina</td><td>1977</td></tr>
+<tr><td>Czech</td><td>Poids</td><td>22.32 m</td><td>Helena Fibingerová</td><td>1977</td></tr>
+<tr><td>Polish</td><td>10000</td><td>27:53.61</td><td>Jerzy Kowol</td><td>1978</td></tr>
+<tr><td>Swiss</td><td>3000</td><td>7:41.00</td><td>Markus Ryffel</td><td>1979</td></tr>
+<tr><td>Syrian</td><td>200</td><td>21.45</td><td>Nabil Nahri</td><td>1979</td></tr>
+</table>
 </section>
 
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="references">Références</h2>
-<a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague 2009</a>. Cela ne nous rajeunit pas. 
-L'idée de la décroissance ne faisait pas l'unanimité au sein du NPA, et en particulier au sein de la Tendance Claire. Pas beaucoup d'évolution dix ans plus tard...
-(cf. <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur - 2018)</a>
+<a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague</a>, 2010. 
+
 <br/>
-[2] IAAF rules ... 
+<a href="#ref_couloir200">[2]</a> <span id="couloir200">Sur 200 "chaque couloir éloigné de la corde permet de gagner de un à deux centièmes en raison du virage moins serré vers l'extérieur" 
+<a href="https://www.lemonde.fr/sport/article/2011/09/04/athletisme-le-200-m-decrypte-par-pierre-jean-vazel_1567571_3242.html">https://www.lemonde.fr/sport/article/2011/09/04/athletisme-le-200-m-decrypte-par-pierre-jean-vazel_1567571_3242.html</a>
+</span>
+
+ 
+<br/>
+<a href="#ref_sport_vie_staline">[3]</a> <span id="a_3">Sport &amp; Vie mois ? 2018</a>
+ 
+<br/>
+<a href="#ref_tc" id="tc">[4]</a> 
+<a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur</a>, 2018.
+
+ 
 
 </section>
 <br/><br/>
@@ -1159,7 +1227,7 @@ L'idée de la décroissance ne faisait pas l'unanimité au sein du NPA, et en pa
 <footer class="col-md-offset-3 col-md-6">
 	<hr />
 	<p style="text-align: center;">
-		<i>Dernière MAJ <time pubdate="pubdate">25/01/2019</time></i>
+		<i>Dernière MAJ <time pubdate="pubdate">30/01/2019</time></i>
 	</p>
 </footer>
 

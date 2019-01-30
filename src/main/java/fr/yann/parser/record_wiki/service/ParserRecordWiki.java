@@ -188,6 +188,9 @@ public class ParserRecordWiki {
 		if (str.contains("y")) {
 			return false;
 		}
+		
+		str = str.toLowerCase();
+		
 		if (str.startsWith("100") || str.startsWith("200") || str.startsWith("400")
 				|| str.startsWith("800") || str.startsWith("1500") || str.startsWith("3000")
 				|| str.startsWith("1 500") || str.startsWith("3 000")
@@ -196,24 +199,24 @@ public class ParserRecordWiki {
 				|| (str.contains("10") && str.contains("000")) // cas 10[separator]000
 				|| (str.contains("relay") && (str.contains("100") || str.contains("400")))
 
-				|| str.startsWith("Marathon")
+				|| str.startsWith("marathon")
 
 				|| str.startsWith("100 m hurdles") || str.startsWith("110 m hurdles")
 				|| str.startsWith("400 m hurdles")
 				|| str.startsWith("3000 m steeplechase")
 
-				|| str.startsWith("High jump")
-				|| str.startsWith("Pole vault")
-				|| str.startsWith("Long jump")
-				|| str.startsWith("Triple jump")
+				|| str.startsWith("high jump")
+				|| str.startsWith("pole vault")
+				|| str.startsWith("long jump")
+				|| str.startsWith("triple jump")
 				
-				|| str.startsWith("Shot put")
-				|| str.startsWith("Discus throw")
-				|| str.startsWith("Hammer throw")
-				|| str.startsWith("Javelin throw")
+				|| str.startsWith("shot put")
+				|| str.startsWith("discus throw")
+				|| str.startsWith("hammer throw")
+				|| str.startsWith("javelin throw")
 				
-				|| str.startsWith("Decathlon")
-				|| str.startsWith("Heptathlon")) {
+				|| str.startsWith("decathlon")
+				|| str.startsWith("heptathlon")) {
 			return true;
 		}
 		return false;
