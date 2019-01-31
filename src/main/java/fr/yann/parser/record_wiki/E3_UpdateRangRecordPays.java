@@ -28,11 +28,10 @@ public class E3_UpdateRangRecordPays {
 
 			concatZero(con);
 			
+			EpreuveEnum e = EpreuveEnum.COURSE_3000_STEEPLE;
 			for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
-				for (EpreuveEnum e:EpreuveEnum.values()){
 					updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.MASCULIN, con);
 					updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.FEMININ, con);
-				}
 			}
 
 			
@@ -72,7 +71,7 @@ public class E3_UpdateRangRecordPays {
 	private static void retireZero(Connection con) throws SQLException {
 		Statement stmt = con.createStatement();
 	
-		int i = stmt.executeUpdate("UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRING(r.perf, 1, 1) = '0')");
+		int i = stmt.executeUpdate("UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRING(r.perf, 1, 1) = '0'");
 
 		System.out.println("update substring 0 : " + i);
 		
@@ -99,7 +98,7 @@ public class E3_UpdateRangRecordPays {
 		
 		Statement stmt = con.createStatement();
 
-		int nombrePaysMeilleurs = -1;
+		int nombrePaysMeilleurs = 0;
 		try {
 			nombrePaysMeilleurs = getNombrePaysMeilleurs(epreuve, sexe, idPays, stmt);
 		} catch (Exception e) {

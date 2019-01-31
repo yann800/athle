@@ -31,6 +31,10 @@ border:solid 1px black;
 pre {
  font-size: 12px;
 }
+
+.red {
+background-color: #AAEEAA;
+}
 </style>
 
 </head>
@@ -38,7 +42,6 @@ pre {
 	<nav class="navbar col-sm-offset-2 col-sm-8" role="navigation" id="menu"></nav>
 
 	<article class="content">
-
 
 	<div class="col-sm-offset-2 col-sm-8">
 
@@ -73,7 +76,7 @@ pre {
 			
 			<li><a href="#4">4. Requêtes</a></li>
 			<ul style="list-style-type: none;">
-				<li><a href="#4.1">Interclubs des pays</a></li>
+				<li><a href="#4.1">Classement des pays toutes épreuves confondues</a></li>
 				<li><a href="#4.2">Comparaison rangs hommes et femmes d'un pays</a></li>
 				<li><a href="#4.3">Athlètes polyvalents</a></li>
 				<li><a href="#4.4">Ancienneté des records</a></li>
@@ -243,9 +246,8 @@ DELETE FROM record WHERE idPays IN (
 	SELECT id FROM pays_wiki WHERE nom IN ('Latvian', 'Aruban')
 );
 
--- Correction Grande Bretagne
-INSERT INTO record (idPays, sexe, epreuve, nom, perf, annee)
-VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
+-- Suppression decathlon féminin
+DELETE FROM record WHERE epreuve = 'Decathlon' AND sexe = 1;
 </pre>
 
 </section>
@@ -253,42 +255,49 @@ VALUES (207,0,'3000 steeple', 'Mark Rowland','8:07.96',1988);
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="2">2. Caractéristiques des records</h2>
 
-
-
-<h3 id="2.0">&Eacute;preuves homme et femme</h3>
-
 <p>Retenues pour l'instant : les épreuves olympiques plus le 3000 (&Agrave; venir marche et relais).
 <p>&Agrave; noter le record disque femme est la seule épreuve où le record femme est supérieur au record homme (pas la même norme évidemment).
- En revanche pour les épreuves identiques, TODO liste pays avec record inférieur au WR.</p>
-
-<pre>SELECT wr_f.epreuve, count(r_h.id)
-FROM record wr_f
-JOIN record r_h ON wr_f.epreuve = r_h.epreuve
-AND r_h.sexe = 0 
-AND (r_h.epreuve LIKE '%0%' OR r_h.epreuve = 'Marathon') -- courses
-WHERE wr_f.sexe = 1 AND wr_f.rang = 1 AND wr_f.perf < r_h.perf
-GROUP BY wr_f.epreuve</pre>
- 
- <br/>
- 
-<table><tr BGCOLOR="#EEEEEE"><th>&Eacute;preuves communes homme et femme</th><th>Nb pays record H inférieur au RM F</th><th>Non comparables</th></tr>
-<tr><td>100</td><td></td><td>400H</td></tr>
-<tr><td>1500</td><td></td><td>3000 steeple</td></tr>
-<tr><td>200</td><td></td><td>Disque</td></tr>
-<tr><td>200</td><td></td><td>Javelot</td></tr>
-<tr><td>400</td><td></td><td>Marteau</td></tr>
-<tr><td>800</td><td></td><td>Poids</td></tr>
-<tr><td>3000</td><td></td><td>100H</td></tr>
-<tr><td>5000</td><td></td><td>110H</td></tr>
-<tr><td>10000</td><td></td><td>Heptathlon</td></tr>
-<tr><td>Marathon</td><td></td><td>Decathlon</td></tr>
-<tr><td>Hauteur</td><td></td><td></tr>
-<tr><td>Perche</td><td></td><td></td></tr>
-<tr><td>Longueur</td><td></td><td></tr>
-<tr><td>Triple</td><td></td><td></tr>
-</table>
 </p>
 
+<div class="row">
+
+	<div class="col-sm-2">
+		100<br/>
+		200<br/>
+		400<br/>
+		800<br/>
+		1500<br/>
+	</div>
+
+	<div class="col-sm-2">
+		3000<br/>
+		5000<br/>
+		10000<br/>
+		Marathon
+	</div>
+	<div class="col-sm-2">
+		100H<br/>
+		110H<br/>
+		400H<br/>
+		3000 steeple
+	</div>
+	<div class="col-sm-2">
+		Hauteur<br/>
+		Longueur<br/>
+		Perche<br/>
+		Triple
+	</div>
+	<div class="col-sm-2">
+		Disque<br/>
+		Javelot<br/>
+		Marteau<br/>
+		Poids
+	</div>
+	<div class="col-sm-2">
+		Heptathlon<br/>
+		Decathlon
+	</div>	
+</div>
 
 <h3 id="2.1">Records codétenus</h3>
 <p>
@@ -525,9 +534,10 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 		</tr>
 
 		<tr>
+			<td rowspan="2">Fabian Florant</td>
 			<td>16.75 m X</td>
 			<td>27 January 2012</td>
-</tr>
+		</tr>
 		<tr>	
 			<td>16.73 m X</td>
 			<td>9 February 2013</td>
@@ -644,8 +654,7 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>187 Sudanese
 			
 			<td>3:39.40 X</td>
-			<td><a href="/w/index.php?title=Osman_Yahya&amp;action=edit&amp;redlink=1" class="new" title="Osman Yahya (page does not exist)">Osman
-					Yahya</td>
+			<td>Osman Yahya</td>
 			<td>15 February 2009</td>
 
 
@@ -879,35 +888,118 @@ de différences de traitements en matière dopage et disqualifications à chaque
 
 <br/><br/> 
 
+<pre>SELECT r0.epreuve, r0.nom, r0.perf, r1.nom, r1.perf
+FROM record r0
+JOIN record r1 ON r0.epreuve = r1.epreuve
+WHERE r0.idPays = 165 AND r1.idPays = 208 AND r0.sexe = 0 AND r1.sexe = 0</pre>
+
 <div class="row">
-<div class="col-sm-3">
-
-	<table><tr bgcolor="#EEEEEE"><th>Russie</th><th>U.S.</th></tr>
-	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
-	
-	
+	<div class="col-sm-6">
+	<table><tr bgcolor="#EEEEEE"><th>&Eacute;preuve</th><th colspan="2">Russie</th><th colspan="2">U.S.</th></tr>
+<tr><td>100</td><td>Andrey Yepishin</td><td>10.10</td><td>Tyson Gay</td><td>9.69</td></tr>
+<tr><td>200</td><td>Vladimir Krylov</td><td>20.23</td><td>Michael Johnson</td><td>19.32</td></tr>
+<tr><td>400</td><td>Viktor Markin</td><td>44.60</td><td>Michael Johnson</td><td>43.18</td></tr>
+<tr><td>800</td><td>Yuriy Borzakovskiy</td><td>1:42.47</td><td>Johnny Gray</td><td>1:42.60</td></tr>
+<tr><td>1500</td><td>Vyacheslav Shabunin</td><td>3:32.28</td><td>Bernard Lagat</td><td>3:29.30</td></tr>
+<tr><td>3000</td><td>Vyacheslav Shabunin</td><td>7:39.24</td><td>Bernard Lagat</td><td>7:29.00</td></tr>
+<tr><td>5000</td><td>Valeriy Abramov</td><td>13:11.99</td><td>Bernard Lagat</td><td>12:53.60</td></tr>
+<tr><td>10000</td><td>Sergey Ivanov</td><td>27:53.12</td><td>Galen Rupp</td><td>26:44.36</td></tr>
+<tr><td>Marathon</td><td>Aleksey Sokolov</td><td>2:09:07</td><td>Khalid Khannouchi</td><td>2:05:38</td></tr>
+<tr><td>110H</td><td>Sergey Shubenkov</td><td>12.98</td><td>Aries Merritt</td><td>12.80</td></tr>
+<tr><td>400H</td><td>Denis Kudryavtsev</td><td>48.05</td><td>Kevin Young</td><td>46.78</td></tr>
+<tr><td>3000 steeple</td><td>Pavel Potapovich</td><td>8:15.54</td><td>Evan Jager</td><td>8:00.45</td></tr>
+<tr><td>Hauteur</td><td>Ivan Ukhov</td><td class="red">2.41 m</td><td>Charles Austin</td><td>2.40</td></tr>
+<tr><td>Perche</td><td>Maksim Tarasov</td><td class="red">6.05 m</td><td>Brad Walker</td><td>6.04</td></tr>
+<tr><td>Longueur</td><td>Aleksandr Menkov</td><td>8.56 m</td><td>Mike Powell</td><td>8.95</td></tr>
+<tr><td>Triple</td><td>Aleksandr Kovalenko</td><td>17.77 m</td><td>Christian Taylor</td><td>18.21</td></tr>
+<tr><td>Poids</td><td>Sergey Smirnov</td><td>22.24 m</td><td>Randy Barnes</td><td>23.12m</td></tr>
+<tr><td>Disque</td><td>Yuriy Dumchev</td><td class="red">71.86 m</td><td>Ben Plucknett</td><td>71.32</td></tr>
+<tr><td>Marteau</td><td>Sergey Litvinov</td><td class="red">86.04 m</td><td>Lance Deal</td><td>82.52</td></tr>
+<tr><td>Javelot</td><td>Sergey Makarov</td><td class="red">92.61 m</td><td>Breaux Greer</td><td>91.29m</td></tr>
 	</table>
+	</div>
+
+	<div class="col-sm-6">
+	<table><tr bgcolor="#EEEEEE"><th>&Eacute;preuve</th><th colspan="2">Russie</th><th colspan="2">U.S.</th></tr>
+<tr><td>100</td><td>Irina Privalova</td><td>10.77</td><td>Florence Griffith Joyner</td><td>10.49</td></tr>
+<tr><td>200</td><td>Irina Privalova</td><td>21.87</td><td>Florence Griffith Joyner</td><td>21.34</td></tr>
+<tr><td>400</td><td>Olga Nazarova</td><td>49.11</td><td>Sanya Richards</td><td>48.70</td></tr>
+<tr><td>800</td><td>Olga Mineyeva</td><td class="red">1:54.81</td><td>Jearl Miles Clark</td><td>1:56.40</td></tr>
+<tr><td>1500</td><td>Tatyana Kazankina</td><td class="red">3:52.47</td><td>Shannon Rowbury</td><td>3:56.29</td></tr>
+<tr><td>3000</td><td>Tatyana Kazankina</td><td class="red">8:22.62</td><td>Mary Slaney</td><td>8:25.83</td></tr>
+<tr><td>5000</td><td>Liliya Shobukhova</td><td class="red">14:23.75</td><td>Shannon Rowbury</td><td>14:38.92</td></tr>
+<tr><td>10000</td><td>Alla Zhilyaeva</td><td>30:23.07</td><td>Molly Huddle</td><td>30:13.17</td></tr>
+<tr><td>Marathon</td><td>Galina Bogomolova</td><td>2:20:47</td><td>Deena Kastor</td><td>2:19:36 mx</td></tr>
+<tr><td>100H</td><td>Lyudmila Narozhilenko</td><td>12.26</td><td>Kendra Harrison</td><td>12.20</td></tr>
+<tr><td>400H</td><td>Yuliya Pechonkina</td><td class="red">52.34</td><td>Lashinda Demus</td><td>52.47</td></tr>
+<tr><td>3000 steeple</td><td>Gulnara Samitova-Galkina</td><td class="red">8:58.81</td><td>Emma Coburn</td><td>9:02.58</td></tr>
+<tr><td>Hauteur</td><td>Anna Chicherova</td><td class="red">2.07 m</td><td>Chaunte Lowe</td><td>2.05</td></tr>
+<tr><td>Perche</td><td>Yelena Isinbaeva</td><td class="red">5.06 m</td><td>Sandi Morris</td><td>5.00</td></tr>
+<tr><td>Longueur</td><td>Galina Chistyakova</td><td class="red">7.52 m</td><td>Jackie Joyner-Kersee</td><td>7.49</td></tr>
+<tr><td>Triple</td><td>Tatyana Lebedeva</td><td class="red">15.34 m</td><td>Keturah Orji</td><td>14.71m</td></tr>
+<tr><td>Poids</td><td>Natalya Lisovskaya</td><td class="red">22.63 m</td><td>Michelle Carter</td><td>20.63m</td></tr>
+<tr><td>Disque</td><td>Galina Savinkova</td><td class="red">73.28 m</td><td>Gia Lewis-Smallwood</td><td>69.17m</td></tr>
+<tr><td>Javelot</td><td>Mariya Abakumova</td><td class="red">71.99 m</td><td>Kara Patterson</td><td>66.67</td></tr>
+<tr><td>Heptathlon</td><td>Larisa Turchinskaya</td><td>7007 pt.</td><td>Jackie Joyner-Kersee</td><td>7291 pt.</td></tr>
+</table>
+	</div>
+</div>
+<br/>
+<div class="row">
+
+<div class="col-sm-6">
+	<table><tr bgcolor="#EEEEEE"><th>&Eacute;preuve</th><th colspan="2">France</th><th colspan="2">Cuba</th></tr>
+<tr><td>100</td><td>Jimmy Vicaut</td><td>9.86</td><td>Silvio Leonard</td><td>9.98</td></tr>
+<tr><td>200</td><td>Christophe Lemaitre</td><td>19.80</td><td>Roberto Skyers</td><td>20.02</td></tr>
+<tr><td>400</td><td>Leslie Djhone</td><td>44.46</td><td>Roberto Hernández</td><td>44.14</td></tr>
+<tr><td>800</td><td>Pierre-Ambroise Bosse</td><td>1:42.53</td><td>Norberto Téllez</td><td>1:42.85</td></tr>
+<tr><td>1500</td><td>Mehdi Baala</td><td>3:28.98</td><td>Maurys Surel Castillo</td><td>3:35.03</td></tr>
+<tr><td>3000</td><td>Mustapha Essaid</td><td>7:30.78</td><td>Maurys Surel Castillo</td><td>7:58.3</td></tr>
+<tr><td>5000</td><td>Ismaïl Sghyr</td><td>12:58.83</td><td>Luis Medina</td><td>13:44.8 a</td></tr>
+<tr><td>10000</td><td>Antonio Martins</td><td>27:22.78</td><td>Alberto Cuba</td><td>28:48.96</td></tr>
+<tr><td>Marathon</td><td>Benoît Zwierzchiewski</td><td>2:06:36</td><td>Alberto Cuba</td><td>2:10:53</td></tr>
+<tr><td>110H</td><td>Pascal Martinot-Lagarde</td><td>12.95</td><td>Dayron Robles</td><td>12.87</td></tr>
+<tr><td>400H</td><td>Stéphane Diagana</td><td>47.37</td><td>Omar Cisneros</td><td>47.99</td></tr>
+<tr><td>3000 steeple</td><td>Mahiedine Mekhissi Benabbad</td><td>8:00.09</td><td>José Sanchez</td><td>8:26.16</td></tr>
+<tr><td>Hauteur</td><td>Mickaël Hanany</td><td>2.34 m A</td><td>Javier Sotomayor</td><td>2.45 m</td></tr>
+<tr><td>Perche</td><td>Renaud Lavillenie</td><td>6.05 m</td><td>Lázaro Borges</td><td>5.90 m</td></tr>
+<tr><td>Longueur</td><td>Salim Sdiri</td><td>8.42 m</td><td>Iván Pedroso</td><td>8.71 m</td></tr>
+<tr><td>Triple</td><td>Teddy Tamgho</td><td>18.04 m</td><td>Pedro Pablo Pichardo</td><td>18.08 m</td></tr>
+<tr><td>Poids</td><td>Yves Niaré</td><td>20.72 m</td><td>Alexis Paumier</td><td>20.78 m</td></tr>
+<tr><td>Disque</td><td>Jean-Claude Retel</td><td>68.90 m</td><td>Luis Delís</td><td>71.06 m</td></tr>
+<tr><td>Marteau</td><td>Gilles Dupray</td><td>82.38 m</td><td>Roberto Janet</td><td>78.02 m</td></tr>
+<tr><td>Javelot</td><td>Pascal Lefevre</td><td>82.56 m</td><td>Guillermo Martínez</td><td>87.20 m A</td></tr>
+<tr><td>Decathlon</td><td>Kevin Mayer</td><td>9126 pt.</td><td>Leonel Suárez</td><td>8654 pt.</td></tr>
+</table>
 </div>
 
 
-<div class="col-sm-3">
-	<table><tr bgcolor="#EEEEEE"><th>RDA</th><th>RFA</th></tr>
-	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
-	</table>
+<div class="col-sm-6">
+	<table><tr bgcolor="#EEEEEE"><th>&Eacute;preuve</th><th colspan="2">France</th><th colspan="2">Cuba</th></tr>
+<tr><td>100</td><td>Christine Arron</td><td>10.73</td><td>Liliana Allen</td><td>11.10</td></tr>
+<tr><td>200</td><td>Marie-José Pérec</td><td>21.99</td><td>Roxana Díaz</td><td>22.68</td></tr>
+<tr><td>400</td><td>Marie-José Pérec</td><td>48.25</td><td>Ana Fidelia Quirot</td><td>49.61</td></tr>
+<tr><td>800</td><td>Patricia Djaté-Taillard</td><td>1:56.53</td><td>Ana Fidelia Quirot</td><td>1:54.44</td></tr>
+<tr><td>1500</td><td>Hind Dehiba</td><td>3:59.76</td><td>Adriana Muñoz</td><td>4:09.57</td></tr>
+<tr><td>3000</td><td>Bouchra Ghezielle</td><td>8:35.41</td><td>Yudelkis Martinez</td><td>9:17.7</td></tr>
+<tr><td>5000</td><td>Margaret Maury</td><td>14:43.90</td><td>Yudileyvis Castillo</td><td>15:59.44</td></tr>
+<tr><td>10000</td><td>Christelle Daunay</td><td>31:35.81</td><td>Yudileyvis Castillo</td><td>33:45.76</td></tr>
+<tr><td>Marathon</td><td>Christelle Daunay</td><td>2:24:22</td><td>Emperatriz Wilson</td><td>2:36:35</td></tr>
+<tr><td>100H</td><td>Monique Éwanjé-Épée</td><td>12.56</td><td>Anay Tejeda</td><td>12.61</td></tr>
+<tr><td>400H</td><td>Marie-José Pérec</td><td>53.21</td><td>Daimi Pernia</td><td>52.89</td></tr>
+<tr><td>3000 steeple</td><td>Sophie Duarte</td><td>9:25.62</td><td>Yoslin Ocampo</td><td>9:58.7</td></tr>
+<tr><td>Hauteur</td><td>Maryse Éwanjé-Épée</td><td>1.96 m</td><td>Silvia Costa</td><td>2.04 m</td></tr>
+<tr><td>Perche</td><td>Vanessa Boslak</td><td>4.70 m</td><td>Yarisley Silva</td><td>4.91 m</td></tr>
+<tr><td>Longueur</td><td>Eunice Barber</td><td>7.05 m</td><td>Lissete Cuza</td><td>6.99 m</td></tr>
+<tr><td>Triple</td><td>Teresa Nzola Meso Ba</td><td>14.69 m</td><td>Yamilé Aldama</td><td>15.29 m  #</td></tr>
+<tr><td>Poids</td><td>Laurence Manfredi</td><td>18.68 m</td><td>Belsy Laza</td><td>20.96 m</td></tr>
+<tr><td>Disque</td><td>Mélina Robert-Michon</td><td>66.73 m</td><td>Hilda Elisa Ramos</td><td>70.88 m</td></tr>
+<tr><td>Marteau</td><td>Manuela Montebrun</td><td>74.66 m</td><td>Yipsi Moreno</td><td>76.62 m</td></tr>
+<tr><td>Javelot</td><td>Mathilde Andraud</td><td>63.54 m</td><td>Osleidys Menéndez</td><td>71.70 m</td></tr>
+<tr><td>Heptathlon</td><td>Eunice Barber</td><td>6889 pt.</td><td>Yorgelis Rodríguez</td><td>6594 pt.</td></tr>
+</table>	
 </div>
 
-<div class="col-sm-3">
-	<table><tr bgcolor="#EEEEEE"><th>France</th><th>Cuba</th></tr>
-	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
-	</table>
-</div>
-
-<div class="col-sm-3">
-	<table><tr bgcolor="#EEEEEE"><th>France</th><th>Algérie</th></tr>
-	<tr><td>Maldivian</td><td>Mirufath Ahmed</td></tr>
-	</table>
-
-</div>
 
 </div>
 
@@ -1064,9 +1156,9 @@ Ils donnent une idée du développement du sport dans les pays. Et accessoiremen
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="4">4. Requêtes</h2>
 
-<h3 id="4.1">Interclubs des pays</h3>
+<h3 id="4.1">Classement des pays toutes épreuves confondues</h3>
 
-<p>Classement des pays par la somme de tous les rangs.</p>
+<p>Pour chaque pays, somme de tous les rangs.</p>
 
 <p>Certains pays n'ont pas de records pour toutes les épreuves. Alors on les ignore.</p>
 
@@ -1076,7 +1168,336 @@ INNER JOIN pays_wiki p ON p.id  = r.idPays
 GROUP BY p.nom
 ORDER BY total_epreuve DESC, total_rang ASC</pre>
 
+<b>CORRECTIONS EN COURS POUR CALCULS DE RANGS DE EPREUVES TEL STEEPLE 9.00 < 10.00</b>
 
+<div class="row">
+<div class="col-sm-4">
+
+	<table>
+	<tr bgcolor="#EEEEEE"><th colspan="3">Hommes et femmes</th></tr>
+	<tr bgcolor="#EEEEEE"><th>Pays</th><th>Total rangs</th><th>nb epreuves</th></tr>
+<tr><td>United_States</td><td>567</td><td>42</td></tr>
+<tr><td>Allemagne</td><td>799</td><td>42</td></tr>
+<tr><td>British</td><td>809</td><td>42</td></tr>
+<tr><td>Russian</td><td>810</td><td>42</td></tr>
+<tr><td>French</td><td>1,039</td><td>42</td></tr>
+<tr><td>Ukrainian</td><td>1,081</td><td>42</td></tr>
+<tr><td>Australian</td><td>1,216</td><td>42</td></tr>
+<tr><td>Polish</td><td>1,240</td><td>42</td></tr>
+<tr><td>South_African</td><td>1,303</td><td>42</td></tr>
+<tr><td>Italian</td><td>1,334</td><td>42</td></tr>
+<tr><td>Canadian</td><td>1,374</td><td>42</td></tr>
+<tr><td>Chinese</td><td>1,396</td><td>42</td></tr>
+<tr><td>Spanish</td><td>1,456</td><td>42</td></tr>
+<tr><td>Belarusian</td><td>1,532</td><td>42</td></tr>
+<tr><td>Czech</td><td>1,542</td><td>43</td></tr>
+<tr><td>Swedish</td><td>1,572</td><td>42</td></tr>
+<tr><td>Dutch</td><td>1,585</td><td>42</td></tr>
+<tr><td>Brazilian</td><td>1,601</td><td>42</td></tr>
+<tr><td>Cuban</td><td>1,650</td><td>42</td></tr>
+<tr><td>Saudi_Arabian</td><td>1,661</td><td>25</td></tr>
+<tr><td>Bulgarian</td><td>1,668</td><td>42</td></tr>
+<tr><td>Norwegian</td><td>1,691</td><td>43</td></tr>
+<tr><td>Romanian</td><td>1,702</td><td>42</td></tr>
+<tr><td>Greek</td><td>1,708</td><td>42</td></tr>
+<tr><td>Jamaican</td><td>1,750</td><td>42</td></tr>
+<tr><td>Belgian</td><td>1,756</td><td>42</td></tr>
+<tr><td>Swiss</td><td>1,857</td><td>42</td></tr>
+<tr><td>Portuguese</td><td>1,891</td><td>42</td></tr>
+<tr><td>Turkish</td><td>1,907</td><td>42</td></tr>
+<tr><td>Finnish</td><td>1,914</td><td>42</td></tr>
+<tr><td>Hungarian</td><td>1,958</td><td>42</td></tr>
+<tr><td>Japanese</td><td>1,996</td><td>42</td></tr>
+<tr><td>Kazakhstani</td><td>2,094</td><td>42</td></tr>
+<tr><td>Irish</td><td>2,165</td><td>43</td></tr>
+<tr><td>New_Zealand</td><td>2,194</td><td>42</td></tr>
+<tr><td>Austrian</td><td>2,248</td><td>42</td></tr>
+<tr><td>Lithuanian</td><td>2,252</td><td>41</td></tr>
+<tr><td>Slovenian</td><td>2,266</td><td>42</td></tr>
+<tr><td>Mexican</td><td>2,344</td><td>41</td></tr>
+<tr><td>Slovak</td><td>2,345</td><td>42</td></tr>
+<tr><td>Uzbekistani</td><td>2,386</td><td>41</td></tr>
+<tr><td>Moroccan</td><td>2,426</td><td>42</td></tr>
+<tr><td>Serbian</td><td>2,432</td><td>42</td></tr>
+<tr><td>Estonian</td><td>2,436</td><td>42</td></tr>
+<tr><td>Croatian</td><td>2,541</td><td>42</td></tr>
+<tr><td>Colombian</td><td>2,552</td><td>42</td></tr>
+<tr><td>Kenyan</td><td>2,571</td><td>42</td></tr>
+<tr><td>Nigerian</td><td>2,638</td><td>41</td></tr>
+<tr><td>Algerian</td><td>2,644</td><td>42</td></tr>
+<tr><td>Danish</td><td>2,676</td><td>42</td></tr>
+<tr><td>Indian</td><td>2,690</td><td>42</td></tr>
+<tr><td>Puerto_Rican</td><td>2,886</td><td>42</td></tr>
+<tr><td>South_Korean</td><td>2,898</td><td>42</td></tr>
+<tr><td>Moldovan</td><td>2,914</td><td>42</td></tr>
+<tr><td>Venezuelan</td><td>2,952</td><td>42</td></tr>
+<tr><td>Cypriot</td><td>2,988</td><td>42</td></tr>
+<tr><td>Argentine</td><td>2,997</td><td>42</td></tr>
+<tr><td>Trinidad_and_Tobago</td><td>3,011</td><td>42</td></tr>
+<tr><td>Bahraini</td><td>3,067</td><td>41</td></tr>
+<tr><td>Israeli</td><td>3,103</td><td>42</td></tr>
+<tr><td>Chilean</td><td>3,113</td><td>42</td></tr>
+<tr><td>Kyrgyzstani</td><td>3,140</td><td>40</td></tr>
+<tr><td>Georgie</td><td>3,238</td><td>39</td></tr>
+<tr><td>Bahamian</td><td>3,315</td><td>43</td></tr>
+<tr><td>South_Sudanese</td><td>3,347</td><td>20</td></tr>
+<tr><td>Ecuadorian</td><td>3,359</td><td>42</td></tr>
+<tr><td>Ghanaian</td><td>3,398</td><td>40</td></tr>
+<tr><td>Qatari</td><td>3,453</td><td>37</td></tr>
+<tr><td>Senegalese</td><td>3,459</td><td>42</td></tr>
+<tr><td>Taiwanese</td><td>3,469</td><td>42</td></tr>
+<tr><td>Grenadian</td><td>3,498</td><td>37</td></tr>
+<tr><td>Icelandic</td><td>3,499</td><td>42</td></tr>
+<tr><td>Azerbaijani</td><td>3,511</td><td>42</td></tr>
+<tr><td>Ugandan</td><td>3,539</td><td>40</td></tr>
+<tr><td>Tunisian</td><td>3,547</td><td>42</td></tr>
+<tr><td>Barbadian</td><td>3,565</td><td>39</td></tr>
+<tr><td>Surinamese</td><td>3,602</td><td>46</td></tr>
+<tr><td>Iranian</td><td>3,611</td><td>42</td></tr>
+<tr><td>Sri_Lankan</td><td>3,657</td><td>41</td></tr>
+<tr><td>Peruvian</td><td>3,659</td><td>42</td></tr>
+<tr><td>Zimbabwean</td><td>3,662</td><td>41</td></tr>
+<tr><td>Dominican_Republic</td><td>3,663</td><td>42</td></tr>
+<tr><td>Thai</td><td>3,679</td><td>42</td></tr>
+<tr><td>Egyptian</td><td>3,733</td><td>42</td></tr>
+<tr><td>Guyanese</td><td>3,861</td><td>40</td></tr>
+<tr><td>Dominica</td><td>3,863</td><td>35</td></tr>
+<tr><td>East_Timorese</td><td>3,905</td><td>22</td></tr>
+<tr><td>Sudanese</td><td>3,928</td><td>38</td></tr>
+<tr><td>Ivorian</td><td>3,949</td><td>40</td></tr>
+<tr><td>Ethiopian</td><td>4,133</td><td>42</td></tr>
+<tr><td>Namibian</td><td>4,162</td><td>41</td></tr>
+<tr><td>Eritrean</td><td>4,165</td><td>33</td></tr>
+<tr><td>Mauritian</td><td>4,168</td><td>42</td></tr>
+<tr><td>Cameroonian</td><td>4,198</td><td>41</td></tr>
+<tr><td>Tanzanian</td><td>4,208</td><td>38</td></tr>
+<tr><td>Bosnian_and_Herzegovinian</td><td>4,214</td><td>42</td></tr>
+<tr><td>Haitian</td><td>4,221</td><td>41</td></tr>
+<tr><td>Saint_Lucian</td><td>4,230</td><td>39</td></tr>
+<tr><td>Djiboutian</td><td>4,232</td><td>29</td></tr>
+<tr><td>Botswana</td><td>4,236</td><td>41</td></tr>
+</table>
+</div>
+
+
+<div class="col-sm-4">
+	<table>
+	<tr bgcolor="#EEEEEE"><th colspan="3">Hommes</th></tr>
+	<tr bgcolor="#EEEEEE"><th>Pays</th><th>Total rangs</th><th>nb epreuves</th></tr>
+<tr><td>United_States</td><td>147</td><td>21</td></tr>
+<tr><td>British</td><td>277</td><td>20</td></tr>
+<tr><td>Allemagne</td><td>347</td><td>21</td></tr>
+<tr><td>French</td><td>351</td><td>21</td></tr>
+<tr><td>South_African</td><td>386</td><td>21</td></tr>
+<tr><td>Russian</td><td>456</td><td>21</td></tr>
+<tr><td>Italian</td><td>510</td><td>21</td></tr>
+<tr><td>Australian</td><td>514</td><td>21</td></tr>
+<tr><td>Canadian</td><td>520</td><td>21</td></tr>
+<tr><td>Ukrainian</td><td>543</td><td>21</td></tr>
+<tr><td>Polish</td><td>547</td><td>21</td></tr>
+<tr><td>Brazilian</td><td>563</td><td>21</td></tr>
+<tr><td>Spanish</td><td>614</td><td>21</td></tr>
+<tr><td>Norwegian</td><td>667</td><td>22</td></tr>
+<tr><td>Qatari</td><td>684</td><td>21</td></tr>
+<tr><td>Dutch</td><td>685</td><td>21</td></tr>
+<tr><td>Cuban</td><td>699</td><td>21</td></tr>
+<tr><td>Swedish</td><td>708</td><td>21</td></tr>
+<tr><td>Belgian</td><td>733</td><td>21</td></tr>
+<tr><td>Czech</td><td>802</td><td>21</td></tr>
+<tr><td>Japanese</td><td>805</td><td>21</td></tr>
+<tr><td>Swiss</td><td>809</td><td>21</td></tr>
+<tr><td>Greek</td><td>829</td><td>21</td></tr>
+<tr><td>Jamaican</td><td>846</td><td>21</td></tr>
+<tr><td>Portuguese</td><td>858</td><td>21</td></tr>
+<tr><td>Belarusian</td><td>859</td><td>21</td></tr>
+<tr><td>Chinese</td><td>865</td><td>21</td></tr>
+<tr><td>Finnish</td><td>886</td><td>21</td></tr>
+<tr><td>Hungarian</td><td>902</td><td>21</td></tr>
+<tr><td>Bulgarian</td><td>926</td><td>21</td></tr>
+<tr><td>Turkish</td><td>935</td><td>21</td></tr>
+<tr><td>Kenyan</td><td>960</td><td>21</td></tr>
+<tr><td>Irish</td><td>980</td><td>22</td></tr>
+<tr><td>Moroccan</td><td>982</td><td>21</td></tr>
+<tr><td>Saudi_Arabian</td><td>1,028</td><td>21</td></tr>
+<tr><td>Mexican</td><td>1,040</td><td>21</td></tr>
+<tr><td>Estonian</td><td>1,042</td><td>21</td></tr>
+<tr><td>Slovak</td><td>1,045</td><td>21</td></tr>
+<tr><td>New_Zealand</td><td>1,054</td><td>21</td></tr>
+<tr><td>Austrian</td><td>1,057</td><td>21</td></tr>
+<tr><td>Romanian</td><td>1,073</td><td>21</td></tr>
+<tr><td>Algerian</td><td>1,082</td><td>21</td></tr>
+<tr><td>Kazakhstani</td><td>1,093</td><td>21</td></tr>
+<tr><td>Lithuanian</td><td>1,141</td><td>20</td></tr>
+<tr><td>Danish</td><td>1,195</td><td>21</td></tr>
+<tr><td>Slovenian</td><td>1,206</td><td>21</td></tr>
+<tr><td>Serbian</td><td>1,209</td><td>21</td></tr>
+<tr><td>Colombian</td><td>1,292</td><td>21</td></tr>
+<tr><td>South_Korean</td><td>1,300</td><td>21</td></tr>
+<tr><td>Zimbabwean</td><td>1,337</td><td>20</td></tr>
+<tr><td>Croatian</td><td>1,351</td><td>21</td></tr>
+<tr><td>Indian</td><td>1,371</td><td>21</td></tr>
+<tr><td>Uzbekistani</td><td>1,390</td><td>21</td></tr>
+<tr><td>Nigerian</td><td>1,393</td><td>21</td></tr>
+<tr><td>Puerto_Rican</td><td>1,402</td><td>21</td></tr>
+<tr><td>Argentine</td><td>1,403</td><td>21</td></tr>
+<tr><td>Venezuelan</td><td>1,412</td><td>21</td></tr>
+<tr><td>Chilean</td><td>1,416</td><td>21</td></tr>
+<tr><td>Bahraini</td><td>1,472</td><td>21</td></tr>
+<tr><td>Cypriot</td><td>1,485</td><td>21</td></tr>
+<tr><td>Ugandan</td><td>1,528</td><td>20</td></tr>
+<tr><td>Israeli</td><td>1,551</td><td>21</td></tr>
+<tr><td>Egyptian</td><td>1,556</td><td>21</td></tr>
+<tr><td>Ecuadorian</td><td>1,557</td><td>21</td></tr>
+<tr><td>Moldovan</td><td>1,562</td><td>21</td></tr>
+<tr><td>Trinidad_and_Tobago</td><td>1,564</td><td>21</td></tr>
+<tr><td>Tunisian</td><td>1,568</td><td>21</td></tr>
+<tr><td>Azerbaijani</td><td>1,573</td><td>21</td></tr>
+<tr><td>Iranian</td><td>1,581</td><td>21</td></tr>
+<tr><td>Peruvian</td><td>1,644</td><td>21</td></tr>
+<tr><td>Sudanese</td><td>1,707</td><td>19</td></tr>
+<tr><td>Georgie</td><td>1,717</td><td>21</td></tr>
+<tr><td>Taiwanese</td><td>1,738</td><td>21</td></tr>
+<tr><td>Ghanaian</td><td>1,743</td><td>21</td></tr>
+<tr><td>Bahamian</td><td>1,776</td><td>22</td></tr>
+<tr><td>Senegalese</td><td>1,807</td><td>21</td></tr>
+<tr><td>Kyrgyzstani</td><td>1,820</td><td>21</td></tr>
+<tr><td>Icelandic</td><td>1,836</td><td>21</td></tr>
+<tr><td>Kuwaiti</td><td>1,865</td><td>21</td></tr>
+<tr><td>Mauritian</td><td>1,873</td><td>21</td></tr>
+<tr><td>Dominican_Republic</td><td>1,918</td><td>21</td></tr>
+<tr><td>Botswana</td><td>1,934</td><td>21</td></tr>
+<tr><td>Sri_Lankan</td><td>1,944</td><td>21</td></tr>
+<tr><td>Bosnian_and_Herzegovinian</td><td>1,978</td><td>21</td></tr>
+<tr><td>Namibian</td><td>1,984</td><td>21</td></tr>
+<tr><td>Swazi</td><td>2,006</td><td>16</td></tr>
+<tr><td>Grenadian</td><td>2,020</td><td>20</td></tr>
+<tr><td>Ethiopian</td><td>2,035</td><td>21</td></tr>
+<tr><td>Guyanese</td><td>2,053</td><td>21</td></tr>
+<tr><td>South_Sudanese</td><td>2,059</td><td>13</td></tr>
+<tr><td>Luxembourgish</td><td>2,077</td><td>21</td></tr>
+<tr><td>Thai</td><td>2,081</td><td>21</td></tr>
+<tr><td>Filipino</td><td>2,090</td><td>21</td></tr>
+<tr><td>Barbadian</td><td>2,099</td><td>21</td></tr>
+<tr><td>Haitian</td><td>2,106</td><td>21</td></tr>
+<tr><td>Caymanian</td><td>2,107</td><td>19</td></tr>
+<tr><td>Panamanian</td><td>2,108</td><td>21</td></tr>
+<tr><td>Tajikistani</td><td>2,109</td><td>21</td></tr>
+<tr><td>Uruguayan</td><td>2,113</td><td>21</td></tr>
+<tr><td>Djiboutian</td><td>2,126</td><td>16</td></tr>
+	</table>
+	
+	
+</div>
+
+<div class="col-sm-4">
+	<table>
+	<tr bgcolor="#EEEEEE"><th colspan="3">Femmes</th></tr>
+	<tr bgcolor="#EEEEEE"><th>Pays</th><th>Total rangs</th><th>nb epreuves</th></tr>
+<tr><td>Russian</td><td>354</td><td>21</td></tr>
+<tr><td>United_States</td><td>420</td><td>21</td></tr>
+<tr><td>Allemagne</td><td>452</td><td>21</td></tr>
+<tr><td>Chinese</td><td>531</td><td>21</td></tr>
+<tr><td>British</td><td>532</td><td>22</td></tr>
+<tr><td>Ukrainian</td><td>538</td><td>21</td></tr>
+<tr><td>Romanian</td><td>629</td><td>21</td></tr>
+<tr><td>Saudi_Arabian</td><td>633</td><td>4</td></tr>
+<tr><td>Belarusian</td><td>673</td><td>21</td></tr>
+<tr><td>French</td><td>688</td><td>21</td></tr>
+<tr><td>Polish</td><td>693</td><td>21</td></tr>
+<tr><td>Australian</td><td>702</td><td>21</td></tr>
+<tr><td>Czech</td><td>740</td><td>22</td></tr>
+<tr><td>Bulgarian</td><td>742</td><td>21</td></tr>
+<tr><td>Italian</td><td>824</td><td>21</td></tr>
+<tr><td>Spanish</td><td>842</td><td>21</td></tr>
+<tr><td>Canadian</td><td>854</td><td>21</td></tr>
+<tr><td>Swedish</td><td>864</td><td>21</td></tr>
+<tr><td>Greek</td><td>879</td><td>21</td></tr>
+<tr><td>Dutch</td><td>900</td><td>21</td></tr>
+<tr><td>Jamaican</td><td>904</td><td>21</td></tr>
+<tr><td>Surinamese</td><td>916</td><td>28</td></tr>
+<tr><td>South_African</td><td>917</td><td>21</td></tr>
+<tr><td>Cuban</td><td>951</td><td>21</td></tr>
+<tr><td>Turkish</td><td>972</td><td>21</td></tr>
+<tr><td>Uzbekistani</td><td>996</td><td>20</td></tr>
+<tr><td>Kazakhstani</td><td>1,001</td><td>21</td></tr>
+<tr><td>Belgian</td><td>1,023</td><td>21</td></tr>
+<tr><td>Norwegian</td><td>1,024</td><td>21</td></tr>
+<tr><td>Finnish</td><td>1,028</td><td>21</td></tr>
+<tr><td>Portuguese</td><td>1,033</td><td>21</td></tr>
+<tr><td>Brazilian</td><td>1,038</td><td>21</td></tr>
+<tr><td>Swiss</td><td>1,048</td><td>21</td></tr>
+<tr><td>Hungarian</td><td>1,056</td><td>21</td></tr>
+<tr><td>Slovenian</td><td>1,060</td><td>21</td></tr>
+<tr><td>Lithuanian</td><td>1,111</td><td>21</td></tr>
+<tr><td>New_Zealand</td><td>1,140</td><td>21</td></tr>
+<tr><td>Irish</td><td>1,185</td><td>21</td></tr>
+<tr><td>Croatian</td><td>1,190</td><td>21</td></tr>
+<tr><td>Japanese</td><td>1,191</td><td>21</td></tr>
+<tr><td>Austrian</td><td>1,191</td><td>21</td></tr>
+<tr><td>Serbian</td><td>1,223</td><td>21</td></tr>
+<tr><td>Nigerian</td><td>1,245</td><td>20</td></tr>
+<tr><td>Colombian</td><td>1,260</td><td>21</td></tr>
+<tr><td>South_Sudanese</td><td>1,288</td><td>7</td></tr>
+<tr><td>Slovak</td><td>1,300</td><td>21</td></tr>
+<tr><td>Mexican</td><td>1,304</td><td>20</td></tr>
+<tr><td>Indian</td><td>1,319</td><td>21</td></tr>
+<tr><td>Kyrgyzstani</td><td>1,320</td><td>19</td></tr>
+<tr><td>Moldovan</td><td>1,352</td><td>21</td></tr>
+<tr><td>Estonian</td><td>1,394</td><td>21</td></tr>
+<tr><td>Moroccan</td><td>1,444</td><td>21</td></tr>
+<tr><td>Trinidad_and_Tobago</td><td>1,447</td><td>21</td></tr>
+<tr><td>Barbadian</td><td>1,466</td><td>18</td></tr>
+<tr><td>Grenadian</td><td>1,478</td><td>17</td></tr>
+<tr><td>Danish</td><td>1,481</td><td>21</td></tr>
+<tr><td>Puerto_Rican</td><td>1,484</td><td>21</td></tr>
+<tr><td>Cypriot</td><td>1,503</td><td>21</td></tr>
+<tr><td>Georgie</td><td>1,521</td><td>18</td></tr>
+<tr><td>Bahamian</td><td>1,539</td><td>21</td></tr>
+<tr><td>Venezuelan</td><td>1,540</td><td>21</td></tr>
+<tr><td>Israeli</td><td>1,552</td><td>21</td></tr>
+<tr><td>Algerian</td><td>1,562</td><td>21</td></tr>
+<tr><td>Niuean</td><td>1,575</td><td>10</td></tr>
+<tr><td>Sierra_Leonean</td><td>1,576</td><td>14</td></tr>
+<tr><td>East_Timorese</td><td>1,593</td><td>10</td></tr>
+<tr><td>Argentine</td><td>1,594</td><td>21</td></tr>
+<tr><td>Bahraini</td><td>1,595</td><td>20</td></tr>
+<tr><td>Thai</td><td>1,598</td><td>21</td></tr>
+<tr><td>South_Korean</td><td>1,598</td><td>21</td></tr>
+<tr><td>Kenyan</td><td>1,611</td><td>21</td></tr>
+<tr><td>Dominica</td><td>1,632</td><td>16</td></tr>
+<tr><td>Marshallese</td><td>1,637</td><td>10</td></tr>
+<tr><td>Senegalese</td><td>1,652</td><td>21</td></tr>
+<tr><td>Ghanaian</td><td>1,655</td><td>19</td></tr>
+<tr><td>Icelandic</td><td>1,663</td><td>21</td></tr>
+<tr><td>Ivorian</td><td>1,676</td><td>19</td></tr>
+<tr><td>Chilean</td><td>1,697</td><td>21</td></tr>
+<tr><td>Sri_Lankan</td><td>1,713</td><td>20</td></tr>
+<tr><td>Cameroonian</td><td>1,715</td><td>20</td></tr>
+<tr><td>Taiwanese</td><td>1,731</td><td>21</td></tr>
+<tr><td>Dominican_Republic</td><td>1,745</td><td>21</td></tr>
+<tr><td>Somalian</td><td>1,795</td><td>11</td></tr>
+<tr><td>Ecuadorian</td><td>1,802</td><td>21</td></tr>
+<tr><td>Guyanese</td><td>1,808</td><td>19</td></tr>
+<tr><td>Vietnamese</td><td>1,832</td><td>21</td></tr>
+<tr><td>United_States_Virgin_Islands</td><td>1,838</td><td>18</td></tr>
+<tr><td>Beninese</td><td>1,851</td><td>18</td></tr>
+<tr><td>North_Korean</td><td>1,871</td><td>21</td></tr>
+<tr><td>Burkinab%C3%A9</td><td>1,891</td><td>18</td></tr>
+<tr><td>Anguillian</td><td>1,904</td><td>14</td></tr>
+<tr><td>Azerbaijani</td><td>1,938</td><td>21</td></tr>
+<tr><td>Eritrean</td><td>1,944</td><td>16</td></tr>
+<tr><td>Tanzanian</td><td>1,951</td><td>17</td></tr>
+<tr><td>Libyan</td><td>1,954</td><td>14</td></tr>
+<tr><td>Bangladeshi</td><td>1,958</td><td>13</td></tr>
+<tr><td>Liberian</td><td>1,966</td><td>17</td></tr>
+<tr><td>British_Virgin_Islands</td><td>1,972</td><td>17</td></tr>
+<tr><td>Tunisian</td><td>1,979</td><td>21</td></tr>
+<tr><td>Antiguan_and_Barbudan</td><td>1,997</td><td>17</td></tr>
+</table>	
+	
+</div>
+
+</div>
 
 <h3 id="4.2">Comparaison rangs hommes et femmes d'un pays</h3>
 
@@ -1089,36 +1510,34 @@ WHERE r.idPays = 69
 GROUP BY r.sexe;
 
 -- mis en regard pour chaque épreuve
-SELECT r0.nom, r0.rang, r1.nom, r1.rang
+SELECT r0.epreuve, r0.nom, r0.rang, r1.nom, r1.rang
 FROM record r0
 JOIN record r1 ON r0.epreuve = r1.epreuve
 WHERE r0.idPays = 69 AND r0.sexe = 1 AND r1.idPays = 69 AND r1.sexe = 0; 
 </pre>
 
-<table><tr bgcolor="#EEEEEE"><th>epreuve</th><th>nom</th><th>rang</th><th>nom</th><th>rang</th></tr>
-<tr><td>100</td><td>Christine Arron</td><td>4</td><td>Jimmy Vicaut</td><td>194</td></tr>
-<tr><td>200</td><td>Marie-José Pérec</td><td>10</td><td>Christophe Lemaitre</td><td>7</td></tr>
-<tr><td>400</td><td>Marie-José Pérec</td><td>3</td><td>Leslie Djhone</td><td>24</td></tr>
-<tr><td>800</td><td>Patricia Djaté-Taillard</td><td>22</td><td>Pierre-Ambroise Bosse</td><td>9</td></tr>
-<tr><td>1500</td><td>Hind Dehiba</td><td>27</td><td>Mehdi Baala</td><td>5</td></tr>
+<table>
+<tr bgcolor="#EEEEEE"><th>epreuve</th><th>nom</th><th>rang</th><th>nom</th><th>rang</th></tr>
+<tr><td>100</td><td>Christine Arron</td><td>5</td><td>Jimmy Vicaut</td><td>6</td></tr>
+<tr><td>200</td><td>Marie-José Pérec</td><td>11</td><td>Christophe Lemaitre</td><td>8</td></tr>
+<tr><td>400</td><td>Marie-José Pérec</td><td>5</td><td>Leslie Djhone</td><td>25</td></tr>
+<tr><td>800</td><td>Patricia Djaté-Taillard</td><td>23</td><td>Pierre-Ambroise Bosse</td><td>10</td></tr>
+<tr><td>1500</td><td>Hind Dehiba</td><td>28</td><td>Mehdi Baala</td><td>6</td></tr>
 <tr><td>3000</td><td>Bouchra Ghezielle</td><td>104</td><td>Mustapha Essaid</td><td>21</td></tr>
-<tr><td>5000</td><td>Margaret Maury</td><td>17</td><td>Ismaïl Sghyr</td><td>14</td></tr>
-<tr><td>10000</td><td>Christelle Daunay</td><td>36</td><td>Antonio Martins</td><td>19</td></tr>
-<tr><td>Marathon</td><td>Christelle Daunay</td><td>25</td><td>Benoît Zwierzchiewski</td><td>9</td></tr>
-<tr><td>400H</td><td>Marie-José Pérec</td><td>81</td><td>Stéphane Diagana</td><td>11</td></tr>
-<tr><td>3000 steeple</td><td>Sophie Duarte</td><td>90</td><td>Mahiedine Mekhissi Benabbad</td><td>24</td></tr>
-<tr><td>Javelot</td><td>Maryse Éwanjé-Épée</td><td>-1</td><td>Mickaël Hanany</td><td>-1</td></tr>
-<tr><td>Javelot</td><td>Mathilde Andraud</td><td>-1</td><td>Mickaël Hanany</td><td>-1</td></tr>
-<tr><td>Perche</td><td>Vanessa Boslak</td><td>16</td><td>Renaud Lavillenie</td><td>1</td></tr>
-<tr><td>Longueur</td><td>Eunice Barber</td><td>21</td><td>Salim Sdiri</td><td>20</td></tr>
-<tr><td>Triple</td><td>Teresa Nzola Meso Ba</td><td>41</td><td>Teddy Tamgho</td><td>3</td></tr>
-<tr><td>Poids</td><td>Laurence Manfredi</td><td>48</td><td>Yves Niaré</td><td>44</td></tr>
-<tr><td>Disque</td><td>Mélina Robert-Michon</td><td>20</td><td>Jean-Claude Retel</td><td>18</td></tr>
-<tr><td>Marteau</td><td>Manuela Montebrun</td><td>11</td><td>Gilles Dupray</td><td>14</td></tr>
-<tr><td>Javelot</td><td>Maryse Éwanjé-Épée</td><td>-1</td><td>Pascal Lefevre</td><td>-1</td></tr>
-<tr><td>Javelot</td><td>Mathilde Andraud</td><td>-1</td><td>Pascal Lefevre</td><td>-1</td></tr>
-<tr><td>Decathlon</td><td>Marie Collonvillé</td><td>1</td><td>Kevin Mayer</td><td>1</td></tr>
-<tr bgcolor="#CCCCFF"><td colspan="2">Totaux</td><td>à corriger</td><td></td><td>à corriger</td></tr>
+<tr><td>5000</td><td>Margaret Maury</td><td>18</td><td>Ismaïl Sghyr</td><td>15</td></tr>
+<tr><td>10000</td><td>Christelle Daunay</td><td>37</td><td>Antonio Martins</td><td>20</td></tr>
+<tr><td>Marathon</td><td>Christelle Daunay</td><td>26</td><td>Benoît Zwierzchiewski</td><td>10</td></tr>
+<tr><td>400H</td><td>Marie-José Pérec</td><td>14</td><td>Stéphane Diagana</td><td>12</td></tr>
+<tr><td>3000 steeple</td><td>Sophie Duarte</td><td>24</td><td>Mahiedine Mekhissi Benabbad</td><td>25</td></tr>
+<tr><td>Hauteur</td><td>Maryse Éwanjé-Épée</td><td>39</td><td>Mickaël Hanany</td><td>30</td></tr>
+<tr><td>Perche</td><td>Vanessa Boslak</td><td>17</td><td>Renaud Lavillenie</td><td>2</td></tr>
+<tr><td>Longueur</td><td>Eunice Barber</td><td>22</td><td>Salim Sdiri</td><td>21</td></tr>
+<tr><td>Triple</td><td>Teresa Nzola Meso Ba</td><td>42</td><td>Teddy Tamgho</td><td>4</td></tr>
+<tr><td>Poids</td><td>Laurence Manfredi</td><td>49</td><td>Yves Niaré</td><td>45</td></tr>
+<tr><td>Disque</td><td>Mélina Robert-Michon</td><td>21</td><td>Jean-Claude Retel</td><td>19</td></tr>
+<tr><td>Marteau</td><td>Manuela Montebrun</td><td>12</td><td>Gilles Dupray</td><td>15</td></tr>
+<tr><td>Javelot</td><td>Mathilde Andraud</td><td>34</td><td>Pascal Lefevre</td><td>50</td></tr>
+<tr bgcolor="#CCCCFF"><td colspan="2">Totaux</td><td>554</td><td></td><td>351</td></tr>
 </table>
 
 
@@ -1188,10 +1607,10 @@ ORDER BY annee</pre>
 <tr><td>Belgian</td><td>Poids</td><td>19.34 m</td><td>Jos Schroeder</td><td>1976</td></tr>
 <tr><td>Polish</td><td>5000</td><td>13:17.69</td><td>Bronis?aw Malinowski</td><td>1976</td></tr>
 <tr><td>Polish</td><td>3000 steeple</td><td>8:09.11</td><td>Bronis?aw Malinowski</td><td>1976</td></tr>
-<tr><td>Polish</td><td>400</td><td>049.28</td><td>Irena Szewi?ska</td><td>1976</td></tr>
+<tr><td>Polish</td><td>400</td><td>49.28</td><td>Irena Szewi?ska</td><td>1976</td></tr>
 <tr><td>Polish</td><td>Poids</td><td>19.58 m</td><td>Ludwika Chewi?ska</td><td>1976</td></tr>
 
-<tr><td>Cuban</td><td>100</td><td>09.98</td><td>Silvio Leonard</td><td>1977</td></tr>
+<tr><td>Cuban</td><td>100</td><td>9.98</td><td>Silvio Leonard</td><td>1977</td></tr>
 <tr><td>Cuban</td><td>5000</td><td>13:44.8 a</td><td>Luis Medina</td><td>1977</td></tr>
 <tr><td>Czech</td><td>Poids</td><td>22.32 m</td><td>Helena Fibingerová</td><td>1977</td></tr>
 <tr><td>Polish</td><td>10000</td><td>27:53.61</td><td>Jerzy Kowol</td><td>1978</td></tr>
