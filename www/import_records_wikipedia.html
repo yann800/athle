@@ -79,7 +79,8 @@ background-color: #AAEEAA;
 				<li><a href="#4.1">Classement des pays toutes épreuves confondues</a></li>
 				<li><a href="#4.2">Comparaison rangs hommes et femmes d'un pays</a></li>
 				<li><a href="#4.3">Athlètes polyvalents</a></li>
-				<li><a href="#4.4">Ancienneté des records</a></li>
+				<li><a href="#4.4">Records par ancienneté</a></li>
+				<li><a href="#records800">Records 800 par ancienneté</a></li>
 			</ul>
 			
 			<li><a href="#references">Références</a></li>
@@ -93,7 +94,7 @@ background-color: #AAEEAA;
 	<section class="col-sm-offset-2 col-sm-8">
 	<p>
 Au commencement était l'enregistrement des pages Wikipedia. Ensuite tout a été construit 
-sur machine perso sans connexion internet. &Agrave; la fin, clé USB et merci Juliette
+sur machine perso sans connexion internet. &Agrave; la fin merci Juliette
 pour le prêt de la connexion permettant déploiement sur free et sauvegarde Git. 
 </p>
 
@@ -735,7 +736,7 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 	<li>Lewis + 9m mordu </li>
 	<li>Radcliffe 2:15:25 avec lièvres hommes (du coup record toujours reconnu ? si non, il doit y avoir 2:17 d'une kenyanne ? ... mais  
 	elle aurait pu avoir des lièvres jusqu'au bout tant que c'est des femmes. Hm. D'accord mais problème de cohérence quand même.)</li>
-	<li>Kipchoge 2:00:25 Monza 2018 lièvres. &Agrave; ce propos son 2:01:39 est énorme car il était seul à partir du km 17 je crois.</li>
+	<li>Kipchoge 2:00:25 Monza 2018 lièvres. &Agrave; ce propos son 2:01:39 est énorme car il était seul à partir du km 25.</li>
 	</ul>
 <li>records effacés pour changement de norme</li>
 
@@ -1098,7 +1099,7 @@ problématiques les plus évidentes. Qui augurent très mal des possibilités de
 sanitaires et scientifiques sans la même arrogance intellectuelle de Macron. Ce constat a une conséquence inattendue.
 Il m'incite à la prudence sur le jugement des révolutionnaires qui se sont entretués dans l'histoire. Sans connaître
 les enjeux vitaux méconnus, il est difficile de savoir ce que des camarades ou citoyens méritent. Parfois une
-médaille. Parfois le piolet ou la guillotine. Trotsky je ne pense pas. Ces successeurs, ça dépend. 
+médaille. Parfois le piolet ou la guillotine. Trotsky je ne pense pas. Ses successeurs, ça dépend. 
 
 
  
@@ -1112,7 +1113,9 @@ un peu bizarre. Pourquoi ? Eh bien parce que 24 records féminins du 400 sont su
 Afghanistan. En 1980 l'invasion de l'URSS. &A propos
 
 comme record ou "meilleure performance" 
-(intervention... débat sur le terme comme ayjourd'hui "implantations") 
+(intervention... débat sur le terme comme ayjourd'hui "implantations")
+
+xxx 
 
 <table><tr bgcolor="#EEEEEE"><th>Pays</th><th>Athlète</th><th>Perf</th></tr>
 <tr><td>Maldivian</td><td>Mirufath Ahmed</td><td>1:00.33</td></tr>
@@ -1580,14 +1583,17 @@ ORDER BY nb DESC, r.nom;</pre>
 
 
 
-<h3 id="4.4">Ancienneté des records</h3>
+<h3 id="4.4">Records par ancienneté</h3>
 <pre>SELECT p.nom, r.epreuve, r.perf, r.nom, r.annee FROM record r
 JOIN pays_wiki p ON p.id = r.idPays
 ORDER BY annee</pre>
 
-<br/>Sélection de quelques uns remarquables :<br/><br/> 
+<br/>Sélection de quelques-uns remarquables :<br/><br/> 
 
-<table border="1"><tr BGCOLOR="#CCCCFF"><th>nom</th><th>epreuve</th><th>perf</th><th>nom</th><th>annee</th></tr>
+<div class="row">
+	<div class="col-sm-6">
+
+<table border="1"><tr BGCOLOR="#EEEEEE"><th>nom</th><th>epreuve</th><th>perf</th><th>nom</th><th>annee</th></tr>
 <tr><td>Haitian</td><td>Longueur</td><td>7.93 m</td><td>Sylvio Cator</td><td>1928</td></tr>
 <tr><td>Liechtensteinian</td><td>Disque</td><td>43.36 m</td><td>Oskar Ospelt</td><td>1938</td></tr>
 <tr><td>Monaco</td><td>3000</td><td>8:34.7</td><td>Emile Battaglia</td><td>1948</td></tr>
@@ -1617,6 +1623,162 @@ ORDER BY annee</pre>
 <tr><td>Swiss</td><td>3000</td><td>7:41.00</td><td>Markus Ryffel</td><td>1979</td></tr>
 <tr><td>Syrian</td><td>200</td><td>21.45</td><td>Nabil Nahri</td><td>1979</td></tr>
 </table>
+
+	</div>
+
+	<div class="col-sm-6">
+<table><tr bgcolor="#EEEEEE"><th>epreuve</th><th>perf</th><th>nom</th><th>annee</th></tr>
+<tr><td>Hauteur</td><td>1.96 m</td><td>Maryse Éwanjé-Épée</td><td>1985</td></tr>
+<tr><td>Javelot</td><td>82.56 m</td><td>Pascal Lefevre</td><td>1989</td></tr>
+<tr><td>100H</td><td>12.56</td><td>Monique Éwanjé-Épée</td><td>1990</td></tr>
+<tr><td>10000</td><td>27:22.78</td><td>Antonio Martins</td><td>1992</td></tr>
+<tr><td>200</td><td>21.99</td><td>Marie-José Pérec</td><td>1993</td></tr>
+<tr><td>400H</td><td>47.37</td><td>Stéphane Diagana</td><td>1995</td></tr>
+<tr><td>800</td><td>1:56.53</td><td>Patricia Djaté-Taillard</td><td>1995</td></tr>
+<tr><td>400H</td><td>53.21</td><td>Marie-José Pérec</td><td>1995</td></tr>
+<tr><td>400</td><td>48.25</td><td>Marie-José Pérec</td><td>1996</td></tr>
+<tr><td>100</td><td>10.73</td><td>Christine Arron</td><td>1998</td></tr>
+<tr><td>3000</td><td>7:30.78</td><td>Mustapha Essaid</td><td>1998</td></tr>
+<tr><td>5000</td><td>12:58.83</td><td>Ismaïl Sghyr</td><td>2000</td></tr>
+<tr><td>Poids</td><td>18.68 m</td><td>Laurence Manfredi</td><td>2000</td></tr>
+<tr><td>Marteau</td><td>82.38 m</td><td>Gilles Dupray</td><td>2000</td></tr>
+<tr><td>Disque</td><td>68.90 m</td><td>Jean-Claude Retel</td><td>2002</td></tr>
+<tr><td>Longueur</td><td>7.05 m</td><td>Eunice Barber</td><td>2003</td></tr>
+<tr><td>Marathon</td><td>2:06:36</td><td>Benoît Zwierzchiewski</td><td>2003</td></tr>
+<tr><td>1500</td><td>3:28.98</td><td>Mehdi Baala</td><td>2003</td></tr>
+<tr><td>5000</td><td>14:43.90</td><td>Margaret Maury</td><td>2004</td></tr>
+<tr><td>Marteau</td><td>74.66 m</td><td>Manuela Montebrun</td><td>2005</td></tr>
+<tr><td>Heptathlon</td><td>6889 pt.</td><td>Eunice Barber</td><td>2005</td></tr>
+<tr><td>3000</td><td>8:35.41</td><td>Bouchra Ghezielle</td><td>2005</td></tr>
+<tr><td>Perche</td><td>4.70 m</td><td>Vanessa Boslak</td><td>2006</td></tr>
+<tr><td>Triple</td><td>14.69 m</td><td>Teresa Nzola Meso Ba</td><td>2007</td></tr>
+<tr><td>400</td><td>44.46</td><td>Leslie Djhone</td><td>2007</td></tr>
+<tr><td>Poids</td><td>20.72 m</td><td>Yves Niaré</td><td>2008</td></tr>
+<tr><td>3000 steeple</td><td>9:25.62</td><td>Sophie Duarte</td><td>2009</td></tr>
+<tr><td>Longueur</td><td>8.42 m</td><td>Salim Sdiri</td><td>2009</td></tr>
+<tr><td>1500</td><td>3:59.76</td><td>Hind Dehiba</td><td>2010</td></tr>
+<tr><td>Marathon</td><td>2:24:22</td><td>Christelle Daunay</td><td>2010</td></tr>
+<tr><td>200</td><td>19.80</td><td>Christophe Lemaitre</td><td>2011</td></tr>
+<tr><td>10000</td><td>31:35.81</td><td>Christelle Daunay</td><td>2012</td></tr>
+<tr><td>3000 steeple</td><td>8:00.09</td><td>Mahiedine Mekhissi Benabbad</td><td>2013</td></tr>
+<tr><td>Triple</td><td>18.04 m</td><td>Teddy Tamgho</td><td>2013</td></tr>
+<tr><td>Hauteur</td><td>2.34 m A</td><td>Mickaël Hanany</td><td>2014</td></tr>
+<tr><td>110H</td><td>12.95</td><td>Pascal Martinot-Lagarde</td><td>2014</td></tr>
+<tr><td>800</td><td>1:42.53</td><td>Pierre-Ambroise Bosse</td><td>2014</td></tr>
+<tr><td>Perche</td><td>6.05 m</td><td>Renaud Lavillenie</td><td>2015</td></tr>
+<tr><td>100</td><td>9.86</td><td>Jimmy Vicaut</td><td>2015</td></tr>
+<tr><td>Disque</td><td>66.73 m</td><td>Mélina Robert-Michon</td><td>2016</td></tr>
+<tr><td>Javelot</td><td>63.54 m</td><td>Mathilde Andraud</td><td>2016</td></tr>
+<tr><td>Decathlon</td><td>9126 pt.</td><td>Kevin Mayer</td><td>2018</td></tr>
+</table>
+
+</table>
+	</div>
+
+</div>
+
+<h3 id="records800">Records 800 par ancienneté</h3>
+<br/>
+<p>Bon allez c'est bien gentil tout ça mais assez rigolé. Passons aux choses sérieuses : le 800.</p><br/>
+
+<pre>SELECT p.nom, r.epreuve, r.perf, r.nom, r.annee FROM record r
+JOIN pays_wiki p ON p.id = r.idPays
+WHERE r.epreuve = '800'
+ORDER BY annee</pre>
+<br/>
+<p>Ci-dessous sélection des records remarquables. &Agrave; vérifier : les records 800 auraient-ils été moins affectés que les autres distances
+par l'arrivée des générations EPO &amp; co ?
+</p>
+<ul>
+<li>Chez les hommes, Sebastian Coe 1981, Joaquim Cruz 1984 &rarr;  Rudisha 2012, moins d'une seconde. Pas une révolution.
+Même Johnny Gray, 1985...</li>
+<li>Chez les femmes, encore plus vrai, quoique pour des raisons différentes - hormis Ceplak (Semenya cas particulier, encore pour d'autres raisons).</li>
+</ul>
+<p>Au final ce serait intéressant de classer les épreuves par progression en pourcentage des records du monde. Je parie sur le 800.</p>
+
+<br/>
+
+<div class="row">
+	<div class="col-sm-6">
+
+
+<table><tr bgcolor="#EEEEEE"><th>nom</th><th>perf</th><th>nom</th><th>annee</th></tr>
+<tr><td>New_Zealand</td><td>1:44.3+</td><td>Peter Snell</td><td>1962</td></tr>
+<tr><td>Australian</td><td>1:44.40</td><td>Ralph Doubell</td><td>1968</td></tr>
+<tr><td>Croatian</td><td>1:44.07</td><td>Luciano Sušanj</td><td>1974</td></tr>
+<tr><td>Liechtensteinian</td><td>1:46.16</td><td>Günther Hasler</td><td>1975</td></tr>
+
+<tr><td>Belgian</td><td>1:43.86</td><td>Ivo Van Damme</td><td>1976</td></tr>
+<tr><td>Jamaican</td><td>1:45.21</td><td>Seymour Newman</td><td>1977</td></tr>
+<tr><td>Bulgarian</td><td>1:46.3</td><td>Binko Kolev</td><td>1979</td></tr>
+<tr><td>Taiwanese</td><td>1:47.24</td><td>Wang Jung-Hua</td><td>1980</td></tr>
+
+<tr><td>British</td><td>1:41.73</td><td>Sebastian Coe</td><td>1981</td></tr>
+
+<tr><td>Allemagne</td><td>1:43.65</td><td>Willi Wülbeck</td><td>1983</td></tr>
+
+<tr><td>Brazilian</td><td>1:41.77</td><td>Joaquim Cruz</td><td>1984</td></tr>
+
+<tr><td>United_States</td><td>1:42.60</td><td>Johnny Gray</td><td>1985</td></tr>
+
+<tr><td>Cuban</td><td>1:42.85</td><td>Norberto Téllez</td><td>1996</td></tr>
+<tr><td>Norwegian</td><td>1:42.58</td><td>Vebjørn Rodal</td><td>1996</td></tr>
+
+<tr><td>Danish</td><td>1:41.11</td><td>Wilson Kipketer</td><td>1997</td></tr>
+
+
+<tr><td>Bahamian</td><td>1:49.54</td><td>Chris Brown</td><td>1998</td></tr>
+<tr><td>Russian</td><td>1:42.47</td><td>Yuriy Borzakovskiy</td><td>2001</td></tr>
+<tr><td>Swiss</td><td>1:42.55</td><td>André Bucher</td><td>2001</td></tr>
+<tr><td>Dutch</td><td>1:43.45</td><td>Bram Som</td><td>2006</td></tr>
+<tr><td>Monaco</td><td>1:47.61</td><td>Brice Etès</td><td>2010</td></tr>
+<tr><td>Sudanese</td><td>1:42.23</td><td>Abubaker Kaki Khamis</td><td>2010</td></tr>
+<tr><td>Botswana</td><td>1:41.73</td><td>Nijel Amos</td><td>2012</td></tr>
+<tr><td>Kenyan</td><td>1:40.91</td><td>David Rudisha</td><td>2012</td></tr>
+<tr><td>Ethiopian</td><td>1:42.37</td><td>Mohamed Aman</td><td>2013</td></tr>
+<tr><td>French</td><td>1:42.53</td><td>Pierre-Ambroise Bosse</td><td>2014</td></tr>
+<tr><td>Bosnian_and_Herzegovinian</td><td>1:42.51</td><td>Amel Tuka</td><td>2015</td></tr>
+<tr><td>Algerian</td><td>1:42.61</td><td>Taoufik Makhloufi</td><td>2016</td></tr>
+</table>
+	</div>
+
+	<div class="col-sm-6">
+<table border="1"><tr bgcolor="#EEEEEE"><th>nom</th><th>perf</th><th>nom</th><th>annee</th></tr>
+<tr><td>North_Korean</td><td>1:58.0</td><td>Shin Geum-Dan</td><td>1964</td></tr>
+<tr><td>Bulgarian</td><td>1:55.42</td><td>Nikolina Shtereva</td><td>1976</td></tr>
+<tr><td>Italian</td><td>1:57.66</td><td>Gabriella Dorio</td><td>1980</td></tr>
+<tr><td>Polish</td><td>1:56.95</td><td>Jolanta Januchta</td><td>1980</td></tr>
+<tr><td>Russian</td><td>1:54.81</td><td>Olga Mineyeva</td><td>1980</td></tr>
+<tr><td>Ukrainian</td><td>1:53.43</td><td>Nadezhda Olizarenko</td><td>1980</td></tr>
+<tr><td>Belarusian</td><td>1:56.1</td><td>Ravilya Agletdinova</td><td>1982</td></tr>
+<tr><td>Romanian</td><td>1:55.05</td><td>Doina Melinte</td><td>1982</td></tr>
+<tr><td>Czech</td><td>1:53.28</td><td>Jarmila Kratochvílová</td><td>1983</td></tr>
+<tr><td>Uzbekistani</td><td>1:56.21</td><td>Zamira Zaytseva</td><td>1983</td></tr>
+<tr><td>Allemagne</td><td>1:55.26</td><td>Sigrun Wodars</td><td>1987</td></tr>
+<tr><td>Cuban</td><td>1:54.44</td><td>Ana Fidelia Quirot</td><td>1989</td></tr>
+<tr><td>Algerian</td><td>1:58.72</td><td>Hassiba Boulmerka</td><td>1991</td></tr>
+<tr><td>Dutch</td><td>1:55.54</td><td>Ellen van Langen</td><td>1992</td></tr>
+<tr><td>Chinese</td><td>1:55.54</td><td>Liu Dong</td><td>1993</td></tr>
+<tr><td>French</td><td>1:56.53</td><td>Patricia Djaté-Taillard</td><td>1995</td></tr>
+<tr><td>British</td><td>1:56.21</td><td>Kelly Holmes</td><td>1995</td></tr>
+
+<tr><td>Belgian</td><td>1:58.31</td><td>Sandra Stals<br/>(CGT ?)</td><td>1998</td></tr>
+<tr><td>Mexican</td><td>2:01.12</td><td>Ana Guevara</td><td>1998</td></tr>
+
+<tr><td>Slovenian</td><td>1:55.19</td><td>Jolanda Ceplak</td><td>2002</td></tr>
+<tr><td>Kenyan</td><td>1:54.01</td><td>Pamela Jelimo</td><td>2008</td></tr>
+
+<tr><td>Burundian</td><td>1:55.47</td><td>Francine Niyonsaba</td><td>2017</td></tr>
+<tr><td>South_African</td><td>1:54.25</td><td>Caster Semenya</td><td>2018</td></tr>
+</table>
+</table>
+
+
+
+
+
+</div>
+
 </section>
 
 <section class="col-sm-offset-2 col-sm-8">
@@ -1646,7 +1808,7 @@ ORDER BY annee</pre>
 <footer class="col-md-offset-3 col-md-6">
 	<hr />
 	<p style="text-align: center;">
-		<i>Dernière MAJ <time pubdate="pubdate">30/01/2019</time></i>
+		<i>Dernière MAJ <time pubdate="pubdate">02/02/2019</time></i>
 	</p>
 </footer>
 

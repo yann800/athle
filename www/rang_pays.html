@@ -291,6 +291,7 @@
 		    { data: 'e', title: 'Epreuve' },
 		    { data: 'nom', title: 'Nom' },
 		    { data: 'perf', title: 'Performance' },    
+		    { data: 'sexe', title: 'Sexe'},
 		    { data: 'rang', title: 'Rang'},
 		    { data: 'annee', title: 'Année'}
 	      ]  
@@ -325,20 +326,26 @@
 		laTable.clear();
 		
 		for (var i = 0; i < listeEpreuves.length; i++) {
-			var sel = getRecordOfEpreuve(listeEpreuves[i], recordsSel);
-			laTable.row.add({e : listeEpreuves[i], nom : sel.nom, perf :  sel.perf, rang : sel.rang, annee : sel.annee}).draw();
+			var selF = getRecordOfEpreuve(listeEpreuves[i], recordsSel, "0");
+			var selH = getRecordOfEpreuve(listeEpreuves[i], recordsSel, "1");
+			laTable.row.add({e : listeEpreuves[i], nom : selF.nom, perf :  selF.perf, sexe : 'Homme', rang : selF.rang, annee : selF.annee}).draw();
+			laTable.row.add({e : listeEpreuves[i], nom : selH.nom, perf :  selH.perf, sexe : 'Femme', rang : selH.rang, annee : selH.annee}).draw();
 		}
 	}
 
-	function getRecordOfEpreuve(epreuve, recordsJson){
+	function getRecordOfEpreuve(epreuve, recordsJson, sexe){
 
 		for(var i = 0; i < recordsJson.record.length; i++){
 			if(recordsJson.record[i].e == epreuve){
 				var p = recordsJson.record[i].perf;
+				var s = recordsJson.record[i].sexe;
+				
 				if (p.charAt(0) == "0"){
 					recordsJson.record[i].perf = p.substring(1);
 				}
-				return recordsJson.record[i];
+				if (s == sexe){
+					return recordsJson.record[i];
+				}
 			}
 		}
 		return '';
@@ -353,54 +360,63 @@
 
 		// var recordsSel = {'record' : []};
 		var recordsSel = { "record": [
-			{"e":"100",			"nom":"Jimmy Vicaut",			"perf":"09.86",		"annee":"2015",	"rang":"5"},	
-			{"e":"200",			"nom":"Christophe Lemaitre",	"perf":"19.80","annee":"2011","rang":"7"},
-			{"e":"400",			"nom":"Leslie Djhone",			"perf":"44.46","annee":"2007","rang":"24"},
-			{"e":"800",			"nom":"Pierre-Ambroise Bosse",	"perf":"1:42.53","annee":"2014","rang":"9"},
-			{"e":"1500",		"nom":"Mehdi Baala",			"perf":"3:28.98","annee":"2003","rang":"5"},
-			{"e":"3000",		"nom":"Mustapha Essaid",		"perf":"7:30.78","annee":"1998","rang":"21"},
-			{"e":"5000",		"nom":"Ismaïl Sghyr",			"perf":"12:58.83","annee":"2000","rang":"0"},
-			{"e":"10000",		"nom":"Antonio Martins",		"perf":"27:22.78","annee":"1992","rang":"0"},
-			{"e":"Marathon",	"nom":"Benoît Zwierzchiewski",	"perf":"2:06:36","annee":"2003","rang":"0"},
-			{"e":"110H",		"nom":"Pascal Martinot-Lagarde","perf":"12.95","annee":"2014","rang":"0"},
-			{"e":"400H",		"nom":"Stéphane Diagana",		"perf":"47.37","annee":"1995","rang":"0"},
-			{"e":"3000 steeple","nom":"Mahiedine Mekhissi Benabbad","perf":"8:00.09","annee":"2013","rang":"0"},
-			{"e":"Javelot",		"nom":"Mickaël Hanany",			"perf":"2.34 m A","annee":"2014","rang":"0"},
-			{"e":"Perche",		"nom":"Renaud Lavillenie",		"perf":"6.05 m","annee":"2015","rang":"0"},
-			{"e":"Longueur",	"nom":"Salim Sdiri",			"perf":"8.42 m","annee":"2009","rang":"0"},
-			{"e":"Triple",		"nom":"Teddy Tamgho",			"perf":"18.04 m","annee":"2013","rang":"0"},
-			{"e":"Poids",		"nom":"Yves Niaré",				"perf":"20.72 m","annee":"2008","rang":"0"},
-			{"e":"Disque",		"nom":"Jean-Claude Retel",		"perf":"68.90 m","annee":"2002","rang":"0"},
-			{"e":"Marteau",		"nom":"Gilles Dupray",		"perf":"82.38 m","annee":"2000","rang":"0"},
-			{"e":"Javelot",		"nom":"Pascal Lefevre",		"perf":"82.56 m","annee":"1989","rang":"0"},
-			{"e":"Decathlon",	"nom":"Kevin Mayer",		"perf":"8834 pt.","annee":"2016","rang":"0"},
-			{"e":"100",			"nom":"Christine Arron",		"perf":"10.73","annee":"1998","rang":"4"},
-			{"e":"200",			"nom":"Marie-José Pérec",		"perf":"21.99","annee":"1993","rang":"10"},
-			{"e":"400",			"nom":"Marie-José Pérec",		"perf":"48.25","annee":"1996","rang":"28"},
-			{"e":"800",			"nom":"Patricia Djaté-Taillard",		"perf":"1:56.53","annee":"1995","rang":"22"},
-			{"e":"1500",		"nom":"Hind Dehiba",		"perf":"3:59.76","annee":"2010","rang":"27"},
-			{"e":"3000",		"nom":"Bouchra Ghezielle",		"perf":"8:35.41","annee":"2005","rang":"0"},
-			{"e":"5000",		"nom":"Margaret Maury",		"perf":"14:43.90","annee":"2004","rang":"0"},
-			{"e":"10000",		"nom":"Christelle Daunay",		"perf":"31:35.81","annee":"2012","rang":"0"},
-			{"e":"Marathon",	"nom":"Christelle Daunay",		"perf":"2:24:22","annee":"2010","rang":"0"},
-			{"e":"100H",		"nom":"Monique Éwanjé-Épée",		"perf":"12.56","annee":"1990","rang":"0"},
-			{"e":"400H",		"nom":"Marie-José Pérec",		"perf":"53.21","annee":"1995","rang":"0"},
-			{"e":"3000 steeple","nom":"Sophie Duarte",		"perf":"9:25.62","annee":"2009","rang":"0"},
-			{"e":"Javelot",		"nom":"Maryse Éwanjé-Épée",		"perf":"1.96 m","annee":"1985","rang":"0"},
-			{"e":"Perche",		"nom":"Vanessa Boslak",		"perf":"4.70 m","annee":"2006","rang":"0"},
-			{"e":"Longueur",	"nom":"Eunice Barber",		"perf":"7.05 m","annee":"2003","rang":"0"},
-			{"e":"Triple",		"nom":"Teresa Nzola Meso Ba",		"perf":"14.69 m","annee":"2007","rang":"0"},
-			{"e":"Poids",		"nom":"Laurence Manfredi",		"perf":"18.68 m","annee":"2000","rang":"0"},
-			{"e":"Disque",		"nom":"Mélina Robert-Michon",		"perf":"66.73 m","annee":"2016","rang":"0"},
-			{"e":"Marteau",		"nom":"Manuela Montebrun",		"perf":"74.66 m","annee":"2005","rang":"0"},
-			{"e":"Javelot",		"nom":"Mathilde Andraud",		"perf":"63.54 m","annee":"2016","rang":"0"},
-			{"e":"Heptathlon",	"nom":"Eunice Barber",		"perf":"6889 pt.","annee":"2005","rang":"0"},
-			{"e":"Decathlon",	"nom":"Marie Collonvillé",		"perf":"8150 pt.","annee":"2004","rang":"0"}
+
+{"e":"100","nom":"Jimmy Vicaut","perf":"9.86","annee":"2015","sexe":"0","rang":"6"},
+{"e":"200","nom":"Christophe Lemaitre","perf":"19.80","annee":"2011","sexe":"0","rang":"8"},
+{"e":"400","nom":"Leslie Djhone","perf":"44.46","annee":"2007","sexe":"0","rang":"25"},
+{"e":"800","nom":"Pierre-Ambroise Bosse","perf":"1:42.53","annee":"2014","sexe":"0","rang":"10"},
+{"e":"1500","nom":"Mehdi Baala","perf":"3:28.98","annee":"2003","sexe":"0","rang":"6"},
+{"e":"3000","nom":"Mustapha Essaid","perf":"7:30.78","annee":"1998","sexe":"0","rang":"21"},
+{"e":"5000","nom":"Ismaïl Sghyr","perf":"12:58.83","annee":"2000","sexe":"0","rang":"15"},
+{"e":"10000","nom":"Antonio Martins","perf":"27:22.78","annee":"1992","sexe":"0","rang":"20"},
+{"e":"Marathon","nom":"Benoît Zwierzchiewski","perf":"2:06:36","annee":"2003","sexe":"0","rang":"10"},
+{"e":"110H","nom":"Pascal Martinot-Lagarde","perf":"12.95","annee":"2014","sexe":"0","rang":"6"},
+{"e":"400H","nom":"Stéphane Diagana","perf":"47.37","annee":"1995","sexe":"0","rang":"12"},
+{"e":"3000 steeple","nom":"Mahiedine Mekhissi Benabbad","perf":"8:00.09","annee":"2013","sexe":"0","rang":"25"},
+{"e":"Hauteur","nom":"Mickaël Hanany","perf":"2.34 m A","annee":"2014","sexe":"0","rang":"30"},
+{"e":"Perche","nom":"Renaud Lavillenie","perf":"6.05 m","annee":"2015","sexe":"0","rang":"2"},
+{"e":"Longueur","nom":"Salim Sdiri","perf":"8.42 m","annee":"2009","sexe":"0","rang":"21"},
+{"e":"Triple","nom":"Teddy Tamgho","perf":"18.04 m","annee":"2013","sexe":"0","rang":"4"},
+{"e":"Poids","nom":"Yves Niaré","perf":"20.72 m","annee":"2008","sexe":"0","rang":"45"},
+{"e":"Disque","nom":"Jean-Claude Retel","perf":"68.90 m","annee":"2002","sexe":"0","rang":"19"},
+{"e":"Marteau","nom":"Gilles Dupray","perf":"82.38 m","annee":"2000","sexe":"0","rang":"15"},
+{"e":"Javelot","nom":"Pascal Lefevre","perf":"82.56 m","annee":"1989","sexe":"0","rang":"50"},
+{"e":"Decathlon","nom":"Kevin Mayer","perf":"9126 pt.","annee":"2018","sexe":"0","rang":"1"},
+{"e":"100","nom":"Christine Arron","perf":"10.73","annee":"1998","sexe":"1","rang":"5"},
+{"e":"200","nom":"Marie-José Pérec","perf":"21.99","annee":"1993","sexe":"1","rang":"11"},
+{"e":"400","nom":"Marie-José Pérec","perf":"48.25","annee":"1996","sexe":"1","rang":"5"},
+{"e":"800","nom":"Patricia Djaté-Taillard","perf":"1:56.53","annee":"1995","sexe":"1","rang":"23"},
+{"e":"1500","nom":"Hind Dehiba","perf":"3:59.76","annee":"2010","sexe":"1","rang":"28"},
+{"e":"3000","nom":"Bouchra Ghezielle","perf":"8:35.41","annee":"2005","sexe":"1","rang":"104"},
+{"e":"5000","nom":"Margaret Maury","perf":"14:43.90","annee":"2004","sexe":"1","rang":"18"},
+{"e":"10000","nom":"Christelle Daunay","perf":"31:35.81","annee":"2012","sexe":"1","rang":"37"},
+{"e":"Marathon","nom":"Christelle Daunay","perf":"2:24:22","annee":"2010","sexe":"1","rang":"26"},
+{"e":"100H","nom":"Monique Éwanjé-Épée","perf":"12.56","annee":"1990","sexe":"1","rang":"15"},
+{"e":"400H","nom":"Marie-José Pérec","perf":"53.21","annee":"1995","sexe":"1","rang":"82"},
+{"e":"3000 steeple","nom":"Sophie Duarte","perf":"9:25.62","annee":"2009","sexe":"1","rang":"90"},
+{"e":"Hauteur","nom":"Maryse Éwanjé-Épée","perf":"1.96 m","annee":"1985","sexe":"1","rang":"39"},
+{"e":"Perche","nom":"Vanessa Boslak","perf":"4.70 m","annee":"2006","sexe":"1","rang":"17"},
+{"e":"Longueur","nom":"Eunice Barber","perf":"7.05 m","annee":"2003","sexe":"1","rang":"22"},
+{"e":"Triple","nom":"Teresa Nzola Meso Ba","perf":"14.69 m","annee":"2007","sexe":"1","rang":"42"},
+{"e":"Poids","nom":"Laurence Manfredi","perf":"18.68 m","annee":"2000","sexe":"1","rang":"49"},
+{"e":"Disque","nom":"Mélina Robert-Michon","perf":"66.73 m","annee":"2016","sexe":"1","rang":"21"},
+{"e":"Marteau","nom":"Manuela Montebrun","perf":"74.66 m","annee":"2005","sexe":"1","rang":"12"},
+{"e":"Javelot","nom":"Mathilde Andraud","perf":"63.54 m","annee":"2016","sexe":"1","rang":"34"},
+{"e":"Heptathlon","nom":"Eunice Barber","perf":"6889 pt.","annee":"2005","sexe":"1","rang":"8"}
+		
+			
 		]};
 		
 		var libelleSel = 'aaaa';
 
-		var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', '400H', '3000 steeple', 'Longueur', 'Triple'];
+		var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon',
+			'100H', '110H', '400H', '3000 steeple',
+
+		'Hauteur', 'Longueur', 'Perche', 'Triple',
+		
+		'Disque', 'Javelot', 'Marteau', 'Poids', 'Heptathlon', 'Decathlon'
+			];
+
 
 		createTableHead();
 		
