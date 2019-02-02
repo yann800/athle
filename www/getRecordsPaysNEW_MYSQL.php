@@ -43,7 +43,7 @@ if ($sexe != "") {
 	$clauseSexe = " AND r.sexe = " . $sexe;
 }
 
-$sql = "SELECT r.epreuve AS e, r.nom AS n, r.perf AS p, r.annee AS a, r.rang AS rang FROM record r " .
+$sql = "SELECT r.epreuve AS e, r.nom AS n, r.perf AS p, r.annee AS a, r.sexe AS s, r.rang AS rang FROM record r " .
 " WHERE r.idPays = " . $id_pays . 
 	$clauseSexe .
 	";";
@@ -59,9 +59,9 @@ else {
 	// NEW while($row = $result->fetch_assoc()) {
 		if ($hint === "") {
 
-		$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","rang":"' . $row["rang"]. '"}';
+		$hint = '{ "record": [{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","sexe":"' . $row["s"] . '","rang":"' . $row["rang"]. '"}';
 		} else {
-			$hint .= ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","rang":"' . $row["rang"].'"}';
+			$hint .= ',{"e":"' . $row["e"] . '","nom":"' . $row["n"] . '","perf":"' . $row["p"] . '","annee":"' . $row["a"] . '","sexe":"' . $row["s"] . '","rang":"' . $row["rang"].'"}';
 		}
 	}
 	$hint .= ']}';

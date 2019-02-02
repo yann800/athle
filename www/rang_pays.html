@@ -285,12 +285,13 @@
 		
 		var table = $('#table_records_pays_sel').DataTable({
 			data : records.data,
+			"order": [[ 4, "asc" ]],
 	        "paging": false, 
 	        "info": false,         
 		  columns : [
 		    { data: 'e', title: 'Epreuve' },
 		    { data: 'nom', title: 'Nom' },
-		    { data: 'perf', title: 'Performance' },    
+		    { data: 'perf', title: 'Perf' },    
 		    { data: 'sexe', title: 'Sexe'},
 		    { data: 'rang', title: 'Rang'},
 		    { data: 'annee', title: 'Année'}
@@ -328,8 +329,13 @@
 		for (var i = 0; i < listeEpreuves.length; i++) {
 			var selF = getRecordOfEpreuve(listeEpreuves[i], recordsSel, "0");
 			var selH = getRecordOfEpreuve(listeEpreuves[i], recordsSel, "1");
-			laTable.row.add({e : listeEpreuves[i], nom : selF.nom, perf :  selF.perf, sexe : 'Homme', rang : selF.rang, annee : selF.annee}).draw();
-			laTable.row.add({e : listeEpreuves[i], nom : selH.nom, perf :  selH.perf, sexe : 'Femme', rang : selH.rang, annee : selH.annee}).draw();
+			
+			if (selF != "") {
+				laTable.row.add({e : listeEpreuves[i], nom : selF.nom, perf :  selF.perf, sexe : 'Homme', rang : selF.rang, annee : selF.annee}).draw();
+			}
+			if (selH != "") {
+				laTable.row.add({e : listeEpreuves[i], nom : selH.nom, perf :  selH.perf, sexe : 'Femme', rang : selH.rang, annee : selH.annee}).draw();
+			}
 		}
 	}
 
@@ -340,6 +346,9 @@
 				var p = recordsJson.record[i].perf;
 				var s = recordsJson.record[i].sexe;
 				
+				if (p == ""){
+					return "";
+				}
 				if (p.charAt(0) == "0"){
 					recordsJson.record[i].perf = p.substring(1);
 				}
@@ -371,8 +380,8 @@
 {"e":"10000","nom":"Antonio Martins","perf":"27:22.78","annee":"1992","sexe":"0","rang":"20"},
 {"e":"Marathon","nom":"Benoît Zwierzchiewski","perf":"2:06:36","annee":"2003","sexe":"0","rang":"10"},
 {"e":"110H","nom":"Pascal Martinot-Lagarde","perf":"12.95","annee":"2014","sexe":"0","rang":"6"},
-{"e":"400H","nom":"Stéphane Diagana","perf":"47.37","annee":"1995","sexe":"0","rang":"12"},
-{"e":"3000 steeple","nom":"Mahiedine Mekhissi Benabbad","perf":"8:00.09","annee":"2013","sexe":"0","rang":"25"},
+{"e":"400H","nom":"Stéphane Diagana","perf":"47.37","annee":"1995","sexe":"0","rang":"5"},
+{"e":"3000 steeple","nom":"Mahiedine Mekhissi Benabbad","perf":"8:00.09","annee":"2013","sexe":"0","rang":"4"},
 {"e":"Hauteur","nom":"Mickaël Hanany","perf":"2.34 m A","annee":"2014","sexe":"0","rang":"30"},
 {"e":"Perche","nom":"Renaud Lavillenie","perf":"6.05 m","annee":"2015","sexe":"0","rang":"2"},
 {"e":"Longueur","nom":"Salim Sdiri","perf":"8.42 m","annee":"2009","sexe":"0","rang":"21"},

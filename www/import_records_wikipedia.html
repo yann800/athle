@@ -110,8 +110,7 @@ possibles par la mise des records en base.
 <p> 
 Par ailleurs, une suggestion aux responsables d'athle.fr au cas où l'un d'eux lit ces lignes. Le mécanisme ici brièvement décrit 
 pourrait aisément être appliqué aux pages des résultats antérieurs à 2004, actuellement ignorés. Et ainsi mettre à jour les fiches
-de pas mal d'athlètes. Sans parler des perspectives ouvertes pour les statistiques et analyses. Le budget informatique de la fédé
-est sans doute limité, certes. Mais bon, comparé par exemple au prix de la vaisselle de l'Elysée... Et comme la période est aux doléances...
+de pas mal d'athlètes. Sans parler des perspectives ouvertes pour les statistiques et analyses.
 </p>
   	
 	</section>	
@@ -235,7 +234,7 @@ UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '400' AND SUB
 
 -- on calcule les rangs... 
 
--- puis on retire les '0' disgracieux ajoutés précédement
+-- puis on retire les '0' disgracieux ajoutés précédemment
 UPDATE record r SET r.perf = SUBSTRING(r.perf, 2, LENGTH(r.perf)) WHERE SUBSTRING(r.perf, 1, 1) = '0';</pre>
 
 <h3 id="1.3">Corrections manuelles</h3>
@@ -734,9 +733,10 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 	<ul>
 	<li>Pedroso 8.96 Sestrières pb mesure vent</li> 
 	<li>Lewis + 9m mordu </li>
-	<li>Radcliffe 2:15:25 avec lièvres hommes (du coup record toujours reconnu ? si non, il doit y avoir 2:17 d'une kenyanne ? ... mais  
-	elle aurait pu avoir des lièvres jusqu'au bout tant que c'est des femmes. Hm. D'accord mais problème de cohérence quand même.)</li>
-	<li>Kipchoge 2:00:25 Monza 2018 lièvres. &Agrave; ce propos son 2:01:39 est énorme car il était seul à partir du km 25.</li>
+	<li>Radcliffe 2:15:25 avec lièvres hommes (du coup record toujours reconnu ?
+	si non, 2:17:01	Mary Jepkosgei Keitany 23 April 2017 Londres mais aussi avec lièvres hommes ? Mais si c'est des 
+	lièvres femmes presque jusqu'au bout, autorisé ? Problème cornélien....</li>
+	<li>Kipchoge 2:00:25 Monza 2018 lièvres. 2:01:39 Berlin 2018, seul à partir du km 25.</li>
 	</ul>
 <li>records effacés pour changement de norme</li>
 
@@ -782,7 +782,7 @@ Pour les concours en salle, le rebond des pistes d'élan en bois procure un avan
 Tyson Gay 9.41 (−0.4 m/s) 16 mai 2010. Du reste, le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
 <br/>L'avantage des couloirs centraux ou extérieurs ? Difficile à estimer. Dépend trop de paramètres. Pierre-Jean Vazel p.ex.
 avance le chiffre d'1 ou 2/100ème par couloir sur 200 <a href="#ref_couloir200" id="couloir2">[2]</a>.    
-Van Niekerke au couloir 9 lors de ses 43.03. Inversement Aki bua record et au couloir 1 400H 1972.
+van van Niekerk au couloir 9 lors de ses 43.03. Inversement Aki bua record au couloir 1 400H 1972.
 </li>
 <li>Vent. &Eacute;videment Beamon et Mennea exemples les plus connus (surtout avec en plus l'altitude de Mexico). Pour les courses et les concours je crois que c'est le max qui est retenu. Ou une moyenne, s'il y a un souffle juste une seconde ?
 Comme il y a plusieurs courses et concours sur les décathlons, un Athlé mag disait qu'il y avait une moyenne. Ou éventuellement pourrait être 
@@ -790,13 +790,13 @@ retenu un essai moins fort mais avec vent régulier.
 <br/>
 &Agrave; Villeneuve d'Asq en 1955 Edwards a fait 18m43 avec vent +2.3. Auparavant Conley avait fait 18m17 (?) avec juste +2.1.
 </li>
-<li>Température et heure de la jounée, conséquence du contexte. P.ex. record Belgique 44.43 Jonathan Borlée en série des JO 2012.
+<li>Température et heure de la journée, conséquence du contexte. P.ex. record Belgique 44.43 Jonathan Borlée en série des JO 2012.
 Ce serait intéressant de savoir son état d'esprit. Relâchement, motivation, pression ?</li>
 <li>Aide de lièvres
 Sur 100 et 200 la concurrence avantage ou pas (Asafa Powell...)
 <br/>
 &Agrave; partir du 400 l'aide lièvre devient évidente. P.ex. Le RM 43.29 d'Harry Butch Reynolds avait été aidé par 
-le départ kamikaze (un nigérien ?) sur le couloir extérieur. Après avec un lièvre, Van Niekerke aurait pu / pourra descendre sous les 43'' ?  
+le départ kamikaze (un nigérien ?) sur le couloir extérieur. Après avec un lièvre, Van Niekerk aurait pu / pourra descendre sous les 43'' ?  
 <br/>
 Sur 800 Caster Semenya a demandé à l'organisateur Paris Diamond League de ne pas mettre de lièvre. Cela lui
 a réussi de mettre une claque à son record 1.54.xx (<a href="http://paris.diamond.xxx/resulat.pdf">un beau meeting ce samedi à Charléty</a>).  
@@ -851,7 +851,7 @@ La chose est devenue quasi impossible aujourd'hui que la barre est juste posée.
 
 <br/>
 </li>
-<li>Pour longueur et triple, la distance à la planche pourrait être indiquée. L'idée de mesurer le saut sans contrainte de la plance 
+<li>Pour longueur et triple, la distance à la planche pourrait être indiquée. L'idée de mesurer le saut sans contrainte de la planche 
 n'est pas bonne. Lewis serait content, il aurait le record. Mais cela changerait l'essence de la discipline, la contrainte fait
 partie du jeu.
 <br/>
@@ -883,7 +883,7 @@ Plus tard, de façon similaire, on peut estimer que les records cubains plaident
 socialiste des deux records "vers le haut" de Bubka et Sotomayor. Un beau symbole. Les avantages
 de l'indoor ne sont guère discutables ; sans offense à Lavillenie le vrai record 6.14 reste à Bubka. Avec cette décision
 d'unification, l'IAAF est pour le coup "amateur" dans le mauvais sens du terme. &Agrave; moins que la raison
-soit idélogique, résidu de la guerre froide, ou quelque obscure politique, qui sait ? (tout complotisme mis à part... inutile. Reste
+soit idéologique, résidu de la guerre froide, ou quelque obscure politique, qui sait ? (tout complotisme mis à part... inutile. Reste
 que si le record plein air était US...? il n'est pas interdit de se poser la question, au vu des innombrables exemples  
 de différences de traitements en matière dopage et disqualifications à chaque championnat). 
 
@@ -1091,7 +1091,7 @@ Un numéro récent de Sport &amp; Vie reportait que Staline était, paraît-il, 
 Mais il aurait finalement été convaincu par ses camarades de l'enjeu idéologique.
 Il n'était donc peut-être pas si dogmatique comme on l'accuse !
 <br/><br/>Cette dernière blague pourrait paraître d'un goût douteux pour 
-certains trotskyses, je m'en fous ; c'est façon de les inviter à réfléchir à leur persistence 
+certains trotskyses, je m'en fous ; c'est façon de les inviter à réfléchir à leur persistance 
 à s'abstenir de condamner les calomnies au sein de leurs propres rangs envers le mouvement de la décroissance
 et la timidité à remettre en question de l'industrie
 automobile et nucléaire  <a href="#ref_tc" id="tc">[4]</a>. Dit cela en m'en tenant aux positions 
@@ -1105,17 +1105,11 @@ médaille. Parfois le piolet ou la guillotine. Trotsky je ne pense pas. Ses succ
  
 
 <h3 id="3.4">Condition des femmes</h3>
-Les premiers tests Pérec réservent quelques surprises. Notre Marie-Josée Pérec se retrouve au 27ème rang sur 400. C'est
-un peu bizarre. Pourquoi ? Eh bien parce que 24 records féminins du 400 sont supérieurs à la minute. Et pour l'opérateur alphanumérique <code>&lt;</code>
-1:00 est devant 48.25...
-
+Les premiers tests réservent des surprises. P.ex. Marie-Josée Pérec se retrouve au 27ème rang sur 400. Eh bien 
+pourquoi ? Parce que 24 records féminins du 400 sont supérieurs à la minute. Et comme la comparaison
+alphanumérique <code>'1:00' &lt; '48.25'</code> est <code>true</code>... Donc il faut préfixer avec '0'. 
+Au delà de cette simple correction, la modestie des records des pays peut laisser songeur. Quels sont les pays ? 
 <br/><br/>
-Afghanistan. En 1980 l'invasion de l'URSS. &A propos
-
-comme record ou "meilleure performance" 
-(intervention... débat sur le terme comme ayjourd'hui "implantations")
-
-xxx 
 
 <table><tr bgcolor="#EEEEEE"><th>Pays</th><th>Athlète</th><th>Perf</th></tr>
 <tr><td>Maldivian</td><td>Mirufath Ahmed</td><td>1:00.33</td></tr>
@@ -1150,9 +1144,28 @@ xxx
 <tr><td>United_States</td><td>Sanya Richards</td><td>48.70</td></tr>
 <tr><td>...</td><td>...</td><td>...</td></tr>
 </table>
+<br/>
+<p>Ces records donnent une idée du développement du sport dans les pays. Accessoirement, une idée de la condition des femmes.
+1:16.98 pour l'Afghanistan, bon.... Deux réflexions.</p>
 
-Au delà de la bête correction nécessaire, ces records supérieurs à la minute laissent songeur.
-Ils donnent une idée du développement du sport dans les pays. Et accessoirement de la condition des femmes.
+<ul><li>La pratique de l'athlétisme - sans même parler de compétition - peut être considérée comme droit inaliénable.
+Comme le refus de l'oppression des femmes et des minorités, ou la souffrance animale. Quelque soit les cultures.
+Cela posé, prudence avec la reconnaissance du caractère "universel" des principes pour lesquels on se bat.
+Par exemple, il est ennuyeux de constater que Georges Bush n'est pas le seul à soutenir que le mode de vie de la société industrielle
+- occidentale ou non - "n'est pas négociable". Là on est au delà du clivage capitaliste / anticapitaliste. De quoi être 
+pris du doute, parfois, et se demander qui est le taliban de qui.</li>
+<li>Un exemple concret. Il n'y a pas un sur cent, mais ils existent : les électrosensibles (EHS). Les plus graves restent cachés, cloîtrés.
+Quand ils sortent c'est avec des voiles, quasi burka. J'en ai rencontré plusieurs, personnellement. Pas à Kaboul, en Ile-de-France.
+Bref. Fin de la parenthèse. &Eacute;viter faire le parallèle était difficile car la similitude des images de burkas est saisissante.
+C'est triste à dire mais c'est ainsi, des camarades peuvent se montrés à la fois farouches opposants
+à l'opppression des femmes, mais à la soit doctrinement - j'ai envie de dire religieusement - incapables de reconnaître la réalité de ce
+scandale sanitaire (cf. interpellation <a href="#ref_oem" id="oem">[5]</a> sans réponse, p.ex.). Il y a des climato-sceptiques comme Trump, il y a des EHS-sceptiques (négationniste serait le terme plus exact).
+L'enfer est pavé de bonnes intentions. Si le paradis socialiste promis condamne des centaines d'EHS aux burkas en couverture aluminium,
+il pourra avoir des alliances inattendues, même comme en 1979 avec la CIA (perso à la base je suis plutôt attiré par le CIO).
+Provocation mise à part, la question d'alliance se pose déjà. L'an dernier un député d'ex-droite (je ne donne pas le nom ici pour ne pas lui
+faire de pub) a proposé d'aider à réserver une salle à l'Assemblée Nationale pour la tenue d'un débat avec Michèle Rivasi notament sur les EHS. 
+La main tendue a été refusée, mais le dilemme se pose et va se reposer.</li>
+</ul>
 
 </section>
 
@@ -1798,7 +1811,11 @@ Même Johnny Gray, 1985...</li>
 <a href="#ref_tc" id="tc">[4]</a> 
 <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur</a>, 2018.
 
- 
+<br/>
+<a href="#ref_oem" id="oem">[5]</a> 
+<a href="http://base.athle.free.fr/oem/Quelle_position_du_NPA_sur_les_OEM.pdf">Scandale sanitaire des ondes électromagnétiques : pourquoi le NPA devrait prendre position</a>, 2015.
+
+  
 
 </section>
 <br/><br/>
