@@ -177,11 +177,13 @@ legend.scheduler-border {
 
     function selection() {
         
-    	
-
     	var sexe = $("input[name='sexe']:checked").val();
     	var epreuve = $("input[name='epreuve']:checked").val();
 
+    	if (sexe == undefined || epreuve == undefined){
+			return;    		
+    	}
+    	
     	$("#sqlSexe").text(sexe);
     	$("#sqlEpreuve").text(epreuve);
     	

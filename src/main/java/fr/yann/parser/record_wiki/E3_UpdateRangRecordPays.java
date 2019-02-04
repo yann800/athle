@@ -62,6 +62,14 @@ public class E3_UpdateRangRecordPays {
 
 		System.out.println("400 : " + i + "UPDATE");
 		
+
+		//-- 3000 femmes (pour 047.60 < 1.00.00)
+		sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve LIKE '3000%' AND SUBSTRING(r.perf, 1, 1) IN ('8', '9')";
+
+		i = stmt.executeUpdate(sql);
+
+		System.out.println("300% : " + i + "UPDATE");
+		
 		
 		stmt.close();
 		

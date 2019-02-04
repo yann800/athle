@@ -95,14 +95,14 @@ background-color: #AAEEAA;
 	<p>
 Au commencement était l'enregistrement des pages Wikipedia. Ensuite tout a été construit 
 sur machine perso sans connexion internet. &Agrave; la fin merci Juliette
-pour le prêt de la connexion permettant déploiement sur free et sauvegarde Git. 
+pour le prêt de la connexion permettant déploiement free. 
 </p>
 
 <p> 
 Ceci pour expliquer pourquoi la présente page manque de références.
 Je n'ai pas eu trop la possibilité de chercher les sites qui analysent les records nationaux. Nul doute qu'ils existent !
 Je suis preneur pour tout lien. Et pour signalement d'erreurs, voire idées de requêtes devenues
-possibles par la mise des records en base.  
+possibles par la mise des records dans BD (bas données, pas LBD).  
 &Eacute;crire à base.athle
 (plutôt @gmail.com ; @free.fr marche aussi mais moins pratique à consulter).    
 </p>
@@ -160,7 +160,7 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 		d'importation. Quand de nouveaux records seront battus (Kipchoge n'a pas dit son dernier mot p.ex.), il faudra pouvoir remettre la base à zéro et
 		ré-importer les pages Wikipedia sans intervention manuelle.</li>
 		<li>hypothèse insatisfaisante unicité [epreuve, pays, sexe].
-		Donc pas de records codétenus. Et donc p.ex. les statistiques sur année sont faussées (je ne retiens que le record le plus ancien s'il faut choisir)
+		Donc pas de records codétenus ou égalés. Et donc p.ex. les statistiques sur année sont faussées (je ne retiens que le record le plus ancien s'il faut choisir)
 		</li>
 		<li>pas d'hypothèse sur l'ordre des colonnes ; il peut varier selon les pays.</li>
 	</ul> 
@@ -256,7 +256,8 @@ DELETE FROM record WHERE epreuve = 'Decathlon' AND sexe = 1;
 <h2 id="2">2. Caractéristiques des records</h2>
 
 <p>Retenues pour l'instant : les épreuves olympiques plus le 3000 (&Agrave; venir marche et relais).
-<p>&Agrave; noter le record disque femme est la seule épreuve où le record femme est supérieur au record homme (pas la même norme évidemment).
+<p>&Agrave; noter le record disque femme est la seule épreuve où le record femme est supérieur au record homme (pas la même norme
+évidemment).
 </p>
 
 <div class="row">
@@ -781,7 +782,7 @@ Pour les concours en salle, le rebond des pistes d'élan en bois procure un avan
 <li>Numéro du couloir, donc largeur des virages. Au maximum le rayon d'un cercle. Sinon trop proche de la ligne droite (le record du 200 l.d. est détenu par 
 Tyson Gay 9.41 (−0.4 m/s) 16 mai 2010. Du reste, le couloir 8 de la piste de Lausanne n'est pas homologable pour cette raison.
 <br/>L'avantage des couloirs centraux ou extérieurs ? Difficile à estimer. Dépend trop de paramètres. Pierre-Jean Vazel p.ex.
-avance le chiffre d'1 ou 2/100ème par couloir sur 200 <a href="#ref_couloir200" id="couloir2">[2]</a>.    
+avance le chiffre d'1 ou 2/100ème par couloir sur 200 <a href="#couloir200" id="ref_couloir200">[1]</a>.    
 van van Niekerk au couloir 9 lors de ses 43.03. Inversement Aki bua record au couloir 1 400H 1972.
 </li>
 <li>Vent. &Eacute;videment Beamon et Mennea exemples les plus connus (surtout avec en plus l'altitude de Mexico). Pour les courses et les concours je crois que c'est le max qui est retenu. Ou une moyenne, s'il y a un souffle juste une seconde ?
@@ -874,18 +875,20 @@ et surtout impossible en cas de sélection p.ex. (pour les podiums il faudrait a
 <h3 id="3.1">Records socialistes vs capitalistes, impérialistes vs colonisés</h3>
 
 Au temps de la guerre froide, les records des athlètes soviétiques illustraient
-la supériorité du système socialiste sur celui capitaliste. De même que Gargarine avait été le premier homme dans l'espace.  
+la supériorité du socialisme sur le capitalisme.
+Au côté de Gargarine, premier homme dans l'espace.  
 <br/><br/>
-Plus tard, de façon similaire, on peut estimer que les records cubains plaident pour le régime
+De façon similaire, les records cubains plaidaient pour le régime
  -  en tout cas pour le régime <i>rice and beans</i>. La sobriété - la décroissance même ! - prônée par Castro dans le contexte de l'embargo US
-(p.ex. cf. extrait discours dans le film <i id="surplus">Surplus : la consommation par la terreur</i> <a href="ref_surplus">[1]</a>).
+(p.ex. cf. extrait discours dans le film <i id="ref_surplus">Surplus : la consommation par la terreur</i> <a href="#surplus">[2]</a>).
 <br/><br/> &Agrave; cette lumière, il est dommage que l'unification des records plein air et salle de la perche prive le camp
 socialiste des deux records "vers le haut" de Bubka et Sotomayor. Un beau symbole. Les avantages
 de l'indoor ne sont guère discutables ; sans offense à Lavillenie le vrai record 6.14 reste à Bubka. Avec cette décision
 d'unification, l'IAAF est pour le coup "amateur" dans le mauvais sens du terme. &Agrave; moins que la raison
-soit idéologique, résidu de la guerre froide, ou quelque obscure politique, qui sait ? (tout complotisme mis à part... inutile. Reste
-que si le record plein air était US...? il n'est pas interdit de se poser la question, au vu des innombrables exemples  
-de différences de traitements en matière dopage et disqualifications à chaque championnat). 
+soit idéologique, résidu de la guerre froide ? ou quelque obscure politique, qui sait ?
+(blague à part et sans complotisme inutile, reste qu'il est permis de s'interroger. Si
+le record plein air était US...? Il faut admettre qu'au vu du nombre de cas  
+de traitements de faveur en matière dopage et disqualifications à chaque championnat...). 
 
 <br/><br/> 
 
@@ -1021,7 +1024,7 @@ GROUP BY r.nom) AS tmp WHERE nb_pays > 1</pre>
 
 Les plus connus :
 <br/><br/>
-<table><tr BGCOLOR="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>
+<table><tr bgcolor="#EEEEEE"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>
 <tr><td>Bernard Lagat</td><td>Kenyan 1500 3:26.34<br/>United_States 1500 3:29.30<br/>United_States 3000 7:29.00<br/>United_States 5000 12:53.60 </td></tr>
 <tr><td>Churandy Martina</td><td>Dutch 100 9.91<br/>Dutch 200 19.81<br/>Netherlands_Antillean 100 9.93<br/>Netherlands_Antillean 200 20.08<br/>Netherlands_Antillean 400 046.13 </td></tr>
 <tr><td>Jan Železný</td><td>Czech Javelot 98.48 m<br/>Slovak Javelot 87.66 m </td></tr>
@@ -1043,7 +1046,7 @@ Les plus connus :
 	</div>
 	<div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 		<div class="panel-body">
-<table><tr BGCOLOR="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>		
+<table><tr bgcolor="#CCCCFF"><th>nom</th><th>GROUP_CONCAT(p.nom, ' ', r.epreuve, ' ', r.perf, ' ')</th></tr>		
 <tr><td>Ahmed Ali</td><td>Sudanese 100 10.27<br/>Sudanese 200 20.16<br/>Djiboutian Triple 12.75 m </td></tr>
 <tr><td>Aleksandr Kovalenko</td><td>Belarusian Triple 17.77 m<br/>Russian Triple 17.77 m </td></tr>
 <tr><td>Amra Temim</td><td>Serbian Javelot 1.94 m<br/>Bosnian_and_Herzegovinian Javelot 1.94 m </td></tr>
@@ -1075,39 +1078,40 @@ Les plus connus :
 
 <h3 id="3.3">&Eacute;cologie</h3>
 
+<p>
 Les records d'athlétisme reflètent de nombreux aspects des sociétés. Ils ont été été des enjeux idéologiques lors de la guerre froide.
 Aujourd'hui on verrait plus les enjeux concernant la condition des femmes ou ceux écologique liés au mode de vie.
 La revendication des gilets jaunes "Macron démission" ou "ISF", soutien 100%. En revanche déplacement en bagnole
 même pour trajet de moins 1 ou 3km ? (cf. chiffres effarants INSEE 2015)... Cela peut poser problème d'un point de vue
 écologique. Et sportif - sans même aller jusque là, juste sanitaire d'ailleurs. Les travailleurs et écoliers kenyans et éthiopéens
 se déplacent à pied et pas en bagnole. Les records et les médailles commencent à se gagner là.    
-<br/><br/>
+<p/>
+<p>
 Le sport est un puissant instrument idéologique. Il devrait être utilisé pour convaincre de la vertu de la décroissance.  
 Ne serait-ce pour se préparer à la fin inéluctable du pétrole - que ce soit pour climat ou épuisement des réserves.
-
-
+</p>
+<p>
 Un numéro récent de Sport &amp; Vie reportait que Staline était, paraît-il, réticent  
-à l'idée de la participation aux JO 1952 d'Helsinki ("sport bourgeois" ?) <a href="#ref_sport_vie_staline" id="sport_vie_staline">[3]</a>.
+à l'idée de la participation aux JO 1952 d'Helsinki ("sport bourgeois" ?) <a href="#sport_vie_staline" id="ref_sport_vie_staline">[3]</a>.
 Mais il aurait finalement été convaincu par ses camarades de l'enjeu idéologique.
 Il n'était donc peut-être pas si dogmatique comme on l'accuse !
-<br/><br/>Cette dernière blague pourrait paraître d'un goût douteux pour 
-certains trotskyses, je m'en fous ; c'est façon de les inviter à réfléchir à leur persistance 
+</p>    
+<p>
+Cette dernière blague pourrait paraître d'un goût douteux pour 
+certains trotskytses, je m'en fous ; c'est façon de les inviter à réfléchir à leur persistance 
 à s'abstenir de condamner les calomnies au sein de leurs propres rangs envers le mouvement de la décroissance
 et la timidité à remettre en question de l'industrie
-automobile et nucléaire  <a href="#ref_tc" id="tc">[4]</a>. Dit cela en m'en tenant aux positions 
-problématiques les plus évidentes. Qui augurent très mal des possibilités de discuter de questions
-sanitaires et scientifiques sans la même arrogance intellectuelle de Macron. Ce constat a une conséquence inattendue.
-Il m'incite à la prudence sur le jugement des révolutionnaires qui se sont entretués dans l'histoire. Sans connaître
-les enjeux vitaux méconnus, il est difficile de savoir ce que des camarades ou citoyens méritent. Parfois une
-médaille. Parfois le piolet ou la guillotine. Trotsky je ne pense pas. Ses successeurs, ça dépend. 
-
-
- 
+automobile et nucléaire  <a href="#tc" id="ref_tc">[4]</a>. Et qu'en me tenant qu'aux positions 
+problématiques les plus évidentes ! Lesdites positions augurent très mal des possibilités de discuter de questions
+sanitaires et scientifiques graves mais difficiles à saisir.
+Avec la disposition d'esprit typique des macronistes arrogants, le combat est perdu d'avance.
+</p>
 
 <h3 id="3.4">Condition des femmes</h3>
-Les premiers tests réservent des surprises. P.ex. Marie-Josée Pérec se retrouve au 27ème rang sur 400. Eh bien 
-pourquoi ? Parce que 24 records féminins du 400 sont supérieurs à la minute. Et comme la comparaison
-alphanumérique <code>'1:00' &lt; '48.25'</code> est <code>true</code>... Donc il faut préfixer avec '0'. 
+Les premiers tests réservent des surprises. P.ex. Marie-Josée Pérec se retrouve au 27ème rang sur 400.
+Pourquoi cette erreur ?
+Parce que 24 records féminins du 400 sont supérieurs à la minute. Et comme 
+<code>'1:00' &lt; '48.25'</code> est <code>true</code> pour la comparaison alphanumérique, voilà. Donc il faut préfixer avec '0'. 
 Au delà de cette simple correction, la modestie des records des pays peut laisser songeur. Quels sont les pays ? 
 <br/><br/>
 
@@ -1145,28 +1149,63 @@ Au delà de cette simple correction, la modestie des records des pays peut laiss
 <tr><td>...</td><td>...</td><td>...</td></tr>
 </table>
 <br/>
-<p>Ces records donnent une idée du développement du sport dans les pays. Accessoirement, une idée de la condition des femmes.
-1:16.98 pour l'Afghanistan, bon.... Deux réflexions.</p>
+<p id="z">Ces records donnent une idée du développement du sport dans les pays. Accessoirement, révélateur de la condition des femmes.
+1:16.98 pour l'Afghanistan, bon.... Quelques réflexions.</p>
 
-<ul><li>La pratique de l'athlétisme - sans même parler de compétition - peut être considérée comme droit inaliénable.
-Comme le refus de l'oppression des femmes et des minorités, ou la souffrance animale. Quelque soit les cultures.
-Cela posé, prudence avec la reconnaissance du caractère "universel" des principes pour lesquels on se bat.
-Par exemple, il est ennuyeux de constater que Georges Bush n'est pas le seul à soutenir que le mode de vie de la société industrielle
-- occidentale ou non - "n'est pas négociable". Là on est au delà du clivage capitaliste / anticapitaliste. De quoi être 
-pris du doute, parfois, et se demander qui est le taliban de qui.</li>
-<li>Un exemple concret. Il n'y a pas un sur cent, mais ils existent : les électrosensibles (EHS). Les plus graves restent cachés, cloîtrés.
-Quand ils sortent c'est avec des voiles, quasi burka. J'en ai rencontré plusieurs, personnellement. Pas à Kaboul, en Ile-de-France.
-Bref. Fin de la parenthèse. &Eacute;viter faire le parallèle était difficile car la similitude des images de burkas est saisissante.
-C'est triste à dire mais c'est ainsi, des camarades peuvent se montrés à la fois farouches opposants
-à l'opppression des femmes, mais à la soit doctrinement - j'ai envie de dire religieusement - incapables de reconnaître la réalité de ce
-scandale sanitaire (cf. interpellation <a href="#ref_oem" id="oem">[5]</a> sans réponse, p.ex.). Il y a des climato-sceptiques comme Trump, il y a des EHS-sceptiques (négationniste serait le terme plus exact).
-L'enfer est pavé de bonnes intentions. Si le paradis socialiste promis condamne des centaines d'EHS aux burkas en couverture aluminium,
-il pourra avoir des alliances inattendues, même comme en 1979 avec la CIA (perso à la base je suis plutôt attiré par le CIO).
-Provocation mise à part, la question d'alliance se pose déjà. L'an dernier un député d'ex-droite (je ne donne pas le nom ici pour ne pas lui
-faire de pub) a proposé d'aider à réserver une salle à l'Assemblée Nationale pour la tenue d'un débat avec Michèle Rivasi notament sur les EHS. 
-La main tendue a été refusée, mais le dilemme se pose et va se reposer.</li>
-</ul>
+<p>La pratique de l'athlétisme - sans même parler de compétition - peut être considérée comme droit inaliénable.
+Il y a des principes universels, quelque soit les cultures. Le droit à courir librement en est un.
+Au même titre que le refus de l'oppression des femmes de façon général, et des minorités éthniques ou sexuelles, ou la souffrance animale.</p>
 
+<p>Cela posé, prudence avec la reconnaissance du caractère évident ou "universel" des principes pour lesquels on se bat.
+Quand les divergences sur la façon de vivre cessent-elles d'être légitimes ? Les biais de vision occidentale mise à part,
+ceux de la grille de lecture habituelle lutte des classes également.
+Par exemple, il est problèmatique que des militants anticapitalistes revendiquent exactement comme   
+Georges Bush que le mode de vie de la société industrielle "n'est pas négociable". Au delà du regrettable abandon
+de la dénonciation de la société de consommation, un exemple concret pour comprendre pouquoi on peut
+en être à se demander qui est le taliban de qui.</p>
+
+<p>Il n'y a pas un sur cent, mais ils existent : les électrosensibles (EHS). Les plus graves restent cachés, cloîtrés.
+Quand ils sortent c'est avec des voiles, quasi burqa. J'en ai rencontré plusieurs, personnellement. Pas à Kaboul, en ÎIle-de-France.
+Le parallèle Afghanistan était difficile à éviter faire tant la similitude des images des burqas est saisissante.
+Malheureusement, il se trouve que des camarades farouches opposants
+à l'oppression des femmes sont en même temps dogmatiquement - j'ai envie de dire religieusement - incapables de reconnaître la réalité de ce
+scandale sanitaire (cf. interpellation <a href="#oem" id="ref_oem">[5]</a> et <a href="#tc">[6]</a> sans réponse ; Priartem aussi avait également écrit aux candidats
+des présidentielles 2017, pas de réponse NPA à ma connaissance - pas des camarades Tendance Claire en tout cas).
+</p>
+
+<p>
+Si le futur paradis socialiste condamne les EHS sévères aux burqas en couverture aluminium,
+il ne faudra pas s'étonner si ce produisent des alliances inattendues. Comme en 1979 avec la CIA (perso à la base je suis plutôt attiré par le CIO).
+D'ailleurs avant-goût, l'an dernier un député d'ex-droite (je ne donne pas le nom ici pour ne pas lui
+faire de pub) a proposé d'aider à réserver une salle à l'Assemblée Nationale pour la tenue d'un débat avec Michèle Rivasi notamment sur les EHS. 
+La main tendue a été refusée, mais le dilemme se représentera. L'écologie a été et est toujours laissée aux réformistes 
+(éternelle confusion entre défense des emplois de l'industrie automobile et défense de l'industrie automobile elle-même, p.ex...);
+la même erreur se répète avec les scandales sanitaires tels EHS. 
+</p>
+<p>
+
+<p>
+Conséquence innatendue de ces réflexions, perte de certitudes et gain d'humilité devant l'histoire des révolutionnaires
+qui se sont entretués. 
+J'avais une relative confiance dans la compréhension des enjeux de l'histoire sanglante des Robespierre et Trotsky.
+Mais avec recul, pris de doute. Des angles morts, qui sait ?     
+Aujourd'hui, bien est malin qui pourrait à affirmer comprendre les raisons réelles d'entre-tueries des révolutionnaires.
+Dans le but de faciliter le travail des historiens, si je peux me permettre, un reproche à la Tendance Claire.
+</p>
+<p>
+&Agrave; défaut de ne tenir que 
+des positions justes (l'erreur est humaine, personne n'est parfait hein), les exposer clairement et les assumer. Par exemple, estimer que le massacre des
+anarchistes à Kronstadt en 1921 était une "tragique nécessité", soit <a href="#cri1921" id="ref_cri1921">[7]</a>. Dont acte.   
+Mais à présent, à tort ou à raison, ce serait bien d'assumer que le sacrifice des EHS est une "tragique nécessité"
+au regard du besoin vital de l'internet sur les smartphone. Je ne jette pas la pierre, moi-même il m'arrive d'utiliser la 3G/4G
+pour aller sur Facebook (y lire notament les posts des camarades qui vantent de façon <i>permanente</i> les vertus des technologies
+sans fil. Ou que le foi gras "c'est trop bon". Etc.).    
+
+Il est tout à fait possible d'être EHS-sceptique (négationniste serait le terme plus exact). 
+Mais il faut l'assumer. Trump est climato-sceptique <a id="ref_tous_climato" href="#tous_climato">[8]</a>. Lui au moins il l'écrit.  
+"Ni dieu ni maître ni antennes relais". Pour cette revendication je souhaite ne pas être empêché de pouvoir défendre la condition des femmes
+au côté de camarades talibans, volens nolens.
+</p>
 </section>
 
 <section class="col-sm-offset-2 col-sm-8">
@@ -1796,26 +1835,35 @@ Même Johnny Gray, 1985...</li>
 
 <section class="col-sm-offset-2 col-sm-8">
 <h2 id="references">Références</h2>
-<a href="#ref_surplus">[1]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague</a>, 2010. 
 
-<br/>
-<a href="#ref_couloir200">[2]</a> <span id="couloir200">Sur 200 "chaque couloir éloigné de la corde permet de gagner de un à deux centièmes en raison du virage moins serré vers l'extérieur" 
+<a href="#ref_couloir200">[1]</a> <span id="couloir200">Sur 200 "chaque couloir éloigné de la corde permet de gagner de un à deux centièmes en raison du virage moins serré vers l'extérieur" 
 <a href="https://www.lemonde.fr/sport/article/2011/09/04/athletisme-le-200-m-decrypte-par-pierre-jean-vazel_1567571_3242.html">https://www.lemonde.fr/sport/article/2011/09/04/athletisme-le-200-m-decrypte-par-pierre-jean-vazel_1567571_3242.html</a>
 </span>
-
- 
 <br/>
-<a href="#ref_sport_vie_staline">[3]</a> <span id="a_3">Sport &amp; Vie mois ? 2018</a>
+
+<a href="#ref_surplus">[2]</a> <i id="surplus">Surplus : la consommation par la terreur</i>, film d'Erik Gandini et Johan Söderberg, 2003. Cité dans un <a href="">article sur le sommet de Copenhague</a>, 2010. 
+<br/>
+
+
+<a href="#ref_sport_vie_staline">[3]</a> <span id="sport_vie_staline">Sport &amp; Vie mois ? 2018</a>
  
 <br/>
 <a href="#ref_tc" id="tc">[4]</a> 
 <a href="http://base.athle.free.fr/politique/tendanceclaire">Tendance Claire, côté obscur</a>, 2018.
 
+  
+
 <br/>
 <a href="#ref_oem" id="oem">[5]</a> 
 <a href="http://base.athle.free.fr/oem/Quelle_position_du_NPA_sur_les_OEM.pdf">Scandale sanitaire des ondes électromagnétiques : pourquoi le NPA devrait prendre position</a>, 2015.
 
-  
+<br/>
+<a href="#ref_cri1921" id="cri1921">[7]</a> 
+<a href="http://groupecri.free.fr">Cri des travailleurs n°17</a>, 2007.
+
+<br/>
+<a href="#ref_tous_climato" id="tous_climato">[8]</a>
+le Monde a publié un article très juste montrant notre complicité.
 
 </section>
 <br/><br/>
