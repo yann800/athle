@@ -28,12 +28,13 @@ public class E3_UpdateRangRecordPays {
 
 			concatZero(con);
 			
-			EpreuveEnum e = EpreuveEnum.COURSE_3000_STEEPLE;
+			EpreuveEnum e = EpreuveEnum.COURSE_MARATHON;
 			for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
 					updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.MASCULIN, con);
-					updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.FEMININ, con);
+					// updateRangPaysEpreuveSexe(idPays.intValue(), e, SexeEnum.FEMININ, con);
 			}
 
+			retireZero(con);
 			
 			con.close();
 
@@ -46,10 +47,15 @@ public class E3_UpdateRangRecordPays {
 	}
 
 	private static void concatZero(Connection con) throws SQLException {
+		
+		/* ==================
 		Statement stmt = con.createStatement();
-
-		String sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '9'";
-		int i = stmt.executeUpdate(sql);
+		String sql;
+		int i;
+		
+		//-- 100
+		sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = '100' AND SUBSTRING(r.perf, 1, 1) = '9'";
+		i = stmt.executeUpdate(sql);
 
 		System.out.println("100 : " + i + "UPDATE");
 		
@@ -70,9 +76,23 @@ public class E3_UpdateRangRecordPays {
 
 		System.out.println("300% : " + i + "UPDATE");
 		
+		//-- Triple femmes 
+		sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve LIKE 'Triple%' AND SUBSTRING(r.perf, 1, 1) IN ('8', '9')";
+
+		i = stmt.executeUpdate(sql);
+
+		System.out.println("Triple : " + i + "UPDATE");
+		
+		//-- Poids
+		sql = "UPDATE record r SET r.perf = CONCAT('0', r.perf) WHERE r.epreuve = 'Poids' AND SUBSTRING(r.perf, 1, 1) IN ('8', '9')";
+		i = stmt.executeUpdate(sql);
+
+		System.out.println("100 : " + i + "UPDATE");
+
+		
 		
 		stmt.close();
-		
+		===================== */
 	}
 
 	//-- puis on retire les '0' disgracieux ajoutés précédement
@@ -137,7 +157,7 @@ public class E3_UpdateRangRecordPays {
 		ResultSet resultSet = stmt.executeQuery(sql);
 
 		while (resultSet.next()) {
-			return resultSet.getInt("nb");
+			return resultSet.getInt("nb") + 1;
 
 		}
 		return -1;
