@@ -266,7 +266,7 @@
 
 
 
-<h2>Rang de la France par épreuve</h2>
+<h2><span id="pays_selected">France</span> : rang par épreuve</h2>
 
 <table class="table table-striped table-bordered table-hover table-condensed" id="table_records_pays_sel"></table>
 
@@ -304,6 +304,9 @@
 
 	
 	function pays(p_id_pays){
+		
+		// pays_selected
+		$( "#pays_selected").text('pays ' + p_id_pays);
 		
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
