@@ -10,7 +10,7 @@ import fr.yann.model.enums.SexeEnum;
 
 public class E1_SavePageRecordDep {
 
-	private static final String	URL_BASE_COM	= "https://bases.athle.com/asp.net/liste.aspx";
+	private static final String	URL_BASE_COM	= "http://bases.athle.fr/asp.net/liste.aspx";
 	private static final String	PARAM_DEFAULT	= "?frmpostback=true&frmbase=records&frmmode=1&frmespace=0&frmexploitation=actuel&frmtype=RD";
 
 	public static void main(String[] args) {
@@ -19,15 +19,10 @@ public class E1_SavePageRecordDep {
 
 		// #####################################
 		SexeEnum sexeEnum = SexeEnum.MASCULIN;
-		CategorieEnum categorieEnum = CategorieEnum.VE;
+		CategorieEnum categorieEnum = CategorieEnum.ES;
 		// #####################################
 
 		for (int dep = 1; dep < 96; dep++) {
-
-			if (dep == 94) {
-				continue;
-			}
-
 
 			Record b = new Record();
 			b.categorie = categorieEnum;
@@ -35,15 +30,14 @@ public class E1_SavePageRecordDep {
 			b.departement = dep;
 
 			// b.url = getUrlBilanAvant2004(ID_FRM_EPREUVE_400_AVANT_2004, annee, sexeEnum.getCodeStr(), numPage);
-			b.url = getUrlRecord(sexeEnum, categorieEnum, getString(dep));
+			b.url = getUrlRecord(sexeEnum, categorieEnum, getString3Car(dep));
 			records.add(b);
-
 		}
-
 		for (Record r : records) {
-			// save(r.url, getFileName(r));
+			save(r.url, getFileName(r));
 			System.out.println(getUrlRecord(r.sexe, r.categorie, getString3Car(r.departement)));
 		}
+		System.out.println("*** END ***");
 	}
 
 	private static String getString3Car(int departement) {
