@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.yann.model.enums.CategorieEnum;
-import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.model.record.LigneRecordDep;
-import fr.yann.parser.record_wiki.service.ParserRecordDep;
-import fr.yann.parser.record_wiki.service.SqlService;
 
 /**
  * 
@@ -31,7 +28,6 @@ public class E1_TraiteFichierRecordsFede {
 				continue;
 			}
 			
-			System.out.println();
 			StringBuffer sb = new StringBuffer();
 
 			String str_num = num + "";
@@ -44,14 +40,11 @@ public class E1_TraiteFichierRecordsFede {
 
 			// System.out.println("NOMBRE : " + liste.size() + "\n");
 			for (LigneRecordDep lr : liste) {
-				if (lr.getPerf() == null) {
-					continue;
-				}
 
 				System.out.println(lr.toStringSql());
 				sb.append(lr.toStringSql() + "\n");
 			}
-			SqlService.writeFile(path, sb.toString());
+			// YANN SqlService.writeFile(path, sb.toString());
 		}
 
 
@@ -75,7 +68,6 @@ public class E1_TraiteFichierRecordsFede {
 			if (line.startsWith("<tr")) {
 				lr = new LigneRecordDep(dep, sexeEnum, catEnum);
 				ParserRecordDep.traiteLine(line, lr);
-				// lr.setPerf(cleanPerf(lr.getPerf(), lr.getEpreuve()));
 				listeRecords.add(lr);
 			}
 		}
@@ -83,23 +75,4 @@ public class E1_TraiteFichierRecordsFede {
 		fr.close();
 		return listeRecords;
 	}
-	
-	private static String cleanPerf(String perf, EpreuveEnum epreuve) {
-
-		String patternParenthes = "\\([^\\)]*\\)";
-
-		perf = perf.replaceAll(patternParenthes, "");
-
-		perf = perf.replace("&#160;", "").replace(" points", "").replace("points", "");
-		perf = perf.replace(" min ", ".").replace(" s ", ".");
-
-		// cas des chronos
-		if (epreuve.name().startsWith("COURSE")){
-			perf = perf.replace(" A", "");
-		}
-		
-		
-		return perf.trim();
-	}
-
 }

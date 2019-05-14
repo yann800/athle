@@ -8,6 +8,7 @@ public enum EpreuveEnum {
 	COURSE_200("200"),
 	COURSE_400("400"),
 	COURSE_800("800"),
+	COURSE_1000("1000"),
 	COURSE_1500("1500"),
 	COURSE_3000("3000"),
 	COURSE_5000("5000"),
@@ -49,31 +50,25 @@ public enum EpreuveEnum {
 	}
 
 	public static EpreuveEnum getEnumFromCode(String str) {
-		if (str.equals("3000 steeplechase")){
+		if (str.startsWith("100haies")) {
+			return EpreuveEnum.COURSE_100_HAIES;
+		}
+		if (str.startsWith("3000 St")) {
 			return EpreuveEnum.COURSE_3000_STEEPLE;
 		}	
-		if (str.equals("High jump")){
-			return EpreuveEnum.SAUT_HAUTEUR;	
-		}
-		if (str.equals("Pole vault")){
-			return EpreuveEnum.SAUT_PERCHE;
-		}
-		if (str.equals("Long jump")){
-			return EpreuveEnum.SAUT_LONGUEUR;
-		}
-		if (str.equals("Triple jump")){
+		if (str.startsWith("Triple")) {
 			return EpreuveEnum.SAUT_TRIPLE;
 		}
-		if (str.equals("Shot put")){
+		if (str.startsWith("Poids")) {
 			return EpreuveEnum.LANCER_POIDS;
 		}
-		if (str.equals("Discus throw")){
+		if (str.startsWith("Disque")) {
 			return EpreuveEnum.LANCER_DISQUE;
 		}
-		if (str.equals("Hammer throw")){
+		if (str.startsWith("Marteau")) {
 			return EpreuveEnum.LANCER_MARTEAU;
 		}	
-		if (str.equals("Javelin throw")){
+		if (str.startsWith("Javelot")) {
 			return EpreuveEnum.LANCER_JAVELOT;	
 		}
 		return lookup.get(str);

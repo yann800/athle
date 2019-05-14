@@ -1,5 +1,6 @@
-package fr.yann.parser.record_wiki.service;
+package fr.yann.parser.record_dep;
 
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,16 +12,6 @@ public class ParserRecordDep {
 	private static final String CHAR_JOKER = "_";
 
 	public static void main(String[] args) {
-		// String str = "3 septembre 1999";
-		// System.out.println(getAnneeFromDate(str));
-
-		// System.out.println(isDate("01/01/2013"));
-		// System.out.println(isDate("2013/01/01"));
-		// System.out.println(isPerf("10.01 er"));
-		// System.out.println(isPerf("Bolt Usain 454"));
-
-		// System.out.println(cleanPerf("10.13 (+2,8 m/s)", "100"));
-
 	}
 
 	private static String replaceHtmlTagByJoker(final String str) {
@@ -39,93 +30,59 @@ public class ParserRecordDep {
 
 		strPlainTextWithoutRP = strPlainTextWithoutRP.replaceAll("&nbsp;", "");
 
+		strPlainTextWithoutRP.replace("___", "_");
+		strPlainTextWithoutRP.replace("__", "_");
+		strPlainTextWithoutRP.replace("__", "_");
+		strPlainTextWithoutRP.replace("__", "_");
+
 		return strPlainTextWithoutRP;
 
 	}
 
-	// 1_2_3_4__5_6_7_8_9
-	private static String parseStringWithJoker(String line) {
-
-		final String PATTERN = "[_]*([^_]+)";
-		final int NB_COL_HTML = 1;
-
-		StringBuffer sbPattern = new StringBuffer();
-
-		for (int i = 0; i < NB_COL_HTML; i++) {
-			sbPattern.append(PATTERN);
-		}
-
-		// Create a Pattern object
-		Pattern r = Pattern.compile(sbPattern.toString());
-
-		// Now create matcher object.
-		Matcher m = r.matcher(line);
-
-		if (m.find()) {
-			return (m.group(0));
-		}
-		System.err.println(line);
-		return null;
-	}
-
-	private static int getAnneeFromDate(String date) {
-
-		final String PATTERN = "([\\d]{4})";
-
-		// Create a Pattern object
-		Pattern r = Pattern.compile(PATTERN);
-
-		// Now create matcher object.
-		Matcher m = r.matcher(date);
-
-		String strAnnee = null;
-		if (m.find()) {
-			strAnnee = m.group(0);
-		}
-
-		try {
-			return Integer.parseInt(strAnnee);
-		} catch (@SuppressWarnings("unused") Exception e) {
-			// System.err.println(date + " n'est pas une date " + e.getMessage());
-			return -1;
-		}
-	}
-
 	public static void traiteLine(String line, LigneRecordDep lr) {
 
+		// html -->  "__100m____12''1________PIGUET F.____58____Ea bourg____19/05/76____Lyon__"
 		String plainText = replaceHtmlTagByJoker(line);
 
-		String valeurTd = parseStringWithJoker(plainText);
-		if (valeurTd == null) {
-			return;
-		}
-		valeurTd = valeurTd.replace("__", "").replace("_", "");
+		// System.err.println(plainText);
 
-		if (lr.getEpreuve() == null && isEpreuve(valeurTd)) {
-			lr.setEpreuve(cleanEpreuve(valeurTd));
-			return;
-		}
+		StringTokenizer st = new StringTokenizer(plainText, "_");
 
-		if (lr.getPerf() == null && isPerf(valeurTd)) {
-			lr.setPerf(valeurTd);
-			return;
-		}
-		if (lr.getNom() == null && isNom(valeurTd)) {
-			lr.setNom(valeurTd.replace("'", " "));
-			return;
-		}
-		if (lr.getAnnee() == 0 && isDate(valeurTd)) {
-			if (getAnneeFromDate(valeurTd) != -1) {
-				lr.setAnnee(getAnneeFromDate(valeurTd));
+		int i = 1;
+		while (st.hasMoreElements()) {
+			String val = (String) st.nextElement();
+
+			if (i == 1) {
+				lr.setEpreuve(cleanEpreuve(val));
 			}
+			if (i == 2) {
+				lr.setPerf(val.replace("''", ".").replace("'", "."));
+			}
+			if (i == 3) {
+				lr.setNom(val);
+			}
+			if (i == 4) {
+				lr.setNaissance(val);
+			}
+			if (i == 5) {
+				lr.setClub(val);
+			}
+			if (i == 6) {
+				lr.setDate(val);
+			}
+			if (i == 7) {
+				lr.setLieu(val.replace("'", " "));
+			}
+			i++;
 		}
+
 	}
 
 	private static EpreuveEnum cleanEpreuve(String str) {
 		if (str.matches("\\d+.*")) {
 			str = str.replace("&#160;", "");
 
-			if (str.contains("steeple") || str.contains("steeple")) {
+			if (str.contains("Steeple") || str.contains("steeple")) {
 				str = str.replace("m", "");
 			} else {
 				str = str.replace(" ", "").replace("m", "");
@@ -134,7 +91,7 @@ public class ParserRecordDep {
 
 		str = str.replace(" 000", "000").replace("ètres", "").replace("kilo", "");
 		str = str.replace(".", "").replace(",", "").replace("  ", " ").replace(" 000", "000").replace("ètres", "").replace("kilo", "");
-		str = str.replace("hurdles", "H");
+		str = str.replace("Haies(76)", "H");
 
 		
 		
