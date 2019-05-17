@@ -37,6 +37,8 @@
 			<li><a href="#6">6. Épreuves qui rapportent le plus de points</a></li>
 			<li><a href="#7">7. Points rapportés par Hommes ou Femmes</a></li>
 			<li><a href="#8">8. Pour chaque athlète, moyenne rang [1 - 2]</a></li>
+			<li><a href="#9">9. Répartition des catégories</a></li>
+			<li><a href="#9">10. Répartition des niveaux</a></li>			
 
 				</ul>
 			
@@ -52,6 +54,10 @@
 			<p></p>
 
 			<h3 id="2">Points rapportés par athlète, en moyenne</h3>
+			
+			<pre>SELECT AVG(points)
+FROM IC
+GROUP BY nom</pre>
 
 			<h3 id="3">Épreuves de chaque athlète</h3>
 
@@ -65,8 +71,13 @@
 
 			<h3 id="8">Pour chaque athlète, moyenne rang [1 - 2]</h3>
 
+			<h3 id="9">Répartition des catégories</h3>
+			
+			<h3 id="10">Répartition des niveaux</h3>			
 
-
+			<pre>SELECT count(*)
+FROM IC
+IC GROUP categorie</pre>
 
 			<div class="row">
 

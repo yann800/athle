@@ -11,18 +11,33 @@ import fr.yann.parser.interclub.csv.IC;
 
 public class InterclubCsvToSql {
 
+	private static final String pathFolder = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
 
 	public static void main(String[] args) {
 
 		ArrayList<IC> perfs = new ArrayList<>();
 
-		String pathFolder = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
 
-		int annee = 2009;
-		int tour = 1;
+		for (int annee = 2009; annee < 2019; annee++) {
+			traiteCsv(annee, 1, perfs);
+			traiteCsv(annee, 2, perfs);
+		}
 
+		traiteCsv(2019, 1, perfs);
+
+		for (IC l : perfs) {
+
+			if (l.naissance == null) { // les relais on ignore ici
+				continue;
+			}
+
+			System.out.println(l.toSql());
+			// System.out.println(l);
+		}
+	}
+
+	private static void traiteCsv(int annee, int tour, ArrayList<IC> perfs) {
 		File f = new File(pathFolder + annee + "_" + tour + ".txt");
-
 
 		String line;
 
@@ -43,14 +58,8 @@ public class InterclubCsvToSql {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		for (IC l : perfs) {
-			System.out.println(l.toString());
-		}
-		System.out.println("*** END ***");
+
 	}
-
-
 
 	private static void save(String url, String nomFichierToSave) {
 		try {

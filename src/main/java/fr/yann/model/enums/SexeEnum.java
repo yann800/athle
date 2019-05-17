@@ -17,4 +17,14 @@ public enum SexeEnum {
 		return 0;
 	}
 
+	public static SexeEnum getEnumFromCode(String code) {
+		if (code.equals("F")) {
+			return SexeEnum.FEMININ;
+		}
+		if (code.equals("M")) {
+			return SexeEnum.MASCULIN;
+		}
+		return null;
+	}
+
 }

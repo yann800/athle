@@ -7,9 +7,7 @@ public class EpreuveUtil {
 	 */
 	public static String cleanCodeEpreuve(String code) {
 
-		code.replace(" ", "");
-
-		return code;
+		return code.replace(" ", "");
 	}
 
 }

@@ -1,0 +1,99 @@
+
+;;;;;4 X 100m / SEF;;4;;;10;;;F/;43605;
+;;;;;4 X 400m / SEF;;1;;;16;;;F/;43605;
+BOULABI Margot;;;;;800m / SEF;;12;;;5;;R2;CAF/96;43605;
+BOULABI Margot;;;;;Perche / SEF;;13;;;4;;R5;CAF/96;43605;
+POTTEZ-JOUATTE Valentine;;;;;100m / SEF;;1;;;12;;IR3;CAF/96;43605;
+POTTEZ-JOUATTE Valentine;;;;;Longueur / SEF;;14;;;3;;R2;CAF/96;43605;
+DESCOUENS Laura;;;;;200m / SEF;;1;;;12,5;;IR2;ESF/90;43605;
+GUERINI Priscilla rache;;;;;Hauteur / SEF;;6;;;10,5;;R1;ESF/92;43605;
+GUERINI Priscilla rache;;;;;Poids (4 Kg) / SEF;;7;;;10;;R1;ESF/92;43605;
+TAMISIER Lucile;;;;;1 500m / SEF;;15;;;2;;D1;ESF/91;43605;
+TSHIKAYA Lea;;;;;400m Haies (76) / SEF;;1;;;16;;N4;ESF/91;43605;
+COLLINET Agathe;;;;;200m / SEF;;3;;;14;;IR2;JUF/94;43605;
+DIAROUMA Tiguida;;;;;400m / SEF;;2;;;15;;N4;JUF/94;43605;
+KIONGA Danielle;;;;;Disque (1.0 Kg) / SEF;;8;;;9;;R2;JUF/94;43605;
+LEWIS Abigail (JAM);;;;;100m Haies (84) / SEF;;3;;;14;;N2;JUF/93;43605;
+LEWIS Abigail (JAM);;;;;Hauteur / SEF;;4;;;13;;IR2;JUF/93;43605;
+PAGET-BLANC Alexandra;;;;;400m Haies (76) / SEF;;1;;;15;;IR2;JUF/93;43605;
+TOURE Sally;;;;;100m / SEF;;4;;;13;;IR3;JUF/94;43605;
+ABOUKE Hermance;;;;;100m Haies (84) / SEF;;2;;;12;;N4;SEF/86;43605;
+ABOUKE Hermance;;;;;Triple Saut / SEF;;2;;;15;;N4;SEF/86;43605;
+BAK Olivia;;;;;800m / SEF;;15;;;2;;R4;SEF/87;43605;
+BAK Olivia;;;;;Poids (4 Kg) / SEF;;11;;;6;;R3;SEF/87;43605;
+BOLLEE Elodie;;;;;1 500m / SEF;;5;;;12;;IR3;SEF/84;43605;
+BONDILANGE Anne-cecile;;;;;Marteau (4 Kg) / SEF;;2;;;15;;IR1;SEF/79;43605;
+FAYE Louise;;;;;400m / SEF;;1;;;14;;IR1;SEF/86;43605;
+FAYE Louise;;;;;Triple Saut / SEF;;4;;;13;;IR1;SEF/86;43605;
+GUGLIELMINOTTI Sonia;;;;;3 000m / SEF;;12;;;5;;R6;SEF/74;43605;
+LE FLOCH Celine;;;;;Javelot (600 G) / SEF;;15;;;2;;D3;SEF/89;43605;
+MAGASSA Massere;;;;;Marteau (4 Kg) / SEF;;11;;;6;;R5;SEF/83;43605;
+MARCHAL Aurelie;;;;;Longueur / SEF;;11;;;6;;R2;SEF/79;43605;
+PICHET Oceane;;;;;Perche / SEF;;11;;;6;;R3;SEF/87;43605;
+TUDEAU Amandine;;;;;Javelot (600 G) / SEF;;14;;;3;;R6;SEF/81;43605;
+BROCHOT Sandrine;;;;;3 000m / SEF;;16;;;1;;D1;VEF/71;43605;
+HOUDAYER Aicha;;;;;3 000m Marche / SEF;;7;;;10;;R4;VEF/66;43605;
+LOUISON Marlene;;;;;Disque (1.0 Kg) / SEF;;12;;;5;;R5;VEF/60;43605;
+SECHAUD Emmanuelle;;;;;3 000m Marche / SEF;;8;;;9;;R4;VEF/65;43605;
+Hommes;;;;;;;;;;;;;;;
+;;;;;4 X 100m / SEM;;2;;;14;;;M/;43605;
+;;;;;4 X 400m / SEM;;1;;;16;;;M/;43605;
+DIELNA Samuel;;;;;100m / SEM;;7;;;4;;IR3;CAM/96;43605;
+MICHEL Pierre;;;;;Hauteur / SEM;;11;;;5,5;;R5;CAM/96;43605;
+AH-MOUCK Loic;;;;;400m / SEM;;1;;;16;;N4;ESM/91;43605;
+CESSIRON Maxime;;;;;800m / SEM;;1;;;16;;IR1;ESM/90;43605;
+ONIANGUE Tuere elie;;;;;200m / SEM;;7;;;2,5;;R2;ESM/92;43605;
+CHEVIOT Nicolas;;;;;200m / SEM;;4;;;13;;IR1;JUM/93;43605;
+SIANGANY Fortune;;;;;Longueur / SEM;;9;;;8;;IR4;JUM/93;43605;
+SIANGANY Fortune;;;;;Poids (7 Kg) / SEM;;15;;;2;;R5;JUM/93;43605;
+ABDELKADER Yann;;;;;1 500m / SEM;;14;;;3;;R1;SEM/77;43605;
+ANDRIEU Olivier;;;;;5 000m Marche / SEM;;6;;;11;;R5;SEM/78;43605;
+BARANGER-MERINO Alberto;;;;;Marteau (7 Kg) / SEM;;2;;;15;;IR1;SEM/81;43605;
+BENICHOU Thomas;;;;;3000m Steeple (91) / SEM;;7;;;10;;IR3;SEM/82;43605;
+DE VENDEGIES Xavier;;;;;400m / SEM;;2;;;10;;IR3;SEM/78;43605;
+DE VENDEGIES Xavier;;;;;Javelot (800 G) / SEM;;14;;;3;;R4;SEM/78;43605;
+DUBOIS Ludovic;;;;;400m Haies (91) / SEM;;1;;;14;;N2;SEM/86;43605;
+FINET Lucas;;;;;110m Haies (106) / SEM;;5;;;4;;R1;SEM/87;43605;
+FINET Lucas;;;;;Perche / SEM;;16;;;1;;D7;SEM/87;43605;
+FOFANA Colomba;;;;;100m / SEM;;2;;;12;;IR1;SEM/77;43605;
+FOFANA Colomba;;;;;Triple Saut / SEM;;1;;;16;;N3;SEM/77;43605;
+FRANCOIS Mickael;;;;;400m Haies (91) / SEM;;1;;;16;;N1;SEM/88;43605;
+FRANCOIS Mickael;;;;;Hauteur / SEM;;4;;;13;;IR4;SEM/88;43605;
+HESRY Gwenael;;;;;800m / SEM;;7;;;10;;IR2;SEM/77;43605;
+LARISSE Anddy;;;;;Disque (2.0 Kg) / SEM;;14;;;3;;R1;SEM/86;43605;
+LOCURTO Alberto (ITA);;;;;Disque (2.0 Kg) / SEM;;3;;;14;;IR1;SEM/76;43605;
+MANIC Gildas;;;;;5 000m / SEM;;15;;;2;;R5;SEM/78;43605;
+OUNOU Jerome;;;;;Longueur / SEM;;14;;;3;;R4;SEM/86;43605;
+ROUSSEAU Benjamin;;;;;5 000m / SEM;;10;;;7;;R1;SEM/86;43605;
+SAMANGARAY Baba;;;;;110m Haies (106) / SEM;;1;;;16;;N4;SEM/88;43605;
+SAMANGARAY Baba;;;;;Triple Saut / SEM;;3;;;14;;IR1;SEM/88;43605;
+SOFFIATI Thibaud;;;;;1 500m / SEM;;8;;;9;;IR2;SEM/85;43605;
+AMBROS Jerome;;;;;5 000m Marche / SEM;;12;;;5;;D2;VEM/68;43605;
+ANDRE Michel;;;;;Marteau (7 Kg) / SEM;;1;;;16;;N4;VEM/70;43605;
+EL KADAOUI Samir;;;;;3000m Steeple (91) / SEM;;10;;;7;;IR4;VEM/70;43605;
+GRAVA Jean-marc;;;;;Poids (7 Kg) / SEM;;14;;;3;;R5;VEM/71;43605;
+YAICHE Abderrhamane (ALG);;;;;Perche / SEM;;15;;;2;;D2;VEM/70;43605;
+YAICHE Abderrhamane (ALG);;;;;Javelot (800 G) / SEM;;15;;;2;;R6;VEM/70;43605;
+N1B Elite;;;;;;;;;;;;;;;
+1;687 pt;ATHLETIC VOSGES ENTENTE CLUBS*;;;;;;;;;;;;;
+2;674,5 pt;SA TOULOUSE UC;;;;;;;;;;;;;
+3;674 pt;AC PARIS-JOINVILLE;;;;;;;;;;;;;
+4;640,5 pt;STADE RENNAIS ATHLETISME*;;;;;;;;;;;;;
+5;631,5 pt;DOUBS SUD ATHLETISME*;;;;;;;;;;;;;
+6;604 pt;CS BOURGOIN-JALLIEU *;;;;;;;;;;;;;
+7;566 pt;GRAND ANGOULEME ATHLETISME;;;;;;;;;;;;;
+8;562,5 pt;EA MONDEVILLE HEROUVILLE*;;;;;;;;;;;;;
+
+
+
+N1B Elite					
+1	687 pt	ATHLETIC VOSGES ENTENTE CLUBS*			
+2	674,5 pt	SA TOULOUSE UC			
+3	674 pt	AC PARIS-JOINVILLE			
+4	640,5 pt	STADE RENNAIS ATHLETISME*			
+5	631,5 pt	DOUBS SUD ATHLETISME*			
+6	604 pt	CS BOURGOIN-JALLIEU *			
+7	566 pt	GRAND ANGOULEME ATHLETISME			
+8	562,5 pt	EA MONDEVILLE HEROUVILLE*			
+					
+20/05/2012					

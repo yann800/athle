@@ -2,7 +2,9 @@ package fr.yann.parser.interclub;
 
 import java.util.StringTokenizer;
 
+import fr.yann.model.enums.CategorieEnum;
 import fr.yann.model.enums.EpreuveEnum;
+import fr.yann.model.enums.SexeEnum;
 import fr.yann.parser.interclub.csv.IC;
 
 public class TraiteCsvInterclub {
@@ -14,7 +16,7 @@ public class TraiteCsvInterclub {
 	public static IC getIC(String line, int annee) {
 
 		// relais
-		if (line.contains(";;;")) {
+		if (line.contains(" X")) {
 			return traiteRelais(clean(line), annee);
 		}
 
@@ -23,7 +25,7 @@ public class TraiteCsvInterclub {
 			return null;
 		}
 
-		return parseCsv(clean(line));
+		return parseCsv(clean(line), annee);
 
 	}
 
@@ -38,36 +40,86 @@ public class TraiteCsvInterclub {
 	 * 1                2             3    4   5        6   7      8
 	 * CRANE Sabrina;1 500m / SEF;Finale 1;8;5'33''86;571;CAF/92;43588;
 	 */
-	private static IC parseCsv(String str) {
+	private static IC parseCsv(String str, int annee) {
 
 		IC perf = new IC();
 
+		perf.setAnnee(annee);
+
 		StringTokenizer st = new StringTokenizer(str, ";");
 
-		int i = 1;
 		while (st.hasMoreElements()) {
 			String val = (String) st.nextElement();
 
-			if (i == 1) {
+			if (val.contains("Finale")) {
+				continue;
+			}
+			if (val.length() < 2) {
+				continue;
+			}
+
+			EpreuveEnum epreuve = EpreuveEnum.getEnumFromCode(EpreuveUtil.cleanCodeEpreuve(val));
+			if (epreuve != null) {
+				perf.setEpreuve(epreuve);
+				continue;
+			}
+
+			if (isNom(val)) {
 				perf.setNom(val);
+				continue;
 			}
-			if (i == 2) {
-				perf.setEpreuve(EpreuveEnum.getEnumFromCode(EpreuveUtil.cleanCodeEpreuve(val)));
-			}
-			if (i == 2) {
+			if (perf.perf == null && isPerf(val)) {
 				perf.setPerf(val.replace("''", ".").replace("'", "."));
+				continue;
 			}
-			if (i == 4) {
-				perf.setNaissance(val);
+			if (perf.points == 0 && isPoints(val)) {
+				perf.setPoints(Integer.parseInt(val));
+				continue;
 			}
-			if (i == 6) {
+
+			if (perf.categorie == null && isCategorieNaissance(val, perf)) {
+				continue; // c'est bon cat et naissance sont valués
+			}
+
+			if (isDate(val)) {
 				perf.setDate(val);
+				continue;
 			}
-			i++;
+
 		}
 
-
 		return perf;
+	}
+
+	private static boolean isPoints(String val) {
+		if (val.length() != 3 && val.length() != 4) {
+			return false;
+		}
+		if (val.matches("[0-9]{3}")) {
+			return true;
+		}
+		;
+		if (val.matches("[0-9]{4}")) {
+			return true;
+		}
+		;
+
+		return false;
+	}
+
+	/* ESF/88 */
+	private static boolean isCategorieNaissance(String val, IC perf) {
+		if (val.length() != 6) {
+			return false;
+		}
+		CategorieEnum cat = CategorieEnum.getFromCode(val.substring(0, 3));
+		if (cat == null) {
+			return false;
+		}
+		perf.setSexe(SexeEnum.getEnumFromCode(val.substring(2, 3)));
+		perf.setCategorie(cat);
+		perf.setNaissance(val.substring(4, 6));
+		return true;
 	}
 
 	/*
@@ -78,28 +130,77 @@ public class TraiteCsvInterclub {
 		IC relais = new IC();
 
 		relais.setAnnee(annee);
+		relais.setNom("ACPJ");
 
 		StringTokenizer st = new StringTokenizer(line, ";");
 
-		int i = 1;
 		while (st.hasMoreElements()) {
 			String val = (String) st.nextElement();
 
-			if (i == 1) {
-				if (val.contains("100")) {
-					relais.setEpreuve(EpreuveEnum.RELAIS_4x100);
-				} else {
-					relais.setEpreuve(EpreuveEnum.RELAIS_4x400);
+			if (val.contains("100")) {
+				relais.setEpreuve(EpreuveEnum.RELAIS_4x100);
+				if (val.contains("F")) {
+					relais.sexe = SexeEnum.FEMININ;
+				} else if (val.contains("M")) {
+					relais.sexe = SexeEnum.MASCULIN;
+				}
+				continue;
+			}
+			if (val.contains("400")) {
+				relais.setEpreuve(EpreuveEnum.RELAIS_4x400);
+				if (val.contains("F")) {
+					relais.sexe = SexeEnum.FEMININ;
+				} else if (val.contains("M")) {
+					relais.sexe = SexeEnum.MASCULIN;
 				}
 			}
-			if (i == 3) {
+			if (val.contains("Finale")) {
+				continue;
+			}
+
+			if (isPerf(val)) {
 				relais.setPerf(val.replace("''", ".").replace("'", "."));
 			}
-			i++;
 		}
 
 
 		return relais;
 	}
 
+	private static boolean isNaissance(String str) {
+		if (str.length() < 2 && str.length() > 3) {
+			return false;
+		}
+		boolean bContient2Caracteres = str.matches(".*[0-9]{2}.*");
+		return bContient2Caracteres;
+	}
+
+	private static boolean isDate(String str) {
+		boolean bContient4Chiffres = str.matches(".*[0-9]{4}.*");
+		return bContient4Chiffres;
+	}
+
+	private static boolean isPerf(String str) {
+
+		str = str.replace("''", ".").replace("'", ".");
+
+		if (str.matches(".*[a-zA-Z]{4}.*")) {
+			return false;
+		}
+
+		boolean bContient2Chiffres = str.matches(".*[0-9]{2}.*");
+		return bContient2Chiffres;
+	}
+
+	private static boolean isNom(String str) {
+		boolean bContient3Caracteres = str.matches(".*[a-zA-Z]{4}.*");
+		
+		if (!bContient3Caracteres) {
+			return false;
+		}
+		if (str.contains("Finale")) {
+			return false;
+		}
+		return true;
+	}
 }

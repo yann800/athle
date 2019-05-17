@@ -1,0 +1,88 @@
+;;;;4 X 100m / SEF;;Finale 1;2;50''60;888;;F/;43594;
+;;;;4 X 400m / SEF;;Finale 1;1;4'02''66;879;;F/;43594;
+DIAROUMA Tiguida;;;;200m / SEF;;Finale 2;2;25''86 (+1.0);934;IR2;CAF/94;43594;
+DIAROUMA Tiguida;;;;Triple Saut / SEF;;Finale 1;9;11m07 (+1.9);777;IR2;CAF/94;43594;
+PAGET-BLANC Alexandra;;;;200m / SEF;;Finale 3;4;27''51 (+0.0);824;R1;CAF/93;43594;
+CLERENCE Elisa;;;;100m / SEF;;Finale 3;1;12''61 (+0.0);928;IR2;ESF/88;43594;
+CLERENCE Elisa;;;;Perche / SEF;;Finale 1;17;1m60;160;D7;ESF/88;43594;
+NZAMOWANI Jodelle;;;;400m Haies (76) / SEF;;Finale 2;2;64''02;945;N4;ESF/89;43594;
+TAFLER Clementine;;;;1 500m / SEF;;Finale 1;10;5'37''35;552;R6;ESF/90;43594;
+CRANE Sabrina;;;;400m / SEF;;Finale 3;3;64''18;764;R2;JUF/92;43594;
+CRANE Sabrina;;;;Triple Saut / SEF;;Finale 1;11;10m69 (+0.0);735;IR4;JUF/92;43594;
+FERNANDES Laurine;;;;3 000m / SEF;;Finale 1;9;11'43''55;632;R4;JUF/92;43594;
+MESINELE Anais;;;;Hauteur / SEF;;Finale 1;11;1m45;618;R3;JUF/92;43594;
+ABOUKE Hermance;;;;100m Haies (84) / SEF;;Finale 1;3;15''24 (+0.0);895;IR1;SEF/86;43594;
+ABOUKE Hermance;;;;Longueur / SEF;;Finale 1;7;5m32 (+0.5);811;IR2;SEF/86;43594;
+BACON Karine;;;;800m / SEF;;Finale 2;3;2'28''08;709;R1;SEF/79;43594;
+BOCCARA Valerie;;;;800m / SEF;;Finale 1;6;2'33''63;633;R2;SEF/75;43594;
+BOLLEE Elodie;;;;1 500m / SEF;;Finale 1;2;5'05''56;739;R1;SEF/84;43594;
+BONDILANGE Anne-cecile;;;;Marteau (4 Kg) / SEF;;Finale 1;4;44m69;699;IR3;SEF/79;43594;
+COLLIARD Julie;;;;Perche / SEF;;Finale 1;14;2m00;294;D3;SEF/87;43594;
+COLLIARD Julie;;;;Javelot (600 G) / SEF;;Finale 1;12;26m24;419;R6;SEF/87;43594;
+GAGNEUX Valerie;;;;400m Haies (76) / SEF;;Finale 1;2;61''98;996;N3;SEF/84;43594;
+GUGLIELMINOTTI Sonia;;;;3 000m / SEF;;Finale 1;12;12'08''94;569;R6;SEF/74;43594;
+HAMMOUCHE Maud;;;;Hauteur / SEF;;Finale 1;7;1m50;671;R1;SEF/76;43594;
+HAMMOUCHE Maud;;;;Poids (4 Kg) / SEF;;Finale 1;7;10m98;601;IR3;SEF/76;43594;
+HURTIS-HOUAIRI Muriel;;;;400m / SEF;;Finale 2;1;53''65;1079;N2;SEF/79;43594;
+HURTIS-HOUAIRI Muriel;;;;Longueur / SEF;;Finale 1;5;5m42 (+1.4);834;IR2;SEF/79;43594;
+LAMALLE Adrianna;;;;100m / SEF;;Finale 2;1;12''24 (+0.1);987;N4;SEF/82;43594;
+MAGASSA Massere;;;;Marteau (4 Kg) / SEF;;Finale 1;7;32m86;494;R5;SEF/83;43594;
+MEYER Alice;;;;Disque (1.0 Kg) / SEF;;Finale 1;3;39m25;653;IR1;SEF/72;43594;
+ROBAT Agnes;;;;3 000m Marche / SEF;;Finale 1;15;21'34''71;402;D4;SEF/83;43594;
+TUDEAU Amandine;;;;100m Haies (84) / SEF;;Finale 2;6;21''71 (+1.1);321;D8;SEF/81;43594;
+TUDEAU Amandine;;;;Javelot (600 G) / SEF;;Finale 1;11;27m66;445;R5;SEF/81;43594;
+HOUDAYER Aicha;;;;3 000m Marche / SEF;;Finale 1;10;19'45''34;523;D1;VEF/66;43594;
+KOUTOUAN Albertine (CIV);;;;Poids (4 Kg) / SEF;;Finale 1;13;9m34;500;R3;VEF/64;43594;
+LOUISON Marlene;;;;Disque (1.0 Kg) / SEF;;Finale 1;10;25m91;407;D1;VEF/60;43594;
+Hommes;;;;;;;;;;;;;
+;;;;4 X 100m / SEM;;Finale 1;3;42''58;903;;M/;43594;
+;;;;4 X 400m / SEM;;Finale 1;1;3'12''49;992;;M/;43594;
+SIANGANY Fortune;;;;Triple Saut / SEM;;Finale 1;10;13m54 (+0.0);780;IR3;CAM/93;43594;
+CESSIRON Maxime;;;;800m / SEM;;Finale 1;2;1'51''43;988;N3;ESM/90;43594;
+FRANCOIS Mickael;;;;400m Haies (91) / SEM;;Finale 1;1;51''73;1059;N2;ESM/88;43594;
+FRANCOIS Mickael;;;;Hauteur / SEM;;Finale 1;2;1m90;774;IR3;ESM/88;43594;
+MAGASSA Modibo;;;;400m / SEM;;Finale 3;1;49''03;932;N4;ESM/88;43594;
+BERTEVAS Antony;;;;100m / SEM;;Finale 3;6;12''04 (+0.0);648;R3;JUM/92;43594;
+LE FLOCH Xavier;;;;Triple Saut / SEM;;Finale 1;12;13m20 (+1.1);744;IR4;JUM/92;43594;
+SCHLATTER Nicolas;;;;200m / SEM;;Finale 3;5;23''81 (+0.5);713;R2;JUM/92;43594;
+SCHLATTER Nicolas;;;;Hauteur / SEM;;Finale 1;15;1m65;538;R6;JUM/92;43594;
+ABDELKADER Yann;;;;3 000m / SEM;;Finale 1;9;9'23''32;626;R2;SEM/77;43594;
+ANDRIEU Olivier;;;;5 000m / SEM;;Finale 1;8;16'05''35;649;R1;SEM/78;43594;
+BARA Franck;;;;3000m Steeple (91) / SEM;;Finale 1;17;11'12''74;563;R5;SEM/85;43594;
+BARANGER-MERINO Alberto;;;;Marteau (7 Kg) / SEM;;Finale 1;3;57m77;829;N4;SEM/81;43594;
+CEYTE Arnaud;;;;Longueur / SEM;;Finale 1;12;6m05 (+2.5);722;R3;SEM/82;43594;
+DUBOIS Ludovic;;;;400m Haies (91) / SEM;;Finale 2;1;51''20;1081;N1;SEM/86;43594;
+DUBOIS Ludovic;;;;Javelot (800 G) / SEM;;Finale 1;7;43m50;545;R3;SEM/86;43594;
+ECZET Jean-baptiste;;;;1 500m / SEM;;Finale 1;5;4'05''35;792;IR3;SEM/82;43594;
+FINET Lucas;;;;110m Haies (106) / SEM;;Finale 1;5;17''40 (+0.1);626;R3;SEM/87;43594;
+FLANDRIN-THONIEL Igor;;;;800m / SEM;;Finale 2;2;1'54''38;910;IR1;SEM/79;43594;
+FOFANA Colomba;;;;Longueur / SEM;;Finale 1;2;7m01 (+1.4);920;N4;SEM/77;43594;
+GURACHI Youness;;;;200m / SEM;;Finale 2;1;21''96 (+0.0);945;N4;SEM/83;43594;
+LAGARDE Sebastien;;;;Perche / SEM;;Finale 1;9;3m80;623;R2;SEM/81;43594;
+LAHAYE Mathieu;;;;400m / SEM;;Finale 2;1;47''61;1014;N2;SEM/83;43594;
+LANGERON Matthieu;;;;110m Haies (106) / SEM;;Finale 2;5;18''63 (+0.0);489;D1;SEM/73;43594;
+LARISSE Anddy;;;;Disque (2.0 Kg) / SEM;;Finale 1;9;31m65;518;R5;SEM/86;43594;
+MALELA Sogiros;;;;100m / SEM;;Finale 2;4;11''19 (+1.6);866;IR2;SEM/87;43594;
+MANIC Gildas;;;;3000m Steeple (91) / SEM;;Finale 1;14;10'50''72;629;R4;SEM/78;43594;
+MIJIC Stefan;;;;Javelot (800 G) / SEM;;Finale 1;8;43m22;541;R3;SEM/75;43594;
+SOFFIATI Thibaud;;;;1 500m / SEM;;Finale 1;3;4'02''79;822;IR2;SEM/85;43594;
+SONE EHAWA Quentin;;;;Poids (7 Kg) / SEM;;Finale 1;2;14m48;789;N4;SEM/73;43594;
+WOLFF Stephane;;;;5 000m / SEM;;Finale 1;13;16'49''63;538;R3;SEM/76;43594;
+AMBROS Jerome;;;;5 000m Marche / SEM;;Finale 1;11;28'43''66;645;R6;VEM/68;43594;
+ANDRE Michel;;;;Marteau (7 Kg) / SEM;;Finale 1;4;57m07;818;N4;VEM/70;43594;
+DE CARGOUET DE R Yann;;;;5 000m Marche / SEM;;Finale 1;15;32'16''90;497;D4;VEM/51;43594;
+EL KADAOUI Samir;;;;3 000m / SEM;;Finale 1;6;9'01''55;729;IR4;VEM/70;43594;
+LOTTIER Pascal;;;;Disque (2.0 Kg) / SEM;;Finale 1;11;30m13;490;R6;VEM/58;43594;
+NOEL Philippe;;;;Perche / SEM;;Finale 1;-;NC;0;;VEM/61;43594;
+NOEL Philippe;;;;Poids (7 Kg) / SEM;;Finale 1;15;9m86;514;R5;VEM/61;43594;
+
+
+
+Résultats Équipes | Interclubs N1-N2 1er tour - N2 - SE					
+1	52 418 pt	AC PARIS-JOINVILLE			
+2	50 998 pt	CA MONTREUIL 93 (2)			
+3	50 497 pt	US IVRY			
+4	42 630 pt	ASA MAISONS-ALFORT			
+5	36 603 pt	UAI NOGENT-SUR-MARNE			
+					
+Tremblay-en-France					

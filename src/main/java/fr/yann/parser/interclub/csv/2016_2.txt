@@ -1,0 +1,100 @@
+;;;;;4 X 400m / SEF;;Finale 1;1;1020;;;43607;
+;;;;;4 X 100m / SEF;;Finale 1;1;1043;;F/;43607;
+BRAULT Ines;;;;;1 500m / SEF;;Finale 1;13;715;R1;CAF/99;43607;
+SAMBA-MAYELA Cyrena;;;;;100m / SEF;;Finale 1;4;957;IR1;CAF/00;43607;
+SAMBA-MAYELA Cyrena;;;;;Longueur / SEF;;Finale 1;15;714;R2;CAF/00;43607;
+KOUTOUAN Fiona;;;;;Disque (1.0 Kg) / SEF;;Finale 1;2;631;IR1;ESF/96;43607;
+RICHARDIN Nine;;;;;Marteau (4 Kg) / SEF;;Finale 1;7;628;R1;ESF/96;43607;
+SACKO Hatouma;;;;;100m / SEF;;Finale 2;6;821;R2;ESF/96;43607;
+GOURDON Capucine;;;;;1 500m / SEF;;Finale 1;16;642;R4;JUF/98;43607;
+HOUNSINOU Julie;;;;;400m Haies (76) / SEF;;Finale 1;1;1036;N2;JUF/97;43607;
+HOUNSINOU Julie;;;;;Perche / SEF;;Finale 1;15;361;D1;JUF/97;43607;
+KOUTOUAN Sarah;;;;;100m Haies (84) / SEF;;Finale 1;3;1064;N2;JUF/98;43607;
+KOUTOUAN Sarah;;;;;Longueur / SEF;;Finale 1;13;719;R2;JUF/98;43607;
+LEDUC Cynthia;;;;;200m / SEF;;Finale 1;3;1067;N2;JUF/97;43607;
+LEDUC Cynthia;;;;;Disque (1.0 Kg) / SEF;;Finale 1;15;389;D2;JUF/97;43607;
+QUEST Tiphanie;;;;;Hauteur / SEF;;Finale 1;13;618;R3;JUF/97;43607;
+SECHAUD Ema;;;;;Javelot (600 G) / SEF;;Finale 1;15;328;D3;JUF/97;43607;
+ALEXANDER Ayanna (TTO);;;;;Triple Saut / SEF;;Finale 1;1;1005;N2;SEF/82;43607;
+ALEXANDER Ayanna (TTO);;;;;Poids (4 Kg) / SEF;;Finale 1;15;440;R6;SEF/82;43607;
+BOLLEE Elodie;;;;;3 000m / SEF;;Finale 1;1;906;IR1;SEF/84;43607;
+CALYDON Cornnelly;;;;;200m / SEF;;Finale 2;1;1009;N4;SEF/89;43607;
+CALYDON Cornnelly;;;;;Triple Saut / SEF;;Finale 1;11;711;R1;SEF/89;43607;
+CANARD Alize;;;;;Perche / SEF;;Finale 1;9;635;IR3;SEF/93;43607;
+CANARD Alize;;;;;Javelot (600 G) / SEF;;Finale 1;14;368;D2;SEF/93;43607;
+DANTE Djenebou (MLI);;;;;400m / SEF;;Finale 1;1;1100;N1;SEF/89;43607;
+DANTE Djenebou (MLI);;;;;Poids (4 Kg) / SEF;;Finale 1;16;400;D1;SEF/89;43607;
+GAGNEUX Valerie;;;;;400m Haies (76) / SEF;;Finale 2;4;831;IR2;SEF/84;43607;
+JACQUES Alexia;;;;;800m / SEF;;Finale 1;12;762;IR3;SEF/88;43607;
+LAMBOLEY Victoria;;;;;800m / SEF;;Finale 1;6;807;IR2;SEF/93;43607;
+LEWIS Abigail (JAM);;;;;100m Haies (84) / SEF;;Finale 2;1;1030;N3;SEF/93;43607;
+LEWIS Abigail (JAM);;;;;Hauteur / SEF;;Finale 1;5;777;IR2;SEF/93;43607;
+PIEL Julie;;;;;3 000m / SEF;;Finale 1;15;698;R2;SEF/82;43607;
+RADENEZ Clemence;;;;;Marteau (4 Kg) / SEF;;Finale 1;16;339;D3;SEF/92;43607;
+TSHIKAYA Lea;;;;;400m / SEF;;Finale 2;3;984;N4;SEF/91;43607;
+BOCCARA Valerie;;;;;3 000m Marche / SEF;;Finale 1;16;474;D2;VEF/75;43607;
+HOUDAYER Aicha;;;;;3 000m Marche / SEF;;Finale 1;14;601;R5;VEF/66;43607;
+Hommes;;;;;;;;;;;;;
+;;;;;4 X 400m / SEM;;Finale 1;4;900;;M/;43607;
+;;;;;4 X 100m / SEM;;Finale 1;4;867;;M/;43607;
+HUGGLER Marc-olivier (POL);;;;;Hauteur / SEM;;Finale 1;15;492;D1;CAM/00;43607;
+HUGGLER Marc-olivier (POL);;;;;Javelot (800 G) / SEM;;Finale 1;12;517;R4;CAM/00;43607;
+KOUASSI Haudy-meven;;;;;100m / SEM;;Finale 1;8;750;R1;ESM/96;43607;
+MICHEL Pierre;;;;;110m Haies (106) / SEM;;Finale 2;7;514;R6;ESM/96;43607;
+MICHEL Pierre;;;;;Perche / SEM;;Finale 1;15;513;R5;ESM/96;43607;
+SCHLATTER Sebastien;;;;;Perche / SEM;;Finale 1;16;458;D1;ESM/96;43607;
+SCHLATTER Sebastien;;;;;Javelot (800 G) / SEM;;Finale 1;11;521;R4;ESM/96;43607;
+CODJO Bruno;;;;;400m / SEM;;Finale 1;5;934;N4;JUM/97;43607;
+ABDELKADER Yann;;;;;1 500m / SEM;;Finale 1;11;773;IR3;SEM/77;43607;
+ALERTE David;;;;;200m / SEM;;Finale 1;5;913;N4;SEM/84;43607;
+ALERTE David;;;;;Longueur / SEM;;Finale 1;3;893;IR1;SEM/84;43607;
+ANDRIEU Olivier;;;;;5 000m Marche / SEM;;Finale 1;12;697;R5;SEM/78;43607;
+ANIESA Ange;;;;;400m / SEM;;Finale 2;4;856;IR1;SEM/90;43607;
+BROU Florent;;;;;5 000m Marche / SEM;;Finale 1;9;767;R2;SEM/93;43607;
+CHASTANG Cedric;;;;;3000m Steeple (91) / SEM;;Finale 1;16;574;R5;SEM/81;43607;
+DA HORTA SEMEDO Tony;;;;;Marteau (7 Kg) / SEM;;Finale 1;14;443;R6;SEM/80;43607;
+DANGLADES Jean-christophe;;;;;800m / SEM;;Finale 1;15;747;IR3;SEM/93;43607;
+DIANI Ilyas;;;;;3 000m / SEM;;Finale 1;15;601;R2;SEM/79;43607;
+FINET Lucas;;;;;3 000m / SEM;;Finale 1;16;98;D8;SEM/87;43607;
+FRANCOIS Mickael;;;;;400m Haies (91) / SEM;;Finale 1;2;1051;N2;SEM/88;43607;
+FRANZONI Lorenzo (ITA);;;;;Triple Saut / SEM;;Finale 1;7;799;IR3;SEM/88;43607;
+GREZE Stephane;;;;;Longueur / SEM;;Finale 1;2;917;N4;SEM/84;43607;
+KIMBEMBE Devilert-arsene (COD);;;;;200m / SEM;;Finale 2;1;937;N4;SEM/84;43607;
+LAINE Samyr (HAI);;;;;Triple Saut / SEM;;Finale 1;1;1010;N3;SEM/84;43607;
+LECHANGA Jules;;;;;Hauteur / SEM;;Finale 1;9;679;R2;SEM/86;43607;
+LECHANGA Jules;;;;;Poids (7 Kg) / SEM;;Finale 1;16;459;D1;SEM/86;43607;
+MEYER Jerome;;;;;1 500m / SEM;;Finale 1;16;546;R4;SEM/85;43607;
+PUJAR Yannis;;;;;100m / SEM;;Finale 2;5;826;IR2;SEM/92;43607;
+PUJAR Yannis;;;;;Disque (2.0 Kg) / SEM;;Finale 1;2;861;N3;SEM/92;43607;
+RAVON Thomas;;;;;110m Haies (106) / SEM;;Finale 1;2;1047;N3;SEM/85;43607;
+RAVON Thomas;;;;;Poids (7 Kg) / SEM;;Finale 1;11;599;R3;SEM/85;43607;
+SAMANGARAY Baba;;;;;400m Haies (91) / SEM;;Finale 2;1;976;N3;SEM/88;43607;
+SAMANGARAY Baba;;;;;Disque (2.0 Kg) / SEM;;Finale 1;13;496;R6;SEM/88;43607;
+SOFFIATI Thibaud;;;;;800m / SEM;;Finale 1;14;772;IR3;SEM/85;43607;
+EL KADAOUI Samir;;;;;3000m Steeple (91) / SEM;;Finale 1;15;621;R4;VEM/70;43607;
+LOTTIER Pascal;;;;;Marteau (7 Kg) / SEM;;Finale 1;16;398;D2;VEM/58;43607;
+Résultats Équipes | INTERCLUBS N1A POULE B - N1A - SE;;;;;;;;;;;;;
+1;60 486 pt;HAUTE BRETAGNE ATHLETISME *;;;;;;;;;;;
+2;59 929 pt;US TALENCE*;;;;;;;;;;;
+3;59 489 pt;BORDEAUX ATHLE*;;;;;;;;;;;
+4;57 211 pt;EFS REIMS A. *;;;;;;;;;;;
+5;55 595 pt;ASPTT NANCY *;;;;;;;;;;;
+6;55 291 pt;STADE RENNAIS ATHLETISME*;;;;;;;;;;;
+7;54 575 pt;ATHLETIC VOSGES ENTENTE CLUBS*;;;;;;;;;;;
+8;53 752 pt;AC PARIS-JOINVILLE;;;;;;;;;;;
+
+
+
+
+Résultats Équipes | INTERCLUBS N1A POULE B - N1A - SE								
+1	60 486 pt	HAUTE BRETAGNE ATHLETISME *						
+2	59 929 pt	US TALENCE*						
+3	59 489 pt	BORDEAUX ATHLE*						
+4	57 211 pt	EFS REIMS A. *						
+5	55 595 pt	ASPTT NANCY *						
+6	55 291 pt	STADE RENNAIS ATHLETISME*						
+7	54 575 pt	ATHLETIC VOSGES ENTENTE CLUBS*						
+8	53 752 pt	AC PARIS-JOINVILLE						
+								
+22/05/16 - Championnat de France des Clubs N1A Poule B								
+REIMS - CHA - 051								

@@ -18,6 +18,9 @@ public enum EpreuveEnum {
 	COURSE_110_HAIES("110H"),
 	COURSE_400_HAIES("400H"),
 	COURSE_3000_STEEPLE("3000 steeple"),	
+	
+	MARCHE_3000("3000 marche"),
+	MARCHE_5000("5000 marche"),
 
 	LANCER_POIDS("Poids"),
 	LANCER_DISQUE("Disque"),
@@ -53,12 +56,46 @@ public enum EpreuveEnum {
 	}
 
 	public static EpreuveEnum getEnumFromCode(String str) {
-		if (str.startsWith("100haies")) {
-			return EpreuveEnum.COURSE_100_HAIES;
+		// ============
+		// HAIES
+		if (str.contains("aies")) {
+			if (str.contains("100")) {
+				return EpreuveEnum.COURSE_100_HAIES;
+			}
+			return EpreuveEnum.COURSE_110_HAIES;
 		}
-		if (str.startsWith("3000 St")) {
+		if (str.startsWith("3000 St") || str.contains("eeple")) {
 			return EpreuveEnum.COURSE_3000_STEEPLE;
-		}	
+		}
+		// ============
+		// MARCHE
+		if (str.contains("arche")) {
+			if (str.contains("3000")) {return MARCHE_3000;}
+			if (str.contains("5000")) {return MARCHE_5000;}
+		}
+		
+		// ============
+		// PLAT
+		if (str.startsWith("100")) {return COURSE_100;}
+		if (str.startsWith("200")) {return COURSE_200;}
+		if (str.startsWith("400")) {return COURSE_400;}
+		if (str.startsWith("800")) {return COURSE_800;}
+		if (str.startsWith("1500")) {return COURSE_1500;}
+		if (str.startsWith("3000")) {return COURSE_3000;}
+		if (str.startsWith("5000")) {return COURSE_5000;}
+		
+		
+		// ============
+		// SAUT
+		if (str.startsWith("Longueur")) {
+			return EpreuveEnum.SAUT_LONGUEUR;
+		}
+		if (str.startsWith("Perche")) {
+			return EpreuveEnum.SAUT_PERCHE;
+		}
+		if (str.startsWith("Hauteur")) {
+			return EpreuveEnum.SAUT_HAUTEUR;
+		}
 		if (str.startsWith("Triple")) {
 			return EpreuveEnum.SAUT_TRIPLE;
 		}
