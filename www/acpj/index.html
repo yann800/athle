@@ -33,12 +33,16 @@
 			<li><a href="#2">2. Points rapportés par athlète, en moyenne</a></li>
 			<li><a href="#3">3. Épreuves de chaque athlète</a></li>
 			<li><a href="#4">4. Meilleures perfs</a></li>
-			<li><a href="#5">5. Épreuves avec zéro</a></li>
-			<li><a href="#6">6. Épreuves qui rapportent le plus de points</a></li>
-			<li><a href="#7">7. Points rapportés par Hommes ou Femmes</a></li>
-			<li><a href="#8">8. Pour chaque athlète, moyenne rang [1 - 2]</a></li>
-			<li><a href="#9">9. Répartition des catégories</a></li>
-			<li><a href="#9">10. Répartition des niveaux</a></li>			
+			<li><a href="#5">5. Plus de points...</a>
+				<ul>
+				<li><a href="#5.1">... par épreuve</a></li>
+				<li><a href="#5.2">... par sexe</a></li>
+				<li><a href="#5.3">... par catégorie</a></li>
+				</ul>
+			
+			</li>
+			<li><a href="#6">6. Pour chaque athlète, moyenne rang [1 - 2]</a></li>
+			<li><a href="#7">7. Répartition des niveaux</a></li>			
 
 				</ul>
 			
@@ -49,132 +53,285 @@
 			<div style="clear: both;"/>
 
 
+<p>Un peu de Java HTTP et expressions régulières, un peu de SQL et en avant un peu de recherche sur les résultats des interclubs de l'ACPJ...</p>
+
 			<h3 id="1">Nombre de participations de chaque athlète</h3>
 
-			<p></p>
+<pre>SELECT nom, count(*) AS participations, GROUP_CONCAT( DISTINCT epreuve SEPARATOR ',' ) 
+FROM IC
+GROUP BY nom
+ORDER BY participations DESC</pre>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><th>nom</th><th>participations</th><th>GROUP_CONCAT( DISTINCT epreuve SEPARATOR ',' )</th></tr>
+<tr><td>FRANCOIS Mickael</td><td>33</td><td>Hauteur,400H,100,Disque</td></tr>
+<tr><td>SAMANGARAY Baba</td><td>29</td><td>400H,Triple,Poids,400,Longueur,Disque</td></tr>
+<tr><td>ABOUKE Hermance</td><td>22</td><td>Longueur,100H,100,Triple</td></tr>
+<tr><td>HOUNSINOU Julie</td><td>22</td><td>200,Hauteur,400H,Perche</td></tr>
+<tr><td>LEDUC Cynthia</td><td>21</td><td>200,Disque,100,400</td></tr>
+<tr><td>ABDELKADER Yann</td><td>19</td><td>3000 steeple,5000,3000,400,1500,800</td></tr>
+<tr><td>ANDRIEU Olivier</td><td>17</td><td>5000,5000 marche,3000 steeple</td></tr>
+<tr><td>SOFFIATI Thibaud</td><td>17</td><td>1500,800</td></tr>
+<tr><td>BOCCARA Valerie</td><td>16</td><td>Poids,800,400,Javelot,Disque,3000 marche</td></tr>
+<tr><td>CANARD Raphael</td><td>16</td><td>Triple,Javelot,100,Longueur</td></tr>
+<tr><td>HOUDAYER Aicha</td><td>16</td><td>3000 marche</td></tr>
+<tr><td>BARANGER-MERINO Alberto</td><td>14</td><td>Marteau</td></tr>
+<tr><td>BOLLEE Elodie</td><td>14</td><td>3000,1500,800</td></tr>
+<tr><td>SCHLATTER Sebastien</td><td>14</td><td>Perche,Javelot,Poids</td></tr>
+<tr><td>TUDEAU Amandine</td><td>14</td><td>Javelot,400H,100H,800</td></tr>
+<tr><td>DEMONTIGNY Melissa</td><td>13</td><td>Perche,Javelot,100,Poids</td></tr>
+<tr><td>DUBOIS Ludovic</td><td>13</td><td>400H,Javelot</td></tr>
+<tr><td>LOTTIER Pascal</td><td>13</td><td>Disque,Marteau</td></tr>
+<tr><td>SCHLATTER Nicolas</td><td>13</td><td>Hauteur,400H,200,Longueur</td></tr>
+<tr><td>SECHAUD Ema</td><td>13</td><td>800,Javelot,1500,Hauteur</td></tr>
+<tr><td>...</td><td>...</td><td>...</td></tr>
+</table>
 
 			<h3 id="2">Points rapportés par athlète, en moyenne</h3>
 			
-			<pre>SELECT AVG(points)
+			<pre>SELECT nom, AVG(points) AS moyenne
 FROM IC
-GROUP BY nom</pre>
+GROUP BY nom
+ORDER BY moyenne DESC</pre>
+
+(BIZARRE... A VERIFIER)
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><th>nom</th><th>moyenne</th></tr>
+<tr><td>EFFA EFFA Junior</td><td>966.6667</td></tr>
+<tr><td>MENDY Paul (SEN)</td><td>904.5</td></tr>
+<tr><td>CALYDON Cornnelly</td><td>834.3333</td></tr>
+<tr><td>LALONDE Mathieu</td><td>829</td></tr>
+<tr><td>BA Mamadou</td><td>816</td></tr>
+<tr><td>BOUSSADIA Mourad</td><td>807</td></tr>
+<tr><td>BARLES Pauline</td><td>780.5</td></tr>
+<tr><td>PRIETO Mathilde</td><td>761</td></tr>
+<tr><td>AFOUMBA Gilles-anthony (CGO)</td><td>756.25</td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
 
 			<h3 id="3">Épreuves de chaque athlète</h3>
 
+
 			<h3 id="4">Meilleures perfs</h3>
 			
+<table class="table table-striped table-bordered table-hover table-condensed" id="best_points"></table>
+
+
+			<h3 id="5">Plus de points...</h3>
+
+			
+			<h4 id="5.1">... par épreuve</h4>
+			
+<pre>SELECT epreuve, SUM(points) as total FROM IC
+GROUP BY epreuve
+ORDER BY total DESC</pre>
+
+			<div class="alert alert-warning" role="alert">
+<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">A noter</span>
+Classement à prendre avec pincettes. La table hongroise désavante honteusement le 1/2 fond.
+</div>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>Epreuve</th><th>points</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+<tr><td>Haies 110, 400 mélangé, bug con</td><td>41,201</td></tr>
+<tr><td>Longueur</td><td>29,898</td></tr>
+<tr><td>200</td><td>27,064</td></tr>
+<tr><td>800</td><td>26,751</td></tr>
+<tr><td>Triple</td><td>26,230</td></tr>
+<tr><td>100</td><td>25,657</td></tr>
+<tr><td>400</td><td>25,389</td></tr>
+<tr><td>1500</td><td>24,985</td></tr>
+<tr><td>Hauteur</td><td>22,845</td></tr>
+<tr><td>Poids</td><td>21,232</td></tr>
+<tr><td>Disque</td><td>21,143</td></tr>
+<tr><td>3000</td><td>20,030</td></tr>
+<tr><td>Marteau</td><td>19,496</td></tr>
+<tr><td>Perche</td><td>18,579</td></tr>
+<tr><td>Javelot</td><td>18,311</td></tr>
+<tr><td>100H</td><td>13,962</td></tr>
+<tr><td>3000 steeple</td><td>13,544</td></tr>
+<tr><td>5000 marche</td><td>13,237</td></tr>
+<tr><td>3000 marche</td><td>10,627</td></tr>
+<tr><td>5000</td><td>6,892</td></tr>
+</table>	
+	</tbody>
+</table>
+	
+		<h4 id="5.2">... par sexe</h4>
+		<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><th>sexe</th><th>total points</th></tr>
+		<tr><td>M</td><td>228 961</td></tr>
+		<tr><td>F</td><td>198 112</td></tr>
+		</table>
+		
+		</tbody>
+		</table>
+				
+			<h4 id="5.3">... par catégories</h3>
+			
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><th>categorie</th><th>total points</th></tr>
+<tr><td>SE</td><td>213 141</td></tr>
+<tr><td>ES</td><td>85 516</td></tr>
+<tr><td>CA</td><td>53 906</td></tr>
+<tr><td>JU</td><td>43 166</td></tr>
+<tr><td>VE</td><td>31 344</td></tr>
+</table>
+
 			<h3 id="5">Épreuves avec zéro</h3>
 
-			<h3 id="6">Épreuves qui rapportent le plus de points</h3>
 
-			<h3 id="7">Points rapportés par Hommes ou Femmes</h3>
+			<h3 id="6">Pour chaque athlète, moyenne rang [1 - 2]</h3>
 
-			<h3 id="8">Pour chaque athlète, moyenne rang [1 - 2]</h3>
-
-			<h3 id="9">Répartition des catégories</h3>
 			
-			<h3 id="10">Répartition des niveaux</h3>			
-
-			<pre>SELECT count(*)
-FROM IC
-IC GROUP categorie</pre>
-
-			<div class="row">
-
-				<table class="table table-striped table-bordered" id="table_ecarts"></table>
-
-			</div>
+			<h3 id="7">Répartition des niveaux</h3>			
+<p>
+<i>correction à venir...</i>
+</p>
 		</div>
 
 		<script src="../js/menu.js" type="text/javascript"></script>
 
 
+<script type="text/javascript">
 
-
-		<script type="text/javascript">
-function selection1(){
-	recordsSel1 = selectionNum(1);
-}
-
-function selection2(){
-	recordsSel2 = selectionNum(2);
-}
-
-
-function selection(){
-
-	var laTable = $("#table_ecarts").DataTable();
-
-	laTable.clear();
+function init_table(){
 	
-	for (var i = 0; i < listeEpreuves.length; i++) {
+var data = { data : [
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'50.34',points:'1118',annee:'2016',naissance:'88'},
+	{ nom: 'ALEXANDER Ayanna (TTO)',sexe:'F',epreuve:'Triple',perf:'13m85 (+0.3)',points:'1093',annee:'2016',naissance:'82'},
+	{ nom: 'SAMBA-MAYELA Cyrena',sexe:'F',epreuve:'100H',perf:'13.55 (+2.2)',points:'1092',annee:'2017',naissance:'0'},
+	{ nom: 'MBALLA ERDINC Sylvie',sexe:'F',epreuve:'100',perf:'11.65 (+ 1.2)',points:'1085',annee:'2009',naissance:'77'},
+	{ nom: 'DUBOIS Ludovic',sexe:'M',epreuve:'400H',perf:'51.20',points:'1081',annee:'2010',naissance:'86'},
+	{ nom: 'HURTIS-HOUAIRI Muriel',sexe:'F',epreuve:'400',perf:'53.65',points:'1079',annee:'2010',naissance:'79'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.11',points:'1075',annee:'2018',naissance:'88'},
+	{ nom: 'FOFANA-KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'13.71 (+0.5)',points:'1072',annee:'2017',naissance:'98'},
+	{ nom: 'DUBOIS Ludovic',sexe:'M',epreuve:'400H',perf:'51.42',points:'1072',annee:'2013',naissance:'86'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.46',points:'1070',annee:'2009',naissance:'88'},
+	{ nom: 'KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'13.75 (-2.0)',points:'1067',annee:'2016',naissance:'98'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.73',points:'1059',annee:'2010',naissance:'88'},
+	{ nom: 'RAVON Thomas',sexe:'M',epreuve:'110H',perf:'14.24 (-2.5)',points:'1056',annee:'2016',naissance:'85'},
+	{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'59.74',points:'1054',annee:'2016',naissance:'97'},
+	{ nom: 'KUDELA Lucie',sexe:'F',epreuve:'400H',perf:'58.96',points:'1052',annee:'2018',naissance:'97'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.64',points:'1050',annee:'2018',naissance:'88'},
+	{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'200',perf:'23.89 (-2.6)',points:'1046',annee:'2018',naissance:'97'},
+	{ nom: 'EFFA EFFA Junior',sexe:'M',epreuve:'110H',perf:'14.11 (-0.5)',points:'1046',annee:'2018',naissance:'96'},
+	{ nom: 'LEWIS Abigail (JAM)',sexe:'F',epreuve:'100H',perf:'13.95 (0.5)',points:'1043',annee:'2016',naissance:'93'},
+	{ nom: 'ZONGO Amy',sexe:'F',epreuve:'Triple',perf:'13m40 (+1,5)',points:'1041',annee:'2009',naissance:'80'},
+	{ nom: 'JEMAA-AMIROUCHE Dora',sexe:'F',epreuve:'400H',perf:'60.27',points:'1040',annee:'2013',naissance:'85'},
+	{ nom: 'EFFA EFFA Junior',sexe:'M',epreuve:'110H',perf:'14.22 (- 0.8)',points:'1027',annee:'2018',naissance:'96'},
+	{ nom: 'NTIA Romeo (BEN)',sexe:'M',epreuve:'Longueur',perf:'7m49 (+0.2)',points:'1027',annee:'2018',naissance:'95'},
+	{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'200',perf:'21.29 (+ 0.4)',points:'1025',annee:'2018',naissance:'96'},
+	{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'61.05',points:'1020',annee:'2017',naissance:'97'},
+	{ nom: 'RAVON Thomas',sexe:'M',epreuve:'110H',perf:'14.49 (+1.5)',points:'1018',annee:'2017',naissance:'85'},
+	{ nom: 'LAINE Samyr (HAI)',sexe:'M',epreuve:'Triple',perf:'15m77 (+1.1)',points:'1015',annee:'2016',naissance:'84'},
+	{ nom: 'LAHAYE Mathieu',sexe:'M',epreuve:'400',perf:'47.61',points:'1014',annee:'2010',naissance:'83'},
+	{ nom: 'KOUNTA Muhammad abdall',sexe:'M',epreuve:'400H',perf:'52.84',points:'1013',annee:'2017',naissance:'94'},
+	{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'200',perf:'21.38 (+0.0)',points:'1012',annee:'2018',naissance:'96'},
+	{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'60.40',points:'1010',annee:'2018',naissance:'97'},
+	{ nom: 'DANTE Djenebou (MLI)',sexe:'F',epreuve:'200',perf:'24.95 (+0.9)',points:'998',annee:'2017',naissance:'89'},
+	{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'200',perf:'24.95 (+0.6)',points:'998',annee:'2013',naissance:'97'},
+	{ nom: 'GAGNEUX Valerie',sexe:'F',epreuve:'400H',perf:'61.98',points:'996',annee:'2010',naissance:'84'},
+	{ nom: 'CALYDON Cornnelly',sexe:'F',epreuve:'200',perf:'24.98 (-1.5)',points:'995',annee:'2016',naissance:'89'},
+	{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'400',perf:'55.54',points:'993',annee:'2018',naissance:'97'},
+	{ nom: 'CESSIRON Maxime',sexe:'M',epreuve:'800',perf:'1.51.43',points:'988',annee:'2010',naissance:'90'},
+	{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'400',perf:'48.06',points:'988',annee:'2017',naissance:'96'},
+	{ nom: 'LAMALLE Adrianna',sexe:'F',epreuve:'100',perf:'12.24 (+0.1)',points:'987',annee:'2010',naissance:'82'},
+	{ nom: 'LECHANGA Jules',sexe:'M',epreuve:'Triple',perf:'15m50 (+0.0)',points:'987',annee:'2017',naissance:'86'},
+	{ nom: 'NTIA Romeo (BEN)',sexe:'M',epreuve:'Longueur',perf:'7m30 (+0.0)',points:'986',annee:'2018',naissance:'95'},
+	{ nom: 'HAMROUNI Hamza',sexe:'M',epreuve:'Triple',perf:'15m23 (+0.0)',points:'977',annee:'2018',naissance:'99'},
+	{ nom: 'TSHIKAYA Lea',sexe:'F',epreuve:'400',perf:'57.00',points:'973',annee:'2013',naissance:'91'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'110H',perf:'14.81 (-0.9)',points:'970',annee:'2014',naissance:'88'},
+	{ nom: 'TSHIKAYA Lea',sexe:'F',epreuve:'400H',perf:'63.04',points:'969',annee:'2014',naissance:'91'},
+	{ nom: 'FOFANA Colomba',sexe:'M',epreuve:'Triple',perf:'15m29 (+0,5)',points:'964',annee:'2009',naissance:'77'},
+	{ nom: 'KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'14.63 (+0.8)',points:'963',annee:'2014',naissance:'98'},
+	{ nom: 'TOURE Sally',sexe:'F',epreuve:'100H',perf:'14.66 (+0.8)',points:'960',annee:'2013',naissance:'94'},
+	{ nom: 'ARMINANA Mickael',sexe:'M',epreuve:'200',perf:'21.87 (+0,9)',points:'958',annee:'2009',naissance:'87'},
+	{ nom: 'GURACHI Youness',sexe:'M',epreuve:'800',perf:'1.52.54',points:'958',annee:'2009',naissance:'83'},
+	{ nom: 'SAMBA-MAYELA Cyrena',sexe:'F',epreuve:'100',perf:'12.42 (-1.9)',points:'958',annee:'2016',naissance:'0'},
+	{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'110H',perf:'14.91 (+1.6)',points:'956',annee:'2013',naissance:'88'},
+	{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'62.36',points:'954',annee:'2018',naissance:'97'},
+	{ nom: 'SAMANGARAY Baba',sexe:'M',epreuve:'400H',perf:'54.35',points:'951',annee:'2014',naissance:'88'},
+	{ nom: 'ADDOH Axel',sexe:'M',epreuve:'200',perf:'21.92 (+2.4)',points:'951',annee:'2017',naissance:'92'},
+	{ nom: 'ADDOH Axel',sexe:'M',epreuve:'200',perf:'21.82 (+ 1.2)',points:'950',annee:'2018',naissance:'92'},
+	{ nom: 'TOYB Gildas',sexe:'M',epreuve:'100',perf:'10.90 (+0.5)',points:'948',annee:'2017',naissance:'97'},
+	{ nom: 'NICOTRA Ferdinando (ITA)',sexe:'M',epreuve:'Disque',perf:'54m59',points:'948',annee:'2013',naissance:'86'},
+	{ nom: 'GAGNEUX Valerie',sexe:'F',epreuve:'400H',perf:'63.96',points:'946',annee:'2013',naissance:'84'},
+	{ nom: 'GURACHI Youness',sexe:'M',epreuve:'200',perf:'21.96 (+0.0)',points:'945',annee:'2010',naissance:'83'},
+	{ nom: 'NZAMOWANI Jodelle',sexe:'F',epreuve:'400H',perf:'64.02',points:'945',annee:'2010',naissance:'89'},
+	{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'400',perf:'57.97',points:'943',annee:'2016',naissance:'97'},
+	{ nom: 'AH-MOUCK Loic',sexe:'M',epreuve:'400',perf:'48.91',points:'939',annee:'2013',naissance:'91'},
+	{ nom: 'MOHAMMEDI Wahiba',sexe:'F',epreuve:'400H',perf:'64.33',points:'937',annee:'2017',naissance:'97'},
+	{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'12m20 (+2.2)',points:'935',annee:'2018',naissance:'95'},
+	{ nom: 'SAMANGARAY Baba',sexe:'M',epreuve:'110H',perf:'15.06 (-0.3)',points:'934',annee:'2016',naissance:'88'},
+	{ nom: 'DIAROUMA Tiguida',sexe:'F',epreuve:'200',perf:'25.86 (+1.0)',points:'934',annee:'2010',naissance:'94'},
+	{ nom: 'KIMBEMBE Devilert-arsene (COD)',sexe:'M',epreuve:'200',perf:'22.05 (-0.5)',points:'933',annee:'2016',naissance:'84'},
+	{ nom: 'HAMROUNI Hamza',sexe:'M',epreuve:'Triple',perf:'14m81 (-0.2)',points:'933',annee:'2018',naissance:'99'},
+	{ nom: 'MAGASSA Modibo',sexe:'M',epreuve:'400',perf:'49.03',points:'932',annee:'2010',naissance:'88'},
+	{ nom: 'LAHAYE Mathieu',sexe:'M',epreuve:'400',perf:'49.10',points:'928',annee:'2009',naissance:'83'},
+	{ nom: 'CLERENCE Elisa',sexe:'F',epreuve:'100',perf:'12.61 (+0.0)',points:'928',annee:'2010',naissance:'88'},
+	{ nom: 'ADDOH Axel',sexe:'M',epreuve:'400',perf:'48.87',points:'926',annee:'2018',naissance:'92'},
+	{ nom: 'REBIHI Scherazade',sexe:'F',epreuve:'400H',perf:'64.80',points:'925',annee:'2009',naissance:'72'},
+	{ nom: 'KIMBEMBE Devilert-arsene (CGO)',sexe:'M',epreuve:'200',perf:'22.11 (+0.9)',points:'925',annee:'2017',naissance:'84'},
+	{ nom: 'FOFANA Colomba',sexe:'M',epreuve:'Longueur',perf:'7m01 (+1.4)',points:'920',annee:'2010',naissance:'77'},
+	{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.04 (+ 0.5)',points:'917',annee:'2009',naissance:'86'},
+	{ nom: 'MENDY Paul (SEN)',sexe:'M',epreuve:'Triple',perf:'14m65 (+0.0)',points:'917',annee:'2018',naissance:'89'},
+	{ nom: 'LOISEAU Margot',sexe:'F',epreuve:'200',perf:'26.17 (+1.7)',points:'913',annee:'2013',naissance:'96'},
+	{ nom: 'ALERTE David',sexe:'M',epreuve:'Longueur',perf:'6m97 (+1.2)',points:'911',annee:'2017',naissance:'84'},
+	{ nom: 'ALERTE David',sexe:'M',epreuve:'400',perf:'49.43',points:'910',annee:'2016',naissance:'84'},
+	{ nom: 'FLANDRIN-THONIEL Igor',sexe:'M',epreuve:'800',perf:'1.54.38',points:'910',annee:'2010',naissance:'79'},
+	{ nom: 'ROLLEZ Florian',sexe:'M',epreuve:'200',perf:'22.23 (+1.6)',points:'909',annee:'2013',naissance:'88'},
+	{ nom: 'AH-MOUCK Loic',sexe:'M',epreuve:'400',perf:'49.45',points:'909',annee:'2014',naissance:'91'},
+	{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'11m94 (-1.2)',points:'908',annee:'2018',naissance:'95'},
+	{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'200',perf:'26.25 (+1.5)',points:'907',annee:'2014',naissance:'97'},
+	{ nom: 'BOUHADJER Mohamed',sexe:'M',epreuve:'Perche',perf:'4m80',points:'902',annee:'2013',naissance:'91'},
+	{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'12m15 (+1.8)',points:'899',annee:'2017',naissance:'95'},
+	{ nom: 'GREZE Stephane',sexe:'M',epreuve:'Triple',perf:'14m66 (+0.9)',points:'897',annee:'2017',naissance:'84'},
+	{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.24 (+0.0)',points:'895',annee:'2010',naissance:'86'},
+	{ nom: 'MALELA Sogiros',sexe:'M',epreuve:'100',perf:'11.09 (+ 0.9)',points:'894',annee:'2009',naissance:'87'},
+	{ nom: 'COLLINET Agathe',sexe:'F',epreuve:'400',perf:'59.66',points:'893',annee:'2014',naissance:'94'},
+	{ nom: 'FRANZONI Lorenzo (ITA)',sexe:'M',epreuve:'Triple',perf:'14m61 (+0.0)',points:'892',annee:'2014',naissance:'88'},
+	{ nom: 'MENDY Paul (SEN)',sexe:'M',epreuve:'Triple',perf:'14m42 (+0.9)',points:'892',annee:'2018',naissance:'89'},
+	{ nom: 'CANARD Raphael',sexe:'M',epreuve:'Longueur',perf:'6m84 (+0.0)',points:'888',annee:'2018',naissance:'96'},
+	{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.33 (+0.1)',points:'885',annee:'2014',naissance:'86'},
+	{ nom: 'KIMBEMBE Devilert-arsene (CGO)',sexe:'M',epreuve:'100',perf:'11.01 (- 1.2)',points:'883',annee:'2018',naissance:'84'},
+	{ nom: 'SECQUEVILLE Melissa',sexe:'F',epreuve:'100',perf:'12.92 (+1.3)',points:'881',annee:'2017',naissance:'1'},
+	{ nom: 'LAMBOLEY Victoria',sexe:'F',epreuve:'800',perf:'2.16.79',points:'881',annee:'2018',naissance:'93'},
+	{ nom: 'CANARD Raphael',sexe:'M',epreuve:'Longueur',perf:'6m82 (+1.4)',points:'880',annee:'2016',naissance:'96'}
 
-		var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
-		var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+	
+]}
 
-		if (sel1.length == 0 && sel2.length == 0){
-			// rien, pas de record ni pour aucun des deux athlètes
-		}
-		// sel1 null, sel2 non null
-		else if (sel1.length == 0){
-			laTable.row.add({e : listeEpreuves[i], nom1 : '', perf1 :  '', nom2 : sel2.nom,  perf2 : sel2.perf, ecart : ''}).draw();
-		}
-		// sel1 non null, sel2 null
-		else if (sel2.length == 0){
-			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : '',  perf2 : '', ecart : ''}).draw();
-		}
-		// les deux athlètes avec perf
-		else {
-			var compute = computeEcarts(sel1.perf, sel2.perf);
-			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
-		}
-	}
-	drawChart();
+var table = $('#best_points').DataTable({
+	data : data.data,
+	order: [[ 4, "desc" ]],
+    paging: true,
+    columns : [
+    { data: 'nom', title: 'Nom' },
+    { data: 'sexe', title: 'Sexe' },
+    { data: 'epreuve', title: 'Epreuve' },    
+    { data: 'perf', title: 'Performance' },    
+    { data: 'points', title: 'Points' },    
+    { data: 'annee', title: 'Année' },    
+    { data: 'naissance', title: 'Naissance' }    
+  ]  
+})  
 }
-
-// on ne met à jour que la var globale recordsSel1
-function selectionNum(num){
-	
-    $("#table_ecarts tbody").children().remove();
-    
-}
-
-
-function createTableHead(){
-	
-	var records = { data : [
-	
-	]};
-	
-	var table = $('#table_ecarts').DataTable({
-		data : records.data,
-        "paging": false, 
-        "info": false,         
-	  columns : [
-	    { data: 'e', title: 'Epreuve' },
-	    { data: 'nom1', title: 'Nom' },
-	    { data: 'perf1', title: 'Performance' },    
-	    { data: 'nom2', title: 'Nom' },
-	    { data: 'perf2', title: 'Performance' },    
-	    { data: 'ecart', title: 'Pourcentage' },
-      ]  
-	});
-	recordsSel1 = selectionNum(1);
-	recordsSel2 = selectionNum(2);
-
-	selection();
-}
-
 
 </script>
 
-<script type="text/javascript" class="init">
+	<script type="text/javascript" class="init">
+		$('.dropdown-toggle').dropdown();
+		
+		init_table();
 
-$('.dropdown-toggle').dropdown();
-
-
-document.getElementById("statistiques").setAttribute("class", "active");
-
-</script>
+	</script>
 </body>
 </html>

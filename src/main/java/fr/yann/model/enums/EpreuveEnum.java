@@ -62,7 +62,7 @@ public enum EpreuveEnum {
 			if (str.contains("100")) {
 				return EpreuveEnum.COURSE_100_HAIES;
 			}
-			return EpreuveEnum.COURSE_110_HAIES;
+			return EpreuveEnum.COURSE_400_HAIES;
 		}
 		if (str.startsWith("3000 St") || str.contains("eeple")) {
 			return EpreuveEnum.COURSE_3000_STEEPLE;
