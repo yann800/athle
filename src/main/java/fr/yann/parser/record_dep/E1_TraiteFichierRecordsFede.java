@@ -9,6 +9,7 @@ import java.util.List;
 import fr.yann.model.enums.CategorieEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.model.record.LigneRecordDep;
+import fr.yann.parser.record_wiki.service.SqlService;
 
 /**
  * 
@@ -22,37 +23,31 @@ public class E1_TraiteFichierRecordsFede {
 	// Insert.main(path + ".sql");
 	public static void main(String[] args) throws Exception {
 
-		for (int num = 1; num < 96; num++) {
+		for (SexeEnum sexeEnum : SexeEnum.values()) {
+
+			for (CategorieEnum catEnum : CategorieEnum.values()) {
 			
-			if (num != 1) {
-				continue;
+				for (int num = 1; num < 96; num++) {
+
+					StringBuffer sb = new StringBuffer();
+
+					List<LigneRecordDep> liste = traite(num, sexeEnum, catEnum);
+
+					// System.out.println("NOMBRE : " + liste.size() + "\n");
+					for (LigneRecordDep lr : liste) {
+						// System.out.println(lr.toStringSql());
+						sb.append(lr.toStringSql() + "\n");
+					}
+					SqlService.writeFile(getPathFile(num, sexeEnum, catEnum), sb.toString());
+				}
 			}
-			
-			StringBuffer sb = new StringBuffer();
-
-			String str_num = num + "";
-			if (num < 10) {
-				str_num = "0" + num;
-			}
-			String path = PATH_PAGES_DEP + "\\F_ES_" + str_num + ".html";
-
-			List<LigneRecordDep> liste = traite(path, num, SexeEnum.FEMININ, CategorieEnum.ES);
-
-			// System.out.println("NOMBRE : " + liste.size() + "\n");
-			for (LigneRecordDep lr : liste) {
-
-				System.out.println(lr.toStringSql());
-				sb.append(lr.toStringSql() + "\n");
-			}
-			// YANN SqlService.writeFile(path, sb.toString());
 		}
-
 
 	}
 
-	private static List<LigneRecordDep> traite(String pathFile, int dep, SexeEnum sexeEnum, CategorieEnum catEnum) throws Exception {
+	private static List<LigneRecordDep> traite(int dep, SexeEnum sexeEnum, CategorieEnum catEnum) throws Exception {
 
-		File f = new File(pathFile);
+		File f = new File(getPathFile(dep, sexeEnum, catEnum));
 		FileReader fr = new FileReader(f);
 		BufferedReader br = new BufferedReader(fr);
 
@@ -74,5 +69,13 @@ public class E1_TraiteFichierRecordsFede {
 		br.close();
 		fr.close();
 		return listeRecords;
+	}
+
+	private static String getPathFile(int dep, SexeEnum sexeEnum, CategorieEnum catEnum) {
+		String str_num = dep + "";
+		if (dep < 10) {
+			str_num = "0" + dep;
+		}
+		return PATH_PAGES_DEP + "\\" + sexeEnum.getCodeStr() + "_" + catEnum.name() + "_" + str_num + ".html";
 	}
 }

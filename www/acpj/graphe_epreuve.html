@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link href="../css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="../css/dataTables.bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
+<script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+	<div class="content">
+
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+
+			<div id="menu"></div>
+			<h1>Graphique épreuve Interclubs ACPJ 2009-2019</h1>
+
+
+			<div class="row">
+
+
+				<div class="row">
+					<div class="col-sm-4">
+						<button id="btnShowHide" class="btn btn-primary">Masquer / montrer graphique</button>
+					</div>
+				</div>
+				<div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+				<script type="text/javascript" src="../charts/google/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
+				<script type="text/javascript">
+var button = document.getElementById('btnShowHide'); // Assumes element with id='button'
+
+button.onclick = function() {
+    var div = document.getElementById('chart_div');
+    if (div.style.display !== 'none') {
+        div.style.display = 'none';
+    }
+    else {
+        div.style.display = 'block';
+    }
+};
+
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var tableCalculee = [];
+                     
+	tableCalculee.push(['Epreuve', libelleSel1, libelleSel2]);
+     
+	for (var i = 0; i < listeEpreuves.length; i++) {
+
+		var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+		var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+
+		var ecart = computeEcarts(sel1.perf, sel2.perf);
+		
+		if (ecart.length === 0){
+			// rien pour éviter pics du graph
+		}
+		else {
+			tableCalculee.push([listeEpreuves[i], 100, ecart]);
+		}
+	}
+
+	var data = google.visualization.arrayToDataTable(tableCalculee);
+
+	var options = {
+		title: 'Comparatif'
+   };
+
+	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+	chart.draw(data, options);
+}
+   </script>
+
+				<table class="table table-striped table-bordered" id="table_ecarts"></table>
+
+			</div>
+		</div>
+
+		<script src="../js/menu.js" type="text/javascript"></script>
+
+
+
+
+		<script type="text/javascript">
+function selection1(){
+	recordsSel1 = selectionNum(1);
+}
+
+function selection2(){
+	recordsSel2 = selectionNum(2);
+}
+
+
+function selection(){
+
+	var laTable = $("#table_ecarts").DataTable();
+
+	laTable.clear();
+	
+	for (var i = 0; i < listeEpreuves.length; i++) {
+
+		var sel1 = getRecordOfEpreuve(listeEpreuves[i], recordsSel1);
+		var sel2 = getRecordOfEpreuve(listeEpreuves[i], recordsSel2);
+
+		if (sel1.length == 0 && sel2.length == 0){
+			// rien, pas de record ni pour aucun des deux athlètes
+		}
+		// sel1 null, sel2 non null
+		else if (sel1.length == 0){
+			laTable.row.add({e : listeEpreuves[i], nom1 : '', perf1 :  '', nom2 : sel2.nom,  perf2 : sel2.perf, ecart : ''}).draw();
+		}
+		// sel1 non null, sel2 null
+		else if (sel2.length == 0){
+			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : '',  perf2 : '', ecart : ''}).draw();
+		}
+		// les deux athlètes avec perf
+		else {
+			var compute = computeEcarts(sel1.perf, sel2.perf);
+			laTable.row.add({e : listeEpreuves[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
+		}
+	}
+	drawChart();
+}
+
+// on ne met à jour que la var globale recordsSel1
+function selectionNum(num){
+	
+    $("#table_ecarts tbody").children().remove();
+    
+    var zone      = document.getElementById("selectZone"      + num).selectedIndex;
+	var categorie = document.getElementById("selectCategorie" + num).selectedIndex;
+	var sexe      = document.getElementById("selectSexe"      + num).selectedIndex;
+	var pays      = document.getElementById("selectPays"      + num).value;
+
+	console.log('zone ' + zone + ' ' + ', pays ' +  pays + ', categorie ' + categorie + ', sexe ' + sexe);
+	
+	if (num == 1){
+    	libelleSel1 = getLibelle(zone, pays, sexe, categorie);
+		console.log('libelleSel1 ' + libelleSel1);
+	}
+	else {
+	    libelleSel2 = getLibelle(zone, pays, sexe, categorie);
+	}
+	
+	
+
+
+}
+
+
+function getRecordEpreuve(epr, tabRecords){
+	for (var i = 0; i < tabRecords.length; i++) {
+		// console.info('test si = ' + tabRecords[i].e);
+		if (tabRecords[i].e == epr){
+			return tabRecords[i];
+		}
+	}
+	return '0';
+}
+
+function createTableHead(){
+	
+	var records = { data : [
+	
+	]};
+	
+	var table = $('#table_ecarts').DataTable({
+		data : records.data,
+        "paging": false, 
+        "info": false,         
+	  columns : [
+	    { data: 'e', title: 'Epreuve' },
+	    { data: 'nom1', title: 'Nom' },
+	    { data: 'perf1', title: 'Performance' },    
+	    { data: 'nom2', title: 'Nom' },
+	    { data: 'perf2', title: 'Performance' },    
+	    { data: 'ecart', title: 'Pourcentage' },
+      ]  
+	});
+	recordsSel1 = selectionNum(1);
+	recordsSel2 = selectionNum(2);
+
+	selection();
+}
+
+function computeEcarts(p1, p2){
+	
+	if (p1 == null || p2 == null){
+		return "";
+	}
+	
+	var c1 = getCentiemes(p1);
+    var c2 = getCentiemes(p2);
+    
+    if ((p1.indexOf("m", 0) > -1)){
+    	return calculEcartCentiemes(c2, c1);
+    }
+    return calculEcartCentiemes(c1, c2);
+}
+
+function getCentiemes(temps) {
+
+	if (temps == null){
+		return 0;
+	}
+
+	var heures;
+	var minutes;
+	var secondes;
+	var centiemes;
+
+	// '9.58'.indexOf(".", 0)  >> 1;
+	// 51.1
+	// '19.58'.indexOf(".", 0)  >> 2;
+	// '9.58'.indexOf(".", 3) >> -1
+	// '9.55'.substring(0, 1, 9.55) >> 9;
+
+	// -----------------
+	// cas particulier temps sup à 1h
+	if (temps.indexOf("h", 0) > -1){
+		heures = temps.substring(0, 1);
+		minutes = temps.substring(2, 4);
+		secondes = temps.substring(3, 5); 
+		centiemes = 0;
+		
+		var i_heures = parseInt(heures);
+	    var i_minutes = parseInt(minutes);
+		var i_secondes = parseInt(secondes);
+
+	    i_minutes = (i_heures * 60) + i_minutes; 	    
+		return ((i_minutes * 60) + i_secondes) * 100;		
+	}
+	// -----------------
+	// cas particulier distance 8m95 ou 17m92
+	if (temps.indexOf("m", 0) > -1){
+		if (temps.length == 4){ // longueur
+			var metres = parseInt(temps.substring(0, 1));
+			var centimetres = parseInt(temps.substring(2, 4));
+			return (metres * 100) + centimetres;
+		}
+		// triple ou lancers
+			var metres = parseInt(temps.substring(0, 2));
+			var centimetres = parseInt(temps.substring(3, 5));
+			return (metres * 100) + centimetres;
+	}	
+	// -----------------
+	// chrono 9.58 ou 51.1
+	if (temps.length == 4){
+		minutes = 0;
+		// 9.58
+		if (temps.indexOf(".") == 1){
+			secondes = temps.substring(0, 1);
+			centiemes = temps.substring(2, 4);
+		}
+		// manuel 51.1
+		else {
+			secondes = temps.substring(0, 2);
+			centiemes = temps.substring(3, 4) + '0';
+		}
+	}
+	// -----------------
+	// chrono 10.49, 19.19
+	else if (temps.length == 5){
+		minutes = 0;
+		secondes = temps.substring(0, 2);
+		centiemes = temps.substring(3, 5);
+	}
+	// -----------------
+	// chrono 1.58.9
+	else if (temps.length == 6){
+		minutes = temps.substring(0, 1);
+		secondes = temps.substring(2, 4);
+		centiemes = temps.substring(5, 6) + '0';
+	}	
+	// -----------------
+	// chrono 1.53.29 ou 14.23.5
+	else if (temps.length == 7){
+		
+		// 1.53.29 : 5 car = "." 
+		if (temps.charAt(4) == '.'){
+			minutes = temps.substring(0, 1);
+			secondes = temps.substring(2, 4);
+			centiemes = temps.substring(5, 7);
+		}
+		// 14.23.5
+		else {
+			minutes = temps.substring(0, 2);
+			secondes = temps.substring(3, 5);
+			centiemes = temps.substring(6, 7);
+		}
+	}
+	// -----------------
+	// chrono 14.23.5
+	else if (temps.length == 7){
+		minutes = temps.substring(0, 2);
+		secondes = temps.substring(3, 5);
+		centiemes = temps.substring(6, 7) + '0';
+	}
+
+	// -----------------
+	// chrono 12.58.98
+	else if (temps.length == 8){
+		minutes = temps.substring(0, 2);
+		secondes = temps.substring(3, 5);
+		centiemes = temps.substring(6, 8);
+	}
+
+    var i_minutes = parseInt(minutes);
+	var i_secondes = parseInt(secondes);
+	var i_centiemes = parseInt(centiemes);
+
+	return (i_minutes * 60 * 100) + (i_secondes * 100) + i_centiemes;
+}
+
+function calculEcartCentiemes(c1, c2) {
+    // console.log('calculEcartCentiemes(' + c1 + ',' + c2 + ')');
+	return Math.round((c2 / c1) * 10000) / 100; 
+    
+};
+
+</script>
+
+		<script type="text/javascript" class="init">
+
+$('.dropdown-toggle').dropdown();
+
+$("#selectCategorie" + 1).css({'display' : ''});
+$("#selectSexe"      + 1).css({'display' : ''});
+$("#selectPays"      + 1).css({'display' : 'none'});
+$("#divClub"         + 1).css({'display' : 'none'});	
+$("#divAthlete"      + 1).css({'display' : 'none'});
+
+$("#selectCategorie" + 2).css({'display' : ''});
+$("#selectSexe"      + 2).css({'display' : ''});
+$("#selectPays"      + 2).css({'display' : 'none'});
+$("#divClub"         + 2).css({'display' : 'none'});	
+$("#divAthlete"      + 2).css({'display' : 'none'});
+
+
+var recordsSel1 = {'record' : []};
+var recordsSel2 = {'record' : []};
+
+var libelleSel1 = 'sel1 init';
+var libelleSel2 = 'sel2 init';
+
+
+var listeEpreuves = ['100', '200', '400', '800', '1500', '3000', '5000', '10000', 'Marathon', '400 Haies', 'Steeple', 'Longueur', 'Triple saut'];
+
+createTableHead();
+
+var elts = document.querySelectorAll("select");
+for (var i = 0; i < elts.length; i++){
+	
+	if ((elts[i].id.indexOf("1", 0) > -1)){
+		elts[i].addEventListener("change", selection1, true);
+	}
+	else {
+		elts[i].addEventListener("change", selection2, true);
+	}
+	
+}
+
+$("#searchClub2").on("input", function(e) {
+	var val = $(this).val();
+	if(val === ""){
+		return;
+	}
+
+	$.get("getClub.php", {q:val}, function(listeClubs) {
+
+		var dataList = $("#listeClub2");
+		dataList.empty();
+		
+		for (var i = 0; i < listeClubs.clubs.length; i++) {
+			var obj = listeClubs.clubs[i];
+			console.log(obj.c);
+			var opt = $("<option></option>").attr("value", obj.c);
+			dataList.append(opt);
+		}
+	},"json");
+});
+
+function chargeClub1(){
+	chargeJsonClub($("#searchClub1")[0].value, 1, document.getElementById("selectSexe1").selectedIndex);
+}
+function chargeClub2(){
+	chargeJsonClub($("#searchClub2")[0].value, 2, document.getElementById("selectSexe2").selectedIndex);
+}
+
+function chargeAthlete1(){
+	chargeJsonAthlete($("#textNom1")[0].value, 1);
+}
+function chargeAthlete2(){
+	chargeJsonAthlete($("#textNom2")[0].value, 2);
+}
+
+function chargeJsonRecordsPays(numSelection, p_id_pays, p_sexe){
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+			 var reponseGetRecords = this.responseText;
+			 
+			 var jsonData = JSON.parse(reponseGetRecords);
+
+			 if (numSelection == 1){
+				recordsSel1 = jsonData;
+			} else {
+				recordsSel2 = jsonData;
+			}
+			selection();
+		}
+	};
+	if (p_sexe == 0){p_sexe = 1;}
+	if (p_sexe == 1){p_sexe = 0;}
+	xmlhttp.open("GET", "getRecordsPays.php?id_pays=" + p_id_pays + "&sexe=" + p_sexe, true);
+	xmlhttp.send();
+	
+}
+
+function chargeJsonClub(p_nom, num){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+			 var reponseGetRecords = this.responseText;
+			 
+			 var jsonData = JSON.parse(reponseGetRecords);
+
+			 if (num == 1){
+				recordsSel1 = jsonData;
+			} else {
+				recordsSel2 = jsonData;
+			}
+		}
+	};
+	if (p_sexe == 0){p_sexe = 1;}
+	if (p_sexe == 1){p_sexe = 0;}
+	xmlhttp.open("GET", "getRecordsClub.php?nom_club=" + p_nom + "&sexe=" + p_sexe, true);
+	xmlhttp.send();
+}
+
+function chargeJsonAthlete(p_nom, numAthlete){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+			 var reponseGetRecords = this.responseText;
+			 
+			 var jsonData = JSON.parse(reponseGetRecords);
+
+			 if (numAthlete == 1){
+				recordsSel1 = jsonData;
+			} else {
+				recordsSel2 = jsonData;
+			}
+		}
+	};
+	xmlhttp.open("GET", "getRecords.php?q=" + p_nom, true);
+	xmlhttp.send();
+}
+
+function getRecordOfEpreuve(epreuve, recordsJson){
+
+	for(var i = 0; i < recordsJson.record.length; i++){
+		if(recordsJson.record[i].e == epreuve){
+			var p = recordsJson.record[i].perf;
+			if (p.charAt(0) == "0"){
+				recordsJson.record[i].perf = p.substring(1);
+			}
+			return recordsJson.record[i];
+		}
+	}
+	return '';
+}
+
+// idSpan : txtHint
+function showHint(str, idSpan) {
+    if (str.length < 3) { 
+        document.getElementById(idSpan).innerHTML = "";
+        return;
+    } else {
+    	var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var nom = this.responseText;
+                document.getElementById(idSpan).innerHTML = nom;
+            }
+        };
+        xmlhttp.open("GET", "getNom.php?q=" + str, true);
+        xmlhttp.send();
+
+    }
+    
+}
+document.getElementById("statistiques").setAttribute("class", "active");
+
+$('.alphaonly').bind('keyup blur', function() {
+	var node = $(this);
+	node.val(node.val().replace(/[^A-Za-z ]/g, ''));
+});
+</script>
+</body>
+</html>

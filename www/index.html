@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr" prefix="og: http://ogp.me/ns#">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<meta name="author" content="Yann Abd-el-Kader"> 
-	<meta name="description" content="requêtes SQL avancées sur base athlétisme"> 
-	<meta name="keyword" content="SQL athlétisme requêtes avancées"> 
-	<meta property="og:title" content="SQL athlétisme requêtes avancées" />
-	<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-	<link href="css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
-	<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
-	
-	<script src="js/jquery-1.12.3.js" type="text/javascript"></script>
-	<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
-	<script src="js/dataTables.bootstrap.min.js"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta name="author" content="Yann Abd-el-Kader">
+<meta name="description" content="requêtes SQL avancées sur base athlétisme">
+<meta name="keyword" content="SQL athlétisme requêtes avancées">
+<meta property="og:title" content="SQL athlétisme requêtes avancées" />
+<link href="css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="css/athle.css" media="screen" rel="stylesheet" type="text/css" />
 
-	<link rel="manifest" href="/manifest.json">
-	
-	<title>SQL et athl&eacute;tisme</title>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+<link rel="manifest" href="/manifest.json">
+
+<title>SQL et athl&eacute;tisme</title>
+
+<style type="text/css">
+p {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+</style>
 
 </head>
 
@@ -33,30 +36,26 @@
 			<nav class="navbar" role="navigation" id="menu"></nav>
 
 			<h2>SQL et athlétisme, recherches avancées</h2>
-			
+
 			<p>
-			Les pages de ce site sont générées à partir d'une base de données construite à partir
-			de celle de la fération française d'athlétisme (pour 
-			l'instant sur les bilans 2006-2017 de quelques épreuves, cf. <a href="a_propos.html#db_content">contenu de la base</a>).
+				Les pages de ce site sont générées à partir d'une base de données construite à partir de celle de la fération française d'athlétisme (pour l'instant sur les
+				bilans 2006-2017 de quelques épreuves, cf. <a href="a_propos.html#db_content">contenu de la base</a>).
 			</p>
 
 			<h3>Dernières évolutions</h3>
 
-<!-- 			<span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span>Menu Athlètes &gt; aide à la saisie avec proposition des noms existants -->
-<!-- 			<br/><br/> -->
-<!-- 			<span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span>Menu Clubs &gt; Graphe des mutations des clubs -->
-<!-- 			<br/><br/> -->
-<!-- 			<span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span>Menu Clubs &gt; Recherche des clubs : ajout colonne "nombre d'athlètes" (avec tri et filtre p.ex. sur région ) -->
-
-<!-- <span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span><a href="http://base.athle.free.fr/exercices/stateChart.html">Exercice SQL : left join pour les null</a> -->
-			
-			<span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span>Records nationnaux 
-			<a href="http://base.athle.free.fr/rang_pays.html">par pays</a>,
-			<a href="http://base.athle.free.fr/records_pays_epreuve.html">par épreuve</a>,
-			<a href="http://base.athle.free.fr/import_records_wikipedia.html">commentaires</a> 
-			<br/><br/>
-			<span class="glyphicon glyphicon-ok" style="color:green; margin-right:10px;"></span><a href="http://base.athle.free.fr/analyse/cross_2017_2018_comparaison.html">Diagrammes cross 2014 - 2019</a>
-			
+			<p>
+				<span class="glyphicon glyphicon-ok" style="color: green; margin-right: 10px;"></span><a
+					href="http://base.athle.free.fr/acpj/">Interclub ACPJ 2009 - 2019</a>
+			</p>
+			<p>
+				<span class="glyphicon glyphicon-ok" style="color: green; margin-right: 10px;"></span>Records nationnaux <a href="http://base.athle.free.fr/rang_pays.html">par
+					pays</a>, <a href="http://base.athle.free.fr/records_pays_epreuve.html">par épreuve</a>, <a href="http://base.athle.free.fr/import_records_wikipedia.html">commentaires</a>
+			</p>
+			<p>
+				<span class="glyphicon glyphicon-ok" style="color: green; margin-right: 10px;"></span><a
+					href="http://base.athle.free.fr/analyse/cross_2017_2018_comparaison.html">Diagrammes cross 2014 - 2019</a>
+			</p>
 			<!-- 
 			<h3>Evolutions futures</h3>
 			<ul>
@@ -80,57 +79,37 @@
 			Menu Athlètes &gt; comparaison d'athlètes (actuellement fonctionne avec deux)
 			</li>
 			</ul>
- -->		
-			<br/><br/>
-			<div class="grid" >
-                    <figure class="effect-sadie" style="display: none">
-<!-- 		                <img src="img/2018Nantes800.jpg">   -->
-                        <figcaption>
-                            <p style="bottom: 40px">
-                            <font color="white">
-ABDELKADER Yann<br/>
-3ème 2'01''72<br/>
-<span style="padding-left: 190px">MICHAUD Stephane</span>
-<span style="padding-left: 40px">MARC Sebastien</span>
-<span style="padding-left: 40px">FARID Rachid</span>
-<span style="padding-left: 30px">APATOUT Olivier</span>
-<br/>
-<span style="padding-left: 190px">2ème 2'01''68</span>
-<span style="padding-left: 83px">4ème 2'02''18</span>
-<span style="padding-left: 62px">5ème 2'02''69</span>
-<span style="padding-left: 30px">1er 1'59''07</span>		
-</font><br/><br/><br/>
-                            <b>Nantes 10/02/2018 - Finale ch. France 800 en salle, cat. M40</b></p>
-                        </figcaption>            
-                    </figure>
-                    
-                    <br/>
-                    <figure class="effect-sadie">
-		                <img src="img/2018_charlety_dernier_virage.jpg" style="width: 90%">  
-                        <figcaption>
-                        <p style="bottom: 40px">
-                            <font color="white">
-                        Diamond League Paris 2018, Charléty, 30 juin</font></figcaption>
-                   </figure>
-                </div>
-			<br/>
-			
+ -->
+
+			<div class="grid">
+
+
+				<figure>
+					<img src="img/2018_charlety_dernier_virage.jpg" style="width: 90%">
+					<figcaption>
+						<font color="white">Diamond League Paris 2018, Charléty, 30 juin</font>
+					</figcaption>
+				</figure>
+			</div>
+
 			<p>
-			Pour suggestions ou remarques : <img alt="image anti-robot" src="img/adresse_mail.png">  
+				Pour suggestions ou remarques : <img alt="image anti-robot" src="img/adresse_mail.png">
 			</p>
-			
+
 
 		</div>
 	</article>
-	
+
 	<footer class="col-md-offset-3 col-md-6">
 		<hr />
 		<p>
-			<i>Dernière MAJ <time pubdate="pubdate">21/01/2019</time></i>
+			<i>Dernière MAJ <time pubdate="pubdate">20/05/2019</time></i>
 		</p>
 	</footer>
-	
+
 	<script src="js/menu.js" type="text/javascript"></script>
-	<script>document.getElementById("index").setAttribute("class", "active");</script>
+	<script>
+		document.getElementById("index").setAttribute("class", "active");
+	</script>
 </body>
 </html>

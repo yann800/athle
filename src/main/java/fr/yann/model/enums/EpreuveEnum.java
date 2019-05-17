@@ -30,7 +30,10 @@ public enum EpreuveEnum {
 	SAUT_PERCHE("Perche"),
 	
 	HEPTATHLON("Heptathlon"),
-	DECATHLON("Decathlon")
+	DECATHLON("Decathlon"),
+	
+	RELAIS_4x100("4x100"),
+	RELAIS_4x400("4x400")
 	;
 
 	private static final Map<String, EpreuveEnum> lookup = new HashMap<String, EpreuveEnum>();

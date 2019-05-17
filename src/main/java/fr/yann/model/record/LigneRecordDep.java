@@ -11,7 +11,10 @@ public class LigneRecordDep {
 	private EpreuveEnum		epreuve;
 	private String			perf;
 	private String			nom;
-	private int				annee;
+	private String			naissance;
+	private String			club;
+	private String			lieu;
+	private String			date;
 	private SexeEnum		sexe;
 	private int				idDep;
 
@@ -24,26 +27,27 @@ public class LigneRecordDep {
 
 	@Override
 	public String toString() {
-		return "LigneRecordDep [rang=" + rang + ", epreuve=" + epreuve + ", perf=" + perf + ", nom=" + nom + ", annee=" + annee + ", sexe=" + sexe + ", idDep=" + idDep + "]";
+		return "LigneRecordDep [rang=" + rang + ", epreuve=" + epreuve + ", perf=" + perf + ", nom=" + nom + ", annee=" + getAnnee() + ", sexe=" + sexe + ", idDep=" + idDep + "]";
 	}
 
 	public String toStringJson() {
-		String str = "{e:'" + getEpreuve() + "', nom:'" + nom + "', perf:'" + getPerf(perf) + "', annee:'" + annee + "'},";
+		String str = "{e:'" + getEpreuve() + "', nom:'" + nom + "', perf:'" + getPerf(perf) + "', annee:'" + getAnnee() + "'},";
 		return str;
 	}
 
 	public String toStringSql() {
-		if (epreuve == null) {
+		if (epreuve == null || perf == null) {
 			return "";
 		}
-		String str = "INSERT INTO record (idDep, sexe, cat, epreuve, nom, perf, annee) VALUES ("
+		String str = "INSERT INTO record_dep (idDep, sexe, categorie, epreuve, nom, perf, annee, lieu) VALUES ("
 				+ idDep + ","
 				+ sexe.getCodeInt() + ",'"
-				+ cat + "',"
+				+ cat + "','"
 				+ epreuve.getCode() + "', '"
 				+ nom + "','"
 				+ getPerf(perf) + "',"
-				+ annee + ");";
+				+ getAnnee() + ", '"
+				+ getLieu() + "');";
 		return str;
 	}
 
@@ -87,11 +91,13 @@ public class LigneRecordDep {
 	}
 
 	public int getAnnee() {
-		return annee;
-	}
-
-	public void setAnnee(int annee) {
-		this.annee = annee;
+		try {
+			String annee = getDate().substring(6, 8);
+			return Integer.parseInt(annee);
+		} catch (Exception e) {
+			System.err.println(getDate() + " " + e.getMessage());
+			return 0;
+		}
 	}
 
 	public SexeEnum getSexe() {
@@ -120,5 +126,37 @@ public class LigneRecordDep {
 
 	public void setIdDep(int idDep) {
 		this.idDep = idDep;
+	}
+
+	public String getNaissance() {
+		return naissance;
+	}
+
+	public void setNaissance(String naissance) {
+		this.naissance = naissance;
+	}
+
+	public String getClub() {
+		return club;
+	}
+
+	public void setClub(String club) {
+		this.club = club;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
 	}
 }
