@@ -36,7 +36,7 @@ public class IC {
 	@Override
 	public String toString() {
 
-		return "IC [" + getStr(nom, 25)
+		return "IC [" + getStr(nom, 30)
 				+ ", cat=" + getStr20(categorie)
 				+ ", sexe=" + sexe
 				+ ", " + getStr20(epreuve)

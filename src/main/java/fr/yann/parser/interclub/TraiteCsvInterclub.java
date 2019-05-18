@@ -25,7 +25,7 @@ public class TraiteCsvInterclub {
 			return null;
 		}
 
-		return parseCsv(clean(line), annee);
+		return traiteCourseConcours(clean(line), annee);
 
 	}
 
@@ -40,7 +40,7 @@ public class TraiteCsvInterclub {
 	 * 1                2             3    4   5        6   7      8
 	 * CRANE Sabrina;1 500m / SEF;Finale 1;8;5'33''86;571;CAF/92;43588;
 	 */
-	private static IC parseCsv(String str, int annee) {
+	private static IC traiteCourseConcours(String str, int annee) {
 
 		IC perf = new IC();
 

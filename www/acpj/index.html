@@ -29,7 +29,14 @@
 			 		</div>
 			 	<br/>
 				<ul style="list-style-type: none;">
-			<li><a href="#1">1. Nombre de participations de chaque athlète</a></li>
+			<li><a href="#classement_club">Classement des clubs</a></li>
+			<li><a href="#1">1. Nombre de participations de chaque athlète</a>
+				<ul>
+					<li><a href="#1.1">... en comptant une par année</a></li>
+					<li><a href="#1.2">... en comptant une par tour</a></li>
+					<li><a href="#1.3">... avec plusieurs épreuves par tour</a></li>
+				</ul>
+			</li>
 			<li><a href="#2">2. Points rapportés par athlète, en moyenne</a></li>
 			<li><a href="#3">3. Épreuves de chaque athlète</a></li>
 			<li><a href="#4">4. Meilleures perfs</a></li>
@@ -44,6 +51,7 @@
 			<li><a href="#6">6. Pour chaque athlète, moyenne rang [1 - 2]</a></li>
 			<li><a href="#7">7. Répartition des niveaux</a></li>			
 
+
 				</ul>
 			
 				</div>
@@ -55,8 +63,595 @@
 
 <p>Un peu de Java HTTP et expressions régulières, un peu de SQL et en avant un peu de recherche sur les résultats des interclubs de l'ACPJ...</p>
 
+<p>Dans cette page se trouvent quelques requêtes particulières. Dans pages à part, <a href="all.html">les résultats complets (avec filtre et tri)</a> et
+et <a href="graph.html">les graphes</a>.</p>
+
+
+			<h3 id="classement_club">Classement des clubs</h3>
+
+
+		
+<table class="table table-striped table-bordered table-hover table-condensed">		
+<tr><th>Niveau</th><th>Date</th><th>Lieu</th><th width="50%">Résultat</th></tr>		
+
+<tr><td>N2</td><td>03/05/2009<td>Créteil</td>
+
+<td>
+	<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2009_1">50 038 pt</a>
+	</div>
+	<div id="2009_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr><td>1</td><td>50 038 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+			<tr><td>2</td><td>47 233 pt</td><td>US IVRY</td></tr>
+			<tr><td>3</td><td>44 590 pt</td><td>FONTENAY PLESSIS CLAMART ATHLE</td></tr>
+			<tr><td>4</td><td>43 166 pt</td><td>WHITE HARRIERS SURESNES</td></tr>
+			<tr><td>5</td><td>42 479 pt</td><td>LISSES AC</td></tr></table>
+		</div>
+	</div>
+</td>
+</tr>				
+
+<tr><td>N2</td><td>16/05/2009<td>Montreuil-sous-Bois</td>
+<td>
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2009_2">48 362 pt</a>
+	</div>
+	<div id="2009_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr><td>1</td><td>53 130 pt</td><td>CA MONTREUIL 93</td></tr>
+			<tr><td>2</td><td>49 537 pt</td><td>ATHLE SUD 77*</td></tr>
+			<tr><td>3</td><td>48 908 pt</td><td>ATHLE 78 *</td></tr>
+			<tr><td>4</td><td>48 362 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+			<tr><td>5</td><td>48 189 pt</td><td>US IVRY</td></tr>
+			<tr><td>6</td><td>46 082 pt</td><td>AA PAYS DE FRANCE ATHLE 95*</td></tr>
+			<tr><td>7</td><td>45 951 pt</td><td>PLM CONFLANS</td></tr>
+			<tr><td>8</td><td>45 494 pt</td><td>FONTENAY PLESSIS CLAMART ATHLE</td></tr></table>
+		</div>
+	</div>
+</td>
+</tr>
+
+<tr>
+	<td>N2</td><td>09/05/2010</td><td>Tremblay-en-France</td>
+	<td>		
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2010_1">52 418 pt</a>
+	</div>
+	<div id="2010_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+
+	<table class="table table-striped table-bordered table-hover table-condensed">
+	<tr><td>1</td><td>52 418 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+	<tr><td>2</td><td>50 998 pt</td><td>CA MONTREUIL 93 (2)</td></tr></td><td>
+	<tr><td>3</td><td>50 497 pt</td><td>US IVRY</td></tr>
+	<tr><td>4</td><td>42 630 pt</td><td>ASA MAISONS-ALFORT</td></tr>
+	<tr><td>5</td><td>36 603 pt</td><td>UAI NOGENT-SUR-MARNE</td></tr></table>
+		</div>
+	</div>
+</td>
+</tr>
+
+<tr>
+	<td>N2</td><td>22/05/2010</td><td>Antony</td>		
+	<td>		
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2010_2">52 090 pt</a>
+	</div>
+	<div id="2010_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+
+	<table class="table table-striped table-bordered table-hover table-condensed">
+	<tr><td>1</td><td>53 705 pt</td><td>ENTENTE FRANCONVILLE CESAME VA (2)</td></tr>
+	<tr><td>2</td><td>52 368 pt</td><td>CA MONTREUIL 93 (2)</td></tr>
+	<tr><td>3</td><td>52 090 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+	<tr><td>4</td><td>51 305 pt</td><td>ATHLE 78</td></tr>
+	<tr><td>5</td><td>51 258 pt</td><td>US IVRY</td></tr>
+	<tr><td>6</td><td>47 462 pt</td><td>AA PAYS DE FRANCE ATHLE 95</td></tr>
+	<tr><td>7</td><td>45 785 pt</td><td>PLM CONFLANS</td></tr>
+	<tr><td>8</td><td>43 896 pt</td><td>LISSES AC</td></tr>
+	</table>
+		</div>
+	</div>
+</td>
+</tr>
+
+<tr>
+	<td>N1C</td><td>08/05/2011</td><td>Tremblay en France</td>		
+	<td>
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2011_1">0 pt</a>
+		</div>
+		<div id="2011_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+			<table class="table table-striped table-bordered table-hover table-condensed">
+			<tr><td>...</td><td>...</td><td>...</td></tr>
+			</table>
+			</div>
+		</div>
+	</td>
+</tr>
+
+<tr>
+	<td>N1C</td><td>22/05/2011</td><td>Angers</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>06/05/2012</td><td>Tremblay en France</td>		
+	<td>
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2012_1">52 627 pt</a>
+		</div>
+		<div id="2012_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>52 627 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+		<tr><td>2</td><td>49 387 pt</td><td>US CRETEIL</td></tr>
+		</table>
+		</div></div>
+	</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>20/05/2012</td><td>...</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N1</td><td>28/04/2013</td><td>Créteil</td>		
+	<td>53 970 pt</td>
+</tr>
+
+<tr>
+	<td>N1A</td><td>19/05/2013</td><td>Montbeliard</td>		
+	<td>		
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2013_2">687 pt</a>
+	</div>
+	<div id="2013_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+	<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><td>1</td><td>705 pt</td><td>EA CERGY PONTOISE ATHLETISME</td></tr>
+<tr><td>2</td><td>687 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+<tr><td>3</td><td>676 pt</td><td>EA ST QUENTIN EN YVELINES</td></tr>
+<tr><td>4</td><td>653,5 pt</td><td>MONTBELIARD BELFORT ATHLETISME</td></tr>
+<tr><td>5</td><td>616,5 pt</td><td>ALSACE NORD ATHLETISME</td></tr>
+<tr><td>6</td><td>590 pt</td><td>AS SAINT-JUNIEN</td></tr>
+<tr><td>7</td><td>571,5 pt</td><td>SA TOULOUSE UC</td></tr>
+<tr><td>8</td><td>539,5 pt</td><td>PAYS DE COLMAR ATHLETISME</td></tr>
+		
+	</table>
+	</div></div>
+	</td>
+</tr>
+<tr>
+	<td>N1</td><td>04/05/2014</td><td>Longjumeau</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+
+
+<tr>
+<td>N1A</td><td>18/05/2014</td><td>Lens</td>
+
+	<td>		
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2014_2">591 pt</a>
+	</div>
+	<div id="2014_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+<table class="table table-striped table-bordered table-hover table-condensed">
+	
+<tr><td>1</td><td>705,5 pt</td><td>NANTES METROPOLE ATHLETISME</td></tr>
+<tr><td>2</td><td>690 pt</td><td>HAUTE BRETAGNE ATHLETISME </td></tr>
+<tr><td>3</td><td>659 pt</td><td>RC ARRAS</td></tr>
+<tr><td>4</td><td>645 pt</td><td>LYON ATHLETISME</td></tr>
+<tr><td>5</td><td>632,5 pt</td><td>BORDEAUX ATHLE</td></tr>
+<tr><td>6</td><td>591 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+<tr><td>7</td><td>568 pt</td><td>EA CERGY PONTOISE ATHLETISME</td></tr>
+<tr><td>8</td><td>541 pt</td><td>A. SARREGUEMINES SARREBOURG A</td></tr>
+</td></tr></table>	
+</div></div>
+</td>
+</tr>
+
+<tr><td>N1A</td><td>10/05/2015</td><td>Gagny</td>
+<td>
+	54 635 pt
+</td></tr>
+
+
+<tr><td>N1A</td><td>24/05/2015</td><td>Cergy Pontoise</td>		
+	<td>		
+		<div role="tab" id="headingOne">
+		<a data-toggle="collapse" href="#2015_2">660,5 pt</a>
+	</div>
+	<div id="2015_2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+		<div class="panel-body">
+		<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>726,5 pt</td><td>EA CERGY PONTOISE ATHLETISME</td></tr>
+		<tr><td>2</td><td>707,5 pt</td><td>EA MONDEVILLE HEROUVILLE</td></tr>
+		<tr><td>3</td><td>687,5 pt</td><td>ATHLETIC VOSGES ENTENTE CLUBS</td></tr>
+		<tr><td>4</td><td>660,5 pt</td><td>AC PARIS-JOINVILLE</td></tr>
+		<tr><td>4</td><td>660,5 pt</td><td>STADE RENNAIS ATHLETISME</td></tr>
+		<tr><td>6</td><td>575 pt</td><td>A. SARREGUEMINES SARREBOURG A</td></tr>
+		<tr><td>7</td><td>563 pt</td><td>EA ST QUENTIN EN YVELINES</td></tr>
+		<tr><td>8</td><td>453,5 pt</td><td>EC ORLEANS CERCLE JULES FERRY</td></tr>
+		</table>
+	</div></div>		
+		
+</td></tr>
+
+
+
+<tr>
+	<td>...</td><td>08/05/2016</td><td>...</td>		
+	<td>51 186 pt</td>
+</tr>
+
+<tr>
+	<td>N1A</td><td>2016</td><td>Reims</td>		
+	<td>53 752 pt</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>2017</td><td>Créteil</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>2017</td><td>Toulouse</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>2018</td><td>Antony</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N1B</td><td>2018</td><td>Compiegne</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+<tr>
+	<td>N2</td><td>05/05/2019</td><td>Cergy Pontoise</td>		
+	<td>
+	<table class="table table-striped table-bordered table-hover table-condensed">
+		<tr><td>1</td><td>...</td><td>...</td></tr>
+	</table>
+	</td>
+</tr>
+
+
+
+</table>
+
 			<h3 id="1">Nombre de participations de chaque athlète</h3>
 
+			<h4 id="1.1">... en comptant une par année</h4>
+
+<pre>SELECT nom, count(DISTINCT(annee)) AS participations 
+FROM IC
+GROUP BY nom
+ORDER BY participations DESC</pre>
+
+<i>Ce classement ne figurait initialement pas dans la page. C'est à la demande de Juliette B. (2 participations).</i>
+<br/>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+<th>nom</th><th>participations</th></tr>
+<tr><td>ABDELKADER Yann</td><td>11</td></tr>
+<tr><td>FRANCOIS Mickael</td><td>11</td></tr>
+<tr><td>SOFFIATI Thibaud</td><td>10</td></tr>
+<tr><td>HOUDAYER Aicha</td><td>9</td></tr>
+<tr><td>ANDRIEU Olivier</td><td>9</td></tr>
+<tr><td>BOLLEE Elodie</td><td>8</td></tr>
+<tr><td>SAMANGARAY Baba</td><td>8</td></tr>
+<tr><td>BARANGER-MERINO Alberto</td><td>7</td></tr>
+<tr><td>EL KADAOUI Samir</td><td>7</td></tr>
+<tr><td>LARISSE Anddy</td><td>7</td></tr>
+<tr><td>LOTTIER Pascal</td><td>7</td></tr>
+<tr><td>ANDRE Michel</td><td>7</td></tr>
+<tr><td>DANGLADES Jean-christophe</td><td>6</td></tr>
+<tr><td>DEMONTIGNY Melissa</td><td>6</td></tr>
+<tr><td>ABOUKE Hermance</td><td>6</td></tr>
+<tr><td>BONDILANGE Anne-cecile</td><td>6</td></tr>
+<tr><td>CANARD Raphael</td><td>6</td></tr>
+<tr><td>LE FLOCH Celine</td><td>6</td></tr>
+<tr><td>SCHLATTER Sebastien</td><td>6</td></tr>
+<tr><td>BEURION Mathieu</td><td>6</td></tr>
+<tr><td>BROU Florent</td><td>6</td></tr>
+<tr><td>LEDUC Cynthia</td><td>6</td></tr>
+<tr><td>MAGASSA Massere</td><td>6</td></tr>
+<tr><td>SECHAUD Ema</td><td>6</td></tr>
+<tr><td>TSHIKAYA Lea</td><td>6</td></tr>
+<tr><td>DA HORTA SEMEDO Tony</td><td>6</td></tr>
+<tr><td>HOUNSINOU Julie</td><td>6</td></tr>
+<tr><td>BOCCARA Valerie</td><td>6</td></tr>
+<tr><td>TUDEAU Amandine</td><td>5</td></tr>
+<tr><td>CHASTANG Cedric</td><td>5</td></tr>
+<tr><td>DUBOIS Ludovic</td><td>5</td></tr>
+<tr><td>KOUTOUAN Fiona</td><td>5</td></tr>
+<tr><td>MICHEL Pierre</td><td>5</td></tr>
+<tr><td>BROCHOT Sandrine</td><td>5</td></tr>
+<tr><td>CESSIRON Maxime</td><td>5</td></tr>
+<tr><td>RICHARDIN Nine</td><td>5</td></tr>
+<tr><td>DIANI Ilyas</td><td>5</td></tr>
+<tr><td>COLLINET Agathe</td><td>5</td></tr>
+<tr><td>ROUSSEAU Benjamin</td><td>5</td></tr>
+<tr><td>ALERTE David</td><td>4</td></tr>
+<tr><td>ROLLEZ Florian</td><td>4</td></tr>
+<tr><td>HUGGLER Marc-olivier (POL)</td><td>4</td></tr>
+<tr><td>TOURE Sally</td><td>4</td></tr>
+<tr><td>FINET Lucas</td><td>4</td></tr>
+<tr><td>GAGNEUX Valerie</td><td>4</td></tr>
+<tr><td>LOUISON Marlene</td><td>4</td></tr>
+<tr><td>SCHLATTER Nicolas</td><td>4</td></tr>
+<tr><td>QUEST Tiphanie</td><td>4</td></tr>
+<tr><td>MANIC Gildas</td><td>4</td></tr>
+<tr><td>SIANGANY Fortune</td><td>4</td></tr>
+<tr><td>LOUP Noemie</td><td>4</td></tr>
+<tr><td>AMBROS Jerome</td><td>4</td></tr>
+<tr><td>CODJO Bruno</td><td>4</td></tr>
+<tr><td>FOFANA Colomba</td><td>4</td></tr>
+<tr><td>LAMBOLEY Victoria</td><td>4</td></tr>
+<tr><td>GNAHO Thomas</td><td>4</td></tr>
+<tr><td>GUGLIELMINOTTI Sonia</td><td>4</td></tr>
+<tr><td>LOISEAU Margot</td><td>4</td></tr>
+<tr><td>RAVON Thomas</td><td>4</td></tr>
+<tr><td>HESRY Gwenael</td><td>4</td></tr>
+<tr><td>LAHAYE Mathieu</td><td>4</td></tr>
+<tr><td>PUJAR Yannis</td><td>4</td></tr>
+<tr><td>KOUTOUAN Albertine (CIV)</td><td>3</td></tr>
+<tr><td>GUIDEZ Isabelle</td><td>3</td></tr>
+<tr><td>KIONGA Danielle</td><td>3</td></tr>
+<tr><td>SANTU Melia</td><td>3</td></tr>
+<tr><td>CANARD Alize</td><td>3</td></tr>
+<tr><td>DIELNA Samuel</td><td>3</td></tr>
+<tr><td>GOURDON Capucine</td><td>3</td></tr>
+<tr><td>LEWIS Abigail (JAM)</td><td>3</td></tr>
+<tr><td>BRAULT Ines</td><td>3</td></tr>
+<tr><td>CLAUDE Nina</td><td>3</td></tr>
+<tr><td>FORIN Francois</td><td>3</td></tr>
+<tr><td>KOUASSI Haudy-meven</td><td>3</td></tr>
+<tr><td>KOUTOUAN Sarah</td><td>3</td></tr>
+<tr><td>NICOTRA Ferdinando (ITA)</td><td>3</td></tr>
+<tr><td>ADDOH Axel</td><td>3</td></tr>
+<tr><td>PHILIPOT Clement</td><td>3</td></tr>
+<tr><td>CRANE Sabrina</td><td>3</td></tr>
+<tr><td>FLANDRIN-THONIEL Igor</td><td>3</td></tr>
+<tr><td>GREZE Stephane</td><td>3</td></tr>
+<tr><td>LOCURTO Alberto (ITA)</td><td>3</td></tr>
+<tr><td>OUNOU Jerome</td><td>3</td></tr>
+<tr><td>RADENEZ Clemence</td><td>3</td></tr>
+<tr><td>ROOS-WEIL Lise</td><td>3</td></tr>
+<tr><td>DE CARGOUET DE R Yann</td><td>3</td></tr>
+<tr><td>BIKELEL Anne</td><td>3</td></tr>
+<tr><td>CEYTE Arnaud</td><td>3</td></tr>
+<tr><td>PAGET-BLANC Alexandra</td><td>3</td></tr>
+<tr><td>LAGARDE Sebastien</td><td>3</td></tr>
+<tr><td>NOEL Philippe</td><td>3</td></tr>
+<tr><td>SONDEREGGER Lucas</td><td>3</td></tr>
+<tr><td>AH-MOUCK Loic</td><td>3</td></tr>
+<tr><td>BOULABI Margot</td><td>3</td></tr>
+<tr><td>FRANZONI Lorenzo (ITA)</td><td>3</td></tr>
+<tr><td>PIEL Julie</td><td>3</td></tr>
+<tr><td>TSHIKAYA Yowa</td><td>3</td></tr>
+<tr><td>ABBASSI Laysa</td><td>3</td></tr>
+<tr><td>CHARLERY Adeline</td><td>3</td></tr>
+<tr><td>MEYER Alice</td><td>3</td></tr>
+<tr><td>PARSY Marion</td><td>3</td></tr>
+<tr><td>BENNIA Ahmed</td><td>3</td></tr>
+<tr><td>DIAROUMA Tiguida</td><td>3</td></tr>
+<tr><td>JEMAA-AMIROUCHE Dora</td><td>3</td></tr>
+<tr><td>CITRON Florian</td><td>2</td></tr>
+<tr><td>HAMROUNI Hamza</td><td>2</td></tr>
+<tr><td>MALELA Sogiros</td><td>2</td></tr>
+<tr><td>PEPIN Lenny</td><td>2</td></tr>
+<tr><td>REAUD Delphine</td><td>2</td></tr>
+<tr><td>ANIESA Ange</td><td>2</td></tr>
+<tr><td>NTIA Romeo (BEN)</td><td>2</td></tr>
+<tr><td>JACQUES Alexia</td><td>2</td></tr>
+<tr><td>LECHANGA Jules</td><td>2</td></tr>
+<tr><td>BAK Olivia</td><td>2</td></tr>
+<tr><td>DANTE Djenebou (MLI)</td><td>2</td></tr>
+<tr><td>DUMAS Mireille</td><td>2</td></tr>
+<tr><td>GURACHI Youness</td><td>2</td></tr>
+<tr><td>HURTIS-HOUAIRI Muriel</td><td>2</td></tr>
+<tr><td>REBIHI Scherazade</td><td>2</td></tr>
+<tr><td>BESEGHER Antoni</td><td>2</td></tr>
+<tr><td>DJHONE Leslie</td><td>2</td></tr>
+<tr><td>GRAVA Jean-marc</td><td>2</td></tr>
+<tr><td>CLERENCE Elisa</td><td>2</td></tr>
+<tr><td>POTTEZ-JOUATTE Valentine</td><td>2</td></tr>
+<tr><td>BALAGE Juliette</td><td>2</td></tr>
+<tr><td>BOSMORIN Suzanne</td><td>2</td></tr>
+<tr><td>GUTTIN Nicolas</td><td>2</td></tr>
+<tr><td>AUCAGOS Nawel</td><td>2</td></tr>
+<tr><td>DJIAN Ary</td><td>2</td></tr>
+<tr><td>LAMALLE Adrianna</td><td>2</td></tr>
+<tr><td>TAFLER Clementine</td><td>2</td></tr>
+<tr><td>DETOUCHE Manon</td><td>2</td></tr>
+<tr><td>FAYE Louise</td><td>2</td></tr>
+<tr><td>HERELIUS Lindsay</td><td>2</td></tr>
+<tr><td>KUDELA Lucie</td><td>2</td></tr>
+<tr><td>MARCHAL Aurelie</td><td>2</td></tr>
+<tr><td>NIENAT Lawrence</td><td>2</td></tr>
+<tr><td>AFOUMBA Gilles-anthony (CGO)</td><td>2</td></tr>
+<tr><td>BOUHADJER Mohamed</td><td>2</td></tr>
+<tr><td>PICHET Oceane</td><td>2</td></tr>
+<tr><td>GUERINI Priscilla rache</td><td>2</td></tr>
+<tr><td>KIMBEMBE Devilert-arsene (CGO)</td><td>2</td></tr>
+<tr><td>LOISEAU Maelys</td><td>2</td></tr>
+<tr><td>TAMISIER Lucile</td><td>2</td></tr>
+<tr><td>BENICHOU Thomas</td><td>2</td></tr>
+<tr><td>COLLIARD Julie</td><td>2</td></tr>
+<tr><td>FERNANDES Laurine</td><td>2</td></tr>
+<tr><td>JEM Aurelien</td><td>2</td></tr>
+<tr><td>MARIE Virginie</td><td>2</td></tr>
+<tr><td>EFFA EFFA Junior (GAB)</td><td>2</td></tr>
+<tr><td>MOMONT Mathilda</td><td>2</td></tr>
+<tr><td>SECHAUD Emmanuelle</td><td>2</td></tr>
+<tr><td>SAMBA-MAYELA Cyrena</td><td>2</td></tr>
+<tr><td>NOEL Raphael</td><td>2</td></tr>
+<tr><td>SONE EHAWA Quentin</td><td>2</td></tr>
+<tr><td>BOUSSADIA Mourad</td><td>1</td></tr>
+<tr><td>DEMBELE Fatoumata</td><td>1</td></tr>
+<tr><td>FURTADO Erica-suely</td><td>1</td></tr>
+<tr><td>IWANDZA Mickaelle</td><td>1</td></tr>
+<tr><td>LE PRIOL Etienne</td><td>1</td></tr>
+<tr><td>MOUILLET Zoe</td><td>1</td></tr>
+<tr><td>PLUTON Lea</td><td>1</td></tr>
+<tr><td>SECQUEVILLE Melissa</td><td>1</td></tr>
+<tr><td>BACON Karine</td><td>1</td></tr>
+<tr><td>FOFANA-KOUTOUAN Sarah</td><td>1</td></tr>
+<tr><td>MEYER Jerome</td><td>1</td></tr>
+<tr><td>BERTEVAS Antony</td><td>1</td></tr>
+<tr><td>COLOMBIE Vincent</td><td>1</td></tr>
+<tr><td>HEUVELINE Fiona</td><td>1</td></tr>
+<tr><td>JOUISSE Aurelie</td><td>1</td></tr>
+<tr><td>LAINE Samyr (HAI)</td><td>1</td></tr>
+<tr><td>MENDY Paul (SEN)</td><td>1</td></tr>
+<tr><td>QUERIN Samy</td><td>1</td></tr>
+<tr><td>SACILOTTO Pierre</td><td>1</td></tr>
+<tr><td>STANISLAWSKI Valerie</td><td>1</td></tr>
+<tr><td>YAICHE Abderrhamane (ALG)</td><td>1</td></tr>
+<tr><td>ALEXANDER Ayanna (TTO)</td><td>1</td></tr>
+<tr><td>BARITAUX Hadrien</td><td>1</td></tr>
+<tr><td>EMBOULE Julien</td><td>1</td></tr>
+<tr><td>HARZOUNE Leslie</td><td>1</td></tr>
+<tr><td>MALLIET Vincent</td><td>1</td></tr>
+<tr><td>NABAB Laurent</td><td>1</td></tr>
+<tr><td>POCREAUX Cyril</td><td>1</td></tr>
+<tr><td>ROMAIN Katarina</td><td>1</td></tr>
+<tr><td>SELO Jordy</td><td>1</td></tr>
+<tr><td>VAILHE Baptiste</td><td>1</td></tr>
+<tr><td>CHASTANG Christophe</td><td>1</td></tr>
+<tr><td>LE DIEU DE VILLE Elise</td><td>1</td></tr>
+<tr><td>PERSELLO Sophie</td><td>1</td></tr>
+<tr><td>TOUREL Thomas</td><td>1</td></tr>
+<tr><td>ARMINANA Mickael</td><td>1</td></tr>
+<tr><td>CONDORE Melina</td><td>1</td></tr>
+<tr><td>FLAMBARD Antoine</td><td>1</td></tr>
+<tr><td>HINKIN Jason (USA)</td><td>1</td></tr>
+<tr><td>KADER Sandrine</td><td>1</td></tr>
+<tr><td>LALONDE Mathieu</td><td>1</td></tr>
+<tr><td>LLODRA-MAYANS Rafael</td><td>1</td></tr>
+<tr><td>MERLAUD Vincent</td><td>1</td></tr>
+<tr><td>NZAMOWANI Jodelle</td><td>1</td></tr>
+<tr><td>SACKO Hatouma</td><td>1</td></tr>
+<tr><td>SUTEAU Frederic</td><td>1</td></tr>
+<tr><td>YOBOUET Samaeken</td><td>1</td></tr>
+<tr><td>ALLERES Isabelle</td><td>1</td></tr>
+<tr><td>BARLES Pauline</td><td>1</td></tr>
+<tr><td>DESCOUENS Laura</td><td>1</td></tr>
+<tr><td>EXBRAYAT Helene</td><td>1</td></tr>
+<tr><td>GAVA-RAINA Anais</td><td>1</td></tr>
+<tr><td>HELIER Marie</td><td>1</td></tr>
+<tr><td>JAKOMULSKI Jessica</td><td>1</td></tr>
+<tr><td>LECURIEUX Philippe</td><td>1</td></tr>
+<tr><td>ROMAND-MONNIER Leo</td><td>1</td></tr>
+<tr><td>VANDAELE Marion</td><td>1</td></tr>
+<tr><td>CHEVIOT Nicolas</td><td>1</td></tr>
+<tr><td>DAUMONT Olivier</td><td>1</td></tr>
+<tr><td>ECZET Jean-baptiste</td><td>1</td></tr>
+<tr><td>FOZZI-FANCHON Ambra</td><td>1</td></tr>
+<tr><td>IJEOMA Joseph</td><td>1</td></tr>
+<tr><td>KOUASSI Haudy-mexen</td><td>1</td></tr>
+<tr><td>MIJIC Stefan</td><td>1</td></tr>
+<tr><td>RENAULT Vincent</td><td>1</td></tr>
+<tr><td>TOYB Gildas</td><td>1</td></tr>
+<tr><td>KEFLE France-lise</td><td>1</td></tr>
+<tr><td>MESINELE Anais</td><td>1</td></tr>
+<tr><td>SAILLY Patrice</td><td>1</td></tr>
+<tr><td>ZILBERSTEIN-BRAUD Agathe</td><td>1</td></tr>
+<tr><td>BAUNAY Isabelle</td><td>1</td></tr>
+<tr><td>GAY Maiwenn</td><td>1</td></tr>
+<tr><td>JARNET Eva</td><td>1</td></tr>
+<tr><td>PREVOT Lenaic</td><td>1</td></tr>
+<tr><td>VIEL Remi</td><td>1</td></tr>
+<tr><td>BAMBA Aboubacar</td><td>1</td></tr>
+<tr><td>CIRET Alexandre</td><td>1</td></tr>
+<tr><td>EFFA EFFA Junior</td><td>1</td></tr>
+<tr><td>HAKMI Abdelaziz</td><td>1</td></tr>
+<tr><td>ISSAKA Andrew</td><td>1</td></tr>
+<tr><td>KOUE-BOADET Kenny</td><td>1</td></tr>
+<tr><td>LE FLOCH Olivier</td><td>1</td></tr>
+<tr><td>MOHAMMEDI Wahiba</td><td>1</td></tr>
+<tr><td>AUCAGOS Sohane</td><td>1</td></tr>
+<tr><td>DOS REIS Ruben</td><td>1</td></tr>
+<tr><td>MESNIL Romain</td><td>1</td></tr>
+<tr><td>RAMIN Julie</td><td>1</td></tr>
+<tr><td>ZONGO Amy</td><td>1</td></tr>
+<tr><td>CABRAL Flor</td><td>1</td></tr>
+<tr><td>HERKENRATH Loic</td><td>1</td></tr>
+<tr><td>LEFEUVRE Jimmy</td><td>1</td></tr>
+<tr><td>PRIETO Mathilde</td><td>1</td></tr>
+<tr><td>ROUE Sarah</td><td>1</td></tr>
+<tr><td>VILOCY Sara</td><td>1</td></tr>
+<tr><td>BARA Franck</td><td>1</td></tr>
+<tr><td>CISSAKO Mahamadou</td><td>1</td></tr>
+<tr><td>DELAGE Jeanne</td><td>1</td></tr>
+<tr><td>HAMMOUCHE Maud</td><td>1</td></tr>
+<tr><td>ISSIFOU Sandra</td><td>1</td></tr>
+<tr><td>KOUNTA Muhammad abdall</td><td>1</td></tr>
+<tr><td>LE GUILLOU Yannick</td><td>1</td></tr>
+<tr><td>MAGASSA Modibo</td><td>1</td></tr>
+<tr><td>ROBAT Agnes</td><td>1</td></tr>
+<tr><td>BA Mamadou</td><td>1</td></tr>
+<tr><td>DAMBAS Yohann</td><td>1</td></tr>
+<tr><td>DUARTE Sophie</td><td>1</td></tr>
+<tr><td>FOFANA-KOUTOUAN Fiona</td><td>1</td></tr>
+<tr><td>HOUSSOU Johan</td><td>1</td></tr>
+<tr><td>KIMBEMBE Devilert-arsene (COD)</td><td>1</td></tr>
+<tr><td>LANGERON Matthieu</td><td>1</td></tr>
+<tr><td>TIEMOKO Teddy</td><td>1</td></tr>
+<tr><td>CALYDON Cornnelly</td><td>1</td></tr>
+<tr><td>FILEUX Arnaud</td><td>1</td></tr>
+<tr><td>GOMES Anthony</td><td>1</td></tr>
+<tr><td>LEMACON Ridgy</td><td>1</td></tr>
+<tr><td>MBALLA ERDINC Sylvie</td><td>1</td></tr>
+<tr><td>WOLFF Stephane</td><td>1</td></tr>
+</table>
+
+			<h4 id="1.2">... en comptant une par tour</h4>
+			
+			<i>[TODO] correction pour récupérer les dates</i>
+
+
+			<h4 id="1.3">... avec plusieurs épreuves par tour</h4>
 <pre>SELECT nom, count(*) AS participations, GROUP_CONCAT( DISTINCT epreuve SEPARATOR ',' ) 
 FROM IC
 GROUP BY nom
@@ -87,6 +682,7 @@ ORDER BY participations DESC</pre>
 <tr><td>...</td><td>...</td><td>...</td></tr>
 </table>
 
+
 			<h3 id="2">Points rapportés par athlète, en moyenne</h3>
 			
 			<pre>SELECT nom, AVG(points) AS moyenne
@@ -115,6 +711,12 @@ ORDER BY moyenne DESC</pre>
 
 			<h3 id="4">Meilleures perfs</h3>
 			
+			<div class="alert alert-warning" role="alert">
+<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span><b>&Agrave; noter</b></span>
+Il y a quelques erreurs à corriger (les tours avec classements à la place je crois)
+</div>
+			
+			
 <table class="table table-striped table-bordered table-hover table-condensed" id="best_points"></table>
 
 
@@ -123,44 +725,48 @@ ORDER BY moyenne DESC</pre>
 			
 			<h4 id="5.1">... par épreuve</h4>
 			
-<pre>SELECT epreuve, SUM(points) as total FROM IC
+<pre>SELECT epreuve, count(id), SUM(points) as total FROM IC
 GROUP BY epreuve
 ORDER BY total DESC</pre>
 
 			<div class="alert alert-warning" role="alert">
-<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span class="sr-only">A noter</span>
-Classement à prendre avec pincettes. La table hongroise désavante honteusement le 1/2 fond.
+<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span><b>&Agrave; noter</b></span>
+<ul>
+<li>Il faut pondérer le total de points des épreuves non mixtes (steeple, 100H / 110H, marche, marche, 5000 pas au programme pour toutes les années)
+par le nombre de perfs</li>
+<li>Par ailleurs il faut savoir que la table hongroise désantage honteusement le 1/2 fond.</li>
+</ul>
+
 </div>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th>Epreuve</th><th>points</th>
+			<th>Epreuve</th><th>Nb perfs</th><th>Total points</th>
 		</tr>
 	</thead>
 	<tbody>
-		
-<tr><td>Haies 110, 400 mélangé, bug con</td><td>41,201</td></tr>
-<tr><td>Longueur</td><td>29,898</td></tr>
-<tr><td>200</td><td>27,064</td></tr>
-<tr><td>800</td><td>26,751</td></tr>
-<tr><td>Triple</td><td>26,230</td></tr>
-<tr><td>100</td><td>25,657</td></tr>
-<tr><td>400</td><td>25,389</td></tr>
-<tr><td>1500</td><td>24,985</td></tr>
-<tr><td>Hauteur</td><td>22,845</td></tr>
-<tr><td>Poids</td><td>21,232</td></tr>
-<tr><td>Disque</td><td>21,143</td></tr>
-<tr><td>3000</td><td>20,030</td></tr>
-<tr><td>Marteau</td><td>19,496</td></tr>
-<tr><td>Perche</td><td>18,579</td></tr>
-<tr><td>Javelot</td><td>18,311</td></tr>
-<tr><td>100H</td><td>13,962</td></tr>
-<tr><td>3000 steeple</td><td>13,544</td></tr>
-<tr><td>5000 marche</td><td>13,237</td></tr>
-<tr><td>3000 marche</td><td>10,627</td></tr>
-<tr><td>5000</td><td>6,892</td></tr>
-</table>	
+<tr><td>Longueur</td><td>79</td><td>29 898</td></tr>
+<tr><td>400H</td><td>82</td><td>27 902</td></tr>
+<tr><td>200</td><td>74</td><td>27 064</td></tr>
+<tr><td>800</td><td>81</td><td>26 751</td></tr>
+<tr><td>Triple</td><td>76</td><td>26 230</td></tr>
+<tr><td>100</td><td>80</td><td>25 657</td></tr>
+<tr><td>400</td><td>78</td><td>25 389</td></tr>
+<tr><td>1500</td><td>79</td><td>24 985</td></tr>
+<tr><td>Hauteur</td><td>81</td><td>22 845</td></tr>
+<tr><td>Poids</td><td>82</td><td>21 232</td></tr>
+<tr><td>Disque</td><td>82</td><td>21 143</td></tr>
+<tr><td>3000</td><td>64</td><td>20 030</td></tr>
+<tr><td>Marteau</td><td>82</td><td>19 496</td></tr>
+<tr><td>Perche</td><td>79</td><td>18 579</td></tr>
+<tr><td>Javelot</td><td>78</td><td>18 311</td></tr>
+<tr><td>100H</td><td>41</td><td>13 962</td></tr>
+<tr><td>3000 steeple</td><td>40</td><td>13 544</td></tr>
+<tr><td>110H</td><td>36</td><td>13 299</td></tr>
+<tr><td>5000 marche</td><td>39</td><td>13 237</td></tr>
+<tr><td>3000 marche</td><td>39</td><td>10 627</td></tr>
+<tr><td>5000</td><td>26</td><td>6 892</td></tr>
 	</tbody>
 </table>
 	

@@ -5,25 +5,23 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-import org.apache.commons.io.FileUtils;
-
 import fr.yann.parser.interclub.csv.IC;
 
 public class InterclubCsvToSql {
 
-	private static final String pathFolder = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
+	private static final String pathFolder = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
 
 	public static void main(String[] args) {
 
 		ArrayList<IC> perfs = new ArrayList<>();
 
 
-		for (int annee = 2009; annee < 2019; annee++) {
-			traiteCsv(annee, 1, perfs);
+		for (int annee = 2015; annee < 2016; annee++) {
+			// traiteCsv(annee, 1, perfs);
 			traiteCsv(annee, 2, perfs);
 		}
 
-		traiteCsv(2019, 1, perfs);
+		// traiteCsv(2019, 1, perfs);
 
 		for (IC l : perfs) {
 
@@ -31,8 +29,8 @@ public class InterclubCsvToSql {
 				continue;
 			}
 
-			System.out.println(l.toSql());
-			// System.out.println(l);
+			// System.out.println(l.toSql());
+			System.out.println(l);
 		}
 	}
 
@@ -60,16 +58,4 @@ public class InterclubCsvToSql {
 		}
 
 	}
-
-	private static void save(String url, String nomFichierToSave) {
-		try {
-			System.out.println(nomFichierToSave + "\t" + url);
-			final File file = new File("c:\\temp\\" + nomFichierToSave);
-			FileUtils.writeStringToFile(file, "SELECT *****", "UTF-8");
-			Thread.sleep(500);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

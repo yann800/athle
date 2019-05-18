@@ -75,16 +75,3 @@ AMBROS Jerome;;;;;5 000m Marche / SEM;;Finale 1;9;669;R3;VEM/68;43601;
 DE CARGOUET DE R Yann;;;;;5 000m Marche / SEM;;Finale 1;15;506;;VEM/51;43601;
 LOTTIER Pascal;;;;;Disque (2.0 Kg) / SEM;;Finale 1;11;473;D1;VEM/58;43601;
 NOEL Philippe;;;;;Poids (7 Kg) / SEM;;Finale 1;10;522;R3;VEM/61;43601;
-Résultats Équipes | Finale Nationale 2 - N2 - SE;;;;;;;;;;;;;
-1;53 130 pt;CA MONTREUIL 93;;;;;;;;;;;
-2;49 537 pt;ATHLE SUD 77*;;;;;;;;;;;
-3;48 908 pt;ATHLE 78 *;;;;;;;;;;;
-4;48 362 pt;AC PARIS-JOINVILLE;;;;;;;;;;;
-5;48 189 pt;US IVRY;;;;;;;;;;;
-6;46 082 pt;AA PAYS DE FRANCE ATHLE 95*;;;;;;;;;;;
-7;45 951 pt;PLM CONFLANS;;;;;;;;;;;
-8;45 494 pt;FONTENAY PLESSIS CLAMART ATHLE;;;;;;;;;;;
-
-
-16/05/09 - Chpts Interclubs LIFA Finale Nationale 2					
-Montreuil-sous-Bois - I-F - 093					
