@@ -4,6 +4,7 @@ import java.util.StringTokenizer;
 
 import fr.yann.model.enums.CategorieEnum;
 import fr.yann.model.enums.EpreuveEnum;
+import fr.yann.model.enums.NiveauEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.parser.interclub.csv.IC;
 
@@ -77,9 +78,14 @@ public class TraiteCsvInterclub {
 				continue;
 			}
 
+			if (perf.niveau == null && isNiveau(val)) {
+				perf.setNiveau(val);
+				continue;
+			}
+
 			if (perf.categorie == null && isCategorieNaissance(val, perf)) {
 				continue; // c'est bon cat et naissance sont valués
-			}
+			}			
 
 			if (isDate(val)) {
 				perf.setDate(val);
@@ -106,6 +112,21 @@ public class TraiteCsvInterclub {
 
 		return false;
 	}
+
+	/* IR1 */
+	private static boolean isNiveau(String val) {
+//		if (val.length() > 4){
+//			return false;
+//		}
+		try {
+			NiveauEnum.valueOf(val);
+		} catch (Exception e) {
+			System.err.println(val + " NOT NIVEAU");
+			return false;
+		}
+		return true;
+	}
+
 
 	/* ESF/88 */
 	private static boolean isCategorieNaissance(String val, IC perf) {
