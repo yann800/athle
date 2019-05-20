@@ -1,0 +1,74 @@
+;;4 X 400m / SEF;;Finale 1;;2;;3'56''60;;925;; ;;F/;;19/05
+;;4 X 100m / SEF;;Finale 1;;2;;49''14;;929;; ;;F/;;19/05
+AUCAGOS Sohane;;Triple Saut / SEF;;Finale 1;;-;;NM;;0;; ;;CAF/03;;19/05
+MOMONT Mathilda;;Hauteur / SEF;;Finale 1;;12;;1m45;;687;;R3;;CAF/02;;19/05
+MOMONT Mathilda;;100m Haies (84) / SEF;;Finale 2;;2;;15''44 (+0.5);;843;;IR2;;CAF/02;;19/05
+CONDORE Melina;;400m / SEF;;Finale 1;;5;;60''34;;826;;IR2;;ESF/98;;19/05
+HOUNSINOU Julie;;400m Haies (76) / SEF;;Finale 1;;1;;62''07;;962;;N3;;ESF/97;;19/05
+HOUNSINOU Julie;;Perche / SEF;;Finale 1;;11;;2m20;;420;;D1;;ESF/97;;19/05
+LE DIEU DE VILLE Elise;;100m Haies (84) / SEF;;Finale 1;;1;;14''50 (+1.7);;956;;N4;;ESF/98;;19/05
+LE DIEU DE VILLE Elise;;Hauteur / SEF;;Finale 1;;1;;1m75;;974;;N3;;ESF/98;;19/05
+MOHAMMEDI Wahiba;;800m / SEF;;Finale 1;;6;;2'23''45;;781;;IR3;;ESF/97;;19/05
+SECHAUD Ema;;Disque (1.0 Kg) / SEF;;Finale 1;;13;;18m81;;319;;D5;;ESF/97;;19/05
+SECHAUD Ema;;800m / SEF;;Finale 1;;5;;2'17''56;;869;;IR1;;ESF/97;;19/05
+ABBASSI Laysa;;Javelot (600 G) / SEF;;Finale 1;;7;;28m80;;504;;R4;;JUF/01;;19/05
+AUCAGOS Nawel;;100m / SEF;;Finale 2;;6;;13''49 (+1.2);;718;;R3;;JUF/01;;19/05
+AUCAGOS Nawel;;Longueur / SEF;;Finale 1;;7;;5m00 (+1.1);;783;;R1;;JUF/01;;19/05
+BIKELEL Anne;;200m / SEF;;Finale 2;;1;;26''22 (+1.4);;833;;IR2;;JUF/01;;19/05
+BIKELEL Anne;;Triple Saut / SEF;;Finale 1;;4;;11m19 (+0.0);;833;;IR2;;JUF/01;;19/05
+BOSMORIN Suzanne;;1 500m / SEF;;Finale 1;;14;;5'46''59;;501;;D1;;JUF/00;;19/05
+GUIHUR Noemie;;400m / SEF;;Finale 2;;3;;62''77;;747;;R1;;JUF/00;;19/05
+TSHIKAYA Yowa;;200m / SEF;;Finale 1;;3;;25''87 (+1.1);;863;;IR2;;JUF/01;;19/05
+TSHIKAYA Yowa;;Longueur / SEF;;Finale 1;;11;;4m70 (+0.4);;720;;R4;;JUF/01;;19/05
+BAKHAYOKHO Mary;;Poids (4 Kg) / SEF;;Finale 1;;10;;8m82;;513;;R4;;SEF/93;;19/05
+BOLLEE Elodie;;3 000m / SEF;;Finale 1;;3;;10'08''17;;889;;IR1;;SEF/84;;19/05
+CHARLERY Adeline;;Disque (1.0 Kg) / SEF;;Finale 1;;12;;19m61;;334;;D4;;SEF/87;;19/05
+DEMONTIGNY Melissa;;Perche / SEF;;Finale 1;;1;;3m60;;838;;N3;;SEF/87;;19/05
+DEMONTIGNY Melissa;;Poids (4 Kg) / SEF;;Finale 1;;13;;7m53;;434;;D2;;SEF/87;;19/05
+DETOUCHE Manon;;400m Haies (76) / SEF;;Finale 2;;4;;67''77;;807;;IR2;;SEF/95;;19/05
+DETOUCHE Manon;;Marteau (4 Kg) / SEF;;Finale 1;;12;;18m66;;271;;D6;;SEF/95;;19/05
+RADENEZ Clemence;;Marteau (4 Kg) / SEF;;Finale 1;;7;;28m81;;433;;D1;;SEF/92;;19/05
+REAUD Delphine;;3 000m / SEF;;Finale 1;;12;;12'05''03;;572;;R6;;SEF/82;;19/05
+ROOS-WEIL Lise;;1 500m / SEF;;Finale 1;;8;;5'09''44;;712;;R1;;SEF/91;;19/05
+TUDEAU Amandine;;100m / SEF;;Finale 1;;8;;15''18 (+2.1);;461;;D3;;SEF/81;;19/05
+TUDEAU Amandine;;Javelot (600 G) / SEF;;Finale 1;;11;;23m45;;406;;D2;;SEF/81;;19/05
+GUIDEZ Isabelle;;3 000m Marche / SEF;;Finale 1;;9;;19'17''55;;448;;R6;;VEF/74;;19/05
+HOUDAYER Aicha;;3 000m Marche / SEF;;Finale 1;;7;;19'05''15;;464;;R6;;VEF/66;;19/05
+;;4 X 400m / SEM;;Finale 1;;1;;3'18''14;;927;; ;;M/;;19/05
+;;4 X 100m / SEM;;Finale 1;;1;;41''46;;971;; ;;M/;;19/05
+CODJO Bruno;;400m / SEM;;Finale 2;;1;;50''34;;838;;IR1;;ESM/97;;19/05
+GOMES Anthony;;400m / SEM;;Finale 1;;2;;49''90;;864;;IR1;;ESM/97;;19/05
+GOMES Anthony;;Javelot (800 G) / SEM;;Finale 1;;9;;40m07;;537;;R5;;ESM/97;;19/05
+HAMROUNI Hamza;;Triple Saut / SEM;;Finale 1;;6;;13m45 (+0.8);;792;;IR4;;ESM/99;;19/05
+KOUE-BOADET Kenny;;400m Haies (91) / SEM;;Finale 2;;2;;57''99;;768;;IR3;;ESM/98;;19/05
+TOUREL Thomas;;200m / SEM;;Finale 1;;2;;22''07 (+2.0);;916;;N4;;ESM/99;;19/05
+CITRON Florian;;Perche / SEM;;Finale 1;;12;;3m40;;569;;R5;;JUM/00;;19/05
+HUGGLER Marc-olivier (POL);;Javelot (800 G) / SEM;;Finale 1;;5;;45m54;;614;;R2;;JUM/00;;19/05
+MARTY Benjamin;;Hauteur / SEM;;Finale 1;;8;;1m75;;698;;R3;;JUM/01;;19/05
+SONDEREGGER Lucas;;3 000m / SEM;;Finale 1;;10;;9'20''45;;636;;R2;;JUM/00;;19/05
+VAILHE Baptiste;;200m / SEM;;Finale 2;;1;;22''11 (+1.9);;910;;N4;;JUM/00;;19/05
+ADDOH Axel;;400m Haies (91) / SEM;;Finale 1;;1;;55''45;;875;;IR1;;SEM/92;;19/05
+ANIESA Ange;;800m / SEM;;Finale 1;;14;;2'01''50;;724;;IR4;;SEM/90;;19/05
+BEURION Mathieu;;3000m Steeple (91) / SEM;;Finale 1;;15;;11'11''83;;523;;R5;;SEM/89;;19/05
+BROU Florent;;5 000m Marche / SEM;;Finale 1;;2;;25'51''66;;635;;R1;;SEM/93;;19/05
+CANARD Raphael;;Longueur / SEM;;Finale 1;;6;;6m58 (+0.0);;833;;IR3;;SEM/96;;19/05
+DA HORTA SEMEDO Tony;;Marteau (7 Kg) / SEM;;Finale 1;;6;;36m26;;525;;R5;;SEM/80;;19/05
+DJIAN Ary;;100m / SEM;;Finale 1;;5;;11''17 (+0.6);;837;;IR2;;SEM/95;;19/05
+FORIN Francois;;Disque (2.0 Kg) / SEM;;Finale 1;;5;;33m80;;582;;R4;;SEM/82;;19/05
+FORIN Francois;;Perche / SEM;;Finale 1;;5;;4m00;;727;;R1;;SEM/82;;19/05
+GREZE Stephane;;Triple Saut / SEM;;Finale 1;;3;;14m16 (-1.2);;865;;IR1;;SEM/84;;19/05
+HERKENRATH Loic;;110m Haies (106) / SEM;;Finale 1;;1;;13''98 (+0.5);;1070;;N2;;SEM/94;;19/05
+KOUASSI Haudy-meven;;100m / SEM;;Finale 2;;2;;11''00 (+2.2);;886;;IR1;;SEM/96;;19/05
+NTIA Romeo (BEN);;Longueur / SEM;;Finale 1;;1;;7m79 (+1.6);;1092;;N1;;SEM/95;;19/05
+PREVOT Lenaic;;1 500m / SEM;;Finale 1;;16;;4'28''12;;555;;R3;;SEM/92;;19/05
+RAVON Thomas;;110m Haies (106) / SEM;;Finale 2;;1;;14''62 (+0.9);;957;;N3;;SEM/85;;19/05
+RAVON Thomas;;Hauteur / SEM;;Finale 1;;11;;1m70;;655;;R5;;SEM/85;;19/05
+ROUSSEAU Benjamin;;3 000m / SEM;;Finale 1;;6;;9'15''08;;661;;R1;;SEM/86;;19/05
+SAMANGARAY Baba;;Poids (7 Kg) / SEM;;Finale 1;;4;;11m11;;594;;R3;;SEM/88;;19/05
+SCHLATTER Sebastien;;Poids (7 Kg) / SEM;;Finale 1;;3;;11m35;;608;;R3;;SEM/96;;19/05
+SOFFIATI Thibaud;;1 500m / SEM;;Finale 1;;12;;4'13''50;;703;;IR4;;SEM/85;;19/05
+ABDELKADER Yann;;800m / SEM;;Finale 1;1'59''99;;761;;IR3;;VEM/77;;19/05
+ANDRIEU Olivier;;5 000m Marche / SEM;;Finale 1;;4;;26'39''67;;586;;R3;;VEM/78;;19/05
+HAKMI Abdelaziz;;3000m Steeple (91) / SEM;;Finale 1;;13;;10'44''69;;607;;R3;;VEM/71;;19/05
+LOTTIER Pascal;;Marteau (7 Kg) / SEM;;Finale 1;;10;;30m71;;441;;D2;;VEM/58;;19/05
+VANNEQUE-PORTES Jean-philippe;;Disque (2.0 Kg) / SEM;;Finale 1;;13;;29m08;;496;;R6;;VEM/78;;19/05
