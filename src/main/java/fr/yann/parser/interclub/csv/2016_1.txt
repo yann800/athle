@@ -1,82 +1,74 @@
-;;;;4 X 100m/SEF;;2;;46''60;1044;;;43593;
-;;;;4 X 400m/SEF;;2;;3'54''60;940;;F/;43593;
-BRAULT Ines;;;;1 500m / SEF;;6;;5'08''84;719;R1;CAF/99;43593;
-SAMBA-MAYELA Cyrena;;;;100m / SEF;;3;;12''42 (-1.9);958;IR1;CAF/00;43593;
-SAMBA-MAYELA Cyrena;;;;Longueur / SEF;;10;;5m09 (+5.0);758;R1;CAF/00;43593;
-COLLINET Agathe;;;;100m / SEF;;3;;13''39 (-2.8);811;R2;ESF/94;43593;
-KOUTOUAN Fiona;;;;Disque (1.0 Kg) / SEF;;2;;36m47;602;IR2;ESF/96;43593;
-SACKO Hatouma;;;;200m / SEF;;4;;26''85 (-1.8);867;IR4;ESF/96;43593;
-SACKO Hatouma;;;;Longueur / SEF;;15;;4m45 (+3.7);612;R6;ESF/96;43593;
-HOUNSINOU Julie;;;;400m Haies (76) / SEF;;1;;59''74;1054;N2;JUF/97;43593;
-HOUNSINOU Julie;;;;Perche / SEF;;13;;1m60;160;D7;JUF/97;43593;
-KOUTOUAN Sarah;;;;100m Haies (84) / SEF;;1;;13''75 (-2.0);1067;N2;JUF/98;43593;
-KOUTOUAN Sarah;;;;Javelot (600 G) / SEF;;4;;25m62;407;D1;JUF/98;43593;
-LEDUC Cynthia;;;;400m / SEF;;3;;57''97;943;IR1;JUF/97;43593;
-LEDUC Cynthia;;;;Disque (1.0 Kg) / SEF;;5;;27m30;432;R5;JUF/97;43593;
-LOUP Noemie;;;;800m / SEF;;10;;2'37''44;584;R4;JUF/97;43593;
-QUEST Tiphanie;;;;Hauteur / SEF;;8;;1m50;671;R1;JUF/97;43593;
-ALEXANDER Ayanna (TTO);;;;Triple Saut / SEF;;1;;13m85 (+0.3);1093;N1;SEF/82;43593;
-ALEXANDER Ayanna (TTO);;;;Poids (4 Kg) / SEF;;7;;8m90;473;R4;SEF/82;43593;
-CALYDON Cornnelly;;;;200m / SEF;;3;;24''98 (-1.5);995;N4;SEF/89;43593;
-CALYDON Cornnelly;;;;Triple Saut / SEF;;6;;11m25 (+1.0);797;IR1;SEF/89;43593;
-CANARD Alize;;;;Perche / SEF;;3;;3m00;635;IR3;SEF/93;43593;
-CANARD Alize;;;;Javelot (600 G) / SEF;;3;;28m20;455;R4;SEF/93;43593;
-GAGNEUX Valerie;;;;400m Haies (76) / SEF;;5;;69''62;810;IR3;SEF/84;43593;
-JACQUES Alexia;;;;1 500m / SEF;;5;;5'04''20;748;IR4;SEF/88;43593;
-JOUISSE Aurelie;;;;3 000m / SEF;;8;;12'22''66;537;D1;SEF/88;43593;
-LAMBOLEY Victoria;;;;800m / SEF;;6;;2'28''45;703;R1;SEF/93;43593;
-LEWIS Abigail (JAM);;;;100m Haies (84) / SEF;;2;;13''95 (0.5);1043;N2;SEF/93;43593;
-LEWIS Abigail (JAM);;;;Hauteur / SEF;;3;;1m65;831;IR1;SEF/93;43593;
-MAGASSA Massere;;;;Marteau (4 Kg) / SEF;;4;;31m75;475;R5;SEF/83;43593;
-PARSY Marion;;;;400m / SEF;;8;;100''76;90;D8;SEF/88;43593;
-RADENEZ Clemence;;;;Marteau (4 Kg) / SEF;;6;;22m94;323;D4;SEF/92;43593;
-BOCCARA Valerie;;;;3 000m Marche / SEF;;10;;20'23''94;479;D2;VEF/75;43593;
-BROCHOT Sandrine;;;;3 000m / SEF;;10;;12'27''66;525;D1;VEF/71;43593;
-HOUDAYER Aicha;;;;3 000m Marche / SEF;;5;;19'56''19;511;D1;VEF/66;43593;
-KOUTOUAN Albertine (CIV);;;;Poids (4 Kg) / SEF;;4;;9m08;484;R4;VEF/64;43593;
-;;;;4 X 100m/SEM;;2;;41''84;953;;M/;43593;
-;;;;4 X 400m/SEM;;2;;3'18''64;904;;M/;43593;
-HUGGLER Marc-olivier (POL);;;;Hauteur / SEM;;12;;1m70;585;R5;CAM/00;43593;
-HUGGLER Marc-olivier (POL);;;;Javelot (800 G) / SEM;;3;;49m75;634;IR4;CAM/00;43593;
-CANARD Raphael;;;;100m / SEM;;7;;11''60 (-1.1);757;R1;ESM/96;43593;
-CANARD Raphael;;;;Longueur / SEM;;4;;6m82 (+1.4);880;IR1;ESM/96;43593;
-DJIAN Ary;;;;200m / SEM;;5;;22''88 (-0.2);826;IR3;ESM/95;43593;
-KOUASSI Haudy-meven;;;;100m / SEM;;6;;11''23 (0.7);855;IR2;ESM/96;43593;
-MICHEL Pierre;;;;Perche / SEM;;4;;3m60;568;R3;ESM/96;43593;
-SCHLATTER Sebastien;;;;Perche / SEM;;7;;3m20;458;D1;ESM/96;43593;
-SCHLATTER Sebastien;;;;Javelot (800 G) / SEM;;7;;45m10;568;R2;ESM/96;43593;
-CODJO Bruno;;;;400m Haies (91) / SEM;;3;;60''31;728;R2;JUM/97;43593;
-ABDELKADER Yann;;;;800m / SEM;;5;;2'00''03;768;IR3;SEM/77;43593;
-ALERTE David;;;;400m / SEM;;3;;49''43;910;N4;SEM/84;43593;
-ALERTE David;;;;Longueur / SEM;;5;;6m82 (+2.7);880;IR1;SEM/84;43593;
-ANDRIEU Olivier;;;;3000m Steeple (91) / SEM;;10;;10'27''40;703;R2;SEM/78;43593;
-ANIESA Ange;;;;400m / SEM;;4;;51''56;795;IR3;SEM/90;43593;
-BEURION Mathieu;;;;5 000m Marche / SEM;;7;;27'50''14;685;R5;SEM/89;43593;
-BROU Florent;;;;5 000m Marche / SEM;;3;;25'45''86;783;R1;SEM/93;43593;
-CHASTANG Cedric;;;;3000m Steeple (91) / SEM;;13;;11'11''29;568;R5;SEM/81;43593;
-DA HORTA SEMEDO Tony;;;;Marteau (7 Kg) / SEM;;4;;39m37;542;R3;SEM/80;43593;
-DANGLADES Jean-christophe;;;;800m / SEM;;8;;2'02''04;720;IR4;SEM/93;43593;
-DIANI Ilyas;;;;3 000m / SEM;;9;;9'31''47;590;R3;SEM/79;43593;
-FRANCOIS Mickael;;;;400m Haies (91) / SEM;;1;;50''34;1118;N1;SEM/88;43593;
-FRANZONI Lorenzo (ITA);;;;Triple Saut / SEM;;5;;14m40 (+0.3);870;IR1;SEM/88;43593;
-HOUSSOU Johan;;;;Hauteur / SEM;;-;;NP;0;;SEM/86;43593;
-KIMBEMBE Devilert-arsene (COD);;;;200m / SEM;;2;;22''05 (-0.5);933;N4;SEM/84;43593;
-LAINE Samyr (HAI);;;;Triple Saut / SEM;;2;;15m77 (+1.1);1015;N2;SEM/84;43593;
-LAINE Samyr (HAI);;;;Poids (7 Kg) / SEM;;7;;10m01;523;R5;SEM/84;43593;
-NOEL Raphael;;;;1 500m / SEM;;10;;4'21''02;624;R2;SEM/93;43593;
-PHILIPOT Clement;;;;3 000m / SEM;;11;;9'33''74;580;R3;SEM/86;43593;
-PUJAR Yannis;;;;Disque (2.0 Kg) / SEM;;1;;49m94;860;N3;SEM/92;43593;
-RAVON Thomas;;;;110m Haies (106) / SEM;;2;;14''24 (-2.5);1056;N2;SEM/85;43593;
-RAVON Thomas;;;;Poids (7 Kg) / SEM;;2;;11m86;633;R2;SEM/85;43593;
-SAMANGARAY Baba;;;;110m Haies (106) / SEM;;4;;15''06 (-0.3);934;N4;SEM/88;43593;
-SAMANGARAY Baba;;;;Disque (2.0 Kg) / SEM;;9;;17m59;257;D6;SEM/88;43593;
-SOFFIATI Thibaud;;;;1 500m / SEM;;8;;4'11''39;725;IR4;SEM/85;43593;
-LOTTIER Pascal;;;;Marteau (7 Kg) / SEM;;7;;33m36;448;R6;VEM/58;43593;
-
-
-
-
-Résultats Équipes | Interclubs N1 N2 - N1A - SE			
-1	57 768 pt	ATHLE 91 *	
-2	51 186 pt	AC PARIS-JOINVILLE	
-08/05/16 - Interclubs Ile-de-France 1er tour National			
+;;;;4 X 100m/SEF;;2;;46''60;;1044;;;08-mai
+;;;;4 X 400m/SEF;;2;;3'54''60;;940;;F/;08-mai
+BRAULT Ines;;;;1 500m / SEF;;6;;5'08''84;;719;R1;CAF/99;08-mai
+SAMBA-MAYELA Cyrena;;;;100m / SEF;;3;;12''42 (-1.9);;958;IR1;CAF/00;08-mai
+SAMBA-MAYELA Cyrena;;;;Longueur / SEF;;10;;5m09 (+5.0);;758;R1;CAF/00;08-mai
+COLLINET Agathe;;;;100m / SEF;;3;;13''39 (-2.8);;811;R2;ESF/94;08-mai
+KOUTOUAN Fiona;;;;Disque (1.0 Kg) / SEF;;2;;36m47;;602;IR2;ESF/96;08-mai
+SACKO Hatouma;;;;200m / SEF;;4;;26''85 (-1.8);;867;IR4;ESF/96;08-mai
+SACKO Hatouma;;;;Longueur / SEF;;15;;4m45 (+3.7);;612;R6;ESF/96;08-mai
+HOUNSINOU Julie;;;;400m Haies (76) / SEF;;1;;59''74;;1054;N2;JUF/97;08-mai
+HOUNSINOU Julie;;;;Perche / SEF;;13;;1m60;;160;D7;JUF/97;08-mai
+KOUTOUAN Sarah;;;;100m Haies (84) / SEF;;1;;13''75 (-2.0);;1067;N2;JUF/98;08-mai
+KOUTOUAN Sarah;;;;Javelot (600 G) / SEF;;4;;25m62;;407;D1;JUF/98;08-mai
+LEDUC Cynthia;;;;400m / SEF;;3;;57''97;;943;IR1;JUF/97;08-mai
+LEDUC Cynthia;;;;Disque (1.0 Kg) / SEF;;5;;27m30;;432;R5;JUF/97;08-mai
+LOUP Noemie;;;;800m / SEF;;10;;2'37''44;;584;R4;JUF/97;08-mai
+QUEST Tiphanie;;;;Hauteur / SEF;;8;;1m50;;671;R1;JUF/97;08-mai
+ALEXANDER Ayanna (TTO);;;;Triple Saut / SEF;;1;;13m85 (+0.3);;1093;N1;SEF/82;08-mai
+ALEXANDER Ayanna (TTO);;;;Poids (4 Kg) / SEF;;7;;8m90;;473;R4;SEF/82;08-mai
+CALYDON Cornnelly;;;;200m / SEF;;3;;24''98 (-1.5);;995;N4;SEF/89;08-mai
+CALYDON Cornnelly;;;;Triple Saut / SEF;;6;;11m25 (+1.0);;797;IR1;SEF/89;08-mai
+CANARD Alize;;;;Perche / SEF;;3;;3m00;;635;IR3;SEF/93;08-mai
+CANARD Alize;;;;Javelot (600 G) / SEF;;3;;28m20;;455;R4;SEF/93;08-mai
+GAGNEUX Valerie;;;;400m Haies (76) / SEF;;5;;69''62;;810;IR3;SEF/84;08-mai
+JACQUES Alexia;;;;1 500m / SEF;;5;;5'04''20;;748;IR4;SEF/88;08-mai
+JOUISSE Aurelie;;;;3 000m / SEF;;8;;12'22''66;;537;D1;SEF/88;08-mai
+LAMBOLEY Victoria;;;;800m / SEF;;6;;2'28''45;;703;R1;SEF/93;08-mai
+LEWIS Abigail (JAM);;;;100m Haies (84) / SEF;;2;;13''95 (0.5);;1043;N2;SEF/93;08-mai
+LEWIS Abigail (JAM);;;;Hauteur / SEF;;3;;1m65;;831;IR1;SEF/93;08-mai
+MAGASSA Massere;;;;Marteau (4 Kg) / SEF;;4;;31m75;;475;R5;SEF/83;08-mai
+PARSY Marion;;;;400m / SEF;;8;;100''76;;90;D8;SEF/88;08-mai
+RADENEZ Clemence;;;;Marteau (4 Kg) / SEF;;6;;22m94;;323;D4;SEF/92;08-mai
+BOCCARA Valerie;;;;3 000m Marche / SEF;;10;;20'23''94;;479;D2;VEF/75;08-mai
+BROCHOT Sandrine;;;;3 000m / SEF;;10;;12'27''66;;525;D1;VEF/71;08-mai
+HOUDAYER Aicha;;;;3 000m Marche / SEF;;5;;19'56''19;;511;D1;VEF/66;08-mai
+KOUTOUAN Albertine (CIV);;;;Poids (4 Kg) / SEF;;4;;9m08;;484;R4;VEF/64;08-mai
+;;;;4 X 100m/SEM;;2;;41''84;;953;;M/;08-mai
+;;;;4 X 400m/SEM;;2;;3'18''64;;904;;M/;08-mai
+HUGGLER Marc-olivier (POL);;;;Hauteur / SEM;;12;;1m70;;585;R5;CAM/00;08-mai
+HUGGLER Marc-olivier (POL);;;;Javelot (800 G) / SEM;;3;;49m75;;634;IR4;CAM/00;08-mai
+CANARD Raphael;;;;100m / SEM;;7;;11''60 (-1.1);;757;R1;ESM/96;08-mai
+CANARD Raphael;;;;Longueur / SEM;;4;;6m82 (+1.4);;880;IR1;ESM/96;08-mai
+DJIAN Ary;;;;200m / SEM;;5;;22''88 (-0.2);;826;IR3;ESM/95;08-mai
+KOUASSI Haudy-meven;;;;100m / SEM;;6;;11''23 (0.7);;855;IR2;ESM/96;08-mai
+MICHEL Pierre;;;;Perche / SEM;;4;;3m60;;568;R3;ESM/96;08-mai
+SCHLATTER Sebastien;;;;Perche / SEM;;7;;3m20;;458;D1;ESM/96;08-mai
+SCHLATTER Sebastien;;;;Javelot (800 G) / SEM;;7;;45m10;;568;R2;ESM/96;08-mai
+CODJO Bruno;;;;400m Haies (91) / SEM;;3;;60''31;;728;R2;JUM/97;08-mai
+ABDELKADER Yann;;;;800m / SEM;;5;;2'00''03;;768;IR3;SEM/77;08-mai
+ALERTE David;;;;400m / SEM;;3;;49''43;;910;N4;SEM/84;08-mai
+ALERTE David;;;;Longueur / SEM;;5;;6m82 (+2.7);;880;IR1;SEM/84;08-mai
+ANDRIEU Olivier;;;;3000m Steeple (91) / SEM;;10;;10'27''40;;703;R2;SEM/78;08-mai
+ANIESA Ange;;;;400m / SEM;;4;;51''56;;795;IR3;SEM/90;08-mai
+BEURION Mathieu;;;;5 000m Marche / SEM;;7;;27'50''14;;685;R5;SEM/89;08-mai
+BROU Florent;;;;5 000m Marche / SEM;;3;;25'45''86;;783;R1;SEM/93;08-mai
+CHASTANG Cedric;;;;3000m Steeple (91) / SEM;;13;;11'11''29;;568;R5;SEM/81;08-mai
+DA HORTA SEMEDO Tony;;;;Marteau (7 Kg) / SEM;;4;;39m37;;542;R3;SEM/80;08-mai
+DANGLADES Jean-christophe;;;;800m / SEM;;8;;2'02''04;;720;IR4;SEM/93;08-mai
+DIANI Ilyas;;;;3 000m / SEM;;9;;9'31''47;;590;R3;SEM/79;08-mai
+FRANCOIS Mickael;;;;400m Haies (91) / SEM;;1;;50''34;;1118;N1;SEM/88;08-mai
+FRANZONI Lorenzo (ITA);;;;Triple Saut / SEM;;5;;14m40 (+0.3);;870;IR1;SEM/88;08-mai
+HOUSSOU Johan;;;;Hauteur / SEM;;-;;NP;;0;;SEM/86;08-mai
+KIMBEMBE Devilert-arsene (COD);;;;200m / SEM;;2;;22''05 (-0.5);;933;N4;SEM/84;08-mai
+LAINE Samyr (HAI);;;;Triple Saut / SEM;;2;;15m77 (+1.1);;1015;N2;SEM/84;08-mai
+LAINE Samyr (HAI);;;;Poids (7 Kg) / SEM;;7;;10m01;;523;R5;SEM/84;08-mai
+NOEL Raphael;;;;1 500m / SEM;;10;;4'21''02;;624;R2;SEM/93;08-mai
+PHILIPOT Clement;;;;3 000m / SEM;;11;;9'33''74;;580;R3;SEM/86;08-mai
+PUJAR Yannis;;;;Disque (2.0 Kg) / SEM;;1;;49m94;;860;N3;SEM/92;08-mai
+RAVON Thomas;;;;110m Haies (106) / SEM;;2;;14''24 (-2.5);;1056;N2;SEM/85;08-mai
+RAVON Thomas;;;;Poids (7 Kg) / SEM;;2;;11m86;;633;R2;SEM/85;08-mai
+SAMANGARAY Baba;;;;110m Haies (106) / SEM;;4;;15''06 (-0.3);;934;N4;SEM/88;08-mai
+SAMANGARAY Baba;;;;Disque (2.0 Kg) / SEM;;9;;17m59;;257;D6;SEM/88;08-mai
+SOFFIATI Thibaud;;;;1 500m / SEM;;8;;4'11''39;;725;IR4;SEM/85;08-mai
+LOTTIER Pascal;;;;Marteau (7 Kg) / SEM;;7;;33m36;;448;R6;VEM/58;08-mai

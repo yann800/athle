@@ -1,99 +1,75 @@
-;;;;;4 X 100m / SEF;;;;;;F/;43603;
-;;;;;4 X 400m / SEF;;Finale 1;3;12;;F/;43603;
-CLAUDE Nina;;;;;400m / SEF;;Finale 2;1;10;IR2;CAF/97;43603;
-CLAUDE Nina;;;;;Hauteur / SEF;;Finale 1;15;2;R1;CAF/97;43603;
-GOURDON Capucine;;;;;1 500m / SEF;;Finale 1;15;2;R4;CAF/98;43603;
-HOUNSINOU Julie;;;;;400m Haies (76) / SEF;;Finale 2;1;13;N4;CAF/97;43603;
-HOUNSINOU Julie;;;;;Hauteur / SEF;;Finale 1;11;6;IR4;CAF/97;43603;
-KOUTOUAN Sarah;;;;;100m Haies (84) / SEF;;Finale 1;2;15;N3;CAF/98;43603;
-KOUTOUAN Sarah;;;;;Longueur / SEF;;Finale 1;2;15;IR2;CAF/98;43603;
-LEDUC Cynthia;;;;;200m / SEF;;Finale 1;2;15;N3;CAF/97;43603;
-LEDUC Cynthia;;;;;Disque (1.0 Kg) / SEF;;Finale 1;12;5;R5;CAF/97;43603;
-CANARD Alize;;;;;Perche / SEF;;Finale 1;14;3;D3;ESF/93;43603;
-CANARD Alize;;;;;Javelot (600 G) / SEF;;Finale 1;13;4;R4;ESF/93;43603;
-COLLINET Agathe;;;;;200m / SEF;;Finale 2;1;12;IR1;ESF/94;43603;
-ROMAIN Katarina;;;;;100m / SEF;;Finale 1;2;15;N3;ESF/92;43603;
-BOULABI Margot;;;;;400m / SEF;;Finale 1;7;9;IR2;JUF/96;43603;
-BOULABI Margot;;;;;Perche / SEF;;Finale 1;13;4;R5;JUF/96;43603;
-KOUTOUAN Fiona;;;;;Disque (1.0 Kg) / SEF;;Finale 1;9;8;R2;JUF/96;43603;
-LOISEAU Margot;;;;;100m / SEF;;Finale 2;5;6,5;IR4;JUF/96;43603;
-LOISEAU Margot;;;;;Poids (4 Kg) / SEF;;Finale 1;16;1;D5;JUF/96;43603;
-RICHARDIN Nine;;;;;Longueur / SEF;;Finale 1;16;1;R6;JUF/96;43603;
-RICHARDIN Nine;;;;;Marteau (4 Kg) / SEF;;Finale 1;5;12;IR1;JUF/96;43603;
-ABOUKE Hermance;;;;;100m Haies (84) / SEF;;Finale 2;2;12;IR2;SEF/86;43603;
-ABOUKE Hermance;;;;;Triple Saut / SEF;;Finale 1;9;8;IR3;SEF/86;43603;
-BALAGE Juliette;;;;;3 000m / SEF;;Finale 1;10;7;R2;SEF/84;43603;
-BOCCARA Valerie;;;;;Poids (4 Kg) / SEF;;Finale 1;15;2;D1;SEF/75;43603;
-BOCCARA Valerie;;;;;3 000m Marche / SEF;;Finale 1;15;2;R6;SEF/75;43603;
-BOLLEE Elodie;;;;;800m / SEF;;Finale 1;1;16;N4;SEF/84;43603;
-BONDILANGE Anne-cecile;;;;;Marteau (4 Kg) / SEF;;Finale 1;4;13;IR1;SEF/79;43603;
-RAMIN Julie;;;;;800m / SEF;;Finale 1;15;2;IR4;SEF/82;43603;
-ROOS-WEIL Lise;;;;;1 500m / SEF;;Finale 1;9;8;IR3;SEF/91;43603;
-TSHIKAYA Lea;;;;;400m Haies (76) / SEF;;Finale 1;1;16;N3;SEF/91;43603;
-TSHIKAYA Lea;;;;;Triple Saut / SEF;;Finale 1;15;2;D2;SEF/91;43603;
-TUDEAU Amandine;;;;;Javelot (600 G) / SEF;;Finale 1;14;3;R6;SEF/81;43603;
-BAUNAY Isabelle;;;;;3 000m / SEF;;Finale 1;14;3;R4;VEF/74;43603;
-HOUDAYER Aicha;;;;;3 000m Marche / SEF;;Finale 1;12;5;R5;VEF/66;43603;
-Hommes;;;;;;;;;;;;;
-;;;;;4 X 100m / SEM;;Finale 1;5;8;;M/;43603;
-;;;;;4 X 400m / SEM;;Finale 1;1;16;;M/;43603;
-CODJO Bruno;;;;;400m / SEM;;Finale 2;4;7;IR1;CAM/97;43603;
-BROU Florent;;;;;5 000m Marche / SEM;;Finale 1;8;9;R3;ESM/93;43603;
-DANGLADES Jean-christophe;;;;;800m / SEM;;Finale 1;16;1;IR4;ESM/93;43603;
-PUJAR Yannis;;;;;Poids (7 Kg) / SEM;;Finale 1;4;13;IR1;ESM/92;43603;
-CANARD Raphael;;;;;Triple Saut / SEM;;Finale 1;11;6;IR3;JUM/96;43603;
-CANARD Raphael;;;;;Javelot (800 G) / SEM;;Finale 1;16;1;D2;JUM/96;43603;
-DIELNA Samuel;;;;;100m / SEM;;Finale 2;3;7;IR2;JUM/96;43603;
-GNAHO Thomas;;;;;Hauteur / SEM;;Finale 1;6;11;IR1;JUM/96;43603;
-JEM Aurelien;;;;;5 000m / SEM;;Finale 1;8;9;IR3;JUM/96;43603;
-LE FLOCH Olivier;;;;;Perche / SEM;;Finale 1;-;;;JUM/96;43603;
-MICHEL Pierre;;;;;110m Haies (106) / SEM;;Finale 2;3;7;IR4;JUM/96;43603;
-MICHEL Pierre;;;;;Perche / SEM;;Finale 1;11;6;R1;JUM/96;43603;
-SCHLATTER Sebastien;;;;;Javelot (800 G) / SEM;;Finale 1;13;4;R1;JUM/96;43603;
-ABDELKADER Yann;;;;;1 500m / SEM;;Finale 1;14;3;IR3;SEM/77;43603;
-AH-MOUCK Loic;;;;;400m / SEM;;Finale 1;4;13;N4;SEM/91;43603;
-ANDRIEU Olivier;;;;;3000m Steeple (91) / SEM;;Finale 1;12;5;R1;SEM/78;43603;
-BARANGER-MERINO Alberto;;;;;Marteau (7 Kg) / SEM;;Finale 1;5;12;IR1;SEM/81;43603;
-BENNIA Ahmed;;;;;100m / SEM;;Finale 1;4;13;IR1;SEM/90;43603;
-BENNIA Ahmed;;;;;Hauteur / SEM;;Finale 1;16;1;D5;SEM/90;43603;
-BEURION Mathieu;;;;;5 000m Marche / SEM;;Finale 1;-;;;SEM/89;43603;
-CHASTANG Cedric;;;;;3000m Steeple (91) / SEM;;Finale 1;16;1;R3;SEM/81;43603;
-DJHONE Leslie;;;;;200m / SEM;;Finale 1;3;13,5;N4;SEM/81;43603;
-DUBOIS Ludovic;;;;;400m Haies (91) / SEM;;Finale 2;1;15;N2;SEM/86;43603;
-FRANCOIS Mickael;;;;;400m Haies (91) / SEM;;Finale 1;1;16;N1;SEM/88;43603;
-FRANZONI Lorenzo (ITA);;;;;Triple Saut / SEM;;Finale 1;4;13;N4;SEM/88;43603;
-HESRY Gwenael;;;;;800m / SEM;;Finale 1;14;3;IR3;SEM/77;43603;
-LARISSE Anddy;;;;;Poids (7 Kg) / SEM;;Finale 1;14;3;R4;SEM/86;43603;
-LOCURTO Alberto (ITA);;;;;Disque (2.0 Kg) / SEM;;Finale 1;4;13;IR1;SEM/76;43603;
-NICOTRA Ferdinando (ITA);;;;;Disque (2.0 Kg) / SEM;;Finale 1;1;16;N3;SEM/86;43603;
-ROLLEZ Florian;;;;;200m / SEM;;Finale 2;2;11;IR1;SEM/88;43603;
-ROUSSEAU Benjamin;;;;;5 000m / SEM;;Finale 1;11;6;IR4;SEM/86;43603;
-SAMANGARAY Baba;;;;;110m Haies (106) / SEM;;Finale 1;1;15;N4;SEM/88;43603;
-SAMANGARAY Baba;;;;;Longueur / SEM;;Finale 1;9;8;IR2;SEM/88;43603;
-SOFFIATI Thibaud;;;;;1 500m / SEM;;Finale 1;13;4;IR2;SEM/85;43603;
-YOBOUET Samaeken;;;;;Longueur / SEM;;Finale 1;16;1;D1;SEM/88;43603;
-ANDRE Michel;;;;;Marteau (7 Kg) / SEM;;Finale 1;2;15;IR1;VEM/70;43603;
-Résultats Équipes | FINALES INTERCLUBS N1A - F_N1A - SE;;;;;;;;;;;;;
-1;705,5 pt;NANTES METROPOLE ATHLETISME*;;;;;;;;;;;
-2;690 pt;HAUTE BRETAGNE ATHLETISME *;;;;;;;;;;;
-3;659 pt;RC ARRAS*;;;;;;;;;;;
-4;645 pt;LYON ATHLETISME*;;;;;;;;;;;
-5;632,5 pt;BORDEAUX ATHLE*;;;;;;;;;;;
-6;591 pt;AC PARIS-JOINVILLE;;;;;;;;;;;
-7;568 pt;EA CERGY PONTOISE ATHLETISME *;;;;;;;;;;;
-8;541 pt;A. SARREGUEMINES SARREBOURG A;;;;;;;;;;;
-
-
-
-Résultats Équipes | FINALES INTERCLUBS N1A - F_N1A - SE			
-1	705,5 pt	NANTES METROPOLE ATHLETISME*	
-2	690 pt	HAUTE BRETAGNE ATHLETISME *	
-3	659 pt	RC ARRAS*	
-4	645 pt	LYON ATHLETISME*	
-5	632,5 pt	BORDEAUX ATHLE*	
-6	591 pt	AC PARIS-JOINVILLE	
-7	568 pt	EA CERGY PONTOISE ATHLETISME *	
-8	541 pt	A. SARREGUEMINES SARREBOURG A	
-			
-18/05/14 - Championnats Nationaux Interclubs N1A Finale			
-LENS - NPC - 062			
+;;4 X 100m / SEF;;;;47''50;;F/;18-mai
+;;4 X 400m / SEF;;Finale 1;3;4'01''17;;F/;18-mai
+CLAUDE Nina;;400m / SEF;;Finale 2;1;59''20;IR2;CAF/97;18-mai
+CLAUDE Nina;;Hauteur / SEF;;Finale 1;15;1m50;R1;CAF/97;18-mai
+GOURDON Capucine;;1 500m / SEF;;Finale 1;15;5'22''30;R4;CAF/98;18-mai
+HOUNSINOU Julie;;400m Haies (76) / SEF;;Finale 2;1;63''99;N4;CAF/97;18-mai
+HOUNSINOU Julie;;Hauteur / SEF;;Finale 1;11;1m55;IR4;CAF/97;18-mai
+KOUTOUAN Sarah;;100m Haies (84) / SEF;;Finale 1;2;14''43 (+0.0);N3;CAF/98;18-mai
+KOUTOUAN Sarah;;Longueur / SEF;;Finale 1;2;5m36 (+0.0);IR2;CAF/98;18-mai
+LEDUC Cynthia;;200m / SEF;;Finale 1;2;24''58 (+0.0);N3;CAF/97;18-mai
+LEDUC Cynthia;;Disque (1.0 Kg) / SEF;;Finale 1;12;27m78;R5;CAF/97;18-mai
+CANARD Alize;;Perche / SEF;;Finale 1;14;2m00;D3;ESF/93;18-mai
+CANARD Alize;;Javelot (600 G) / SEF;;Finale 1;13;28m18;R4;ESF/93;18-mai
+COLLINET Agathe;;200m / SEF;;Finale 2;1;25''72 (+0.0);IR1;ESF/94;18-mai
+ROMAIN Katarina;;100m / SEF;;Finale 1;2;12''00 (+0.2);N3;ESF/92;18-mai
+BOULABI Margot;;400m / SEF;;Finale 1;7;59''51;IR2;JUF/96;18-mai
+BOULABI Margot;;Perche / SEF;;Finale 1;13;2m40;R5;JUF/96;18-mai
+KOUTOUAN Fiona;;Disque (1.0 Kg) / SEF;;Finale 1;9;30m08;R2;JUF/96;18-mai
+LOISEAU Margot;;100m / SEF;;Finale 2;5;12''97 (+0.0);IR4;JUF/96;18-mai
+LOISEAU Margot;;Poids (4 Kg) / SEF;;Finale 1;16;6m07;D5;JUF/96;18-mai
+RICHARDIN Nine;;Longueur / SEF;;Finale 1;16;4m51 (+0.0);R6;JUF/96;18-mai
+RICHARDIN Nine;;Marteau (4 Kg) / SEF;;Finale 1;5;47m86;IR1;JUF/96;18-mai
+ABOUKE Hermance;;100m Haies (84) / SEF;;Finale 2;2;15''37 (+0.0);IR2;SEF/86;18-mai
+ABOUKE Hermance;;Triple Saut / SEF;;Finale 1;9;10m97 (+0.9);IR3;SEF/86;18-mai
+BALAGE Juliette;;3 000m / SEF;;Finale 1;10;11'18''90;R2;SEF/84;18-mai
+BOCCARA Valerie;;Poids (4 Kg) / SEF;;Finale 1;15;7m72;D1;SEF/75;18-mai
+BOCCARA Valerie;;3 000m Marche / SEF;;Finale 1;15;19'23''64;R6;SEF/75;18-mai
+BOLLEE Elodie;;800m / SEF;;Finale 1;1;2'15''41;N4;SEF/84;18-mai
+BONDILANGE Anne-cecile;;Marteau (4 Kg) / SEF;;Finale 1;4;48m18;IR1;SEF/79;18-mai
+RAMIN Julie;;800m / SEF;;Finale 1;15;2'26''56;IR4;SEF/82;18-mai
+ROOS-WEIL Lise;;1 500m / SEF;;Finale 1;9;4'56''46;IR3;SEF/91;18-mai
+TSHIKAYA Lea;;400m Haies (76) / SEF;;Finale 1;1;61''83;N3;SEF/91;18-mai
+TSHIKAYA Lea;;Triple Saut / SEF;;Finale 1;15;8m95 (+0.0);D2;SEF/91;18-mai
+TUDEAU Amandine;;Javelot (600 G) / SEF;;Finale 1;14;26m31;R6;SEF/81;18-mai
+BAUNAY Isabelle;;3 000m / SEF;;Finale 1;14;11'38''08;R4;VEF/74;18-mai
+HOUDAYER Aicha;;3 000m Marche / SEF;;Finale 1;12;18'50''77;R5;VEF/66;18-mai
+Hommes;;;;;;;;;
+;;4 X 100m / SEM;;Finale 1;5;42''29;;M/;18-mai
+;;4 X 400m / SEM;;Finale 1;1;3'11''28;;M/;18-mai
+CODJO Bruno;;400m / SEM;;Finale 2;4;50''32;IR1;CAM/97;18-mai
+BROU Florent;;5 000m Marche / SEM;;Finale 1;8;26'46''98;R3;ESM/93;18-mai
+DANGLADES Jean-christophe;;800m / SEM;;Finale 1;16;2'01''82;IR4;ESM/93;18-mai
+PUJAR Yannis;;Poids (7 Kg) / SEM;;Finale 1;4;13m89;IR1;ESM/92;18-mai
+CANARD Raphael;;Triple Saut / SEM;;Finale 1;11;13m79 (+1.9);IR3;JUM/96;18-mai
+CANARD Raphael;;Javelot (800 G) / SEM;;Finale 1;16;33m90;D2;JUM/96;18-mai
+DIELNA Samuel;;100m / SEM;;Finale 2;3;11''28 (+0.0);IR2;JUM/96;18-mai
+GNAHO Thomas;;Hauteur / SEM;;Finale 1;6;2m00;IR1;JUM/96;18-mai
+JEM Aurelien;;5 000m / SEM;;Finale 1;8;15'20''87;IR3;JUM/96;18-mai
+LE FLOCH Olivier;;Perche / SEM;;Finale 1;-;NC;;JUM/96;18-mai
+MICHEL Pierre;;110m Haies (106) / SEM;;Finale 2;3;16''29 (+0.0);IR4;JUM/96;18-mai
+MICHEL Pierre;;Perche / SEM;;Finale 1;11;4m00;R1;JUM/96;18-mai
+SCHLATTER Sebastien;;Javelot (800 G) / SEM;;Finale 1;13;47m40;R1;JUM/96;18-mai
+ABDELKADER Yann;;1 500m / SEM;;Finale 1;14;4'07''83;IR3;SEM/77;18-mai
+AH-MOUCK Loic;;400m / SEM;;Finale 1;4;48''65;N4;SEM/91;18-mai
+ANDRIEU Olivier;;3000m Steeple (91) / SEM;;Finale 1;12;10'17''80;R1;SEM/78;18-mai
+BARANGER-MERINO Alberto;;Marteau (7 Kg) / SEM;;Finale 1;5;52m38;IR1;SEM/81;18-mai
+BENNIA Ahmed;;100m / SEM;;Finale 1;4;11''05 (+0.0);IR1;SEM/90;18-mai
+BENNIA Ahmed;;Hauteur / SEM;;Finale 1;16;1m40;D5;SEM/90;18-mai
+BEURION Mathieu;;5 000m Marche / SEM;;Finale 1;-;DQ;;SEM/89;18-mai
+CHASTANG Cedric;;3000m Steeple (91) / SEM;;Finale 1;16;10'48''57;R3;SEM/81;18-mai
+DJHONE Leslie;;200m / SEM;;Finale 1;3;21''87 (+0.0);N4;SEM/81;18-mai
+DUBOIS Ludovic;;400m Haies (91) / SEM;;Finale 2;1;51''58;N2;SEM/86;18-mai
+FRANCOIS Mickael;;400m Haies (91) / SEM;;Finale 1;1;50''81;N1;SEM/88;18-mai
+FRANZONI Lorenzo (ITA);;Triple Saut / SEM;;Finale 1;4;14m53 (+0.3);N4;SEM/88;18-mai
+HESRY Gwenael;;800m / SEM;;Finale 1;14;2'00''31;IR3;SEM/77;18-mai
+LARISSE Anddy;;Poids (7 Kg) / SEM;;Finale 1;14;10m59;R4;SEM/86;18-mai
+LOCURTO Alberto (ITA);;Disque (2.0 Kg) / SEM;;Finale 1;4;43m35;IR1;SEM/76;18-mai
+NICOTRA Ferdinando (ITA);;Disque (2.0 Kg) / SEM;;Finale 1;1;49m28;N3;SEM/86;18-mai
+ROLLEZ Florian;;200m / SEM;;Finale 2;2;22''50 (+0.0);IR1;SEM/88;18-mai
+ROUSSEAU Benjamin;;5 000m / SEM;;Finale 1;11;15'40''29;IR4;SEM/86;18-mai
+SAMANGARAY Baba;;110m Haies (106) / SEM;;Finale 1;1;15''02 (+0.0);N4;SEM/88;18-mai
+SAMANGARAY Baba;;Longueur / SEM;;Finale 1;9;6m73 (+0.0);IR2;SEM/88;18-mai
+SOFFIATI Thibaud;;1 500m / SEM;;Finale 1;13;4'02''73;IR2;SEM/85;18-mai
+YOBOUET Samaeken;;Longueur / SEM;;Finale 1;16;5m42 (+2.0);D1;SEM/88;18-mai
+ANDRE Michel;;Marteau (7 Kg) / SEM;;Finale 1;2;53m56;IR1;VEM/70;18-mai

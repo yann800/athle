@@ -9,19 +9,17 @@ import fr.yann.parser.interclub.csv.IC;
 
 public class InterclubCsvToSql {
 
-	private static final String pathFolder = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
+	private static final String pathFolder = "D:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\csv\\";
 
 	public static void main(String[] args) {
 
 		ArrayList<IC> perfs = new ArrayList<>();
 
 
-		for (int annee = 2015; annee < 2016; annee++) {
-			// traiteCsv(annee, 1, perfs);
+		for (int annee = 2009; annee < 2020; annee++) {
+			traiteCsv(annee, 1, perfs);
 			traiteCsv(annee, 2, perfs);
 		}
-
-		// traiteCsv(2019, 1, perfs);
 
 		for (IC l : perfs) {
 
@@ -29,8 +27,8 @@ public class InterclubCsvToSql {
 				continue;
 			}
 
-			// System.out.println(l.toSql());
-			System.out.println(l);
+			System.out.println(l.toSql());
+			// System.out.println(l);
 		}
 	}
 

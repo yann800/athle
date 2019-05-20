@@ -120,8 +120,8 @@ public class TraiteCsvInterclub {
 //		}
 		try {
 			NiveauEnum.valueOf(val);
-		} catch (Exception e) {
-			System.err.println(val + " NOT NIVEAU");
+		} catch (@SuppressWarnings("unused") Exception e) {
+			// System.err.println(val + " NOT NIVEAU");
 			return false;
 		}
 		return true;
@@ -198,10 +198,28 @@ public class TraiteCsvInterclub {
 
 	private static boolean isDate(String str) {
 		boolean bContient4Chiffres = str.matches(".*[0-9]{4}.*");
-		return bContient4Chiffres;
+		if (bContient4Chiffres) {
+			return true;
+		}
+
+		boolean bContientMois = str.contains("mai");
+
+		if (bContientMois) {
+			return true;
+		}
+		;
+
+		boolean bFormatJJ_MM = str.matches("[0-9]{2}/[0-9]{2}");
+
+		return bFormatJJ_MM;
+
 	}
 
 	private static boolean isPerf(String str) {
+
+		if (str.length() < 3) {
+			return false;
+		}
 
 		str = str.replace("''", ".").replace("'", ".");
 
