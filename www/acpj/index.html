@@ -10,7 +10,14 @@
 <script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="../js/dataTables.bootstrap.min.js"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-
+<style type="text/css">
+.btn-disabled,
+.btn-disabled[disabled] {
+  opacity: .4;
+  cursor: default !important;
+  pointer-events: none;
+}
+</style>
 </head>
 
 <body>
@@ -36,7 +43,7 @@
 					<li><a href="#1.2">... avec plusieurs épreuves par tour</a></li>
 				</ul>
 			</li>
-			<li><a href="#2">2. Points rapportés par athlète, en moyenne</a></li>
+			<li><a href="#2" class="btn-disabled" disabled="disabled">2. Points rapportés par athlète, en moyenne</a></li>
 			<li><a href="#3">3. Épreuves de chaque athlète</a></li>
 			<li><a href="#4">4. Meilleures perfs</a></li>
 			<li><a href="#5">5. Plus de points...</a>
@@ -457,6 +464,7 @@ ORDER BY participations DESC</pre>
 
 <table class="table table-striped table-bordered table-hover table-condensed" id="participationEpreuves"></table>
 
+<!-- 
 			<h3 id="2">Points rapportés par athlète, en moyenne</h3>
 			
 			<pre>SELECT nom, AVG(points) AS moyenne
@@ -479,6 +487,7 @@ ORDER BY moyenne DESC</pre>
 <tr><td>AFOUMBA Gilles-anthony (CGO)</td><td>756.25</td></tr>
 <tr><td>...</td><td>...</td></tr>
 </table>
+ -->
 
 			<h3 id="3">Épreuves de chaque athlète</h3>
 
@@ -487,7 +496,7 @@ ORDER BY moyenne DESC</pre>
 			
 			<div class="alert alert-warning" role="alert">
 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span><b>&Agrave; noter</b></span>
-Il y a quelques erreurs à corriger (les tours avec classements à la place je crois)
+Il y a quelques erreurs à corriger dûes aux tours avec classements à la place
 </div>
 			
 			
@@ -506,8 +515,8 @@ ORDER BY total DESC</pre>
 			<div class="alert alert-warning" role="alert">
 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span><b>&Agrave; noter</b></span>
 <ul>
-<li>Il faut pondérer le total de points des épreuves non mixtes (steeple, 100H / 110H, marche, marche, 5000 pas au programme pour toutes les années)
-par le nombre de perfs</li>
+<li>Il a fallu classer les épreuves par moyenne des points rapportés car certaines ne son pas mixtes (steeple, 100H / 110H, marche, marche)
+ou pas toujours au programme (5000).</li>
 <li>Par ailleurs il faut savoir que la table hongroise désantage honteusement le 1/2 fond.</li>
 </ul>
 
@@ -516,40 +525,40 @@ par le nombre de perfs</li>
 <table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th>Epreuve</th><th>Nb perfs</th><th>Total points</th>
+			<th>Epreuve</th><th>Total points</th><th>Nb perfs</th><th>Moyenne</th>
 		</tr>
 	</thead>
 	<tbody>
-<tr><td>Longueur</td><td>79</td><td>29 898</td></tr>
-<tr><td>400H</td><td>82</td><td>27 902</td></tr>
-<tr><td>200</td><td>74</td><td>27 064</td></tr>
-<tr><td>800</td><td>81</td><td>26 751</td></tr>
-<tr><td>Triple</td><td>76</td><td>26 230</td></tr>
-<tr><td>100</td><td>80</td><td>25 657</td></tr>
-<tr><td>400</td><td>78</td><td>25 389</td></tr>
-<tr><td>1500</td><td>79</td><td>24 985</td></tr>
-<tr><td>Hauteur</td><td>81</td><td>22 845</td></tr>
-<tr><td>Poids</td><td>82</td><td>21 232</td></tr>
-<tr><td>Disque</td><td>82</td><td>21 143</td></tr>
-<tr><td>3000</td><td>64</td><td>20 030</td></tr>
-<tr><td>Marteau</td><td>82</td><td>19 496</td></tr>
-<tr><td>Perche</td><td>79</td><td>18 579</td></tr>
-<tr><td>Javelot</td><td>78</td><td>18 311</td></tr>
-<tr><td>100H</td><td>41</td><td>13 962</td></tr>
-<tr><td>3000 steeple</td><td>40</td><td>13 544</td></tr>
-<tr><td>110H</td><td>36</td><td>13 299</td></tr>
-<tr><td>5000 marche</td><td>39</td><td>13 237</td></tr>
-<tr><td>3000 marche</td><td>39</td><td>10 627</td></tr>
-<tr><td>5000</td><td>26</td><td>6 892</td></tr>
+<tr><td>400H</td><td>64 808</td><td>86</td><td>753.5814</td></tr>
+<tr><td>100H</td><td>29 856</td><td>43</td><td>694.3256</td></tr>
+<tr><td>200</td><td>56 449</td><td>84</td><td>672.0119</td></tr>
+<tr><td>400</td><td>56 610</td><td>85</td><td>666</td></tr>
+<tr><td>Triple</td><td>52 062</td><td>81</td><td>642.7407</td></tr>
+<tr><td>110H</td><td>26 971</td><td>42</td><td>642.1667</td></tr>
+<tr><td>Longueur</td><td>53 356</td><td>87</td><td>613.2874</td></tr>
+<tr><td>100</td><td>55 195</td><td>93</td><td>593.4946</td></tr>
+<tr><td>800</td><td>51 741</td><td>89</td><td>581.3596</td></tr>
+<tr><td>1500</td><td>46 003</td><td>86</td><td>534.9186</td></tr>
+<tr><td>3000</td><td>36 136</td><td>68</td><td>531.4118</td></tr>
+<tr><td>5000 marche</td><td>22 652</td><td>43</td><td>526.7907</td></tr>
+<tr><td>Hauteur</td><td>45 287</td><td>86</td><td>526.593</td></tr>
+<tr><td>3000 steeple</td><td>20 386</td><td>42</td><td>485.381</td></tr>
+<tr><td>Marteau</td><td>38 269</td><td>87</td><td>439.8736</td></tr>
+<tr><td>Perche</td><td>35 722</td><td>84</td><td>425.2619</td></tr>
+<tr><td>Disque</td><td>36 942</td><td>88</td><td>419.7955</td></tr>
+<tr><td>Poids</td><td>35 733</td><td>87</td><td>410.7241</td></tr>
+<tr><td>3000 marche</td><td>17 087</td><td>43</td><td>397.3721</td></tr>
+<tr><td>5000</td><td>11 051</td><td>28</td><td>394.6786</td></tr>
+<tr><td>Javelot</td><td>31 349</td><td>83</td><td>377.6988</td></tr>
 	</tbody>
 </table>
 	
 		<h4 id="5.2">... par sexe</h4>
-		<table class="table table-striped table-bordered table-hover table-condensed">
-		<tr><th>sexe</th><th>total points</th></tr>
-		<tr><td>M</td><td>228 961</td></tr>
-		<tr><td>F</td><td>198 112</td></tr>
-		</table>
+<table class="table table-striped table-bordered table-hover table-condensed">
+<th>sexe</th><th>total</th><th>nb</th><th>moyenne</th></tr>
+<tr><td>M</td><td>439 836</td><td>773</td><td>568.9987</td></tr>
+<tr><td>F</td><td>383 829</td><td>742</td><td>517.2898</td></tr>
+</table>
 		
 		</tbody>
 		</table>
@@ -557,12 +566,12 @@ par le nombre de perfs</li>
 			<h4 id="5.3">... par catégories</h3>
 			
 <table class="table table-striped table-bordered table-hover table-condensed">
-<tr><th>categorie</th><th>total points</th></tr>
-<tr><td>SE</td><td>213 141</td></tr>
-<tr><td>ES</td><td>85 516</td></tr>
-<tr><td>CA</td><td>53 906</td></tr>
-<tr><td>JU</td><td>43 166</td></tr>
-<tr><td>VE</td><td>31 344</td></tr>
+<th>categorie</th><th>total</th><th>nb</th><th>moyenne</th></tr>
+<tr><td>ES</td><td>156 663</td><td>255</td><td>614.3647</td></tr>
+<tr><td>SE</td><td>423 585</td><td>764</td><td>554.4306</td></tr>
+<tr><td>CA</td><td>90 113</td><td>174</td><td>517.8908</td></tr>
+<tr><td>JU</td><td>95 505</td><td>187</td><td>510.7219</td></tr>
+<tr><td>VE</td><td>57 799</td><td>135</td><td>428.1407</td></tr>
 </table>
 
 			<h3 id="5">Épreuves avec zéro</h3>
@@ -585,106 +594,307 @@ par le nombre de perfs</li>
 function init_table(){
 	
 var data = { data : [
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'50.34',points:'1118',annee:'2016',naissance:'88'},
-{ nom: 'ALEXANDER Ayanna (TTO)',sexe:'F',epreuve:'Triple',perf:'13m85 (+0.3)',points:'1093',annee:'2016',naissance:'82'},
-{ nom: 'SAMBA-MAYELA Cyrena',sexe:'F',epreuve:'100H',perf:'13.55 (+2.2)',points:'1092',annee:'2017',naissance:'0'},
-{ nom: 'MBALLA ERDINC Sylvie',sexe:'F',epreuve:'100',perf:'11.65 (+ 1.2)',points:'1085',annee:'2009',naissance:'77'},
-{ nom: 'DUBOIS Ludovic',sexe:'M',epreuve:'400H',perf:'51.20',points:'1081',annee:'2010',naissance:'86'},
-{ nom: 'HURTIS-HOUAIRI Muriel',sexe:'F',epreuve:'400',perf:'53.65',points:'1079',annee:'2010',naissance:'79'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.11',points:'1075',annee:'2018',naissance:'88'},
-{ nom: 'FOFANA-KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'13.71 (+0.5)',points:'1072',annee:'2017',naissance:'98'},
-{ nom: 'DUBOIS Ludovic',sexe:'M',epreuve:'400H',perf:'51.42',points:'1072',annee:'2013',naissance:'86'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.46',points:'1070',annee:'2009',naissance:'88'},
-{ nom: 'KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'13.75 (-2.0)',points:'1067',annee:'2016',naissance:'98'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.73',points:'1059',annee:'2010',naissance:'88'},
-{ nom: 'RAVON Thomas',sexe:'M',epreuve:'110H',perf:'14.24 (-2.5)',points:'1056',annee:'2016',naissance:'85'},
-{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'59.74',points:'1054',annee:'2016',naissance:'97'},
-{ nom: 'KUDELA Lucie',sexe:'F',epreuve:'400H',perf:'58.96',points:'1052',annee:'2018',naissance:'97'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'400H',perf:'51.64',points:'1050',annee:'2018',naissance:'88'},
-{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'200',perf:'23.89 (-2.6)',points:'1046',annee:'2018',naissance:'97'},
-{ nom: 'EFFA EFFA Junior',sexe:'M',epreuve:'110H',perf:'14.11 (-0.5)',points:'1046',annee:'2018',naissance:'96'},
-{ nom: 'LEWIS Abigail (JAM)',sexe:'F',epreuve:'100H',perf:'13.95 (0.5)',points:'1043',annee:'2016',naissance:'93'},
-{ nom: 'ZONGO Amy',sexe:'F',epreuve:'Triple',perf:'13m40 (+1,5)',points:'1041',annee:'2009',naissance:'80'},
-{ nom: 'JEMAA-AMIROUCHE Dora',sexe:'F',epreuve:'400H',perf:'60.27',points:'1040',annee:'2013',naissance:'85'},
-{ nom: 'EFFA EFFA Junior',sexe:'M',epreuve:'110H',perf:'14.22 (- 0.8)',points:'1027',annee:'2018',naissance:'96'},
-{ nom: 'NTIA Romeo (BEN)',sexe:'M',epreuve:'Longueur',perf:'7m49 (+0.2)',points:'1027',annee:'2018',naissance:'95'},
-{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'200',perf:'21.29 (+ 0.4)',points:'1025',annee:'2018',naissance:'96'},
-{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'61.05',points:'1020',annee:'2017',naissance:'97'},
-{ nom: 'RAVON Thomas',sexe:'M',epreuve:'110H',perf:'14.49 (+1.5)',points:'1018',annee:'2017',naissance:'85'},
-{ nom: 'LAINE Samyr (HAI)',sexe:'M',epreuve:'Triple',perf:'15m77 (+1.1)',points:'1015',annee:'2016',naissance:'84'},
-{ nom: 'LAHAYE Mathieu',sexe:'M',epreuve:'400',perf:'47.61',points:'1014',annee:'2010',naissance:'83'},
-{ nom: 'KOUNTA Muhammad abdall',sexe:'M',epreuve:'400H',perf:'52.84',points:'1013',annee:'2017',naissance:'94'},
-{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'200',perf:'21.38 (+0.0)',points:'1012',annee:'2018',naissance:'96'},
-{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'60.40',points:'1010',annee:'2018',naissance:'97'},
-{ nom: 'DANTE Djenebou (MLI)',sexe:'F',epreuve:'200',perf:'24.95 (+0.9)',points:'998',annee:'2017',naissance:'89'},
-{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'200',perf:'24.95 (+0.6)',points:'998',annee:'2013',naissance:'97'},
-{ nom: 'GAGNEUX Valerie',sexe:'F',epreuve:'400H',perf:'61.98',points:'996',annee:'2010',naissance:'84'},
-{ nom: 'CALYDON Cornnelly',sexe:'F',epreuve:'200',perf:'24.98 (-1.5)',points:'995',annee:'2016',naissance:'89'},
-{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'400',perf:'55.54',points:'993',annee:'2018',naissance:'97'},
-{ nom: 'CESSIRON Maxime',sexe:'M',epreuve:'800',perf:'1.51.43',points:'988',annee:'2010',naissance:'90'},
-{ nom: 'AFOUMBA Gilles-anthony (CGO)',sexe:'M',epreuve:'400',perf:'48.06',points:'988',annee:'2017',naissance:'96'},
-{ nom: 'LAMALLE Adrianna',sexe:'F',epreuve:'100',perf:'12.24 (+0.1)',points:'987',annee:'2010',naissance:'82'},
-{ nom: 'LECHANGA Jules',sexe:'M',epreuve:'Triple',perf:'15m50 (+0.0)',points:'987',annee:'2017',naissance:'86'},
-{ nom: 'NTIA Romeo (BEN)',sexe:'M',epreuve:'Longueur',perf:'7m30 (+0.0)',points:'986',annee:'2018',naissance:'95'},
-{ nom: 'HAMROUNI Hamza',sexe:'M',epreuve:'Triple',perf:'15m23 (+0.0)',points:'977',annee:'2018',naissance:'99'},
-{ nom: 'TSHIKAYA Lea',sexe:'F',epreuve:'400',perf:'57.00',points:'973',annee:'2013',naissance:'91'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'110H',perf:'14.81 (-0.9)',points:'970',annee:'2014',naissance:'88'},
-{ nom: 'TSHIKAYA Lea',sexe:'F',epreuve:'400H',perf:'63.04',points:'969',annee:'2014',naissance:'91'},
-{ nom: 'FOFANA Colomba',sexe:'M',epreuve:'Triple',perf:'15m29 (+0,5)',points:'964',annee:'2009',naissance:'77'},
-{ nom: 'KOUTOUAN Sarah',sexe:'F',epreuve:'100H',perf:'14.63 (+0.8)',points:'963',annee:'2014',naissance:'98'},
-{ nom: 'TOURE Sally',sexe:'F',epreuve:'100H',perf:'14.66 (+0.8)',points:'960',annee:'2013',naissance:'94'},
-{ nom: 'ARMINANA Mickael',sexe:'M',epreuve:'200',perf:'21.87 (+0,9)',points:'958',annee:'2009',naissance:'87'},
-{ nom: 'GURACHI Youness',sexe:'M',epreuve:'800',perf:'1.52.54',points:'958',annee:'2009',naissance:'83'},
-{ nom: 'SAMBA-MAYELA Cyrena',sexe:'F',epreuve:'100',perf:'12.42 (-1.9)',points:'958',annee:'2016',naissance:'0'},
-{ nom: 'FRANCOIS Mickael',sexe:'M',epreuve:'110H',perf:'14.91 (+1.6)',points:'956',annee:'2013',naissance:'88'},
-{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'400H',perf:'62.36',points:'954',annee:'2018',naissance:'97'},
-{ nom: 'SAMANGARAY Baba',sexe:'M',epreuve:'400H',perf:'54.35',points:'951',annee:'2014',naissance:'88'},
-{ nom: 'ADDOH Axel',sexe:'M',epreuve:'200',perf:'21.92 (+2.4)',points:'951',annee:'2017',naissance:'92'},
-{ nom: 'ADDOH Axel',sexe:'M',epreuve:'200',perf:'21.82 (+ 1.2)',points:'950',annee:'2018',naissance:'92'},
-{ nom: 'TOYB Gildas',sexe:'M',epreuve:'100',perf:'10.90 (+0.5)',points:'948',annee:'2017',naissance:'97'},
-{ nom: 'NICOTRA Ferdinando (ITA)',sexe:'M',epreuve:'Disque',perf:'54m59',points:'948',annee:'2013',naissance:'86'},
-{ nom: 'GAGNEUX Valerie',sexe:'F',epreuve:'400H',perf:'63.96',points:'946',annee:'2013',naissance:'84'},
-{ nom: 'GURACHI Youness',sexe:'M',epreuve:'200',perf:'21.96 (+0.0)',points:'945',annee:'2010',naissance:'83'},
-{ nom: 'NZAMOWANI Jodelle',sexe:'F',epreuve:'400H',perf:'64.02',points:'945',annee:'2010',naissance:'89'},
-{ nom: 'LEDUC Cynthia',sexe:'F',epreuve:'400',perf:'57.97',points:'943',annee:'2016',naissance:'97'},
-{ nom: 'AH-MOUCK Loic',sexe:'M',epreuve:'400',perf:'48.91',points:'939',annee:'2013',naissance:'91'},
-{ nom: 'MOHAMMEDI Wahiba',sexe:'F',epreuve:'400H',perf:'64.33',points:'937',annee:'2017',naissance:'97'},
-{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'12m20 (+2.2)',points:'935',annee:'2018',naissance:'95'},
-{ nom: 'SAMANGARAY Baba',sexe:'M',epreuve:'110H',perf:'15.06 (-0.3)',points:'934',annee:'2016',naissance:'88'},
-{ nom: 'DIAROUMA Tiguida',sexe:'F',epreuve:'200',perf:'25.86 (+1.0)',points:'934',annee:'2010',naissance:'94'},
-{ nom: 'KIMBEMBE Devilert-arsene (COD)',sexe:'M',epreuve:'200',perf:'22.05 (-0.5)',points:'933',annee:'2016',naissance:'84'},
-{ nom: 'HAMROUNI Hamza',sexe:'M',epreuve:'Triple',perf:'14m81 (-0.2)',points:'933',annee:'2018',naissance:'99'},
-{ nom: 'MAGASSA Modibo',sexe:'M',epreuve:'400',perf:'49.03',points:'932',annee:'2010',naissance:'88'},
-{ nom: 'LAHAYE Mathieu',sexe:'M',epreuve:'400',perf:'49.10',points:'928',annee:'2009',naissance:'83'},
-{ nom: 'CLERENCE Elisa',sexe:'F',epreuve:'100',perf:'12.61 (+0.0)',points:'928',annee:'2010',naissance:'88'},
-{ nom: 'ADDOH Axel',sexe:'M',epreuve:'400',perf:'48.87',points:'926',annee:'2018',naissance:'92'},
-{ nom: 'REBIHI Scherazade',sexe:'F',epreuve:'400H',perf:'64.80',points:'925',annee:'2009',naissance:'72'},
-{ nom: 'KIMBEMBE Devilert-arsene (CGO)',sexe:'M',epreuve:'200',perf:'22.11 (+0.9)',points:'925',annee:'2017',naissance:'84'},
-{ nom: 'FOFANA Colomba',sexe:'M',epreuve:'Longueur',perf:'7m01 (+1.4)',points:'920',annee:'2010',naissance:'77'},
-{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.04 (+ 0.5)',points:'917',annee:'2009',naissance:'86'},
-{ nom: 'MENDY Paul (SEN)',sexe:'M',epreuve:'Triple',perf:'14m65 (+0.0)',points:'917',annee:'2018',naissance:'89'},
-{ nom: 'LOISEAU Margot',sexe:'F',epreuve:'200',perf:'26.17 (+1.7)',points:'913',annee:'2013',naissance:'96'},
-{ nom: 'ALERTE David',sexe:'M',epreuve:'Longueur',perf:'6m97 (+1.2)',points:'911',annee:'2017',naissance:'84'},
-{ nom: 'ALERTE David',sexe:'M',epreuve:'400',perf:'49.43',points:'910',annee:'2016',naissance:'84'},
-{ nom: 'FLANDRIN-THONIEL Igor',sexe:'M',epreuve:'800',perf:'1.54.38',points:'910',annee:'2010',naissance:'79'},
-{ nom: 'ROLLEZ Florian',sexe:'M',epreuve:'200',perf:'22.23 (+1.6)',points:'909',annee:'2013',naissance:'88'},
-{ nom: 'AH-MOUCK Loic',sexe:'M',epreuve:'400',perf:'49.45',points:'909',annee:'2014',naissance:'91'},
-{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'11m94 (-1.2)',points:'908',annee:'2018',naissance:'95'},
-{ nom: 'HOUNSINOU Julie',sexe:'F',epreuve:'200',perf:'26.25 (+1.5)',points:'907',annee:'2014',naissance:'97'},
-{ nom: 'BOUHADJER Mohamed',sexe:'M',epreuve:'Perche',perf:'4m80',points:'902',annee:'2013',naissance:'91'},
-{ nom: 'SANTU Melia',sexe:'F',epreuve:'Triple',perf:'12m15 (+1.8)',points:'899',annee:'2017',naissance:'95'},
-{ nom: 'GREZE Stephane',sexe:'M',epreuve:'Triple',perf:'14m66 (+0.9)',points:'897',annee:'2017',naissance:'84'},
-{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.24 (+0.0)',points:'895',annee:'2010',naissance:'86'},
-{ nom: 'MALELA Sogiros',sexe:'M',epreuve:'100',perf:'11.09 (+ 0.9)',points:'894',annee:'2009',naissance:'87'},
-{ nom: 'COLLINET Agathe',sexe:'F',epreuve:'400',perf:'59.66',points:'893',annee:'2014',naissance:'94'},
-{ nom: 'FRANZONI Lorenzo (ITA)',sexe:'M',epreuve:'Triple',perf:'14m61 (+0.0)',points:'892',annee:'2014',naissance:'88'},
-{ nom: 'MENDY Paul (SEN)',sexe:'M',epreuve:'Triple',perf:'14m42 (+0.9)',points:'892',annee:'2018',naissance:'89'},
-{ nom: 'CANARD Raphael',sexe:'M',epreuve:'Longueur',perf:'6m84 (+0.0)',points:'888',annee:'2018',naissance:'96'},
-{ nom: 'ABOUKE Hermance',sexe:'F',epreuve:'100H',perf:'15.33 (+0.1)',points:'885',annee:'2014',naissance:'86'},
-{ nom: 'KIMBEMBE Devilert-arsene (CGO)',sexe:'M',epreuve:'100',perf:'11.01 (- 1.2)',points:'883',annee:'2018',naissance:'84'},
-{ nom: 'SECQUEVILLE Melissa',sexe:'F',epreuve:'100',perf:'12.92 (+1.3)',points:'881',annee:'2017',naissance:'1'},
-{ nom: 'LAMBOLEY Victoria',sexe:'F',epreuve:'800',perf:'2.16.79',points:'881',annee:'2018',naissance:'93'},
-{ nom: 'CANARD Raphael',sexe:'M',epreuve:'Longueur',perf:'6m82 (+1.4)',points:'880',annee:'2016',naissance:'96'}
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'49.99',pt:1133,niv:'IB',nai:'88',a:2013,d:'19-mai'},
+{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100H',p:'13.22 (+1.5)',pt:1132,niv:'IB',nai:'0',a:2017,d:'21-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.34',pt:1118,niv:'N1',nai:'88',a:2016,d:'08-mai'},
+{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'50.45',pt:1113,niv:'N1',nai:'86',a:2013,d:'19-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.49',pt:1112,niv:'N1',nai:'88',a:2015,d:'10-mai'},
+{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'400',p:'52.94',pt:1103,niv:'N1',nai:'79',a:2010,d:'22-mai'},
+{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'400',p:'53.01',pt:1100,niv:'N1',nai:'89',a:2016,d:'22-mai'},
+{n:'ALEXANDER Ayanna (TTO)',c:'SE',s:'F',e:'Triple',p:'13m85 (+0.3)',pt:1093,niv:'N1',nai:'82',a:2016,d:'08-mai'},
+{n:'HERKENRATH Loic',c:'SE',s:'M',e:'110H',p:'13.86 (+3.0)',pt:1092,niv:'N2',nai:'94',a:2019,d:'05-mai'},
+{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100H',p:'13.55 (+2.2)',pt:1092,niv:'N1',nai:'0',a:2017,d:'07-mai'},
+{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m79 (+1.6)',pt:1092,niv:'N1',nai:'95',a:2019,d:'19/05'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.97',pt:1091,niv:'N1',nai:'88',a:2017,d:'21-mai'},
+{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.02',pt:1089,niv:'N1',nai:'86',a:2010,d:'22-mai'},
+{n:'MBALLA ERDINC Sylvie',c:'SE',s:'F',e:'100',p:'11.65 (+ 1.2)',pt:1085,niv:'N2',nai:'77',a:2009,d:'43588'},
+{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.20',pt:1081,niv:'N1',nai:'86',a:2010,d:'09-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.22',pt:1080,niv:'N1',nai:'88',a:2011,d:'08-mai'},
+{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'400',p:'53.65',pt:1079,niv:'N2',nai:'79',a:2010,d:'09-mai'},
+{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.29',pt:1077,niv:'N2',nai:'88',a:2010,d:'22-mai'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'16m34 (+2.6)',pt:1076,niv:'N2',nai:'77',a:2012,d:'06-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.11',pt:1075,niv:'N1',nai:'88',a:2018,d:'20-mai'},
+{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.38',pt:1074,niv:'N2',nai:'88',a:2009,d:'43601'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'16m30 (+1.0)',pt:1072,niv:'N1',nai:'77',a:2009,d:'43601'},
+{n:'FOFANA-KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.71 (+0.5)',pt:1072,niv:'N2',nai:'98',a:2017,d:'07-mai'},
+{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.42',pt:1072,niv:'N2',nai:'86',a:2013,d:'null'},
+{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.46',pt:1070,niv:'N2',nai:'88',a:2009,d:'43588'},
+{n:'HERKENRATH Loic',c:'SE',s:'M',e:'110H',p:'13.98 (+0.5)',pt:1070,niv:'N2',nai:'94',a:2019,d:'19/05'},
+{n:'KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.75 (-2.0)',pt:1067,niv:'N2',nai:'98',a:2016,d:'08-mai'},
+{n:'LEDUC Cynthia',c:'JU',s:'F',e:'200',p:'23.99 (-1.0)',pt:1067,niv:'N2',nai:'97',a:2016,d:'22-mai'},
+{n:'KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.78 (-1.8)',pt:1064,niv:'N2',nai:'98',a:2016,d:'22-mai'},
+{n:'FOFANA-KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.82 (-0.7)',pt:1059,niv:'N2',nai:'98',a:2017,d:'21-mai'},
+{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.73',pt:1059,niv:'N2',nai:'88',a:2010,d:'09-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'46.88',pt:1058,niv:'N2',nai:'83',a:2012,d:'06-mai'},
+{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'100',p:'11.82 (+0.0)',pt:1056,niv:'N2',nai:'79',a:2009,d:'43601'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.24 (-2.5)',pt:1056,niv:'N2',nai:'85',a:2016,d:'08-mai'},
+{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'59.74',pt:1054,niv:'N2',nai:'97',a:2016,d:'08-mai'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.25 (+1.1)',pt:1054,niv:'N3',nai:'85',a:2017,d:'21-mai'},
+{n:'KUDELA Lucie',c:'ES',s:'F',e:'400H',p:'58.96',pt:1052,niv:'N1',nai:'97',a:2018,d:'20-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.92',pt:1051,niv:'N2',nai:'88',a:2016,d:'22-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.64',pt:1050,niv:'N2',nai:'88',a:2018,d:'06-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'52.00',pt:1048,niv:'N2',nai:'88',a:2012,d:'06-mai'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.30 (-2.0)',pt:1047,niv:'N3',nai:'85',a:2016,d:'22-mai'},
+{n:'EFFA EFFA Junior',c:'ES',s:'M',e:'110H',p:'14.11 (-0.5)',pt:1046,niv:'N2',nai:'96',a:2018,d:'20-mai'},
+{n:'JEMAA-AMIROUCHE Dora',c:'SE',s:'F',e:'400H',p:'60.04',pt:1046,niv:'N2',nai:'85',a:2012,d:'06-mai'},
+{n:'LEDUC Cynthia',c:'ES',s:'F',e:'200',p:'23.89 (-2.6)',pt:1046,niv:'N2',nai:'97',a:2018,d:'20-mai'},
+{n:'LEWIS Abigail (JAM)',c:'SE',s:'F',e:'100H',p:'13.95 (0.5)',pt:1043,niv:'N2',nai:'93',a:2016,d:'08-mai'},
+{n:'ZONGO Amy',c:'SE',s:'F',e:'Triple',p:'13m40 (+1,5)',pt:1041,niv:'N1',nai:'80',a:2009,d:'43588'},
+{n:'JEMAA-AMIROUCHE Dora',c:'SE',s:'F',e:'400H',p:'60.27',pt:1040,niv:'N2',nai:'85',a:2013,d:'null'},
+{n:'LEWIS Abigail (JAM)',c:'JU',s:'F',e:'100H',p:'13.98 (+0.2)',pt:1040,niv:'N2',nai:'93',a:2012,d:'06-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'60.36',pt:1038,niv:'N2',nai:'97',a:2017,d:'21-mai'},
+{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'400',p:'47.23',pt:1037,niv:'N2',nai:'96',a:2017,d:'21-mai'},
+{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'60.43',pt:1036,niv:'N2',nai:'97',a:2016,d:'22-mai'},
+{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'52.29',pt:1035,niv:'N2',nai:'86',a:2011,d:'08-mai'},
+{n:'LEWIS Abigail (JAM)',c:'SE',s:'F',e:'100H',p:'14.06 (-1.9)',pt:1030,niv:'N3',nai:'93',a:2016,d:'22-mai'},
+{n:'KOUNTA Muhammad abdall',c:'SE',s:'M',e:'400H',p:'52.44',pt:1029,niv:'N2',nai:'94',a:2017,d:'21-mai'},
+{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m49 (+3.3)',pt:1027,niv:'N2',nai:'95',a:2019,d:'05-mai'},
+{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m49 (+0.2)',pt:1027,niv:'N2',nai:'95',a:2018,d:'20-mai'},
+{n:'EFFA EFFA Junior',c:'ES',s:'M',e:'110H',p:'14.22 (- 0.8)',pt:1027,niv:'N2',nai:'96',a:2018,d:'06-mai'},
+{n:'MBALLA ERDINC Sylvie',c:'SE',s:'F',e:'100',p:'12.00 (+0.0)',pt:1026,niv:'N2',nai:'77',a:2009,d:'43601'},
+{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'200',p:'21.29 (+ 0.4)',pt:1025,niv:'N2',nai:'96',a:2018,d:'06-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'47.44',pt:1025,niv:'N2',nai:'83',a:2010,d:'22-mai'},
+{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400H',p:'60.93',pt:1023,niv:'N2',nai:'91',a:2015,d:'10-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'61.05',pt:1020,niv:'N2',nai:'97',a:2017,d:'07-mai'},
+{n:'LECHANGA Jules',c:'SE',s:'M',e:'Triple',p:'15m81 (-0.1)',pt:1020,niv:'N2',nai:'86',a:2017,d:'21-mai'},
+{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'200',p:'24.65 (+0.1)',pt:1019,niv:'N3',nai:'89',a:2017,d:'21-mai'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.49 (+1.5)',pt:1018,niv:'N3',nai:'85',a:2017,d:'07-mai'},
+{n:'LAINE Samyr (HAI)',c:'SE',s:'M',e:'Triple',p:'15m77 (+1.1)',pt:1015,niv:'N2',nai:'84',a:2016,d:'08-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'47.61',pt:1014,niv:'N2',nai:'83',a:2010,d:'09-mai'},
+{n:'KOUNTA Muhammad abdall',c:'SE',s:'M',e:'400H',p:'52.84',pt:1013,niv:'N3',nai:'94',a:2017,d:'07-mai'},
+{n:'ZONGO Amy',c:'SE',s:'F',e:'Triple',p:'13m15 (+1.0)',pt:1013,niv:'N1',nai:'80',a:2009,d:'43601'},
+{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'200',p:'21.38 (+0.0)',pt:1012,niv:'N2',nai:'96',a:2018,d:'20-mai'},
+{n:'LAINE Samyr (HAI)',c:'SE',s:'M',e:'Triple',p:'15m72 (-0.5)',pt:1010,niv:'N3',nai:'84',a:2016,d:'22-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'60.40',pt:1010,niv:'N2',nai:'97',a:2018,d:'20-mai'},
+{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'200',p:'24.95 (+0.9)',pt:998,niv:'N4',nai:'89',a:2017,d:'07-mai'},
+{n:'LEDUC Cynthia',c:'CA',s:'F',e:'200',p:'24.95 (+0.6)',pt:998,niv:'N4',nai:'97',a:2013,d:'null'},
+{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'61.98',pt:996,niv:'N3',nai:'84',a:2010,d:'09-mai'},
+{n:'LEDUC Cynthia',c:'ES',s:'F',e:'400',p:'56.27',pt:996,niv:'N4',nai:'97',a:2017,d:'21-mai'},
+{n:'CALYDON Cornnelly',c:'SE',s:'F',e:'200',p:'24.98 (-1.5)',pt:995,niv:'N4',nai:'89',a:2016,d:'08-mai'},
+{n:'LEDUC Cynthia',c:'ES',s:'F',e:'400',p:'55.54',pt:993,niv:'N3',nai:'97',a:2018,d:'06-mai'},
+{n:'AH-MOUCK Loic',c:'ES',s:'M',e:'400',p:'48.02',pt:990,niv:'N3',nai:'91',a:2012,d:'06-mai'},
+{n:'FAYE Louise',c:'SE',s:'F',e:'200',p:'25.07 (-0.8)',pt:989,niv:'N4',nai:'86',a:2011,d:'08-mai'},
+{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.51.43',pt:988,niv:'N3',nai:'90',a:2010,d:'09-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'53.44',pt:988,niv:'N3',nai:'88',a:2012,d:'06-mai'},
+{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'400',p:'48.06',pt:988,niv:'N3',nai:'96',a:2017,d:'07-mai'},
+{n:'LECHANGA Jules',c:'SE',s:'M',e:'Triple',p:'15m50 (+0.0)',pt:987,niv:'N3',nai:'86',a:2017,d:'07-mai'},
+{n:'LAMALLE Adrianna',c:'SE',s:'F',e:'100',p:'12.24 (+0.1)',pt:987,niv:'N4',nai:'82',a:2010,d:'09-mai'},
+{n:'LAMALLE Adrianna',c:'SE',s:'F',e:'100',p:'12.24 (+0.0)',pt:987,niv:'N4',nai:'82',a:2011,d:'08-mai'},
+{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m30 (+0.0)',pt:986,niv:'N3',nai:'95',a:2018,d:'06-mai'},
+{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'62.38',pt:986,niv:'N3',nai:'84',a:2010,d:'22-mai'},
+{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'62.37',pt:986,niv:'N3',nai:'84',a:2011,d:'08-mai'},
+{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400',p:'56.65',pt:984,niv:'N4',nai:'91',a:2016,d:'22-mai'},
+{n:'ARMINANA Mickael',c:'ES',s:'M',e:'200',p:'21.68 (+0.0)',pt:984,niv:'N3',nai:'87',a:2009,d:'43601'},
+{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'Hauteur',p:'1m76',pt:984,niv:'N2',nai:'98',a:2019,d:'05-mai'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m31 (+0.0)',pt:982,niv:'N3',nai:'77',a:2011,d:'08-mai'},
+{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.51.71',pt:981,niv:'N3',nai:'90',a:2011,d:'08-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'48.21',pt:979,niv:'N2',nai:'83',a:2009,d:'43601'},
+{n:'HAMROUNI Hamza',c:'JU',s:'M',e:'Triple',p:'15m23 (+0.0)',pt:977,niv:'N3',nai:'99',a:2018,d:'06-mai'},
+{n:'DUARTE Sophie',c:'SE',s:'F',e:'3000',p:'9.43.40',pt:976,niv:'N2',nai:'81',a:2009,d:'43601'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'53.73',pt:976,niv:'N3',nai:'88',a:2016,d:'22-mai'},
+{n:'TOURE Sally',c:'JU',s:'F',e:'100H',p:'14.53 (+2.1)',pt:975,niv:'N4',nai:'94',a:2012,d:'06-mai'},
+{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'Hauteur',p:'1m75',pt:974,niv:'N3',nai:'98',a:2019,d:'19/05'},
+{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400',p:'57.00',pt:973,niv:'N4',nai:'91',a:2013,d:'null'},
+{n:'KOUTOUAN Sarah',c:'CA',s:'F',e:'100H',p:'14.57 (-2.1)',pt:970,niv:'N4',nai:'98',a:2015,d:'10-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'110H',p:'14.81 (-0.9)',pt:970,niv:'N4',nai:'88',a:2014,d:'04-mai'},
+{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400H',p:'63.04',pt:969,niv:'N3',nai:'91',a:2014,d:'04-mai'},
+{n:'MOHAMMEDI Wahiba',c:'ES',s:'F',e:'400H',p:'63.06',pt:969,niv:'N3',nai:'97',a:2017,d:'21-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.79 (-0.7)',pt:969,niv:'N3',nai:'92',a:2017,d:'21-mai'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'15m29 (+0,5)',pt:964,niv:'N2',nai:'77',a:2009,d:'43588'},
+{n:'EFFA EFFA Junior (GAB)',c:'ES',s:'M',e:'110H',p:'14.85 (+0.7)',pt:964,niv:'N4',nai:'96',a:2017,d:'21-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'54.05',pt:963,niv:'N4',nai:'88',a:2015,d:'10-mai'},
+{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'63.30',pt:963,niv:'N3',nai:'97',a:2015,d:'10-mai'},
+{n:'KOUTOUAN Sarah',c:'CA',s:'F',e:'100H',p:'14.63 (+0.8)',pt:963,niv:'N4',nai:'98',a:2014,d:'04-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'200',p:'21.84 (-0.2)',pt:962,niv:'N3',nai:'83',a:2011,d:'08-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'62.07',pt:962,niv:'N3',nai:'97',a:2019,d:'19/05'},
+{n:'GURACHI Youness',c:'SE',s:'M',e:'200',p:'21.84 (+0.9)',pt:962,niv:'N3',nai:'83',a:2010,d:'22-mai'},
+{n:'TOURE Sally',c:'CA',s:'F',e:'100H',p:'14.64 (+0.0)',pt:962,niv:'N4',nai:'94',a:2011,d:'08-mai'},
+{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m69 (+0.0)',pt:960,niv:'N2',nai:'95',a:2017,d:'21-mai'},
+{n:'TOURE Sally',c:'JU',s:'F',e:'100H',p:'14.66 (+0.8)',pt:960,niv:'N4',nai:'94',a:2013,d:'null'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.61 (+4.0)',pt:959,niv:'N3',nai:'85',a:2019,d:'05-mai'},
+{n:'ARMINANA Mickael',c:'ES',s:'M',e:'200',p:'21.87 (+0,9)',pt:958,niv:'N3',nai:'87',a:2009,d:'43588'},
+{n:'GURACHI Youness',c:'SE',s:'M',e:'800',p:'1.52.54',pt:958,niv:'N3',nai:'83',a:2009,d:'43588'},
+{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100',p:'12.42 (-1.9)',pt:958,niv:'IR1',nai:'0',a:2016,d:'08-mai'},
+{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'15m22 (+0.4)',pt:957,niv:'N3',nai:'84',a:2017,d:'21-mai'},
+{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.62 (+0.9)',pt:957,niv:'N3',nai:'85',a:2019,d:'19/05'},
+{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100',p:'12.43 (-1.1)',pt:957,niv:'IR1',nai:'0',a:2016,d:'22-mai'},
+{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.52.62',pt:956,niv:'N4',nai:'90',a:2012,d:'06-mai'},
+{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'110H',p:'14.91 (+1.6)',pt:956,niv:'N4',nai:'88',a:2013,d:'null'},
+{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'100H',p:'14.50 (+1.7)',pt:956,niv:'N4',nai:'98',a:2019,d:'19/05'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m18 (-1.7)',pt:955,niv:'N4',nai:'77',a:2010,d:'22-mai'},
+{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400H',p:'63.66',pt:954,niv:'N4',nai:'91',a:2012,d:'06-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'62.36',pt:954,niv:'N3',nai:'97',a:2018,d:'06-mai'},
+{n:'COLLINET Agathe',c:'JU',s:'F',e:'200',p:'25.60 (+0.1)',pt:952,niv:'IR1',nai:'94',a:2012,d:'06-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.92 (+2.4)',pt:951,niv:'N4',nai:'92',a:2017,d:'07-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'54.35',pt:951,niv:'N4',nai:'88',a:2014,d:'04-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.82 (+ 1.2)',pt:950,niv:'N3',nai:'92',a:2018,d:'06-mai'},
+{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400',p:'57.75',pt:950,niv:'IR1',nai:'91',a:2011,d:'08-mai'},
+{n:'DIAROUMA Tiguida',c:'JU',s:'F',e:'400',p:'57.80',pt:949,niv:'IR1',nai:'94',a:2012,d:'06-mai'},
+{n:'TOYB Gildas',c:'ES',s:'M',e:'100',p:'10.90 (+0.5)',pt:948,niv:'N4',nai:'97',a:2017,d:'07-mai'},
+{n:'NICOTRA Ferdinando (ITA)',c:'SE',s:'M',e:'Disque',p:'54m59',pt:948,niv:'N2',nai:'86',a:2013,d:'null'},
+{n:'BAMBA Aboubacar',c:'SE',s:'M',e:'Triple',p:'14m93 (+1.7)',pt:946,niv:'N4',nai:'91',a:2019,d:'05-mai'},
+{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'63.96',pt:946,niv:'N4',nai:'84',a:2013,d:'null'},
+{n:'NZAMOWANI Jodelle',c:'ES',s:'F',e:'400H',p:'64.02',pt:945,niv:'N4',nai:'89',a:2010,d:'09-mai'},
+{n:'GURACHI Youness',c:'SE',s:'M',e:'200',p:'21.96 (+0.0)',pt:945,niv:'N4',nai:'83',a:2010,d:'09-mai'},
+{n:'LEDUC Cynthia',c:'JU',s:'F',e:'400',p:'57.97',pt:943,niv:'IR1',nai:'97',a:2016,d:'08-mai'},
+{n:'NZAMOWANI Jodelle',c:'ES',s:'F',e:'400H',p:'64.09',pt:943,niv:'N4',nai:'89',a:2010,d:'22-mai'},
+{n:'CHEVIOT Nicolas',c:'JU',s:'M',e:'100',p:'10.92 (+1.3)',pt:942,niv:'N4',nai:'93',a:2012,d:'06-mai'},
+{n:'AUCAGOS Sohane',c:'CA',s:'F',e:'Triple',p:'12m25 (+0.0)',pt:940,niv:'N3',nai:'3',a:2019,d:'05-mai'},
+{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'200',p:'25.78 (-0.3)',pt:939,niv:'IR2',nai:'94',a:2010,d:'22-mai'},
+{n:'AH-MOUCK Loic',c:'ES',s:'M',e:'400',p:'48.91',pt:939,niv:'N4',nai:'91',a:2013,d:'null'},
+{n:'MAGASSA Modibo',c:'ES',s:'M',e:'400',p:'48.92',pt:939,niv:'N4',nai:'88',a:2010,d:'22-mai'},
+{n:'DESCOUENS Laura',c:'ES',s:'F',e:'200',p:'25.78 (+1.3)',pt:939,niv:'IR2',nai:'90',a:2012,d:'06-mai'},
+{n:'KIMBEMBE Devilert-arsene (COD)',c:'SE',s:'M',e:'200',p:'22.02 (-1.0)',pt:937,niv:'N4',nai:'84',a:2016,d:'22-mai'},
+{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400H',p:'64.34',pt:937,niv:'N3',nai:'72',a:2009,d:'43601'},
+{n:'MOHAMMEDI Wahiba',c:'ES',s:'F',e:'400H',p:'64.33',pt:937,niv:'N4',nai:'97',a:2017,d:'07-mai'},
+{n:'SANTU Melia',c:'SE',s:'F',e:'Triple',p:'12m20 (+2.2)',pt:935,niv:'N3',nai:'95',a:2018,d:'20-mai'},
+{n:'COLLINET Agathe',c:'ES',s:'F',e:'200',p:'25.84 (+0.8)',pt:935,niv:'IR2',nai:'94',a:2015,d:'10-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.06 (-0.3)',pt:934,niv:'N4',nai:'88',a:2016,d:'08-mai'},
+{n:'ISSAKA Andrew',c:'SE',s:'M',e:'Longueur',p:'7m08 (+0.0)',pt:934,niv:'N4',nai:'92',a:2015,d:'10-mai'},
+{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'200',p:'25.86 (+1.0)',pt:934,niv:'IR2',nai:'94',a:2010,d:'09-mai'},
+{n:'CODJO Bruno',c:'JU',s:'M',e:'400',p:'49.00',pt:934,niv:'N4',nai:'97',a:2016,d:'22-mai'},
+{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.53.44',pt:934,niv:'N4',nai:'90',a:2010,d:'22-mai'},
+{n:'HAMROUNI Hamza',c:'JU',s:'M',e:'Triple',p:'14m81 (-0.2)',pt:933,niv:'N4',nai:'99',a:2018,d:'20-mai'},
+{n:'KIMBEMBE Devilert-arsene (COD)',c:'SE',s:'M',e:'200',p:'22.05 (-0.5)',pt:933,niv:'N4',nai:'84',a:2016,d:'08-mai'},
+{n:'MAGASSA Modibo',c:'ES',s:'M',e:'400',p:'49.03',pt:932,niv:'N4',nai:'88',a:2010,d:'09-mai'},
+{n:'CLERENCE Elisa',c:'ES',s:'F',e:'100',p:'12.59 (-0.3)',pt:932,niv:'IR2',nai:'88',a:2010,d:'22-mai'},
+{n:'LEMACON Ridgy',c:'ES',s:'M',e:'110H',p:'15.08 (+0.0)',pt:931,niv:'N4',nai:'88',a:2010,d:'22-mai'},
+{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'49.10',pt:928,niv:'N3',nai:'83',a:2009,d:'43588'},
+{n:'CLERENCE Elisa',c:'ES',s:'F',e:'100',p:'12.61 (+0.0)',pt:928,niv:'IR2',nai:'88',a:2010,d:'09-mai'},
+{n:'LEWIS Abigail (JAM)',c:'ES',s:'F',e:'100H',p:'14.94 (-1.8)',pt:928,niv:'IR1',nai:'93',a:2015,d:'10-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'400',p:'48.87',pt:926,niv:'N4',nai:'92',a:2018,d:'20-mai'},
+{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400H',p:'64.80',pt:925,niv:'N3',nai:'72',a:2009,d:'43588'},
+{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'200',p:'22.11 (+0.9)',pt:925,niv:'N4',nai:'84',a:2017,d:'07-mai'},
+{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'200',p:'22.11 (-0.1)',pt:925,niv:'N4',nai:'84',a:2017,d:'21-mai'},
+{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.13 (+3.4)',pt:923,niv:'N4',nai:'88',a:2012,d:'06-mai'},
+{n:'TOYB Gildas',c:'ES',s:'M',e:'100',p:'10.99 (-0.8)',pt:922,niv:'IR1',nai:'97',a:2017,d:'21-mai'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m01 (+1.4)',pt:920,niv:'N4',nai:'77',a:2010,d:'09-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.04 (+ 0.5)',pt:917,niv:'N3',nai:'86',a:2009,d:'43588'},
+{n:'GREZE Stephane',c:'SE',s:'M',e:'Longueur',p:'7m00 (-0.5)',pt:917,niv:'N4',nai:'84',a:2016,d:'22-mai'},
+{n:'MENDY Paul (SEN)',c:'SE',s:'M',e:'Triple',p:'14m65 (+0.0)',pt:917,niv:'N4',nai:'89',a:2018,d:'06-mai'},
+{n:'TOUREL Thomas',c:'ES',s:'M',e:'200',p:'22.07 (+1.0)',pt:916,niv:'N4',nai:'99',a:2019,d:'05-mai'},
+{n:'TOUREL Thomas',c:'ES',s:'M',e:'200',p:'22.07 (+2.0)',pt:916,niv:'N4',nai:'99',a:2019,d:'19/05'},
+{n:'ALERTE David',c:'SE',s:'M',e:'200',p:'22.20 (-1.1)',pt:913,niv:'N4',nai:'84',a:2016,d:'22-mai'},
+{n:'LOISEAU Margot',c:'CA',s:'F',e:'200',p:'26.17 (+1.7)',pt:913,niv:'IR2',nai:'96',a:2013,d:'null'},
+{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'400',p:'59.02',pt:912,niv:'IR1',nai:'94',a:2011,d:'08-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.09 (-2.0)',pt:911,niv:'N3',nai:'86',a:2009,d:'43601'},
+{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m97 (+1.2)',pt:911,niv:'IR1',nai:'84',a:2017,d:'07-mai'},
+{n:'COLLINET Agathe',c:'CA',s:'F',e:'200',p:'26.20 (-1.5)',pt:911,niv:'IR2',nai:'94',a:2011,d:'08-mai'},
+{n:'ALERTE David',c:'SE',s:'M',e:'400',p:'49.43',pt:910,niv:'N4',nai:'84',a:2016,d:'08-mai'},
+{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.54.38',pt:910,niv:'IR1',nai:'79',a:2010,d:'09-mai'},
+{n:'VAILHE Baptiste',c:'JU',s:'M',e:'200',p:'22.11 (+1.9)',pt:910,niv:'N4',nai:'0',a:2019,d:'19/05'},
+{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.23 (+1.6)',pt:909,niv:'N4',nai:'88',a:2013,d:'null'},
+{n:'AH-MOUCK Loic',c:'SE',s:'M',e:'400',p:'49.45',pt:909,niv:'N4',nai:'91',a:2014,d:'04-mai'},
+{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'63.96',pt:909,niv:'N4',nai:'97',a:2019,d:'05-mai'},
+{n:'TSHIKAYA Yowa',c:'CA',s:'F',e:'200',p:'26.24 (-0.4)',pt:908,niv:'IR2',nai:'1',a:2017,d:'21-mai'},
+{n:'SANTU Melia',c:'SE',s:'F',e:'Triple',p:'11m94 (-1.2)',pt:908,niv:'N4',nai:'95',a:2018,d:'06-mai'},
+{n:'SECQUEVILLE Melissa',c:'CA',s:'F',e:'100',p:'12.74 (+1.1)',pt:908,niv:'IR3',nai:'1',a:2017,d:'21-mai'},
+{n:'HOUNSINOU Julie',c:'CA',s:'F',e:'200',p:'26.25 (+1.5)',pt:907,niv:'IR3',nai:'97',a:2014,d:'04-mai'},
+{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.05.70',pt:906,niv:'IR1',nai:'84',a:2016,d:'22-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.27 (-1.9)',pt:904,niv:'IR1',nai:'88',a:2011,d:'08-mai'},
+{n:'BOUHADJER Mohamed',c:'ES',s:'M',e:'Perche',p:'4m80',pt:902,niv:'N4',nai:'91',a:2013,d:'null'},
+{n:'MESNIL Romain',c:'SE',s:'M',e:'Perche',p:'4m80',pt:902,niv:'N3',nai:'77',a:2009,d:'43601'},
+{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m15 (+1.8)',pt:899,niv:'N3',nai:'95',a:2017,d:'07-mai'},
+{n:'CLAUDE Nina',c:'JU',s:'F',e:'400',p:'59.52',pt:897,niv:'IR2',nai:'97',a:2015,d:'10-mai'},
+{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'14m66 (+0.9)',pt:897,niv:'N4',nai:'84',a:2017,d:'07-mai'},
+{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.33 (-2.1)',pt:896,niv:'IR1',nai:'88',a:2015,d:'10-mai'},
+{n:'VAILHE Baptiste',c:'JU',s:'M',e:'200',p:'22.22 (+1.7)',pt:895,niv:'N4',nai:'0',a:2019,d:'05-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.24 (+0.0)',pt:895,niv:'IR1',nai:'86',a:2010,d:'09-mai'},
+{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m11 (+1.3)',pt:894,niv:'N3',nai:'95',a:2015,d:'10-mai'},
+{n:'MALELA Sogiros',c:'ES',s:'M',e:'100',p:'11.09 (+ 0.9)',pt:894,niv:'N3',nai:'87',a:2009,d:'43588'},
+{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m88 (+0.0)',pt:893,niv:'IR1',nai:'84',a:2016,d:'22-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'Triple',p:'14m62 (+0.9)',pt:893,niv:'N4',nai:'88',a:2011,d:'08-mai'},
+{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'100H',p:'15.02 (+1.7)',pt:893,niv:'IR1',nai:'98',a:2019,d:'05-mai'},
+{n:'COLLINET Agathe',c:'ES',s:'F',e:'400',p:'59.66',pt:893,niv:'IR2',nai:'94',a:2014,d:'04-mai'},
+{n:'FRANZONI Lorenzo (ITA)',c:'SE',s:'M',e:'Triple',p:'14m61 (+0.0)',pt:892,niv:'N4',nai:'88',a:2014,d:'04-mai'},
+{n:'MENDY Paul (SEN)',c:'SE',s:'M',e:'Triple',p:'14m42 (+0.9)',pt:892,niv:'IR1',nai:'89',a:2018,d:'20-mai'},
+{n:'POTTEZ-JOUATTE Valentine',c:'CA',s:'F',e:'100',p:'12.85 (+0.1)',pt:891,niv:'IR4',nai:'96',a:2012,d:'06-mai'},
+{n:'BIKELEL Anne',c:'CA',s:'F',e:'400',p:'59.79',pt:889,niv:'IR2',nai:'1',a:2017,d:'21-mai'},
+{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.08.17',pt:889,niv:'IR1',nai:'84',a:2019,d:'19/05'},
+{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m84 (+0.0)',pt:888,niv:'IR1',nai:'96',a:2018,d:'06-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.30 (-0.3)',pt:888,niv:'IR2',nai:'86',a:2010,d:'22-mai'},
+{n:'CODJO Bruno',c:'JU',s:'M',e:'400',p:'49.84',pt:887,niv:'IR1',nai:'97',a:2015,d:'10-mai'},
+{n:'KOUASSI Haudy-meven',c:'SE',s:'M',e:'100',p:'11.00 (+2.2)',pt:886,niv:'IR1',nai:'96',a:2019,d:'19/05'},
+{n:'VILOCY Sara',c:'SE',s:'F',e:'Hauteur',p:'1m70',pt:885,niv:'N4',nai:'88',a:2011,d:'08-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.33 (+0.1)',pt:885,niv:'IR2',nai:'86',a:2014,d:'04-mai'},
+{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'51m19',pt:884,niv:'N3',nai:'92',a:2015,d:'10-mai'},
+{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'100',p:'11.01 (- 1.2)',pt:883,niv:'IR1',nai:'84',a:2018,d:'06-mai'},
+{n:'MOUILLET Zoe',c:'JU',s:'F',e:'200',p:'25.65 (+1.9)',pt:883,niv:'IR1',nai:'0',a:2019,d:'05-mai'},
+{n:'GURACHI Youness',c:'SE',s:'M',e:'800',p:'1.55.44',pt:882,niv:'N3',nai:'83',a:2009,d:'43601'},
+{n:'SECQUEVILLE Melissa',c:'CA',s:'F',e:'100',p:'12.92 (+1.3)',pt:881,niv:'IR4',nai:'1',a:2017,d:'07-mai'},
+{n:'LAMBOLEY Victoria',c:'SE',s:'F',e:'800',p:'2.16.79',pt:881,niv:'N4',nai:'93',a:2018,d:'06-mai'},
+{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m82 (+1.2)',pt:880,niv:'IR1',nai:'96',a:2017,d:'07-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'400H',p:'55.35',pt:880,niv:'IR1',nai:'92',a:2019,d:'05-mai'},
+{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m82 (+1.4)',pt:880,niv:'IR1',nai:'96',a:2016,d:'08-mai'},
+{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m82 (+2.7)',pt:880,niv:'IR1',nai:'84',a:2016,d:'08-mai'},
+{n:'BENNIA Ahmed',c:'SE',s:'M',e:'200',p:'22.47 (+1.3)',pt:878,niv:'IR1',nai:'90',a:2014,d:'04-mai'},
+{n:'LEFEUVRE Jimmy',c:'SE',s:'M',e:'400H',p:'56.21',pt:878,niv:'N3',nai:'82',a:2009,d:'43601'},
+{n:'BENNIA Ahmed',c:'SE',s:'M',e:'200',p:'22.47 (-0.7)',pt:878,niv:'IR1',nai:'90',a:2015,d:'10-mai'},
+{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.05',pt:877,niv:'IR1',nai:'97',a:2018,d:'06-mai'},
+{n:'CLAUDE Nina',c:'CA',s:'F',e:'400',p:'60.22',pt:876,niv:'IR2',nai:'97',a:2014,d:'04-mai'},
+{n:'PERSELLO Sophie',c:'JU',s:'F',e:'100H',p:'15.41 (+ 0.9)',pt:876,niv:'R1',nai:'91',a:2009,d:'43588'},
+{n:'POTTEZ-JOUATTE Valentine',c:'CA',s:'F',e:'100',p:'12.95 (+2.1)',pt:876,niv:'IR4',nai:'96',a:2013,d:'null'},
+{n:'TSHIKAYA Yowa',c:'JU',s:'F',e:'100',p:'12.60 (+2.3)',pt:876,niv:'IR2',nai:'1',a:2019,d:'05-mai'},
+{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.16 (+0.3)',pt:875,niv:'IR2',nai:'96',a:2017,d:'21-mai'},
+{n:'BARANGER-MERINO Alberto',c:'SE',s:'M',e:'Marteau',p:'60m67',pt:875,niv:'N2',nai:'81',a:2009,d:'43588'},
+{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m78 (+1.1)',pt:875,niv:'IR2',nai:'96',a:2018,d:'20-mai'},
+{n:'BESEGHER Antoni',c:'JU',s:'M',e:'800',p:'1.55.71',pt:875,niv:'IR1',nai:'98',a:2017,d:'21-mai'},
+{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.16 (+1.9)',pt:875,niv:'IR2',nai:'96',a:2017,d:'07-mai'},
+{n:'ADDOH Axel',c:'SE',s:'M',e:'400H',p:'55.45',pt:875,niv:'IR1',nai:'92',a:2019,d:'19/05'},
+{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'100',p:'11.04 (-1.2)',pt:874,niv:'IR1',nai:'84',a:2018,d:'20-mai'},
+{n:'HAMROUNI Hamza',c:'ES',s:'M',e:'Triple',p:'14m23 (+1.5)',pt:873,niv:'IR1',nai:'99',a:2019,d:'05-mai'},
+{n:'FOFANA Colomba',c:'SE',s:'M',e:'100',p:'11.17 (-0.1)',pt:872,niv:'IR2',nai:'77',a:2011,d:'08-mai'},
+{n:'BOLLEE Elodie',c:'SE',s:'F',e:'800',p:'2.16.97',pt:872,niv:'N4',nai:'84',a:2014,d:'04-mai'},
+{n:'ISSIFOU Sandra',c:'SE',s:'F',e:'100',p:'12.99 (+ 1.1)',pt:870,niv:'R1',nai:'83',a:2009,d:'43588'},
+{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'3.58.69',pt:870,niv:'IR1',nai:'85',a:2015,d:'10-mai'},
+{n:'HERELIUS Lindsay',c:'ES',s:'F',e:'100',p:'12.99 (+2.1)',pt:870,niv:'IR4',nai:'93',a:2013,d:'null'},
+{n:'BEURION Mathieu',c:'SE',s:'M',e:'5000 marche',p:'24.02.44',pt:870,niv:'IR2',nai:'89',a:2014,d:'04-mai'},
+{n:'FRANZONI Lorenzo (ITA)',c:'SE',s:'M',e:'Triple',p:'14m40 (+0.3)',pt:870,niv:'IR1',nai:'88',a:2016,d:'08-mai'},
+{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.56',pt:869,niv:'IR1',nai:'97',a:2019,d:'19/05'},
+{n:'SACKO Hatouma',c:'ES',s:'F',e:'200',p:'26.85 (-1.8)',pt:867,niv:'IR4',nai:'96',a:2016,d:'08-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.16 (-0.8)',pt:867,niv:'IR1',nai:'88',a:2018,d:'20-mai'},
+{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.16 (+ 0.1)',pt:867,niv:'IR1',nai:'88',a:2018,d:'06-mai'},
+{n:'MALELA Sogiros',c:'SE',s:'M',e:'100',p:'11.19 (+1.6)',pt:866,niv:'IR2',nai:'87',a:2010,d:'09-mai'},
+{n:'GUTTIN Nicolas',c:'SE',s:'M',e:'3000 steeple',p:'9.40.20',pt:865,niv:'IR2',nai:'87',a:2013,d:'null'},
+{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'14m16 (-1.2)',pt:865,niv:'IR1',nai:'84',a:2019,d:'19/05'},
+{n:'GOMES Anthony',c:'ES',s:'M',e:'400',p:'49.90',pt:864,niv:'IR1',nai:'97',a:2019,d:'19/05'},
+{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.99',pt:863,niv:'IR1',nai:'97',a:2018,d:'20-mai'},
+{n:'TSHIKAYA Yowa',c:'JU',s:'F',e:'200',p:'25.87 (+1.1)',pt:863,niv:'IR2',nai:'1',a:2019,d:'19/05'},
+{n:'CISSAKO Mahamadou',c:'SE',s:'M',e:'400',p:'50.31',pt:861,niv:'N3',nai:'86',a:2009,d:'43601'},
+{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.17.56',pt:861,niv:'IR1',nai:'84',a:2019,d:'05-mai'},
+{n:'PAGET-BLANC Alexandra',c:'JU',s:'F',e:'400H',p:'67.44',pt:861,niv:'IR2',nai:'93',a:2011,d:'08-mai'},
+{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'49m96',pt:861,niv:'N3',nai:'92',a:2016,d:'22-mai'},
+{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'49m94',pt:860,niv:'N3',nai:'92',a:2016,d:'08-mai'},
+{n:'LAMBOLEY Victoria',c:'SE',s:'F',e:'800',p:'2.18.16',pt:860,niv:'IR1',nai:'93',a:2018,d:'20-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.56 (+1.4)',pt:859,niv:'IR2',nai:'86',a:2013,d:'null'},
+{n:'NIENAT Lawrence',c:'JU',s:'F',e:'400',p:'60.82',pt:859,niv:'IR3',nai:'97',a:2015,d:'10-mai'},
+{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'1500',p:'3.59.62',pt:859,niv:'IR2',nai:'79',a:2010,d:'22-mai'},
+{n:'TSHIKAYA Yowa',c:'CA',s:'F',e:'200',p:'25.92 (-1.9)',pt:859,niv:'IR2',nai:'1',a:2018,d:'20-mai'},
+{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'3.59.71',pt:858,niv:'IR2',nai:'85',a:2011,d:'08-mai'},
+{n:'SANTU Melia',c:'ES',s:'F',e:'100',p:'13.08 (+0.4)',pt:857,niv:'R1',nai:'95',a:2017,d:'21-mai'},
+{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.56.42',pt:857,niv:'N3',nai:'79',a:2009,d:'43601'},
+{n:'DIELNA Samuel',c:'JU',s:'M',e:'200',p:'22.63 (+0.2)',pt:857,niv:'IR2',nai:'96',a:2014,d:'04-mai'},
+{n:'ANDRE Michel',c:'SE',s:'M',e:'Marteau',p:'59m48',pt:856,niv:'N2',nai:'70',a:2009,d:'43601'},
+{n:'ANIESA Ange',c:'SE',s:'M',e:'400',p:'50.41',pt:856,niv:'IR1',nai:'90',a:2016,d:'22-mai'},
+{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.23 (0.7)',pt:855,niv:'IR2',nai:'96',a:2016,d:'08-mai'},
+{n:'DIELNA Samuel',c:'CA',s:'M',e:'100',p:'11.23 (+1.7)',pt:855,niv:'IR2',nai:'96',a:2013,d:'null'},
+{n:'BESEGHER Antoni',c:'JU',s:'M',e:'800',p:'1.56.49',pt:855,niv:'IR1',nai:'98',a:2017,d:'07-mai'},
+{n:'LAMBOLEY Victoria',c:'ES',s:'F',e:'800',p:'2.18.10',pt:854,niv:'IR1',nai:'93',a:2015,d:'10-mai'},
+{n:'BIKELEL Anne',c:'JU',s:'F',e:'Triple',p:'11m40 (+1.9)',pt:854,niv:'IR1',nai:'1',a:2019,d:'05-mai'},
+{n:'BOLLEE Elodie',c:'SE',s:'F',e:'1500',p:'4.48.19',pt:853,niv:'IR2',nai:'84',a:2013,d:'null'},
+{n:'MALELA Sogiros',c:'SE',s:'M',e:'100',p:'11.24 (+0.7)',pt:853,niv:'IR2',nai:'87',a:2010,d:'22-mai'},
+{n:'ANDRE Michel',c:'VE',s:'M',e:'Marteau',p:'59m26',pt:853,niv:'N3',nai:'70',a:2010,d:'22-mai'},
+{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100',p:'13.11 (+2.2)',pt:852,niv:'R1',nai:'86',a:2012,d:'06-mai'},
+{n:'ECZET Jean-baptiste',c:'SE',s:'M',e:'800',p:'1.56.64',pt:852,niv:'IR1',nai:'82',a:2010,d:'22-mai'},
+{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.56.65',pt:851,niv:'N3',nai:'79',a:2009,d:'43588'},
+{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m67 (-0.7)',pt:849,niv:'IR2',nai:'84',a:2017,d:'21-mai'},
+{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'4.00.64',pt:847,niv:'IR2',nai:'85',a:2012,d:'06-mai'},
+{n:'EFFA EFFA Junior (GAB)',c:'JU',s:'M',e:'110H',p:'15.68 (+0.8)',pt:846,niv:'IR2',nai:'96',a:2015,d:'10-mai'},
+{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400',p:'61.24',pt:846,niv:'IR3',nai:'72',a:2010,d:'22-mai'},
+{n:'DEMONTIGNY Melissa',c:'SE',s:'F',e:'Perche',p:'3m60',pt:845,niv:'N3',nai:'87',a:2015,d:'10-mai'},
+{n:'DEMONTIGNY Melissa',c:'SE',s:'F',e:'Perche',p:'3m60',pt:845,niv:'N3',nai:'87',a:2014,d:'04-mai'},
+{n:'BOULABI Margot',c:'CA',s:'F',e:'400',p:'61.28',pt:845,niv:'IR3',nai:'96',a:2013,d:'null'}
+
 ]}
 
 
@@ -971,10 +1181,10 @@ var dataParticipations = { data : [
 { nom: 'ABDELKADER Yann',nb:11},
 { nom: 'FRANCOIS Mickael',nb:11},
 { nom: 'SOFFIATI Thibaud',nb:10},
+{ nom: 'ANDRIEU Olivier',nb:10},
 { nom: 'HOUDAYER Aicha',nb:9},
-{ nom: 'ANDRIEU Olivier',nb:9},
+{ nom: 'SAMANGARAY Baba',nb:9},
 { nom: 'BOLLEE Elodie',nb:8},
-{ nom: 'SAMANGARAY Baba',nb:8},
 { nom: 'BARANGER-MERINO Alberto',nb:7},
 { nom: 'EL KADAOUI Samir',nb:7},
 { nom: 'LARISSE Anddy',nb:7},
@@ -1248,13 +1458,13 @@ var table = $('#best_points').DataTable({
 	order: [[ 4, "desc" ]],
     paging: true,
     columns : [
-    { data: 'nom', title: 'Nom' },
-    { data: 'sexe', title: 'Sexe' },
-    { data: 'epreuve', title: 'Epreuve' },    
-    { data: 'perf', title: 'Performance' },    
-    { data: 'points', title: 'Points' },    
-    { data: 'annee', title: 'Année' },    
-    { data: 'naissance', title: 'Naissance' }    
+    { data: 'n', title: 'Nom' },
+    { data: 's', title: 'Sexe' },
+    { data: 'e', title: 'Epreuve' },    
+    { data: 'p', title: 'Performance' },    
+    { data: 'pt', title: 'Points' },    
+    { data: 'a', title: 'Année' },    
+    { data: 'nai', title: 'Naissance' }    
   ]  
 })  
 
