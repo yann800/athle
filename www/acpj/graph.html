@@ -109,48 +109,11 @@ legend.scheduler-border {
 	<script type="text/javascript">
 		google.setOnLoadCallback(drawChart);
 		
-		function pushIC(obj, annee, epreuve, sexe, table){
+
 		
-			var pt1 = 0;
-			var pt2 = 0;
-			var pt3 = 0;
-			var pt4 = 0;
-			
-			for ( var i = 0; i < obj.data.length; i++) {
-			
+	var tableCalculee = [];
 
-				if (obj['data'][i].a == annee){
-
-					var pt = parseInt(obj['data'][i].pt);
-					
-					if (pt1 == 0){
-						pt1 = pt;
-						continue;
-					}
-					if (pt2 == 0){
-						pt2 = pt;
-						continue;
-					}
-					if (pt3 == 0){
-						pt3 = pt;
-						continue;
-					}
-					if (pt4 == 0){
-						pt4 = pt;
-					}
-				}
-			}
-			console.log("==== " + pt1 + " " +pt2 + " " +pt3 + " " + pt4);
-			table.push([annee, pt1, pt2, pt3, pt4]);
-		}
-		
-		function drawChart() {
-
-			var tableCalculee = [];
-
-			tableCalculee.push([ 'Année', 'Perf 1', 'Perf 2', 'Perf 3', 'Perf 4']);
-
-var data = '{ "data" : ['
+	var data = '{ "data" : ['
 + '{"n":"CRANE Sabrina","c":"CA","s":"F","e":"1500","p":"5.33.86","pt":"571","niv":"R3","nai":"92","a":"2009","d":"03 mai"},'
 + '{"n":"CRANE Sabrina","c":"CA","s":"F","e":"Triple","p":"10m64 (+1.7)","pt":"729","niv":"R1","nai":"92","a":"2009","d":"03 mai"},'
 + '{"n":"EXBRAYAT Helene","c":"CA","s":"F","e":"Perche","p":"2m40","pt":"429","niv":"R3","nai":"92","a":"2009","d":"03 mai"},'
@@ -1668,30 +1631,67 @@ var data = '{ "data" : ['
 + '{"n":"VANNEQUE-PORTES Jean-philippe","c":"VE","s":"M","e":"Disque","p":"29m08","pt":"496","niv":"R6","nai":"78","a":"2019","d":"19 mai"}'
 + ']}';
 
-			
-			// var obj = $.parseJSON(data);
-			var obj = JSON.parse(data);
+	function drawChart(codeSexe, epreuve) {
 
-			var epreuve = "100";
-			var sexe = "M";
-			
-			for (var annee = 2009; annee < 2020; annee++) {
-				pushIC(obj, annee, epreuve, sexe, tableCalculee);
-			}
-
-			var data = google.visualization.arrayToDataTable(tableCalculee);
-
-			var options = {
-				title : ''
-			};
-
-			var chart = new google.visualization.LineChart(document
-					.getElementById('chart_div'));
-
-			chart.draw(data, options);
-		}
-		
+		tableCalculee = [];
 	
+		tableCalculee.push([ 'Année', 'Perf 1', 'Perf 2', 'Perf 3', 'Perf 4']);
+						
+		var obj = JSON.parse(data);
+
+		for (var annee = 2009; annee < 2020; annee++) {
+			pushIC(obj, annee, epreuve, codeSexe);
+		}
+
+		var dataGraph = google.visualization.arrayToDataTable(tableCalculee);
+
+		var options = {
+			title : ''
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+		chart.draw(dataGraph, options);
+	}
+		
+	function pushIC(obj, annee, epreuve, sexe){
+		
+		var pt1 = 0;
+		var pt2 = 0;
+		var pt3 = 0;
+		var pt4 = 0;
+			
+		for ( var i = 0; i < obj.data.length; i++) {
+		
+			if (obj['data'][i].a == annee && obj['data'][i].s == sexe && obj['data'][i].e == epreuve){
+				var pt = parseInt(obj['data'][i].pt);
+				
+				if (pt1 == 0){
+					pt1 = pt;
+					continue;
+				}
+				if (pt2 == 0){
+					pt2 = pt;
+					continue;
+				}
+				if (pt3 == 0){
+					pt3 = pt;
+					continue;
+				}
+				if (pt4 == 0){
+					pt4 = pt;
+				}
+			}
+		}
+
+		var nombres = [pt1, pt2, pt3, pt4];
+		nombres.sort(function(a, b) {
+		  return a - b;
+		});
+
+		// console.log(nombres);
+		tableCalculee.push([annee, parseInt(nombres[1]), parseInt(nombres[2]), parseInt(nombres[3]), parseInt(nombres[4])]);
+	}
 
     function selection() {
         
@@ -1701,17 +1701,22 @@ var data = '{ "data" : ['
     	if (sexe == undefined || epreuve == undefined){
 			return;    		
     	}
-    	
+
+		var codeSexe;
     	if (sexe == 0){
     		$("#sqlSexe").text("Femmes");
+			codeSexe = "F";
     	}
     	else {
     		$("#sqlSexe").text("Hommes");
+			codeSexe = "M";
     	}
     	
     	$("#sqlEpreuve").text(epreuve);
     	
         // charge(jsonData.records);
+        
+        drawChart(codeSexe, epreuve);
     	
     }
     
