@@ -109,8 +109,6 @@ legend.scheduler-border {
 	<script type="text/javascript">
 		google.setOnLoadCallback(drawChart);
 		
-
-		
 	var tableCalculee = [];
 
 	var data = '{ "data" : ['
@@ -1631,13 +1629,20 @@ legend.scheduler-border {
 + '{"n":"VANNEQUE-PORTES Jean-philippe","c":"VE","s":"M","e":"Disque","p":"29m08","pt":"496","niv":"R6","nai":"78","a":"2019","d":"19 mai"}'
 + ']}';
 
+	var obj = JSON.parse(data);
+	var count = 0;
+
 	function drawChart(codeSexe, epreuve) {
+
+		count++;
+		if (count == 2){
+			return;
+		}
 
 		tableCalculee = [];
 	
 		tableCalculee.push([ 'Année', 'Perf 1', 'Perf 2', 'Perf 3', 'Perf 4']);
 						
-		var obj = JSON.parse(data);
 
 		for (var annee = 2009; annee < 2020; annee++) {
 			pushIC(obj, annee, epreuve, codeSexe);
@@ -1714,59 +1719,68 @@ legend.scheduler-border {
     	
     	$("#sqlEpreuve").text(epreuve);
     	
-        // charge(jsonData.records);
-        
         drawChart(codeSexe, epreuve);
+        
+        charge(codeSexe, epreuve);
     	
     }
     
-    function charge(jsonSelection){
+    function charge(sexe, epreuve){
         
-    	var laTable = $("#table_records").DataTable();
+    	var laTable = $("#table_selection").DataTable();
 
     	laTable.clear();
     	
-    	for (var i = 0; i < jsonSelection.length; i++) {
-    		laTable.row.add({rang: jsonSelection[i].rang, perf: jsonSelection[i].perf, pays: jsonSelection[i].pays, athlete: jsonSelection[i].athlete, annee: jsonSelection[i].annee}).draw();
-   			// laTable.row.add({e : jsonSelection[i], nom1 : sel1.nom, perf1 :  sel1.perf, nom2 : sel2.nom,  perf2 : sel2.perf, ecart : compute}).draw();
-   			// laTable.row.add({rang: " + jsonSelection[i].rang + ", perf: "20.10", pays: "Etats-Unis", athlete: "Wallace Spearmon", annee: "2005"}).draw();
-   			// console.log(jsonSelection[i]);
+    	for (var annee = 2009; annee < 2020; annee++) {
+    	
+		for ( var i = 0; i < obj.data.length; i++) {
+		
+			if (obj['data'][i].a == annee && obj['data'][i].s == sexe && obj['data'][i].e == epreuve){
+			   		
+	    		laTable.row.add({
+	    		n: obj['data'][i].n,
+	    		c: obj['data'][i].c,
+	    		p: obj['data'][i].p,
+	    		pt: obj['data'][i].pt,
+	    		niv: obj['data'][i].niv,
+	    		a: obj['data'][i].a,
+	    		nai: obj['data'][i].nai,
+	    		d: obj['data'][i].d}).draw();
+	    	}
     	}
+    	} // end for annee
     }
+
 	$('.dropdown-toggle').dropdown();
 	
-	var selection_ic = { data : [
-		
+	var selection_ic = { data : [		
 	]};
 			
 
 var table = $('#table_selection').DataTable({
 	data : selection_ic.data,
-	order: [[ 3, "asc" ]],
+	order: [[ 5, "asc" ]],
     paging: false,
     columns : [
-    { data: 'n', title: 'Nom' },
-    { data: 's', title: 'Sexe' },
-    { data: 'c', title: 'Cat' },
-    { data: 'e', title: 'Epreuve' },    
+    { data: 'n', title: 'Nom', "width": "25%" },
+    { data: 'c', title: 'Cat', "width": "8%" },
     { data: 'p', title: 'Performance' },    
-    { data: 'pt', title: 'Points' },    
-    { data: 'niv', title: 'Niveau' },
-    { data: 'a', title: 'Année' },    
-    { data: 'nai', title: 'Naiss' },
-    { data: 'd', title: 'Date' }
+    { data: 'pt', title: 'Points', "width": "10%" }, 
+    { data: 'niv', title: 'Niveau', "width": "10%" },
+    { data: 'a', title: 'Année', "width": "10%" },
+    { data: 'nai', title: 'Naiss', "width": "10%" },
+    { data: 'd', title: 'Date', "width": "10%" }
   ]  
 })  
 		
-
-	var pays = {'record' : []};
 
 
 	var elts = document.querySelectorAll("input");
 	for (var i = 0; i < elts.length; i++){
 		elts[i].addEventListener("change", selection, true);
 	}		
-				
+	
+	
 	</script>
 
 
@@ -1778,8 +1792,8 @@ var table = $('#table_selection').DataTable({
 
 	<script type="text/javascript" class="init">
 		$('.dropdown-toggle').dropdown();
-
 		document.getElementById("statistiques").setAttribute("class", "active");
+		selection();
 	</script>
 </body>
 </html>
