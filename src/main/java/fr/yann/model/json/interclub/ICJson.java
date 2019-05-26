@@ -1,18 +1,18 @@
-package fr.yann.service;
+package fr.yann.model.json.interclub;
 
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Cross {
+public class ICJson {
 
 	@SerializedName("key")
 	@Expose
 	private String		key;
 	@SerializedName("fields")
 	@Expose
-	private List<Field>	fields	= null;
+	private List<PerfJson>	perfs	= null;
 
 	public String getKey() {
 		return key;
@@ -22,12 +22,11 @@ public class Cross {
 		this.key = key;
 	}
 
-	public List<Field> getFields() {
-		return fields;
+	public List<PerfJson> getPerfs() {
+		return perfs;
 	}
 
-	public void setFields(List<Field> fields) {
-		this.fields = fields;
+	public void setPerfs(List<PerfJson> perfs) {
+		this.perfs = perfs;
 	}
-
 }

@@ -1,4 +1,4 @@
-package fr.yann.service;
+package fr.yann.model.json.cross;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

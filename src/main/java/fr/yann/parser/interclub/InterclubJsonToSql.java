@@ -1,34 +1,39 @@
 package fr.yann.parser.interclub;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.Reader;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.List;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import fr.yann.parser.interclub.csv.IC;
+import fr.yann.model.json.interclub.ICJson;
+import fr.yann.model.json.interclub.PerfJson;
 
 public class InterclubJsonToSql {
 
 	private static final String pathFolder = "C:\\workspace_athle\\parser\\src\\main\\java\\fr\\yann\\parser\\interclub\\json\\";
 
-	public static void main(String[] args) {
+	private static List<ICJson> json;
+	
+	public static void main(String[] args) throws IOException {
 
-		traiteJson();
-		// System.out.println(l.toSql());
+		// 1. JSON to Java object, read it from a file.
+		// Cross cross = gson.fromJson(new FileReader("cross.json"), Cross.class);
+		Type listType = new TypeToken<List<ICJson>>() {}.getType();
+		json = new Gson().fromJson(new FileReader(pathFolder + "acpj.json"), listType);
+
+		read(json.get(0));
+
 	}
 
-	private static void traiteJson() {
-		// File f = new File(pathFolder + "interclub.json");
+	private static void read(ICJson json) {
 
-		/// charger Json
-		JsonParser jsonParser = new JsonParser();
-		// Reader in = new Input;
-		JsonReader jsonReader = new JsonReader(in);
-		// JsonObject json = jsonParser.parse(jsonReader);
+		for (PerfJson perf : json.getPerfs()) {
+			System.out.println(perf);
+		}
 	}
+
+	
 }

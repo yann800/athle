@@ -8,8 +8,10 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class Comparaison {
+import fr.yann.model.json.cross.Cross;
+import fr.yann.model.json.cross.Field;
 
+public class ComparaisonService {
 
 	private static List<Cross> listCross;
 
@@ -23,8 +25,8 @@ public class Comparaison {
 		String k1 = "Dep14";
 		String k2 = "Dep15";
 		String k3 = "Dep16";
-		String k4 = "Reg15";
-		String k5 = "Reg15";
+		// String k4 = "Reg15";
+		// String k5 = "Reg15";
 		
 		generateLinks(getCross(k1), getCross(k2));
 		generateLinks(getCross(k2), getCross(k3));
