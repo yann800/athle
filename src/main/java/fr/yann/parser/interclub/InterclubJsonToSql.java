@@ -27,9 +27,9 @@ public class InterclubJsonToSql {
 		Type listType = new TypeToken<List<ICJson>>() {}.getType();
 		json = new Gson().fromJson(new FileReader(pathFolder + "acpj.json"), listType);
 
-		corrigePoints(json.get(0));
+		corrigePointsAll(json.get(0));
 		
-		// read(json.get(0));
+		displayAllJson(json.get(0));
 
 	}
 
@@ -40,21 +40,27 @@ public class InterclubJsonToSql {
 		}
 	}
 	
-	private static void corrigePoints(ICJson json) throws NumberFormatException, Exception {
+	private static void corrigePointsAll(ICJson json) throws NumberFormatException, Exception {
+		
+		corrigePoints(json, EpreuveEnum.COURSE_800, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
+	}
+	
+	private static void corrigePoints(ICJson json, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
 
-		CotationService.init(EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
+		CotationService.init(epreuve, sexe);
 		
 		for (PerfJson perf : json.getPerfs()) {
 			if (perf.getPt().equals("0")){
-				setCotation(perf);
+				setCotation(perf, epreuve, sexe);
 			}
 		}
 	}
 
-	private static void setCotation(PerfJson perf) throws NumberFormatException, Exception {
-		if (perf.getE().equals("800") && perf.getS().equals("M")){
+	private static void setCotation(PerfJson perf, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
+		if (perf.getE().equals(epreuve.getCode()) && perf.getS().equals(sexe.getCodeStr())){
 			perf.setPt(CotationService.getPoints(perf.getP()));
-			System.out.println("CORRECTION " + perf);
+			// System.out.println("CORRECTION " + perf);
 		}
 	}
 

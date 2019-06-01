@@ -17,19 +17,20 @@ public class CotationService {
 	private static List<PerfPoints> listePerfPoints = null;
 	
 	// EpreuveEnum epreuve, SexeEnum sexe en amont dans init()
-	private static int getPoints(double chrono) throws Exception{
+	private static int getPoints(double chrono) {
 		
-		for (int tentative = 0; tentative < 4; tentative++) {
+		for (int tentative = 0; tentative < 10; tentative++) {
 			double add = Double.parseDouble("0.0" + tentative);
 			int points = getPoints(chrono + add, tentative);
 			if (points > 0) {
 				return points;
 			}
 		}
-		throw new Exception(chrono + " non trouvé");
+		System.err.println(chrono + " non trouvé");
+		return 0;
 	}
 
-	private static int getPoints(double chrono, int tentative) throws Exception{
+	private static int getPoints(double chrono, int tentative) {
 		for (PerfPoints pp:listePerfPoints){
 			if(pp == null){
 				continue;
@@ -59,12 +60,16 @@ public class CotationService {
 
 	// perf, points
 	public static void init(EpreuveEnum e, SexeEnum s) {
-		
-		if (listePerfPoints != null){
-			return;
-		}
 
-		String fileName = "Table Outdoor 2017 - MALE - 800m";
+		// String fileName = "Table Outdoor 2017 - MALE - 800m";
+		String fileName = "Table Outdoor 2017 - ";
+		if (s == SexeEnum.FEMININ){
+			fileName = fileName + "FEMALE - ";
+		}
+		else {
+			fileName = fileName + "MALE - ";
+		}
+		fileName = fileName + e.code + "m";
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(pathFolderCsv + fileName + ".csv"))) {
 
