@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 
-public class CotationService {
+public class CotationServiceCourse {
 	
 	private static final String pathFolderCsv = "C:\\workspace_athle\\Yann\\resources\\csv\\";
 
@@ -69,17 +69,9 @@ public class CotationService {
 	// perf, points
 	public static void init(EpreuveEnum e, SexeEnum s) {
 
-		// String fileName = "Table Outdoor 2017 - MALE - 800m";
-		String fileName = "Table Outdoor 2017 - ";
-		if (s == SexeEnum.FEMININ){
-			fileName = fileName + "FEMALE - ";
-		}
-		else {
-			fileName = fileName + "MALE - ";
-		}
-		fileName = fileName + e.code + "m";
+		String fileName = getFileName(e, s);
 		
-		try (BufferedReader br = new BufferedReader(new FileReader(pathFolderCsv + fileName + ".csv"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(pathFolderCsv + fileName))) {
 
 			List<PerfPoints> perfPoints = br.lines().map(mapToPerfPoints)
 					// .limit(100)
@@ -88,6 +80,33 @@ public class CotationService {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	// "Table Outdoor 2017 - MALE - 800m.csv"
+	private static String getFileName(EpreuveEnum e, SexeEnum s) {
+		String fileName = "Table Outdoor 2017 - ";
+		if (s == SexeEnum.FEMININ){
+			fileName = fileName + "FEMALE - ";
+		}
+		else {
+			fileName = fileName + "MALE - ";
+		}
+		
+		if (e == EpreuveEnum.COURSE_100_HAIES){return fileName + "100mH.csv";}
+		if (e == EpreuveEnum.COURSE_110_HAIES){return fileName + "110mH.csv";}
+		if (e == EpreuveEnum.MARCHE_3000){return fileName + "3km W.csv";}
+		if (e == EpreuveEnum.MARCHE_5000){return fileName + "5km W.csv";}
+
+		if (e == EpreuveEnum.LANCER_DISQUE){return fileName + "DT.csv";}
+		if (e == EpreuveEnum.LANCER_JAVELOT){return fileName + "JT.csv";}
+		if (e == EpreuveEnum.LANCER_MARTEAU){return fileName + "HT.csv";}
+
+		if (e == EpreuveEnum.SAUT_HAUTEUR){return fileName + "HJ.csv";}
+		if (e == EpreuveEnum.SAUT_LONGUEUR){return fileName + "LJ.csv";}
+		if (e == EpreuveEnum.SAUT_TRIPLE){return fileName + "TJ.csv";}
+
+		// tout les cas courses simples
+		return fileName + e.code + "m.csv";
 	}
 
 	// fonction lambada pour créer une personne

@@ -11,7 +11,8 @@ import fr.yann.model.enums.EpreuveEnum;
 import fr.yann.model.enums.SexeEnum;
 import fr.yann.model.json.interclub.ICJson;
 import fr.yann.model.json.interclub.PerfJson;
-import fr.yann.service.CotationService;
+import fr.yann.service.CotationServiceCourse;
+import fr.yann.service.CotationServiceSautLancer;
 
 public class InterclubJsonToSql {
 
@@ -35,10 +36,27 @@ public class InterclubJsonToSql {
 	}
 
 	private static void corrigePointsAll(ICJson json) throws NumberFormatException, Exception {
-		corrigePoints(json, EpreuveEnum.COURSE_100, SexeEnum.FEMININ);
-		corrigePoints(json, EpreuveEnum.COURSE_100, SexeEnum.MASCULIN);
-		corrigePoints(json, EpreuveEnum.COURSE_200, SexeEnum.FEMININ);
-		corrigePoints(json, EpreuveEnum.COURSE_200, SexeEnum.MASCULIN);
+		// corrigePoints(json, EpreuveEnum.MARCHE_3000, SexeEnum.FEMININ);
+		// corrigePoints(json, EpreuveEnum.MARCHE_5000, SexeEnum.MASCULIN);
+
+		corrigePoints(json, EpreuveEnum.LANCER_DISQUE, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.LANCER_JAVELOT, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.LANCER_MARTEAU, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.LANCER_POIDS, SexeEnum.FEMININ);
+
+		corrigePoints(json, EpreuveEnum.SAUT_HAUTEUR, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.SAUT_LONGUEUR, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.SAUT_TRIPLE, SexeEnum.FEMININ);
+	
+		corrigePoints(json, EpreuveEnum.LANCER_DISQUE, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.LANCER_JAVELOT, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.LANCER_MARTEAU, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.LANCER_POIDS, SexeEnum.MASCULIN);
+
+		corrigePoints(json, EpreuveEnum.SAUT_HAUTEUR, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.SAUT_LONGUEUR, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.SAUT_TRIPLE, SexeEnum.MASCULIN);
+	
 	}
 	
 	
@@ -63,7 +81,12 @@ public class InterclubJsonToSql {
 	
 	private static void corrigePoints(ICJson json, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
 
-		CotationService.init(epreuve, sexe);
+		if (epreuve.name().startsWith("COURSE")){
+			CotationServiceCourse.init(epreuve, sexe);
+		}
+		else {
+			CotationServiceSautLancer.init(epreuve, sexe);
+		}
 		
 		for (PerfJson perf : json.getPerfs()) {
 			if (perf.getPt().equals("0")){
@@ -74,7 +97,14 @@ public class InterclubJsonToSql {
 
 	private static void setCotation(PerfJson perf, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
 		if (perf.getE().equals(epreuve.getCode()) && perf.getS().equals(sexe.getCodeStr())){
-			perf.setPt(CotationService.getPoints(perf.getP()));
+
+			if (epreuve.name().startsWith("COURSE")){
+				perf.setPt(CotationServiceCourse.getPoints(perf.getP()));
+			}
+			else {
+				perf.setPt(CotationServiceSautLancer.getPoints(perf.getP()));
+			}
+
 			System.out.println("CORRECTION " + perf);
 		}
 	}

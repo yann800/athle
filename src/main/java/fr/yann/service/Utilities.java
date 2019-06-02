@@ -110,6 +110,10 @@ public class Utilities {
         return hours*3600 + minutes*60 + seconds + tenths/10d;
     }
 
+    public static Double parsePerfSautLancer(String perf){
+        return Double.parseDouble(perf.replace("m", "."));
+    }
+    
     // 2.07.04 -> 127.04
 	public static double getChronoSecondesFromPerf(String perf) {
         String[] parts = perf.split("\\.");
