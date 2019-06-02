@@ -55,15 +55,14 @@ public class CotationService {
 
 	public static void main(String[] args) throws Exception {
 
-		init(EpreuveEnum.COURSE_5000, SexeEnum.MASCULIN);
+		init(EpreuveEnum.COURSE_200, SexeEnum.FEMININ);
 		
-		double chronoSecondes = Utilities.getChronoSecondesFromPerf("17.01.75");
+		double chronoSecondes = Utilities.getChronoSecondesFromPerf("25.92");
 		
 		//		double chrono =Double.parseDouble("100.00");
 		//		double tenth  = Double.parseDouble("0.04");
 		//		System.out.println(tenth);
 		System.out.println(">>>>>> " + getPointsWithInterval(chronoSecondes));
-		
 	}
 	
 
@@ -101,6 +100,17 @@ public class CotationService {
 	};
 
 	public static int getPoints(String perf) throws NumberFormatException, Exception {
-		return getPointsWithInterval(Utilities.parseTimeDot(perf));
+		String clean = clean(perf);
+		return getPointsWithInterval(Utilities.parseTimeDot(clean));
+	}
+
+	// 25.92 (+0.7)
+	private static String clean(String perf) {
+		if (!perf.contains("(")){
+			return perf;
+		}
+		int index = perf.indexOf("(");
+		
+		return perf.substring(0, index).trim();
 	}
 }

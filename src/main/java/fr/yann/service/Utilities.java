@@ -89,9 +89,10 @@ public class Utilities {
         int hours = 0, minutes = 0, seconds, tenths;
         switch(parts.length) {
             case 2:
-                seconds = Integer.parseInt( parts[0] );
-                tenths = Integer.parseInt( parts[1] );
-                break;
+                // seconds = Integer.parseInt( parts[0] );
+                // tenths = Integer.parseInt( parts[1] );
+                // break;
+            	return Double.parseDouble(performance);
             case 3:
                 minutes = Integer.parseInt( parts[0] );
                 seconds = Integer.parseInt( parts[1] );

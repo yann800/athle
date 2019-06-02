@@ -27,13 +27,21 @@ public class InterclubJsonToSql {
 		Type listType = new TypeToken<List<ICJson>>() {}.getType();
 		json = new Gson().fromJson(new FileReader(pathFolder + "acpj.json"), listType);
 
-		corrigePointsAll(json.get(0));
+		// corrigePointsAll(json.get(0));
 		
-		// displayJsonForAll(json.get(0));
-		displayJsonForFile(json.get(0));
+		displayJsonForAll(json.get(0));
+		// displayJsonForFile(json.get(0));
 
 	}
 
+	private static void corrigePointsAll(ICJson json) throws NumberFormatException, Exception {
+		corrigePoints(json, EpreuveEnum.COURSE_100, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.COURSE_100, SexeEnum.MASCULIN);
+		corrigePoints(json, EpreuveEnum.COURSE_200, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.COURSE_200, SexeEnum.MASCULIN);
+	}
+	
+	
 	private static void displayJsonForFile(ICJson json) {
 		for (PerfJson perf : json.getPerfs()) {
 			System.out.println(perf);
@@ -51,12 +59,6 @@ public class InterclubJsonToSql {
 		for (PerfJson perf : json.getPerfs()) {
 			System.out.println("+ '{" + perf + "'");
 		}
-	}
-	
-	private static void corrigePointsAll(ICJson json) throws NumberFormatException, Exception {
-		
-		// corrigePoints(json, EpreuveEnum.COURSE_30500, SexeEnum.FEMININ);
-		corrigePoints(json, EpreuveEnum.COURSE_5000, SexeEnum.MASCULIN);
 	}
 	
 	private static void corrigePoints(ICJson json, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
