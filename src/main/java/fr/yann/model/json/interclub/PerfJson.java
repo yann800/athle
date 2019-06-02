@@ -112,5 +112,20 @@ public class PerfJson {
 		return "PerfJson [n=" + n + ", c=" + c + ", s=" + s + ", e=" + e + ", p=" + p + ", pt=" + pt + ", niv=" + niv
 				+ ", nai=" + nai + ", a=" + a + ", d=" + d + "]";
 	}
+
+	public String ligneSansQuotes() {
+		return "{"
+				+ "n:'" + n + "',"
+				+ "c:'" + c + "',"
+				+ "s:'" + s + "',"
+				+ "e:'" + e + "',"
+				+ "p:'" + p + "',"
+				+ "pt:" + pt + ","
+				+ "niv:'" + niv + "',"
+				+ "nai:'" + nai + "',"
+				+ "a:" + a + ","
+				+ "d:'" + d + "'"
+				+ "},";
+	}
 	
 }

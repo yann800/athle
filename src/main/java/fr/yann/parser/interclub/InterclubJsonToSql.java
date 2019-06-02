@@ -29,21 +29,34 @@ public class InterclubJsonToSql {
 
 		corrigePointsAll(json.get(0));
 		
-		displayAllJson(json.get(0));
+		// displayJsonForAll(json.get(0));
+		displayJsonForFile(json.get(0));
 
 	}
 
-	private static void displayAllJson(ICJson json) {
-
+	private static void displayJsonForFile(ICJson json) {
 		for (PerfJson perf : json.getPerfs()) {
 			System.out.println(perf);
 		}
 	}
 	
+	// {n:'COLLIARD Julie',c:'SE',s:'F',e:'800',p:'2.28.50',pt:703,niv:'R1',nai:'87',a:2011,d:'08 mai'},
+	private static void displayJsonForAll(ICJson json) {
+		for (PerfJson perf : json.getPerfs()) {
+			System.out.println(perf.ligneSansQuotes());
+		}
+	}
+	
+	private static void displayJsonForGraph(ICJson json) {
+		for (PerfJson perf : json.getPerfs()) {
+			System.out.println("+ '{" + perf + "'");
+		}
+	}
+	
 	private static void corrigePointsAll(ICJson json) throws NumberFormatException, Exception {
 		
-		corrigePoints(json, EpreuveEnum.COURSE_800, SexeEnum.FEMININ);
-		corrigePoints(json, EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
+		// corrigePoints(json, EpreuveEnum.COURSE_30500, SexeEnum.FEMININ);
+		corrigePoints(json, EpreuveEnum.COURSE_5000, SexeEnum.MASCULIN);
 	}
 	
 	private static void corrigePoints(ICJson json, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
@@ -60,7 +73,7 @@ public class InterclubJsonToSql {
 	private static void setCotation(PerfJson perf, EpreuveEnum epreuve, SexeEnum sexe) throws NumberFormatException, Exception {
 		if (perf.getE().equals(epreuve.getCode()) && perf.getS().equals(sexe.getCodeStr())){
 			perf.setPt(CotationService.getPoints(perf.getP()));
-			// System.out.println("CORRECTION " + perf);
+			System.out.println("CORRECTION " + perf);
 		}
 	}
 

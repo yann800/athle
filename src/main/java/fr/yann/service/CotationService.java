@@ -17,20 +17,29 @@ public class CotationService {
 	private static List<PerfPoints> listePerfPoints = null;
 	
 	// EpreuveEnum epreuve, SexeEnum sexe en amont dans init()
-	private static int getPoints(double chrono) {
+	private static int getPointsWithInterval(double chrono) {
 		
 		for (int tentative = 0; tentative < 10; tentative++) {
 			double add = Double.parseDouble("0.0" + tentative);
-			int points = getPoints(chrono + add, tentative);
+			int points = getPoints(chrono + add);
 			if (points > 0) {
 				return points;
 			}
 		}
+		for (int tentative = 10; tentative < 100; tentative++) {
+			double add = Double.parseDouble("0." + tentative);
+			int points = getPoints(chrono + add);
+			if (points > 0) {
+				return points;
+			}
+		}
+
 		System.err.println(chrono + " non trouvé");
 		return 0;
 	}
 
-	private static int getPoints(double chrono, int tentative) {
+	private static int getPoints(double chrono) {
+		// System.err.println("getPoints " + chrono);
 		for (PerfPoints pp:listePerfPoints){
 			if(pp == null){
 				continue;
@@ -46,14 +55,14 @@ public class CotationService {
 
 	public static void main(String[] args) throws Exception {
 
-		init(EpreuveEnum.COURSE_800, SexeEnum.MASCULIN);
+		init(EpreuveEnum.COURSE_5000, SexeEnum.MASCULIN);
 		
-		double chronoSecondes = Utilities.getChronoSecondesFromPerf("1.59.99");
+		double chronoSecondes = Utilities.getChronoSecondesFromPerf("17.01.75");
 		
 		//		double chrono =Double.parseDouble("100.00");
 		//		double tenth  = Double.parseDouble("0.04");
 		//		System.out.println(tenth);
-		System.out.println(">>>>>> " + getPoints(chronoSecondes));
+		System.out.println(">>>>>> " + getPointsWithInterval(chronoSecondes));
 		
 	}
 	
@@ -92,6 +101,6 @@ public class CotationService {
 	};
 
 	public static int getPoints(String perf) throws NumberFormatException, Exception {
-		return getPoints(Utilities.parseTimeDot(perf));
+		return getPointsWithInterval(Utilities.parseTimeDot(perf));
 	}
 }
