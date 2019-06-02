@@ -28,10 +28,10 @@ public class InterclubJsonToSql {
 		Type listType = new TypeToken<List<ICJson>>() {}.getType();
 		json = new Gson().fromJson(new FileReader(pathFolder + "acpj.json"), listType);
 
-		// corrigePointsAll(json.get(0));
+		corrigePointsAll(json.get(0));
 		
-		displayJsonForAll(json.get(0));
-		// displayJsonForFile(json.get(0));
+		// displayJsonForAll(json.get(0));
+		displayJsonForFile(json.get(0));
 
 	}
 

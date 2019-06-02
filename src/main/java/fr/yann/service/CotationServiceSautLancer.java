@@ -83,6 +83,7 @@ public class CotationServiceSautLancer {
 		if (e == EpreuveEnum.LANCER_DISQUE){return fileName + "DT.csv";}
 		if (e == EpreuveEnum.LANCER_JAVELOT){return fileName + "JT.csv";}
 		if (e == EpreuveEnum.LANCER_MARTEAU){return fileName + "HT.csv";}
+		if (e == EpreuveEnum.LANCER_POIDS){return fileName + "SP.csv";}
 
 		if (e == EpreuveEnum.SAUT_HAUTEUR){return fileName + "HJ.csv";}
 		if (e == EpreuveEnum.SAUT_LONGUEUR){return fileName + "LJ.csv";}
