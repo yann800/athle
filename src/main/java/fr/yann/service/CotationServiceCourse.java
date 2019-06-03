@@ -12,7 +12,7 @@ import fr.yann.model.enums.SexeEnum;
 
 public class CotationServiceCourse {
 	
-	private static final String pathFolderCsv = "C:\\workspace_athle\\Yann\\resources\\csv\\";
+	private static final String		pathFolderCsv	= "C:\\temp\\csv\\";
 
 	private static List<PerfPoints> listePerfPoints = null;
 	
@@ -94,17 +94,12 @@ public class CotationServiceCourse {
 		
 		if (e == EpreuveEnum.COURSE_100_HAIES){return fileName + "100mH.csv";}
 		if (e == EpreuveEnum.COURSE_110_HAIES){return fileName + "110mH.csv";}
+		if (e == EpreuveEnum.COURSE_400_HAIES) {return fileName + "400mH.csv";}
 		if (e == EpreuveEnum.MARCHE_3000){return fileName + "3km W.csv";}
 		if (e == EpreuveEnum.MARCHE_5000){return fileName + "5km W.csv";}
 
-		if (e == EpreuveEnum.LANCER_DISQUE){return fileName + "DT.csv";}
-		if (e == EpreuveEnum.LANCER_JAVELOT){return fileName + "JT.csv";}
-		if (e == EpreuveEnum.LANCER_MARTEAU){return fileName + "HT.csv";}
-
-		if (e == EpreuveEnum.SAUT_HAUTEUR){return fileName + "HJ.csv";}
-		if (e == EpreuveEnum.SAUT_LONGUEUR){return fileName + "LJ.csv";}
-		if (e == EpreuveEnum.SAUT_TRIPLE){return fileName + "TJ.csv";}
-
+		if (e == EpreuveEnum.COURSE_3000_STEEPLE){return fileName + "3000m SC.csv";}
+		
 		// tout les cas courses simples
 		return fileName + e.code + "m.csv";
 	}

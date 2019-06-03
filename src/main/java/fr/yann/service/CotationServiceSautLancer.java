@@ -12,7 +12,7 @@ import fr.yann.model.enums.SexeEnum;
 
 public class CotationServiceSautLancer {
 	
-	private static final String pathFolderCsv = "C:\\workspace_athle\\Yann\\resources\\csv\\";
+	private static final String		pathFolderCsv	= "C:\\temp\\csv\\";
 
 	private static List<PerfPoints> listePerfPoints = null;
 	
@@ -88,9 +88,9 @@ public class CotationServiceSautLancer {
 		if (e == EpreuveEnum.SAUT_HAUTEUR){return fileName + "HJ.csv";}
 		if (e == EpreuveEnum.SAUT_LONGUEUR){return fileName + "LJ.csv";}
 		if (e == EpreuveEnum.SAUT_TRIPLE){return fileName + "TJ.csv";}
-
-		// tout les cas courses simples
-		return fileName + e.code + "m";
+		if (e == EpreuveEnum.SAUT_PERCHE){return fileName + "PV.csv";}
+		
+		return null;
 	}
 
 	// fonction lambada pour créer une personne
