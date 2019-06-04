@@ -81,6 +81,12 @@ public class InterclubJsonToSql {
 		}
 	}
 	
+	private static void displayJsonForSql(ICJson json) {
+		for (PerfJson perf : json.getPerfs()) {
+			System.out.println(perf);
+		}
+	}
+	
 	private static void displayJsonForGraph(ICJson json) {
 		for (PerfJson perf : json.getPerfs()) {
 			System.out.println("+ '{" + perf + "'");

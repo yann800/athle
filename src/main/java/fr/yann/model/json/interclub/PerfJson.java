@@ -128,4 +128,11 @@ public class PerfJson {
 				+ "},";
 	}
 	
+	public String ligneSqlInsert() {
+		return "INSERT INTO IC (nom, categorie, sexe, epreuve, perf, points, niveau, naissance, annee, date)"
+				+ " VALUES ('"
+				+ n + "','" + c + "','" + s + "','" + e + "','" + p + "'," + pt + ",'" + niv + "','" + nai + "', "
+				+ a + ",'" + d + "');";
+	}
+	
 }
