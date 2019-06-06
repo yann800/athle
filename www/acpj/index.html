@@ -43,10 +43,15 @@
 					<li><a href="#1.2">... avec plusieurs épreuves par tour</a></li>
 				</ul>
 			</li>
-			<li><a href="#2" class="btn-disabled" disabled="disabled">2. Points rapportés par athlète, en moyenne</a></li>
-			<li><a href="#3">3. Épreuves de chaque athlète</a></li>
-			<li><a href="#4">4. Meilleures perfs</a></li>
-			<li><a href="#5">5. Plus de points...</a>
+			<li><a href="#2">2. Points rapportés par athlète, en moyenne</a>
+				<ul>
+					<li><a href="#2.1">Toutes épreuves</a></li>
+					<li><a href="#2.2">Avec meilleure épreuve par tour</a></li>
+					<li><a href="#2.3">800 et 1500 seulement</a></li>
+				</ul>
+			</li>
+			<li><a href="#4">3. Meilleures perfs</a></li>
+			<li><a href="#5">4. Plus de points...</a>
 				<ul>
 				<li><a href="#5.1">... par épreuve</a></li>
 				<li><a href="#5.2">... par sexe</a></li>
@@ -464,43 +469,187 @@ ORDER BY participations DESC</pre>
 
 <table class="table table-striped table-bordered table-hover table-condensed" id="participationEpreuves"></table>
 
-<!-- 
-			<h3 id="2">Points rapportés par athlète, en moyenne</h3>
-			
-			<pre>SELECT nom, AVG(points) AS moyenne
-FROM IC
-GROUP BY nom
-ORDER BY moyenne DESC</pre>
+<h3 id="2">Points rapportés par athlète, en moyenne</h3>
 
-(BIZARRE... A VERIFIER)
+<h4 id="2.1">Toutes épreuves</h4>
+
+<!-- SELECT CONCAT('{n:', nom, ', pts:', SUM(points), ', nb:', count(id), ', avg:', AVG(points), '},' ) FROM IC -->
+<!-- GROUP BY nom -->
+<pre>SELECT nom, SUM(points), count(id), AVG(points) as total FROM IC
+GROUP BY nom
+ORDER BY total DESC</pre>
+
+<table class="table table-striped table-bordered table-hover table-condensed" id="meilleur_moyenne"></table>
+
+
+<h4 id="2.2">Avec meilleure épreuve par tour</h4>
+
+<p>A la demande de Thibault : « qui a rapporté le plus de points en cumulé avec sa meilleure épreuve par tour ? »</p>
+
+<p>Ce critère est juste pour les athlètes qui participent à plusieurs épreuves ou font une contre perf. De plus calcul par année et pas par
+tour, car c'est plus simple et ça évite de pénaliser les athlètes avec accidents (chute à un 800 à Créteil par exemple).</p>
+
+<p>Alors allons-y. Commençons par un GROUP BY nom, annee pour retenir le MAX, 
+puis encapsulement dans un table temporaire (on peut faire plus élégant mais là je vois pas. Si un(e) fort(e) a une suggestion...)</p>
+
+<pre>SELECT n, AVG(pts) AS moy
+FROM (
+  SELECT annee AS a, nom AS n, max(points) AS pts
+  FROM IC
+  GROUP BY nom, annee
+) tmp
+GROUP BY n
+ORDER by moy DESC</pre>
+
+
+<table class="table table-striped table-bordered table-hover table-condensed" id="moyenne_toutes_epreuves"></table>
+
+
+<h4 id="2.3">800, 1500, 800 et 1500 seulement</h4>
+
+<section>
+
+<div style="float: left;">
+
+<p>800</p>
 
 <table class="table table-striped table-bordered table-hover table-condensed">
-<tr><th>nom</th><th>moyenne</th></tr>
-<tr><td>EFFA EFFA Junior</td><td>966.6667</td></tr>
-<tr><td>MENDY Paul (SEN)</td><td>904.5</td></tr>
-<tr><td>CALYDON Cornnelly</td><td>834.3333</td></tr>
-<tr><td>LALONDE Mathieu</td><td>829</td></tr>
-<tr><td>BA Mamadou</td><td>816</td></tr>
-<tr><td>BOUSSADIA Mourad</td><td>807</td></tr>
-<tr><td>BARLES Pauline</td><td>780.5</td></tr>
-<tr><td>PRIETO Mathilde</td><td>761</td></tr>
-<tr><td>AFOUMBA Gilles-anthony (CGO)</td><td>756.25</td></tr>
-<tr><td>...</td><td>...</td></tr>
+<tr><th>n</th><th>moy</th></tr>
+<tr><td>GURACHI Youness</td><td>958</td></tr>
+<tr><td>CESSIRON Maxime</td><td>930.75</td></tr>
+<tr><td>BOLLEE Elodie</td><td>896</td></tr>
+<tr><td>FLANDRIN-THONIEL Igor</td><td>883.5</td></tr>
+<tr><td>ECZET Jean-baptiste</td><td>852</td></tr>
+<tr><td>BESEGHER Antoni</td><td>825.5</td></tr>
+<tr><td>LAMBOLEY Victoria</td><td>819.25</td></tr>
+<tr><td>ABDELKADER Yann</td><td>789.3333</td></tr>
+<tr><td>HESRY Gwenael</td><td>784.5</td></tr>
+<tr><td>MOHAMMEDI Wahiba</td><td>781</td></tr>
+<tr><td>SOFFIATI Thibaud</td><td>772</td></tr>
+<tr><td>SECHAUD Ema</td><td>770.5</td></tr>
+<tr><td>JACQUES Alexia</td><td>762</td></tr>
+<tr><td>PLUTON Lea</td><td>757</td></tr>
+<tr><td>KUDELA Lucie</td><td>748</td></tr>
+<tr><td>DANGLADES Jean-christophe</td><td>747.2</td></tr>
+<tr><td>RAMIN Julie</td><td>741</td></tr>
+<tr><td>ANIESA Ange</td><td>724</td></tr>
+<tr><td>BACON Karine</td><td>709</td></tr>
+<tr><td>DE VENDEGIES Xavier</td><td>709</td></tr>
+<tr><td>FAYE Louise</td><td>697</td></tr>
+<tr><td>COLLIARD Julie</td><td>676.5</td></tr>
+<tr><td>TAMISIER Lucile</td><td>646</td></tr>
+<tr><td>CRANE Sabrina</td><td>642</td></tr>
+<tr><td>BOCCARA Valerie</td><td>596.3333</td></tr>
+<tr><td>BOULABI Margot</td><td>591</td></tr>
+<tr><td>FURTADO Erica-suely</td><td>589</td></tr>
+<tr><td>LOUP Noemie</td><td>584</td></tr>
+<tr><td>BAK Olivia</td><td>562.5</td></tr>
+<tr><td>NOEL Raphael</td><td>525</td></tr>
+<tr><td>TUDEAU Amandine</td><td>468</td></tr>
+<tr><td>IJEOMA Joseph</td><td>393</td></tr>
 </table>
- -->
+</div>
 
-			<h3 id="3">Épreuves de chaque athlète</h3>
+<div style="float: left;margin-left: 10px;">
+<p>1500</p>
 
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><th>n</th><th>moy</th></tr>
+<tr><td>FLANDRIN-THONIEL Igor</td><td>868.5</td></tr>
+<tr><td>JEM Aurelien</td><td>796</td></tr>
+<tr><td>SOFFIATI Thibaud</td><td>790</td></tr>
+<tr><td>BOLLEE Elodie</td><td>789</td></tr>
+<tr><td>ROOS-WEIL Lise</td><td>771.6667</td></tr>
+<tr><td>ECZET Jean-baptiste</td><td>761</td></tr>
+<tr><td>JACQUES Alexia</td><td>748</td></tr>
+<tr><td>SECHAUD Ema</td><td>747</td></tr>
+<tr><td>ABDELKADER Yann</td><td>734</td></tr>
+<tr><td>BRAULT Ines</td><td>719</td></tr>
+<tr><td>LOUP Noemie</td><td>718.6667</td></tr>
+<tr><td>BALAGE Juliette</td><td>711</td></tr>
+<tr><td>SONDEREGGER Lucas</td><td>700</td></tr>
+<tr><td>GOURDON Capucine</td><td>645.3333</td></tr>
+<tr><td>JAKOMULSKI Jessica</td><td>645</td></tr>
+<tr><td>NOEL Raphael</td><td>624</td></tr>
+<tr><td>LE GUILLOU Yannick</td><td>608</td></tr>
+<tr><td>PIEL Julie</td><td>575</td></tr>
+<tr><td>TAFLER Clementine</td><td>574</td></tr>
+<tr><td>CRANE Sabrina</td><td>571</td></tr>
+<tr><td>BOSMORIN Suzanne</td><td>569.5</td></tr>
+<tr><td>GUGLIELMINOTTI Sonia</td><td>568</td></tr>
+<tr><td>PHILIPOT Clement</td><td>566</td></tr>
+<tr><td>PREVOT Lenaic</td><td>555</td></tr>
+<tr><td>MEYER Jerome</td><td>546</td></tr>
+<tr><td>TAMISIER Lucile</td><td>527</td></tr>
+<tr><td>FERNANDES Laurine</td><td>526</td></tr>
+<tr><td>LLODRA-MAYANS Rafael</td><td>502</td></tr>
+</table>
+</div>
 
+<div style="float: right;">
+<p>800 et 1500</p>
+
+<table class="table table-striped table-bordered table-hover table-condensed">
+<tr><th>n</th><th>moy</th></tr>
+<tr><td>GURACHI Youness</td><td>958</td></tr>
+<tr><td>CESSIRON Maxime</td><td>930.75</td></tr>
+<tr><td>FLANDRIN-THONIEL Igor</td><td>881.6667</td></tr>
+<tr><td>BESEGHER Antoni</td><td>825.5</td></tr>
+<tr><td>LAMBOLEY Victoria</td><td>819.25</td></tr>
+<tr><td>BOLLEE Elodie</td><td>806.8333</td></tr>
+<tr><td>JEM Aurelien</td><td>796</td></tr>
+<tr><td>SOFFIATI Thibaud</td><td>794.7</td></tr>
+<tr><td>ECZET Jean-baptiste</td><td>791</td></tr>
+<tr><td>HESRY Gwenael</td><td>784.5</td></tr>
+<tr><td>MOHAMMEDI Wahiba</td><td>781</td></tr>
+<tr><td>ROOS-WEIL Lise</td><td>771.6667</td></tr>
+<tr><td>SECHAUD Ema</td><td>765.8</td></tr>
+<tr><td>JACQUES Alexia</td><td>762</td></tr>
+<tr><td>PLUTON Lea</td><td>757</td></tr>
+<tr><td>ABDELKADER Yann</td><td>752.8571</td></tr>
+<tr><td>KUDELA Lucie</td><td>748</td></tr>
+<tr><td>DANGLADES Jean-christophe</td><td>747.2</td></tr>
+<tr><td>RAMIN Julie</td><td>741</td></tr>
+<tr><td>ANIESA Ange</td><td>724</td></tr>
+<tr><td>BRAULT Ines</td><td>719</td></tr>
+<tr><td>BALAGE Juliette</td><td>711</td></tr>
+<tr><td>BACON Karine</td><td>709</td></tr>
+<tr><td>DE VENDEGIES Xavier</td><td>709</td></tr>
+<tr><td>SONDEREGGER Lucas</td><td>700</td></tr>
+<tr><td>FAYE Louise</td><td>697</td></tr>
+<tr><td>LOUP Noemie</td><td>685</td></tr>
+<tr><td>COLLIARD Julie</td><td>676.5</td></tr>
+<tr><td>GOURDON Capucine</td><td>645.3333</td></tr>
+<tr><td>JAKOMULSKI Jessica</td><td>645</td></tr>
+<tr><td>CRANE Sabrina</td><td>642</td></tr>
+<tr><td>LE GUILLOU Yannick</td><td>608</td></tr>
+<tr><td>BOCCARA Valerie</td><td>596.3333</td></tr>
+<tr><td>BOULABI Margot</td><td>591</td></tr>
+<tr><td>FURTADO Erica-suely</td><td>589</td></tr>
+<tr><td>TAMISIER Lucile</td><td>586.5</td></tr>
+<tr><td>PIEL Julie</td><td>575</td></tr>
+<tr><td>NOEL Raphael</td><td>574.5</td></tr>
+<tr><td>TAFLER Clementine</td><td>574</td></tr>
+<tr><td>BOSMORIN Suzanne</td><td>569.5</td></tr>
+<tr><td>GUGLIELMINOTTI Sonia</td><td>568</td></tr>
+<tr><td>PHILIPOT Clement</td><td>566</td></tr>
+<tr><td>BAK Olivia</td><td>562.5</td></tr>
+<tr><td>PREVOT Lenaic</td><td>555</td></tr>
+<tr><td>MEYER Jerome</td><td>546</td></tr>
+<tr><td>FERNANDES Laurine</td><td>526</td></tr>
+<tr><td>LLODRA-MAYANS Rafael</td><td>502</td></tr>
+<tr><td>TUDEAU Amandine</td><td>468</td></tr>
+<tr><td>IJEOMA Joseph</td><td>393</td></tr>
+</table>
+
+</div>
+
+<div style="clear: both;"></div>
+</section>
 			<h3 id="4">Meilleures perfs</h3>
 			
-			<div class="alert alert-warning" role="alert">
-<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <span><b>&Agrave; noter</b></span>
-Il y a quelques erreurs à corriger dûes aux tours avec classements à la place
-</div>
-			
-			
-<table class="table table-striped table-bordered table-hover table-condensed" id="best_points"></table>
+Aller sur la page <a href="all.html"> et trier par la colonne <b>points</b>.		
+
 
 
 			<h3 id="5">Plus de points...</h3>
@@ -599,307 +748,285 @@ ORDER BY nb;</pre>
 function init_table(){
 	
 var data = { data : [
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'49.99',pt:1133,niv:'IB',nai:'88',a:2013,d:'19-mai'},
-{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100H',p:'13.22 (+1.5)',pt:1132,niv:'IB',nai:'0',a:2017,d:'21-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.34',pt:1118,niv:'N1',nai:'88',a:2016,d:'08-mai'},
-{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'50.45',pt:1113,niv:'N1',nai:'86',a:2013,d:'19-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.49',pt:1112,niv:'N1',nai:'88',a:2015,d:'10-mai'},
-{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'400',p:'52.94',pt:1103,niv:'N1',nai:'79',a:2010,d:'22-mai'},
-{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'400',p:'53.01',pt:1100,niv:'N1',nai:'89',a:2016,d:'22-mai'},
-{n:'ALEXANDER Ayanna (TTO)',c:'SE',s:'F',e:'Triple',p:'13m85 (+0.3)',pt:1093,niv:'N1',nai:'82',a:2016,d:'08-mai'},
-{n:'HERKENRATH Loic',c:'SE',s:'M',e:'110H',p:'13.86 (+3.0)',pt:1092,niv:'N2',nai:'94',a:2019,d:'05-mai'},
-{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100H',p:'13.55 (+2.2)',pt:1092,niv:'N1',nai:'0',a:2017,d:'07-mai'},
-{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m79 (+1.6)',pt:1092,niv:'N1',nai:'95',a:2019,d:'19/05'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'50.97',pt:1091,niv:'N1',nai:'88',a:2017,d:'21-mai'},
-{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.02',pt:1089,niv:'N1',nai:'86',a:2010,d:'22-mai'},
-{n:'MBALLA ERDINC Sylvie',c:'SE',s:'F',e:'100',p:'11.65 (+ 1.2)',pt:1085,niv:'N2',nai:'77',a:2009,d:'43588'},
-{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.20',pt:1081,niv:'N1',nai:'86',a:2010,d:'09-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.22',pt:1080,niv:'N1',nai:'88',a:2011,d:'08-mai'},
-{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'400',p:'53.65',pt:1079,niv:'N2',nai:'79',a:2010,d:'09-mai'},
-{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.29',pt:1077,niv:'N2',nai:'88',a:2010,d:'22-mai'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'16m34 (+2.6)',pt:1076,niv:'N2',nai:'77',a:2012,d:'06-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.11',pt:1075,niv:'N1',nai:'88',a:2018,d:'20-mai'},
-{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.38',pt:1074,niv:'N2',nai:'88',a:2009,d:'43601'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'16m30 (+1.0)',pt:1072,niv:'N1',nai:'77',a:2009,d:'43601'},
-{n:'FOFANA-KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.71 (+0.5)',pt:1072,niv:'N2',nai:'98',a:2017,d:'07-mai'},
-{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'51.42',pt:1072,niv:'N2',nai:'86',a:2013,d:'null'},
-{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.46',pt:1070,niv:'N2',nai:'88',a:2009,d:'43588'},
-{n:'HERKENRATH Loic',c:'SE',s:'M',e:'110H',p:'13.98 (+0.5)',pt:1070,niv:'N2',nai:'94',a:2019,d:'19/05'},
-{n:'KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.75 (-2.0)',pt:1067,niv:'N2',nai:'98',a:2016,d:'08-mai'},
-{n:'LEDUC Cynthia',c:'JU',s:'F',e:'200',p:'23.99 (-1.0)',pt:1067,niv:'N2',nai:'97',a:2016,d:'22-mai'},
-{n:'KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.78 (-1.8)',pt:1064,niv:'N2',nai:'98',a:2016,d:'22-mai'},
-{n:'FOFANA-KOUTOUAN Sarah',c:'JU',s:'F',e:'100H',p:'13.82 (-0.7)',pt:1059,niv:'N2',nai:'98',a:2017,d:'21-mai'},
-{n:'FRANCOIS Mickael',c:'ES',s:'M',e:'400H',p:'51.73',pt:1059,niv:'N2',nai:'88',a:2010,d:'09-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'46.88',pt:1058,niv:'N2',nai:'83',a:2012,d:'06-mai'},
-{n:'HURTIS-HOUAIRI Muriel',c:'SE',s:'F',e:'100',p:'11.82 (+0.0)',pt:1056,niv:'N2',nai:'79',a:2009,d:'43601'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.24 (-2.5)',pt:1056,niv:'N2',nai:'85',a:2016,d:'08-mai'},
-{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'59.74',pt:1054,niv:'N2',nai:'97',a:2016,d:'08-mai'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.25 (+1.1)',pt:1054,niv:'N3',nai:'85',a:2017,d:'21-mai'},
-{n:'KUDELA Lucie',c:'ES',s:'F',e:'400H',p:'58.96',pt:1052,niv:'N1',nai:'97',a:2018,d:'20-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.92',pt:1051,niv:'N2',nai:'88',a:2016,d:'22-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'51.64',pt:1050,niv:'N2',nai:'88',a:2018,d:'06-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'400H',p:'52.00',pt:1048,niv:'N2',nai:'88',a:2012,d:'06-mai'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.30 (-2.0)',pt:1047,niv:'N3',nai:'85',a:2016,d:'22-mai'},
-{n:'EFFA EFFA Junior',c:'ES',s:'M',e:'110H',p:'14.11 (-0.5)',pt:1046,niv:'N2',nai:'96',a:2018,d:'20-mai'},
-{n:'JEMAA-AMIROUCHE Dora',c:'SE',s:'F',e:'400H',p:'60.04',pt:1046,niv:'N2',nai:'85',a:2012,d:'06-mai'},
-{n:'LEDUC Cynthia',c:'ES',s:'F',e:'200',p:'23.89 (-2.6)',pt:1046,niv:'N2',nai:'97',a:2018,d:'20-mai'},
-{n:'LEWIS Abigail (JAM)',c:'SE',s:'F',e:'100H',p:'13.95 (0.5)',pt:1043,niv:'N2',nai:'93',a:2016,d:'08-mai'},
-{n:'ZONGO Amy',c:'SE',s:'F',e:'Triple',p:'13m40 (+1,5)',pt:1041,niv:'N1',nai:'80',a:2009,d:'43588'},
-{n:'JEMAA-AMIROUCHE Dora',c:'SE',s:'F',e:'400H',p:'60.27',pt:1040,niv:'N2',nai:'85',a:2013,d:'null'},
-{n:'LEWIS Abigail (JAM)',c:'JU',s:'F',e:'100H',p:'13.98 (+0.2)',pt:1040,niv:'N2',nai:'93',a:2012,d:'06-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'60.36',pt:1038,niv:'N2',nai:'97',a:2017,d:'21-mai'},
-{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'400',p:'47.23',pt:1037,niv:'N2',nai:'96',a:2017,d:'21-mai'},
-{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'60.43',pt:1036,niv:'N2',nai:'97',a:2016,d:'22-mai'},
-{n:'DUBOIS Ludovic',c:'SE',s:'M',e:'400H',p:'52.29',pt:1035,niv:'N2',nai:'86',a:2011,d:'08-mai'},
-{n:'LEWIS Abigail (JAM)',c:'SE',s:'F',e:'100H',p:'14.06 (-1.9)',pt:1030,niv:'N3',nai:'93',a:2016,d:'22-mai'},
-{n:'KOUNTA Muhammad abdall',c:'SE',s:'M',e:'400H',p:'52.44',pt:1029,niv:'N2',nai:'94',a:2017,d:'21-mai'},
-{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m49 (+3.3)',pt:1027,niv:'N2',nai:'95',a:2019,d:'05-mai'},
-{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m49 (+0.2)',pt:1027,niv:'N2',nai:'95',a:2018,d:'20-mai'},
-{n:'EFFA EFFA Junior',c:'ES',s:'M',e:'110H',p:'14.22 (- 0.8)',pt:1027,niv:'N2',nai:'96',a:2018,d:'06-mai'},
-{n:'MBALLA ERDINC Sylvie',c:'SE',s:'F',e:'100',p:'12.00 (+0.0)',pt:1026,niv:'N2',nai:'77',a:2009,d:'43601'},
-{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'200',p:'21.29 (+ 0.4)',pt:1025,niv:'N2',nai:'96',a:2018,d:'06-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'47.44',pt:1025,niv:'N2',nai:'83',a:2010,d:'22-mai'},
-{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400H',p:'60.93',pt:1023,niv:'N2',nai:'91',a:2015,d:'10-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'61.05',pt:1020,niv:'N2',nai:'97',a:2017,d:'07-mai'},
-{n:'LECHANGA Jules',c:'SE',s:'M',e:'Triple',p:'15m81 (-0.1)',pt:1020,niv:'N2',nai:'86',a:2017,d:'21-mai'},
-{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'200',p:'24.65 (+0.1)',pt:1019,niv:'N3',nai:'89',a:2017,d:'21-mai'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.49 (+1.5)',pt:1018,niv:'N3',nai:'85',a:2017,d:'07-mai'},
-{n:'LAINE Samyr (HAI)',c:'SE',s:'M',e:'Triple',p:'15m77 (+1.1)',pt:1015,niv:'N2',nai:'84',a:2016,d:'08-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'47.61',pt:1014,niv:'N2',nai:'83',a:2010,d:'09-mai'},
-{n:'KOUNTA Muhammad abdall',c:'SE',s:'M',e:'400H',p:'52.84',pt:1013,niv:'N3',nai:'94',a:2017,d:'07-mai'},
-{n:'ZONGO Amy',c:'SE',s:'F',e:'Triple',p:'13m15 (+1.0)',pt:1013,niv:'N1',nai:'80',a:2009,d:'43601'},
-{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'200',p:'21.38 (+0.0)',pt:1012,niv:'N2',nai:'96',a:2018,d:'20-mai'},
-{n:'LAINE Samyr (HAI)',c:'SE',s:'M',e:'Triple',p:'15m72 (-0.5)',pt:1010,niv:'N3',nai:'84',a:2016,d:'22-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'60.40',pt:1010,niv:'N2',nai:'97',a:2018,d:'20-mai'},
-{n:'DANTE Djenebou (MLI)',c:'SE',s:'F',e:'200',p:'24.95 (+0.9)',pt:998,niv:'N4',nai:'89',a:2017,d:'07-mai'},
-{n:'LEDUC Cynthia',c:'CA',s:'F',e:'200',p:'24.95 (+0.6)',pt:998,niv:'N4',nai:'97',a:2013,d:'null'},
-{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'61.98',pt:996,niv:'N3',nai:'84',a:2010,d:'09-mai'},
-{n:'LEDUC Cynthia',c:'ES',s:'F',e:'400',p:'56.27',pt:996,niv:'N4',nai:'97',a:2017,d:'21-mai'},
-{n:'CALYDON Cornnelly',c:'SE',s:'F',e:'200',p:'24.98 (-1.5)',pt:995,niv:'N4',nai:'89',a:2016,d:'08-mai'},
-{n:'LEDUC Cynthia',c:'ES',s:'F',e:'400',p:'55.54',pt:993,niv:'N3',nai:'97',a:2018,d:'06-mai'},
-{n:'AH-MOUCK Loic',c:'ES',s:'M',e:'400',p:'48.02',pt:990,niv:'N3',nai:'91',a:2012,d:'06-mai'},
-{n:'FAYE Louise',c:'SE',s:'F',e:'200',p:'25.07 (-0.8)',pt:989,niv:'N4',nai:'86',a:2011,d:'08-mai'},
-{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.51.43',pt:988,niv:'N3',nai:'90',a:2010,d:'09-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'53.44',pt:988,niv:'N3',nai:'88',a:2012,d:'06-mai'},
-{n:'AFOUMBA Gilles-anthony (CGO)',c:'ES',s:'M',e:'400',p:'48.06',pt:988,niv:'N3',nai:'96',a:2017,d:'07-mai'},
-{n:'LECHANGA Jules',c:'SE',s:'M',e:'Triple',p:'15m50 (+0.0)',pt:987,niv:'N3',nai:'86',a:2017,d:'07-mai'},
-{n:'LAMALLE Adrianna',c:'SE',s:'F',e:'100',p:'12.24 (+0.1)',pt:987,niv:'N4',nai:'82',a:2010,d:'09-mai'},
-{n:'LAMALLE Adrianna',c:'SE',s:'F',e:'100',p:'12.24 (+0.0)',pt:987,niv:'N4',nai:'82',a:2011,d:'08-mai'},
-{n:'NTIA Romeo (BEN)',c:'SE',s:'M',e:'Longueur',p:'7m30 (+0.0)',pt:986,niv:'N3',nai:'95',a:2018,d:'06-mai'},
-{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'62.38',pt:986,niv:'N3',nai:'84',a:2010,d:'22-mai'},
-{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'62.37',pt:986,niv:'N3',nai:'84',a:2011,d:'08-mai'},
-{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400',p:'56.65',pt:984,niv:'N4',nai:'91',a:2016,d:'22-mai'},
-{n:'ARMINANA Mickael',c:'ES',s:'M',e:'200',p:'21.68 (+0.0)',pt:984,niv:'N3',nai:'87',a:2009,d:'43601'},
-{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'Hauteur',p:'1m76',pt:984,niv:'N2',nai:'98',a:2019,d:'05-mai'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m31 (+0.0)',pt:982,niv:'N3',nai:'77',a:2011,d:'08-mai'},
-{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.51.71',pt:981,niv:'N3',nai:'90',a:2011,d:'08-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'48.21',pt:979,niv:'N2',nai:'83',a:2009,d:'43601'},
-{n:'HAMROUNI Hamza',c:'JU',s:'M',e:'Triple',p:'15m23 (+0.0)',pt:977,niv:'N3',nai:'99',a:2018,d:'06-mai'},
-{n:'DUARTE Sophie',c:'SE',s:'F',e:'3000',p:'9.43.40',pt:976,niv:'N2',nai:'81',a:2009,d:'43601'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'53.73',pt:976,niv:'N3',nai:'88',a:2016,d:'22-mai'},
-{n:'TOURE Sally',c:'JU',s:'F',e:'100H',p:'14.53 (+2.1)',pt:975,niv:'N4',nai:'94',a:2012,d:'06-mai'},
-{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'Hauteur',p:'1m75',pt:974,niv:'N3',nai:'98',a:2019,d:'19/05'},
-{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400',p:'57.00',pt:973,niv:'N4',nai:'91',a:2013,d:'null'},
-{n:'KOUTOUAN Sarah',c:'CA',s:'F',e:'100H',p:'14.57 (-2.1)',pt:970,niv:'N4',nai:'98',a:2015,d:'10-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'110H',p:'14.81 (-0.9)',pt:970,niv:'N4',nai:'88',a:2014,d:'04-mai'},
-{n:'TSHIKAYA Lea',c:'SE',s:'F',e:'400H',p:'63.04',pt:969,niv:'N3',nai:'91',a:2014,d:'04-mai'},
-{n:'MOHAMMEDI Wahiba',c:'ES',s:'F',e:'400H',p:'63.06',pt:969,niv:'N3',nai:'97',a:2017,d:'21-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.79 (-0.7)',pt:969,niv:'N3',nai:'92',a:2017,d:'21-mai'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Triple',p:'15m29 (+0,5)',pt:964,niv:'N2',nai:'77',a:2009,d:'43588'},
-{n:'EFFA EFFA Junior (GAB)',c:'ES',s:'M',e:'110H',p:'14.85 (+0.7)',pt:964,niv:'N4',nai:'96',a:2017,d:'21-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'54.05',pt:963,niv:'N4',nai:'88',a:2015,d:'10-mai'},
-{n:'HOUNSINOU Julie',c:'JU',s:'F',e:'400H',p:'63.30',pt:963,niv:'N3',nai:'97',a:2015,d:'10-mai'},
-{n:'KOUTOUAN Sarah',c:'CA',s:'F',e:'100H',p:'14.63 (+0.8)',pt:963,niv:'N4',nai:'98',a:2014,d:'04-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'200',p:'21.84 (-0.2)',pt:962,niv:'N3',nai:'83',a:2011,d:'08-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'62.07',pt:962,niv:'N3',nai:'97',a:2019,d:'19/05'},
-{n:'GURACHI Youness',c:'SE',s:'M',e:'200',p:'21.84 (+0.9)',pt:962,niv:'N3',nai:'83',a:2010,d:'22-mai'},
-{n:'TOURE Sally',c:'CA',s:'F',e:'100H',p:'14.64 (+0.0)',pt:962,niv:'N4',nai:'94',a:2011,d:'08-mai'},
-{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m69 (+0.0)',pt:960,niv:'N2',nai:'95',a:2017,d:'21-mai'},
-{n:'TOURE Sally',c:'JU',s:'F',e:'100H',p:'14.66 (+0.8)',pt:960,niv:'N4',nai:'94',a:2013,d:'null'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.61 (+4.0)',pt:959,niv:'N3',nai:'85',a:2019,d:'05-mai'},
-{n:'ARMINANA Mickael',c:'ES',s:'M',e:'200',p:'21.87 (+0,9)',pt:958,niv:'N3',nai:'87',a:2009,d:'43588'},
-{n:'GURACHI Youness',c:'SE',s:'M',e:'800',p:'1.52.54',pt:958,niv:'N3',nai:'83',a:2009,d:'43588'},
-{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100',p:'12.42 (-1.9)',pt:958,niv:'IR1',nai:'0',a:2016,d:'08-mai'},
-{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'15m22 (+0.4)',pt:957,niv:'N3',nai:'84',a:2017,d:'21-mai'},
-{n:'RAVON Thomas',c:'SE',s:'M',e:'110H',p:'14.62 (+0.9)',pt:957,niv:'N3',nai:'85',a:2019,d:'19/05'},
-{n:'SAMBA-MAYELA Cyrena',c:'CA',s:'F',e:'100',p:'12.43 (-1.1)',pt:957,niv:'IR1',nai:'0',a:2016,d:'22-mai'},
-{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.52.62',pt:956,niv:'N4',nai:'90',a:2012,d:'06-mai'},
-{n:'FRANCOIS Mickael',c:'SE',s:'M',e:'110H',p:'14.91 (+1.6)',pt:956,niv:'N4',nai:'88',a:2013,d:'null'},
-{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'100H',p:'14.50 (+1.7)',pt:956,niv:'N4',nai:'98',a:2019,d:'19/05'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m18 (-1.7)',pt:955,niv:'N4',nai:'77',a:2010,d:'22-mai'},
-{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400H',p:'63.66',pt:954,niv:'N4',nai:'91',a:2012,d:'06-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'62.36',pt:954,niv:'N3',nai:'97',a:2018,d:'06-mai'},
-{n:'COLLINET Agathe',c:'JU',s:'F',e:'200',p:'25.60 (+0.1)',pt:952,niv:'IR1',nai:'94',a:2012,d:'06-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.92 (+2.4)',pt:951,niv:'N4',nai:'92',a:2017,d:'07-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'400H',p:'54.35',pt:951,niv:'N4',nai:'88',a:2014,d:'04-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'200',p:'21.82 (+ 1.2)',pt:950,niv:'N3',nai:'92',a:2018,d:'06-mai'},
-{n:'TSHIKAYA Lea',c:'ES',s:'F',e:'400',p:'57.75',pt:950,niv:'IR1',nai:'91',a:2011,d:'08-mai'},
-{n:'DIAROUMA Tiguida',c:'JU',s:'F',e:'400',p:'57.80',pt:949,niv:'IR1',nai:'94',a:2012,d:'06-mai'},
-{n:'TOYB Gildas',c:'ES',s:'M',e:'100',p:'10.90 (+0.5)',pt:948,niv:'N4',nai:'97',a:2017,d:'07-mai'},
-{n:'NICOTRA Ferdinando (ITA)',c:'SE',s:'M',e:'Disque',p:'54m59',pt:948,niv:'N2',nai:'86',a:2013,d:'null'},
-{n:'BAMBA Aboubacar',c:'SE',s:'M',e:'Triple',p:'14m93 (+1.7)',pt:946,niv:'N4',nai:'91',a:2019,d:'05-mai'},
-{n:'GAGNEUX Valerie',c:'SE',s:'F',e:'400H',p:'63.96',pt:946,niv:'N4',nai:'84',a:2013,d:'null'},
-{n:'NZAMOWANI Jodelle',c:'ES',s:'F',e:'400H',p:'64.02',pt:945,niv:'N4',nai:'89',a:2010,d:'09-mai'},
-{n:'GURACHI Youness',c:'SE',s:'M',e:'200',p:'21.96 (+0.0)',pt:945,niv:'N4',nai:'83',a:2010,d:'09-mai'},
-{n:'LEDUC Cynthia',c:'JU',s:'F',e:'400',p:'57.97',pt:943,niv:'IR1',nai:'97',a:2016,d:'08-mai'},
-{n:'NZAMOWANI Jodelle',c:'ES',s:'F',e:'400H',p:'64.09',pt:943,niv:'N4',nai:'89',a:2010,d:'22-mai'},
-{n:'CHEVIOT Nicolas',c:'JU',s:'M',e:'100',p:'10.92 (+1.3)',pt:942,niv:'N4',nai:'93',a:2012,d:'06-mai'},
-{n:'AUCAGOS Sohane',c:'CA',s:'F',e:'Triple',p:'12m25 (+0.0)',pt:940,niv:'N3',nai:'3',a:2019,d:'05-mai'},
-{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'200',p:'25.78 (-0.3)',pt:939,niv:'IR2',nai:'94',a:2010,d:'22-mai'},
-{n:'AH-MOUCK Loic',c:'ES',s:'M',e:'400',p:'48.91',pt:939,niv:'N4',nai:'91',a:2013,d:'null'},
-{n:'MAGASSA Modibo',c:'ES',s:'M',e:'400',p:'48.92',pt:939,niv:'N4',nai:'88',a:2010,d:'22-mai'},
-{n:'DESCOUENS Laura',c:'ES',s:'F',e:'200',p:'25.78 (+1.3)',pt:939,niv:'IR2',nai:'90',a:2012,d:'06-mai'},
-{n:'KIMBEMBE Devilert-arsene (COD)',c:'SE',s:'M',e:'200',p:'22.02 (-1.0)',pt:937,niv:'N4',nai:'84',a:2016,d:'22-mai'},
-{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400H',p:'64.34',pt:937,niv:'N3',nai:'72',a:2009,d:'43601'},
-{n:'MOHAMMEDI Wahiba',c:'ES',s:'F',e:'400H',p:'64.33',pt:937,niv:'N4',nai:'97',a:2017,d:'07-mai'},
-{n:'SANTU Melia',c:'SE',s:'F',e:'Triple',p:'12m20 (+2.2)',pt:935,niv:'N3',nai:'95',a:2018,d:'20-mai'},
-{n:'COLLINET Agathe',c:'ES',s:'F',e:'200',p:'25.84 (+0.8)',pt:935,niv:'IR2',nai:'94',a:2015,d:'10-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.06 (-0.3)',pt:934,niv:'N4',nai:'88',a:2016,d:'08-mai'},
-{n:'ISSAKA Andrew',c:'SE',s:'M',e:'Longueur',p:'7m08 (+0.0)',pt:934,niv:'N4',nai:'92',a:2015,d:'10-mai'},
-{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'200',p:'25.86 (+1.0)',pt:934,niv:'IR2',nai:'94',a:2010,d:'09-mai'},
-{n:'CODJO Bruno',c:'JU',s:'M',e:'400',p:'49.00',pt:934,niv:'N4',nai:'97',a:2016,d:'22-mai'},
-{n:'CESSIRON Maxime',c:'ES',s:'M',e:'800',p:'1.53.44',pt:934,niv:'N4',nai:'90',a:2010,d:'22-mai'},
-{n:'HAMROUNI Hamza',c:'JU',s:'M',e:'Triple',p:'14m81 (-0.2)',pt:933,niv:'N4',nai:'99',a:2018,d:'20-mai'},
-{n:'KIMBEMBE Devilert-arsene (COD)',c:'SE',s:'M',e:'200',p:'22.05 (-0.5)',pt:933,niv:'N4',nai:'84',a:2016,d:'08-mai'},
-{n:'MAGASSA Modibo',c:'ES',s:'M',e:'400',p:'49.03',pt:932,niv:'N4',nai:'88',a:2010,d:'09-mai'},
-{n:'CLERENCE Elisa',c:'ES',s:'F',e:'100',p:'12.59 (-0.3)',pt:932,niv:'IR2',nai:'88',a:2010,d:'22-mai'},
-{n:'LEMACON Ridgy',c:'ES',s:'M',e:'110H',p:'15.08 (+0.0)',pt:931,niv:'N4',nai:'88',a:2010,d:'22-mai'},
-{n:'LAHAYE Mathieu',c:'SE',s:'M',e:'400',p:'49.10',pt:928,niv:'N3',nai:'83',a:2009,d:'43588'},
-{n:'CLERENCE Elisa',c:'ES',s:'F',e:'100',p:'12.61 (+0.0)',pt:928,niv:'IR2',nai:'88',a:2010,d:'09-mai'},
-{n:'LEWIS Abigail (JAM)',c:'ES',s:'F',e:'100H',p:'14.94 (-1.8)',pt:928,niv:'IR1',nai:'93',a:2015,d:'10-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'400',p:'48.87',pt:926,niv:'N4',nai:'92',a:2018,d:'20-mai'},
-{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400H',p:'64.80',pt:925,niv:'N3',nai:'72',a:2009,d:'43588'},
-{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'200',p:'22.11 (+0.9)',pt:925,niv:'N4',nai:'84',a:2017,d:'07-mai'},
-{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'200',p:'22.11 (-0.1)',pt:925,niv:'N4',nai:'84',a:2017,d:'21-mai'},
-{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.13 (+3.4)',pt:923,niv:'N4',nai:'88',a:2012,d:'06-mai'},
-{n:'TOYB Gildas',c:'ES',s:'M',e:'100',p:'10.99 (-0.8)',pt:922,niv:'IR1',nai:'97',a:2017,d:'21-mai'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'Longueur',p:'7m01 (+1.4)',pt:920,niv:'N4',nai:'77',a:2010,d:'09-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.04 (+ 0.5)',pt:917,niv:'N3',nai:'86',a:2009,d:'43588'},
-{n:'GREZE Stephane',c:'SE',s:'M',e:'Longueur',p:'7m00 (-0.5)',pt:917,niv:'N4',nai:'84',a:2016,d:'22-mai'},
-{n:'MENDY Paul (SEN)',c:'SE',s:'M',e:'Triple',p:'14m65 (+0.0)',pt:917,niv:'N4',nai:'89',a:2018,d:'06-mai'},
-{n:'TOUREL Thomas',c:'ES',s:'M',e:'200',p:'22.07 (+1.0)',pt:916,niv:'N4',nai:'99',a:2019,d:'05-mai'},
-{n:'TOUREL Thomas',c:'ES',s:'M',e:'200',p:'22.07 (+2.0)',pt:916,niv:'N4',nai:'99',a:2019,d:'19/05'},
-{n:'ALERTE David',c:'SE',s:'M',e:'200',p:'22.20 (-1.1)',pt:913,niv:'N4',nai:'84',a:2016,d:'22-mai'},
-{n:'LOISEAU Margot',c:'CA',s:'F',e:'200',p:'26.17 (+1.7)',pt:913,niv:'IR2',nai:'96',a:2013,d:'null'},
-{n:'DIAROUMA Tiguida',c:'CA',s:'F',e:'400',p:'59.02',pt:912,niv:'IR1',nai:'94',a:2011,d:'08-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.09 (-2.0)',pt:911,niv:'N3',nai:'86',a:2009,d:'43601'},
-{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m97 (+1.2)',pt:911,niv:'IR1',nai:'84',a:2017,d:'07-mai'},
-{n:'COLLINET Agathe',c:'CA',s:'F',e:'200',p:'26.20 (-1.5)',pt:911,niv:'IR2',nai:'94',a:2011,d:'08-mai'},
-{n:'ALERTE David',c:'SE',s:'M',e:'400',p:'49.43',pt:910,niv:'N4',nai:'84',a:2016,d:'08-mai'},
-{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.54.38',pt:910,niv:'IR1',nai:'79',a:2010,d:'09-mai'},
-{n:'VAILHE Baptiste',c:'JU',s:'M',e:'200',p:'22.11 (+1.9)',pt:910,niv:'N4',nai:'0',a:2019,d:'19/05'},
-{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.23 (+1.6)',pt:909,niv:'N4',nai:'88',a:2013,d:'null'},
-{n:'AH-MOUCK Loic',c:'SE',s:'M',e:'400',p:'49.45',pt:909,niv:'N4',nai:'91',a:2014,d:'04-mai'},
-{n:'HOUNSINOU Julie',c:'ES',s:'F',e:'400H',p:'63.96',pt:909,niv:'N4',nai:'97',a:2019,d:'05-mai'},
-{n:'TSHIKAYA Yowa',c:'CA',s:'F',e:'200',p:'26.24 (-0.4)',pt:908,niv:'IR2',nai:'1',a:2017,d:'21-mai'},
-{n:'SANTU Melia',c:'SE',s:'F',e:'Triple',p:'11m94 (-1.2)',pt:908,niv:'N4',nai:'95',a:2018,d:'06-mai'},
-{n:'SECQUEVILLE Melissa',c:'CA',s:'F',e:'100',p:'12.74 (+1.1)',pt:908,niv:'IR3',nai:'1',a:2017,d:'21-mai'},
-{n:'HOUNSINOU Julie',c:'CA',s:'F',e:'200',p:'26.25 (+1.5)',pt:907,niv:'IR3',nai:'97',a:2014,d:'04-mai'},
-{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.05.70',pt:906,niv:'IR1',nai:'84',a:2016,d:'22-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.27 (-1.9)',pt:904,niv:'IR1',nai:'88',a:2011,d:'08-mai'},
-{n:'BOUHADJER Mohamed',c:'ES',s:'M',e:'Perche',p:'4m80',pt:902,niv:'N4',nai:'91',a:2013,d:'null'},
-{n:'MESNIL Romain',c:'SE',s:'M',e:'Perche',p:'4m80',pt:902,niv:'N3',nai:'77',a:2009,d:'43601'},
-{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m15 (+1.8)',pt:899,niv:'N3',nai:'95',a:2017,d:'07-mai'},
-{n:'CLAUDE Nina',c:'JU',s:'F',e:'400',p:'59.52',pt:897,niv:'IR2',nai:'97',a:2015,d:'10-mai'},
-{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'14m66 (+0.9)',pt:897,niv:'N4',nai:'84',a:2017,d:'07-mai'},
-{n:'ROLLEZ Florian',c:'SE',s:'M',e:'200',p:'22.33 (-2.1)',pt:896,niv:'IR1',nai:'88',a:2015,d:'10-mai'},
-{n:'VAILHE Baptiste',c:'JU',s:'M',e:'200',p:'22.22 (+1.7)',pt:895,niv:'N4',nai:'0',a:2019,d:'05-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.24 (+0.0)',pt:895,niv:'IR1',nai:'86',a:2010,d:'09-mai'},
-{n:'SANTU Melia',c:'ES',s:'F',e:'Triple',p:'12m11 (+1.3)',pt:894,niv:'N3',nai:'95',a:2015,d:'10-mai'},
-{n:'MALELA Sogiros',c:'ES',s:'M',e:'100',p:'11.09 (+ 0.9)',pt:894,niv:'N3',nai:'87',a:2009,d:'43588'},
-{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m88 (+0.0)',pt:893,niv:'IR1',nai:'84',a:2016,d:'22-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'Triple',p:'14m62 (+0.9)',pt:893,niv:'N4',nai:'88',a:2011,d:'08-mai'},
-{n:'LE DIEU DE VILLE Elise',c:'ES',s:'F',e:'100H',p:'15.02 (+1.7)',pt:893,niv:'IR1',nai:'98',a:2019,d:'05-mai'},
-{n:'COLLINET Agathe',c:'ES',s:'F',e:'400',p:'59.66',pt:893,niv:'IR2',nai:'94',a:2014,d:'04-mai'},
-{n:'FRANZONI Lorenzo (ITA)',c:'SE',s:'M',e:'Triple',p:'14m61 (+0.0)',pt:892,niv:'N4',nai:'88',a:2014,d:'04-mai'},
-{n:'MENDY Paul (SEN)',c:'SE',s:'M',e:'Triple',p:'14m42 (+0.9)',pt:892,niv:'IR1',nai:'89',a:2018,d:'20-mai'},
-{n:'POTTEZ-JOUATTE Valentine',c:'CA',s:'F',e:'100',p:'12.85 (+0.1)',pt:891,niv:'IR4',nai:'96',a:2012,d:'06-mai'},
-{n:'BIKELEL Anne',c:'CA',s:'F',e:'400',p:'59.79',pt:889,niv:'IR2',nai:'1',a:2017,d:'21-mai'},
-{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.08.17',pt:889,niv:'IR1',nai:'84',a:2019,d:'19/05'},
-{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m84 (+0.0)',pt:888,niv:'IR1',nai:'96',a:2018,d:'06-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.30 (-0.3)',pt:888,niv:'IR2',nai:'86',a:2010,d:'22-mai'},
-{n:'CODJO Bruno',c:'JU',s:'M',e:'400',p:'49.84',pt:887,niv:'IR1',nai:'97',a:2015,d:'10-mai'},
-{n:'KOUASSI Haudy-meven',c:'SE',s:'M',e:'100',p:'11.00 (+2.2)',pt:886,niv:'IR1',nai:'96',a:2019,d:'19/05'},
-{n:'VILOCY Sara',c:'SE',s:'F',e:'Hauteur',p:'1m70',pt:885,niv:'N4',nai:'88',a:2011,d:'08-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.33 (+0.1)',pt:885,niv:'IR2',nai:'86',a:2014,d:'04-mai'},
-{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'51m19',pt:884,niv:'N3',nai:'92',a:2015,d:'10-mai'},
-{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'100',p:'11.01 (- 1.2)',pt:883,niv:'IR1',nai:'84',a:2018,d:'06-mai'},
-{n:'MOUILLET Zoe',c:'JU',s:'F',e:'200',p:'25.65 (+1.9)',pt:883,niv:'IR1',nai:'0',a:2019,d:'05-mai'},
-{n:'GURACHI Youness',c:'SE',s:'M',e:'800',p:'1.55.44',pt:882,niv:'N3',nai:'83',a:2009,d:'43601'},
-{n:'SECQUEVILLE Melissa',c:'CA',s:'F',e:'100',p:'12.92 (+1.3)',pt:881,niv:'IR4',nai:'1',a:2017,d:'07-mai'},
-{n:'LAMBOLEY Victoria',c:'SE',s:'F',e:'800',p:'2.16.79',pt:881,niv:'N4',nai:'93',a:2018,d:'06-mai'},
-{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m82 (+1.2)',pt:880,niv:'IR1',nai:'96',a:2017,d:'07-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'400H',p:'55.35',pt:880,niv:'IR1',nai:'92',a:2019,d:'05-mai'},
-{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m82 (+1.4)',pt:880,niv:'IR1',nai:'96',a:2016,d:'08-mai'},
-{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m82 (+2.7)',pt:880,niv:'IR1',nai:'84',a:2016,d:'08-mai'},
-{n:'BENNIA Ahmed',c:'SE',s:'M',e:'200',p:'22.47 (+1.3)',pt:878,niv:'IR1',nai:'90',a:2014,d:'04-mai'},
-{n:'LEFEUVRE Jimmy',c:'SE',s:'M',e:'400H',p:'56.21',pt:878,niv:'N3',nai:'82',a:2009,d:'43601'},
-{n:'BENNIA Ahmed',c:'SE',s:'M',e:'200',p:'22.47 (-0.7)',pt:878,niv:'IR1',nai:'90',a:2015,d:'10-mai'},
-{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.05',pt:877,niv:'IR1',nai:'97',a:2018,d:'06-mai'},
-{n:'CLAUDE Nina',c:'CA',s:'F',e:'400',p:'60.22',pt:876,niv:'IR2',nai:'97',a:2014,d:'04-mai'},
-{n:'PERSELLO Sophie',c:'JU',s:'F',e:'100H',p:'15.41 (+ 0.9)',pt:876,niv:'R1',nai:'91',a:2009,d:'43588'},
-{n:'POTTEZ-JOUATTE Valentine',c:'CA',s:'F',e:'100',p:'12.95 (+2.1)',pt:876,niv:'IR4',nai:'96',a:2013,d:'null'},
-{n:'TSHIKAYA Yowa',c:'JU',s:'F',e:'100',p:'12.60 (+2.3)',pt:876,niv:'IR2',nai:'1',a:2019,d:'05-mai'},
-{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.16 (+0.3)',pt:875,niv:'IR2',nai:'96',a:2017,d:'21-mai'},
-{n:'BARANGER-MERINO Alberto',c:'SE',s:'M',e:'Marteau',p:'60m67',pt:875,niv:'N2',nai:'81',a:2009,d:'43588'},
-{n:'CANARD Raphael',c:'ES',s:'M',e:'Longueur',p:'6m78 (+1.1)',pt:875,niv:'IR2',nai:'96',a:2018,d:'20-mai'},
-{n:'BESEGHER Antoni',c:'JU',s:'M',e:'800',p:'1.55.71',pt:875,niv:'IR1',nai:'98',a:2017,d:'21-mai'},
-{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.16 (+1.9)',pt:875,niv:'IR2',nai:'96',a:2017,d:'07-mai'},
-{n:'ADDOH Axel',c:'SE',s:'M',e:'400H',p:'55.45',pt:875,niv:'IR1',nai:'92',a:2019,d:'19/05'},
-{n:'KIMBEMBE Devilert-arsene (CGO)',c:'SE',s:'M',e:'100',p:'11.04 (-1.2)',pt:874,niv:'IR1',nai:'84',a:2018,d:'20-mai'},
-{n:'HAMROUNI Hamza',c:'ES',s:'M',e:'Triple',p:'14m23 (+1.5)',pt:873,niv:'IR1',nai:'99',a:2019,d:'05-mai'},
-{n:'FOFANA Colomba',c:'SE',s:'M',e:'100',p:'11.17 (-0.1)',pt:872,niv:'IR2',nai:'77',a:2011,d:'08-mai'},
-{n:'BOLLEE Elodie',c:'SE',s:'F',e:'800',p:'2.16.97',pt:872,niv:'N4',nai:'84',a:2014,d:'04-mai'},
-{n:'ISSIFOU Sandra',c:'SE',s:'F',e:'100',p:'12.99 (+ 1.1)',pt:870,niv:'R1',nai:'83',a:2009,d:'43588'},
-{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'3.58.69',pt:870,niv:'IR1',nai:'85',a:2015,d:'10-mai'},
-{n:'HERELIUS Lindsay',c:'ES',s:'F',e:'100',p:'12.99 (+2.1)',pt:870,niv:'IR4',nai:'93',a:2013,d:'null'},
-{n:'BEURION Mathieu',c:'SE',s:'M',e:'5000 marche',p:'24.02.44',pt:870,niv:'IR2',nai:'89',a:2014,d:'04-mai'},
-{n:'FRANZONI Lorenzo (ITA)',c:'SE',s:'M',e:'Triple',p:'14m40 (+0.3)',pt:870,niv:'IR1',nai:'88',a:2016,d:'08-mai'},
-{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.56',pt:869,niv:'IR1',nai:'97',a:2019,d:'19/05'},
-{n:'SACKO Hatouma',c:'ES',s:'F',e:'200',p:'26.85 (-1.8)',pt:867,niv:'IR4',nai:'96',a:2016,d:'08-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.16 (-0.8)',pt:867,niv:'IR1',nai:'88',a:2018,d:'20-mai'},
-{n:'SAMANGARAY Baba',c:'SE',s:'M',e:'110H',p:'15.16 (+ 0.1)',pt:867,niv:'IR1',nai:'88',a:2018,d:'06-mai'},
-{n:'MALELA Sogiros',c:'SE',s:'M',e:'100',p:'11.19 (+1.6)',pt:866,niv:'IR2',nai:'87',a:2010,d:'09-mai'},
-{n:'GUTTIN Nicolas',c:'SE',s:'M',e:'3000 steeple',p:'9.40.20',pt:865,niv:'IR2',nai:'87',a:2013,d:'null'},
-{n:'GREZE Stephane',c:'SE',s:'M',e:'Triple',p:'14m16 (-1.2)',pt:865,niv:'IR1',nai:'84',a:2019,d:'19/05'},
-{n:'GOMES Anthony',c:'ES',s:'M',e:'400',p:'49.90',pt:864,niv:'IR1',nai:'97',a:2019,d:'19/05'},
-{n:'SECHAUD Ema',c:'ES',s:'F',e:'800',p:'2.17.99',pt:863,niv:'IR1',nai:'97',a:2018,d:'20-mai'},
-{n:'TSHIKAYA Yowa',c:'JU',s:'F',e:'200',p:'25.87 (+1.1)',pt:863,niv:'IR2',nai:'1',a:2019,d:'19/05'},
-{n:'CISSAKO Mahamadou',c:'SE',s:'M',e:'400',p:'50.31',pt:861,niv:'N3',nai:'86',a:2009,d:'43601'},
-{n:'BOLLEE Elodie',c:'SE',s:'F',e:'3000',p:'10.17.56',pt:861,niv:'IR1',nai:'84',a:2019,d:'05-mai'},
-{n:'PAGET-BLANC Alexandra',c:'JU',s:'F',e:'400H',p:'67.44',pt:861,niv:'IR2',nai:'93',a:2011,d:'08-mai'},
-{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'49m96',pt:861,niv:'N3',nai:'92',a:2016,d:'22-mai'},
-{n:'PUJAR Yannis',c:'SE',s:'M',e:'Disque',p:'49m94',pt:860,niv:'N3',nai:'92',a:2016,d:'08-mai'},
-{n:'LAMBOLEY Victoria',c:'SE',s:'F',e:'800',p:'2.18.16',pt:860,niv:'IR1',nai:'93',a:2018,d:'20-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100H',p:'15.56 (+1.4)',pt:859,niv:'IR2',nai:'86',a:2013,d:'null'},
-{n:'NIENAT Lawrence',c:'JU',s:'F',e:'400',p:'60.82',pt:859,niv:'IR3',nai:'97',a:2015,d:'10-mai'},
-{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'1500',p:'3.59.62',pt:859,niv:'IR2',nai:'79',a:2010,d:'22-mai'},
-{n:'TSHIKAYA Yowa',c:'CA',s:'F',e:'200',p:'25.92 (-1.9)',pt:859,niv:'IR2',nai:'1',a:2018,d:'20-mai'},
-{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'3.59.71',pt:858,niv:'IR2',nai:'85',a:2011,d:'08-mai'},
-{n:'SANTU Melia',c:'ES',s:'F',e:'100',p:'13.08 (+0.4)',pt:857,niv:'R1',nai:'95',a:2017,d:'21-mai'},
-{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.56.42',pt:857,niv:'N3',nai:'79',a:2009,d:'43601'},
-{n:'DIELNA Samuel',c:'JU',s:'M',e:'200',p:'22.63 (+0.2)',pt:857,niv:'IR2',nai:'96',a:2014,d:'04-mai'},
-{n:'ANDRE Michel',c:'SE',s:'M',e:'Marteau',p:'59m48',pt:856,niv:'N2',nai:'70',a:2009,d:'43601'},
-{n:'ANIESA Ange',c:'SE',s:'M',e:'400',p:'50.41',pt:856,niv:'IR1',nai:'90',a:2016,d:'22-mai'},
-{n:'KOUASSI Haudy-meven',c:'ES',s:'M',e:'100',p:'11.23 (0.7)',pt:855,niv:'IR2',nai:'96',a:2016,d:'08-mai'},
-{n:'DIELNA Samuel',c:'CA',s:'M',e:'100',p:'11.23 (+1.7)',pt:855,niv:'IR2',nai:'96',a:2013,d:'null'},
-{n:'BESEGHER Antoni',c:'JU',s:'M',e:'800',p:'1.56.49',pt:855,niv:'IR1',nai:'98',a:2017,d:'07-mai'},
-{n:'LAMBOLEY Victoria',c:'ES',s:'F',e:'800',p:'2.18.10',pt:854,niv:'IR1',nai:'93',a:2015,d:'10-mai'},
-{n:'BIKELEL Anne',c:'JU',s:'F',e:'Triple',p:'11m40 (+1.9)',pt:854,niv:'IR1',nai:'1',a:2019,d:'05-mai'},
-{n:'BOLLEE Elodie',c:'SE',s:'F',e:'1500',p:'4.48.19',pt:853,niv:'IR2',nai:'84',a:2013,d:'null'},
-{n:'MALELA Sogiros',c:'SE',s:'M',e:'100',p:'11.24 (+0.7)',pt:853,niv:'IR2',nai:'87',a:2010,d:'22-mai'},
-{n:'ANDRE Michel',c:'VE',s:'M',e:'Marteau',p:'59m26',pt:853,niv:'N3',nai:'70',a:2010,d:'22-mai'},
-{n:'ABOUKE Hermance',c:'SE',s:'F',e:'100',p:'13.11 (+2.2)',pt:852,niv:'R1',nai:'86',a:2012,d:'06-mai'},
-{n:'ECZET Jean-baptiste',c:'SE',s:'M',e:'800',p:'1.56.64',pt:852,niv:'IR1',nai:'82',a:2010,d:'22-mai'},
-{n:'FLANDRIN-THONIEL Igor',c:'SE',s:'M',e:'800',p:'1.56.65',pt:851,niv:'N3',nai:'79',a:2009,d:'43588'},
-{n:'ALERTE David',c:'SE',s:'M',e:'Longueur',p:'6m67 (-0.7)',pt:849,niv:'IR2',nai:'84',a:2017,d:'21-mai'},
-{n:'SOFFIATI Thibaud',c:'SE',s:'M',e:'1500',p:'4.00.64',pt:847,niv:'IR2',nai:'85',a:2012,d:'06-mai'},
-{n:'EFFA EFFA Junior (GAB)',c:'JU',s:'M',e:'110H',p:'15.68 (+0.8)',pt:846,niv:'IR2',nai:'96',a:2015,d:'10-mai'},
-{n:'REBIHI Scherazade',c:'SE',s:'F',e:'400',p:'61.24',pt:846,niv:'IR3',nai:'72',a:2010,d:'22-mai'},
-{n:'DEMONTIGNY Melissa',c:'SE',s:'F',e:'Perche',p:'3m60',pt:845,niv:'N3',nai:'87',a:2015,d:'10-mai'},
-{n:'DEMONTIGNY Melissa',c:'SE',s:'F',e:'Perche',p:'3m60',pt:845,niv:'N3',nai:'87',a:2014,d:'04-mai'},
-{n:'BOULABI Margot',c:'CA',s:'F',e:'400',p:'61.28',pt:845,niv:'IR3',nai:'96',a:2013,d:'null'}
-
+{n:'ABBASSI Laysa', pts:2754, nb:6, avg:459.0000},
+{n:'ABDELKADER Yann', pts:14310, nb:21, avg:681.4286},
+{n:'ABOUKE Hermance', pts:19381, nb:23, avg:842.6522},
+{n:'ADDOH Axel', pts:5991, nb:7, avg:855.8571},
+{n:'AFOUMBA Gilles-anthony (CGO)', pts:4062, nb:4, avg:1015.5000},
+{n:'AH-MOUCK Loic', pts:5062, nb:6, avg:843.6667},
+{n:'ALERTE David', pts:8665, nb:11, avg:787.7273},
+{n:'ALEXANDER Ayanna (TTO)', pts:3011, nb:4, avg:752.7500},
+{n:'ALLERES Isabelle', pts:495, nb:1, avg:495.0000},
+{n:'AMBROS Jerome', pts:4807, nb:8, avg:600.8750},
+{n:'ANDRE Michel', pts:9052, nb:11, avg:822.9091},
+{n:'ANDRIEU Olivier', pts:12590, nb:19, avg:662.6316},
+{n:'ANIESA Ange', pts:3992, nb:5, avg:798.4000},
+{n:'ARMINANA Mickael', pts:3402, nb:4, avg:850.5000},
+{n:'AUCAGOS Nawel', pts:3701, nb:6, avg:616.8333},
+{n:'AUCAGOS Sohane', pts:1745, nb:2, avg:872.5000},
+{n:'BA Mamadou', pts:816, nb:1, avg:816.0000},
+{n:'BACON Karine', pts:1415, nb:2, avg:707.5000},
+{n:'BAK Olivia', pts:2249, nb:4, avg:562.2500},
+{n:'BAKHAYOKHO Mary', pts:513, nb:1, avg:513.0000},
+{n:'BALAGE Juliette', pts:2107, nb:3, avg:702.3333},
+{n:'BAMBA Aboubacar', pts:946, nb:1, avg:946.0000},
+{n:'BARA Franck', pts:1107, nb:2, avg:553.5000},
+{n:'BARANGER-MERINO Alberto', pts:11003, nb:14, avg:785.9286},
+{n:'BARITAUX Hadrien', pts:1124, nb:2, avg:562.0000},
+{n:'BARLES Pauline', pts:1561, nb:2, avg:780.5000},
+{n:'BAUNAY Isabelle', pts:636, nb:1, avg:636.0000},
+{n:'BENICHOU Thomas', pts:2324, nb:3, avg:774.6667},
+{n:'BENNIA Ahmed', pts:5195, nb:7, avg:742.1429},
+{n:'BERTEVAS Antony', pts:648, nb:1, avg:648.0000},
+{n:'BESEGHER Antoni', pts:3252, nb:4, avg:813.0000},
+{n:'BEURION Mathieu', pts:7362, nb:10, avg:736.2000},
+{n:'BIKELEL Anne', pts:9696, nb:12, avg:808.0000},
+{n:'BOCCARA Valerie', pts:7905, nb:16, avg:494.0625},
+{n:'BOLLEE Elodie', pts:12261, nb:15, avg:817.4000},
+{n:'BONDILANGE Anne-cecile', pts:8843, nb:12, avg:736.9167},
+{n:'BOSMORIN Suzanne', pts:3147, nb:5, avg:629.4000},
+{n:'BOUHADJER Mohamed', pts:2248, nb:3, avg:749.3333},
+{n:'BOULABI Margot', pts:6947, nb:12, avg:578.9167},
+{n:'BOUSSADIA Mourad', pts:807, nb:1, avg:807.0000},
+{n:'BRAULT Ines', pts:4096, nb:6, avg:682.6667},
+{n:'BROCHOT Sandrine', pts:4720, nb:8, avg:590.0000},
+{n:'BROU Florent', pts:8300, nb:12, avg:691.6667},
+{n:'CABRAL Flor', pts:566, nb:1, avg:566.0000},
+{n:'CALYDON Cornnelly', pts:3512, nb:4, avg:878.0000},
+{n:'CANARD Alize', pts:5309, nb:11, avg:482.6364},
+{n:'CANARD Raphael', pts:13911, nb:18, avg:772.8333},
+{n:'CESSIRON Maxime', pts:7293, nb:8, avg:911.6250},
+{n:'CEYTE Arnaud', pts:3946, nb:6, avg:657.6667},
+{n:'CHARLERY Adeline', pts:1905, nb:6, avg:317.5000},
+{n:'CHASTANG Cedric', pts:4976, nb:9, avg:552.8889},
+{n:'CHASTANG Christophe', pts:378, nb:1, avg:378.0000},
+{n:'CHEVIOT Nicolas', pts:1821, nb:2, avg:910.5000},
+{n:'CIRET Alexandre', pts:1260, nb:2, avg:630.0000},
+{n:'CISSAKO Mahamadou', pts:861, nb:1, avg:861.0000},
+{n:'CITRON Florian', pts:2168, nb:4, avg:542.0000},
+{n:'CLAUDE Nina', pts:4698, nb:6, avg:783.0000},
+{n:'CLERENCE Elisa', pts:2842, nb:4, avg:710.5000},
+{n:'CODJO Bruno', pts:6996, nb:9, avg:777.3333},
+{n:'COLLIARD Julie', pts:3734, nb:8, avg:466.7500},
+{n:'COLLINET Agathe', pts:7946, nb:9, avg:882.8889},
+{n:'COLOMBIE Vincent', pts:458, nb:1, avg:458.0000},
+{n:'CONDORE Melina', pts:1618, nb:2, avg:809.0000},
+{n:'CRANE Sabrina', pts:6536, nb:9, avg:726.2222},
+{n:'DA HORTA SEMEDO Tony', pts:5242, nb:10, avg:524.2000},
+{n:'DAMBAS Yohann', pts:739, nb:1, avg:739.0000},
+{n:'DANGLADES Jean-christophe', pts:7273, nb:10, avg:727.3000},
+{n:'DANTE Djenebou (MLI)', pts:4023, nb:5, avg:804.6000},
+{n:'DAUMONT Olivier', pts:2029, nb:3, avg:676.3333},
+{n:'DE CARGOUET DE R Yann', pts:2250, nb:5, avg:450.0000},
+{n:'DE VENDEGIES Xavier', pts:709, nb:1, avg:709.0000},
+{n:'DELAGE Jeanne', pts:771, nb:1, avg:771.0000},
+{n:'DEMBELE Fatoumata', pts:739, nb:2, avg:369.5000},
+{n:'DEMONTIGNY Melissa', pts:9715, nb:15, avg:647.6667},
+{n:'DESCOUENS Laura', pts:1786, nb:2, avg:893.0000},
+{n:'DETOUCHE Manon', pts:2793, nb:6, avg:465.5000},
+{n:'DIANI Ilyas', pts:5788, nb:10, avg:578.8000},
+{n:'DIAROUMA Tiguida', pts:6671, nb:8, avg:833.8750},
+{n:'DIELNA Samuel', pts:4893, nb:6, avg:815.5000},
+{n:'DJHONE Leslie', pts:1308, nb:2, avg:654.0000},
+{n:'DJIAN Ary', pts:2468, nb:3, avg:822.6667},
+{n:'DOS REIS Ruben', pts:684, nb:1, avg:684.0000},
+{n:'DUARTE Sophie', pts:976, nb:1, avg:976.0000},
+{n:'DUBOIS Ludovic', pts:11414, nb:13, avg:878.0000},
+{n:'DUMAS Mireille', pts:2368, nb:4, avg:592.0000},
+{n:'ECZET Jean-baptiste', pts:2374, nb:3, avg:791.3333},
+{n:'EFFA EFFA Junior', pts:2900, nb:3, avg:966.6667},
+{n:'EFFA EFFA Junior (GAB)', pts:3888, nb:5, avg:777.6000},
+{n:'EL KADAOUI Samir', pts:7602, nb:11, avg:691.0909},
+{n:'EMBOULE Julien', pts:603, nb:1, avg:603.0000},
+{n:'EXBRAYAT Helene', pts:995, nb:2, avg:497.5000},
+{n:'FAYE Louise', pts:6618, nb:8, avg:827.2500},
+{n:'FERNANDES Laurine', pts:2237, nb:4, avg:559.2500},
+{n:'FILEUX Arnaud', pts:726, nb:1, avg:726.0000},
+{n:'FINET Lucas', pts:4252, nb:9, avg:472.4444},
+{n:'FLAMBARD Antoine', pts:1293, nb:2, avg:646.5000},
+{n:'FLANDRIN-THONIEL Igor', pts:5156, nb:6, avg:859.3333},
+{n:'FOFANA Colomba', pts:10623, nb:11, avg:965.7273},
+{n:'FOFANA-KOUTOUAN Fiona', pts:448, nb:1, avg:448.0000},
+{n:'FOFANA-KOUTOUAN Sarah', pts:3228, nb:4, avg:807.0000},
+{n:'FORIN Francois', pts:7929, nb:12, avg:660.7500},
+{n:'FOZZI-FANCHON Ambra', pts:671, nb:1, avg:671.0000},
+{n:'FRANCOIS Mickael', pts:29949, nb:33, avg:907.5455},
+{n:'FRANZONI Lorenzo (ITA)', pts:5165, nb:6, avg:860.8333},
+{n:'FURTADO Erica-suely', pts:987, nb:2, avg:493.5000},
+{n:'GAGNEUX Valerie', pts:8559, nb:11, avg:778.0909},
+{n:'GAVA-RAINA Anais', pts:94, nb:1, avg:94.0000},
+{n:'GAY Maiwenn', pts:1825, nb:3, avg:608.3333},
+{n:'GNAHO Thomas', pts:4747, nb:6, avg:791.1667},
+{n:'GOMES Anthony', pts:2735, nb:4, avg:683.7500},
+{n:'GOURDON Capucine', pts:2575, nb:4, avg:643.7500},
+{n:'GRAVA Jean-marc', pts:1657, nb:3, avg:552.3333},
+{n:'GREZE Stephane', pts:6134, nb:7, avg:876.2857},
+{n:'GUERINI Priscilla rache', pts:2760, nb:4, avg:690.0000},
+{n:'GUGLIELMINOTTI Sonia', pts:4508, nb:8, avg:563.5000},
+{n:'GUIDEZ Isabelle', pts:2507, nb:5, avg:501.4000},
+{n:'GUIHUR Noemie', pts:747, nb:1, avg:747.0000},
+{n:'GURACHI Youness', pts:3747, nb:4, avg:936.7500},
+{n:'GUTTIN Nicolas', pts:3353, nb:4, avg:838.2500},
+{n:'HAKMI Abdelaziz', pts:1116, nb:2, avg:558.0000},
+{n:'HAMMOUCHE Maud', pts:2610, nb:4, avg:652.5000},
+{n:'HAMROUNI Hamza', pts:3575, nb:4, avg:893.7500},
+{n:'HARZOUNE Leslie', pts:995, nb:2, avg:497.5000},
+{n:'HATIL Rosny', pts:471, nb:1, avg:471.0000},
+{n:'HELIER Marie', pts:2421, nb:4, avg:605.2500},
+{n:'HERELIUS Lindsay', pts:3890, nb:5, avg:778.0000},
+{n:'HERKENRATH Loic', pts:2162, nb:2, avg:1081.0000},
+{n:'HESRY Gwenael', pts:6628, nb:9, avg:736.4444},
+{n:'HEUVELINE Fiona', pts:1204, nb:2, avg:602.0000},
+{n:'HINKIN Jason (USA)', pts:789, nb:1, avg:789.0000},
+{n:'HOUDAYER Aicha', pts:9072, nb:17, avg:533.6471},
+{n:'HOUNSINOU Julie', pts:17493, nb:24, avg:728.8750},
+{n:'HOUSSOU Johan', pts:1468, nb:2, avg:734.0000},
+{n:'HUGGLER Marc-olivier (POL)', pts:5866, nb:10, avg:586.6000},
+{n:'HURTIS-HOUAIRI Muriel', pts:4072, nb:4, avg:1018.0000},
+{n:'IJEOMA Joseph', pts:393, nb:1, avg:393.0000},
+{n:'ISSAKA Andrew', pts:3439, nb:4, avg:859.7500},
+{n:'ISSIFOU Sandra', pts:3283, nb:4, avg:820.7500},
+{n:'IWANDZA Mickaelle', pts:313, nb:1, avg:313.0000},
+{n:'JACQUES Alexia', pts:2858, nb:4, avg:714.5000},
+{n:'JAKOMULSKI Jessica', pts:1277, nb:2, avg:638.5000},
+{n:'JARNET Eva', pts:702, nb:1, avg:702.0000},
+{n:'JEM Aurelien', pts:3027, nb:4, avg:756.7500},
+{n:'JEMAA-AMIROUCHE Dora', pts:5544, nb:6, avg:924.0000},
+{n:'JOUISSE Aurelie', pts:537, nb:1, avg:537.0000},
+{n:'KADER Sandrine', pts:852, nb:2, avg:426.0000},
+{n:'KEFLE France-lise', pts:439, nb:1, avg:439.0000},
+{n:'KIMBEMBE Devilert-arsene (CGO)', pts:3607, nb:4, avg:901.7500},
+{n:'KIMBEMBE Devilert-arsene (COD)', pts:1870, nb:2, avg:935.0000},
+{n:'KIONGA Danielle', pts:2658, nb:5, avg:531.6000},
+{n:'KOUASSI Haudy-meven', pts:5080, nb:6, avg:846.6667},
+{n:'KOUASSI Haudy-mexen', pts:1475, nb:2, avg:737.5000},
+{n:'KOUE-BOADET Kenny', pts:1500, nb:2, avg:750.0000},
+{n:'KOUNTA Muhammad abdall', pts:2042, nb:2, avg:1021.0000},
+{n:'KOUTOUAN Albertine (CIV)', pts:1977, nb:4, avg:494.2500},
+{n:'KOUTOUAN Fiona', pts:6061, nb:10, avg:606.1000},
+{n:'KOUTOUAN Sarah', pts:10458, nb:12, avg:871.5000},
+{n:'KUDELA Lucie', pts:4579, nb:6, avg:763.1667},
+{n:'LAGARDE Sebastien', pts:1814, nb:3, avg:604.6667},
+{n:'LAHAYE Mathieu', pts:6729, nb:7, avg:961.2857},
+{n:'LAINE Samyr (HAI)', pts:2548, nb:3, avg:849.3333},
+{n:'LALONDE Mathieu', pts:829, nb:1, avg:829.0000},
+{n:'LAMALLE Adrianna', pts:3331, nb:4, avg:832.7500},
+{n:'LAMBOLEY Victoria', pts:6127, nb:8, avg:765.8750},
+{n:'LANGERON Matthieu', pts:489, nb:1, avg:489.0000},
+{n:'LARISSE Anddy', pts:6629, nb:12, avg:552.4167},
+{n:'LE DIEU DE VILLE Elise', pts:3807, nb:4, avg:951.7500},
+{n:'LE FLOCH Celine', pts:4123, nb:9, avg:458.1111},
+{n:'LE FLOCH Olivier', pts:569, nb:1, avg:569.0000},
+{n:'LE GUILLOU Yannick', pts:608, nb:1, avg:608.0000},
+{n:'LE PRIOL Etienne', pts:486, nb:1, avg:486.0000},
+{n:'LECHANGA Jules', pts:3145, nb:4, avg:786.2500},
+{n:'LECURIEUX Philippe', pts:617, nb:1, avg:617.0000},
+{n:'LEDUC Cynthia', pts:15700, nb:22, avg:713.6364},
+{n:'LEFEUVRE Jimmy', pts:1203, nb:2, avg:601.5000},
+{n:'LEMACON Ridgy', pts:931, nb:1, avg:931.0000},
+{n:'LEWIS Abigail (JAM)', pts:10966, nb:12, avg:913.8333},
+{n:'LLODRA-MAYANS Rafael', pts:502, nb:1, avg:502.0000},
+{n:'LOCURTO Alberto (ITA)', pts:4601, nb:6, avg:766.8333},
+{n:'LOISEAU Maelys', pts:2869, nb:4, avg:717.2500},
+{n:'LOISEAU Margot', pts:7790, nb:11, avg:708.1818},
+{n:'LOTTIER Pascal', pts:6422, nb:14, avg:458.7143},
+{n:'LOUISON Marlene', pts:3031, nb:7, avg:433.0000},
+{n:'LOUP Noemie', pts:4001, nb:6, avg:666.8333},
+{n:'MAGASSA Massere', pts:4662, nb:10, avg:466.2000},
+{n:'MAGASSA Modibo', pts:1871, nb:2, avg:935.5000},
+{n:'MALELA Sogiros', pts:3401, nb:4, avg:850.2500},
+{n:'MALLIET Vincent', pts:1268, nb:2, avg:634.0000},
+{n:'MANIC Gildas', pts:2495, nb:5, avg:499.0000},
+{n:'MARCHAL Aurelie', pts:3013, nb:4, avg:753.2500},
+{n:'MARIE Virginie', pts:938, nb:2, avg:469.0000},
+{n:'MARTY Benjamin', pts:698, nb:1, avg:698.0000},
+{n:'MBALLA ERDINC Sylvie', pts:2111, nb:2, avg:1055.5000},
+{n:'MENDY Paul (SEN)', pts:1809, nb:2, avg:904.5000},
+{n:'MERLAUD Vincent', pts:2893, nb:4, avg:723.2500},
+{n:'MESINELE Anais', pts:618, nb:1, avg:618.0000},
+{n:'MESNIL Romain', pts:902, nb:1, avg:902.0000},
+{n:'MEYER Alice', pts:3245, nb:5, avg:649.0000},
+{n:'MEYER Jerome', pts:546, nb:1, avg:546.0000},
+{n:'MICHEL Pierre', pts:10065, nb:15, avg:671.0000},
+{n:'MIJIC Stefan', pts:1015, nb:2, avg:507.5000},
+{n:'MOHAMMEDI Wahiba', pts:3601, nb:5, avg:720.2000},
+{n:'MOMONT Mathilda', pts:6277, nb:8, avg:784.6250},
+{n:'MOUILLET Zoe', pts:883, nb:1, avg:883.0000},
+{n:'NABAB Laurent', pts:599, nb:1, avg:599.0000},
+{n:'NICOTRA Ferdinando (ITA)', pts:5037, nb:6, avg:839.5000},
+{n:'NIENAT Lawrence', pts:2775, nb:4, avg:693.7500},
+{n:'NOEL Philippe', pts:4948, nb:9, avg:549.7778},
+{n:'NOEL Raphael', pts:1149, nb:2, avg:574.5000},
+{n:'NTIA Romeo (BEN)', pts:4957, nb:5, avg:991.4000},
+{n:'NZAMOWANI Jodelle', pts:2453, nb:3, avg:817.6667},
+{n:'ONIANGUE Tuere elie', pts:695, nb:1, avg:695.0000},
+{n:'OUNOU Jerome', pts:5065, nb:8, avg:633.1250},
+{n:'PAGET-BLANC Alexandra', pts:4973, nb:6, avg:828.8333},
+{n:'PARSY Marion', pts:1469, nb:2, avg:734.5000},
+{n:'PEPIN Lenny', pts:1992, nb:3, avg:664.0000},
+{n:'PERSELLO Sophie', pts:3114, nb:4, avg:778.5000},
+{n:'PHILIPOT Clement', pts:1692, nb:3, avg:564.0000},
+{n:'PICHET Oceane', pts:1943, nb:4, avg:485.7500},
+{n:'PIEL Julie', pts:1817, nb:3, avg:605.6667},
+{n:'PLUTON Lea', pts:1444, nb:2, avg:722.0000},
+{n:'POCREAUX Cyril', pts:1413, nb:2, avg:706.5000},
+{n:'POTTEZ-JOUATTE Valentine', pts:6402, nb:8, avg:800.2500},
+{n:'PREVOT Lenaic', pts:989, nb:2, avg:494.5000},
+{n:'PRIETO Mathilde', pts:761, nb:1, avg:761.0000},
+{n:'PUJAR Yannis', pts:7442, nb:9, avg:826.8889},
+{n:'QUERIN Samy', pts:469, nb:1, avg:469.0000},
+{n:'QUEST Tiphanie', pts:6137, nb:9, avg:681.8889},
+{n:'RADENEZ Clemence', pts:2518, nb:6, avg:419.6667},
+{n:'RAMIN Julie', pts:1406, nb:2, avg:703.0000},
+{n:'RAVON Thomas', pts:11858, nb:14, avg:847.0000},
+{n:'REAUD Delphine', pts:2310, nb:4, avg:577.5000},
+{n:'REBIHI Scherazade', pts:2963, nb:4, avg:740.7500},
+{n:'RENAULT Vincent', pts:1490, nb:2, avg:745.0000},
+{n:'RICHARDIN Nine', pts:4407, nb:8, avg:550.8750},
+{n:'ROBAT Agnes', pts:850, nb:2, avg:425.0000},
+{n:'ROLLEZ Florian', pts:5958, nb:7, avg:851.1429},
+{n:'ROMAIN Katarina', pts:1954, nb:2, avg:977.0000},
+{n:'ROMAND-MONNIER Leo', pts:1101, nb:2, avg:550.5000},
+{n:'ROOS-WEIL Lise', pts:4547, nb:6, avg:757.8333},
+{n:'ROUE Sarah', pts:1142, nb:2, avg:571.0000},
+{n:'ROUSSEAU Benjamin', pts:5441, nb:8, avg:680.1250},
+{n:'SACILOTTO Pierre', pts:613, nb:1, avg:613.0000},
+{n:'SACKO Hatouma', pts:2300, nb:3, avg:766.6667},
+{n:'SAILLY Patrice', pts:1226, nb:2, avg:613.0000},
+{n:'SAMANGARAY Baba', pts:23815, nb:31, avg:768.2258},
+{n:'SAMBA-MAYELA Cyrena', pts:7133, nb:8, avg:891.6250},
+{n:'SANTU Melia', pts:9659, nb:11, avg:878.0909},
+{n:'SCHLATTER Nicolas', pts:8338, nb:13, avg:641.3846},
+{n:'SCHLATTER Sebastien', pts:8292, nb:15, avg:552.8000},
+{n:'SECHAUD Ema', pts:9342, nb:15, avg:622.8000},
+{n:'SECHAUD Emmanuelle', pts:2222, nb:4, avg:555.5000},
+{n:'SECQUEVILLE Melissa', pts:2647, nb:4, avg:661.7500},
+{n:'SELO Jordy', pts:578, nb:1, avg:578.0000},
+{n:'SIANGANY Fortune', pts:8287, nb:12, avg:690.5833},
+{n:'SOFFIATI Thibaud', pts:15604, nb:20, avg:780.2000},
+{n:'SONDEREGGER Lucas', pts:2749, nb:4, avg:687.2500},
+{n:'SONE EHAWA Quentin', pts:2324, nb:3, avg:774.6667},
+{n:'STANISLAWSKI Valerie', pts:807, nb:2, avg:403.5000},
+{n:'SUTEAU Frederic', pts:598, nb:1, avg:598.0000},
+{n:'TAFLER Clementine', pts:2083, nb:4, avg:520.7500},
+{n:'TAMISIER Lucile', pts:2241, nb:4, avg:560.2500},
+{n:'TIEMOKO Teddy', pts:752, nb:1, avg:752.0000},
+{n:'TOURE Sally', pts:8915, nb:11, avg:810.4545},
+{n:'TOUREL Thomas', pts:1832, nb:2, avg:916.0000},
+{n:'TOYB Gildas', pts:1870, nb:2, avg:935.0000},
+{n:'TSHIKAYA Lea', pts:10698, nb:12, avg:891.5000},
+{n:'TSHIKAYA Yowa', pts:6034, nb:8, avg:754.2500},
+{n:'TUDEAU Amandine', pts:7785, nb:16, avg:486.5625},
+{n:'VAILHE Baptiste', pts:1805, nb:2, avg:902.5000},
+{n:'VANDAELE Marion', pts:811, nb:2, avg:405.5000},
+{n:'VANNEQUE-PORTES Jean-philippe', pts:496, nb:1, avg:496.0000},
+{n:'VIEL Remi', pts:702, nb:1, avg:702.0000},
+{n:'VILOCY Sara', pts:2524, nb:3, avg:841.3333},
+{n:'WOLFF Stephane', pts:1088, nb:2, avg:544.0000},
+{n:'YAICHE Abderrhamane (ALG)', pts:2048, nb:4, avg:512.0000},
+{n:'YOBOUET Samaeken', pts:589, nb:1, avg:589.0000},
+{n:'ZILBERSTEIN-BRAUD Agathe', pts:537, nb:1, avg:537.0000},
+{n:'ZONGO Amy', pts:2054, nb:2, avg:1027.0000}
 ]}
 
 
@@ -1458,18 +1585,309 @@ var dataParticipations = { data : [
 
 ]}
 
-var table = $('#best_points').DataTable({
+var dataMoyenneToutesEpreuves = { data : [
+{n:'ALEXANDER Ayanna (TTO)', avg:1093},
+{n:'HERKENRATH Loic', avg:1092},
+{n:'MBALLA ERDINC Sylvie', avg:1085},
+{n:'HURTIS-HOUAIRI Muriel', avg:1079.5},
+{n:'DUBOIS Ludovic', avg:1078.4},
+{n:'FOFANA-KOUTOUAN Sarah', avg:1072},
+{n:'NTIA Romeo (BEN)', avg:1059.5},
+{n:'DANTE Djenebou (MLI)', avg:1059.5},
+{n:'FRANCOIS Mickael', avg:1058.3636},
+{n:'EFFA EFFA Junior', avg:1046},
+{n:'FOFANA Colomba', avg:1045},
+{n:'SAMBA-MAYELA Cyrena', avg:1045},
+{n:'ZONGO Amy', avg:1041},
+{n:'AFOUMBA Gilles-anthony (CGO)', avg:1031},
+{n:'LEWIS Abigail (JAM)', avg:1030.3333},
+{n:'KOUNTA Muhammad abdall', avg:1029},
+{n:'LEDUC Cynthia', avg:1020.8333},
+{n:'LAINE Samyr (HAI)', avg:1015},
+{n:'KOUTOUAN Sarah', avg:1014},
+{n:'ISSAKA Andrew', avg:1012},
+{n:'RAVON Thomas', avg:1011.25},
+{n:'CALYDON Cornnelly', avg:1009},
+{n:'LAHAYE Mathieu', avg:1006},
+{n:'HOUNSINOU Julie', avg:993},
+{n:'ROMAIN Katarina', avg:990},
+{n:'LAMALLE Adrianna', avg:987},
+{n:'ARMINANA Mickael', avg:984},
+{n:'LE DIEU DE VILLE Elise', avg:984},
+{n:'DUARTE Sophie', avg:976},
+{n:'TSHIKAYA Lea', avg:975.5},
+{n:'GURACHI Youness', avg:960},
+{n:'SANTU Melia', avg:957.6667},
+{n:'TOYB Gildas', avg:948},
+{n:'AH-MOUCK Loic', avg:946},
+{n:'BAMBA Aboubacar', avg:946},
+{n:'NZAMOWANI Jodelle', avg:945},
+{n:'CHEVIOT Nicolas', avg:942},
+{n:'AUCAGOS Sohane', avg:940},
+{n:'GAGNEUX Valerie', avg:939.75},
+{n:'MAGASSA Modibo', avg:939},
+{n:'DESCOUENS Laura', avg:939},
+{n:'KIMBEMBE Devilert-arsene (COD)', avg:937},
+{n:'DIAROUMA Tiguida', avg:933.3333},
+{n:'ADDOH Axel', avg:933},
+{n:'JEMAA-AMIROUCHE Dora', avg:932},
+{n:'LEMACON Ridgy', avg:931},
+{n:'HAMROUNI Hamza', avg:925},
+{n:'TOURE Sally', avg:921},
+{n:'MENDY Paul (SEN)', avg:917},
+{n:'TOUREL Thomas', avg:916},
+{n:'FAYE Louise', avg:912.5},
+{n:'ABOUKE Hermance', avg:911.3333},
+{n:'VAILHE Baptiste', avg:910},
+{n:'CESSIRON Maxime', avg:908.4},
+{n:'SECQUEVILLE Melissa', avg:908},
+{n:'EFFA EFFA Junior (GAB)', avg:905},
+{n:'KIMBEMBE Devilert-arsene (CGO)', avg:904},
+{n:'MESNIL Romain', avg:902},
+{n:'COLLINET Agathe', avg:900.4},
+{n:'KUDELA Lucie', avg:900},
+{n:'GREZE Stephane', avg:898.25},
+{n:'ROLLEZ Florian', avg:896.5},
+{n:'REBIHI Scherazade', avg:891.5},
+{n:'FRANZONI Lorenzo (ITA)', avg:886},
+{n:'VILOCY Sara', avg:885},
+{n:'POTTEZ-JOUATTE Valentine', avg:883.5},
+{n:'MOUILLET Zoe', avg:883},
+{n:'FLANDRIN-THONIEL Igor', avg:881.6667},
+{n:'TSHIKAYA Yowa', avg:881},
+{n:'MALELA Sogiros', avg:880},
+{n:'LEFEUVRE Jimmy', avg:878},
+{n:'CLERENCE Elisa', avg:877},
+{n:'BENNIA Ahmed', avg:877},
+{n:'PERSELLO Sophie', avg:876},
+{n:'MOHAMMEDI Wahiba', avg:875},
+{n:'NICOTRA Ferdinando (ITA)', avg:873.6667},
+{n:'ISSIFOU Sandra', avg:870},
+{n:'GUTTIN Nicolas', avg:869.5},
+{n:'SACKO Hatouma', avg:867},
+{n:'GOMES Anthony', avg:864},
+{n:'KOUASSI Haudy-meven', avg:863.75},
+{n:'CISSAKO Mahamadou', avg:861},
+{n:'BIKELEL Anne', avg:859},
+{n:'SAMANGARAY Baba', avg:856.2222},
+{n:'CLAUDE Nina', avg:849.6667},
+{n:'LECHANGA Jules', avg:849.5},
+{n:'PUJAR Yannis', avg:841.75},
+{n:'BOLLEE Elodie', avg:838.375},
+{n:'CODJO Bruno', avg:835.6},
+{n:'PAGET-BLANC Alexandra', avg:834.6667},
+{n:'DIELNA Samuel', avg:833},
+{n:'DJIAN Ary', avg:831.5},
+{n:'CANARD Raphael', avg:831.2857},
+{n:'ANDRE Michel', avg:829.7143},
+{n:'LALONDE Mathieu', avg:829},
+{n:'CONDORE Melina', avg:826},
+{n:'BESEGHER Antoni', avg:825.5},
+{n:'MOMONT Mathilda', avg:822},
+{n:'LAMBOLEY Victoria', avg:819.25},
+{n:'BA Mamadou', avg:816},
+{n:'DEMONTIGNY Melissa', avg:813},
+{n:'BOUSSADIA Mourad', avg:807},
+{n:'BARANGER-MERINO Alberto', avg:804.8571},
+{n:'ALERTE David', avg:804},
+{n:'ANIESA Ange', avg:800.3333},
+{n:'GNAHO Thomas', avg:796},
+{n:'SOFFIATI Thibaud', avg:794.7},
+{n:'LOISEAU Margot', avg:793},
+{n:'ECZET Jean-baptiste', avg:791},
+{n:'HINKIN Jason (USA)', avg:789},
+{n:'SONE EHAWA Quentin', avg:786.5},
+{n:'BENICHOU Thomas', avg:786.5},
+{n:'BARLES Pauline', avg:785},
+{n:'HESRY Gwenael', avg:784.5},
+{n:'GUERINI Priscilla rache', avg:782.5},
+{n:'LOCURTO Alberto (ITA)', avg:782},
+{n:'FLAMBARD Antoine', avg:782},
+{n:'SIANGANY Fortune', avg:781},
+{n:'CRANE Sabrina', avg:780},
+{n:'HAMMOUCHE Maud', avg:777},
+{n:'ROOS-WEIL Lise', avg:771.6667},
+{n:'HERELIUS Lindsay', avg:771.5},
+{n:'DELAGE Jeanne', avg:771},
+{n:'MARCHAL Aurelie', avg:769.5},
+{n:'KOUE-BOADET Kenny', avg:768},
+{n:'RENAULT Vincent', avg:765},
+{n:'PRIETO Mathilde', avg:761},
+{n:'JEM Aurelien', avg:760.5},
+{n:'LOISEAU Maelys', avg:759.5},
+{n:'BEURION Mathieu', avg:758.6667},
+{n:'KOUASSI Haudy-mexen', avg:757},
+{n:'PLUTON Lea', avg:757},
+{n:'BONDILANGE Anne-cecile', avg:754.3333},
+{n:'TIEMOKO Teddy', avg:752},
+{n:'GUIHUR Noemie', avg:747},
+{n:'FORIN Francois', avg:746.6667},
+{n:'RAMIN Julie', avg:741},
+{n:'MERLAUD Vincent', avg:741},
+{n:'HOUSSOU Johan', avg:741},
+{n:'DAMBAS Yohann', avg:739},
+{n:'GAY Maiwenn', avg:738},
+{n:'PARSY Marion', avg:734.5},
+{n:'DANGLADES Jean-christophe', avg:733.1667},
+{n:'DAUMONT Olivier', avg:733},
+{n:'BOULABI Margot', avg:731.3333},
+{n:'NIENAT Lawrence', avg:728.5},
+{n:'FILEUX Arnaud', avg:726},
+{n:'JACQUES Alexia', avg:724},
+{n:'BROU Florent', avg:722},
+{n:'QUEST Tiphanie', avg:714.75},
+{n:'ABDELKADER Yann', avg:710.4545},
+{n:'POCREAUX Cyril', avg:710},
+{n:'BACON Karine', avg:709},
+{n:'DE VENDEGIES Xavier', avg:709},
+{n:'BOUHADJER Mohamed', avg:707.5},
+{n:'OUNOU Jerome', avg:705},
+{n:'SONDEREGGER Lucas', avg:704.3333},
+{n:'BALAGE Juliette', avg:704},
+{n:'JARNET Eva', avg:702},
+{n:'VIEL Remi', avg:702},
+{n:'EL KADAOUI Samir', avg:699.7143},
+{n:'MARTY Benjamin', avg:698},
+{n:'ONIANGUE Tuere elie', avg:695},
+{n:'BRAULT Ines', avg:693.3333},
+{n:'MICHEL Pierre', avg:693},
+{n:'SECHAUD Ema', avg:692.8333},
+{n:'SCHLATTER Nicolas', avg:691},
+{n:'LOUP Noemie', avg:685},
+{n:'DOS REIS Ruben', avg:684},
+{n:'ROUSSEAU Benjamin', avg:682.2},
+{n:'ANDRIEU Olivier', avg:681.8},
+{n:'PEPIN Lenny', avg:677},
+{n:'COLLIARD Julie', avg:676.5},
+{n:'FOZZI-FANCHON Ambra', avg:671},
+{n:'KADER Sandrine', avg:668},
+{n:'ROMAND-MONNIER Leo', avg:663},
+{n:'MALLIET Vincent', avg:660},
+{n:'HEUVELINE Fiona', avg:658},
+{n:'HUGGLER Marc-olivier (POL)', avg:654.75},
+{n:'DJHONE Leslie', avg:654},
+{n:'CIRET Alexandre', avg:651},
+{n:'CEYTE Arnaud', avg:649.3333},
+{n:'MEYER Alice', avg:648.6667},
+{n:'BERTEVAS Antony', avg:648},
+{n:'GOURDON Capucine', avg:645.3333},
+{n:'JAKOMULSKI Jessica', avg:645},
+{n:'AUCAGOS Nawel', avg:641},
+{n:'AMBROS Jerome', avg:639.75},
+{n:'DUMAS Mireille', avg:639.5},
+{n:'BAUNAY Isabelle', avg:636},
+{n:'HELIER Marie', avg:627},
+{n:'KOUTOUAN Fiona', avg:626.2},
+{n:'MESINELE Anais', avg:618},
+{n:'LECURIEUX Philippe', avg:617},
+{n:'SAILLY Patrice', avg:616},
+{n:'SACILOTTO Pierre', avg:613},
+{n:'BOSMORIN Suzanne', avg:610.3333},
+{n:'LE GUILLOU Yannick', avg:608},
+{n:'HAKMI Abdelaziz', avg:607},
+{n:'SCHLATTER Sebastien', avg:606.3333},
+{n:'PIEL Julie', avg:605.6667},
+{n:'LAGARDE Sebastien', avg:604.6667},
+{n:'EMBOULE Julien', avg:603},
+{n:'SECHAUD Emmanuelle', avg:599.5},
+{n:'NABAB Laurent', avg:599},
+{n:'FERNANDES Laurine', avg:598.5},
+{n:'SUTEAU Frederic', avg:598},
+{n:'DIANI Ilyas', avg:597.2},
+{n:'BROCHOT Sandrine', avg:592.2},
+{n:'BARITAUX Hadrien', avg:592},
+{n:'BAK Olivia', avg:591.5},
+{n:'REAUD Delphine', avg:589.5},
+{n:'FURTADO Erica-suely', avg:589},
+{n:'YOBOUET Samaeken', avg:589},
+{n:'NOEL Philippe', avg:587.6667},
+{n:'TAMISIER Lucile', avg:586.5},
+{n:'RICHARDIN Nine', avg:581.4},
+{n:'GUGLIELMINOTTI Sonia', avg:578.75},
+{n:'SELO Jordy', avg:578},
+{n:'NOEL Raphael', avg:574.5},
+{n:'ROUE Sarah', avg:573},
+{n:'LE FLOCH Olivier', avg:569},
+{n:'LARISSE Anddy', avg:568.5714},
+{n:'DETOUCHE Manon', avg:568},
+{n:'YAICHE Abderrhamane (ALG)', avg:568},
+{n:'EXBRAYAT Helene', avg:566},
+{n:'CABRAL Flor', avg:566},
+{n:'BOCCARA Valerie', avg:564.8333},
+{n:'PHILIPOT Clement', avg:564},
+{n:'BARA Franck', avg:563},
+{n:'HOUDAYER Aicha', avg:562.7778},
+{n:'CHASTANG Cedric', avg:561.4},
+{n:'CANARD Alize', avg:555.3333},
+{n:'PREVOT Lenaic', avg:555},
+{n:'GRAVA Jean-marc', avg:554},
+{n:'CITRON Florian', avg:550.3333},
+{n:'WOLFF Stephane', avg:550},
+{n:'TUDEAU Amandine', avg:548.2},
+{n:'MEYER Jerome', avg:546},
+{n:'KIONGA Danielle', avg:545.6667},
+{n:'DA HORTA SEMEDO Tony', avg:541.5},
+{n:'MIJIC Stefan', avg:541},
+{n:'ZILBERSTEIN-BRAUD Agathe', avg:537},
+{n:'JOUISSE Aurelie', avg:537},
+{n:'GUIDEZ Isabelle', avg:532},
+{n:'TAFLER Clementine', avg:530.5},
+{n:'MANIC Gildas', avg:521},
+{n:'BAKHAYOKHO Mary', avg:513},
+{n:'PICHET Oceane', avg:508.5},
+{n:'FINET Lucas', avg:508},
+{n:'LLODRA-MAYANS Rafael', avg:502},
+{n:'HARZOUNE Leslie', avg:502},
+{n:'DE CARGOUET DE R Yann', avg:497.6667},
+{n:'VANNEQUE-PORTES Jean-philippe', avg:496},
+{n:'ALLERES Isabelle', avg:495},
+{n:'KOUTOUAN Albertine (CIV)', avg:492.3333},
+{n:'LANGERON Matthieu', avg:489},
+{n:'LE PRIOL Etienne', avg:486},
+{n:'HATIL Rosny', avg:471},
+{n:'LOTTIER Pascal', avg:469.5714},
+{n:'MARIE Virginie', avg:469},
+{n:'QUERIN Samy', avg:469},
+{n:'MAGASSA Massere', avg:467.1667},
+{n:'ABBASSI Laysa', avg:466.6667},
+{n:'COLOMBIE Vincent', avg:458},
+{n:'VANDAELE Marion', avg:456},
+{n:'LE FLOCH Celine', avg:455.6667},
+{n:'LOUISON Marlene', avg:451.5},
+{n:'FOFANA-KOUTOUAN Fiona', avg:448},
+{n:'ROBAT Agnes', avg:448},
+{n:'KEFLE France-lise', avg:439},
+{n:'RADENEZ Clemence', avg:427.6667},
+{n:'STANISLAWSKI Valerie', avg:419},
+{n:'IJEOMA Joseph', avg:393},
+{n:'DEMBELE Fatoumata', avg:385},
+{n:'CHASTANG Christophe', avg:378},
+{n:'CHARLERY Adeline', avg:332.6667},
+{n:'IWANDZA Mickaelle', avg:313},
+{n:'GAVA-RAINA Anais', avg:94}
+]}
+
+
+var table = $('#meilleur_moyenne').DataTable({
 	data : data.data,
-	order: [[ 4, "desc" ]],
+    paging: true,
+    order: [[ 3, "desc" ]],
+    columns : [
+    { data: 'n', title: 'Nom' },
+    { data: 'pts', title: 'Total' },
+    { data: 'nb', title: 'Nb' },    
+    { data: 'avg', title: 'Moyenne' }
+  ]  
+})  
+
+
+var tableMoyenneToutesEpreuves = $('#moyenne_toutes_epreuves').DataTable({
+	data : dataMoyenneToutesEpreuves.data,
+	order: [[ 1, "desc" ]],
     paging: true,
     columns : [
     { data: 'n', title: 'Nom' },
-    { data: 's', title: 'Sexe' },
-    { data: 'e', title: 'Epreuve' },    
-    { data: 'p', title: 'Performance' },    
-    { data: 'pt', title: 'Points' },    
-    { data: 'a', title: 'Année' },    
-    { data: 'nai', title: 'Naissance' }    
+    { data: 'avg', title: 'Moyenne' }
   ]  
 })  
 

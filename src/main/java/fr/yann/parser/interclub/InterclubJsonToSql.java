@@ -29,9 +29,10 @@ public class InterclubJsonToSql {
 		json = new Gson().fromJson(new FileReader(pathFolder + "acpj.json"), listType);
 
 		// corrigePointsAll(json.get(0));
-		
-		displayJsonForAll(json.get(0));
+		// displayJsonForAll(json.get(0));
 		// displayJsonForFile(json.get(0));
+		// displayJsonForGraph(json.get(0));
+		displayJsonForSql(json.get(0));
 
 	}
 
@@ -83,13 +84,13 @@ public class InterclubJsonToSql {
 	
 	private static void displayJsonForSql(ICJson json) {
 		for (PerfJson perf : json.getPerfs()) {
-			System.out.println(perf);
+			System.out.println(perf.ligneSqlInsert());
 		}
 	}
 	
 	private static void displayJsonForGraph(ICJson json) {
 		for (PerfJson perf : json.getPerfs()) {
-			System.out.println("+ '{" + perf + "'");
+			System.out.println("+ '" + perf + "'");
 		}
 	}
 	
