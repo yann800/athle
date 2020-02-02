@@ -116,3 +116,22 @@ ALTER TABLE `personne`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE IF NOT EXISTS cros (
+	id			int(11)		NOT NULL AUTO_INCREMENT,
+	rang		int(4)		NOT NULL,
+	chrono		varchar(5)	NOT NULL,	
+	nom			varchar(32)	NOT NULL,
+	club		varchar(32)	NOT NULL,
+	dep			char(3)	NOT NULL,	
+	sexe		char(1)		NOT NULL,
+	cat			varchar(10)	NOT NULL,
+	naissance	int(10)		NOT NULL,	
+	championnat	varchar(4)	NOT NULL,
+	annee		int(4)		NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+
+
+
