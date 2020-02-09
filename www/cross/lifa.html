@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta n="viewport" content="width=device-width, initial-scale=1">
+<title>Classements cross 2014 - 2019 et calcul écarts</title>
+<!-- Copyright 1998-2017 by Northwoods Software Corporation. -->
+<meta charset="UTF-8">
+<script src="../exercices/js/go.js"></script>
+<script id="code">
+function init() {
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",
+        {
+          initialContentAlignment: go.Spot.Center,
+          validCycle: go.Diagram.CycleNotDirected,  // don't allow loops
+          // For this sample, automatically show the state of the diagram's model on the page
+          "ModelChanged": function(e) {
+              if (e.isTransactionFinished) showModel();
+            },
+          "undoManager.isEnabled": true
+        });
+
+    // This template is a Panel that is used to represent each item in a Panel.itemArray.
+    // The Panel is data bound to the item object.
+    var fieldTemplate =
+      $(go.Panel, "TableRow",  // this Panel is a row in the containing Table
+        new go.Binding("portId", "n"),  // this Panel is a "port"
+        {
+          background: "transparent",  // so this port's background can be picked by the mouse
+          fromSpot: go.Spot.Right,  // links only go from the right side to the left side
+          toSpot: go.Spot.Left,
+          // allow drawing links from or to this port:
+          fromLinkable: false, toLinkable: true
+        },
+
+        { // allow the user to select items -- the background color indicates whether "selected"
+            click: function(e, item) {
+              // assume "transparent" means not "selected", for items
+              var oldskips = item.diagram.skipsUndoManager;
+              item.diagram.skipsUndoManager = true;
+              if (item.background === "transparent") {
+                item.background = "dodgerblue";
+                console.log(item.Zd.n);
+                console.log(item.Zd.i);
+
+                selectionLigne(item.Zd.n);
+
+                // https://gojs.net/latest/learn/graphobject.html
+                // model.setDataProperty(item.Zd, "i", "aaa");                
+                
+                
+              } else {
+                item.background = "transparent";
+              }
+              item.diagram.skipsUndoManager = oldskips;
+            }
+          },        
+        
+        $(go.Shape,
+          { width: 12, height: 12, column: 0, strokeWidth: 2, margin: 4,
+            // but disallow drawing links from or to this shape:
+            fromLinkable: false, toLinkable: false },
+          new go.Binding("figure", "figure"),
+          new go.Binding("fill", "color")),
+        $(go.TextBlock,
+          { margin: new go.Margin(0, 0), column: 1, font: "bold 13px sans-serif",
+            alignment: go.Spot.Left,
+            // and disallow drawing links from or to this text:
+            fromLinkable: false, toLinkable: false },
+          new go.Binding("text", "n")),
+        $(go.TextBlock,
+          { margin: new go.Margin(0, 0), column: 2, font: "13px sans-serif", alignment: go.Spot.Left },
+          new go.Binding("text", "i"))
+      );
+
+    // This template represents a whole "record".
+    myDiagram.nodeTemplate =
+      $(go.Node, "Auto",
+        { movable: false,
+          copyable: false,
+          deletable: false },
+        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        // this rectangular shape surrounds the content of the node
+        $(go.Shape,
+          { fill: "#EEEEEE" }),
+        // the content consists of a header and a list of items
+        $(go.Panel, "Vertical",
+          // this is the header for the whole node
+          $(go.Panel, "Auto",
+            { stretch: go.GraphObject.Horizontal },  // as wide as the whole node
+            $(go.Shape,
+              { fill: "#1570A6", stroke: null }),
+            $(go.TextBlock,
+              {
+                alignment: go.Spot.Center,
+                margin: 3,
+                stroke: "white",
+                textAlign: "center",
+                font: "bold 12pt sans-serif"
+              },
+              new go.Binding("text", "key"))),
+          // this Panel holds a Panel for each item object in the itemArray;
+          // each item Panel is defined by the itemTemplate to be a TableRow in this Table
+          $(go.Panel, "Table",
+            {
+              padding: 2,
+              minSize: new go.Size(100, 10),
+              defaultStretch: go.GraphObject.Horizontal,
+              itemTemplate: fieldTemplate
+            },
+            new go.Binding("itemArray", "fields")
+          )  // end Table Panel of items
+        )  // end Vertical Panel
+      );  // end Node
+
+    myDiagram.linkTemplate =
+      $(go.Link,
+        {
+          relinkableFrom: false, relinkableTo: false, // let user reconnect links
+          toShortLength: 4,  fromShortLength: 2
+        },
+        $(go.Shape, { strokeWidth: 1.5 }),
+        $(go.Shape, { toArrow: "Standard", stroke: null })
+      );
+
+    myDiagram.model =
+      $(go.GraphLinksModel,
+        {
+          linkFromPortIdProperty: "fromPort",
+          linkToPortIdProperty: "toPort",
+          nodeDataArray: [
+
+{ key: "Lifa2017",
+       fields: [
+{ n: "JEMMAL Abdelghani", i: "36'39''", color:"#00BCF2"},
+{ n: "FAVIER Francois-rene", i: "36'47''", color:"#F7B84B"},
+{ n: "KHEZZANE Noreddine", i: "37'34''", color:"#00BCF2"},
+{ n: "CARANTON Laurent", i: "37'49''", color:"#F7B84B"},
+{ n: "ATMANI Khalid", i: "37'57''", color:"#00BCF2"},
+{ n: "VERDOL Widdy", i: "38'30''", color:"#00BCF2"},
+{ n: "MOUQUET Sylvain", i: "38'36''", color:"#00BCF2"},
+{ n: "ROUYER Thomas", i: "38'43''", color:"#00BCF2"},
+{ n: "BEN-HOUDJA Mohammed", i: "39'06''", color:"#00BCF2"},
+{ n: "EL YAMANI Mohammed", i: "39'11''", color:"#00BCF2"},
+{ n: "MERROUNE Mohamed", i: "39'11''", color:"#00BCF2"},
+{ n: "RUIZ Pascal", i: "39'13''", color:"#00BCF2"},
+{ n: "GUIVARCH Pierre-yves", i: "39'21''", color:"#00BCF2"},
+{ n: "JARRY Alain", i: "39'29''", color:"#00BCF2"},
+{ n: "PERCEVAULT Philippe", i: "39'33''", color:"#00BCF2"},
+{ n: "CHOUKRI Mohamed", i: "39'40''", color:"#00BCF2"},
+{ n: "HARDY David", i: "39'41''", color:"#00BCF2"},
+{ n: "ABBES Mohamed", i: "39'45''", color:"#00BCF2"},
+{ n: "ALLONGUE Antoine", i: "39'50''", color:"#00BCF2"},
+{ n: "ABACHAD Adil", i: "39'56''", color:"#00BCF2"},
+{ n: "FARIA Rolando", i: "39'57''", color:"#F7B84B"},
+{ n: "SAIM Ahmed (Alg)", i: "39'58''", color:"#00BCF2"},
+{ n: "CROIZIER Lilian", i: "39'58''", color:"#00BCF2"},
+{ n: "VILFEU Ludovic", i: "40'01''", color:"#00BCF2"},
+{ n: "ROBILLARD Damien", i: "40'02''", color:"#00BCF2"},
+{ n: "HERCOUET Didier", i: "40'02''", color:"#00BCF2"},
+{ n: "GRAS Herve", i: "40'06''", color:"#00BCF2"},
+{ n: "ROSSE Christophe", i: "40'09''", color:"#00BCF2"},
+{ n: "PHILIPONA Bruno", i: "40'11''", color:"#00BCF2"},
+{ n: "VIOLARD Frederic", i: "40'17''", color:"#00BCF2"},
+{ n: "ARRAS Mohamed", i: "40'19''", color:"#00BCF2"},
+{ n: "BENHAMOU Michael", i: "40'22''", color:"#F7B84B"},
+{ n: "MAO Stephane", i: "40'28''", color:"#00BCF2"},
+{ n: "TASSIN Jerome", i: "40'30''", color:"#00BCF2"},
+{ n: "DESFOUX Yoann", i: "40'31''", color:"#00BCF2"},
+{ n: "URRUTIA Laurent", i: "40'36''", color:"#00BCF2"},
+{ n: "GHIANI Marc", i: "40'37''", color:"#00BCF2"},
+{ n: "SAILLY Patrice", i: "40'42''", color:"#00BCF2"},
+{ n: "HUE Sylvain", i: "40'44''", color:"#00BCF2"},
+{ n: "ABDELKADER Yann", i: "40'47''", color:"#00BCF2"},
+{ n: "GUEGANO Raphael", i: "40'50''", color:"#00BCF2"},
+{ n: "LAMRABAT Zakarya", i: "40'52''", color:"#00BCF2"},
+{ n: "DIAZ MARTINEZ Pablo (Esp)", i: "40'53''", color:"#00BCF2"},
+{ n: "FISCHER Marc", i: "40'55''", color:"#00BCF2"},
+{ n: "COACOLO Didier", i: "40'58''", color:"#00BCF2"},
+{ n: "BEAUFORT Sebastien", i: "40'59''", color:"#00BCF2"},
+{ n: "MAROLLES Frederic", i: "40'59''", color:"#00BCF2"},
+{ n: "MEGHAZI Mhamed", i: "41'00''", color:"#00BCF2"},
+{ n: "DELEPINE Sylvain", i: "41'06''", color:"#00BCF2"},
+{ n: "PELLETIER Gilles", i: "41'10''", color:"#00BCF2"}               
+                
+],
+loc: "0 0" },
+
+{ key: "Creteil2018",
+  fields: [
+// ,  figure: "Rectangle"
+{ n: "GRUNDTNER Willy", i: "27'57''", color:"#00BCF2"},
+{ n: "FAVIER Francois-rene", i: "27'58''", color:"#F7B84B"},
+{ n: "EL HOUSNI Mounir", i: "28'00''", color:"#00BCF2"},
+{ n: "LECIEUX Thomas", i: "28'09''", color:"#00BCF2"},
+{ n: "CARANTON Laurent", i: "28'35''", color:"#F7B84B"},
+{ n: "BENHAMOU Michael", i: "28'47''", color:"#F7B84B"},
+{ n: "BOUBEKEUR Achour", i: "29'06''", color:"#00BCF2"},
+{ n: "GANDELOT Benoit", i: "29'09''", color:"#00BCF2"},
+{ n: "MARTINHO Ezequiel", i: "29'17''", color:"#00BCF2"},
+{ n: "ABACHAD Adil", i: "29'25''", color:"#00BCF2"},
+{ n: "ARRAS Mohamed", i: "29'26''", color:"#00BCF2"},
+{ n: "DIANI Ilyas", i: "29'35''", color:"#00BCF2"},
+{ n: "BEN-HOUDJA Mohammed", i: "29'37''", color:"#00BCF2"},
+{ n: "DESTREMON Manuel", i: "30'01''", color:"#00BCF2"},
+{ n: "DUHALDE Miguel", i: "30'11''", color:"#00BCF2"},
+{ n: "FARIA Rolando", i: "30'13''", color:"#F7B84B"},
+{ n: "TOURNIER Martial", i: "30'14''", color:"#00BCF2"},
+{ n: "MOUILLERON Jean-francois", i: "30'18''", color:"#00BCF2"},
+{ n: "BEAU Guillaume", i: "30'24''", color:"#00BCF2"},
+{ n: "LACHEREST Sebastien", i: "30'30''", color:"#00BCF2"},
+{ n: "ALZOULEH Kamel (Alg)", i: "30'33''", color:"#00BCF2"},
+{ n: "PERTHUIS Nicolas", i: "30'35''", color:"#00BCF2"},
+{ n: "ABDELKADER Yann", i: "30'37''", color:"#00BCF2"},
+{ n: "CHOUKRI Mohamed", i: "30'44''", color:"#00BCF2"},
+{ n: "BLANCHARD Nicolas", i: "30'46''", color:"#00BCF2"},
+{ n: "GHIANI Marc", i: "31'04''", color:"#00BCF2"},
+{ n: "BERTHO-LAUNAY Cyrille", i: "31'10''", color:"#00BCF2"},
+{ n: "FAUCHEUX Cerile", i: "31'16''", color:"#00BCF2"},
+{ n: "BARAONA Christophe", i: "31'22''", color:"#00BCF2"},
+{ n: "HANNOUDI Mounir", i: "31'27''", color:"#00BCF2"},
+{ n: "CURADO Pedro (Por)", i: "31'30''", color:"#00BCF2"},
+{ n: "HAKMI Abdelaziz", i: "31'33''", color:"#00BCF2"},
+{ n: "GRANGER David", i: "31'48''", color:"#00BCF2"},
+{ n: "BROY Frederic", i: "31'51''", color:"#00BCF2"},
+{ n: "MARCOVICI Jean-baptiste", i: "32'06''", color:"#00BCF2"},
+{ n: "JACQUIN Philippe", i: "32'19''", color:"#00BCF2"},
+{ n: "DUPONT Marc", i: "32'27''", color:"#00BCF2"},
+{ n: "LAFARGUE Victorien", i: "32'28''", color:"#00BCF2"},
+{ n: "LE MOING Joel", i: "32'29''", color:"#00BCF2"},
+{ n: "SMITH Julien", i: "32'40''", color:"#00BCF2"},
+{ n: "CHEBLAL Hassan", i: "32'42''", color:"#00BCF2"},
+{ n: "TONI Stephane", i: "32'42''", color:"#F7B84B"},
+{ n: "IKHADDALENE Mouloud", i: "32'43''", color:"#00BCF2"},
+{ n: "LINTIGNAT Boris", i: "32'45''", color:"#00BCF2"},
+{ n: "GILLES Fabrice", i: "32'54''", color:"#00BCF2"},
+{ n: "JOUGLAS Franck", i: "32'56''", color:"#00BCF2"},
+{ n: "AUGIER Jacky", i: "33'05''", color:"#00BCF2"},
+{ n: "SACHIER Laurent", i: "33'13''", color:"#00BCF2"},
+{ n: "DOSPAZOS Jose", i: "33'16''", color:"#00BCF2"},
+{ n: "LIBERMAN Bernard", i: "33'24''", color:"#00BCF2"}
+
+             
+],
+
+loc: "500 0" }
+
+          ],
+          linkDataArray: [
+        	  
+{ from: "Lifa2017", fromPort: "FAVIER Francois-rene", to: "Creteil2018", toPort: "FAVIER Francois-rene" },
+{ from: "Lifa2017", fromPort: "CARANTON Laurent", to: "Creteil2018", toPort: "CARANTON Laurent" },
+{ from: "Lifa2017", fromPort: "BEN-HOUDJA Mohammed", to: "Creteil2018", toPort: "BEN-HOUDJA Mohammed" },
+{ from: "Lifa2017", fromPort: "CHOUKRI Mohamed", to: "Creteil2018", toPort: "CHOUKRI Mohamed" },
+{ from: "Lifa2017", fromPort: "ABACHAD Adil", to: "Creteil2018", toPort: "ABACHAD Adil" },
+{ from: "Lifa2017", fromPort: "FARIA Rolando", to: "Creteil2018", toPort: "FARIA Rolando" },
+{ from: "Lifa2017", fromPort: "ARRAS Mohamed", to: "Creteil2018", toPort: "ARRAS Mohamed" },
+{ from: "Lifa2017", fromPort: "BENHAMOU Michael", to: "Creteil2018", toPort: "BENHAMOU Michael" },
+{ from: "Lifa2017", fromPort: "GHIANI Marc", to: "Creteil2018", toPort: "GHIANI Marc" },
+{ from: "Lifa2017", fromPort: "ABDELKADER Yann", to: "Creteil2018", toPort: "ABDELKADER Yann" },
+            
+          ]
+        });
+
+    showModel();  // show the diagram's initial model
+}
+
+    function showModel() {
+      document.getElementById("mySavedModel").textContent = myDiagram.model.toJson();
+    }
+    
+    function selectionLigne(sel){
+    	if (document.getElementById("sel1").innerText == "__"){
+    		document.getElementById("sel1").innerText = sel;
+    	}
+    	else {
+    		document.getElementById("sel2").innerText = sel;
+    		document.getElementById("btnCompareSel1Sel2").disabled = false;
+    	}
+    }
+    
+    
+    function selectionAthleteJoinville(cross, athletes){
+    	for (var i in athletes) {
+    		if (athletes[i].n == "ABDELKADER Yann"
+|| athletes[i].n == "ANDRIEU Olivier"
+|| athletes[i].n == "LEJEUNE Olivier"
+|| athletes[i].n == "DIANI Ilyas"
+|| athletes[i].n == "BRAHIC Ludovic"
+|| athletes[i].n == "LE ROUX Devrig"
+|| athletes[i].n == "SOFFIATI Thibaud"
+|| athletes[i].n == "JOUGLAS Franck"
+|| athletes[i].n == "DE VENDEGIES Xavier"
+|| athletes[i].n == "RIZZARELLO Romain"
+|| athletes[i].n == "CHASTANG Cedric"
+|| athletes[i].n == "CHASTANG Christophe"
+|| athletes[i].n == "MEYER Jerome"
+    	      ){
+				// model.setDataProperty(item.Zd, "i", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "red");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectionAthleteSolon(cross, athletes){
+    	
+    	for (var i in athletes) {
+        	if (athletes[i].n == "FAVIER Francois-rene"
+|| athletes[i].n == "CARANTON Laurent"
+|| athletes[i].n == "BENHAMOU Michael"
+|| athletes[i].n == "FARIA Rolando"
+|| athletes[i].n == "TONI Stephane"
+    	      ){
+				// model.setDataProperty(item.Zd, "i", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "black");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectionAthleteCreteil(cross, athletes){
+    	for (var i in athletes) {
+    		if (athletes[i].n == "LEJEUNE Olivier"
+|| athletes[i].n == "DELVER Geoffrey"
+|| athletes[i].n == "PROST Hugo"
+|| athletes[i].n == "BERTHE Damien"
+    	      ){
+				// model.setDataProperty(item.Zd, "i", "XXXX");			    	      
+    	        myDiagram.model.setDataProperty(athletes[i], "color", "blue");
+    	        } // endif
+	        } // endfor
+    }
+    
+    function selectClubJoinville(){
+    	var arr = myDiagram.model.De;
+    	for (var i = 0; i < arr.length; i++){
+    	    var obj = arr[i];
+    	    selectionAthleteJoinville(obj.key, obj.fields);
+   	    }
+    }
+    function selectClubCreteil(){
+    	var arr = myDiagram.model.De;
+    	for (var i = 0; i < arr.length; i++){
+    	    var obj = arr[i];
+    	    selectionAthleteCreteil(obj.key, obj.fields);
+   	    }
+    }
+    function selectClubSolon(){
+    	var arr = myDiagram.model.De;
+    	for (var i = 0; i < arr.length; i++){
+    	    var obj = arr[i];
+    	    selectionAthleteSolon(obj.key, obj.fields);
+   	    }
+    }
+        
+    
+    function resetSelection(){
+    	document.getElementById("sel1").innerText = '__';
+    	document.getElementById("sel2").innerText = '__';
+    	document.getElementById("btnCompareSel1Sel2").disabled = true;
+    }
+
+    function supprimerDerniereLigne(){
+    	resetTable();
+    }
+
+    function convertSecondes(chrono) {
+    	var min = parseInt(chrono.substr(0,2));
+    	var sec = parseInt(chrono.substr(3,2));
+    	return (min * 60) + sec; 
+    }
+    	
+    
+    function compareSel1Sel2(){
+    	var sel1 = document.getElementById("sel1").innerText;
+    	var sel2 = document.getElementById("sel2").innerText;
+    	
+    	var arr = myDiagram.model.De;
+    	
+    	var table = document.getElementById("ecarts");
+    	// Create an empty <tr> element and add it to the 1st position of the table:
+    	var row = table.insertRow(1);
+		var num = 0;
+    	
+		
+    	for (var i = 0; i < arr.length; i++){
+    	    var obj = arr[i];
+    	    for (var key in obj){
+    	        var val = obj[key];
+    	        
+    	        // console.log(key);
+    	        if (val == 'Lifa2017' || val == 'Creteil2018'
+    	        ) {
+    	        	ecart(row, val, obj, sel1, sel2, num);
+    	        	num = num + 1;
+    	        }
+    	    }
+    	}
+       	insertFirstCell(row, sel1, sel2);
+    	
+    	var itr2 = myDiagram.nodes;
+    	while (itr2.next()) {
+    	  var node = itr2.value;
+    	  // console.log(node);
+    	}
+    }
+    
+    function insertFirstCell(row, sel1, sel2){
+    	var cell = row.insertCell(0);
+   		cell.innerHTML = sel1 + " - " + sel2;
+    }
+    
+    function insertCell(row, diff, i){
+
+    	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    	var cell1 = row.insertCell(i);
+
+    	if (isNaN(diff)){
+    		cell1.innerHTML = "";
+    	}
+    	else {
+    		cell1.innerHTML = diff + "''";
+    	}
+    }
+
+    
+    function traiteTab(row, cross, tab, sel1, sel2, i){
+    	
+      var chrono1 = "_";
+   	  var chrono2 = "_";
+    
+   	  for (var p in tab) {
+   		    
+   		//  console.log(p + "  " + tab[p].n + "  " + tab[p].i);
+   		if (tab[p].n == sel1){
+   			chrono1 = tab[p].i;
+   		}
+   		if (tab[p].n == sel2){
+   			chrono2 = tab[p].i;
+   		}
+      }
+   	  
+   	  console.log(chrono1 + " ---- " + chrono2);
+   	  insertCell(row, convertSecondes(chrono2) - convertSecondes(chrono1), i);
+    }
+
+    function ecart(row, cross, obj, sel1, sel2, i){
+    	
+		  for (var key in obj){
+		    var value = obj[key];
+		    if (key == 'fields'){
+		    	// console.log(key + ": " + value);
+		    	traiteTab(row, cross, value, sel1, sel2, i);
+		    }
+		  }
+  }
+    
+    
+    function resetTable(){
+  	    document.getElementById("ecarts").deleteRow(1);
+    }
+    
+</script>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	margin: 0px 0px 0px 0px;
+	font-size: 11px;
+}
+
+th, td {
+	border: 1px solid;
+	padding: 10px;
+}
+</style>
+
+</head>
+<body onload="init()"; style="font-family: Verdana; font-size: 12px">
+	<div id="schema" style="float: left;width: 1200px; margin-right: 50px;padding-left: 10px"></div>
+		<h2>Classements cross 2014 - 2019 et et calcul écarts</h2>
+		
+		<p>Le diagramme permet de visualiser l'évolution de la hiérarchie des athlètes.
+		Deux flêches se croisent : l'ordre entre deux athlètes change.</p>
+		
+		<h3>Calcul des écarts entre un athlète de référence et plusieurs autres</h3>
+		<p>
+		[sélection par clic sur nom] Athlète 1 : <span id="sel1" style="margin-right: 50px">ANDRIEU Olivier</span>Athlète 2 : <span id="sel2" style="margin-right: 50px">DIANI Ilyas</span>
+			<button id="btnCompareSel1Sel2" onclick="compareSel1Sel2()">Calcul des écarts</button>
+			<button onclick="resetSelection()">Ré-initialiser sélections</button>
+			<button onclick="supprimerDerniereLigne()">Suppression dernière ligne</button>
+		</p>
+		<table id="ecarts">
+		<tr>
+<th>Comparaison</th>							<th>Dep14</th>	<th>Dep15</th>	<th>Dep16</th>	<th>Rep14</th>	<th>Rep15</th><th>Dep17M</th><th>Dep18M</th><th>Dep19M</th>
+<tr><td>ANDRIEU Olivier - DIANI Ilyas</td>		<td>10''</td>	<td>-24''</td>	<td>-18''</td>	<td>-24''</td>	<td></td><td></td><td></td><td></td></tr>
+<tr><td>ABDELKADER Yann - SOFFIATI Thibaud</td>	<td>92''</td>	<td>25''</td>	<td>70''</td>	<td></td>		<td></td><td></td><td></td><td></td></tr>
+						
+		</table>
+		<br/>
+		<p><button onclick="selectClubJoinville()">select club Joinville</button>
+		<button onclick="selectClubCreteil()">select club Créteil</button>
+		<button onclick="selectClubSolon()">select club Solon</button>
+		</p>
+		
+		<div id="sample">
+  <div id="myDiagramDiv" style="border: solid 1px black; width:1200px; height:1200px"></div>
+
+  <div>
+    <textarea id="mySavedModel" style="width:100%;height:250px;display: none "></textarea>
+
+<h2>Construction</h2>
+
+<ul>
+<li>parse HTML en Java -lt; JSon file liste cross, liste listes {athlète, chrono}.</li>
+<li>lecture du JSon généré <code>Type listType = new TypeTokenlt;Listlt;Crossgt;>() {}.getType();
+		Listlt;Crossgt; listCross = new Gson().fromJson(new FileReader("c:\\\\temp\\\\cross.json"), listType);</code>		
+</li>
+<li>génération des liens Json entre les tableaux pour <b>gojs</b></li>
+</ul>
+    
+<h2>Libraires</h2>    
+<p>JavaScript : GoJS 1.7.26</p>  
+<p>Java : com.google.code.gson 2.6.2</p>
+</div>
+</div>	
+</body>
+</html>
