@@ -30,7 +30,7 @@ if ( $nb == 0 ) {
 else {
     // on fait une boucle qui va faire un tour pour chaque enregistrement
     while($row = mysql_fetch_assoc($req)){
-        // while($row = $result->fetch_assoc()) {
+    // while($row = $result->fetch_assoc()) {
         if ($hint === "") {
             $hint = '{ "cross": [{"r":"' . $row["rang"] . '","n":"' . $row["nom"] . '","c":"' . $row["chrono"] . '"}';
         } else {
@@ -38,9 +38,9 @@ else {
         }
     }
     $hint .= ']}';
-}
-
-// echo $hint === "" ? "aucun nom trouvé" : $hint;
-echo $hint === "" ? '{"cross" : [ {"r" : "0", "nom" : "erreur","chrono" : "0"}]}' : $hint;
-
-?>
+    }
+    
+    // echo $hint === "" ? "aucun nom trouvé" : $hint;
+    echo $hint === "" ? '{"cross" : [ {"r" : "0", "nom" : "erreur","chrono" : "0"}]}' : $hint;
+    
+    ?>
