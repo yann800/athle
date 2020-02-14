@@ -65,14 +65,23 @@ p {
 				<a href="hommes.html">Tous résultats cross hommes</a>
 			</p>
 
+			<h2>Contenu de la base</h2>
+			<pre style="width: fit-content">SELECT  annee, championnat, sexe, cat, count(*) FROM cros GROUP BY annee, championnat, sexe ORDER BY sexe, championnat;</pre>
 
+			<table class="table table-striped">
+			<tr><td>2014</td><td>reg</td><td>F</td><td>SEM</td><td>184</td></tr>
+			<tr><td>2020</td><td>reg</td><td>F</td><td>ESF</td><td>139</td></tr>
+			<tr><td>2020</td><td>dep</td><td>M</td><td>M2M</td><td>61</td></tr>
+			<tr><td>2020</td><td>lifa</td><td>M</td><td>M1M</td><td>125</td></tr>
+			<tr><td>2020</td><td>reg</td><td>M</td><td>M1M</td><td>79</td></tr>
+			</table>
 		</div>
 	</article>
 
 	<footer class="col-md-offset-3 col-md-6">
 		<hr />
 		<p>
-			<i>Dernière MAJ <time pubdate="pubdate">09/02/2020</time></i>
+			<i>Dernière MAJ <time pubdate="pubdate">14/02/2020</time></i>
 		</p>
 	</footer>
 

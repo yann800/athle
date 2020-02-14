@@ -3,11 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-
 <link href="../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="../css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
 <link href="../css/athle.css" media="screen" rel="stylesheet" type="text/css" />
-
 
 <script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
 <script src="../js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -44,67 +42,109 @@ legend.scheduler-border {
 <body>
 	<article class="content">
 		<div class="row">
-			<div class="col-md-12">
-			SELECT  annee, championnat, sexe, count(*) FROM cros group by annee, championnat, sexe
-			</div>
-			<div class="col-md-4">
-				<form class="form-horizontal"  action="resultats_cross.php" method="post">
-					<div class="form-group">
-						<label class="control-label col-sm-3" >Sexe</label> 
-						<div class="col-sm-8">
-							<label class="radio-inline"><input type="radio" name="sexe1" value="F" required="required">Féminin</label>
-							<label class="radio-inline"><input type="radio" name="sexe1" value="M" checked="checked">Masculin</label>
-						</div>
-						
-						<label class="control-label col-sm-3" >Catégorie</label>
-						<div class="col-sm-8">
-							<label class="radio-inline"><input type="radio" name="categorie1" value="S">Senior</label>
-							<label class="radio-inline"><input type="radio" name="categorie1" value="M" checked="checked">Master</label>
-						</div>
-						
-						<label class="control-label col-sm-3" >Championnat</label>
-						<div class="col-sm-8">
-							<label class="radio-inline"><input type="radio" name="championnat1" value="dep" checked="checked"> Dép</label>
-							<label class="radio-inline"><input type="radio" name="championnat1" value="reg">Rég</label>
-							<label class="radio-inline"><input type="radio" name="championnat1" value="lifa">Lifa</label>
-						</div>
 
-						<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
-						<div class="col-sm-3"  style="margin-top: 10px">
-							<input class="form-control" type="number" name="annee1" value="2020">
-						</div>	
+			<div class="col-md-4 form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-md-3" >Sexe</label> 
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="sexe1" value="F" required="required">Féminin</label>
 					</div>
-				</form>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="sexe1" value="M" checked="checked">Masculin</label>
+					</div>
+					<label class="control-label col-sm-3">Catégorie</label>
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="categorie1" value="S">Senior</label>
+					</div>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="categorie1" value="M" checked="checked">Master</label>
+					</div>
+					<label class="control-label col-sm-3">Championnat</label>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat1" value="dep" checked="checked"> Dép</label>
+					</div>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat1" value="reg">Rég</label>
+					</div>
+					<div class="col-sm-5">
+						<label class="radio-inline"><input type="radio" name="championnat1" value="lifa">Lifa</label>
+					</div>
+					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
+					<div class="col-sm-3"  style="margin-top: 10px">
+						<input class="form-control" type="number" name="annee1" value="2020">
+					</div>	
+				</div>
 				<table class="table table-striped table-bordered" id="table_resultats1"></table>
 			</div>
 	
-			<div class="col-md-4">
-				<form class="form-horizontal"  action="resultats_cross.php" method="post">
-					<div class="form-group">
-						<label class="control-label col-sm-2" >Sexe</label> 
-						<div class="col-sm-10">
-							<label class="radio-inline"><input type="radio" name="sexe2" value="F" required="required">Féminin</label>
-							<label class="radio-inline"><input type="radio" name="sexe2" value="M" checked="checked">Masculin</label>
-						</div>
-						<label class="control-label col-sm-2" >Catégorie</label>
-						<div class="col-sm-10">
-							<label class="radio-inline"><input type="radio" name="categorie2" value="S">Senior</label>
-							<label class="radio-inline"><input type="radio" name="categorie2" value="M" checked="checked">Master</label>
-						</div>
-						<label class="control-label col-sm-3" >Championnat</label>
-						<div class="col-sm-8">
-							<label class="radio-inline"><input type="radio" name="championnat2" value="dep"> Dép</label>
-							<label class="radio-inline"><input type="radio" name="championnat2" value="reg" checked="checked">Rég</label>
-							<label class="radio-inline"><input type="radio" name="championnat2" value="lifa">Lifa</label>
-						</div>
-						<label class="control-label col-sm-2" >Année</label>
-						<div class="col-sm-3">
-							<input class="form-control" type="number" name="annee2" value="2020">
-						</div>	
+				<div class="col-md-4 form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-md-3" >Sexe</label> 
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="sexe2" value="F" required="required">Féminin</label>
 					</div>
-				</form>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="sexe2" value="M" checked="checked">Masculin</label>
+					</div>
+					<label class="control-label col-sm-3">Catégorie</label>
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="categorie2" value="S">Senior</label>
+					</div>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="categorie2" value="M" checked="checked">Master</label>
+					</div>
+					<label class="control-label col-sm-3">Championnat</label>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat2" value="dep"> Dép</label>
+					</div>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat2" value="reg" checked="checked">Rég</label>
+					</div>
+					<div class="col-sm-5">
+						<label class="radio-inline"><input type="radio" name="championnat2" value="lifa">Lifa</label>
+					</div>
+					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
+					<div class="col-sm-3"  style="margin-top: 10px">
+						<input class="form-control" type="number" name="annee2" value="2020">
+					</div>	
+				</div>
 				<table class="table table-striped table-bordered" id="table_resultats2"></table>
 			</div>
+			
+			<div class="col-md-4 form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-md-3" >Sexe</label> 
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="sexe3" value="F" required="required">Féminin</label>
+					</div>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="sexe3" value="M" checked="checked">Masculin</label>
+					</div>
+					<label class="control-label col-sm-3">Catégorie</label>
+					<div class="col-md-2">
+						<label class="radio-inline"><input type="radio" name="categorie3" value="S">Senior</label>
+					</div>
+					<div class="col-md-7">
+						<label class="radio-inline"><input type="radio" name="categorie3" value="M" checked="checked">Master</label>
+					</div>
+					<label class="control-label col-sm-3">Championnat</label>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat3" value="dep"> Dép</label>
+					</div>
+					<div class="col-sm-2">
+						<label class="radio-inline"><input type="radio" name="championnat3" value="reg">Rég</label>
+					</div>
+					<div class="col-sm-5">
+						<label class="radio-inline"><input type="radio" name="championnat3" value="lifa" checked="checked">Lifa</label>
+					</div>
+					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
+					<div class="col-sm-3"  style="margin-top: 10px">
+						<input class="form-control" type="number" name="annee3" value="2020">
+					</div>	
+				</div>
+				<table class="table table-striped table-bordered" id="table_resultats3"></table>
+			</div>			
+	
 		</div>
 	</article>
 	
@@ -156,15 +196,14 @@ legend.scheduler-border {
 	var resultats2 = { data : [ ]};
 	var resultats3 = { data : [ ]};
 		
-	var table1 = $('#table_resultats1').DataTable({
+	var table1 =$('#table_resultats1').DataTable({
 			data : resultats1.data,
 	        "paging": false, 
 	        "info": false,         
 		  columns : [
-		    { data: 'r', title: 'Rang' },
-		    { data: 'c', title: 'Chrono' },
+		    { data: 'r', title: 'Rang', width: "10%" },
+		    { data: 'c', title: 'Chrono', width: "20%"},
 		    { data: 'n', title: 'Nom' }
-  
 	      ]  
 		});
 
@@ -173,10 +212,20 @@ legend.scheduler-border {
         "paging": false, 
         "info": false,         
 	  columns : [
-	    { data: 'r', title: 'Rang' },
-	    { data: 'c', title: 'Chrono' },
+		{ data: 'r', title: 'Rang', width: "10%" },
+		{ data: 'c', title: 'Chrono', width: "20%"},
 	    { data: 'n', title: 'Nom' }
+      ]  
+	});
 
+	var table3 = $('#table_resultats3').DataTable({
+		data : resultats2.data,
+        "paging": false, 
+        "info": false,         
+	  columns : [
+		{ data: 'r', title: 'Rang', width: "10%" },
+		{ data: 'c', title: 'Chrono', width: "20%"},
+	    { data: 'n', title: 'Nom' }
       ]  
 	});
 
@@ -187,6 +236,17 @@ legend.scheduler-border {
 	
 	selection(1);
 	selection(2);
+	selection(3);
+
+	/* https://datatables.net/examples/api/select_row.html */
+    $('#table_resultats3 tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+    } );
+ 
+    $('#button').click( function () {
+        alert( table1.rows('.selected').data().length +' row(s) selected' );
+    } );
+	
 	</script>
 </body>
 </html>
