@@ -1,7 +1,7 @@
 <?php
 
 
-$cat			= $_GET['cat'];
+$cat			= $_GET['categorie'];
 $sexe			= $_GET['seye'];
 $championnat	= $_GET['championnat'];
 $annee			= $_GET['annee'];
@@ -41,6 +41,6 @@ else {
 }
 
 // echo $hint === "" ? "aucun nom trouvé" : $hint;
-echo $hint === "" ? '{"cross" : [ {"r" : "0", "nom" : "erreur","chrono" : "0"}]}' : $hint;
+echo $hint === "" ? '{"cross" : [ {"r" : "0", "n" : "pas de résultats","c" : "0"}]}' : $hint;
 
 ?>
