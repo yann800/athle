@@ -6,6 +6,10 @@ $sexe			= $_GET['seye'];
 $championnat	= $_GET['championnat'];
 $annee			= $_GET['annee'];
 
+if ($cat === "M" and $annee < 2019){
+    $cat = "V";
+}
+
 $hint = "";
 
 include '../constantes.php';
