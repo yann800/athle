@@ -198,7 +198,6 @@ $(document).ready(function() {
 	</div>
 
 	<div class="row" style="margin:0px">
-
 		<div class="col-md-10">
 			<table id="example" class="display" style="width:100%">
 				<thead>
@@ -217,46 +216,142 @@ $(document).ready(function() {
 			</table>
 			
 			Sélection : [<span id="selected"></span>]<button class="button" id="btnDetail">Graph</button><br/><br/><br/>
-		
-				   <div id="linechart_material" style="width: 900px; height: 500px;"></div>
+		</div>
+	</div>
+	<div class="row" style="margin:0px">
+		<div class="col-md-6">
+			<div id="linechart_materialDep" style="width: 900px; height: 500px;"></div>
+		</div>
+		<div class="col-md-6">
+			<div id="linechart_materialReg" style="width: 900px; height: 500px;"></div>
+		</div>
+	</div>
+</article>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-	<!-- https://developers.google.com/chart/interactive/docs/gallery/linechart -->
+	<!--
+	https://developers.google.com/chart/interactive/docs/gallery/linechart
+	 -->
 	<script type="text/javascript">
 google.charts.load('current', {'packages':['line']});
-google.charts.setOnLoadCallback(drawChart);
+// google.charts.setOnLoadCallback(drawDepInit);
 
-function drawChart() {
+$(document).ready(function() {
+	  $("#btnDetail").on("click", function() {
+	    drawDep();
+	  });
+});
 
-var data = new google.visualization.DataTable();
-data.addColumn('number', 'Annee');
-data.addColumn('number', 'Ilyas Diani');
-data.addColumn('number', 'Olivier Andrieu');
-data.addColumn('number', 'Sébastien Lacherest');
+function drawDep() {
+	
+	var selection = $('#selected').text();
+	if (selection.length == 0){
+		alert("pas de sélection");
+		return;
+	}
+	
+	var count = selection.split(',').length - 1; 
+	
+	if (count == 0){
+		drawDep1();
+		drawReg1();
+		return;
+	}
+	
+	if (count == 1){
+		drawDep2();
+		return;
+	}
+	drawDep3();
+}
 
-data.addRows([
-  [10,  37, 80, 41],
-  [12,  30, 69, 34],
-  [13,  25, 57, 25],
-  [14,  11, 18, 10],
+function drawDep1() {	
+	var data = new google.visualization.DataTable();
+	data.addColumn('number', 'Annee');
+	data.addColumn('number', 'Ilyas Diani');
+	
+	data.addRows([
+	  [10,  37],
+	  [12,  30],
+	  [13,  25],
+	  [14,  11],
+	  [15,  4],
+	  [16,  17],
+	  [17,  6],
+	  [18, 11]
+	]);
+	
+	var options = {
+		  chart: {
+		    title: 'Départementaux',
+		  },
+		  width: 600,
+		  height: 300,
+		  legend: {position: 'top'}
+	};
+	var chart = new google.charts.Line(document.getElementById('linechart_materialDep'));
+	chart.draw(data, google.charts.Line.convertOptions(options));
+}
 
-  [16,  8, , 17],
-  [17,  7, 12,  6],
-  [18, 12, 30, 11]
-]);
-
-var options = {
-  chart: {
-    title: 'Départementaux',
-  },
-  width: 600,
-  height: 300
-};
-
-var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-chart.draw(data, google.charts.Line.convertOptions(options));
+function drawReg1() {	
+	var data = new google.visualization.DataTable();
+	data.addColumn('number', 'Annee');
+	data.addColumn('number', 'Ilyas Diani');
+	
+	data.addRows([
+	  [10,  77],
+	  [12,  30],
+	  [13,  85],
+	  [14,  11],
+	  [15,  24],
+	  [16,  57],
+	  [17,  46],
+	  [18, 91]
+	]);
+	
+	var options = {
+		  chart: {
+		    title: 'Régionnaux',
+		  },
+		  width: 500,
+		  height: 300,
+		  legend: {position: 'none'}
+	};
+	var chart = new google.charts.Line(document.getElementById('linechart_materialReg'));
+	chart.draw(data, google.charts.Line.convertOptions(options));
+}
+function drawDep2() {
+	alert("drawDep2");
+}
+function drawDep3() {	
+	var data = new google.visualization.DataTable();
+	data.addColumn('number', 'Annee');
+	data.addColumn('number', 'Ilyas Diani');
+	data.addColumn('number', 'Olivier Andrieu');
+	data.addColumn('number', 'Sébastien Lacherest');
+	
+	data.addRows([
+	  [10,  37, 80, 41],
+	  [12,  30, 69, 34],
+	  [13,  25, 57, 25],
+	  [14,  11, 18, 10],
+	
+	  [16,  8, , 17],
+	  [17,  7, 12,  6],
+	  [18, 12, 30, 11]
+	]);
+	
+	var options = {
+		  chart: {
+		    title: 'Départementaux',
+		  },
+		  width: 600,
+		  height: 300, 
+		  legend: {position: 'bottom'}
+	};
+	var chart = new google.charts.Line(document.getElementById('linechart_materialDep'));
+	chart.draw(data, google.charts.Line.convertOptions(options));
 }
 
 $(document).ready(function() {
@@ -274,7 +369,12 @@ $(document).ready(function() {
 	    }
 	    // sinon on ajout
 	    else {
-	    	newSel = oldSelection + "," + sel;
+	    	if (oldSelection.length == 0){
+	    		newSel = sel;
+	    	}
+	    	else {
+	    		newSel = oldSelection + "," + sel;
+	    	}
 	    }
 	    $('#selected').text(newSel);
 	} );
