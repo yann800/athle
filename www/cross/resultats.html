@@ -71,7 +71,7 @@ legend.scheduler-border {
 					</div>
 					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
 					<div class="col-sm-3"  style="margin-top: 10px">
-						<input id="b8" class="form-control" type="number" name="annee1" value="2020">
+						<input id="b8" class="form-control" type="number" name="annee1" value="2020" step="2"/>
 					</div>	
 				</div>
 				<table class="table table-striped table-bordered" id="table_resultats1"></table>
@@ -105,7 +105,7 @@ legend.scheduler-border {
 					</div>
 					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
 					<div class="col-sm-3"  style="margin-top: 10px">
-						<input id="b18" class="form-control" type="number" name="annee2" value="2020">
+						<input id="b18" class="form-control" type="number" name="annee2" value="2020" step="2"/>
 					</div>	
 				</div>
 				<table class="table table-striped table-bordered" id="table_resultats2"></table>
@@ -139,7 +139,7 @@ legend.scheduler-border {
 					</div>
 					<label class="control-label col-sm-3" style="margin-top: 10px">Année</label>
 					<div class="col-sm-3"  style="margin-top: 10px">
-						<input id="b28" class="form-control" type="number" name="annee3" value="2020">
+						<input id="b28" class="form-control" type="number" name="annee3" value="2020" step="2"/>
 					</div>	
 				</div>
 				<table class="table table-striped table-bordered" id="table_resultats3"></table>
@@ -253,16 +253,16 @@ legend.scheduler-border {
     $('#b5').on( 'click', function () { selection(1) } );
     $('#b6').on( 'click', function () { selection(1) } );
     $('#b7').on( 'click', function () { selection(1) } );
-    $('#b8').on( 'click', function () { selection(1) } );
+    $('#b8').bind('change', function () { selection(1) } );
 	
-    $('#b11').on( 'click', function () { selection(2) } );
+	$('#b11').on( 'click', function () { selection(2) } );
     $('#b12').on( 'click', function () { selection(2) } );
     $('#b13').on( 'click', function () { selection(2) } );
     $('#b14').on( 'click', function () { selection(2) } );
     $('#b15').on( 'click', function () { selection(2) } );
     $('#b16').on( 'click', function () { selection(2) } );
     $('#b17').on( 'click', function () { selection(2) } );
-    $('#b18').on( 'click', function () { selection(2) } );
+    $('#b18').bind('change', function () { selection(2) } );
 	
     $('#b21').on( 'click', function () { selection(3) } );
     $('#b22').on( 'click', function () { selection(3) } );
@@ -271,7 +271,7 @@ legend.scheduler-border {
     $('#b25').on( 'click', function () { selection(3) } );
     $('#b26').on( 'click', function () { selection(3) } );
     $('#b27').on( 'click', function () { selection(3) } );
-    $('#b28').on( 'click', function () { selection(3) } );
+    $('#b28').bind('change', function () { selection(3) } );
 	
 	</script>
 </body>
