@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>&Eacute;tude championnats cross 2010-2020</title>
+	<link href="../css/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="../css/dataTables.bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+	<script src="js/jquery-3.3.1.js" type="text/javascript"></script>
+	<script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+<style type="text/css">
+p {
+	text-align: justify;
+}
+
+section > ul > li {
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+section > ul {
+margin-left: -24px;
+}
+
+table {
+ font-size: 0.8em;
+}
+
+th, td {
+padding:5px;
+border:solid 1px black;
+}
+
+pre {
+ font-size: 12px;
+}
+
+.red {
+	color:red;
+	background-color: #FBD6D6;
+}
+
+.titre {
+	margin-bottom: 20px;
+	background-color: #EEE;
+	border-radius: 3px;
+	padding: 5px;
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+	<article>
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<nav class="navbar" role="navigation" id="menu">
+			<ul class="nav nav-pills">
+				<li id="index"><a href="index.html">Accueil</a></li>
+				<li id="athletes"><a href="recherche_athlete.html">Athl&egrave;tes</a></li>
+				<li id="cross" role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cross<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="resultats.html">Résultats</a></li>
+					</ul>
+				</li>
+				<li id="statistiques" role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bilans &amp; statistiques<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="../bilans.html">Bilans selon recherche multi-crit&egrave;res</a></li><li><a href="ages.html">Statistiques &acirc;ge</a></li><li id="international"><a href="international.html">Statistiques nationalités</a></li></ul></li>
+				<li id="records" role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Records<span class="caret"></span></a><ul class="dropdown-menu"><li><li><a href="../records_pays_epreuve.html">Par &eacute;preuve</a></li><li><a href="rang_pays.html">Par pays</a></li><li><a href="import_records_wikipedia.html">Commentaires</a></li></ul></li>
+				<li id="objectifs" role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Objectifs<span class="caret"></span></a><ul class="dropdown-menu"><li><a href="../2018.html">2018</a></li><li><a href="../2019.html">2019</a></li><li><a href="../2020.html">2020</a></li></ul></li>
+				<li id="a_propos" role="presentation"><a href="../a_propos.html">&Agrave; propos</a></li>
+			</ul>
+			</nav>
+		</div>
+
+	<nav class="col-sm-offset-2 col-sm-8">
+		<div class="alert alert-info">
+			<div style="text-align: center;">
+				<div style="font-weight: bold;font-size: 1.3em">&Eacute;tude championnats cross 2010-2020</div>
+	 		</div>
+	 	<br/>
+		<ul style="list-style-type: none;">
+			<li><a href="#droits">1. Pourquoi et comment étudier des résultats de cross</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#1.1">Propriété des données athlé</a></li>
+				<li><a href="#compromission">Compromis ou compromission</a></li>
+			</ul>
+			
+			<li><a href="#requetes">2. Requêtes</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#2.1">Plus médaillés</a></li>
+				<li><a href="#2.2">Plus grand écart 1er et 2nd</a></li>
+				<li><a href="#2.3">Plus grand nombre de particpations (athlètes)</a></li>
+				<li><a href="#2.4">Plus grand nombre de particpations (clubs)</a></li>
+				<li><a href="#2.5">Les populaires meilleurs que les riches</a></li>
+				<li><a href="#2.6">Fidélité au club</a></li>
+				<li><a href="#2.7">Âge moyen</a></li>
+				<li><a href="#2.8">Plus jeune, plus âgé</a></li>
+				<li><a href="#2.9">Vétérans hommes participant en Senior</a></li>
+			</ul>
+			<li><a href="#comparaison">3. Comparaison d'athlètes</a>
+			<li><a href="#technique">4. Technique</a></li>
+			<ul style="list-style-type: none;">
+				<li><a href="#calcul_classements">Re-calcul des classements</a></li>
+				<li><a href="#lievres">Présence des lièvres et régularité</a></li>
+				<li><a href="#erreurs">Erreurs</a></li>
+			</ul>			
+		</ul>
+		</div>
+	</nav>
+	
+	<section class="col-sm-offset-2 col-sm-8">
+
+	<h2 id="droits">1. Pourquoi et comment étudier des résultats de cross</h2>
+	
+	<p>
+	Le cross est école de la vie.  
+	Le goût de l'effort, de la lutte, de la sueur et des larmes ; de persévérance ;
+	d'amour du maillot du club et d'esprit d'équipe ;
+	d'une pratique populaire à l'opposé des sports élitistes de riches ;
+	de rapprochement avec la nature ; enfin du travail foncier pour la piste l'été.
+	</p>
+	<p>
+	Promouvoir cette belle discipline est faire oeuvre d'intérêt public.
+	Il y a en a besoin. Quand on compare le nombre de lignes consacrée dans <i>l'Equipe</i> 
+	avec le moindre état d'âme de Neymar... Ou quand on compare la facilité d'annuler un championnat de France de cross
+	pendant qu'on maintient les matchs de foot... 
+	</p>
+	<p>
+	Donc, étudions ici les <strong>résultats des championnats départementaux du Val-de-Marne, des régionaux zone Est et interrégionaux LIFA de cross,  
+	période 2010-2020</strong>.
+	</p>
+	
+
+	<h3 id="1.1">Propriété des données athlé</h3>
+	<p>Les résultats des championnats de cross sont publiques. Cependant, 
+	se pose la question de la propriété.
+   
+	Si une boîte privée avait la bonne idée de récupérer les données pour faire du blé, il y aurait un problème.
+	Un peu comme Google Actualités qui génère des revenus publicitaires sur le dos de la presse nationale - et qui plus avec évasion fiscale.
+	Ou comme le marché d'exploitation des données de santé, Amazon en GB, demain peut-être Microsoft en France. 
+	</p>
+	<p>
+	&Ccedil;a c'est le monde capitaliste. L'usage ici des données athlé n'est pas destiné à faire du pognon.
+	Juste le partage au sein de la famille des pratiquants du cross. 
+	Légalement, en attendant l'abolition de la propriété privée lucrative, l'accès aux données athlé devrait être  
+	libre sur le modèle des licences en informatique. Un code libre peut être utilisé librement
+	à condition que le caractère libre soit conservé. 
+	Les analyses proposées ici sont libres de copie et de réutilisation pourvu que l'usage soit non commercial.
+	</p>
+	<p>
+	Le danger du détournement des données à visée de surveillance généralisée existe.
+	Les compagnies d'assurance tentent depuis un moment de connaître la santé de leurs clients - avec adapation des contrats à la clé.
+	Vos places aux championnats de cross est un bon indicateur de votre forme.
+	&Ccedil;a reste modeste avec Strava. Mais ça reste encore aimable plaisanterie d'amateur en comparaison de l'imagination  
+	de la société industrielle (les capitalistes ne sont pas les seuls partisans de ces « progrès », des communistes et trotskystes 
+	- salut amical en passant aux camarades de l'ex-Tendance Claire - le sont également). Dans le supplément <i>Science &amp; Médecine</i> du
+	<i>Monde</i> daté 4 mars 2020, on lit page 5 : 
+	</p>
+	<ul>
+		<li>Au Japon Symax Inc propose aux entreprise <strong>une analyse des urines</strong> en continu des salariés volontaires par un capteur dans 
+			les toilettes &rarr; PH urinaire et débit urinaire.</li>
+		<li>Au Canada la startup Animo propose d'<strong>analyser les écrits</strong> des salariés volontaires (mail, messagerie instantanée) pour évaluer
+		leur santé mentale &rarr; risque de burn-out, anxiété</li>
+		<li>En France à l'aide d'un <strong>diagnostic en ligne</strong>, les salariés volontaires du programme Vitaly (Generali) cummulent des points et obtiennent des  réductions et remises si leur état de forme s'améliore &rarr; alimentation, mode de vie, état de santé</li>
+		<li>Aux &Eacute;tats-Unis, à partir d'un selfie, Chronos, logiciel d'<strong>analyse faciale</strong> &rarr; âge, masse pondérale</li>
+	</ul>
+	  
+	<p>Voyant cela, nul doute que les résultats d'athlé <strong>indicateur de santé et VO2 max</strong> seraient monneyables si la CNIL ne s'y opposerait pas.
+	&Agrave; moins que ce ne soit pas déjà le cas, je suis peut-être naïf. En période d'austérité, si la FFA se trouverait en manque de moyens, la tentation serait forte.</p> 		 
+	
+	<h3 id="corruption">Compromis ou compromission</h3>
+	<p>
+	Compromis ou compromission, vieille question. Déjà le PC utilisé en ce moment même tourne sous Windows et fonctionne à électricité nucléaire.
+	Et les graphiques des cross sont générés grâce aux librairies javascript Google, heureusement disponibles sous licence libre. &Ccedil;a c'est très pratique. C'est avec regret 
+	que j'ai du renoncer à publier d'autres graphiques utilisant des librairies Northwood Software, très bonnes aussi mais payantes (et chères).
+	Dilemmes...
+	</p>
+	
+	<p>Par association d'idées, on pourrait avoir envie de demander à la FFA les raisons du choix d'utiliser Microsoft pour son site et base de données.
+	Les contrats sont payés sur fonds publics et cotisations des licenciés et clubs, il n'est pas illégitime de demander à examiner les appels d'offres
+	de marché public. Le choix Linux &amp; MySQL pourrait être meilleur techniquement et accessoirement plus économe et 
+	plus conforme à l'idée de service publique.
+	</p>
+	
+	<p>Toujours à propos de boue, il est permis de s'étonner de voir aux derniers championnats LIFA de cross se mélanger 
+	aux athlètes normalement qualifiés quelques concurrents de sport en entreprise.   
+	En plus, de la banque Société Générale. L'explication de cette incongruité serait financière ?
+	</p>
+
+	<p>
+	La place des sponsors peut aussi troubler. Par exemple, il y a quelques années Ariva s'affichait sur le maillot bleu.
+	Un déclin de sélection pour cette raison aurait été compréhensible. 
+	Un autre exemple édifiant aux US en 2015.
+	</p>
+	<p>
+	Nick Symmons n'avait pas participé aux championnats du Monde bien que qualifié sur 800 mais exclu de l'équipe nationale US pour conflit
+	entre le sponsor officiel Nike et son sponsor perso, Brooks. Pourquoi tolérer le pouvoir des sponsors ?
+	</p>
+	<p>Plus récement, pourquoi accepter de participer à un championnat du monde au Qatar dans stade climatisé, hérésie écologique ?</p>
+	
+	
+	</section>
+	<section class="col-sm-offset-2 col-sm-8">
+
+		<h2 id="requetes">2. Requêtes</h2>
+		
+		<h3 id="2.1">Plus médaillés</h3>
+		&#9888;
+		<a href="#calcul_categorie">Calcul classement </a> en amont pour recalculer les classements féminins à cause mélange senior / master / junior.
+		<br/><br/>
+		
+		<pre><code class="language-sql">SELECT nom, count(*) AS nb_podium, GROUP_CONCAT(annee, ' ', rang SEPARATOR ', ') AS podium 
+FROM cros WHERE championnat= 'dep' AND rang IN (1,2,3)
+GROUP BY nom ORDER BY nb_podium DESC</code></pre>
+		
+		<br/><br/>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<div class="titre">Départementaux 94</div>
+				<table class="table table-striped table-bordered ">
+					<tr style="background-color: #CCCCCC"><th>nom</th><th>nb</th><th>podium</th></tr>
+<tr><td>BOUBEKEUR Achour</td><td>4</td><td>2017 1 2012 2 2018 1 2014 3</td></tr>
+<tr><td>KERROUA Yanis</td><td>4</td><td>2018 3 2013 3 2017 1 2014 2</td></tr>
+<tr><td>BENHAMOU Michael</td><td>3</td><td>2018 2 2017 2 2013 1</td></tr>
+<tr><td>DORGAN Florence</td><td>3</td><td>2013 3 2010 3 2012 1</td></tr>
+<tr><td>BEAUFORT Sebastien</td><td>2</td><td>2020 2 2018 3</td></tr>
+<tr><td>BENNACER Mustapha (Alg)</td><td>2</td><td>2012 1 2010 1</td></tr>
+<tr><td>CHOUKRI Mohamed</td><td>2</td><td>2012 2 2017 3</td></tr>
+<tr><td>GILBERT Frederic</td><td>2</td><td>2014 1 2012 1</td></tr>
+<tr><td>NARDI COLOME Franck</td><td>2</td><td>2020 1 2014 3</td></tr>
+<tr><td>VINDEX Jean-philippe</td><td>2</td><td>2013 3 2014 2</td></tr>
+</table>
+	</div>
+	<div class="col-md-4">
+		<div class="titre">Régionaux Est</div>
+		<table class="table table-striped table-bordered">
+			<tr style="background-color: #CCCCCC"><th>nom</th><th>nb</th><th>podium</th></tr>
+<tr><td>FAVIER Francois-rene</td><td>5</td><td>2018 1 2019 2 2017 1 2014 1 2020 3</td></tr>
+<tr><td>BOUBEKEUR Achour</td><td>3</td><td>2017 2 2013 3 2012 2</td></tr>
+<tr><td>KUMBI BECHERE Tura (Eth)</td><td>3</td><td>2020 1 2013 1 2019 1</td></tr>
+<tr><td>BENNACER Mustapha (Alg)</td><td>2</td><td>2010 2 2012 1</td></tr>
+<tr><td>BLAUT Garance</td><td>2</td><td>2018 2 2017 3</td></tr>
+<tr><td>BOUAGGAD Hanane (Mar)</td><td>2</td><td>2019 2 2020 1</td></tr>
+<tr><td>DIDOVODIUK Olesia (Ukr)</td><td>2</td><td>2017 1 2018 3</td></tr>
+<tr><td>DJEMADI Abderrahmane (Alg)</td><td>2</td><td>2012 1 2010 1</td></tr>
+<tr><td>FRERE Mehdi</td><td>2</td><td>2018 3 2017 3</td></tr>
+<tr><td>GILBERT Frederic</td><td>2</td><td>2013 1 2012 2</td></tr>
+<tr><td>JACQUERAY Diony</td><td>2</td><td>2010 3 2012 3</td></tr>
+<tr><td>LEGRAND Marion</td><td>2</td><td>2019 1 2020 3</td></tr>
+</table>
+	</div>
+	<div class="col-md-4">
+		<div class="titre">LIFA</div>
+		<table class="table table-striped table-bordered">
+			<tr style="background-color: #CCCCCC"><th>nom</th><th>nb</th><th>podium</th></tr>
+<tr><td>FAVIER Francois-rene</td><td>4</td><td>2014 2 2019 3 2017 2 2018 1</td></tr>
+<tr><td>KHEZZANE Noreddine</td><td>4</td><td>2012 2 2017 3 2010 2 2013 3</td></tr>
+<tr><td>CHACHIGNON Mathilde</td><td>3</td><td>2012 2 2014 3 2017 2</td></tr>
+<tr><td>MYKHAILOVA Daria (Ukr)</td><td>3</td><td>2019 1 2020 2 2018 1</td></tr>
+<tr><td>AMDOUNI Morhad</td><td>2</td><td>2017 1 2018 1</td></tr>
+<tr><td>BOUCHARD Marie</td><td>2</td><td>2020 1 2019 2</td></tr>
+<tr><td>BOUCHIKHI Soufiane (Bel)</td><td>2</td><td>2018 2 2019 1</td></tr>
+<tr><td>DJEMADI Abderrahmane (Alg)</td><td>2</td><td>2012 1 2010 1</td></tr>
+<tr><td>JEMMAL Abdelghani</td><td>2</td><td>2018 3 2017 1</td></tr>
+<tr><td>LEDHEM Fadouwa</td><td>2</td><td>2018 2 2014 2</td></tr>
+<tr><td>MEKDAFOU Youssef</td><td>2</td><td>2017 3 2014 1</td></tr>
+<tr><td>MERED Meriem</td><td>2</td><td>2013 1 2012 1</td></tr>
+<tr><td>MEZEGHRANE-SAAD Samira</td><td>2</td><td>2014 1 2017 3</td></tr>
+<tr><td>SADI Ali</td><td>2</td><td>2020 1 2019 2</td></tr>
+</table>
+	</div>
+
+</div>
+
+<h3 id="2.2">Plus grand écart 1er et 2nd</h3>
+
+<pre><code class="language-sql">SELECT c1.nom, c2.nom, c1.championnat, c1.annee, (SUBSTRING(c2.chrono, 1,2) * 60) + SUBSTRING(c2.chrono, 4) - (SUBSTRING(c1.chrono, 1,2) * 60) - SUBSTRING(c1.chrono, 4) AS ecart FROM cros c1
+ JOIN cros c2 ON c2.rang = 2 AND c1.annee = c2.annee AND c1.championnat = c2.championnat AND c1.sexe = c2.sexe AND c1.id != c2.id
+ WHERE c1.rang = 1 AND SUBSTRING(c1.cat,1,1) = SUBSTRING(c2.cat,1,1)
+ ORDER BY ecart DESC</code></pre>
+ 
+<table class="table table-striped table-bordered">
+<tr style="background-color: #CCCCCC"><th>nom</th><th>nom</th><th>championnat</th><th>annee</th><th>ecart</th></tr>
+<tr><td>AMDOUNI Morhad</td><td>MEKDAFOU Youssef</td><td>lifa</td><td>2016</td><td>107</td></tr>
+<tr><td>MAROUFIT Mourad (MAR)</td><td>GAYANT Brice</td><td>dep</td><td>2019</td><td>81</td></tr>
+<tr><td>DOUKKANA Rabii (Mar)</td><td>GRUNDTNER Willy</td><td>dep</td><td>2016</td><td>77</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>CARANTON Laurent</td><td>dep</td><td>2019</td><td>57</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>BOUBEKEUR Achour</td><td>reg</td><td>2017</td><td>53</td></tr>
+<tr><td>BOUCHIKHI Soufiane (Bel)</td><td>MAROUFIT Mourad (MAR)</td><td>lifa</td><td>2019</td><td>45</td></tr>
+<tr><td>HATTOUCHI Mohamed (Mar)</td><td>OMARAT Brahim (Mar)</td><td>reg</td><td>2016</td><td>44</td></tr>
+<tr><td>KERROUA Yanis</td><td>SAGE Jerome</td><td>dep</td><td>2017</td><td>42</td></tr>
+<tr><td>AMDOUNI Morhad</td><td>IBRAHIMOV Hayle (Aze)</td><td>lifa</td><td>2017</td><td>39</td></tr>
+<tr><td>GILBERT Frederic</td><td>CHOUKRI Mohamed</td><td>dep</td><td>2012</td><td>37</td></tr>
+<tr><td>DORGAN Florence</td><td>ESPRIT Augustina</td><td>dep</td><td>2012</td><td>37</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>CHAREIL Ken</td><td>reg</td><td>2018</td><td>33</td></tr>
+<tr><td>SADI Ali</td><td>PREIRA William</td><td>lifa</td><td>2020</td><td>33</td></tr>
+<tr><td>MARTINO Azeline</td><td>TRUEL Aurelia</td><td>reg</td><td>2014</td><td>33</td></tr>
+<tr><td>GUERFI Riad</td><td>KENOUCHE Abdelslam</td><td>lifa</td><td>2012</td><td>28</td></tr>
+<tr><td>BENNACER Mustapha (Alg)</td><td>BOUBEKEUR Achour</td><td>reg</td><td>2012</td><td>27</td></tr>
+<tr><td>KUMBI BECHERE Tura (Eth)</td><td>RAYNAUD Bertrand</td><td>reg</td><td>2020</td><td>27</td></tr>
+<tr><td>YAHI Nawal (Alg)</td><td>BLAUT Garance</td><td>reg</td><td>2018</td><td>25</td></tr>
+<tr><td>BENGHERDA Hicham (Alg)</td><td>GUERFI Riad</td><td>reg</td><td>2017</td><td>25</td></tr>
+<tr><td>ZEROUAL Larbi</td><td>FAVIER Francois-rene</td><td>lifa</td><td>2014</td><td>24</td></tr>
+<tr><td>KUMBI BECHERE Tura (Eth)</td><td>FAVIER Francois-rene</td><td>reg</td><td>2019</td><td>23</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>VINDEX Jean-philippe</td><td>reg</td><td>2015</td><td>22</td></tr>
+<tr><td>LEQUITTE-CHARRANSOL Perrine</td><td>EL GMIRI Kebira (Mar)</td><td>dep</td><td>2019</td><td>21</td></tr>
+<tr><td>DJEMADI Abderrahmane (Alg)</td><td>KHELAF Kamal (Alg)</td><td>reg</td><td>2010</td><td>20</td></tr>
+<tr><td>YAHI Nawal (Alg)</td><td>CHACHIGNON Mathilde</td><td>lifa</td><td>2017</td><td>20</td></tr>
+<tr><td>BENNACER Mustapha (Alg)</td><td>KERROUT Mounir</td><td>dep</td><td>2010</td><td>19</td></tr>
+<tr><td>BOUBEKEUR Achour</td><td>BENHAMOU Michael</td><td>dep</td><td>2017</td><td>18</td></tr>
+<tr><td>KUMBI BECHERE Tura (Eth)</td><td>SADI Ali</td><td>lifa</td><td>2019</td><td>18</td></tr>
+<tr><td>BENNACER Mustapha (Alg)</td><td>BOUBEKEUR Achour</td><td>dep</td><td>2012</td><td>16</td></tr>
+<tr><td>DJEMADI Abderrahmane (Alg)</td><td>GILBERT Frederic</td><td>reg</td><td>2012</td><td>16</td></tr>
+<tr><td>GUTTIN Nicolas</td><td>ROUSSEAU Benjamin</td><td>dep</td><td>2013</td><td>15</td></tr>
+<tr><td>BENGHERDA Mahieddine (Alg)</td><td>COMINGES Cyrille</td><td>lifa</td><td>2013</td><td>14</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>CHAREIL Ken</td><td>lifa</td><td>2018</td><td>13</td></tr>
+<tr><td>MYKHAILOVA Daria (Ukr)</td><td>LEDHEM Fadouwa</td><td>lifa</td><td>2018</td><td>12</td></tr>
+<tr><td>JEMMAL Abdelghani</td><td>CHEVAL Gregory</td><td>lifa</td><td>2016</td><td>12</td></tr>
+<tr><td>MARTINO Azeline</td><td>AKROUNE Nadia</td><td>reg</td><td>2015</td><td>12</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>VINDEX Jean-philippe</td><td>reg</td><td>2014</td><td>10</td></tr>
+</table>
+</table>
+
+</table>
+
+
+<h3 id="2.3">Plus grand nombre de participations LIFA (athlètes)</h3>
+
+<pre><code class="language-sql">SELECT nom, GROUP_CONCAT(annee, ''), count(*) AS participation FROM cros WHERE championnat = 'lifa'
+GROUP BY nom  ORDER BY participation DESC</code></pre>
+
+<table id="plus_gd_nb_participations_athletes"
+class="table table-striped table-bordered table-hover" >
+
+<tr><td>JAEGER Emmanuelle</td><td>2018,2015,2016,2012,2010,2020,2014,2019,2013,2017</td><td>10</td></tr>
+<tr><td>RUIZ Pascal</td><td>2017,2018,2015,2016,2020,2010,2012,2014,2019,2013</td><td>10</td></tr>
+<tr><td>BEN-HOUDJA Mohammed</td><td>2017,2018,2015,2020,2010,2012,2014,2019,2013</td><td>9</td></tr>
+<tr><td>CHACHIGNON Mathilde</td><td>2012,2010,2020,2014,2019,2017,2018,2015,2016</td><td>9</td></tr>
+<tr><td>CHOUKRI Mohamed</td><td>2010,2012,2014,2019,2013,2017,2018,2015,2016</td><td>9</td></tr>
+<tr><td>GAUGE Sandrine</td><td>2012,2010,2020,2014,2013,2017,2018,2015,2016</td><td>9</td></tr>
+<tr><td>GHIANI Marc</td><td>2020,2012,2014,2019,2013,2017,2018,2015,2016</td><td>9</td></tr>
+<tr><td>LE MOING Veronique</td><td>2017,2018,2015,2016,2012,2010,2020,2014,2019</td><td>9</td></tr>
+<tr><td>ALLAM Agnes</td><td>2018,2015,2016,2020,2014,2019,2013,2017</td><td>8</td></tr>
+<tr><td>CARANTON Laurent</td><td>2017,2018,2015,2016,2020,2010,2014,2019</td><td>8</td></tr>
+<tr><td>CHAREIL Ken</td><td>2017,2018,2016,2020,2010,2012,2014,2019</td><td>8</td></tr>
+<tr><td>COURJAL Yannick</td><td>2017,2018,2015,2016,2020,2012,2014,2019</td><td>8</td></tr>
+<tr><td>ESPRIT Augustina</td><td>2012,2010,2014,2013,2017,2018,2015,2016</td><td>8</td></tr>
+<tr><td>GUEGANO Raphael</td><td>2020,2010,2012,2019,2013,2017,2018,2016</td><td>8</td></tr>
+<tr><td>HERCOUET Didier</td><td>2017,2018,2015,2016,2010,2012,2014,2013</td><td>8</td></tr>
+<tr><td>JACQUERAY Severine</td><td>2012,2010,2020,2014,2019,2013,2017,2015</td><td>8</td></tr>
+<tr><td>KHEZZANE Noreddine</td><td>2010,2012,2014,2019,2013,2017,2018,2015</td><td>8</td></tr>
+<tr><td>LANDEMAINE Jean-christophe</td><td>2017,2015,2016,2010,2012,2014,2019,2013</td><td>8</td></tr>
+<tr><td>LE QUERRE Fabrice</td><td>2017,2015,2016,2020,2012,2014,2019,2013</td><td>8</td></tr>
+<tr><td>MARTINO Azeline</td><td>2018,2015,2010,2020,2014,2019,2013,2017</td><td>8</td></tr>
+<tr><td>MULL-JOCHEM Mireille</td><td>2012,2010,2020,2014,2019,2017,2018,2015</td><td>8</td></tr>
+<tr><td>PELLETIER Gilles</td><td>2010,2012,2014,2019,2013,2017,2015,2016</td><td>8</td></tr>
+<tr><td>RAMZI Houcine</td><td>2020,2014,2019,2013,2017,2018,2015,2016</td><td>8</td></tr>
+<tr><td>SAILLY Patrice</td><td>2017,2018,2015,2016,2012,2014,2019,2013</td><td>8</td></tr>
+<tr><td>VIDAL Patrick</td><td>2017,2018,2015,2016,2020,2010,2012,2013</td><td>8</td></tr>
+<tr><td>WEILER Veronique</td><td>2018,2015,2016,2012,2010,2014,2013,2017</td><td>8</td></tr>
+<tr><td>ALEXANDRE Christian</td><td>2020,2010,2012,2014,2013,2018,2015</td><td>7</td></tr>
+<tr><td>ANDRIEU Olivier</td><td>2020,2010,2012,2014,2018,2015,2016</td><td>7</td></tr>
+<tr><td>BARBETTE Frederic</td><td>2017,2015,2016,2012,2014,2019,2013</td><td>7</td></tr>
+<tr><td>BAUDRY Bernard</td><td>2020,2012,2014,2019,2013,2017,2015</td><td>7</td></tr>
+<tr><td>BENHAMOU Michael</td><td>2020,2014,2019,2013,2017,2018,2015</td><td>7</td></tr>
+<tr><td>BERGOGNER Clarisse</td><td>2017,2018,2015,2016,2020,2014,2019</td><td>7</td></tr>
+<tr><td>CLEMONT Mathilde</td><td>2010,2020,2014,2019,2013,2018,2016</td><td>7</td></tr>
+<tr><td>COURNUT Aurelie</td><td>2012,2020,2013,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>CROIZIER Lilian</td><td>2020,2012,2013,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>DA SILVA Brigitte</td><td>2015,2016,2012,2010,2020,2014,2019</td><td>7</td></tr>
+<tr><td>DUCROT Joel</td><td>2010,2012,2014,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>EL YAMANI Mohammed</td><td>2020,2014,2013,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>EL-FILALI Mostafa</td><td>2017,2016,2010,2012,2014,2019,2013</td><td>7</td></tr>
+<tr><td>FARIA Rolando</td><td>2020,2010,2014,2019,2017,2015,2016</td><td>7</td></tr>
+<tr><td>FAVELIN Christine</td><td>2012,2014,2013,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>2017,2018,2015,2020,2012,2014,2019</td><td>7</td></tr>
+<tr><td>GANCE Catherine</td><td>2010,2020,2014,2019,2017,2018,2016</td><td>7</td></tr>
+<tr><td>GINER Wilfried</td><td>2020,2010,2012,2014,2019,2018,2015</td><td>7</td></tr>
+<tr><td>IVOY Marianne</td><td>2012,2014,2013,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>JARRY Alain</td><td>2017,2015,2016,2020,2010,2012,2014</td><td>7</td></tr>
+<tr><td>LACHEREST Sebastien</td><td>2017,2018,2015,2016,2020,2010,2019</td><td>7</td></tr>
+<tr><td>LAPORTE Kevin</td><td>2017,2018,2016,2010,2012,2014,2019</td><td>7</td></tr>
+<tr><td>LAZAREVIC Philippe</td><td>2010,2012,2014,2019,2013,2015,2016</td><td>7</td></tr>
+<tr><td>LECIEUX Thomas</td><td>2017,2018,2015,2016,2020,2014,2019</td><td>7</td></tr>
+<tr><td>LOMBARDOT Yann</td><td>2010,2012,2014,2019,2017,2018,2015</td><td>7</td></tr>
+<tr><td>MAROLLES Frederic</td><td>2017,2018,2015,2016,2010,2019,2013</td><td>7</td></tr>
+<tr><td>MOUSSET Elisabeth</td><td>2012,2010,2014,2013,2018,2015,2016</td><td>7</td></tr>
+<tr><td>PAILLUSSON Christophe</td><td>2017,2018,2015,2010,2012,2014,2019</td><td>7</td></tr>
+<tr><td>PAPPALARDO Thierry</td><td>2010,2012,2014,2017,2018,2015,2016</td><td>7</td></tr>
+<tr><td>PINET Cyril</td><td>2017,2015,2010,2012,2014,2019,2013</td><td>7</td></tr>
+<tr><td>QUEMENER Anais</td><td>2012,2020,2014,2019,2013,2017,2015</td><td>7</td></tr>
+<tr><td>RAPICAULT Benoit</td><td>2010,2012,2014,2013,2018,2015,2016</td><td>7</td></tr>
+<tr><td>ROSSE Sebastien</td><td>2020,2012,2014,2013,2017,2015,2016</td><td>7</td></tr>
+<tr><td>ROUYER Thomas</td><td>2020,2014,2019,2013,2017,2018,2016</td><td>7</td></tr>
+<tr><td>SMITH Julien</td><td>2017,2015,2016,2010,2014,2019,2013</td><td>7</td></tr>
+<tr><td>WIEDEMANN Sophie</td><td>2017,2018,2015,2016,2020,2014,2019</td><td>7</td></tr>
+<tr><td>AKROUNE Camilia</td><td>2012,2010,2020,2017,2018,2015</td><td>6</td></tr>
+<tr><td>AMOSSE Yannick</td><td>2010,2012,2013,2017,2018,2016</td><td>6</td></tr>
+<tr><td>BELAIR Rosalie</td><td>2015,2016,2010,2020,2014,2019</td><td>6</td></tr>
+<tr><td>BERNARD Laura</td><td>2015,2016,2012,2020,2014,2013</td><td>6</td></tr>
+<tr><td>BOUMAZA Mohamed</td><td>2017,2015,2016,2012,2014,2019</td><td>6</td></tr>
+<tr><td>BOUQUET Aurelie</td><td>2017,2018,2015,2012,2020,2014</td><td>6</td></tr>
+<tr><td>CHARPENTIER Jeremie</td><td>2017,2018,2015,2016,2010,2012</td><td>6</td></tr>
+<tr><td>CHASLIN Florine</td><td>2012,2010,2014,2017,2018,2016</td><td>6</td></tr>
+<tr><td>CHERY Sebastien</td><td>2015,2016,2010,2012,2014,2013</td><td>6</td></tr>
+<tr><td>COLMAR Caroline</td><td>2015,2016,2012,2020,2014,2013</td><td>6</td></tr>
+<tr><td>COMPAIN Gaetan</td><td>2020,2010,2014,2017,2018,2015</td><td>6</td></tr>
+<tr><td>DA SILVA Jose carlos</td><td>2015,2016,2020,2010,2012,2013</td><td>6</td></tr>
+<tr><td>DALE Helen</td><td>2017,2015,2016,2012,2010,2014</td><td>6</td></tr>
+<tr><td>DANAILOV Elitsa (Bul)</td><td>2012,2020,2013,2017,2015,2016</td><td>6</td></tr>
+<tr><td>DAUVILLIERS Sebastien</td><td>2018,2015,2020,2014,2019,2013</td><td>6</td></tr>
+<tr><td>DJEMADI Abderrahmane (Alg)</td><td>2010,2012,2014,2013,2017,2015</td><td>6</td></tr>
+<tr><td>DORGAN Florence</td><td>2015,2012,2010,2014,2013,2017</td><td>6</td></tr>
+<tr><td>DUHAUPAS Stephane</td><td>2014,2013,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>EP NHEP Xiu ming</td><td>2014,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>FERREIRO Thibaut</td><td>2014,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>GRUNDTNER Willy</td><td>2020,2010,2012,2014,2019,2016</td><td>6</td></tr>
+<tr><td>GUIMOND Pascal</td><td>2015,2016,2010,2012,2014,2013</td><td>6</td></tr>
+<tr><td>HANNOUDI Mounir</td><td>2017,2018,2020,2012,2014,2019</td><td>6</td></tr>
+<tr><td>JEMMAL Abdelghani</td><td>2012,2014,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>LAMINE Moustapha (Mar)</td><td>2020,2010,2012,2014,2013,2015</td><td>6</td></tr>
+<tr><td>LEY Myriam</td><td>2017,2015,2016,2012,2010,2013</td><td>6</td></tr>
+<tr><td>LIEBART Stephanie</td><td>2012,2020,2019,2017,2018,2016</td><td>6</td></tr>
+<tr><td>MAAMOUZ Ahmed</td><td>2018,2015,2016,2012,2014,2019</td><td>6</td></tr>
+<tr><td>MAIRESSE Jean-baptiste</td><td>2015,2016,2020,2010,2014,2019</td><td>6</td></tr>
+<tr><td>MARCOVICI Jean-baptiste</td><td>2020,2014,2019,2017,2015,2016</td><td>6</td></tr>
+<tr><td>MERROUNE Mohamed</td><td>2020,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>MOUQUET Sylvain</td><td>2020,2010,2014,2017,2018,2015</td><td>6</td></tr>
+<tr><td>NICOLAS TOUSSAINT Brigitte</td><td>2012,2014,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>NIGEN Gwendal</td><td>2014,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>OULD Fabien</td><td>2017,2015,2016,2020,2010,2012</td><td>6</td></tr>
+<tr><td>PERIAULT Leonie</td><td>2018,2015,2016,2020,2014,2019</td><td>6</td></tr>
+<tr><td>POCREAUX Cyril</td><td>2010,2012,2014,2013,2015,2016</td><td>6</td></tr>
+<tr><td>PROME Thomas</td><td>2014,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>RICHARD Maxime</td><td>2012,2014,2019,2017,2018,2016</td><td>6</td></tr>
+<tr><td>ROMAGNY Delphine</td><td>2017,2018,2015,2016,2012,2014</td><td>6</td></tr>
+<tr><td>SAIM Ahmed (Alg)</td><td>2014,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>TRENIER Sophie</td><td>2012,2010,2020,2014,2013,2018</td><td>6</td></tr>
+<tr><td>TRUEL Aurelia</td><td>2010,2020,2019,2013,2015,2016</td><td>6</td></tr>
+<tr><td>VERDOL Widdy</td><td>2020,2019,2017,2018,2015,2016</td><td>6</td></tr>
+<tr><td>VIOLARD Frederic</td><td>2020,2014,2019,2017,2015,2016</td><td>6</td></tr>
+<tr><td>ABACHAD Adil</td><td>2017,2016,2020,2010,2019</td><td>5</td></tr>
+<tr><td>ABDELKADER Yann</td><td>2020,2014,2017,2015,2016</td><td>5</td></tr>
+<tr><td>ADAO Manuel</td><td>2020,2012,2019,2013,2017</td><td>5</td></tr>
+<tr><td>AHMIMID M hamed</td><td>2017,2020,2014,2019,2013</td><td>5</td></tr>
+<tr><td>ALBERT Lucile</td><td>2020,2014,2017,2018,2015</td><td>5</td></tr>
+<tr><td>ARMAND Gilles</td><td>2020,2012,2018,2015,2016</td><td>5</td></tr>
+<tr><td>ARRAS Mohamed</td><td>2017,2018,2015,2014,2019</td><td>5</td></tr>
+<tr><td>BARGET Yann</td><td>2015,2016,2020,2012,2019</td><td>5</td></tr>
+<tr><td>BEAUFORT Sebastien</td><td>2020,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>BEGNIS Kevin</td><td>2010,2019,2017,2018,2015</td><td>5</td></tr>
+<tr><td>BEL FRANQUESA Laura (Esp)</td><td>2014,2019,2013,2015,2016</td><td>5</td></tr>
+<tr><td>BENGHERDA Hicham (Alg)</td><td>2012,2014,2019,2017,2018</td><td>5</td></tr>
+<tr><td>BERTRAND Nicolas</td><td>2017,2015,2010,2014,2013</td><td>5</td></tr>
+<tr><td>BLANCHARD Nicolas</td><td>2017,2018,2016,2020,2019</td><td>5</td></tr>
+<tr><td>BLOTTIN James</td><td>2010,2012,2013,2015,2016</td><td>5</td></tr>
+<tr><td>BODENANT Emilie</td><td>2012,2014,2017,2015,2016</td><td>5</td></tr>
+<tr><td>BOUMAZA Naboulsy</td><td>2014,2019,2018,2015,2016</td><td>5</td></tr>
+<tr><td>BOUTELOUP Celia</td><td>2020,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>BROCHOT Sandrine</td><td>2015,2016,2020,2014,2013</td><td>5</td></tr>
+<tr><td>BROOKS Jerome</td><td>2017,2015,2020,2012,2019</td><td>5</td></tr>
+<tr><td>BUISSON Denis</td><td>2017,2015,2016,2020,2019</td><td>5</td></tr>
+<tr><td>CASAGRANDE-FIORETTI Florent</td><td>2017,2018,2015,2016,2019</td><td>5</td></tr>
+<tr><td>CASSAGNES Mickael</td><td>2017,2018,2015,2016,2014</td><td>5</td></tr>
+<tr><td>CHRETIEN Jean-marc</td><td>2017,2015,2016,2010,2012</td><td>5</td></tr>
+<tr><td>CONIN Kevin</td><td>2014,2019,2017,2015,2016</td><td>5</td></tr>
+<tr><td>COUTO Elias (Por)</td><td>2010,2012,2014,2013,2015</td><td>5</td></tr>
+<tr><td>DABIN Olivier</td><td>2019,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>DEREX Francois</td><td>2010,2012,2014,2013,2016</td><td>5</td></tr>
+<tr><td>DEVAUX Pascal</td><td>2015,2010,2012,2014,2013</td><td>5</td></tr>
+<tr><td>DI SANZA Anne-claire</td><td>2018,2015,2016,2020,2019</td><td>5</td></tr>
+<tr><td>DIANI Ilyas</td><td>2018,2015,2020,2014,2019</td><td>5</td></tr>
+<tr><td>DIOT Eric</td><td>2010,2019,2013,2015,2016</td><td>5</td></tr>
+<tr><td>DURIEUX Sylvie</td><td>2018,2015,2016,2014,2017</td><td>5</td></tr>
+<tr><td>FAVREAU Nathalie</td><td>2012,2010,2014,2015,2016</td><td>5</td></tr>
+<tr><td>FELLAH Kamel</td><td>2014,2013,2017,2015,2016</td><td>5</td></tr>
+<tr><td>FOMBARLET Valerie</td><td>2017,2016,2012,2010,2014</td><td>5</td></tr>
+<tr><td>FRADON Fanny</td><td>2020,2019,2018,2015,2016</td><td>5</td></tr>
+<tr><td>GABELUS Henri</td><td>2010,2012,2014,2019,2013</td><td>5</td></tr>
+<tr><td>GAUTHIER Anne-laure</td><td>2012,2010,2013,2017,2018</td><td>5</td></tr>
+<tr><td>GHERMAOUI Jamel</td><td>2010,2012,2014,2013,2017</td><td>5</td></tr>
+<tr><td>GINESTET Anne</td><td>2015,2016,2020,2019,2017</td><td>5</td></tr>
+<tr><td>GIRARD Sebastien</td><td>2012,2019,2017,2015,2016</td><td>5</td></tr>
+<tr><td>GRAND-PERRET Yoann</td><td>2019,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>GRANGE Nicolas</td><td>2015,2016,2012,2014,2013</td><td>5</td></tr>
+<tr><td>GRAS Herve</td><td>2017,2015,2010,2012,2013</td><td>5</td></tr>
+<tr><td>GRAZIANI KOULOU Zohra</td><td>2012,2010,2014,2013,2015</td><td>5</td></tr>
+<tr><td>HUBERT Tony</td><td>2017,2015,2012,2014,2019</td><td>5</td></tr>
+<tr><td>HUE Sylvain</td><td>2020,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>JBARA Youssef</td><td>2010,2012,2014,2018,2015</td><td>5</td></tr>
+<tr><td>KERROUA Yanis</td><td>2014,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>KLEIN Agnes</td><td>2017,2018,2015,2016,2019</td><td>5</td></tr>
+<tr><td>LE MOING Joel</td><td>2010,2012,2019,2013,2016</td><td>5</td></tr>
+<tr><td>LECOMTE Benoit</td><td>2018,2015,2010,2012,2014</td><td>5</td></tr>
+<tr><td>LEFEBVRE Herve</td><td>2015,2010,2012,2014,2013</td><td>5</td></tr>
+<tr><td>LEFEBVRE Laurent</td><td>2012,2014,2017,2018,2016</td><td>5</td></tr>
+<tr><td>LESENEY Cedric</td><td>2017,2018,2016,2010,2012</td><td>5</td></tr>
+<tr><td>MARIANI Patricia</td><td>2012,2010,2017,2015,2016</td><td>5</td></tr>
+<tr><td>MARTIN Jerome</td><td>2014,2019,2017,2015,2016</td><td>5</td></tr>
+<tr><td>MARTINHO Ezequiel</td><td>2020,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>MAUGAND Jean-yves</td><td>2010,2012,2014,2013,2016</td><td>5</td></tr>
+<tr><td>MAURY Hugo</td><td>2012,2014,2018,2015,2016</td><td>5</td></tr>
+<tr><td>MEGHAZI Mhamed</td><td>2020,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>MEKDAFOU Youssef</td><td>2014,2019,2017,2015,2016</td><td>5</td></tr>
+<tr><td>MERCIER Dominique</td><td>2010,2012,2014,2013,2016</td><td>5</td></tr>
+<tr><td>MERED Meriem</td><td>2012,2020,2019,2013,2018</td><td>5</td></tr>
+<tr><td>MESLIN Virginie</td><td>2012,2010,2019,2015,2016</td><td>5</td></tr>
+<tr><td>MOREAU Stephane</td><td>2017,2015,2016,2020,2013</td><td>5</td></tr>
+<tr><td>NARDI COLOME Franck</td><td>2018,2015,2020,2014,2019</td><td>5</td></tr>
+<tr><td>NAVE Jean-baptiste</td><td>2019,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>NOIRY Julien</td><td>2017,2018,2016,2020,2019</td><td>5</td></tr>
+<tr><td>OLIVIER Bruno</td><td>2010,2014,2013,2015,2016</td><td>5</td></tr>
+<tr><td>OULD BASCOU Pauline</td><td>2020,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>PASQUET Olivier</td><td>2018,2015,2016,2012,2014</td><td>5</td></tr>
+<tr><td>PERDIGAO Miguel</td><td>2015,2016,2012,2014,2013</td><td>5</td></tr>
+<tr><td>PERREUX Sandrine</td><td>2019,2013,2017,2018,2015</td><td>5</td></tr>
+<tr><td>PETITJEAN Nicolas</td><td>2010,2019,2017,2018,2016</td><td>5</td></tr>
+<tr><td>PHILIZOT Olivier</td><td>2015,2016,2012,2014,2013</td><td>5</td></tr>
+<tr><td>PORCIER Guillaume</td><td>2010,2014,2017,2018,2015</td><td>5</td></tr>
+<tr><td>RAMBEAUX Isabelle</td><td>2017,2015,2016,2014,2019</td><td>5</td></tr>
+<tr><td>RICHARD Emmanuel</td><td>2010,2012,2014,2013,2016</td><td>5</td></tr>
+<tr><td>ROUAUD Christophe</td><td>2010,2012,2014,2013,2017</td><td>5</td></tr>
+<tr><td>ROUGER Guillaume</td><td>2014,2017,2018,2015,2016</td><td>5</td></tr>
+<tr><td>SAHEB Otmane</td><td>2017,2015,2016,2014,2019</td><td>5</td></tr>
+<tr><td>TAURAN Sandrine</td><td>2020,2019,2013,2018,2015</td><td>5</td></tr>
+<tr><td>TRENIER Solene</td><td>2012,2010,2020,2014,2013</td><td>5</td></tr>
+<tr><td>VERDURE Annie</td><td>2015,2012,2010,2014,2013</td><td>5</td></tr>
+<tr><td>VILFEU Ludovic</td><td>2017,2015,2016,2020,2019</td><td>5</td></tr>
+<tr><td>WATTEL Marie-lise</td><td>2010,2014,2017,2018,2015</td><td>5</td></tr>
+<tr><td>WILSON Joackim</td><td>2010,2012,2014,2013,2015</td><td>5</td></tr>
+<tr><td>ZATOUNI Amine</td><td>2017,2018,2015,2016,2014</td><td>5</td></tr>
+<tr><td>ZEROUAL Larbi</td><td>2010,2012,2014,2015,2016</td><td>5</td></tr>
+</table>
+
+<h3 id="2.4">Plus grand nombre de particpations (clubs)</h3>
+
+<pre><code class="language-sql">SELECT club, count(*) AS participation FROM cros WHERE championnat = 'dep'
+GROUP BY club  ORDER BY participation DESC</code></pre>
+
+<p>Le clubs qui changent de nom posent faussent les résultats. Par exemple</p>
+<table class="table table-bordered" style="width: auto;">
+<tr><td>Val D'europe Athletisme</td><td>Paris Solon Athletic Academy</td></tr>
+<tr><td>Athle Nord 77 Val D Europe</td><td>Solon Athletic Academy</td></tr>
+<tr><td>Val D'europe Oxygene</td></tr>
+</table>
+ 
+<div class="row">
+	<div class="col-md-4">
+		<table class="table table-striped table-bordered">
+	<tr><th colspan="2" style="text-align: center;background-color: #CCCCCC">Départementaux 94</th></tr>
+	<tr style="background-color: #DDDDDD"><th>nom</th><th>part.</th></tr>
+<tr><td>Ao Charenton</td><td>285</td></tr>
+<tr><td>Uai Nogent-sur-marne</td><td>189</td></tr>
+<tr><td>Asfi Villejuif</td><td>187</td></tr>
+<tr><td>Asphalte 94</td><td>148</td></tr>
+<tr><td>Asa Maisons-alfort</td><td>143</td></tr>
+<tr><td>Ac Paris-joinville</td><td>138</td></tr>
+<tr><td>Vincennes Athletic</td><td>126</td></tr>
+<tr><td>Us Ivry</td><td>113</td></tr>
+<tr><td>Us Creteil</td><td>106</td></tr>
+<tr><td>Vie Au Grand Air De St Maur</td><td>101</td></tr>
+<tr><td>Sporting Club Athletic De Bry-</td><td>74</td></tr>
+<tr><td>Thiais Ac</td><td>72</td></tr>
+<tr><td>Es Sucy-en-brie</td><td>70</td></tr>
+<tr><td>Us Fontenay-sous-bois</td><td>49</td></tr>
+<tr><td>Elan Chevilly-larue</td><td>43</td></tr>
+<tr><td>Union Sportive Alfortville Ath</td><td>33</td></tr>
+<tr><td>Athletique Club De Choisy Le R</td><td>29</td></tr>
+<tr><td>Asptt Villecresnes</td><td>23</td></tr>
+<tr><td>Red Star Club Champigny</td><td>21</td></tr>
+<tr><td>A. Amicale Sportive De Fresnes</td><td>19</td></tr>
+<tr><td>Csm Bonneuil Sur Marne</td><td>18</td></tr>
+<tr><td>Club Athle Plessis 94</td><td>16</td></tr>
+<tr><td>Csa Kremlin Bicetre</td><td>14</td></tr>
+<tr><td>Us Iberique Plessis Trevise</td><td>13</td></tr>
+<tr><td>Entente Sportive Caudacienne</td><td>12</td></tr>
+<tr><td>C.a. L_hay Les Roses</td><td>9</td></tr>
+<tr><td>As Villejuif -asv</td><td>8</td></tr>
+<tr><td>Association Sport Passion Vinc</td><td>8</td></tr>
+<tr><td>Sc Choisy-le-roi</td><td>7</td></tr>
+<tr><td>Cosm Arcueil</td><td>6</td></tr>
+<tr><td>Solon Athletic Academy</td><td>5</td></tr>
+<tr><td>C.a. L'hay Les Roses</td><td>4</td></tr>
+<tr><td>Association Sportive De Villej</td><td>3</td></tr>
+<tr><td>Amicale Sportive Air France</td><td>1</td></tr>
+<tr><td>Club Olympique De Cachan</td><td>1</td></tr>
+<tr><td>Aas Fresnes</td><td>1</td></tr>
+</table>
+	</div>
+
+	<div class="col-md-4">
+		<table class="table table-striped table-bordered">
+	<tr><th colspan="2" style="text-align: center;background-color: #CCCCCC">Régionaux Est</th></tr>
+	<tr style="background-color: #DDDDDD"><th>nom</th><th>part.</th></tr>
+<tr><td>Ao Charenton</td><td>179</td></tr>
+<tr><td>Us Metro Transport (paris)</td><td>129</td></tr>
+<tr><td>Pierrefitte Multi Athlon</td><td>90</td></tr>
+<tr><td>Senart Combs Brie Athletisme*</td><td>89</td></tr>
+<tr><td>Marne Et Gondoire Athletisme</td><td>87</td></tr>
+<tr><td>Athle Sud 77*</td><td>85</td></tr>
+<tr><td>Us Ivry</td><td>82</td></tr>
+<tr><td>Ac Paris-joinville</td><td>82</td></tr>
+<tr><td>Livry Gargan Athletisme</td><td>80</td></tr>
+<tr><td>Asfi Villejuif</td><td>78</td></tr>
+<tr><td>Ga Noisy Le Grand</td><td>73</td></tr>
+<tr><td>Val D_europe Athletisme</td><td>70</td></tr>
+<tr><td>Paris Uc</td><td>68</td></tr>
+<tr><td>Pontault Aac</td><td>67</td></tr>
+<tr><td>Neuilly Sur Marne Athletisme</td><td>66</td></tr>
+<tr><td>Coulommiers Brie Athletisme</td><td>65</td></tr>
+<tr><td>Sa Montrouge Paris 12</td><td>64</td></tr>
+<tr><td>Xve Athletic Club</td><td>63</td></tr>
+<tr><td>Stade Francais (paris)</td><td>63</td></tr>
+<tr><td>Asa Maisons-alfort</td><td>62</td></tr>
+<tr><td>Union Athletique De Montereau</td><td>61</td></tr>
+<tr><td>Vincennes Athletic</td><td>58</td></tr>
+<tr><td>Uai Nogent-sur-marne</td><td>56</td></tr>
+<tr><td>Vie Au Grand Air De St Maur</td><td>56</td></tr>
+<tr><td>Asphalte 94</td><td>54</td></tr>
+<tr><td>Ca Montreuil 93</td><td>52</td></tr>
+<tr><td>As Rochette Dammarie Les Lys</td><td>48</td></tr>
+<tr><td>Us Nemours St Pierre Athle</td><td>47</td></tr>
+<tr><td>Dynamic Aulnay Club</td><td>47</td></tr>
+<tr><td>Cs Ternes Paris Ouest</td><td>46</td></tr>
+<tr><td>Adidas Runners Paris</td><td>46</td></tr>
+<tr><td>Bussy St Georges Athletisme</td><td>43</td></tr>
+<tr><td>Us Olympique De Chelles</td><td>43</td></tr>
+<tr><td>Us Creteil</td><td>43</td></tr>
+<tr><td>Cs Provins Athletisme</td><td>42</td></tr>
+<tr><td>Racing Multi Athlon</td><td>39</td></tr>
+<tr><td>As Culturelle Francophone</td><td>38</td></tr>
+<tr><td>Club Multi Sports De Pantin</td><td>36</td></tr>
+<tr><td>Tremblay Ac Athletisme</td><td>35</td></tr>
+<tr><td>Us Roissy En Brie</td><td>33</td></tr>
+<tr><td>As Pierrefitte</td><td>32</td></tr>
+<tr><td>Ua Societe Generale</td><td>30</td></tr>
+<tr><td>Us Torcy Athletisme</td><td>27</td></tr>
+<tr><td>Us Fontenay-sous-bois</td><td>27</td></tr>
+<tr><td>Us Melun</td><td>27</td></tr>
+<tr><td>Neuilly-plaisance Sports</td><td>26</td></tr>
+<tr><td>Vs Ozoir La Ferriere</td><td>26</td></tr>
+<tr><td>Savigny Senart Athletisme</td><td>25</td></tr>
+<tr><td>Les Moustiques</td><td>24</td></tr>
+<tr><td>Es Sucy-en-brie</td><td>24</td></tr>
+<tr><td>Sam Paris 12</td><td>24</td></tr>
+<tr><td>Sporting Club Athletic De Bry-</td><td>23</td></tr>
+<tr><td>Athletic Coeur De Fond</td><td>23</td></tr>
+<tr><td>Paris Avenir Athletic</td><td>23</td></tr>
+<tr><td>Marne La Vallee Athletisme*</td><td>22</td></tr>
+<tr><td>Elan Chevilly-larue</td><td>22</td></tr>
+<tr><td>Championnet Sports</td><td>22</td></tr>
+<tr><td>Pierrefitte Multi Athlon Ville</td><td>21</td></tr>
+<tr><td>Ja Montrouge</td><td>21</td></tr>
+<tr><td>As Chelles</td><td>21</td></tr>
+<tr><td>Barbes Runners</td><td>20</td></tr>
+<tr><td>Cs Meaux</td><td>20</td></tr>
+<tr><td>Athletique Club Du Pays De Mea</td><td>19</td></tr>
+<tr><td>Asptt Villecresnes</td><td>19</td></tr>
+<tr><td>Us Champagne-sur-seine</td><td>19</td></tr>
+<tr><td>Athle 91 *</td><td>19</td></tr>
+<tr><td>Asp Senart Athletisme</td><td>19</td></tr>
+<tr><td>Se Pavillons-sous-bois</td><td>19</td></tr>
+<tr><td>Fontenay Tresigny</td><td>18</td></tr>
+<tr><td>Usm Gagny</td><td>17</td></tr>
+<tr><td>Villepinte Marathon Athletisme</td><td>15</td></tr>
+<tr><td>Essonne Athletic*</td><td>15</td></tr>
+<tr><td>Saint Denis Emotion</td><td>15</td></tr>
+<tr><td>Ac Du Pays De Meaux</td><td>14</td></tr>
+<tr><td>As Bondy</td><td>14</td></tr>
+<tr><td>Athle Nord 77 Val D Europe</td><td>12</td></tr>
+<tr><td>Thiais Ac</td><td>12</td></tr>
+<tr><td>Team Trail Paris</td><td>12</td></tr>
+<tr><td>Lisses Ac</td><td>12</td></tr>
+<tr><td>Moissy-cramayel Athletisme</td><td>11</td></tr>
+<tr><td>Vaux Le Penil Athletisme</td><td>11</td></tr>
+<tr><td>Tu Verrieres Le Buisson</td><td>10</td></tr>
+<tr><td>Bussy Running</td><td>10</td></tr>
+<tr><td>Cs Montereau</td><td>10</td></tr>
+<tr><td>Racing Cf (paris)</td><td>9</td></tr>
+<tr><td>Ua Villenoy</td><td>9</td></tr>
+<tr><td>Athletique Club De Choisy Le R</td><td>9</td></tr>
+<tr><td>Athletic Club Pays De L Ourcq</td><td>8</td></tr>
+<tr><td>Sc Draveil</td><td>8</td></tr>
+<tr><td>Elan 91 (pal.-mas.)*</td><td>8</td></tr>
+<tr><td>Ums Pontault-combault</td><td>8</td></tr>
+<tr><td>Paris Solon Athletic Academy</td><td>8</td></tr>
+<tr><td>Union Sportive Alfortville Ath</td><td>8</td></tr>
+<tr><td>Val D'europe Athletisme</td><td>8</td></tr>
+<tr><td>Pays De Fontainebleau Athle*</td><td>8</td></tr>
+<tr><td>Red Star Club Champigny</td><td>7</td></tr>
+<tr><td>A. Amicale Sportive De Fresnes</td><td>7</td></tr>
+<tr><td>Sainte-genevieve Sports</td><td>7</td></tr>
+<tr><td>Athletisme Le Bourget Drancy</td><td>7</td></tr>
+<tr><td>Union Sportive Chatelet En Bri</td><td>7</td></tr>
+</table>
+	</div>
+
+	<div class="col-md-4">
+		<table class="table table-striped table-bordered">
+	<tr><th colspan="2" style="text-align: center;background-color: #CCCCCC">LIFA</th></tr>
+	<tr style="background-color: #DDDDDD"><th>nom</th><th>part.</th></tr>
+<tr><td>Ea St Quentin En Yvelines</td><td>139</td></tr>
+<tr><td>Ao Charenton</td><td>120</td></tr>
+<tr><td>Us Metro Transport (paris)</td><td>110</td></tr>
+<tr><td>Entente Franconville Cesame Va</td><td>103</td></tr>
+<tr><td>Rambouillet Sports</td><td>83</td></tr>
+<tr><td>Pierrefitte Multi Athlon</td><td>75</td></tr>
+<tr><td>Lisses Ac</td><td>75</td></tr>
+<tr><td>Ea Cergy Pontoise Athletisme *</td><td>72</td></tr>
+<tr><td>Athle Sud 77*</td><td>67</td></tr>
+<tr><td>Us Ivry</td><td>58</td></tr>
+<tr><td>Ac Paris-joinville</td><td>58</td></tr>
+<tr><td>Foulees De St Germain En Laye</td><td>51</td></tr>
+<tr><td>Pontault Aac</td><td>50</td></tr>
+<tr><td>Ca Montreuil 93</td><td>49</td></tr>
+<tr><td>Essonne Athletic*</td><td>49</td></tr>
+<tr><td>Plm Conflans</td><td>48</td></tr>
+<tr><td>Asfi Villejuif</td><td>47</td></tr>
+<tr><td>Ga Noisy Le Grand</td><td>47</td></tr>
+<tr><td>C.c. Taverny Athletisme</td><td>46</td></tr>
+<tr><td>Val D_europe Athletisme</td><td>45</td></tr>
+<tr><td>Ua Versailles</td><td>45</td></tr>
+<tr><td>Marne Et Gondoire Athletisme</td><td>43</td></tr>
+<tr><td>Stade Francais (paris)</td><td>42</td></tr>
+<tr><td>Athle 91 *</td><td>42</td></tr>
+<tr><td>Racing Multi Athlon</td><td>41</td></tr>
+<tr><td>Livry Gargan Athletisme</td><td>40</td></tr>
+<tr><td>Stade De Vanves</td><td>40</td></tr>
+<tr><td>Xve Athletic Club</td><td>40</td></tr>
+<tr><td>Paris Uc</td><td>40</td></tr>
+<tr><td>Athle 78 *</td><td>39</td></tr>
+<tr><td>Vincennes Athletic</td><td>39</td></tr>
+<tr><td>Fontenay Plessis Clamart Athle</td><td>38</td></tr>
+<tr><td>Adidas Runners Paris</td><td>38</td></tr>
+<tr><td>Athletic Clubs 92*</td><td>36</td></tr>
+<tr><td>Wh Suresnes - Nanterre Ac -92*</td><td>36</td></tr>
+<tr><td>Clamart Courses Sur Route 92</td><td>35</td></tr>
+<tr><td>Neuilly Sur Marne Athletisme</td><td>34</td></tr>
+<tr><td>Usm Malakoff</td><td>34</td></tr>
+<tr><td>Asa Maisons-alfort</td><td>33</td></tr>
+<tr><td>Us Nemours St Pierre Athle</td><td>33</td></tr>
+<tr><td>Union Athletique De Montereau</td><td>32</td></tr>
+<tr><td>Senart Combs Brie Athletisme*</td><td>32</td></tr>
+<tr><td>Athletic Brunoy Club</td><td>31</td></tr>
+<tr><td>Les Furets D Eiffage</td><td>30</td></tr>
+<tr><td>Dynamic Aulnay Club</td><td>29</td></tr>
+<tr><td>Ca Orsay</td><td>28</td></tr>
+<tr><td>As Pierrefitte</td><td>28</td></tr>
+<tr><td>Tu Verrieres Le Buisson</td><td>28</td></tr>
+<tr><td>Coulommiers Brie Athletisme</td><td>28</td></tr>
+<tr><td>Sa Montrouge Paris 12</td><td>27</td></tr>
+<tr><td>Cs Ternes Paris Ouest</td><td>25</td></tr>
+<tr><td>Us Creteil</td><td>25</td></tr>
+<tr><td>As Rochette Dammarie Les Lys</td><td>25</td></tr>
+<tr><td>As Culturelle Francophone</td><td>25</td></tr>
+<tr><td>Bussy St Georges Athletisme</td><td>23</td></tr>
+<tr><td>Vie Au Grand Air De St Maur</td><td>23</td></tr>
+<tr><td>Uai Nogent-sur-marne</td><td>23</td></tr>
+<tr><td>Levallois Sc</td><td>22</td></tr>
+<tr><td>Pierrefitte Multi Athlon Ville</td><td>22</td></tr>
+<tr><td>Gally Athletic Club*</td><td>22</td></tr>
+<tr><td>Athle 92*</td><td>21</td></tr>
+<tr><td>Us Olympique De Chelles</td><td>21</td></tr>
+<tr><td>Ouest Yvelines Athle*</td><td>21</td></tr>
+<tr><td>Cs Provins Athletisme</td><td>20</td></tr>
+<tr><td>Avia Club Issy-les-moulx</td><td>20</td></tr>
+<tr><td>Sam Paris 12</td><td>20</td></tr>
+<tr><td>Grand Paris Seine &amp; Oise Athle</td><td>20</td></tr>
+<tr><td>As Poissy Athletisme</td><td>19</td></tr>
+<tr><td>Es Sartrouville</td><td>19</td></tr>
+<tr><td>Ac Boulogne Billancourt</td><td>18</td></tr>
+<tr><td>Club Multi Sports De Pantin</td><td>18</td></tr>
+<tr><td>Les Mureaux Val De Seine*</td><td>18</td></tr>
+<tr><td>Club Athletisme De Puteaux 92</td><td>18</td></tr>
+<tr><td>Elan 91 (palaiseau)*</td><td>17</td></tr>
+<tr><td>Neuilly-plaisance Sports</td><td>17</td></tr>
+<tr><td>Co Savigny-sur-orge</td><td>16</td></tr>
+<tr><td>Les Moustiques</td><td>15</td></tr>
+<tr><td>Sainte-genevieve Sports</td><td>15</td></tr>
+<tr><td>Sporting Club Athletic De Bry-</td><td>15</td></tr>
+<tr><td>Rcf Issy Avia</td><td>15</td></tr>
+<tr><td>Us Roissy En Brie</td><td>14</td></tr>
+<tr><td>Orsay Gif Athle*</td><td>14</td></tr>
+<tr><td>Us Melun</td><td>14</td></tr>
+<tr><td>Tremblay Ac Athletisme</td><td>14</td></tr>
+<tr><td>White Harriers Suresnes*</td><td>14</td></tr>
+<tr><td>Championnet Sports</td><td>14</td></tr>
+<tr><td>Se Pavillons-sous-bois</td><td>14</td></tr>
+<tr><td>Union Nord Est 95 A</td><td>13</td></tr>
+<tr><td>Ua Societe Generale</td><td>13</td></tr>
+<tr><td>Us Fontenay-sous-bois</td><td>13</td></tr>
+<tr><td>Athletic Club Arpajonais</td><td>13</td></tr>
+<tr><td>Com Bagneux</td><td>13</td></tr>
+<tr><td>Barbes Runners</td><td>13</td></tr>
+<tr><td>Ac Du Pays De Meaux</td><td>13</td></tr>
+<tr><td>C. O. Du Sud De L_essonne</td><td>13</td></tr>
+<tr><td>Ac Velizy-villacoublay</td><td>12</td></tr>
+<tr><td>Ca Mantes-la-ville</td><td>12</td></tr>
+<tr><td>Marne La Vallee Athletisme*</td><td>12</td></tr>
+<tr><td>Elan Chevilly-larue</td><td>12</td></tr>
+<tr><td>Athle 91*</td><td>12</td></tr>
+</table>
+	</div>
+</div>
+
+<h3 id="2.5">Les populaires meilleurs que les riches</h3>
+
+<p>Vérifions que les clubs des quartiers populaires sont meilleurs que les riches.</p>
+
+<pre>SELECT dep, AVG(rang) AS rangs FROM cros WHERE championnat = 'lifa' AND rang < 50 GROUP BY dep ORDER BY rangs;</pre>
+
+<table class="table table-bordered" style="width: 30%"><tr><th>dep</th><th>rangs</th></tr>
+<tr><td>93</td><td>22.314</td></tr>
+<tr><td>77</td><td>24.3933</td></tr>
+<tr><td>92</td><td>24.4403</td></tr>
+<tr><td>95</td><td>24.463</td></tr>
+<tr><td>75</td><td>24.8086</td></tr>
+<tr><td>78</td><td>25.5985</td></tr>
+<tr><td>94</td><td>25.8167</td></tr>
+<tr><td>91</td><td>29.3701</td></tr>
+</table>
+
+<h3 id="2.6">Fidélité au club</h3>
+
+
+<pre>SELECT nom, GROUP_CONCAT(distinct club, ' '), count(distinct club) AS nb_clubs FROM cros
+GROUP BY nom
+ORDER BY nb_clubs DESC;
+
+SELECT nom, club, count(distinct club) AS nb_clubs, count(distinct annee) AS annees FROM cros
+GROUP BY nom
+ORDER BY nb_clubs ASC, annees DESC;
+</pre>
+<div class="row">
+	<div class="col-md-6">
+		<div class="titre">Volages</div>
+		
+		<table id="volages" class="table table-striped table-bordered">
+<tr><td>CARANTON Laurent</td><td>Ca Montreuil 93 ,Paris Solon Athletic Academy ,Solon Athletic Academy ,Ca Montreuil </td><td>4</td></tr>
+<tr><td>FARIA Rolando</td><td>Us Creteil ,Paris Solon Athletic Academy ,Asa Maisons-alfort ,Solon Athletic Academy </td><td>4</td></tr>
+<tr><td>GRAS Herve</td><td>Cs Provins Athletisme ,Cs Meaux ,Ac Du Pays De Meaux ,Athletique Club Du Pays De Mea </td><td>4</td></tr>
+<tr><td>LECOMTE Benoit</td><td>Val D_europe Athletisme ,Athle Nord 77 Val D Europe ,Val D'europe Athletisme ,Val D europe Athletisme </td><td>4</td></tr>
+<tr><td>LIEBART Stephanie</td><td>Pays De Fontainebleau Athle* ,Athle Sud 77* ,C. O. Du Sud De L_essonne* ,Athletic Club Merevillois </td><td>4</td></tr>
+<tr><td>RAMZI Houcine</td><td>Wh Suresnes - Nanterre Ac -92* ,Club Athletisme De Puteaux 92 ,Es Sartrouville ,Athle 92* </td><td>4</td></tr>
+<tr><td>ROSSE Sebastien</td><td>Fontenay Plessis Clamart Athle ,Team Lenglen Athletic Club ,Usm Malakoff ,Vanves Run Club 92 </td><td>4</td></tr>
+<tr><td>AIT IDER Mustapha</td><td>Team Lenglen Athletic Club ,Wh Suresnes - Nanterre Ac -92* ,Athle 92* </td><td>3</td></tr>
+<tr><td>AKROUNE Camilia</td><td>Pierrefitte Multi Athlon Ville ,As Pierrefitte ,Racing Multi Athlon </td><td>3</td></tr>
+<tr><td>BELARBI Jamal</td><td>C.c. Taverny Athletisme ,Entente Franconville Cesame Va ,Ac Beauchamp </td><td>3</td></tr>
+<tr><td>BEN-HOUDJA Mohammed</td><td>Yerres Ac ,Tu Verrieres Le Buisson ,Lisses Ac </td><td>3</td></tr>
+<tr><td>BENABDELOUAHED Karim</td><td>Entente Franconville Cesame Va ,C.c. Taverny Athletisme ,Pierrefitte Multi Athlon </td><td>3</td></tr>
+<tr><td>BENHAMOU Michael</td><td>Paris Solon Athletic Academy ,Vie Au Grand Air De St Maur ,Solon Athletic Academy </td><td>3</td></tr>
+<tr><td>BOUQUET Aurelie</td><td>Fontenay Plessis Clamart Athle ,Ea St Quentin En Yvelines ,Athle 92* </td><td>3</td></tr>
+<tr><td>BRAHIMI Jallal</td><td>Sa Montrouge Paris ,Sa Montrouge Paris 12 ,Sam Paris 12 </td><td>3</td></tr>
+<tr><td>BROOKS Jerome</td><td>Es Sartrouville ,Stade Francais (paris) ,Plm Conflans </td><td>3</td></tr>
+<tr><td>BUNEL Philippe</td><td>As Altis-ibm-dpi Corbeil Esson ,Ibm France Paris ,As Rochette Dammarie Les Lys </td><td>3</td></tr>
+<tr><td>CHACHIGNON Mathilde</td><td>Us Nemours St Pierre Athle ,Val D'europe Athletisme ,Val D_europe Athletisme </td><td>3</td></tr>
+<tr><td>CHAUFFERT Nicolas</td><td>Elan 91 (palaiseau)* ,Elan 91 (pal.-mas.)* ,Elan 91* </td><td>3</td></tr>
+<tr><td>CHOPINET Clement</td><td>Ca Montreuil 93 ,Ao Charenton ,Vincennes Athletic </td><td>3</td></tr>
+<tr><td>DALE Helen</td><td>C. O. Du Sud De L_essonne ,C. O. Du Sud De L_essonne* ,C. O. Du Sud De L'essonne* </td><td>3</td></tr>
+<tr><td>DECAMBRON Antoine</td><td>Marne La Vallee Athletisme* ,Bussy St Georges Athletisme ,Ja Montrouge </td><td>3</td></tr>
+<tr><td>DIOT Johann</td><td>Ac Du Pays De Meaux ,Cs Meaux ,Athletique Club Du Pays De Mea </td><td>3</td></tr>
+<tr><td>DOSPAZOS Jose</td><td>Us Creteil ,Asfi Villejuif ,Ac Paris-joinville </td><td>3</td></tr>
+<tr><td>EL YAMANI Mohammed</td><td>Fontenay Plessis Clamart Athle ,Team Lenglen Athletic Club ,Usm Malakoff </td><td>3</td></tr>
+<tr><td>EMO Marianne</td><td>Fontenay Plessis Clamart Athle ,Athle 92* ,Stade Francais (paris) </td><td>3</td></tr>
+<tr><td>ESPRIT Augustina</td><td>Asfi Villejuif ,A. Amicale Sportive De Fresnes ,Us Metro Transport (paris) </td><td>3</td></tr>
+<tr><td>FALGAREIRO Manon</td><td>Grand Paris Seine Oise Athle ,Les Mureaux Val De Seine* ,Grand Paris Seine &amp; Oise Athle </td><td>3</td></tr>
+<tr><td>FAVIER Francois-rene</td><td>Livry Gargan Athletisme ,Paris Solon Athletic Academy ,Solon Athletic Academy </td><td>3</td></tr>
+<tr><td>GENDRE Alexis</td><td>Asca Peugeot Poissy ,As Poissy Athletisme ,Grand Paris Seine &amp; Oise Athle </td><td>3</td></tr>
+<tr><td>GERARD Celine</td><td>Vma - Viens M'attraper ,Rcf Issy Avia ,Vma - Viens M_attraper </td><td>3</td></tr>
+<tr><td>GINER Wilfried</td><td>Rambouillet Sports ,Paris Jean-bouin Casg ,Athle 78 * </td><td>3</td></tr>
+<tr><td>GIRARD Sebastien</td><td>Athletic Brunoy Club ,Fontenay Plessis Clamart Athle ,Athle 92* </td><td>3</td></tr>
+<tr><td>GODET Sebastien</td><td>Sa Montrouge Paris 12 ,Sam Paris 12 ,Sa Montrouge Paris </td><td>3</td></tr>
+<tr><td>GRUNDTNER Willy</td><td>Ga Noisy Le Grand ,Asa Maisons-alfort ,Ac Paris-joinville </td><td>3</td></tr>
+<tr><td>GUEGANO Raphael</td><td>Ac Velizy-villacoublay ,Stade De Vanves ,Us Fontenay-sous-bois </td><td>3</td></tr>
+<tr><td>GUERFI Riad</td><td>Val D_europe Athletisme ,As Pierrefitte ,Athle Nord 77 Val D Europe </td><td>3</td></tr>
+<tr><td>GUILLEMET Raphael</td><td>Stade Francais (paris) ,Es Sartrouville ,Fontenay Plessis Clamart Athle </td><td>3</td></tr>
+<tr><td>HANNOUDI Mounir</td><td>Athletic Clubs 92* ,Avia Club Issy-les-moulx ,Rcf Issy Avia </td><td>3</td></tr>
+<tr><td>HENNI Djilali</td><td>Ao Charenton ,Tu Verrieres Le Buisson ,Athle 91 * </td><td>3</td></tr>
+<tr><td>HUMBERT Thierry</td><td>Plm Conflans ,Grand Paris Seine &amp; Oise Athle ,Grand Paris Seine Oise Athle </td><td>3</td></tr>
+<tr><td>JBARA Youssef</td><td>As Poissy Athletisme ,Les Mureaux Val De Seine ,Ouest Yvelines Athle* </td><td>3</td></tr>
+<tr><td>JOURDAIN Fabrice</td><td>Ua Villenoy ,Cs Meaux ,Athletique Club Du Pays De Mea </td><td>3</td></tr>
+<tr><td>JUDE Daniel</td><td>Val D_europe Athletisme ,Val D'europe Athletisme ,Athle Nord 77 Val D Europe </td><td>3</td></tr>
+<tr><td>KHEZZANE Noreddine</td><td>Entente Franconville Cesame Va ,C.c. Taverny Athletisme ,Les Furets D Eiffage </td><td>3</td></tr>
+<tr><td>LAPORTE Kevin</td><td>Athle 78 * ,Plm Conflans ,Vernouillet Athle </td><td>3</td></tr>
+<tr><td>LE FRALLIEC Geraldine</td><td>As Bondy ,Neuilly Sur Marne Athletisme ,Villemomble Sports </td><td>3</td></tr>
+<tr><td>LEGRAND Marion</td><td>Adidas Runners Paris ,Racing Multi Athlon ,Athle 78 * </td><td>3</td></tr>
+<tr><td>MARCHET Yann</td><td>Sam Paris 12 ,Vincennes Athletic ,Sa Montrouge Paris 12 </td><td>3</td></tr>
+<tr><td>MARCOVICI Jean-baptiste</td><td>Ao Charenton ,Plm Conflans ,Stade Francais (paris) </td><td>3</td></tr>
+<tr><td>MARTINO Azeline</td><td>Athle Sud 77* ,Ca Montreuil 93 ,Adidas Runners Paris </td><td>3</td></tr>
+<tr><td>MERROUNE Mohamed</td><td>Grand Paris Seine Oise Athle ,Grand Paris Seine &amp; Oise Athle ,Ouest Yvelines Athle* </td><td>3</td></tr>
+<tr><td>MMADI SAADI Ibrahim</td><td>As Bondy ,Pierrefitte Multi Athlon Ville ,Pierrefitte Multi Athlon </td><td>3</td></tr>
+<tr><td>MOREAU Stephane</td><td>Asfi Villejuif ,Us Creteil ,Paris Solon Athletic Academy </td><td>3</td></tr>
+<tr><td>MORISSEAU Nathanael-miche</td><td>Val D_europe Athletisme ,Athle Nord 77 Val D Europe ,Val D europe Athletisme </td><td>3</td></tr>
+<tr><td>PARADOWSKI Jean-thomas</td><td>Val D_europe Athletisme ,Athle Nord 77 Val D Europe ,Val D europe Athletisme </td><td>3</td></tr>
+<tr><td>PIWOWARCZYK Pascal</td><td>Elan Chevilly-larue ,Us Ivry ,Asfi Villejuif </td><td>3</td></tr>
+<tr><td>POCREAUX Cyril</td><td>Nanterre Athletic Club ,White Harriers Suresnes* ,Wh Suresnes - Nanterre Ac -92* </td><td>3</td></tr>
+<tr><td>PORCIER Guillaume</td><td>Ga Noisy Le Grand ,Asa Maisons-alfort ,Athle 91 * </td><td>3</td></tr>
+<tr><td>PROME Thomas</td><td>Ao Charenton ,Stade Francais (paris) ,Plm Conflans </td><td>3</td></tr>
+<tr><td>ROBIN Rachelle</td><td>Grand Paris Seine &amp; Oise Athle ,Les Mureaux Val De Seine* ,Grand Paris Seine Oise Athle </td><td>3</td></tr>
+<tr><td>ROUGER Guillaume</td><td>Pontault Aac ,Athle Sud 77* ,Pays De Fontainebleau Athle* </td><td>3</td></tr>
+<tr><td>ROUHAUD Yvan</td><td>Ao Charenton ,Athletic Coeur De Fond ,Vincennes Athletic </td><td>3</td></tr>
+<tr><td>RUGGIERO-JULIO Vincent</td><td>Adidas Runners Paris ,Racing Cf (paris) ,Rcf Issy Avia </td><td>3</td></tr>
+<tr><td>SAIM Ahmed (Alg)</td><td>Fontenay Plessis Clamart Athle ,Vanves Run Club 92 ,Es Sartrouville </td><td>3</td></tr>
+<tr><td>SATARAD Flore</td><td>As Corbeil-essonnes ,Athle 91* ,Athle 91 * </td><td>3</td></tr>
+<tr><td>SCHUCK Claudine</td><td>Cs Meaux ,Athletique Club Du Pays De Mea ,Ac Du Pays De Meaux </td><td>3</td></tr>
+<tr><td>TRENIER Solene</td><td>Pontault Aac ,Le Chatelet En Brie Athletisme ,Union Sportive Chatelet En Bri </td><td>3</td></tr>
+<tr><td>TRENIER Sophie</td><td>Le Chatelet En Brie Athletisme ,Pontault Aac ,Union Sportive Chatelet En Bri </td><td>3</td></tr>
+<tr><td>VALTAT Alexis</td><td>Team Trail Paris ,Athletic Coeur De Fond ,Ao Charenton </td><td>3</td></tr>
+<tr><td>VILFEU Ludovic</td><td>Club Athletique Aubergenville ,Grand Paris Seine Oise Athle ,Grand Paris Seine &amp; Oise Athle </td><td>3</td></tr>
+<tr><td>WATTEL Marie-lise</td><td>Pontault Aac ,Bussy St Georges Athletisme ,Bussy Running </td><td>3</td></tr>
+<tr><td>WIEDEMANN Sophie</td><td>Athletic Clubs 92* ,Avia Club Issy-les-moulx ,Rcf Issy Avia </td><td>3</td></tr>
+</table>
+	</div>
+
+	<div class="col-md-6">
+		<div class="titre">Fidèles</div>
+		<table class="table table-striped table-bordered"><tr style="background-color: #CCCCCC"><th>nom</th><th>club</th><th>nb_clubs</th><th>annnées</th></tr>
+<tr><td>COMPAIN Gaetan</td><td>Les Moustiques</td><td>1</td><td>8</td></tr>
+<tr><td>LANDEMAINE Jean-christophe</td><td>Us Ivry</td><td>1</td><td>8</td></tr>
+<tr><td>RUIZ Pascal</td><td>Rambouillet Sports</td><td>1</td><td>8</td></tr>
+<tr><td>JAEGER Emmanuelle</td><td>Ao Charenton</td><td>1</td><td>8</td></tr>
+<tr><td>LARDENOIS Thierry</td><td>Asphalte 94</td><td>1</td><td>8</td></tr>
+<tr><td>CLEMONT Mathilde</td><td>Xve Athletic Club</td><td>1</td><td>8</td></tr>
+<tr><td>LAMINE Moustapha (Mar)</td><td>Csm Bonneuil Sur Marne</td><td>1</td><td>8</td></tr>
+<tr><td>ANDRIEU Olivier</td><td>Ac Paris-joinville</td><td>1</td><td>8</td></tr>
+<tr><td>GAUGE Sandrine</td><td>Vincennes Athletic</td><td>1</td><td>8</td></tr>
+</table>
+	</div>
+
+</div>
+
+
+<h3 id="2.7">Âge moyen</h3>
+
+
+<h3 id="2.8">Plus jeune, plus âgé</h3>
+
+<p>&Eacute;tonnant... il semble que ce soit possible de faire courir un minime en senior.</p>
+
+<table class="table table-bordered">
+<tr style="background-color: #CCCCCC"><th>rang</th><th>chrono</th><th>nom</th><th>club</th><th>dep</th><th>sexe</th><th>cat</th><th>naissance</th><th>championnat</th><th>annee</th></tr>
+<tr><td>121</td><td>42'55</td><td>MARTINE Anthony</td><td>Entente Sportive Caudacienne</td><td>94</td><td>M</td><td>MIM</td><td>98</td><td>dep</td><td>2013</td></tr>
+</table>
+
+<p>&Agrave; l'autre extrémité</p>
+
+<table class="table table-bordered"><tr style="background-color: #CCCCCC"><th>rang</th><th>chrono</th><th>nom</th><th>club</th><th>dep</th><th>sexe</th><th>cat</th><th>naissance</th><th>championnat</th><th>annee</th></tr>
+
+<tr><td>116</td><td>31'05</td><td>BOULIVET Jacqueline</td><td>Athletique Club De Choisy Le R</td><td>94</td><td>F</td><td>V4F</td><td>42</td><td>dep</td><td>2014</td></tr>
+<tr><td>115</td><td>42'39</td><td>FERRERO GARCIA Silverio</td><td>Athletique Club De Choisy Le R</td><td>94</td><td>M</td><td>V4M</td><td>43</td><td>dep</td><td>2013</td></tr>
+<tr><td>159</td><td>44'45</td><td>FERRERO GARCIA Silverio</td><td>Athletique Club De Choisy Le R</td><td>94</td><td>M</td><td>V4M</td><td>43</td><td>dep</td><td>2014</td></tr>
+<tr><td>95</td><td>40'22</td><td>ORCHILLES Michel</td><td>Association Sport Passion Vinc</td><td>94</td><td>M</td><td>V3M</td><td>46</td><td>dep</td><td>2013</td></tr>
+<tr><td>158</td><td>56'48</td><td>CARTAGENA Jean-claude</td><td>Es Sucy-en-brie</td><td>94</td><td>M</td><td>V3M</td><td>46</td><td>dep</td><td>2015</td></tr>
+<tr><td>55</td><td>36'53</td><td>ORCHILLES Michel</td><td>Association Sport Passion Vinc</td><td>94</td><td>M</td><td>V3M</td><td>46</td><td>dep</td><td>2012</td></tr>
+<tr><td>141</td><td>42'38</td><td>CORBILLON Daniel</td><td>Asphalte 94</td><td>94</td><td>M</td><td>V3M</td><td>46</td><td>dep</td><td>2014</td></tr>
+<tr><td>220</td><td>41'44</td><td>DELORT Gerard</td><td>Xve Athletic Club</td><td>75</td><td>M</td><td>V4M</td><td>47</td><td>reg</td><td>2017</td></tr>
+<tr><td>156</td><td>54'11</td><td>HICEB Youssef</td><td>Thiais Ac</td><td>94</td><td>M</td><td>V3M</td><td>47</td><td>dep</td><td>2015</td></tr>
+<tr><td>216</td><td>44'04</td><td>VALETTE Antonin</td><td>Us Olympique De Chelles</td><td>77</td><td>M</td><td>V3M</td><td>47</td><td>reg</td><td>2014</td></tr>
+<tr><td>151</td><td>49'40</td><td>MICHEL Pierre-alain</td><td>Es Sucy-en-brie</td><td>94</td><td>M</td><td>V4M</td><td>48</td><td>dep</td><td>2019</td></tr>
+<tr><td>106</td><td>41'19</td><td>DAVID Jean-francois</td><td>Thiais Ac</td><td>94</td><td>M</td><td>V3M</td><td>48</td><td>dep</td><td>2013</td></tr>
+<tr><td>126</td><td>42'49</td><td>LOBO Didier</td><td>Asphalte 94</td><td>94</td><td>M</td><td>V4M</td><td>48</td><td>dep</td><td>2019</td></tr>
+<tr><td>130</td><td>41'44</td><td>PERRIN Daniel</td><td>Asphalte 94</td><td>94</td><td>M</td><td>V3M</td><td>48</td><td>dep</td><td>2014</td></tr>
+<tr><td>143</td><td>42'56</td><td>DAVID Jean-francois</td><td>Thiais Ac</td><td>94</td><td>M</td><td>V3M</td><td>48</td><td>dep</td><td>2014</td></tr>
+<tr><td>131</td><td>42'42</td><td>MICHEL Pierre-alain</td><td>Es Sucy-en-brie</td><td>94</td><td>M</td><td>V4M</td><td>48</td><td>dep</td><td>2018</td></tr>
+<tr><td>88</td><td>39'51</td><td>PALLANDRE Christian</td><td>Asphalte 94</td><td>94</td><td>M</td><td>V3M</td><td>49</td><td>dep</td><td>2013</td></tr>
+<tr><td>172</td><td>37'38</td><td>AGUERO Alain</td><td>C.c. Taverny Athletisme</td><td>95</td><td>M</td><td>V3M</td><td>49</td><td>lifa</td><td>2010</td></tr>
+<tr><td>108</td><td>39'47</td><td>PALLANDRE Christian</td><td>Asphalte 94</td><td>94</td><td>M</td><td>V3M</td><td>49</td><td>dep</td><td>2014</td></tr>
+</table>
+
+
+<h3 id="2.9">Vétérans hommes participant en Senior</h3>
+
+<table class="table table-striped table-bordered">
+<tr style="background-color: #CCCCCC">
+<th>rang</th><th>chrono</th><th>nom</th><th>club</th><th>dep</th><th>cat</th><th>naissance</th><th>championnat</th><th>annee</th></tr>
+
+<tr><td>5</td><td>31'24</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>dep</td><td>2010</td></tr>
+<tr><td>29</td><td>27'30</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>reg</td><td>2010</td></tr>
+<tr><td>42</td><td>36'09</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>lifa</td><td>2010</td></tr>
+
+
+<tr><td>9</td><td>30'34</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>SVM</td><td>70</td><td>dep</td><td>2012</td></tr>
+<tr><td>19</td><td>32'02</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>SVM</td><td>70</td><td>reg</td><td>2012</td></tr>
+<tr><td>35</td><td>33'15</td><td>BOUMAZA Mohamed</td><td>As Culturelle Francophone</td><td>93</td><td>SVM</td><td>68</td><td>reg</td><td>2012</td></tr>
+<tr><td>59</td><td>34'30</td><td>FLORANGE Noe</td><td>Es Saint Pathus-oissery</td><td>77</td><td>SVM</td><td>72</td><td>reg</td><td>2012</td></tr>
+<tr><td>6</td><td>35'24</td><td>ZEROUAL Larbi</td><td>Ca Montreuil 93</td><td>93</td><td>SVM</td><td>71</td><td>lifa</td><td>2012</td></tr>
+<tr><td>24</td><td>36'26</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>SVM</td><td>70</td><td>lifa</td><td>2012</td></tr>
+<tr><td>25</td><td>36'35</td><td>JACQUERAY Diony</td><td>Pierrefitte Multi Athlon</td><td>93</td><td>SVM</td><td>70</td><td>lifa</td><td>2012</td></tr>
+<tr><td>127</td><td>40'24</td><td>FLORANGE Noe</td><td>Es Saint Pathus-oissery</td><td>77</td><td>SVM</td><td>72</td><td>lifa</td><td>2012</td></tr>
+
+<tr><td>15</td><td>36'55</td><td>BROOKS Jerome</td><td>Stade Francais (paris)</td><td>75</td><td>V1M</td><td>73</td><td>reg</td><td>2013</td></tr>
+<tr><td>169</td><td>45'37</td><td>BOCQUENET Pascal</td><td>Uai Nogent-sur-marne</td><td>94</td><td>V2M</td><td>61</td><td>reg</td><td>2013</td></tr>
+
+<tr><td>164</td><td>43'38</td><td>GRAF Remi</td><td>Avia Club Issy-les-moulx</td><td>92</td><td>V1M</td><td>68</td><td>lifa</td><td>2014</td></tr>
+<tr><td>169</td><td>44'14</td><td>MARGUERITAT Alban</td><td>Levallois Sc</td><td>92</td><td>V1M</td><td>74</td><td>lifa</td><td>2014</td></tr>
+
+<tr><td>7</td><td>32'06</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>dep</td><td>2016</td></tr>
+<tr><td>31</td><td>37'54</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>reg</td><td>2016</td></tr>
+<tr><td>22</td><td>40'45</td><td>EL KADAOUI Samir</td><td>Ac Paris-joinville</td><td>94</td><td>V1M</td><td>70</td><td>lifa</td><td>2016</td></tr>
+
+<tr><td>26</td><td>37'02</td><td>BROOKS Jerome</td><td>Plm Conflans</td><td>78</td><td>V1M</td><td>73</td><td>lifa</td><td>2017</td></tr>
+
+</table>
+
+
+
+<h3 id="2.10">Nationalités</h3>
+
+<pre>SELECT DISTINCT(SUBSTRING(nom, INSTR(nom, '(') )), count(*) FROM cros GROUP BY SUBSTRING(nom, INSTR(nom, '(') )</pre>
+
+<table id="nationnalites" class="table table-striped table-bordered" style="width: 50%;">
+<tr><td>(Mar)</td><td>100</td></tr>
+<tr><td>(Alg)</td><td>97</td></tr>
+<tr><td>(Por)</td><td>37</td></tr>
+<tr><td>(Ita)</td><td>34</td></tr>
+<tr><td>(Esp)</td><td>27</td></tr>
+<tr><td>(Gbr)</td><td>22</td></tr>
+<tr><td>(Ger)</td><td>22</td></tr>
+<tr><td>(Usa)</td><td>20</td></tr>
+<tr><td>(Bul)</td><td>18</td></tr>
+<tr><td>(Eth)</td><td>13</td></tr>
+<tr><td>(Bel)</td><td>12</td></tr>
+<tr><td>(Ukr)</td><td>11</td></tr>
+<tr><td>(Ken)</td><td>10</td></tr>
+<tr><td>(Rus)</td><td>9</td></tr>
+<tr><td>(Cpv)</td><td>8</td></tr>
+<tr><td>(Tun)</td><td>8</td></tr>
+<tr><td>(Tog)</td><td>7</td></tr>
+<tr><td>(Cmr)</td><td>6</td></tr>
+<tr><td>(Mli)</td><td>6</td></tr>
+<tr><td>(Pol)</td><td>6</td></tr>
+<tr><td>(Egy)</td><td>3</td></tr>
+<tr><td>(Eri)</td><td>3</td></tr>
+<tr><td>(Gha)</td><td>3</td></tr>
+<tr><td>(Irl)</td><td>3</td></tr>
+<tr><td>(Mex)</td><td>3</td></tr>
+<tr><td>(Ned)</td><td>3</td></tr>
+<tr><td>(Par)</td><td>3</td></tr>
+<tr><td>(Svk)</td><td>3</td></tr>
+<tr><td>(Aut)</td><td>2</td></tr>
+<tr><td>(Caf)</td><td>2</td></tr>
+<tr><td>(Can)</td><td>2</td></tr>
+<tr><td>(Dji)</td><td>2</td></tr>
+<tr><td>(Dom)</td><td>2</td></tr>
+<tr><td>(Hai)</td><td>2</td></tr>
+<tr><td>(Lux)</td><td>2</td></tr>
+<tr><td>(Sud)</td><td>2</td></tr>
+<tr><td>(Uga)</td><td>2</td></tr>
+<tr><td>(Aze)</td><td>1</td></tr>
+<tr><td>(Civ)</td><td>1</td></tr>
+<tr><td>(Cze)</td><td>1</td></tr>
+<tr><td>(Gui)</td><td>1</td></tr>
+<tr><td>(Mri)</td><td>1</td></tr>
+<tr><td>(Sen)</td><td>1</td></tr>
+<tr><td>(Sin)</td><td>1</td></tr>
+</table>
+
+
+<h3 id="2.10">Noms longs</h3>
+
+<p>Pour les noms longs <code>VARCHAR(32)</code> ne suffit pas toujours</p> 
+
+<table class="table table-striped table-bordered" style="width: auto;">
+<tr><td>DE FREITAS FERREIRA Jose agostino (Por)</td></tr>
+<tr><td>ANTONIO-VITORINO Fereira-andrade (Cpv)</td></tr>
+<tr><td>SEQUEIRA DA SILVA Luis filipe (Por)</td></tr>
+<tr><td>RODRIGUEZ LIZANA Miguel angel (Mex)</td></tr>
+<tr><td>DE NASCIMENTO MARTIN Adilson (Cpv)</td></tr>
+<tr><td>LARUELLE IMMERZEEL Nathalie (Ned)</td></tr>
+<tr><td>HMED MAHMOUD Khaled mohamed (Sud)</td></tr>
+</table>
+
+
+<h2 id="comparaison">3. Comparaison d'athlètes</h2>
+
+<p>Pour générer dynamiquement les graph google suite à sélection d'athlètes, on peut appeler service PHP.
+Mais comme on a déjà chargé les résultats Json, on crée directement des tableaux d'objets Javascript.</p>
+
+<p>Le graph ci-dessous permet par exemple qu'on voit qu'Olivier a battu Ilyas une fois (en 2014). Par commodité
+les classement senior et master sont agrégés, pour être sûr des comparaison des places de deux athlètes il faut vérifier leur appartenance
+à la même catégorie... Ainsi Yann a bien battu Olivier en 2015  et 2016 mais en 2017, pas même catégorie.</p>
+
+<img src="images/comparaison1.png"/>
+
+
+<h2 id="technique">4. Technique &amp; difficultés</h2>
+ 	
+
+	<h3 id="calcul_classements">Re-calcul des classements</h3>
+	
+	Statistiques sur les classement : problème de mélange de catégories
+	
+	<p>Les résultats bruts ne permettent pas directement les statistiques. Hormis divers intrus
+	(HC concurrents championnats entreprise ou non inscrits, étrangers, marginellement exclus pour dopage), le problème est 
+	du mélange de catégories</p>
+
+	<p>Chez les hommes, <a href="#2.9">hormis les quelques vétérans qui choisissent de courrir chez les séniors</a>,
+	les rangs sont les classement réels. Accessoirement "vétéran" est devenu "master" mais on s'arrange.
+	</p>
+
+	<p>Chez les femmes c'est compliqué. Sénior et vétérannes courrent ensemble, même parfois même aussi avec les juniors hommes.</p>
+
+	<p>Par convention :</p>
+<ul>
+	<li>Pour calculer les classement vétérannes : il suffit d'éliminer les seniors ou junior. Pas de problème.</li>
+	<li>En revanche, si une vétéranne fini devant une sénior elle compte. Autrement dit, on considère que la catégorie "senior" est "toute catégorie".
+	<br/>
+	Par exemple aux régionaux 2014 : VERDURE Annie V1F fait 4ème. Juste derrière QUEMENER Anais et BALAGE Juliette font donc 5ème et 6ème, et non 4ème et 5ème.
+	</li>
+</ul>
+
+
+<!-- 
+<p>Calcul pour recalculer les classements</p>
+<ol>
+<li>DELETE FROM cros WHERE SUBSTRING(cat, 1, 1) = 'J'</li>
+<li>on repère le premier et dernier id et on update rang.</li>
+</ol>  
+
+Attribuer le sexe :
+
+<pre>UPDATE cros SET sexe = SUBSTRING(cat, 3, 3) WHERE SUBSTRING(cat, 3, 3) IN ('F','M')</pre> 
+ 
+-->
+
+
+	<h3 id="lievres">Présence des lièvres et régularité</h3>
+
+	<p>Dans un championnat la bataille pour les places, en particulier pour les titre, peut être influencer par
+	la présence de lièvres. C'est un soucis. De même, le record sub-2 de Kipchoge n'a pas été homologué.</p>
+
+	<p>Les hommmes master courrent entre eux (la présence d'étrangers mise à part). Chez les femmes, le mélange avec les
+	senior favorise les coureuses dont le point fort est le train, par rapport à celles qui ont un meilleur finish.
+	Cette remarque a pu faire regretter voir El Guerouj effacer l'aspect tactique de finales 1500 en demandant le sacrifice d'un lièvre.
+	De façon similaire un France 10.000 piste à Charléty avait été une course avec lièvre. C'était pas esprit « championnat ». C'est dommage.
+	</p>   	 
+
+
+<h3 id="erreurs">Erreurs</h3>
+
+
+<p><ul>
+<li>Au cross long LIFA senior 2014, deux ex aequo ont des chronos différents et ne comptent qu'une place.</li></ul></p>  
+
+<pre>
+138	41_58	FLEURIAL Brice		Cs Meaux			77	SEM/85
+<span class="red">139</span>	<span class="red">41_59</span>	FITAMANT Yannick	Antony Athletisme 	92	92	SEM/80
+<span class="red">139</span>	<span class="red">42_00</span>	FORTUN Armel		Club Multi Sports De Pantin	93	SEM/75
+<span class="red">140</span>	<span class="red">42_02</span>	OUJOURA Samir		Usm Malakoff			92	SEM/80
+141	42_05	LEFEBVRE Manuel		Xve Athletic Club		75	SEM/80
+</pre>
+
+
+<ul>
+	<li>Au cross départemental master 2020, Olivier Andrieu signale l'erreur de chrono.
+	On peut estimer ces erreurs anecdotiques en cross.</li>
+
+	<li>Plus ennuyeux sur route et encore plus sur piste.
+		Quelques exemples d'erreurs rencontrées :
+		<ul>
+		<li>1 chrono 800 de meeting en 2013 (corrigé après courier à athle.org)</li>
+		<li>1 chrono 800 lors interclubs Belfort 2014 (corrigé sur place après ré-examen photo finish)</li>
+		<li>1 chrono 10km ch. France Aix-les-Bains 2015 (puce n'ayant pas bipé, chrono aproximatif retenu)</li>
+		<li>chronos surévalués de tous concurrents d'un 800 meeting</li>
+		<li>chronos manuels transformés en électronique (sans mention sur athle.org)</li> 
+		</ul>
+	</li>
+
+
+	<li><p>GUERFI Riad était suspendu pour dopage jusqu'en avril 2019 (source <a href="http://spe15.fr/la-suspension-pour-dopage-de-riad-guerfi-sacheve-prochainement/">spe15.fr</a>).
+	Il aurait du être retiré du classement et appliquer -1 à la place des concurrents suivants. 
+	</p>
+	
+	<pre>Rég 2017	GUERFI Riad	Val D'europe Athletisme	077	SEM/87
+LIFA 2017	GUERFI Riad	Val D'europe Athletisme	077	SEM/87</pre>
+
+	</li>
+
+</ul>
+
+<!-- 
+<h3 id="sql">SQL</h2>
+<pre>CREATE INDEX idx_annee ON cros (annee);</pre>
+
+taille de l'index  
+
+
+<pre>
+
+SELECT * FROM cros c1 JOIN cros c2 ON c1.nom = c2.nom AND c1.sexe != c2.sexe;
+
+UPDATE cros SET dep = SUBSTRING(dep, 2) WHERE LENGTH(dep) > 2
+
+UPDATE cros SET naissance = SUBSTRING(cat, 5) WHERE naissance = 99 AND SUBSTRING(cat, 5) != '';
+UPDATE cros SET cat = SUBSTRING(cat, 1, 3) WHERE LENGTH(cat) > 3;
+
+UPDATE cros SET chrono = REPLACE(chrono, '_', '''');
+
+SELECT  annee, cat, championnat, sexe, count(*) FROM cros group by annee, championnat, sexe, cat;
+
+ALTER TABLE cros ADD CONSTRAINT unik UNIQUE    (annee,rang,championnat,sexe,cat);
+
+SELECT * FROM cros c1 JOIN cros c2 ON c1.nom = c2.nom AND c1.sexe != c2.sexe;
+
+UPDATE cros SET dep = SUBSTRING(dep, 2) WHERE LENGTH(dep) > 2
+
+</pre>
+
+ -->
+</section>
+<br/><br/>
+
+</article>
+
+<footer class="col-md-offset-3 col-md-6">
+	<hr />
+	<p style="text-align: center;">
+		<i>Dernière MAJ <time pubdate="pubdate">05/03/2019</time></i>
+	</p>
+</footer>
+
+	<script type="text/javascript">
+	document.getElementById("cross").setAttribute("class", "active");
+	
+	$('#plus_gd_nb_participations_athletes').DataTable({
+	//	data : data.data,
+	  columns : [
+	    { title: 'Nom' },
+	    { title: 'Années' },    
+	    { title: 'Participations' }    
+	  ],
+	  "order": [[ 2, "desc" ]]
+	});  
+	
+	$('#volages').DataTable({
+	  columns : [
+	    { title: 'Nom' },
+	    { title: 'Clubs' },    
+	    { title: 'Nb' }    
+	  ],
+	  "order": [[ 2, "desc" ]]
+	}); 
+
+	$('#nationnalites').DataTable({
+		  columns : [
+		    { title: 'Pays' },
+		    { title: 'Nb' }    
+		  ],
+		  "order": [[ 1, "desc" ]]
+		}); 
+
+	</script>
+</body>
+</html>
