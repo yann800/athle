@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>LPP liste des produits et prestations</title>
+	
+	<link media="screen" rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="../cross/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/fixedHeader.dataTables.min.css">
+	
+	<script type="text/javascript" src="../cross/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="../cross/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../js/dataTables.fixedHeader.min.js"></script>
+
+	<script type="text/javascript" class="init">
+
+var records = { data : [
+{"titre":"Le zéro et l'infini","auteur":"Koestler","annee":"1940","type":"roman"},
+{"titre":"En terrain miné","auteur":"Elisabeth de Fontenay Alain Finkelkraut","annee":"2017","type":"correspondance"}
+]
+};
+
+	
+
+$(document).ready(function() {
+	// Setup - add a text input to each footer cell
+	$('#example thead tr').clone(true).appendTo( '#example thead' );
+	$('#example thead tr:eq(1) th').each( function (i) {
+		var title = $(this).text();
+		$(this).html( '<input type="text" placeholder="Filtre '+title+'" />' );
+
+		$( 'input', this ).on( 'keyup change', function () {
+			if ( table.column(i).search() !== this.value ) {
+				table
+					.column(i)
+					.search( this.value )
+					.draw();
+			}
+		} );
+	} );
+
+	var table = $('#example').DataTable( {
+		orderCellsTop: true,
+		fixedHeader: true,
+		data : records.data,
+        columnDefs: [
+            { width: 50, targets: 0 }
+        ],		
+        columns: [
+            { data: "titre" },
+            { data: "auteur" },
+            { data: "annee" },
+            { data: "type" }
+		]
+	} );
+	
+	
+	$('#example_filter').hide();
+	
+} );
+
+
+
+	</script>
+	
+	<style type="text/css">
+
+footer {
+	width: 100%;
+	color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #239fcc;
+}
+
+.infos {
+	margin: auto;
+	width: 40%;
+	overflow: auto;
+}
+
+.right {
+	float: right;
+}
+
+.ligne-header {
+	height: 1px;
+	background-color: #999;
+	margin: 0 250px 0 0;
+}
+
+
+</style>
+</head>
+<body>
+
+
+	<article class="content">
+
+	<div class="row" style="margin-bottom:50px">
+
+		<div class="well well-sm atih" align="center" style="color:white;background-color: #239FCC">
+			<h2>Bibliothèque</h2>
+			<p>liste et commentaires</p>
+		</div>
+
+
+		<div class="col-sm-1"></div>
+
+		<div class="col-sm-10">
+
+		
+		<table id="example" class="display" style="width:100%">
+			<thead>
+	            <tr>
+	               	<th>Titre</th>
+	                <th>Auteur</th>
+ 	                <th>Année</th>
+	                <th>Type</th>
+	            </tr>
+	        </thead>		
+
+		</table>
+
+
+		</div>
+
+	</div>
+	</article>
+
+	
+
+	
+	<footer>
+
+		<div class="infos">
+			<div>
+			</div>
+			
+		</div>
+	</footer>
+	</body>
+</html>
