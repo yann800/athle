@@ -4,6 +4,8 @@ CREATE TABLE Document (
 	auteur		VARCHAR(32)	NOT NULL,	
 	annee		INT(4)		,
 	type		VARCHAR(16)	NOT NULL,
+	theme		VARCHAR(32),
+	bibli		VARCHAR(16),
 	commentaire	VARCHAR(512),
 	PRIMARY KEY (id)
 );

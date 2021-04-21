@@ -10,11 +10,13 @@ $link  =  mysql_connect($servername, $username, $password) or die( "Impossible d
 mysql_select_db($dbname);
 
 
-$sql = "SELECT d.titre AS titre, d.auteur AS auteur, p.nom AS pays, d.nom AS type, d.annee AS annee, d.commentaire AS commentaire FROM Document d";	
+$sql = "SELECT d.id AS id, d.titre AS titre, d.auteur AS auteur, d.type AS type, d.theme AS theme, d.bibli AS bibli, d.annee AS annee, d.commentaire AS commentaire FROM Document d";	
 	
 $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 
 $nb = mysql_num_rows($req);
+
+$hint = "";
 
 if ( $nb == 0 ) {
 	// rien à faire
@@ -24,12 +26,12 @@ else {
 	while($row = mysql_fetch_assoc($req)){
 	// NEW while($row = $result->fetch_assoc()) {
 		if ($hint === "") {
-			$hint = '{ "bibli": [{"titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","commentaire":"' . $row["commentaire"] . '"}';
+		    $hint = '[{"id":' . $row["id"] . ', "titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","theme":"' . $row["theme"] . '","bibli":"' . $row["bibli"] . '","commentaire":"' . $row["commentaire"] . '"}';
 		} else {
-			$hint .=            ',{"titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","commentaire":"' . $row["commentaire"] . '"}';
+		    $hint .= ',{"id":' . $row["id"] . ', "titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","theme":"' . $row["theme"] . '","bibli":"' . $row["bibli"] . '","commentaire":"' . $row["commentaire"] . '"}';
 		}
 	}
-	$hint .= ']}';
+	$hint .= ']';
 }
 
 echo $hint;
