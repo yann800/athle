@@ -81,31 +81,34 @@ pre {
 	 		</div>
 	 	<br/>
 		<ul style="list-style-type: none;">
-			<li><a href="#droits">1. Pourquoi et comment étudier des résultats de cross</a></li>
-			<ul style="list-style-type: none;">
-				<li><a href="#1.1">Propriété des données athlé</a></li>
-				<li><a href="#compromission">Compromis ou compromission</a></li>
-			</ul>
+			<li><a href="#droits">1. Pourquoi et comment étudier des résultats de cross</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#1.1">Propriété des données athlé</a></li>
+					<li><a href="#compromission">Compromis ou compromission</a></li>
+				</ul>
+			</li>
 			
-			<li><a href="#requetes">2. Requêtes</a></li>
-			<ul style="list-style-type: none;">
-				<li><a href="#2.1">Plus médaillés</a></li>
-				<li><a href="#2.2">Plus grand écart 1er et 2nd</a></li>
-				<li><a href="#2.3">Plus grand nombre de particpations (athlètes)</a></li>
-				<li><a href="#2.4">Plus grand nombre de particpations (clubs)</a></li>
-				<li><a href="#2.5">Les populaires meilleurs que les riches</a></li>
-				<li><a href="#2.6">Fidélité au club</a></li>
-				<li><a href="#2.7">Âge moyen</a></li>
-				<li><a href="#2.8">Plus jeune, plus âgé</a></li>
-				<li><a href="#2.9">Vétérans hommes participant en Senior</a></li>
-			</ul>
+			<li><a href="#requetes">2. Requêtes</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#2.1">Plus médaillés</a></li>
+					<li><a href="#2.2">Plus grand écart 1er et 2nd</a></li>
+					<li><a href="#2.3">Plus grand nombre de particpations (athlètes)</a></li>
+					<li><a href="#2.4">Plus grand nombre de particpations (clubs)</a></li>
+					<li><a href="#2.5">Les populaires meilleurs que les riches</a></li>
+					<li><a href="#2.6">Fidélité au club</a></li>
+					<li><a href="#2.7">Âge moyen</a></li>
+					<li><a href="#2.8">Plus jeune, plus âgé</a></li>
+					<li><a href="#2.9">Vétérans hommes participant en Senior</a></li>
+				</ul>
+			</li>
 			<li><a href="#comparaison">3. Comparaison d'athlètes</a>
-			<li><a href="#technique">4. Technique</a></li>
-			<ul style="list-style-type: none;">
-				<li><a href="#calcul_classements">Re-calcul des classements</a></li>
-				<li><a href="#lievres">Présence des lièvres et régularité</a></li>
-				<li><a href="#erreurs">Erreurs</a></li>
-			</ul>			
+			<li><a href="#technique">4. Technique</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#calcul_classements">Re-calcul des classements</a></li>
+					<li><a href="#lievres">Présence des lièvres et régularité</a></li>
+					<li><a href="#erreurs">Erreurs</a></li>
+				</ul>			
+			</li>
 		</ul>
 		</div>
 	</nav>
@@ -354,9 +357,6 @@ GROUP BY nom ORDER BY nb_podium DESC</code></pre>
 <tr><td>JEMMAL Abdelghani</td><td>CHEVAL Gregory</td><td>lifa</td><td>2016</td><td>12</td></tr>
 <tr><td>MARTINO Azeline</td><td>AKROUNE Nadia</td><td>reg</td><td>2015</td><td>12</td></tr>
 <tr><td>FAVIER Francois-rene</td><td>VINDEX Jean-philippe</td><td>reg</td><td>2014</td><td>10</td></tr>
-</table>
-</table>
-
 </table>
 
 
@@ -843,7 +843,7 @@ GROUP BY club  ORDER BY participation DESC</code></pre>
 
 <p>Vérifions que les clubs des quartiers populaires sont meilleurs que les riches.</p>
 
-<pre>SELECT dep, AVG(rang) AS rangs FROM cros WHERE championnat = 'lifa' AND rang < 50 GROUP BY dep ORDER BY rangs;</pre>
+<pre>SELECT dep, AVG(rang) AS rangs FROM cros WHERE championnat = 'lifa' AND rang &lt; 50 GROUP BY dep ORDER BY rangs;</pre>
 
 <table class="table table-bordered" style="width: 30%"><tr><th>dep</th><th>rangs</th></tr>
 <tr><td>93</td><td>22.314</td></tr>
@@ -1174,8 +1174,8 @@ Attribuer le sexe :
 <h3 id="erreurs">Erreurs</h3>
 
 
-<p><ul>
-<li>Au cross long LIFA senior 2014, deux ex aequo ont des chronos différents et ne comptent qu'une place.</li></ul></p>  
+<ul>
+<li>Au cross long LIFA senior 2014, deux ex aequo ont des chronos différents et ne comptent qu'une place.</li></ul>
 
 <pre>
 138	41_58	FLEURIAL Brice		Cs Meaux			77	SEM/85

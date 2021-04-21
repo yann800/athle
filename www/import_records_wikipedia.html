@@ -51,30 +51,34 @@ background-color: #AAEEAA;
 	 		</div>
 	 	<br/>
 		<ul style="list-style-type: none;">
-			<li><a href="#1">1. Code Java &amp; SQL</a></li>
-			<ul style="list-style-type: none;">
-				<li><a href="#1.1">Enregistrement et parsing des pages HTML</a></li>
-				<li><a href="#1.2">Calcul des rangs</a></li>
-				<li><a href="#1.3">Corrections manuelles</a></li>
-			</ul>
-			<li><a href="#2">2. Caractéristiques des records</a></li>
-
-			<ul style="list-style-type: none;">
-				<li><a href="#2.1">Records codétenus</a></li>
-				<li><a href="#2.2">Records annulés ou non homologués</a></li>					
-				<li><a href="#2.3">Conditions de réalisation des records</a></li>
-				<li><a href="#2.4">Paramètres annexes des records</a></li>
-			</ul>
+			<li>
+				<a href="#1">1. Code Java &amp; SQL</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#1.1">Enregistrement et parsing des pages HTML</a></li>
+					<li><a href="#1.2">Calcul des rangs</a></li>
+					<li><a href="#1.3">Corrections manuelles</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#2">2. Caractéristiques des records</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#2.1">Records codétenus</a></li>
+					<li><a href="#2.2">Records annulés ou non homologués</a></li>					
+					<li><a href="#2.3">Conditions de réalisation des records</a></li>
+					<li><a href="#2.4">Paramètres annexes des records</a></li>
+				</ul>
+				</li>
 			
-			<li><a href="#3">3. Politique</a></li>
-			<ul style="list-style-type: none;">
-				<li><a href="#3.1">Records socialistes vs capitalistes, impérialistes vs colonisés</a></li>
-				<li><a href="#3.2">Changement de nationalité</a></li>
-				<li><a href="#3.3">&Eacute;cologie</a></li>				
-				<li><a href="#3.4">Condition des femmes</a></li>
-			</ul>
-			
-			<li><a href="#4">4. Requêtes</a></li>
+			<li>
+				<a href="#3">3. Politique</a>
+				<ul style="list-style-type: none;">
+					<li><a href="#3.1">Records socialistes vs capitalistes, impérialistes vs colonisés</a></li>
+					<li><a href="#3.2">Changement de nationalité</a></li>
+					<li><a href="#3.3">&Eacute;cologie</a></li>				
+					<li><a href="#3.4">Condition des femmes</a></li>
+				</ul>
+			</li>
+			<li><a href="#4">4. Requêtes</a>
 			<ul style="list-style-type: none;">
 				<li><a href="#4.1">Classement des pays toutes épreuves confondues</a></li>
 				<li><a href="#4.2">Comparaison rangs hommes et femmes d'un pays</a></li>
@@ -82,7 +86,7 @@ background-color: #AAEEAA;
 				<li><a href="#4.4">Records par ancienneté</a></li>
 				<li><a href="#records800">Records 800 par ancienneté</a></li>
 			</ul>
-			
+			</li>
 			<li><a href="#references">Références</a></li>
 		</ul>
 	
@@ -166,18 +170,21 @@ bien plus complètes et propres comme on aurait pu s'en douter...
 	</ul> 
 </li>
 <li>Il n'y a plus qu'à INSERT INTO en base.</li>
+
 <li>Vérification que les pays ont 42 records au maximum sur les épreuves retenues :
-<ul style="list-style-type: none;">
-<li>2 x 19 records des épreuves communes homme et femme (100, ..., Marathon)</li>
-<li>+ 4 (100H, 110H, Heptathlon, Decathlon)</li>
-<li>= 42 records</li>
-</ul>
-<pre style="width: 400px">SELECT p.nom, COUNT(r.id) AS total_epreuve
-FROM record r
-INNER JOIN pays_wiki p ON p.id  = r.idPays
-GROUP BY p.nom
-ORDER BY total_epreuve DESC</pre>
+	<ul style="list-style-type: none;">
+	<li>2 x 19 records des épreuves communes homme et femme (100, ..., Marathon)</li>
+	<li>+ 4 (100H, 110H, Heptathlon, Decathlon)</li>
+	<li>= 42 records</li>
+	</ul>
+
+	<pre style="width: 400px">SELECT p.nom, COUNT(r.id) AS total_epreuve
+	FROM record r
+	INNER JOIN pays_wiki p ON p.id  = r.idPays
+	GROUP BY p.nom
+	ORDER BY total_epreuve DESC</pre>
 </li>
+</ul>
 Parmi les cas particuliers dont le traitement automatique est difficile, records multiples ou codétenus ou 
 instance homolagation ou absent (p.ex. record 10000 femme Jamaïque ?).
 <br/><br/>
@@ -187,7 +194,7 @@ instance homolagation ou absent (p.ex. record 10000 femme Jamaïque ?).
 <td>John Regis</td>
 <td>31 July 1994</td>
 <td></td>
-<td>Sestriere</a>, Italy</td>
+<td>Sestriere, Italy</td>
 </tr>
 <tr>
 <td>19.94 <small>(+0.3&#160;m/s)</small></td>
@@ -198,14 +205,13 @@ instance homolagation ou absent (p.ex. record 10000 femme Jamaïque ?).
 </tr></table>
 <br/>Dans ces cas, on retient le premier record trouvé ou premier en date ;
 sinon pour cas rares ou page wikipedia mal codée, soit règle <i>ad hoc</i>, soit tant pis on ignore.
-</ul>
 
 <h3 id="1.2">Calcul des rangs</h3>
 
 Les rangs doivent être pré-calculés, pour des raisons de performance évidentes (pour des pages dédiés aux performances record, ce serait un comble).
  
 Donc <code>ALTER TABLE record ADD rang INT AFTER perf;</code>
-</p><p>Puis le calcul :</p>
+<p>Puis le calcul :</p>
 
 <pre style="width:850px">-- pour chaque pays et pour chaque épreuve (for à l'ancienne car plus facile à débugger que keySet().stream()...)  
 for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
@@ -215,7 +221,7 @@ for (Integer idPays:GetNomPaysWikiEn.getMap().keySet()) {
 	}
 }
 -- ... on calcule le rang et on le stock dans la variable [nombrePaysMeilleurs] 
-SELECT count(*) AS nb FROM record r  WHERE r.epreuve = ['100'] AND r.sexe = [0] AND r.perf < 
+SELECT count(*) AS nb FROM record r  WHERE r.epreuve = ['100'] AND r.sexe = [0] AND r.perf &lt; 
 (
   SELECT recordSelectedPays.perf FROM record recordSelectedPays
   WHERE recordSelectedPays.epreuve = ['100'] AND recordSelectedPays.idPays =[69] AND recordSelectedPays.sexe = [0]
@@ -336,7 +342,7 @@ avec son 1.55.82 le 3 mars 2002 à Vienne. Mais malgré qu'elle est tombée plus
 (mais perd le record national 4x400 3.32.50 24 juin 2007 à Milan).
 <br/><br/>
 Par ailleurs, il n'est pas certain que les records annulés pour dopage soient tous répertoriés dans Wikipedia.
-P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marteau homme +80m ? &Agrave; vérifier.</li>
+P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marteau homme +80m ? &Agrave; vérifier.
 
 
 
@@ -350,7 +356,6 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 		<tr>
 			<td>1.97 m X</td>
 			<td>19 May 2001</td>
-			</td>
 		</tr>
 		<tr>
 			<td>15 Bahamian
@@ -453,7 +458,6 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>8.10 m X</td>
 			<td>16 February 2003</td>
 		</tr>
-		</tr>
 		<tr>
 			<td style="background-color: #AAEEAA">6.28 m</td>
 			<td rowspan="2">Silvija Mrakovčić</td>
@@ -473,16 +477,12 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 		<tr>
 			<td rowspan="3">77 Greek</td>
 			<td>8:52.21 X</td>
-			<td>Maria Tsírba</td>
+			<td>Maria Tsírba<br/>Niki Xanthou</td>
 			<td>15 March 2003</td>
-		</tr>
-		<td>Niki Xanthou</td>
-		<td>16 February 1997</td>
-			<td>18 August 1997</td>
 		</tr>
 		<tr>
 			<td>15.00 mX</td>
-			<td><s>Hrysopiyí Devetzí</s></td>
+			<td><del>Hrysopiyí Devetzí</del></td>
 			<td>8 March 2008</td>
 		</tr>
 
@@ -684,10 +684,6 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 			<td>12.58 (−0.2&#160;m/s) X</td>
 		</tr>
 
-
-
-
-
 		<tr>
 			<td rowspan="2">205 Ukrainian</td>
 			<td>2:22:09 X</td>
@@ -726,13 +722,13 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 		</tr>
 	</table>
 
+</li>
 
 
 
 
 
-
-<li>records non-homologués pour vent ou lièvres</li>
+<li>records non-homologués pour vent ou lièvres
 	<ul>
 	<li>Pedroso 8.96 Sestrières pb mesure vent</li> 
 	<li>Lewis + 9m mordu </li>
@@ -741,13 +737,15 @@ P.ex. les cas ne se sont pas produits en France pour 1500 femme 3.59.xx et Marte
 	lièvres femmes presque jusqu'au bout, autorisé ? Problème cornélien....</li>
 	<li>Kipchoge 2:00:25 Monza 2018 lièvres. 2:01:39 Berlin 2018, seul à partir du km 25.</li>
 	</ul>
-<li>records effacés pour changement de norme</li>
+</li>
+<li>records effacés pour changement de norme
 
 	<ul><li>javelot femme Petra Felke RDA 80m00, annulé lors du changement des javelot. Comme les hommes pouvaient
 	dépasser 100m, ça pouvait se comprendre qu'il faille adopter des javelot plongeant et éviter des Sdiri.
 	D'accord. Mais pour les femmes, un prétexte à remettre le record à zéro... :-/</li></ul>
+</li>
 
-<li>records "not ratified by federation"</li>
+<li>records "not ratified by federation"
 
 <pre style="width:400px">SELECT r.epreuve, r.nom, r.perf, r.annee, p.nom
 FROM record r
@@ -756,6 +754,7 @@ WHERE r.perf LIKE '%#%'
 ORDER BY r.epreuve</pre>
 
 Il y a 88 records non ratifiés. P.ex. sur 3000 Paula Radcliffe 8:22.20. Pourquoi ? 
+</li>
 </ul>
 
 
@@ -763,12 +762,13 @@ Il y a 88 records non ratifiés. P.ex. sur 3000 Paula Radcliffe 8:22.20. Pourquo
 
 
 <ul>
-<li>Plein air ou salle</li>
+<li>Plein air ou salle
 	<ul>
 		<li>Perche unifié. Les 6m14 de Bubka effacés par les 6m16 indoor de Lavillenie. Bon... mais la 2ème perf plein air ? Duplantis 6m05 aux Europe 2018 ? Si oui 11 cm
 		cela ferait beaucoup, de quoi laisser circonspect sur l'équivalent plein air / indoor pour la perche. </li>
 		<li>Longueur et triple non. En raison du vent ? Et le poids ?</li>
 	</ul>
+</li>
 
 <li>Dureté de la piste.<br/>
 La dureté est réglementée. Il doit y avoir un test de rebond maximal de balle. D'où la réputation de la "rapidité" des pistes. &Agrave; ce titre - à vérifier - le record 19.32 de Michael Jonhson à Atlanta 1996 
@@ -1735,7 +1735,6 @@ ORDER BY annee</pre>
 <tr><td>Decathlon</td><td>9126 pt.</td><td>Kevin Mayer</td><td>2018</td></tr>
 </table>
 
-</table>
 	</div>
 
 </div>
@@ -1834,12 +1833,9 @@ Même Johnny Gray, 1985...</li>
 <tr><td>Burundian</td><td>1:55.47</td><td>Francine Niyonsaba</td><td>2017</td></tr>
 <tr><td>South_African</td><td>1:54.25</td><td>Caster Semenya</td><td>2018</td></tr>
 </table>
-</table>
 
 
-
-
-
+</div>
 </div>
 
 </section>
