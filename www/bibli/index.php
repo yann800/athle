@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -35,7 +34,9 @@ footer {
 	background-color: #999;
 	margin: 0 250px 0 0;
 }
-
+.row-selected {
+	background-color: #239fcc;
+}
 
 </style>
 </head>
@@ -116,25 +117,48 @@ $(document).ready(function() {
 	} );
 
 	var table = $('#example').DataTable( {
-		ajax: {
-			url: 'http://base.athle.free.fr/bibli/getBibli.php',
-			// dataSrc: ''
-			dataSrc: function (json) {
-				var return_data = new Array();
-				for(var i=0;i< json.length; i++){
-					return_data.push({
-						'id': json[i].id,
-						'titre': json[i].titre.replace('ï¿½', 'é'),
-						'auteur': json[i].auteur.replace('ï¿½', 'é'),
-						'annee': json[i].annee,
-						'type': json[i].type,
-						'theme': json[i].theme,
-						'bibli': json[i].bibli
-					})
-				}
-				return return_data;
-			}			
-		},
+	
+	
+		data :
+<?php
+
+// ===================
+include '../constantes.php';
+
+// --------------
+// OLD PHP FOR FREE
+// Create connection http://php.net/manual/fr/function.mysql-connect.php
+$link  =  mysql_connect($servername, $username, $password) or die( "Impossible de se connecter : "  .  mysql_error ());
+mysql_select_db($dbname);
+
+
+$sql = "SELECT d.id AS id, d.titre AS titre, d.auteur AS auteur, d.type AS type, d.theme AS theme, d.bibli AS bibli, d.annee AS annee, d.commentaire AS commentaire FROM Document d";	
+	
+$req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
+
+$nb = mysql_num_rows($req);
+
+$hint = "";
+
+// on fait une boucle qui va faire un tour pour chaque enregistrement
+while($row = mysql_fetch_assoc($req)){
+	if ($hint === "") {
+	    $hint = '[{"id":' . $row["id"] . ', "titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","theme":"' . $row["theme"] . '","bibli":"' . $row["bibli"] . '","commentaire":"' . $row["commentaire"] . '"}';
+	} else {
+	    $hint .= ',{"id":' . $row["id"] . ', "titre":"' . $row["titre"] . '","auteur":"' . $row["auteur"] . '","annee":"' . $row["annee"] . '","type":"' . $row["type"] . '","theme":"' . $row["theme"] . '","bibli":"' . $row["bibli"] . '","commentaire":"' . $row["commentaire"] . '"}';
+	}
+}
+$hint .= '],';
+
+echo $hint;
+
+?>
+
+
+
+
+
+
 		select: true,
 		orderCellsTop: true,
 		fixedHeader: true,
@@ -161,6 +185,10 @@ $(document).ready(function() {
 	
 //	 $('#example tbody').on( 'click', 'tr', function () {
 //	 } );
+
+	table.on( 'select', function ( e, dt, type, indexes ) {
+	    table[ type ]( indexes ).nodes().to$().addClass( 'row-selected' );
+	} );
 
 	table.on( 'select', function ( e, dt, type, indexes ) {
 		var rowData = table.rows( indexes ).data().toArray();
