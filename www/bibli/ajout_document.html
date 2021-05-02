@@ -6,10 +6,8 @@
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
 
-<title>Bibliothèque</title>
+<title>Bibliothèque - Ajout document</title>
 
-<style type="text/css">
-</style>
 
 </head>
 
@@ -30,7 +28,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8" style="margin-bottom: 20px">
-						<label for="titre" class="col-form-label">Auteur</label>
+						<label for="auteur" class="col-form-label">Auteur</label>
 						<input type="text" class="form-control" name="auteur" id="auteur" required="required"/>
 					</div>
 					<div class="col-md-2">
@@ -57,6 +55,7 @@
 						<div class="form-group">
 							<label for="theme" class="col-form-label">Thème</label>
 							<select class="form-control" id="theme" name="theme">
+								<option value=""></option>
 								<option value="politique">politique</option>
 								<option value="histoire">histoire</option>
 								<option value="écologie">écologie</option>

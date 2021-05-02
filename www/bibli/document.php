@@ -6,18 +6,20 @@
 
 <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" />
 
+<title>Bibliothèque - Document</title>
+
+</head>
+
 <body>
 
+	<form id="formModificationDocument" class="container" method="post" action="modification_document.php" style="margin-top: 30px">
 
-<div class="card">
+		<div class="card">
 			<div class="card-header">Document</div>
 			<div class="card-body">
 			
 				<div class="row">
 					<div class="col-md-8" style="margin-bottom: 20px">
-						<label for="titre" class="col-form-label">Titre</label>
-
-
 <?php
 
 include "../constantes.php";
@@ -41,33 +43,33 @@ $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
 $nb = mysql_num_rows($req);
 
 if ( $nb == 0 ) {
-    // rien Ã  faire
-    echo "pas de ligne id : " . $id;
+	// rien Ã  faire
+	echo "pas de ligne id : " . $id;
 }
 else {
-    // on fait une boucle qui va faire un tour pour chaque enregistrement
-    while($row = mysql_fetch_assoc($req)){
-        
-        
-        echo $row["titre"];
-
+	// on fait une boucle qui va faire un tour pour chaque enregistrement
+	while($row = mysql_fetch_assoc($req)){
 ?>
+				<div class="row">
+					<div class="col-md-8" style="margin-bottom: 20px">
+						<label for="titre" class="col-form-label">Titre</label>
+						<input type="hidden" name="id" value="<?php echo $id ?>"/>
+						<input type="text" class="form-control" name="titre" id="titre" required="required" value="<?php echo $row["titre"] ?>"/>
 					</div>
 					<div class="col-md-4"></div>
 				</div>
-				<div class="row">
-					<div class="col-md-8" style="margin-bottom: 20px">
-						<label for="titre" class="col-form-label">Auteur</label>
-<?php 
-    echo $row["auteur"];
-?>
 
-
-						<input type="text" class="form-control" name="auteur" id="auteur" required="required"/>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-8" style="margin-bottom: 20px">
+				<label for="auteur" class="col-form-label">Auteur</label>
+				<input class="form-control" type="text" value="<?php echo $row["auteur"];?>" name="auteur" id="auteur" required="required"/>
 					</div>
 					<div class="col-md-2">
 						<label for="annee" class="col-form-label">Année</label>
-						<input type="number" class="form-control" name="annee" id="annee" min="1500" max="2030" required="required" />
+						<input type="number" class="form-control" name="annee" id="annee" min="1500" max="2030" required="required" value="<?php echo $row["annee"] ?>"/>
 					</div>
 				</div>
 				<div class="row">
@@ -76,11 +78,11 @@ else {
 						<div class="form-group">
 							<label for="type" class="col-form-label">Type</label>
 							<select class="form-control" id="type" name="type">
-								<option value="roman">roman</option>
-								<option value="article">article</option>
-								<option value="essai">essai</option>
-								<option value="correspondance">correspondance</option>
-								<option value="bd">bande dessinée</option>
+								<option value="roman"			<?php if ($row['type'] == 'roman')			echo 'selected' ?> >roman</option>
+								<option value="article"			<?php if ($row['type'] == 'article')		echo 'selected' ?> >article</option>
+								<option value="essai"			<?php if ($row['type'] == 'essai')			echo 'selected' ?> >essai</option>
+								<option value="correspondance"	<?php if ($row['type'] == 'correspondance') echo 'selected' ?> >correspondance</option>
+								<option value="bd"				<?php if ($row['type'] == 'bd')				echo 'selected' ?> >bande dessinée</option>
 							</select>
 						</div>
 
@@ -89,12 +91,12 @@ else {
 						<div class="form-group">
 							<label for="theme" class="col-form-label">Thème</label>
 							<select class="form-control" id="theme" name="theme">
-								<option value="politique">politique</option>
-								<option value="histoire">histoire</option>
-								<option value="Ecologie">Ecologie</option>
-								<option value="Economie">Economie</option>
-								<option value="littérature">littérature</option>
-								<option value="sport">sport</option>
+								<option value="politique"		<?php if ($row['theme'] == 'politique')		echo 'selected' ?>>politique</option>
+								<option value="histoire"		<?php if ($row['theme'] == 'histoire')		echo 'selected' ?>>histoire</option>
+								<option value="écologie"		<?php if ($row['theme'] == 'écologie')		echo 'selected' ?>>écologie</option>
+								<option value="économie"		<?php if ($row['theme'] == 'économie')		echo 'selected' ?>>économie</option>
+								<option value="littérature"		<?php if ($row['theme'] == 'littérature')	echo 'selected' ?>>littérature</option>
+								<option value="sport"			<?php if ($row['theme'] == 'sport')			echo 'selected' ?>>sport</option>
 							</select>
 						</div>
 					</div>
@@ -102,12 +104,14 @@ else {
 						<div class="form-group">
 							<label for="bibli" class="col-form-label">Bibliothèque</label>
 							<select class="form-control" id="bibli" name="bibli">
-								<option value="Merwane">Merwane</option>
-								<option value="Danielle">Danielle</option>
-								<option value="Yann">Yann</option>
-								<option value="Juliette">Juliette</option>
-								<option value="autre">Autre</option>
-							</select>
+								<option value="Merwane"			<?php if ($row['bibli'] == 'Merwane')	echo 'selected' ?>>Merwane</option>
+								<option value="Danielle"		<?php if ($row['bibli'] == 'Danielle')	echo 'selected' ?>>Danielle</option>
+								<option value="Yann"			<?php if ($row['bibli'] == 'Yann')		echo 'selected' ?>>Yann</option>
+								<option value="Juliette"		<?php if ($row['bibli'] == 'Juliette')	echo 'selected' ?>>Juliette</option>
+								<option value="Kléber"			<?php if ($row['bibli'] == 'Kléber')	echo 'selected' ?>>Kléber</option>
+								<option value="autre"			<?php if ($row['bibli'] == 'autre')	echo 'selected' ?>>Autre</option>
+							</select>							
+							
 						</div>
 					</div>
 				</div>
@@ -115,11 +119,7 @@ else {
 
 					<div class="col-md-10">
 						<label for="commentaire" class="col-form-label">Commentaire</label>
-						<textarea class="form-control" name="commentaire" id="commentaire" rows="6">
-<?php 
-    echo $row["commentaire"]
-?>
-						</textarea>
+						<textarea class="form-control" name="commentaire" id="commentaire" rows="6"><?php echo $row["commentaire"] ?></textarea>
 					</div>
 				</div>
 
@@ -132,13 +132,20 @@ else {
 					<a class="btn btn-secondary" href="/bibli">Retour</a>
 				</div>
 			</div>
-		</div>    
+		</div> 
 <?php 
-    
-    }
-}
+	} // end while
+} // end else
 
 echo $hint;
-    
+
 mysql_close($link);
 ?>
+	</form>
+
+	<script src="../js/jquery-1.12.3.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+
+</body>
+</html>

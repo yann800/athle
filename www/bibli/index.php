@@ -69,6 +69,7 @@ footer {
 						<th>Type</th>
 						<th>Thème</th>
 						<th>Bibliothèque</th>
+						<th>Commentaire</th>
 					</tr>
 				</thead>		
 				<tbody></tbody>
@@ -96,6 +97,8 @@ footer {
 	<script type="text/javascript" src="../cross/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="../js/dataTables.fixedHeader.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
 
 	<script type="text/javascript" class="init">
 
@@ -156,9 +159,7 @@ echo $hint;
 
 
 
-
-
-
+		dom: 'Bfrtip',
 		select: true,
 		orderCellsTop: true,
 		fixedHeader: true,
@@ -172,14 +173,26 @@ echo $hint;
 			{ data: "annee" },
 			{ data: "type" },
 			{ data: "theme" },
-			{ data: "bibli" }
+			{ data: "bibli" },
+			{ data: "commentaire" }
 		],
 		columnDefs: [
 			{
 				"targets": [ 0 ],
 				"visible": false,
 				"searchable": false
-			},		
+			},
+			{
+				"targets": [ 7 ],
+				"visible": false,
+				"searchable": true
+			}
+		],
+		buttons: [
+			{
+				extend: 'colvis',
+				text: 'Visibilité des colonnes'
+			}
 		]
 	} );
 	
@@ -196,6 +209,7 @@ echo $hint;
 		} )
 
 	$('#example_filter').hide();
+	$('#example_wrapper > div.dt-buttons > button').css('margin-bottom', '22px');
 	
 } );
 

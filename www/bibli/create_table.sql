@@ -9,3 +9,11 @@ CREATE TABLE Document (
 	commentaire	VARCHAR(512),
 	PRIMARY KEY (id)
 );
+
+CREATE TABLE Fiche (
+	id			int(11)		NOT NULL AUTO_INCREMENT,
+	idDocument	int(11)		NOT NULL AUTO_INCREMENT,
+	auteur		VARCHAR(32)	NOT NULL,	
+	commentaire	VARCHAR(512),
+	PRIMARY KEY (id)
+);
